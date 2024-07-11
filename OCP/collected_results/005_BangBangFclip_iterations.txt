@@ -1,0 +1,206 @@
++------------------------- MODEL:BangBangFclip -------------------------+
++................................ DIMS .................................+
+| dims                      = u=1, q=1, x=3, p=0, bc=5 of 5             |
+| total                     = nZ=611, nP=1515, nUC=100, Q=101           |
+| index start               = omega=606, p=611                          |
+| post processing           = n_post=1                                  |
++................................ MESH .................................+
+| num nodes / segments      = 101 / 1                                   |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 1                               |
+| mesh class pointer        = 0x7ff7b7dde138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 611 x 611                                 |
+| nblock/block size         = 100 / 6                                   |
+| qr/qx/nr/nx               = 5 / 5 / 0 / 0                             |
+| last blok rows x cols     = 17 x 17                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x                                                        |
+| [ 1] initial_v                                                        |
+| [ 2] initial_F                                                        |
+| [ 3] final_v                                                          |
+| [ 4] final_F                                                          |
++..................... Controls penalties/barriers .....................+
+controlForce = { COSLOG (BARRIER) epsilon=0.01, tolerance=0.1 }          
++....................... No constraints type LT ........................+
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 101                                                    
+  Segment N.0: s0 = 0 length = 1 npts = 101 no data set                  
+END Mesh[mesh]                                                           
+                                                                         
++........................ User mapped functions ........................+
+`clip' mapped with: ClipIntervalWithErf [h=0.01, delta=0, delta2=0, internal kappa=14.105]
++.......................... MODEL PARAMETERS ...........................+
+|............................... h0 = 0.01 .............................|
+|............................... h1 = 1e-10 ............................|
+|.......................... maxClip = 1 ................................|
+|.......................... minClip = -1 ...............................|
+|............................ vFmax = 10 ...............................|
+|......................... epsilon0 = 0.1 ..............................|
+|......................... epsilon1 = 0.0001 ...........................|
+|....................... tolerance0 = 0.01 .............................|
+|....................... tolerance1 = 0.0001 ...........................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=1/0.1667/0.4082, |L|=1/0.1667/0.4082 |B|=1/1/1, |BL|=1/2/1.414, PARS=0/0/0, U=0/0/0
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangFclip
+  1 [dump:4,u:0:0]       (f:0.169,d:9.06)      -->      [f:14.2,d:1.09]      lambda:0.343  #err=  4 angle:3 armijo:4
+  2 [dump:0,u:0:0]        (f:14.2,d:3.08)      -->     [f:3.17,d:0.583]      lambda:0.878 
+  3 [dump:0,u:0:0]       (f:3.17,d:0.414)      -->      [f:1.5,d:0.197]      lambda:1     
+  4 [dump:1,u:0:0]       (f:1.5,d:0.0912)      -->     [f:1.65,d:0.0874]     lambda:0.4    #err=  1 armijo:1
+  5 [dump:10,u:0:0]      (f:1.65,d:0.0725)     -->     [f:1.12,d:0.0467]     lambda:0.252  #err= 10 angle:9 armijo:10
+  6 [dump:2,u:0:0]       (f:1.12,d:0.055)      -->    [f:0.878,d:0.0371]     lambda:0.188  #err=  2 angle:1 armijo:2
+  7 [dump:1,u:0:0]      (f:0.878,d:0.0196)     -->    [f:0.383,d:0.0104]     lambda:0.4    #err=  1 armijo:1
+  8 [dump:0,u:0:0]      (f:0.383,d:0.0115)     -->   [f:0.0687,d:0.00125]    lambda:1     
+  9 [dump:0,u:0:0]     (f:0.0687,d:0.00193)    -->   [f:0.0125,d:0.000297]   lambda:1     
+ 10 [dump:0,u:0:0]     (f:0.0125,d:0.000507)   -->  [f:0.00141,d:7.43e-05]   lambda:1     
+ 11 [dump:0,u:0:0]    (f:0.00141,d:0.000122)   -->  [f:1.96e-05,d:1.11e-05]  lambda:1     
+ 12 [dump:0,u:0:0]    (f:1.96e-05,d:1.36e-05)  -->  [f:4.26e-08,d:1.62e-07]  lambda:1     
+ 13 [dump:0,u:0:0]    (f:4.26e-08,d:1.66e-07)  -->  [f:4.59e-12,d:2.3e-11]   lambda:1     
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:13,phase:1,s:0.2,ds:0.2] |X|=3.658/0.1594/0.5828, |L|=3.658/0.164/0.5906 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=9.594/3.351/5.064
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangFclip
+14 (1 ) [phase:1,s:0.2,ds:0.2,dump:1,u:0:0]               (f:0.157,d:0.00964)    -->   [f:0.0995,d:0.00374]    lambda:0.4    #err=  1 armijo:1
+15 (2 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]              (f:0.0995,d:0.00294)    -->   [f:0.0179,d:0.000376]   lambda:1     
+16 (3 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]              (f:0.0179,d:0.000545)   -->  [f:0.000894,d:2.6e-05]   lambda:1     
+17 (4 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:0.000894,d:2.85e-05)  -->  [f:3.5e-06,d:1.26e-07]   lambda:1     
+18 (5 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:3.5e-06,d:1.27e-07)   -->  [f:7.4e-11,d:1.52e-12]   lambda:1     
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:18,phase:1,s:0.5,ds:0.3] |X|=1.765/0.09427/0.307, |L|=1.765/0.09614/0.3097 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=9.79/4.774/6.298
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangFclip
+19 (1 ) [phase:1,s:0.5,ds:0.3,dump:2,u:0:0]              (f:0.0926,d:0.00391)    -->    [f:0.03,d:0.000652]    lambda:0.902  #err=  2 angle:2 armijo:2
+20 (2 ) [phase:1,s:0.5,ds:0.3,dump:1,u:0:0]               (f:0.03,d:0.000494)    -->  [f:0.00762,d:0.000141]   lambda:0.758  #err=  1 angle:1 armijo:1
+21 (3 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:0.00762,d:0.000125)   -->  [f:0.000121,d:5.84e-06]  lambda:1     
+22 (4 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:0.000121,d:6.73e-06)  -->  [f:6.23e-08,d:4.37e-08]  lambda:1     
+23 (5 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:6.23e-08,d:4.43e-08)  -->  [f:5.78e-13,d:2.65e-12]  lambda:1     
+
+Continuation step N.1 s:0.5->0.95, ds=0.45
+[iter:23,phase:1,s:0.95,ds:0.45] |X|=6.684/0.2985/1.008, |L|=6.684/0.3015/1.01 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=9.984/5.941/7.226
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangFclip
+24 (1 ) [phase:1,s:0.95,ds:0.45,dump:5,u:0:0]             (f:0.293,d:0.0268)     -->   [f:0.0542,d:0.00207]    lambda:0.774  #err=  5 angle:5 armijo:5
+25 (2 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]            (f:0.0542,d:0.00551)    -->   [f:0.0302,d:0.00366]    lambda:0.4    #err=  1 armijo:1
+26 (3 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]            (f:0.0302,d:0.00499)    -->   [f:0.0162,d:0.00344]    lambda:0.4    #err=  1 armijo:1
+27 (4 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]            (f:0.0162,d:0.00525)    -->   [f:0.0131,d:0.00376]    lambda:0.4    #err=  1 armijo:1
+28 (5 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]            (f:0.0131,d:0.00604)    -->   [f:0.0128,d:0.00434]    lambda:0.4    #err=  1 armijo:1
+29 (6 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]            (f:0.0128,d:0.00694)    -->    [f:0.0546,d:0.0049]    lambda:1     
+30 (7 ) [phase:1,s:0.95,ds:0.45,dump:23,u:0:0]           (f:0.0546,d:0.00929)    -->    [f:0.0515,d:0.003]     lambda:0.0545  #err= 23 angle:21 armijo:23
+31 (8 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]            (f:0.0515,d:0.00486)    -->   [f:0.0339,d:0.00316]    lambda:0.35  
+32 (9 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]            (f:0.0339,d:0.00316)    -->   [f:0.0208,d:0.00127]    lambda:0.4    #err=  1 armijo:1
+33 (10) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]            (f:0.0208,d:0.00102)    -->  [f:0.00151,d:1.51e-05]   lambda:1     
+34 (11) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:0.00151,d:2.32e-05)   -->  [f:5.87e-05,d:8.45e-07]  lambda:1     
+35 (12) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:5.87e-05,d:9.36e-07)  -->  [f:1.33e-07,d:2.39e-09]  lambda:1     
+36 (13) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:1.33e-07,d:2.4e-09)   -->  [f:6.91e-13,d:1.15e-14]  lambda:1     
+
+Continuation step N.1 s:0.95->1, ds=0.05
+[iter:36,phase:1,s:1,ds:0.05] |X|=7.692/0.3743/1.173, |L|=7.692/0.3747/1.173 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=10/6.365/7.126
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangFclip
+37 (1 ) [phase:1,s:1,ds:0.05,dump:1,u:0:0]                (f:0.368,d:0.00757)    -->    [f:0.203,d:0.00449]    lambda:0.4    #err=  1 armijo:1
+38 (2 ) [phase:1,s:1,ds:0.05,dump:1,u:0:0]                (f:0.203,d:0.0043)     -->    [f:0.119,d:0.0025]     lambda:0.4    #err=  1 armijo:1
+39 (3 ) [phase:1,s:1,ds:0.05,dump:1,u:0:0]                (f:0.119,d:0.00218)    -->    [f:0.07,d:0.00118]     lambda:0.4    #err=  1 armijo:1
+40 (4 ) [phase:1,s:1,ds:0.05,dump:1,u:0:0]                (f:0.07,d:0.000669)    -->   [f:0.0405,d:0.000279]   lambda:0.4    #err=  1 armijo:1
+41 (5 ) [phase:1,s:1,ds:0.05,dump:1,u:0:0]               (f:0.0405,d:0.000717)   -->   [f:0.0233,d:0.000693]   lambda:0.4    #err=  1 armijo:1
+42 (6 ) [phase:1,s:1,ds:0.05,dump:1,u:0:0]               (f:0.0233,d:0.00173)    -->   [f:0.0159,d:0.00135]    lambda:0.4    #err=  1 armijo:1
+43 (7 ) [phase:1,s:1,ds:0.05,dump:1,u:0:0]               (f:0.0159,d:0.00248)    -->   [f:0.0116,d:0.00179]    lambda:0.4    #err=  1 armijo:1
+44 (8 ) [phase:1,s:1,ds:0.05,dump:1,u:0:0]               (f:0.0116,d:0.00286)    -->   [f:0.00881,d:0.00196]   lambda:0.42   #err=  1 armijo:1
+45 (9 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]               (f:0.00881,d:0.00296)   -->    [f:0.01,d:0.00147]     lambda:1     
+46 (10) [phase:1,s:1,ds:0.05,dump:1,u:0:0]                (f:0.01,d:0.00145)     -->  [f:0.00601,d:0.000871]   lambda:0.4    #err=  1 armijo:1
+47 (11) [phase:1,s:1,ds:0.05,dump:1,u:0:0]              (f:0.00601,d:0.000871)   -->   [f:0.0036,d:0.000522]   lambda:0.4    #err=  1 armijo:1
+48 (12) [phase:1,s:1,ds:0.05,dump:1,u:0:0]               (f:0.0036,d:0.000522)   -->  [f:0.00216,d:0.000313]   lambda:0.4    #err=  1 armijo:1
+49 (13) [phase:1,s:1,ds:0.05,dump:1,u:0:0]              (f:0.00216,d:0.000313)   -->   [f:0.0013,d:0.000188]   lambda:0.4    #err=  1 armijo:1
+50 (14) [phase:1,s:1,ds:0.05,dump:2,u:0:0]               (f:0.0013,d:0.000188)   -->  [f:0.00109,d:0.000158]   lambda:0.16   #err=  2 armijo:2
+51 (15) [phase:1,s:1,ds:0.05,dump:3,u:0:0]              (f:0.00109,d:0.000158)   -->  [f:0.00102,d:0.000148]   lambda:0.064  #err=  3 armijo:3
+52 (16) [phase:1,s:1,ds:0.05,dump:5,u:0:0]              (f:0.00102,d:0.000148)   -->  [f:0.00101,d:0.000146]   lambda:0.0102  #err=  5 armijo:5
+53 (17) [phase:1,s:1,ds:0.05,dump:5,u:0:0]              (f:0.00101,d:0.000146)   -->  [f:0.00101,d:0.000146]   lambda:0.00155  #err=  5 armijo:5
+54 (18) [phase:1,s:1,ds:0.05,dump:5,u:0:0]              (f:0.00101,d:0.000146)   -->  [f:0.00101,d:0.000146]   lambda:0.000606  #err=  5 armijo:5
+55 (19) [phase:1,s:1,ds:0.05,dump:6,u:0:0]              (f:0.00101,d:0.000146)   -->  [f:0.00101,d:0.000146]   lambda:0.000151  #err=  6 armijo:6
+56 (20) [phase:1,s:1,ds:0.05,dump:9,u:0:0]              (f:0.00101,d:0.000146)   -->  [f:0.00101,d:0.000146]   lambda:4.84e-06  #err=  9 armijo:9
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangFclip
+57 (21) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:0.00101,d:0.000134)   -->   [f:0.001,d:0.000133]    lambda:0.0033 
+58 (22) [phase:1,s:1,ds:0.05,dump:1,u:0:0]               (f:0.001,d:0.000133)    -->  [f:0.00187,d:0.000105]   lambda:0.4    #err=  1 armijo:1
+59 (23) [phase:1,s:1,ds:0.05,dump:2,u:0:0]                (f:0.00187,d:8e-05)    -->  [f:0.000655,d:6.72e-05]  lambda:0.16   #err=  2 armijo:2
+60 (24) [phase:1,s:1,ds:0.05,dump:2,u:0:0]              (f:0.000655,d:6.72e-05)  -->  [f:0.000551,d:5.64e-05]  lambda:0.16   #err=  2 armijo:2
+61 (25) [phase:1,s:1,ds:0.05,dump:4,u:0:0]              (f:0.000551,d:5.64e-05)  -->  [f:0.000537,d:5.5e-05]   lambda:0.0256  #err=  4 armijo:4
+62 (26) [phase:1,s:1,ds:0.05,dump:3,u:0:0]              (f:0.000537,d:5.5e-05)   -->  [f:0.000529,d:5.41e-05]  lambda:0.0154  #err=  3 armijo:3
+63 (27) [phase:1,s:1,ds:0.05,dump:5,u:0:0]              (f:0.000529,d:5.41e-05)  -->  [f:0.000524,d:5.36e-05]  lambda:0.0102  #err=  5 armijo:5
+64 (28) [phase:1,s:1,ds:0.05,dump:4,u:0:0]              (f:0.000524,d:5.36e-05)  -->  [f:0.000522,d:5.34e-05]  lambda:0.00389  #err=  4 armijo:4
+65 (29) [phase:1,s:1,ds:0.05,dump:8,u:0:0]              (f:0.000522,d:5.34e-05)  -->  [f:0.000521,d:5.34e-05]  lambda:6.13e-05  #err=  8 armijo:8
+66 (30) [phase:1,s:1,ds:0.05,dump:6,u:0:0]              (f:0.000521,d:5.34e-05)  -->  [f:0.000521,d:5.34e-05]  lambda:4.81e-05  #err=  6 armijo:6
+67 (31) [phase:1,s:1,ds:0.05,dump:9,u:0:0]              (f:0.000521,d:5.34e-05)  -->  [f:0.000521,d:5.34e-05]  lambda:2.73e-06  #err=  9 armijo:9
+68 (32) [phase:1,s:1,ds:0.05,dump:8,u:0:0]              (f:0.000521,d:5.34e-05)  -->  [f:0.000521,d:5.34e-05]  lambda:1.62e-06  #err=  8 armijo:8
+69 (33) [phase:1,s:1,ds:0.05,dump:6,u:0:0]              (f:0.000521,d:7.16e-06)  -->  [f:0.000521,d:5.67e-06]  lambda:7.83e-06  #err=  6 armijo:6
+70 (34) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:0.000521,d:4.59e-09)  -->  [f:0.000519,d:4.57e-09]  lambda:0.0042 
+71 (35) [phase:1,s:1,ds:0.05,dump:1,u:0:0]              (f:0.000519,d:4.57e-09)  -->  [f:6.09e-05,d:1.48e-10]  lambda:0.95   #err=  1 angle:1 armijo:1
+72 (36) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:6.09e-05,d:2.15e-10)  -->  [f:1.38e-05,d:5.16e-12]  lambda:1     
+73 (37) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:1.38e-05,d:1.25e-11)  -->  [f:4.74e-06,d:3.89e-12]  lambda:1     
+74 (38) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:4.74e-06,d:9.31e-12)  -->  [f:1.65e-06,d:2.91e-12]  lambda:1     
+75 (39) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:1.65e-06,d:7.37e-12)  -->  [f:5.82e-07,d:2.53e-12]  lambda:1     
+76 (40) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.82e-07,d:6.6e-12)   -->  [f:2.05e-07,d:2.33e-12]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangFclip
+77 (41) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:2.05e-07,d:6.07e-12)  -->  [f:7.21e-08,d:2.13e-12]  lambda:1     
+78 (42) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:7.21e-08,d:5.52e-12)  -->  [f:2.47e-08,d:1.89e-12]  lambda:1     
+79 (43) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:2.47e-08,d:4.75e-12)  -->  [f:7.91e-09,d:1.52e-12]  lambda:1     
+80 (44) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:7.91e-09,d:3.5e-12)   -->  [f:2.06e-09,d:9.11e-13]  lambda:1     
+81 (45) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:2.06e-09,d:1.73e-12)  -->   [f:3e-10,d:2.52e-13]    lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 1               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 611             | N. System pars  = 1515            |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 420 [ms]        | timeout         = 0 [ms]          |
+| iteration       = 81              | Memory Used     = 195Kb(+73b)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 323             | Jacobian        = 81              |
+| Factorization   = 81              | Inversion       = 323             |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 9.1701e-08      | last ||d||_inf  = 5.3103e-12      |
+| last ||f||_1    = 3.0007e-10      | last ||d||_1    = 2.5199e-13      |
+| last ||f||_2    = 5.2446e-09      | last ||d||_2    = 9.5274e-13      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 0.281ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 17.99ms ]
+Check DuDxxpm (epsi=0.001): all OK [ 9.586ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001): all OK [ 18.55ms ]
+Check DodeDxp (epsi=0.001): all OK [ 0.393ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 19.09ms ]
+target [Lagrange,Mayer]            = [ 0, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 3.758e-05, 0 ]
+All Done Folks!

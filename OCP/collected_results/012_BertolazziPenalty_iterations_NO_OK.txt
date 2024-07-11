@@ -1,0 +1,609 @@
++----------------------- MODEL:BertolazziPenalty -----------------------+
++................................ DIMS .................................+
+| dims                      = u=1, q=2, x=4, p=0, bc=5 of 5             |
+| total                     = nZ=813, nP=2019, nUC=100, Q=202           |
+| index start               = omega=808, p=813                          |
+| post processing           = n_post=1                                  |
++................................ MESH .................................+
+| num nodes / segments      = 101 / 1                                   |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 1                               |
+| mesh class pointer        = 0x7ff7aff77138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 813 x 813                                 |
+| nblock/block size         = 100 / 8                                   |
+| qr/qx/nr/nx               = 5 / 5 / 0 / 0                             |
+| last blok rows x cols     = 21 x 21                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x1                                                       |
+| [ 1] initial_x2                                                       |
+| [ 2] initial_x3                                                       |
+| [ 3] initial_y                                                        |
+| [ 4] final_y                                                          |
++..................... Controls penalties/barriers .....................+
+uControl = { COSLOG (BARRIER) epsilon=0.01, tolerance=0.01 }             
++....................... No constraints type LT ........................+
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 101                                                    
+  Segment N.0: s0 = 0 length = 1 npts = 101 no data set                  
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|................................ M = 10 ...............................|
+|........................... h__pen = 1 ................................|
+|.......................... h__pen0 = 1 ................................|
+|.......................... h__pen1 = 0.0001 ...........................|
+|.......................... u_epsi0 = 0.01 .............................|
+|.......................... u_epsi1 = 1e-05 ............................|
+|........................... u_tol0 = 0.01 .............................|
+|........................... u_tol1 = 1e-05 ............................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=3.95/0.5471/0.9298, |L|=4.05/0.5562/0.9522 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=0/0/0
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BertolazziPenalty
+  1 [dump:14,u:0:0]     (f:1.09,d:1.49e+05)    -->     [f:14,d:1.49e+05]     lambda:2.68e-06  #err= 14 armijo:14
+  2 [dump:4,u:0:0]       (f:14,d:3.41e+04)     -->    [f:35.5,d:3.41e+04]    lambda:6.29e-05  #err=  4 armijo:4
+  3 [dump:1,u:0:0]      (f:35.5,d:8.96e+03)    -->  [f:3.77e+03,d:6.52e+03]  lambda:0.00476  #err=  1 armijo:1
+  4 [dump:8,u:0:0]    (f:3.77e+03,d:3.07e+04)  -->  [f:2.7e+04,d:1.39e+04]   lambda:0.000655  #err=  8 armijo:8
+  5 [dump:0,u:0:0]    (f:2.7e+04,d:1.66e+04)   -->  [f:2.63e+04,d:1.58e+04]  lambda:0.0384 
+  6 [dump:1,u:0:0]    (f:2.63e+04,d:1.37e+04)  -->  [f:3.73e+04,d:4.96e+03]  lambda:0.4    #err=  1 armijo:1
+  7 [dump:1,u:0:0]    (f:3.73e+04,d:1.21e+04)  -->  [f:1.68e+04,d:1.19e+03]  lambda:0.95   #err=  1 angle:1 armijo:1
+  8 [dump:2,u:0:0]    (f:1.68e+04,d:5.88e+03)  -->  [f:2.01e+04,d:1.6e+03]   lambda:0.774  #err=  2 angle:2 armijo:2
+  9 [dump:3,u:0:0]    (f:2.01e+04,d:5.98e+03)  -->  [f:1.91e+04,d:1.4e+03]   lambda:0.064  #err=  3 armijo:3
+ 10 [dump:5,u:0:0]    (f:1.91e+04,d:2.52e+03)  -->  [f:1.89e+04,d:2.38e+03]  lambda:0.0108  #err=  5 armijo:5
+ 11 [dump:0,u:0:0]    (f:1.89e+04,d:4.84e+03)  -->  [f:1.72e+04,d:3.9e+03]   lambda:0.156 
+ 12 [dump:0,u:0:0]    (f:1.72e+04,d:2.16e+03)  -->  [f:6.51e+03,d:1.95e+03]  lambda:1     
+ 13 [dump:22,u:0:0]   (f:6.51e+03,d:4.02e+06)  -->  [f:6.51e+03,d:1.43e+06]  lambda:2.62e-06  #err= 22 angle:9 armijo:22
+ 14 [dump:0,u:0:0]    (f:6.51e+03,d:1.47e+03)  -->  [f:6.49e+03,d:1.42e+03]  lambda:0.00243 
+ 15 [dump:5,u:0:0]    (f:6.49e+03,d:1.51e+03)  -->  [f:6.43e+03,d:1.69e+03]  lambda:0.0102  #err=  5 armijo:5
+ 16 [dump:0,u:0:0]    (f:6.43e+03,d:1.49e+03)  -->  [f:5.68e+03,d:1.31e+03]  lambda:0.152 
+ 17 [dump:17,u:0:0]   (f:5.68e+03,d:7.62e+06)  -->  [f:5.68e+03,d:7.62e+06]  lambda:1.91e-06  #err= 17 angle:3 armijo:17
+ 18 [dump:6,u:0:0]    (f:5.68e+03,d:3.02e+05)  -->  [f:5.68e+03,d:1.32e+05]  lambda:8.49e-06  #err=  6 armijo:6
+ 19 [dump:0,u:0:0]    (f:5.68e+03,d:1.16e+03)  -->  [f:5.66e+03,d:1.13e+03]  lambda:0.00437 
+ 20 [dump:6,u:0:0]    (f:5.66e+03,d:1.29e+03)  -->  [f:5.63e+03,d:1.27e+03]  lambda:0.0041  #err=  6 armijo:6
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BertolazziPenalty
+ 21 [dump:0,u:0:0]    (f:5.63e+03,d:1.13e+03)  -->  [f:5.14e+03,d:1.1e+03]   lambda:0.096 
+ 22 [dump:19,u:0:0]   (f:5.14e+03,d:2.27e+05)  -->  [f:5.14e+03,d:1.5e+04]   lambda:1.25e-05  #err= 19 angle:7 armijo:19
+ 23 [dump:0,u:0:0]      (f:5.14e+03,d:986)     -->    [f:5.11e+03,d:977]     lambda:0.00531 
+ 24 [dump:3,u:0:0]      (f:5.11e+03,d:986)     -->  [f:4.79e+03,d:1.19e+03]  lambda:0.0664  #err=  3 armijo:3
+ 25 [dump:2,u:0:0]    (f:4.79e+03,d:1.11e+03)  -->  [f:4.57e+03,d:1.01e+03]  lambda:0.16   #err=  2 armijo:2
+ 26 [dump:0,u:0:0]      (f:4.57e+03,d:947)     -->    [f:1.77e+03,d:527]     lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 1               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = NO              | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 813             | N. System pars  = 2019            |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 443 [ms]        | timeout         = 0 [ms]          |
+| iteration       = 27              | Memory Used     = 286Kb(+76b)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 408             | Jacobian        = 27              |
+| Factorization   = 27              | Inversion       = 408             |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 4.5567e+05      | last ||d||_inf  = 7.2143e+08      |
+| last ||f||_1    = 1774.4          | last ||d||_1    = 6.8819e+07      |
+| last ||f||_2    = 21208           | last ||d||_2    = 1.8065e+08      |
++-----------------------------------------------------------------------+
+|          __  ___     __   __             ___  __   __   ___  __       |
+|    |\ | /  \  |     /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \      |
+|    | \| \__/  |     \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/      |
+|                                                                       |
++-----------------------------------------------------------------------+
+                                                                         
+Solver error list
+BEGIN
+  err #1: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:9.802621126415906e-07,dump:236] failed linesearch
+  err #2: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1.032e-06] failed Armijo
+
+  err #3: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1.086e-06] failed Armijo
+
+  err #4: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1.143e-06] failed Armijo
+
+  err #5: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1.204e-06] failed Armijo
+
+  err #6: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1.267e-06] failed Armijo
+
+  err #7: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1.334e-06] failed Armijo
+
+  err #8: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1.404e-06] failed Armijo
+
+  err #9: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1.478e-06] failed Armijo
+
+  err #10: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1.556e-06] failed Armijo
+
+  err #11: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1.637e-06] failed Armijo
+
+  err #12: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1.724e-06] failed Armijo
+
+  err #13: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1.814e-06] failed Armijo
+
+  err #14: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1.91e-06] failed Armijo
+
+  err #15: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:2.01e-06] failed Armijo
+
+  err #16: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:2.116e-06] failed Armijo
+
+  err #17: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:2.228e-06] failed Armijo
+
+  err #18: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:2.345e-06] failed Armijo
+
+  err #19: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:2.468e-06] failed Armijo
+
+  err #20: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:2.598e-06] failed Armijo
+
+  err #21: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:2.735e-06] failed Armijo
+
+  err #22: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:2.879e-06] failed Armijo
+
+  err #23: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:3.03e-06] failed Armijo
+
+  err #24: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:3.19e-06] failed Armijo
+
+  err #25: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:3.358e-06] failed Armijo
+
+  err #26: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:3.534e-06] failed Armijo
+
+  err #27: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:3.721e-06] failed Armijo
+
+  err #28: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:3.916e-06] failed Armijo
+
+  err #29: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:4.123e-06] failed Armijo
+
+  err #30: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:4.339e-06] failed Armijo
+
+  err #31: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:4.568e-06] failed Armijo
+
+  err #32: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:4.808e-06] failed Armijo
+
+  err #33: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:5.061e-06] failed Armijo
+
+  err #34: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:5.328e-06] failed Armijo
+
+  err #35: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:5.608e-06] failed Armijo
+
+  err #36: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:5.903e-06] failed Armijo
+
+  err #37: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:6.214e-06] failed Armijo
+
+  err #38: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:6.541e-06] failed Armijo
+
+  err #39: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:6.885e-06] failed Armijo
+
+  err #40: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:7.248e-06] failed Armijo
+
+  err #41: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:7.629e-06] failed Armijo
+
+  err #42: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:8.031e-06] failed Armijo
+
+  err #43: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:8.454e-06] failed Armijo
+
+  err #44: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:8.899e-06] failed Armijo
+
+  err #45: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:9.367e-06] failed Armijo
+
+  err #46: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:9.86e-06] failed Armijo
+
+  err #47: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1.038e-05] failed Armijo
+
+  err #48: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1.093e-05] failed Armijo
+
+  err #49: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1.15e-05] failed Armijo
+
+  err #50: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1.211e-05] failed Armijo
+
+  err #51: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1.274e-05] failed Armijo
+
+  err #52: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1.341e-05] failed Armijo
+
+  err #53: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1.412e-05] failed Armijo
+
+  err #54: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1.486e-05] failed Armijo
+
+  err #55: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1.564e-05] failed Armijo
+
+  err #56: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1.647e-05] failed Armijo
+
+  err #57: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1.733e-05] failed Armijo
+
+  err #58: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1.825e-05] failed Armijo
+
+  err #59: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1.921e-05] failed Armijo
+
+  err #60: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:2.022e-05] failed Armijo
+
+  err #61: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:2.128e-05] failed Armijo
+
+  err #62: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:2.24e-05] failed Armijo
+
+  err #63: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:2.358e-05] failed Armijo
+
+  err #64: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:2.482e-05] failed Armijo
+
+  err #65: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:2.613e-05] failed Armijo
+
+  err #66: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:2.75e-05] failed Armijo
+
+  err #67: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:2.895e-05] failed Armijo
+
+  err #68: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:3.048e-05] failed Armijo
+
+  err #69: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:3.208e-05] failed Armijo
+
+  err #70: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:3.377e-05] failed Armijo
+
+  err #71: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:3.555e-05] failed Armijo
+
+  err #72: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:3.742e-05] failed Armijo
+
+  err #73: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:3.939e-05] failed Armijo
+
+  err #74: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:4.146e-05] failed Armijo
+
+  err #75: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:4.364e-05] failed Armijo
+
+  err #76: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:4.594e-05] failed Armijo
+
+  err #77: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:4.836e-05] failed Armijo
+
+  err #78: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:5.09e-05] failed Armijo
+
+  err #79: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:5.358e-05] failed Armijo
+
+  err #80: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:5.64e-05] failed Armijo
+
+  err #81: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:5.937e-05] failed Armijo
+
+  err #82: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:6.249e-05] failed Armijo
+
+  err #83: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:6.578e-05] failed Armijo
+
+  err #84: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:6.924e-05] failed Armijo
+
+  err #85: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:7.289e-05] failed Armijo
+
+  err #86: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:7.672e-05] failed Armijo
+
+  err #87: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:8.076e-05] failed Armijo
+
+  err #88: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:8.501e-05] failed Armijo
+
+  err #89: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:8.949e-05] failed Armijo
+
+  err #90: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:9.42e-05] failed Armijo
+
+  err #91: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:9.916e-05] failed Armijo
+
+  err #92: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0001044] failed Armijo
+
+  err #93: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0001099] failed Armijo
+
+  err #94: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0001157] failed Armijo
+
+  err #95: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0001217] failed Armijo
+
+  err #96: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0001281] failed Armijo
+
+  err #97: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0001349] failed Armijo
+
+  err #98: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.000142] failed Armijo
+
+  err #99: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0001495] failed Armijo
+
+  err #100: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0001573] failed Armijo
+
+  err #101: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0001656] failed Armijo
+
+  err #102: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0001743] failed Armijo
+
+  err #103: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0001835] failed Armijo
+
+  err #104: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0001932] failed Armijo
+
+  err #105: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0002033] failed Armijo
+
+  err #106: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.000214] failed Armijo
+
+  err #107: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0002253] failed Armijo
+
+  err #108: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0002371] failed Armijo
+
+  err #109: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0002496] failed Armijo
+
+  err #110: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0002628] failed Armijo
+
+  err #111: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0002766] failed Armijo
+
+  err #112: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0002912] failed Armijo
+
+  err #113: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0003065] failed Armijo
+
+  err #114: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0003226] failed Armijo
+
+  err #115: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0003396] failed Armijo
+
+  err #116: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0003575] failed Armijo
+
+  err #117: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0003763] failed Armijo
+
+  err #118: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0003961] failed Armijo
+
+  err #119: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0004169] failed Armijo
+
+  err #120: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0004389] failed Armijo
+
+  err #121: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.000462] failed Armijo
+
+  err #122: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0004863] failed Armijo
+
+  err #123: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0005119] failed Armijo
+
+  err #124: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0005388] failed Armijo
+
+  err #125: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0005672] failed Armijo
+
+  err #126: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.000597] failed Armijo
+
+  err #127: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0006284] failed Armijo
+
+  err #128: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0006615] failed Armijo
+
+  err #129: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0006963] failed Armijo
+
+  err #130: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.000733] failed Armijo
+
+  err #131: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0007716] failed Armijo
+
+  err #132: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0008122] failed Armijo
+
+  err #133: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0008549] failed Armijo
+
+  err #134: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0008999] failed Armijo
+
+  err #135: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0009473] failed Armijo
+
+  err #136: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0009971] failed Armijo
+
+  err #137: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.00105] failed Armijo
+
+  err #138: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.001105] failed Armijo
+
+  err #139: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.001163] failed Armijo
+
+  err #140: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.001224] failed Armijo
+
+  err #141: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.001289] failed Armijo
+
+  err #142: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.001356] failed Armijo
+
+  err #143: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.001428] failed Armijo
+
+  err #144: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.001503] failed Armijo
+
+  err #145: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.001582] failed Armijo
+
+  err #146: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.001665] failed Armijo
+
+  err #147: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.001753] failed Armijo
+
+  err #148: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.001845] failed Armijo
+
+  err #149: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.001942] failed Armijo
+
+  err #150: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.002045] failed Armijo
+
+  err #151: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.002152] failed Armijo
+
+  err #152: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.002266] failed Armijo
+
+  err #153: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.002385] failed Armijo
+
+  err #154: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.00251] failed Armijo
+
+  err #155: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.002642] failed Armijo
+
+  err #156: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.002782] failed Armijo
+
+  err #157: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.002928] failed Armijo
+
+  err #158: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.003082] failed Armijo
+
+  err #159: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.003244] failed Armijo
+
+  err #160: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.003415] failed Armijo
+
+  err #161: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.003595] failed Armijo
+
+  err #162: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.003784] failed Armijo
+
+  err #163: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.003983] failed Armijo
+
+  err #164: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.004193] failed Armijo
+
+  err #165: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.004413] failed Armijo
+
+  err #166: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.004646] failed Armijo
+
+  err #167: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.00489] failed Armijo
+
+  err #168: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.005148] failed Armijo
+
+  err #169: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.005418] failed Armijo
+
+  err #170: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.005704] failed Armijo
+
+  err #171: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.006004] failed Armijo
+
+  err #172: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.00632] failed Armijo
+
+  err #173: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.006652] failed Armijo
+
+  err #174: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.007003] failed Armijo
+
+  err #175: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.007371] failed Armijo
+
+  err #176: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.007759] failed Armijo
+
+  err #177: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.008167] failed Armijo
+
+  err #178: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.008597] failed Armijo
+
+  err #179: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.00905] failed Armijo
+
+  err #180: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.009526] failed Armijo
+
+  err #181: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.01003] failed Armijo
+
+  err #182: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.01056] failed Armijo
+
+  err #183: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.01111] failed Armijo
+
+  err #184: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0117] failed Armijo
+
+  err #185: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.01231] failed Armijo
+
+  err #186: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.01296] failed Armijo
+
+  err #187: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.01364] failed Armijo
+
+  err #188: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.01436] failed Armijo
+
+  err #189: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.01511] failed Armijo
+
+  err #190: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.01591] failed Armijo
+
+  err #191: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.01675] failed Armijo
+
+  err #192: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.01763] failed Armijo
+
+  err #193: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.01856] failed Armijo
+
+  err #194: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.01953] failed Armijo
+
+  err #195: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.02056] failed Armijo
+
+  err #196: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.02164] failed Armijo
+
+  err #197: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.02278] failed Armijo
+
+  err #198: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.02398] failed Armijo
+
+  err #199: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.02524] failed Armijo
+
+  err #200: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.02657] failed Armijo
+
+  err #201: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.02797] failed Armijo
+
+  err #202: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.02944] failed Armijo
+
+  err #203: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.03099] failed Armijo
+
+  err #204: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.03263] failed Armijo
+
+  err #205: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.03434] failed Armijo
+
+  err #206: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.03615] failed Armijo
+
+  err #207: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.03805] failed Armijo
+
+  err #208: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.04006] failed Armijo
+
+  err #209: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.04216] failed Armijo
+
+  err #210: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.04438] failed Armijo
+
+  err #211: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.04672] failed Armijo
+
+  err #212: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.04918] failed Armijo
+
+  err #213: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.05177] failed Armijo
+
+  err #214: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.05449] failed Armijo
+
+  err #215: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.05736] failed Armijo
+
+  err #216: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.06038] failed Armijo
+
+  err #217: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.06355] failed Armijo
+
+  err #218: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0669] failed Armijo
+
+  err #219: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.07042] failed Armijo
+
+  err #220: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.07413] failed Armijo
+
+  err #221: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.07803] failed Armijo
+
+  err #222: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.08213] failed Armijo
+
+  err #223: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.08646] failed Armijo
+
+  err #224: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.09101] failed Armijo
+
+  err #225: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.0958] failed Armijo
+
+  err #226: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.1008] failed Armijo
+
+  err #227: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.1061] failed Armijo
+
+  err #228: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.1117] failed Armijo
+
+  err #229: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.1176] failed Armijo
+
+  err #230: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.1238] failed Armijo
+
+  err #231: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.1303] failed Armijo
+
+  err #232: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.1372] failed Armijo
+
+  err #233: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.1444] failed Armijo
+
+  err #234: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.152] failed Armijo
+
+  err #235: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.16] failed Armijo
+
+  err #236: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:0.4] failed Armijo
+
+  err #237: NLsolver[BertolazziPenalty]::solve [phase:0,iter:27/300,lambda:1] failed Armijo
+
+END
+                                                                         
+Check Controls (epsi=0.001): all OK [ 0.282ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 24.01ms ]
+Check DuDxxpm (epsi=0.001): all OK [ 13.35ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001): all OK [ 23.58ms ]
+Check DodeDxp (epsi=0.001): all OK [ 0.469ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 24.22ms ]
+target [Lagrange,Mayer]            = [ -11.95, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 0.03155, 0 ]
+All Done Folks!

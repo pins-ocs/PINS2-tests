@@ -1,0 +1,199 @@
++--------------- MODEL:DielectrophoresisParticleControl ----------------+
++................................ DIMS .................................+
+| dims                      = u=1, q=1, x=2, p=1, bc=3 of 3             |
+| total                     = nZ=1608, nP=4412, nUC=400, Q=401          |
+| index start               = omega=1604, p=1607                        |
+| post processing           = n_post=0                                  |
++................................ MESH .................................+
+| num nodes / segments      = 401 / 1                                   |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 1                               |
+| mesh class pointer        = 0x7ff7b0721128                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 1608 x 1608                               |
+| nblock/block size         = 400 / 4                                   |
+| qr/qx/nr/nx               = 3 / 3 / 1 / 1                             |
+| last blok rows x cols     = 12 x 12                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x                                                        |
+| [ 1] initial_y                                                        |
+| [ 2] final_x                                                          |
++..................... Controls penalties/barriers .....................+
+uControl = { COSLOG (BARRIER) epsilon=0.01, tolerance=0.01 }             
++......................... Constraints type LT .........................+
+Tpos = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }            
+ypos = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }            
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 401                                                    
+  Segment N.0: s0 = 0 length = 1 npts = 401 no data set                  
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|............................... L0 = -4 ...............................|
+|.......................... T_guess = 10 ...............................|
+|............................ alpha = -0.75 ............................|
+|................................ c = 1 ................................|
+|............................. eps0 = 0.01 .............................|
+|............................. eps1 = 0.0001 ...........................|
+|............................. tol0 = 0.01 .............................|
+|............................. tol1 = 0.0001 ...........................|
+|........................... u_eps0 = 0.01 .............................|
+|........................... u_eps1 = 0.0001 ...........................|
+|............................ u_max = 1 ................................|
+|............................ u_min = -1 ...............................|
+|........................... u_tol0 = 0.01 .............................|
+|........................... u_tol1 = 0.0001 ...........................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=12.88/3.887/4.973, |L|=12.88/3.883/4.97 |B|=4/12/6.928, |BL|=4/4/4, PARS=0.05544/0.05544/0.05544, U=0.9999/0.9161/0.9224
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] DielectrophoresisParticleControl
+  1 [dump:4,u:14:51]      (f:2.34,d:1.08)      -->     [f:1.87,d:0.899]      lambda:0.24   #err= 11 update:4
+  2 [dump:10,u:19:51]      (f:1.87,d:1.81)      -->      [f:1.85,d:1.8]       lambda:0.00678  #err= 30 update:8 armijo:2
+  3 [dump:5,u:19:51]      (f:1.85,d:2.02)      -->      [f:1.83,d:2.01]      lambda:0.00678  #err= 14 update:3 armijo:2
+  4 [dump:5,u:19:51]      (f:1.83,d:2.24)      -->      [f:1.8,d:2.22]       lambda:0.00829  #err= 15 update:3 armijo:2
+  5 [dump:5,u:17:51]      (f:1.8,d:2.49)       -->      [f:1.75,d:2.48]      lambda:0.0131  #err= 23 update:4 armijo:1
+  6 [dump:6,u:18:51]      (f:1.75,d:3.21)      -->      [f:1.72,d:3.19]      lambda:0.0115  #err= 31 update:5 armijo:1
+  7 [dump:7,u:16:51]      (f:1.72,d:4.25)      -->      [f:1.69,d:4.23]      lambda:0.00759  #err= 38 update:6 armijo:1
+  8 [dump:7,u:16:51]      (f:1.69,d:5.53)      -->      [f:1.67,d:5.52]      lambda:0.00615  #err= 35 update:6 armijo:1
+  9 [dump:8,u:15:51]      (f:1.67,d:8.58)      -->      [f:1.67,d:8.58]      lambda:0.00387  #err= 55 update:7 armijo:1
+ 10 [dump:10,u:17:51]      (f:1.67,d:16.1)      -->      [f:1.66,d:16.1]      lambda:0.000861  #err= 60 update:8 armijo:2
+ 11 [dump:8,u:16:51]      (f:1.66,d:18.5)      -->      [f:1.65,d:18.5]      lambda:0.000829  #err= 49 update:6 armijo:2
+ 12 [dump:10,u:16:51]       (f:1.65,d:27)       -->       [f:1.65,d:27]       lambda:0.000398  #err= 58 update:8 armijo:2
+ 13 [dump:10,u:16:51]      (f:1.65,d:39.3)      -->      [f:1.64,d:39.3]      lambda:0.000276  #err= 63 update:8 armijo:2
+ 14 [dump:12,u:17:51]      (f:1.64,d:84.9)      -->      [f:1.64,d:84.9]      lambda:6.44e-05  #err= 70 update:9 armijo:3
+ 15 [dump:12,u:16:51]      (f:1.64,d:159)       -->      [f:1.64,d:159]       lambda:3.11e-05  #err= 66 update:9 armijo:3
+ 16 [dump:17,u:17:51]      (f:1.64,d:879)       -->      [f:1.64,d:879]       lambda:2.07e-06  #err=115 update:13 armijo:4
+U_solver::eval(i_cell=84,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=2.56e-05 f0=-86.22, f1=-86.22, |g0|_inf=0.7272, |g1|_inf=0.7272, |F0|_inf=2.095e-13, |F1|_inf=2.095e-13 H00=-28.27, H0=-86.22, H1=-86.22, v=0.03758
+
+U_solver::eval(i_cell=81,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=3.2e-06 f0=-69.03, f1=-69.03, |g0|_inf=40.01, |g1|_inf=40.01, |F0|_inf=2.736e-13, |F1|_inf=2.736e-13 H00=-32.54, H0=-65.95, H1=-65.95, v=2.479
+
+U_solver::eval(i_cell=85,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=3.2e-06 f0=-86.08, f1=-86.08, |g0|_inf=52.25, |g1|_inf=52.25, |F0|_inf=5.217e-13, |F1|_inf=5.217e-13 H00=-23.04, H0=-74.8, H1=-74.8, v=4.748
+
+U_solver::eval(i_cell=86,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=6.4e-06 f0=-85.81, f1=-85.81, |g0|_inf=4.373, |g1|_inf=4.373, |F0|_inf=9.614e-13, |F1|_inf=9.614e-13 H00=-17.69, H0=-85.33, H1=-85.33, v=0.974
+
+U_solver::eval(i_cell=93,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=6.4e-06 f0=-83.63, f1=-83.63, |g0|_inf=76.91, |g1|_inf=76.91, |F0|_inf=2.034e-13, |F1|_inf=2.034e-13 H00=22, H0=-81.2, H1=-81.2, v=2.208
+
+U_solver::eval(i_cell=92,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=6.4e-06 f0=-84, f1=-84, |g0|_inf=75.22, |g1|_inf=75.22, |F0|_inf=1.85e-13, |F1|_inf=1.85e-13 H00=16.1, H0=-81.79, H1=-81.79, v=2.103
+
+U_solver::eval(i_cell=91,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=3.2e-06 f0=-84.35, f1=-84.35, |g0|_inf=48.63, |g1|_inf=48.63, |F0|_inf=8.826e-13, |F1|_inf=8.826e-13 H00=10.28, H0=-73.3, H1=-73.3, v=4.701
+
+U_solver::eval(i_cell=94,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.001024 f0=-57.59, f1=-57.59, |g0|_inf=0.002919, |g1|_inf=0.002919, |F0|_inf=2.813e-14, |F1|_inf=2.813e-14 H00=-0.6891, H0=-57.59, H1=-57.59, v=0.0001914
+
+U_solver::eval(i_cell=118,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.001024 f0=-39.4, f1=-39.4, |g0|_inf=0.01252, |g1|_inf=0.01252, |F0|_inf=1.88e-13, |F1|_inf=1.88e-13 H00=21.43, H0=-39.4, H1=-39.4, v=0.0005862
+
+U_solver::eval(i_cell=132,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=2.56e-05 f0=-36.35, f1=-36.35, |g0|_inf=6.965, |g1|_inf=6.965, |F0|_inf=2.1e-13, |F1|_inf=2.1e-13 H00=37.28, H0=-36.34, H1=-36.34, v=0.1608
+
+ 17 [dump:4,u:47:51]    (f:1.64,d:1.85e+03)    -->      [f:2.59,d:226]       lambda:0.000296  #err= 14 controls:3 armijo:1
+ 18 [dump:0,u:27:51]     (f:2.59,d:0.715)      -->     [f:2.53,d:0.696]      lambda:0.0258 
+ 19 [dump:0,u:27:51]     (f:2.53,d:0.696)      -->     [f:1.43,d:0.236]      lambda:1     
+ 20 [dump:0,u:28:51]     (f:1.43,d:0.445)      -->     [f:1.26,d:0.0834]     lambda:1     
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] DielectrophoresisParticleControl
+ 21 [dump:0,u:25:51]      (f:1.26,d:0.15)      -->     [f:1.15,d:0.104]      lambda:1     
+ 22 [dump:0,u:26:51]     (f:1.15,d:0.283)      -->     [f:0.454,d:0.236]     lambda:1     
+ 23 [dump:0,u:25:51]     (f:0.454,d:0.216)     -->   [f:0.0363,d:0.00427]    lambda:1     
+ 24 [dump:0,u:25:51]   (f:0.0363,d:0.00436)    -->  [f:5.05e-05,d:2.32e-05]  lambda:1     
+ 25 [dump:0,u:25:51]  (f:5.05e-05,d:2.34e-05)  -->  [f:2.14e-09,d:7.59e-10]  lambda:1     
+ 26 [dump:0,u:24:51]  (f:2.14e-09,d:7.59e-10)  -->  [f:2.49e-14,d:4.73e-16]  lambda:1     
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:26,phase:1,s:0.2,ds:0.2] |X|=0.07371/0.0013/0.004202, |L|=0.07371/0.0013/0.004202 |B|=0/0/0, |BL|=1.431e-25/1.431e-25/1.431e-25, PARS=5.505e-05/5.505e-05/5.505e-05, U=0.9999/0.9544/0.9598
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] DielectrophoresisParticleControl
+27 (1 ) [phase:1,s:0.2,ds:0.2,dump:1,u:32:51]           (f:0.00115,d:0.000349)   -->  [f:5.75e-05,d:1.74e-05]  lambda:0.95   #err=  1 angle:1 armijo:1
+28 (2 ) [phase:1,s:0.2,ds:0.2,dump:0,u:26:51]           (f:5.75e-05,d:1.74e-05)  -->  [f:8.18e-10,d:2.85e-10]  lambda:1     
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:28,phase:1,s:0.5,ds:0.3] |X|=0.1097/0.001846/0.006166, |L|=0.1097/0.001846/0.006166 |B|=0/0/0, |BL|=1.435e-21/1.435e-21/1.435e-21, PARS=7.607e-05/7.607e-05/7.607e-05, U=0.9999/0.9546/0.96
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] DielectrophoresisParticleControl
+29 (1 ) [phase:1,s:0.5,ds:0.3,dump:1,u:35:51]           (f:0.00165,d:0.000503)   -->  [f:8.19e-05,d:2.49e-05]  lambda:0.95   #err=  1 angle:1 armijo:1
+30 (2 ) [phase:1,s:0.5,ds:0.3,dump:0,u:30:51]           (f:8.19e-05,d:2.49e-05)  -->  [f:1.74e-09,d:5.96e-10]  lambda:1     
+31 (3 ) [phase:1,s:0.5,ds:0.3,dump:0,u:31:51]           (f:1.74e-09,d:5.96e-10)  -->  [f:2.38e-14,d:6.78e-17]  lambda:1     
+
+Continuation step N.1 s:0.5->0.95, ds=0.45
+[iter:31,phase:1,s:0.95,ds:0.45] |X|=0.1153/0.002357/0.008058, |L|=0.1153/0.002357/0.008058 |B|=0/0/0, |BL|=1.757e-25/1.757e-25/1.757e-25, PARS=9.32e-05/9.32e-05/9.32e-05, U=1/0.9549/0.9602
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] DielectrophoresisParticleControl
+32 (1 ) [phase:1,s:0.95,ds:0.45,dump:1,u:39:51]         (f:0.00215,d:0.000685)   -->  [f:0.000107,d:3.38e-05]  lambda:0.95   #err=  1 angle:1 armijo:1
+33 (2 ) [phase:1,s:0.95,ds:0.45,dump:0,u:37:51]         (f:0.000107,d:3.37e-05)  -->  [f:3.96e-09,d:1.31e-09]  lambda:1     
+34 (3 ) [phase:1,s:0.95,ds:0.45,dump:0,u:37:51]         (f:3.96e-09,d:1.31e-09)  -->  [f:2.53e-14,d:3.64e-16]  lambda:1     
+
+Continuation step N.1 s:0.95->1, ds=0.05
+[iter:34,phase:1,s:1,ds:0.05] |X|=0.02342/0.0002062/0.001021, |L|=0.02342/0.0002063/0.001021 |B|=0/0/0, |BL|=2.318e-26/2.318e-26/2.318e-26, PARS=7.237e-06/7.237e-06/7.237e-06, U=1/0.955/0.9603
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] DielectrophoresisParticleControl
+35 (1 ) [phase:1,s:1,ds:0.05,dump:1,u:39:51]            (f:0.000197,d:6.66e-05)  -->  [f:9.81e-06,d:3.33e-06]  lambda:0.95   #err=  1 angle:1 armijo:1
+36 (2 ) [phase:1,s:1,ds:0.05,dump:0,u:39:51]            (f:9.81e-06,d:3.33e-06)  -->  [f:4.84e-11,d:1.57e-11]  lambda:1     
+37 (3 ) [phase:1,s:1,ds:0.05,dump:0,u:38:51]            (f:4.84e-11,d:1.57e-11)  -->  [f:2.46e-14,d:6.45e-16]  lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 1               | Hessian type    = Diagonal        |
++-------------------------- MinimizeHeavyBall --------------------------+
+| last f          = -8.8818e-16     | |g|_inf         = 1.2978e-11      |
++-----------------------------------------------------------------------+
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 1608            | N. System pars  = 4412            |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 26.1 [sec]      | timeout         = 0 [ms]          |
+| iteration       = 37              | Memory Used     = 481Kb(+50b)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 108             | Jacobian        = 37              |
+| Factorization   = 37              | Inversion       = 108             |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 2.6026e-13      | last ||d||_inf  = 1.7911e-15      |
+| last ||f||_1    = 2.455e-14       | last ||d||_1    = 6.4534e-16      |
+| last ||f||_2    = 4.3146e-14      | last ||d||_2    = 9.0809e-16      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 1.046ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 52.92ms ]
+Check DuDxxpm (epsi=0.001): all OK [ 5.441e+04ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001): all OK [ 50.29ms ]
+Check DodeDxp (epsi=0.001): all OK [ 1.164ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 51.59ms ]
+target [Lagrange,Mayer]            = [ 0, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 0.0001191, 3.942e-08 ]
+Optimization parameters:
+T: 7.81133991268950201
+All Done Folks!

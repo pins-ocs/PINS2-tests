@@ -1,0 +1,153 @@
++------------------------- MODEL:Bocop_Jackson -------------------------+
++................................ DIMS .................................+
+| dims                      = u=1, q=1, x=3, p=0, bc=3 of 3             |
+| total                     = nZ=2409, nP=6015, nUC=400, Q=401          |
+| index start               = omega=2406, p=2409                        |
+| post processing           = n_post=0                                  |
++................................ MESH .................................+
+| num nodes / segments      = 401 / 1                                   |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 1                               |
+| mesh class pointer        = 0x7ff7bdc9b138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 2409 x 2409                               |
+| nblock/block size         = 400 / 6                                   |
+| qr/qx/nr/nx               = 3 / 3 / 0 / 0                             |
+| last blok rows x cols     = 15 x 15                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_a                                                        |
+| [ 1] initial_b                                                        |
+| [ 2] initial_c                                                        |
++..................... Controls penalties/barriers .....................+
+uControl = { LOG (BARRIER) epsilon=0.01, tolerance=0.01 }                
++....................... No constraints type LT ........................+
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 401                                                    
+  Segment N.0: s0 = 0 length = 4 npts = 401 no data set                  
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|............................... k1 = 1 ................................|
+|............................... k2 = 10 ...............................|
+|............................... k3 = 1 ................................|
+|........................... u_eps0 = 0.01 .............................|
+|........................... u_eps1 = 0.0001 ...........................|
+|........................... u_tol0 = 0.01 .............................|
+|........................... u_tol1 = 0.0001 ...........................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=0.5/0.1667/0.2887, |L|=0.5/0.1667/0.2887 |B|=1/1/1, |BL|=0/0/0, PARS=0/0/0, U=0.5/0.5/0.5
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Bocop_Jackson
+  1 [dump:2,u:0:0]       (f:0.166,d:0.616)     -->     [f:0.059,d:0.562]     lambda:0.16   #err=  2 armijo:2
+  2 [dump:0,u:0:0]       (f:0.059,d:0.305)     -->    [f:0.139,d:0.0726]     lambda:1     
+  3 [dump:2,u:0:0]       (f:0.139,d:0.15)      -->     [f:0.109,d:0.126]     lambda:0.16   #err=  2 armijo:2
+  4 [dump:2,u:0:0]       (f:0.109,d:0.143)     -->     [f:0.0916,d:0.12]     lambda:0.16   #err=  2 armijo:2
+  5 [dump:2,u:0:0]      (f:0.0916,d:0.101)     -->    [f:0.0704,d:0.0858]    lambda:0.16   #err=  2 armijo:2
+  6 [dump:2,u:0:0]      (f:0.0704,d:0.0948)    -->    [f:0.0542,d:0.0812]    lambda:0.16   #err=  2 armijo:2
+  7 [dump:0,u:0:0]      (f:0.0542,d:0.0865)    -->    [f:0.244,d:0.0572]     lambda:1     
+  8 [dump:1,u:0:0]      (f:0.244,d:0.0578)     -->    [f:0.0924,d:0.0244]    lambda:0.4    #err=  1 armijo:1
+  9 [dump:0,u:0:0]      (f:0.0924,d:0.0196)    -->   [f:0.0439,d:0.00698]    lambda:1     
+ 10 [dump:1,u:0:0]     (f:0.0439,d:0.00548)    -->    [f:0.024,d:0.00329]    lambda:0.4    #err=  1 armijo:1
+ 11 [dump:0,u:0:0]      (f:0.024,d:0.00343)    -->  [f:0.00646,d:0.000494]   lambda:1     
+ 12 [dump:0,u:0:0]    (f:0.00646,d:0.000263)   -->  [f:0.000397,d:2.32e-05]  lambda:1     
+ 13 [dump:0,u:0:0]    (f:0.000397,d:2.45e-05)  -->  [f:2.32e-06,d:1.68e-07]  lambda:1     
+ 14 [dump:0,u:0:0]    (f:2.32e-06,d:1.71e-07)  -->  [f:9.08e-11,d:9.03e-12]  lambda:1     
+ 15 [dump:0,u:0:0]    (f:9.08e-11,d:9.03e-12)  -->  [f:1.26e-15,d:1.16e-17]  lambda:1     
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:15,phase:1,s:0.2,ds:0.2] |X|=0.1108/0.02149/0.04195, |L|=0.1108/0.02148/0.04195 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=0.9601/0.2188/0.2535
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Bocop_Jackson
+16 (1 ) [phase:1,s:0.2,ds:0.2,dump:3,u:0:0]              (f:0.0215,d:0.000764)   -->  [f:0.00031,d:5.21e-05]   lambda:0.857  #err=  3 angle:3 armijo:3
+17 (2 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:0.00031,d:5.16e-05)   -->  [f:9.6e-07,d:8.77e-08]   lambda:1     
+18 (3 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:9.6e-07,d:8.72e-08)   -->  [f:1.17e-11,d:1.12e-12]  lambda:1     
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:18,phase:1,s:0.5,ds:0.3] |X|=0.2199/0.04281/0.08371, |L|=0.2199/0.04282/0.08371 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=0.9765/0.1803/0.2289
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Bocop_Jackson
+19 (1 ) [phase:1,s:0.5,ds:0.3,dump:1,u:0:0]              (f:0.0426,d:0.00138)    -->  [f:0.00205,d:0.000166]   lambda:0.709  #err=  1 angle:1 armijo:1
+20 (2 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:0.00205,d:0.000154)   -->  [f:2.87e-05,d:1.61e-06]  lambda:1     
+21 (3 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:2.87e-05,d:1.56e-06)  -->  [f:8.29e-09,d:5.6e-10]   lambda:1     
+
+Continuation step N.1 s:0.5->0.95, ds=0.45
+[iter:21,phase:1,s:0.95,ds:0.45] |X|=0.7459/0.1158/0.2275, |L|=0.7459/0.1159/0.2275 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=0.998/0.06027/0.1879
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Bocop_Jackson
+22 (1 ) [phase:1,s:0.95,ds:0.45,dump:3,u:0:0]             (f:0.113,d:0.0106)     -->    [f:0.101,d:0.00946]    lambda:0.064  #err=  3 armijo:3
+23 (2 ) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]             (f:0.101,d:0.00334)    -->   [f:0.0636,d:0.00208]    lambda:0.16   #err=  2 armijo:2
+24 (3 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]            (f:0.0636,d:0.000866)   -->    [f:0.0239,d:0.0005]    lambda:0.4    #err=  1 armijo:1
+25 (4 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]            (f:0.0239,d:0.00042)    -->  [f:0.00677,d:9.17e-05]   lambda:1     
+26 (5 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:0.00677,d:5.33e-05)   -->  [f:0.000688,d:8.57e-06]  lambda:1     
+27 (6 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:0.000688,d:6.43e-06)  -->  [f:1.23e-05,d:1.9e-07]   lambda:1     
+28 (7 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:1.23e-05,d:2.02e-07)  -->   [f:1.83e-08,d:3e-10]    lambda:1     
+
+Continuation step N.1 s:0.95->1, ds=0.05
+[iter:28,phase:1,s:1,ds:0.05] |X|=0.6782/0.103/0.2051, |L|=0.6782/0.1031/0.2051 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=0.9997/0.07178/0.1896
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Bocop_Jackson
+29 (1 ) [phase:1,s:1,ds:0.05,dump:2,u:0:0]               (f:0.102,d:0.000638)    -->   [f:0.0448,d:0.000294]   lambda:0.16   #err=  2 armijo:2
+30 (2 ) [phase:1,s:1,ds:0.05,dump:1,u:0:0]               (f:0.0448,d:9.92e-05)   -->   [f:0.0215,d:5.23e-05]   lambda:0.4    #err=  1 armijo:1
+31 (3 ) [phase:1,s:1,ds:0.05,dump:1,u:0:0]               (f:0.0215,d:4.94e-05)   -->  [f:0.00381,d:8.96e-06]   lambda:0.95   #err=  1 angle:1 armijo:1
+32 (4 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:0.00381,d:5.26e-06)   -->  [f:0.00013,d:3.58e-07]   lambda:1     
+33 (5 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:0.00013,d:4.54e-07)   -->  [f:8.61e-07,d:8.26e-09]  lambda:1     
+34 (6 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:8.61e-07,d:8.57e-09)  -->  [f:2.38e-10,d:3.39e-12]  lambda:1     
+35 (7 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:2.38e-10,d:3.39e-12)  -->  [f:6.88e-14,d:2.83e-16]  lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 1               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 2409            | N. System pars  = 6015            |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 358 [ms]        | timeout         = 0 [ms]          |
+| iteration       = 35              | Memory Used     = 668Kb(+3b)      |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 96              | Jacobian        = 35              |
+| Factorization   = 35              | Inversion       = 96              |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 1.3523e-12      | last ||d||_inf  = 5.5109e-15      |
+| last ||f||_1    = 6.8766e-14      | last ||d||_1    = 2.8336e-16      |
+| last ||f||_2    = 1.7805e-13      | last ||d||_2    = 7.2861e-16      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 1.062ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 78.8ms ]
+Check DuDxxpm (epsi=0.001): all OK [ 37.01ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001): all OK [ 67.92ms ]
+Check DodeDxp (epsi=0.001): all OK [ 1.315ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 69.36ms ]
+target [Lagrange,Mayer]            = [ 0, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 3.917e-05, 0 ]
+All Done Folks!

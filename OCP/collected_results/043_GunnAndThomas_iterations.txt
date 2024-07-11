@@ -1,0 +1,111 @@
++------------------------- MODEL:GunnAndThomas -------------------------+
++................................ DIMS .................................+
+| dims                      = u=1, q=1, x=2, p=0, bc=2 of 2             |
+| total                     = nZ=806, nP=2211, nUC=200, Q=201           |
+| index start               = omega=804, p=806                          |
+| post processing           = n_post=0                                  |
++................................ MESH .................................+
+| num nodes / segments      = 201 / 1                                   |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 0                               |
+| mesh class pointer        = 0x7ff7bc86b138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 806 x 806                                 |
+| nblock/block size         = 200 / 4                                   |
+| qr/qx/nr/nx               = 2 / 2 / 0 / 0                             |
+| last blok rows x cols     = 10 x 10                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x1                                                       |
+| [ 1] initial_x2                                                       |
++..................... Controls penalties/barriers .....................+
+uControl = { COSLOG (BARRIER) epsilon=0.01, tolerance=0.0001 }           
++....................... No constraints type LT ........................+
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 201                                                    
+  Segment N.0: s0 = 0 length = 1 npts = 201 no data set                  
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|............................. x1_i = 1 ................................|
+|............................. x2_i = 0 ................................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=0.5/0.25/0.3536, |L|=0.5/0.25/0.3536 |B|=1/2/1.414, |BL|=0/0/0, PARS=0/0/0, U=0.5/0.5/0.5
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] GunnAndThomas
+  1 [dump:1,u:0:0]       (f:0.251,d:1.01)      -->     [f:0.502,d:0.855]     lambda:0.422  #err=  1 armijo:1
+  2 [dump:1,u:0:0]       (f:0.502,d:0.399)     -->     [f:0.324,d:0.25]      lambda:0.4    #err=  1 armijo:1
+  3 [dump:1,u:0:0]       (f:0.324,d:0.264)     -->     [f:0.223,d:0.158]     lambda:0.4    #err=  1 armijo:1
+  4 [dump:1,u:0:0]       (f:0.223,d:0.157)     -->     [f:0.17,d:0.0945]     lambda:0.4    #err=  1 armijo:1
+  5 [dump:1,u:0:0]       (f:0.17,d:0.0941)     -->    [f:0.156,d:0.0581]     lambda:0.4    #err=  1 armijo:1
+  6 [dump:1,u:0:0]      (f:0.156,d:0.0609)     -->    [f:0.153,d:0.0424]     lambda:0.4    #err=  1 armijo:1
+  7 [dump:0,u:0:0]      (f:0.153,d:0.0513)     -->    [f:0.352,d:0.0369]     lambda:1     
+  8 [dump:1,u:0:0]      (f:0.352,d:0.0355)     -->    [f:0.157,d:0.00694]    lambda:0.4    #err=  1 armijo:1
+  9 [dump:1,u:0:0]      (f:0.157,d:0.0271)     -->    [f:0.103,d:0.00998]    lambda:0.4    #err=  1 armijo:1
+ 10 [dump:0,u:0:0]      (f:0.103,d:0.0064)     -->   [f:0.0607,d:0.00276]    lambda:1     
+ 11 [dump:0,u:0:0]     (f:0.0607,d:0.00334)    -->   [f:0.0239,d:0.000525]   lambda:1     
+ 12 [dump:0,u:0:0]     (f:0.0239,d:0.000764)   -->  [f:0.00837,d:0.000243]   lambda:1     
+ 13 [dump:0,u:0:0]    (f:0.00837,d:0.000268)   -->  [f:0.00041,d:1.77e-05]   lambda:1     
+ 14 [dump:0,u:0:0]      (f:0.00041,d:2e-05)    -->  [f:4.34e-06,d:1.27e-07]  lambda:1     
+ 15 [dump:0,u:0:0]    (f:4.34e-06,d:1.28e-07)  -->  [f:3.01e-10,d:1.1e-11]   lambda:1     
+ 16 [dump:0,u:0:0]    (f:3.01e-10,d:1.1e-11)   -->  [f:6.51e-15,d:3.74e-17]  lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 1               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 806             | N. System pars  = 2211            |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 144 [ms]        | timeout         = 0 [ms]          |
+| iteration       = 16              | Memory Used     = 223Kb(+11b)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 40              | Jacobian        = 16              |
+| Factorization   = 16              | Inversion       = 40              |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 5.1958e-14      | last ||d||_inf  = 3.4027e-16      |
+| last ||f||_1    = 6.5075e-15      | last ||d||_1    = 3.7408e-17      |
+| last ||f||_2    = 9.5872e-15      | last ||d||_2    = 6.2281e-17      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 0.937ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 39.35ms ]
+Check DuDxxpm (epsi=0.001): all OK [ 21.58ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001): all OK [ 36.49ms ]
+Check DodeDxp (epsi=0.001): all OK [ 1.049ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 37.75ms ]
+target [Lagrange,Mayer]            = [ 0, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 0.001046, 0 ]
+All Done Folks!

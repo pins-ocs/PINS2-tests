@@ -1,1 +1,4 @@
 generated_code/
+/**/Xcode/
+*.xcodeproj
+OCP_tmp

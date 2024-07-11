@@ -1,0 +1,103 @@
++------------------------ MODEL:BangBangFmodule ------------------------+
++................................ DIMS .................................+
+| dims                      = u=2, q=1, x=2, p=0, bc=4 of 4             |
+| total                     = nZ=408, nP=1311, nUC=200, Q=101           |
+| index start               = omega=404, p=408                          |
+| post processing           = n_post=3                                  |
++................................ MESH .................................+
+| num nodes / segments      = 101 / 1                                   |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 0                               |
+| mesh class pointer        = 0x7ff7bf8dc138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 408 x 408                                 |
+| nblock/block size         = 100 / 4                                   |
+| qr/qx/nr/nx               = 4 / 4 / 0 / 0                             |
+| last blok rows x cols     = 12 x 12                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x                                                        |
+| [ 1] initial_v                                                        |
+| [ 2] final_x                                                          |
+| [ 3] final_v                                                          |
++..................... Controls penalties/barriers .....................+
+controlP = { CUBIC (PENALTY) epsilon=0.001, tolerance=0.001 }            
+controlM = { CUBIC (PENALTY) epsilon=0.001, tolerance=0.001 }            
++....................... No constraints type LT ........................+
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 101                                                    
+  Segment N.0: s0 = 0 length = 1 npts = 101 no data set                  
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|............................ FmMax = 10 ...............................|
+|............................ FpMax = 10 ...............................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=1/0.25/0.5, |L|=1/0.25/0.5 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=0.004796/0.004796/0.004796
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangFmodule
+  1 [dump:11,u:0:0]    (f:0.245,d:1.86e+04)    -->   [f:0.686,d:3.39e+03]    lambda:4.19e-05  #err= 11 armijo:11
+  2 [dump:13,u:0:0]    (f:0.686,d:1.51e+03)    -->      [f:0.784,d:182]      lambda:2.78e-05  #err= 13 angle:7 armijo:13
+  3 [dump:9,u:0:0]        (f:0.784,d:129)      -->     [f:0.795,d:26.7]      lambda:2.07e-06  #err=  9 armijo:9
+  4 [dump:0,u:0:0]       (f:0.795,d:0.252)     -->     [f:0.793,d:0.251]     lambda:0.00216 
+  5 [dump:0,u:0:0]       (f:0.793,d:0.251)     -->  [f:2.81e-13,d:1.45e-14]  lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 2               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 408             | N. System pars  = 1311            |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 45.4 [ms]       | timeout         = 0 [ms]          |
+| iteration       = 5               | Memory Used     = 144Kb(+31b)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 43              | Jacobian        = 5               |
+| Factorization   = 5               | Inversion       = 43              |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 1.4557e-11      | last ||d||_inf  = 3.1825e-13      |
+| last ||f||_1    = 2.8092e-13      | last ||d||_1    = 1.4549e-14      |
+| last ||f||_2    = 1.4878e-12      | last ||d||_2    = 3.5835e-14      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 0.305ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 11.94ms ]
+Check DuDxxpm (epsi=0.001): all OK [ 6.403ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001): all OK [ 12.14ms ]
+Check DodeDxp (epsi=0.001): all OK [ 0.289ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 12.53ms ]
+target [Lagrange,Mayer]            = [ 2.264, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 0.002153, 0 ]
+All Done Folks!

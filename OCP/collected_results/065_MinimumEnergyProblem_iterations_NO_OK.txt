@@ -1,0 +1,1104 @@
++--------------------- MODEL:MinimumEnergyProblem ----------------------+
++................................ DIMS .................................+
+| dims                      = u=1, q=1, x=2, p=0, bc=4 of 4             |
+| total                     = nZ=4008, nP=11011, nUC=1000, Q=1001       |
+| index start               = omega=4004, p=4008                        |
+| post processing           = n_post=0                                  |
++................................ MESH .................................+
+| num nodes / segments      = 1001 / 1                                  |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 1                               |
+| mesh class pointer        = 0x7ff7b639d138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 4008 x 4008                               |
+| nblock/block size         = 1000 / 4                                  |
+| qr/qx/nr/nx               = 4 / 4 / 0 / 0                             |
+| last blok rows x cols     = 12 x 12                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x1                                                       |
+| [ 1] initial_x2                                                       |
+| [ 2] final_x1                                                         |
+| [ 3] final_x2                                                         |
++.................... No control penalties/barriers ....................+
++......................... Constraints type LT .........................+
+x1Limitation = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }      
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 1001                                                   
+  Segment N.0: s0 = 0 length = 1 npts = 1001 no data set                 
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|................................ c = 0 ................................|
+|.......................... max_tol = 0.1 ..............................|
+|.......................... min_tol = 1e-08 ............................|
+|............................. x1_f = 0 ................................|
+|............................. x1_i = 0 ................................|
+|............................. x2_f = -1 ...............................|
+|............................. x2_i = 1 ................................|
+|......................... max_epsi = 0.1 ..............................|
+|......................... min_epsi = 1e-08 ............................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=0.4488/0.1122/0.2244, |L|=0.4488/0.1122/0.2244 |B|=0/0/0, |BL|=1/2/1.414, PARS=0/0/0, U=0/0/0
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+  1 [dump:4,u:0:0]       (f:0.112,d:0.748)     -->     [f:0.254,d:0.706]     lambda:0.137  #err= 47 update:3 armijo:1
+  2 [dump:1,u:0:0]       (f:0.254,d:2.29)      -->      [f:1.45,d:2.04]      lambda:0.222  #err=  1 armijo:1
+  3 [dump:1,u:0:0]        (f:1.45,d:3.08)      -->      [f:9.03,d:2.4]       lambda:0.7    #err= 12 update:1
+  4 [dump:0,u:0:0]        (f:9.03,d:1.58)      -->     [f:1.99,d:0.0738]     lambda:1     
+  5 [dump:0,u:0:0]       (f:1.99,d:0.112)      -->    [f:0.266,d:0.0108]     lambda:1     
+  6 [dump:0,u:0:0]      (f:0.266,d:0.0142)     -->  [f:0.00577,d:0.000285]   lambda:1     
+  7 [dump:0,u:0:0]    (f:0.00577,d:0.000297)   -->  [f:2.61e-06,d:1.31e-07]  lambda:1     
+  8 [dump:0,u:0:0]    (f:2.61e-06,d:1.31e-07)  -->  [f:6.67e-13,d:2.59e-14]  lambda:1     
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:8,phase:1,s:0.2,ds:0.2] |X|=79.19/12.42/27.73, |L|=79.19/12.42/27.73 |B|=0/0/0, |BL|=1.528e-24/1.999e-24/1.599e-24, PARS=0/0/0, U=6.893/2.191/3.038
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+9  (1 ) [phase:1,s:0.2,ds:0.2,dump:7,u:0:0]                 (f:12.4,d:4.26)      -->      [f:11.8,d:4.06]      lambda:0.0471  #err= 69 update:6 armijo:1
+10 (2 ) [phase:1,s:0.2,ds:0.2,dump:5,u:0:0]                 (f:11.8,d:3.97)      -->      [f:11.4,d:3.84]      lambda:0.0313  #err= 44 update:4 armijo:1
+11 (3 ) [phase:1,s:0.2,ds:0.2,dump:6,u:0:0]                 (f:11.4,d:3.67)      -->      [f:11.2,d:3.6]       lambda:0.0178  #err= 67 update:5 armijo:1
+12 (4 ) [phase:1,s:0.2,ds:0.2,dump:6,u:0:0]                 (f:11.2,d:3.38)      -->      [f:11.5,d:1.17]      lambda:0.0135  #err= 67 update:5 armijo:1
+13 (5 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]                (f:11.5,d:0.752)      -->      [f:9.48,d:0.62]      lambda:0.174 
+14 (6 ) [phase:1,s:0.2,ds:0.2,dump:2,u:0:0]                (f:9.48,d:0.611)      -->     [f:2.02,d:0.116]      lambda:0.902  #err=  2 angle:2 armijo:2
+15 (7 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]                (f:2.02,d:0.0483)     -->    [f:0.187,d:0.00428]    lambda:1     
+16 (8 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]               (f:0.187,d:0.00695)    -->   [f:0.0119,d:0.000531]   lambda:1     
+17 (9 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]              (f:0.0119,d:0.000616)   -->  [f:7.12e-05,d:3.63e-06]  lambda:1     
+18 (10) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:7.12e-05,d:3.67e-06)  -->  [f:2.55e-09,d:1.31e-10]  lambda:1     
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:18,phase:1,s:0.5,ds:0.3] |X|=206.5/9.426/37.51, |L|=206.5/9.426/37.51 |B|=0/0/0, |BL|=2.124e-25/2.834e-25/2.239e-25, PARS=0/0/0, U=6.131/2.034/2.863
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+19 (1 ) [phase:1,s:0.5,ds:0.3,dump:11,u:0:0]                (f:9.41,d:3.66)      -->      [f:9.22,d:3.59]      lambda:0.0198  #err=150 update:11
+20 (2 ) [phase:1,s:0.5,ds:0.3,dump:12,u:0:0]                (f:9.22,d:3.46)      -->      [f:9.19,d:3.45]      lambda:0.00292  #err=175 update:12
+21 (3 ) [phase:1,s:0.5,ds:0.3,dump:13,u:0:0]                (f:9.19,d:1.52)      -->      [f:9.18,d:1.51]      lambda:0.000449  #err=179 update:12 armijo:1
+22 (4 ) [phase:1,s:0.5,ds:0.3,dump:10,u:0:0]                (f:9.18,d:1.09)      -->     [f:9.49,d:0.953]      lambda:0.000513  #err=133 update:9 armijo:1
+23 (5 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]                (f:9.49,d:0.392)      -->     [f:9.19,d:0.379]      lambda:0.034 
+24 (6 ) [phase:1,s:0.5,ds:0.3,dump:3,u:0:0]                (f:9.19,d:0.369)      -->      [f:26,d:0.263]       lambda:0.196  #err= 33 update:2 armijo:1
+25 (7 ) [phase:1,s:0.5,ds:0.3,dump:1,u:0:0]                 (f:26,d:0.247)       -->     [f:16.7,d:0.146]      lambda:0.4    #err=  1 armijo:1
+26 (8 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]                 (f:16.7,d:0.14)      -->     [f:7.78,d:0.0397]     lambda:1     
+27 (9 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]                 (f:7.78,d:0.01)      -->    [f:1.24,d:0.00161]     lambda:1     
+28 (10) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]               (f:1.24,d:0.00254)     -->   [f:0.074,d:0.000166]    lambda:1     
+29 (11) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]              (f:0.074,d:0.000195)    -->  [f:0.000529,d:1.49e-06]  lambda:1     
+30 (12) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:0.000529,d:1.51e-06)  -->  [f:2.36e-08,d:6.62e-11]  lambda:1     
+31 (13) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:2.36e-08,d:6.63e-11)  -->  [f:6.83e-11,d:6.96e-14]  lambda:1     
+
+Continuation step N.1 s:0.5->0.95, ds=0.45
+[iter:31,phase:1,s:0.95,ds:0.45] |X|=1663/9.004/103.8, |L|=1663/9.004/103.8 |B|=0/0/0, |BL|=1.287e-28/1.545e-28/1.312e-28, PARS=0/0/0, U=5.992/2.001/2.829
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+32 (1 ) [phase:1,s:0.95,ds:0.45,dump:24,u:0:0]              (f:8.99,d:3.54)      -->      [f:8.98,d:3.54]      lambda:0.000192  #err=359 update:24
+33 (2 ) [phase:1,s:0.95,ds:0.45,dump:18,u:0:0]              (f:8.98,d:3.53)      -->      [f:8.98,d:3.53]      lambda:3.38e-05  #err=267 update:18
+34 (3 ) [phase:1,s:0.95,ds:0.45,dump:19,u:0:0]              (f:8.98,d:3.35)      -->      [f:8.98,d:3.35]      lambda:9.94e-06  #err=190 update:19
+35 (4 ) [phase:1,s:0.95,ds:0.45,dump:19,u:0:0]              (f:8.98,d:1.42)      -->      [f:8.98,d:1.42]      lambda:3.08e-06  #err=168 update:18 armijo:1
+36 (5 ) [phase:1,s:0.95,ds:0.45,dump:16,u:0:0]             (f:8.98,d:0.622)      -->     [f:8.98,d:0.622]      lambda:8.75e-06  #err=188 update:16
+37 (6 ) [phase:1,s:0.95,ds:0.45,dump:14,u:0:0]             (f:8.98,d:0.0548)     -->     [f:8.98,d:0.0548]     lambda:1.72e-05  #err=130 update:13 armijo:1
+38 (7 ) [phase:1,s:0.95,ds:0.45,dump:17,u:0:0]             (f:8.98,d:0.0431)     -->     [f:8.98,d:0.0431]     lambda:2.7e-06  #err=128 update:14 armijo:3
+39 (8 ) [phase:1,s:0.95,ds:0.45,dump:15,u:0:0]             (f:8.98,d:0.0424)     -->     [f:8.98,d:0.0424]     lambda:1.25e-06  #err= 90 update:11 armijo:4
+40 (9 ) [phase:1,s:0.95,ds:0.45,dump:14,u:0:0]             (f:8.98,d:0.042)      -->     [f:8.98,d:0.042]      lambda:1.21e-06  #err= 76 update:10 armijo:4
+41 (10) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]              (f:8.98,d:0.036)      -->     [f:8.87,d:0.0359]     lambda:0.00165 
+42 (11) [phase:1,s:0.95,ds:0.45,dump:6,u:0:0]              (f:8.87,d:0.0359)     -->     [f:11.6,d:0.0335]     lambda:0.0672  #err= 27 update:5 armijo:1
+43 (12) [phase:1,s:0.95,ds:0.45,dump:6,u:0:0]              (f:11.6,d:0.0335)     -->     [f:11.4,d:0.033]      lambda:0.00854  #err= 13 update:3 armijo:3
+44 (13) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]              (f:11.4,d:0.0303)     -->     [f:9.57,d:0.0261]     lambda:0.139 
+45 (14) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]              (f:9.57,d:0.0261)     -->    [f:1.25,d:7.67e-05]    lambda:1     
+46 (15) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]             (f:1.25,d:5.89e-05)    -->   [f:0.144,d:2.11e-06]    lambda:1     
+47 (16) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]            (f:0.144,d:2.36e-06)    -->   [f:0.00479,d:1.5e-08]   lambda:1     
+48 (17) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:0.00479,d:1.58e-08)   -->  [f:7.12e-06,d:1.76e-11]  lambda:1     
+49 (18) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:7.12e-06,d:1.77e-11)  -->  [f:4.88e-07,d:2.21e-13]  lambda:1     
+50 (19) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:4.88e-07,d:2.21e-13)  -->  [f:1.2e-07,d:2.18e-13]   lambda:1     
+
+Continuation step N.1 s:0.95->1, ds=0.05
+[iter:50,phase:1,s:1,ds:0.05] |X|=1.499e+04/8.999/341.9, |L|=1.499e+04/8.999/341.9 |B|=0/0/0, |BL|=7.372e-31/7.663e-31/7.378e-31, PARS=0/0/0, U=5.991/2/2.828
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+51 (1 ) [phase:1,s:1,ds:0.05,dump:28,u:0:0]                (f:8.98,d:0.0533)     -->     [f:8.98,d:0.0533]     lambda:2.63e-05  #err=392 update:27 armijo:1
+52 (2 ) [phase:1,s:1,ds:0.05,dump:15,u:0:0]                (f:8.98,d:0.0332)     -->     [f:8.98,d:0.0332]     lambda:1.19e-05  #err=156 update:13 armijo:2
+53 (3 ) [phase:1,s:1,ds:0.05,dump:14,u:0:0]                (f:8.98,d:0.0292)     -->     [f:8.97,d:0.0291]     lambda:1.15e-05  #err=136 update:12 armijo:2
+54 (4 ) [phase:1,s:1,ds:0.05,dump:1,u:0:0]                (f:8.97,d:0.00324)     -->    [f:8.41,d:0.00216]     lambda:0.00203  #err=  1 armijo:1
+55 (5 ) [phase:1,s:1,ds:0.05,dump:4,u:0:0]                (f:8.41,d:7.38e-05)    -->    [f:7.75,d:6.77e-05]    lambda:0.0256  #err=  4 armijo:4
+56 (6 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]                (f:7.75,d:4.35e-05)    -->    [f:3.08,d:3.35e-05]    lambda:0.24  
+57 (7 ) [phase:1,s:1,ds:0.05,dump:1,u:0:0]                (f:3.08,d:3.4e-05)     -->   [f:0.575,d:1.51e-06]    lambda:0.95   #err=  1 angle:1 armijo:1
+58 (8 ) [phase:1,s:1,ds:0.05,dump:1,u:0:0]                (f:0.575,d:1.5e-06)    -->   [f:0.0458,d:7.37e-08]   lambda:0.95   #err=  1 angle:1 armijo:1
+59 (9 ) [phase:1,s:1,ds:0.05,dump:1,u:0:0]               (f:0.0458,d:7.34e-08)   -->  [f:0.00245,d:3.65e-09]   lambda:0.95   #err=  1 angle:1 armijo:1
+60 (10) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:0.00245,d:3.65e-09)   -->  [f:5.66e-07,d:2.25e-13]  lambda:1     
+61 (11) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.66e-07,d:2.25e-13)  -->  [f:1.32e-06,d:1.69e-15]  lambda:1     
+62 (12) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:1.32e-06,d:1.69e-15)  -->  [f:5.66e-07,d:1.64e-13]  lambda:1     
+63 (13) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.66e-07,d:1.64e-13)  -->  [f:5.63e-07,d:2.81e-15]  lambda:1     
+64 (14) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.63e-07,d:2.81e-15)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+65 (15) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+66 (16) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+67 (17) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+68 (18) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+69 (19) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+70 (20) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+71 (21) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+72 (22) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+73 (23) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+74 (24) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+75 (25) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+76 (26) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+77 (27) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+78 (28) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+79 (29) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+80 (30) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+81 (31) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+82 (32) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+83 (33) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+84 (34) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+85 (35) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+86 (36) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+87 (37) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+88 (38) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+89 (39) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+90 (40) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+91 (41) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+92 (42) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+93 (43) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+94 (44) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+95 (45) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+96 (46) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+97 (47) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+98 (48) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+99 (49) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+100(50) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+101(51) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+102(52) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+103(53) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+104(54) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+105(55) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+106(56) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+107(57) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+108(58) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+109(59) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+110(60) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+NLsolver[MinimumEnergyProblem]::solve_with_continuation(phase=1,...) found:
+NLsolver[MinimumEnergyProblem]::solve()
+#phase=1 #it=0/60 lambda=1 tolerance=1e-09 |f|_1=5.626e-07 |f|_inf=0.0007429 |d|_1=1.656e-13 |d|_inf=1.522e-10
+at phase 1, iter 110: NLsolver[MinimumEnergyProblem]::solve, Too many iterations
+
+
+Continuation step N.1 s:0.95->0.975, ds=0.025
+[iter:110,phase:1,s:0.975,ds:0.025] |X|=1.499e+04/8.999/341.9, |L|=1.499e+04/8.999/341.9 |B|=0/0/0, |BL|=7.372e-31/7.663e-31/7.378e-31, PARS=0/0/0, U=5.991/2/2.828
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+111(1 ) [phase:1,s:0.975,ds:0.025,dump:28,u:0:0]           (f:8.98,d:0.0536)     -->     [f:8.98,d:0.0536]     lambda:1.5e-05  #err=339 update:26 armijo:2
+112(2 ) [phase:1,s:0.975,ds:0.025,dump:14,u:0:0]           (f:8.98,d:0.047)      -->     [f:8.98,d:0.047]      lambda:1.29e-05  #err=148 update:12 armijo:2
+113(3 ) [phase:1,s:0.975,ds:0.025,dump:14,u:0:0]           (f:8.98,d:0.0425)     -->     [f:8.98,d:0.0425]     lambda:6.81e-06  #err=132 update:11 armijo:3
+114(4 ) [phase:1,s:0.975,ds:0.025,dump:14,u:0:0]           (f:8.98,d:0.0405)     -->     [f:2.76,d:0.0123]     lambda:6.72e-06  #err=113 update:10 angle:1 armijo:4
+115(5 ) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]           (f:2.76,d:3.11e-05)    -->    [f:2.75,d:3.1e-05]     lambda:0.00389 
+116(6 ) [phase:1,s:0.975,ds:0.025,dump:1,u:0:0]           (f:2.75,d:3.09e-05)    -->   [f:0.655,d:1.14e-06]    lambda:0.95   #err=  1 angle:1 armijo:1
+117(7 ) [phase:1,s:0.975,ds:0.025,dump:2,u:0:0]          (f:0.655,d:1.16e-06)    -->   [f:0.104,d:1.02e-07]    lambda:0.902  #err=  2 angle:2 armijo:2
+118(8 ) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]          (f:0.104,d:9.77e-08)    -->  [f:0.00201,d:2.95e-09]   lambda:1     
+119(9 ) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:0.00201,d:3.09e-09)   -->  [f:1.41e-06,d:1.73e-12]  lambda:1     
+120(10) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:1.41e-06,d:1.73e-12)  -->  [f:9.79e-07,d:1.85e-13]  lambda:1     
+121(11) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.79e-07,d:1.85e-13)  -->  [f:4.39e-07,d:1.85e-13]  lambda:1     
+122(12) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.39e-07,d:1.85e-13)  -->  [f:9.79e-07,d:1.85e-13]  lambda:1     
+123(13) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.79e-07,d:1.85e-13)  -->  [f:4.39e-07,d:1.85e-13]  lambda:1     
+124(14) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.39e-07,d:1.85e-13)  -->  [f:9.79e-07,d:1.85e-13]  lambda:1     
+125(15) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.79e-07,d:1.85e-13)  -->  [f:4.39e-07,d:1.85e-13]  lambda:1     
+126(16) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.39e-07,d:1.85e-13)  -->  [f:9.79e-07,d:1.85e-13]  lambda:1     
+127(17) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.79e-07,d:1.85e-13)  -->  [f:4.39e-07,d:1.85e-13]  lambda:1     
+128(18) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.39e-07,d:1.85e-13)  -->  [f:9.79e-07,d:1.85e-13]  lambda:1     
+129(19) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.79e-07,d:1.85e-13)  -->  [f:4.39e-07,d:1.85e-13]  lambda:1     
+130(20) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.39e-07,d:1.85e-13)  -->  [f:9.79e-07,d:1.85e-13]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+131(21) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.79e-07,d:1.85e-13)  -->  [f:4.39e-07,d:1.85e-13]  lambda:1     
+132(22) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.39e-07,d:1.85e-13)  -->  [f:9.79e-07,d:1.85e-13]  lambda:1     
+133(23) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.79e-07,d:1.85e-13)  -->  [f:4.39e-07,d:1.85e-13]  lambda:1     
+134(24) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.39e-07,d:1.85e-13)  -->  [f:9.79e-07,d:1.85e-13]  lambda:1     
+135(25) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.79e-07,d:1.85e-13)  -->  [f:4.39e-07,d:1.85e-13]  lambda:1     
+136(26) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.39e-07,d:1.85e-13)  -->  [f:9.79e-07,d:1.85e-13]  lambda:1     
+137(27) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.79e-07,d:1.85e-13)  -->  [f:4.39e-07,d:1.85e-13]  lambda:1     
+138(28) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.39e-07,d:1.85e-13)  -->  [f:9.79e-07,d:1.85e-13]  lambda:1     
+139(29) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.79e-07,d:1.85e-13)  -->  [f:4.39e-07,d:1.85e-13]  lambda:1     
+140(30) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.39e-07,d:1.85e-13)  -->  [f:9.79e-07,d:1.85e-13]  lambda:1     
+141(31) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.79e-07,d:1.85e-13)  -->  [f:4.39e-07,d:1.85e-13]  lambda:1     
+142(32) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.39e-07,d:1.85e-13)  -->  [f:9.79e-07,d:1.85e-13]  lambda:1     
+143(33) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.79e-07,d:1.85e-13)  -->  [f:4.39e-07,d:1.85e-13]  lambda:1     
+144(34) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.39e-07,d:1.85e-13)  -->  [f:9.79e-07,d:1.85e-13]  lambda:1     
+145(35) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.79e-07,d:1.85e-13)  -->  [f:4.39e-07,d:1.85e-13]  lambda:1     
+146(36) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.39e-07,d:1.85e-13)  -->  [f:9.79e-07,d:1.85e-13]  lambda:1     
+147(37) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.79e-07,d:1.85e-13)  -->  [f:4.39e-07,d:1.85e-13]  lambda:1     
+148(38) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.39e-07,d:1.85e-13)  -->  [f:9.79e-07,d:1.85e-13]  lambda:1     
+149(39) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.79e-07,d:1.85e-13)  -->  [f:4.39e-07,d:1.85e-13]  lambda:1     
+150(40) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.39e-07,d:1.85e-13)  -->  [f:9.79e-07,d:1.85e-13]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+151(41) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.79e-07,d:1.85e-13)  -->  [f:4.39e-07,d:1.85e-13]  lambda:1     
+152(42) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.39e-07,d:1.85e-13)  -->  [f:9.79e-07,d:1.85e-13]  lambda:1     
+153(43) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.79e-07,d:1.85e-13)  -->  [f:4.39e-07,d:1.85e-13]  lambda:1     
+154(44) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.39e-07,d:1.85e-13)  -->  [f:9.79e-07,d:1.85e-13]  lambda:1     
+155(45) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.79e-07,d:1.85e-13)  -->  [f:4.39e-07,d:1.85e-13]  lambda:1     
+156(46) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.39e-07,d:1.85e-13)  -->  [f:9.79e-07,d:1.85e-13]  lambda:1     
+157(47) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.79e-07,d:1.85e-13)  -->  [f:4.39e-07,d:1.85e-13]  lambda:1     
+158(48) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.39e-07,d:1.85e-13)  -->  [f:9.79e-07,d:1.85e-13]  lambda:1     
+159(49) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.79e-07,d:1.85e-13)  -->  [f:4.39e-07,d:1.85e-13]  lambda:1     
+160(50) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.39e-07,d:1.85e-13)  -->  [f:9.79e-07,d:1.85e-13]  lambda:1     
+161(51) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.79e-07,d:1.85e-13)  -->  [f:4.39e-07,d:1.85e-13]  lambda:1     
+162(52) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.39e-07,d:1.85e-13)  -->  [f:9.79e-07,d:1.85e-13]  lambda:1     
+163(53) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.79e-07,d:1.85e-13)  -->  [f:4.39e-07,d:1.85e-13]  lambda:1     
+164(54) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.39e-07,d:1.85e-13)  -->  [f:9.79e-07,d:1.85e-13]  lambda:1     
+165(55) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.79e-07,d:1.85e-13)  -->  [f:4.39e-07,d:1.85e-13]  lambda:1     
+166(56) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.39e-07,d:1.85e-13)  -->  [f:9.79e-07,d:1.85e-13]  lambda:1     
+167(57) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.79e-07,d:1.85e-13)  -->  [f:4.39e-07,d:1.85e-13]  lambda:1     
+168(58) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.39e-07,d:1.85e-13)  -->  [f:9.79e-07,d:1.85e-13]  lambda:1     
+169(59) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.79e-07,d:1.85e-13)  -->  [f:4.39e-07,d:1.85e-13]  lambda:1     
+170(60) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.39e-07,d:1.85e-13)  -->  [f:9.79e-07,d:1.85e-13]  lambda:1     
+NLsolver[MinimumEnergyProblem]::solve_with_continuation(phase=1,...) found:
+NLsolver[MinimumEnergyProblem]::solve()
+#phase=1 #it=0/60 lambda=1 tolerance=1e-09 |f|_1=4.387e-07 |f|_inf=0.0004867 |d|_1=1.846e-13 |d|_inf=1.685e-10
+at phase 1, iter 170: NLsolver[MinimumEnergyProblem]::solve, Too many iterations
+
+
+Continuation step N.1 s:0.95->0.9625, ds=0.0125
+[iter:170,phase:1,s:0.9625,ds:0.0125] |X|=1.499e+04/8.998/341.9, |L|=1.499e+04/8.998/341.9 |B|=0/0/0, |BL|=7.372e-31/7.663e-31/7.378e-31, PARS=0/0/0, U=5.991/2/2.828
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+171(1 ) [phase:1,s:0.9625,ds:0.0125,dump:28,u:0:0]         (f:8.98,d:0.054)      -->     [f:8.98,d:0.054]      lambda:1.5e-05  #err=229 update:26 armijo:2
+172(2 ) [phase:1,s:0.9625,ds:0.0125,dump:14,u:0:0]         (f:8.98,d:0.049)      -->     [f:8.17,d:0.0445]     lambda:7.36e-06  #err=105 update:11 armijo:3
+173(3 ) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]         (f:8.17,d:4.21e-05)    -->    [f:8.13,d:4.19e-05]    lambda:0.00407 
+174(4 ) [phase:1,s:0.9625,ds:0.0125,dump:2,u:0:0]         (f:8.13,d:3.82e-05)    -->    [f:4.99,d:1.11e-05]    lambda:0.16   #err=  2 armijo:2
+175(5 ) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]         (f:4.99,d:1.25e-05)    -->    [f:5.09,d:6.03e-06]    lambda:1     
+176(6 ) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]         (f:5.09,d:1.62e-06)    -->   [f:0.758,d:2.72e-07]    lambda:1     
+177(7 ) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]        (f:0.758,d:3.82e-07)    -->   [f:0.0277,d:1.39e-08]   lambda:1     
+178(8 ) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]        (f:0.0277,d:1.5e-08)    -->  [f:4.13e-05,d:2.25e-11]  lambda:1     
+179(9 ) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:4.13e-05,d:2.26e-11)  -->  [f:3.49e-07,d:2.02e-13]  lambda:1     
+180(10) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:2.02e-13)  -->  [f:3.49e-07,d:6.57e-16]  lambda:1     
+181(11) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:6.57e-16)  -->  [f:3.49e-07,d:1.85e-16]  lambda:1     
+182(12) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.85e-16)  -->  [f:3.49e-07,d:1.84e-16]  lambda:1     
+183(13) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.84e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+184(14) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+185(15) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+186(16) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+187(17) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+188(18) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+189(19) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.84e-16]  lambda:1     
+190(20) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.84e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+191(21) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+192(22) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+193(23) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.84e-16]  lambda:1     
+194(24) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.84e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+195(25) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+196(26) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+197(27) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.84e-16]  lambda:1     
+198(28) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.84e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+199(29) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+200(30) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+201(31) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.84e-16]  lambda:1     
+202(32) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.84e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+203(33) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+204(34) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+205(35) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.84e-16]  lambda:1     
+206(36) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.84e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+207(37) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+208(38) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+209(39) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.84e-16]  lambda:1     
+210(40) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.84e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+211(41) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+212(42) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+213(43) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.84e-16]  lambda:1     
+214(44) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.84e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+215(45) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+216(46) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+217(47) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.84e-16]  lambda:1     
+218(48) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.84e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+219(49) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+220(50) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+221(51) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.84e-16]  lambda:1     
+222(52) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.84e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+223(53) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+224(54) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+225(55) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.84e-16]  lambda:1     
+226(56) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.84e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+227(57) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+228(58) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+229(59) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.83e-16)  -->  [f:3.49e-07,d:1.84e-16]  lambda:1     
+230(60) [phase:1,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:3.49e-07,d:1.84e-16)  -->  [f:3.49e-07,d:1.83e-16]  lambda:1     
+NLsolver[MinimumEnergyProblem]::solve_with_continuation(phase=1,...) found:
+NLsolver[MinimumEnergyProblem]::solve()
+#phase=1 #it=0/60 lambda=1 tolerance=1e-09 |f|_1=3.485e-07 |f|_inf=0.0006541 |d|_1=1.835e-16 |d|_inf=4.106e-15
+at phase 1, iter 230: NLsolver[MinimumEnergyProblem]::solve, Too many iterations
+
+
+Continuation step N.1 s:0.95->0.95625, ds=0.00625
+[iter:230,phase:1,s:0.9562,ds:0.00625] |X|=1.499e+04/8.998/341.9, |L|=1.499e+04/8.998/341.9 |B|=0/0/0, |BL|=7.372e-31/7.663e-31/7.378e-31, PARS=0/0/0, U=5.991/2/2.828
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+231(1 ) [phase:1,s:0.9562,ds:0.00625,dump:28,u:0:0]        (f:8.98,d:0.0544)     -->     [f:8.97,d:0.0544]     lambda:8.58e-06  #err=351 update:25 armijo:3
+232(2 ) [phase:1,s:0.9562,ds:0.00625,dump:2,u:0:0]        (f:8.97,d:0.00286)     -->    [f:7.29,d:0.000131]    lambda:0.00397  #err=  2 angle:2 armijo:2
+233(3 ) [phase:1,s:0.9562,ds:0.00625,dump:2,u:0:0]        (f:7.29,d:5.13e-05)    -->    [f:2.27,d:1.23e-05]    lambda:0.16   #err=  2 armijo:2
+234(4 ) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]        (f:2.27,d:6.64e-06)    -->   [f:0.392,d:2.78e-07]    lambda:1     
+235(5 ) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]       (f:0.392,d:1.94e-07)    -->  [f:0.00766,d:4.64e-09]   lambda:1     
+236(6 ) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:0.00766,d:4.83e-09)   -->  [f:3.28e-06,d:1.8e-12]   lambda:1     
+237(7 ) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:3.28e-06,d:1.8e-12)   -->  [f:1.37e-07,d:3.59e-15]  lambda:1     
+238(8 ) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:3.59e-15)  -->  [f:1.63e-07,d:2.08e-13]  lambda:1     
+239(9 ) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.63e-07,d:2.08e-13)  -->  [f:1.37e-07,d:2.07e-13]  lambda:1     
+240(10) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:2.07e-13)  -->  [f:1.63e-07,d:2.07e-13]  lambda:1     
+241(11) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.63e-07,d:2.07e-13)  -->  [f:1.37e-07,d:2.07e-13]  lambda:1     
+242(12) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:2.07e-13)  -->  [f:1.63e-07,d:2.07e-13]  lambda:1     
+243(13) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.63e-07,d:2.07e-13)  -->  [f:1.37e-07,d:2.07e-13]  lambda:1     
+244(14) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:2.07e-13)  -->  [f:1.63e-07,d:2.07e-13]  lambda:1     
+245(15) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.63e-07,d:2.07e-13)  -->  [f:1.37e-07,d:2.07e-13]  lambda:1     
+246(16) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:2.07e-13)  -->  [f:1.63e-07,d:2.07e-13]  lambda:1     
+247(17) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.63e-07,d:2.07e-13)  -->  [f:1.37e-07,d:2.07e-13]  lambda:1     
+248(18) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:2.07e-13)  -->  [f:1.63e-07,d:2.07e-13]  lambda:1     
+249(19) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.63e-07,d:2.07e-13)  -->  [f:1.37e-07,d:2.07e-13]  lambda:1     
+250(20) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:2.07e-13)  -->  [f:1.63e-07,d:2.07e-13]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+251(21) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.63e-07,d:2.07e-13)  -->  [f:1.37e-07,d:2.07e-13]  lambda:1     
+252(22) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:2.07e-13)  -->  [f:1.63e-07,d:2.07e-13]  lambda:1     
+253(23) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.63e-07,d:2.07e-13)  -->  [f:1.37e-07,d:2.07e-13]  lambda:1     
+254(24) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:2.07e-13)  -->  [f:1.63e-07,d:2.07e-13]  lambda:1     
+255(25) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.63e-07,d:2.07e-13)  -->  [f:1.37e-07,d:2.07e-13]  lambda:1     
+256(26) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:2.07e-13)  -->  [f:1.63e-07,d:2.07e-13]  lambda:1     
+257(27) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.63e-07,d:2.07e-13)  -->  [f:1.37e-07,d:2.07e-13]  lambda:1     
+258(28) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:2.07e-13)  -->  [f:1.63e-07,d:2.07e-13]  lambda:1     
+259(29) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.63e-07,d:2.07e-13)  -->  [f:1.37e-07,d:2.07e-13]  lambda:1     
+260(30) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:2.07e-13)  -->  [f:1.63e-07,d:2.07e-13]  lambda:1     
+261(31) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.63e-07,d:2.07e-13)  -->  [f:1.37e-07,d:2.07e-13]  lambda:1     
+262(32) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:2.07e-13)  -->  [f:1.63e-07,d:2.07e-13]  lambda:1     
+263(33) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.63e-07,d:2.07e-13)  -->  [f:1.37e-07,d:2.07e-13]  lambda:1     
+264(34) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:2.07e-13)  -->  [f:1.63e-07,d:2.07e-13]  lambda:1     
+265(35) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.63e-07,d:2.07e-13)  -->  [f:1.37e-07,d:2.07e-13]  lambda:1     
+266(36) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:2.07e-13)  -->  [f:1.63e-07,d:2.07e-13]  lambda:1     
+267(37) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.63e-07,d:2.07e-13)  -->  [f:1.37e-07,d:2.07e-13]  lambda:1     
+268(38) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:2.07e-13)  -->  [f:1.63e-07,d:2.07e-13]  lambda:1     
+269(39) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.63e-07,d:2.07e-13)  -->  [f:1.37e-07,d:2.07e-13]  lambda:1     
+270(40) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:2.07e-13)  -->  [f:1.63e-07,d:2.07e-13]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+271(41) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.63e-07,d:2.07e-13)  -->  [f:1.37e-07,d:2.07e-13]  lambda:1     
+272(42) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:2.07e-13)  -->  [f:1.63e-07,d:2.07e-13]  lambda:1     
+273(43) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.63e-07,d:2.07e-13)  -->  [f:1.37e-07,d:2.07e-13]  lambda:1     
+274(44) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:2.07e-13)  -->  [f:1.63e-07,d:2.07e-13]  lambda:1     
+275(45) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.63e-07,d:2.07e-13)  -->  [f:1.37e-07,d:2.07e-13]  lambda:1     
+276(46) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:2.07e-13)  -->  [f:1.63e-07,d:2.07e-13]  lambda:1     
+277(47) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.63e-07,d:2.07e-13)  -->  [f:1.37e-07,d:2.07e-13]  lambda:1     
+278(48) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:2.07e-13)  -->  [f:1.63e-07,d:2.07e-13]  lambda:1     
+279(49) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.63e-07,d:2.07e-13)  -->  [f:1.37e-07,d:2.07e-13]  lambda:1     
+280(50) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:2.07e-13)  -->  [f:1.63e-07,d:2.07e-13]  lambda:1     
+281(51) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.63e-07,d:2.07e-13)  -->  [f:1.37e-07,d:2.07e-13]  lambda:1     
+282(52) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:2.07e-13)  -->  [f:1.63e-07,d:2.07e-13]  lambda:1     
+283(53) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.63e-07,d:2.07e-13)  -->  [f:1.37e-07,d:2.07e-13]  lambda:1     
+284(54) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:2.07e-13)  -->  [f:1.63e-07,d:2.07e-13]  lambda:1     
+285(55) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.63e-07,d:2.07e-13)  -->  [f:1.37e-07,d:2.07e-13]  lambda:1     
+286(56) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:2.07e-13)  -->  [f:1.63e-07,d:2.07e-13]  lambda:1     
+287(57) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.63e-07,d:2.07e-13)  -->  [f:1.37e-07,d:2.07e-13]  lambda:1     
+288(58) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:2.07e-13)  -->  [f:1.63e-07,d:2.07e-13]  lambda:1     
+289(59) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.63e-07,d:2.07e-13)  -->  [f:1.37e-07,d:2.07e-13]  lambda:1     
+290(60) [phase:1,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:1.37e-07,d:2.07e-13)  -->  [f:1.63e-07,d:2.07e-13]  lambda:1     
+
+Continuation step N.1 s:0.95625->0.96562, ds=0.009375
+[iter:290,phase:1,s:0.9656,ds:0.009375] |X|=1.5e+04/8.998/342, |L|=1.5e+04/8.998/342 |B|=0/0/0, |BL|=4.769e-31/8.922e-31/6.324e-31, PARS=0/0/0, U=5.991/2/2.828
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+291(1 ) [phase:1,s:0.9656,ds:0.009375,dump:28,u:0:0]        (f:8.98,d:0.05)      -->     [f:8.72,d:0.0485]     lambda:1.5e-05  #err=357 update:26 armijo:2
+292(2 ) [phase:1,s:0.9656,ds:0.009375,dump:0,u:0:0]       (f:8.72,d:0.000141)    -->    [f:8.66,d:0.00014]     lambda:0.00581 
+293(3 ) [phase:1,s:0.9656,ds:0.009375,dump:3,u:0:0]       (f:8.66,d:5.81e-05)    -->    [f:7.15,d:2.36e-05]    lambda:0.064  #err=  3 armijo:3
+294(4 ) [phase:1,s:0.9656,ds:0.009375,dump:2,u:0:0]       (f:7.15,d:8.38e-06)    -->    [f:5.57,d:6.78e-06]    lambda:0.16   #err=  2 armijo:2
+295(5 ) [phase:1,s:0.9656,ds:0.009375,dump:1,u:0:0]       (f:5.57,d:7.96e-06)    -->    [f:2.05,d:4.55e-06]    lambda:0.456  #err=  1 armijo:1
+296(6 ) [phase:1,s:0.9656,ds:0.009375,dump:0,u:0:0]       (f:2.05,d:4.71e-06)    -->    [f:0.264,d:3.6e-08]    lambda:1     
+297(7 ) [phase:1,s:0.9656,ds:0.009375,dump:0,u:0:0]      (f:0.264,d:2.75e-08)    -->  [f:0.00306,d:4.48e-10]   lambda:1     
+298(8 ) [phase:1,s:0.9656,ds:0.009375,dump:0,u:0:0]      (f:0.00306,d:4.6e-10)   -->  [f:8.65e-07,d:2.76e-13]  lambda:1     
+299(9 ) [phase:1,s:0.9656,ds:0.009375,dump:0,u:0:0]     (f:8.65e-07,d:2.76e-13)  -->  [f:1.37e-07,d:1.97e-13]  lambda:1     
+
+Continuation step N.1 s:0.96562->0.97969, ds=0.014063
+[iter:299,phase:1,s:0.9797,ds:0.014063] |X|=1.501e+04/8.999/342.2, |L|=1.501e+04/8.999/342.2 |B|=0/0/0, |BL|=7.203e-31/7.276e-31/7.203e-31, PARS=0/0/0, U=5.991/2/2.828
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+300(1 ) [phase:1,s:0.9797,ds:0.014063,dump:28,u:0:0]       (f:8.98,d:0.0436)     -->     [f:8.98,d:0.0436]     lambda:1.5e-05  #err=243 update:26 armijo:2
+301(2 ) [phase:1,s:0.9797,ds:0.014063,dump:15,u:0:0]       (f:8.98,d:0.0385)     -->     [f:8.91,d:0.0382]     lambda:5.15e-06  #err=128 update:12 armijo:3
+302(3 ) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]       (f:8.91,d:0.000667)    -->    [f:8.86,d:0.000657]    lambda:0.0034 
+303(4 ) [phase:1,s:0.9797,ds:0.014063,dump:3,u:0:0]       (f:8.86,d:1.61e-05)    -->    [f:4.55,d:9.82e-06]    lambda:0.064  #err=  3 armijo:3
+304(5 ) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]       (f:4.55,d:1.23e-05)    -->    [f:2.43,d:3.32e-07]    lambda:1     
+305(6 ) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]       (f:2.43,d:1.41e-07)    -->   [f:0.202,d:1.47e-08]    lambda:1     
+306(7 ) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]      (f:0.202,d:1.77e-08)    -->  [f:0.00181,d:1.71e-10]   lambda:1     
+307(8 ) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:0.00181,d:1.74e-10)   -->  [f:5.45e-07,d:1.66e-13]  lambda:1     
+308(9 ) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:5.45e-07,d:1.66e-13)  -->  [f:4.01e-07,d:1.82e-13]  lambda:1     
+309(10) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:4.01e-07,d:1.82e-13)  -->  [f:5.45e-07,d:1.83e-13]  lambda:1     
+310(11) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:5.45e-07,d:1.83e-13)  -->  [f:4.01e-07,d:1.83e-13]  lambda:1     
+311(12) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:4.01e-07,d:1.83e-13)  -->  [f:5.45e-07,d:1.83e-13]  lambda:1     
+312(13) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:5.45e-07,d:1.83e-13)  -->  [f:4.01e-07,d:1.83e-13]  lambda:1     
+313(14) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:4.01e-07,d:1.83e-13)  -->  [f:5.45e-07,d:1.83e-13]  lambda:1     
+314(15) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:5.45e-07,d:1.83e-13)  -->  [f:4.01e-07,d:1.83e-13]  lambda:1     
+315(16) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:4.01e-07,d:1.83e-13)  -->  [f:5.45e-07,d:1.83e-13]  lambda:1     
+316(17) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:5.45e-07,d:1.83e-13)  -->  [f:4.01e-07,d:1.83e-13]  lambda:1     
+317(18) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:4.01e-07,d:1.83e-13)  -->  [f:5.45e-07,d:1.83e-13]  lambda:1     
+318(19) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:5.45e-07,d:1.83e-13)  -->  [f:4.01e-07,d:1.83e-13]  lambda:1     
+319(20) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:4.01e-07,d:1.83e-13)  -->  [f:5.45e-07,d:1.83e-13]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+320(21) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:5.45e-07,d:1.83e-13)  -->  [f:4.01e-07,d:1.83e-13]  lambda:1     
+321(22) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:4.01e-07,d:1.83e-13)  -->  [f:5.45e-07,d:1.83e-13]  lambda:1     
+322(23) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:5.45e-07,d:1.83e-13)  -->  [f:4.01e-07,d:1.83e-13]  lambda:1     
+323(24) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:4.01e-07,d:1.83e-13)  -->  [f:5.45e-07,d:1.83e-13]  lambda:1     
+324(25) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:5.45e-07,d:1.83e-13)  -->  [f:4.01e-07,d:1.83e-13]  lambda:1     
+325(26) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:4.01e-07,d:1.83e-13)  -->  [f:5.45e-07,d:1.83e-13]  lambda:1     
+326(27) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:5.45e-07,d:1.83e-13)  -->  [f:4.01e-07,d:1.83e-13]  lambda:1     
+327(28) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:4.01e-07,d:1.83e-13)  -->  [f:5.45e-07,d:1.83e-13]  lambda:1     
+328(29) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:5.45e-07,d:1.83e-13)  -->  [f:4.01e-07,d:1.83e-13]  lambda:1     
+329(30) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:4.01e-07,d:1.83e-13)  -->  [f:5.45e-07,d:1.83e-13]  lambda:1     
+330(31) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:5.45e-07,d:1.83e-13)  -->  [f:4.01e-07,d:1.83e-13]  lambda:1     
+331(32) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:4.01e-07,d:1.83e-13)  -->  [f:5.45e-07,d:1.83e-13]  lambda:1     
+332(33) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:5.45e-07,d:1.83e-13)  -->  [f:4.01e-07,d:1.83e-13]  lambda:1     
+333(34) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:4.01e-07,d:1.83e-13)  -->  [f:5.45e-07,d:1.83e-13]  lambda:1     
+334(35) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:5.45e-07,d:1.83e-13)  -->  [f:4.01e-07,d:1.83e-13]  lambda:1     
+335(36) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:4.01e-07,d:1.83e-13)  -->  [f:5.45e-07,d:1.83e-13]  lambda:1     
+336(37) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:5.45e-07,d:1.83e-13)  -->  [f:4.01e-07,d:1.83e-13]  lambda:1     
+337(38) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:4.01e-07,d:1.83e-13)  -->  [f:5.45e-07,d:1.83e-13]  lambda:1     
+338(39) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:5.45e-07,d:1.83e-13)  -->  [f:4.01e-07,d:1.83e-13]  lambda:1     
+339(40) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:4.01e-07,d:1.83e-13)  -->  [f:5.45e-07,d:1.83e-13]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+340(41) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:5.45e-07,d:1.83e-13)  -->  [f:4.01e-07,d:1.83e-13]  lambda:1     
+341(42) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:4.01e-07,d:1.83e-13)  -->  [f:5.45e-07,d:1.83e-13]  lambda:1     
+342(43) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:5.45e-07,d:1.83e-13)  -->  [f:4.01e-07,d:1.83e-13]  lambda:1     
+343(44) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:4.01e-07,d:1.83e-13)  -->  [f:5.45e-07,d:1.83e-13]  lambda:1     
+344(45) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:5.45e-07,d:1.83e-13)  -->  [f:4.01e-07,d:1.83e-13]  lambda:1     
+345(46) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:4.01e-07,d:1.83e-13)  -->  [f:5.45e-07,d:1.83e-13]  lambda:1     
+346(47) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:5.45e-07,d:1.83e-13)  -->  [f:4.01e-07,d:1.83e-13]  lambda:1     
+347(48) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:4.01e-07,d:1.83e-13)  -->  [f:5.45e-07,d:1.83e-13]  lambda:1     
+348(49) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:5.45e-07,d:1.83e-13)  -->  [f:4.01e-07,d:1.83e-13]  lambda:1     
+349(50) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:4.01e-07,d:1.83e-13)  -->  [f:5.45e-07,d:1.83e-13]  lambda:1     
+350(51) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:5.45e-07,d:1.83e-13)  -->  [f:4.01e-07,d:1.83e-13]  lambda:1     
+351(52) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:4.01e-07,d:1.83e-13)  -->  [f:5.45e-07,d:1.83e-13]  lambda:1     
+352(53) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:5.45e-07,d:1.83e-13)  -->  [f:4.01e-07,d:1.83e-13]  lambda:1     
+353(54) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:4.01e-07,d:1.83e-13)  -->  [f:5.45e-07,d:1.83e-13]  lambda:1     
+354(55) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:5.45e-07,d:1.83e-13)  -->  [f:4.01e-07,d:1.83e-13]  lambda:1     
+355(56) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:4.01e-07,d:1.83e-13)  -->  [f:5.45e-07,d:1.83e-13]  lambda:1     
+356(57) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:5.45e-07,d:1.83e-13)  -->  [f:4.01e-07,d:1.83e-13]  lambda:1     
+357(58) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:4.01e-07,d:1.83e-13)  -->  [f:5.45e-07,d:1.83e-13]  lambda:1     
+358(59) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:5.45e-07,d:1.83e-13)  -->  [f:4.01e-07,d:1.83e-13]  lambda:1     
+359(60) [phase:1,s:0.9797,ds:0.014063,dump:0,u:0:0]     (f:4.01e-07,d:1.83e-13)  -->  [f:5.45e-07,d:1.83e-13]  lambda:1     
+
+Continuation step N.1 s:0.97969->1, ds=0.020313
+[iter:359,phase:1,s:1,ds:0.020313] |X|=1.502e+04/8.999/342.4, |L|=1.502e+04/8.999/342.4 |B|=0/0/0, |BL|=2.358e-31/3.714e-31/2.72e-31, PARS=0/0/0, U=5.991/2/2.828
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+360(1 ) [phase:1,s:1,ds:0.020313,dump:29,u:0:0]            (f:8.98,d:0.0342)     -->     [f:8.98,d:0.0342]     lambda:1.05e-05  #err=363 update:27 armijo:2
+361(2 ) [phase:1,s:1,ds:0.020313,dump:14,u:0:0]            (f:8.98,d:0.0304)     -->     [f:8.98,d:0.0304]     lambda:1.08e-05  #err=138 update:12 armijo:2
+362(3 ) [phase:1,s:1,ds:0.020313,dump:15,u:0:0]            (f:8.98,d:0.0273)     -->     [f:8.7,d:0.0264]      lambda:4.36e-06  #err=135 update:12 armijo:3
+363(4 ) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]            (f:8.7,d:0.000123)     -->    [f:8.67,d:0.000123]    lambda:0.00313 
+364(5 ) [phase:1,s:1,ds:0.020313,dump:6,u:0:0]            (f:8.67,d:6.55e-05)    -->    [f:6.66,d:1.16e-05]    lambda:0.0549  #err=  6 angle:3 armijo:6
+365(6 ) [phase:1,s:1,ds:0.020313,dump:1,u:0:0]            (f:6.66,d:1.14e-05)    -->    [f:5.29,d:9.87e-06]    lambda:0.141  #err=  1 armijo:1
+366(7 ) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]            (f:5.29,d:1.02e-05)    -->    [f:7.62,d:4.31e-06]    lambda:1     
+367(8 ) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]            (f:7.62,d:9.01e-07)    -->    [f:1.4,d:1.75e-07]     lambda:1     
+368(9 ) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]             (f:1.4,d:2.7e-07)     -->   [f:0.0875,d:1.68e-08]   lambda:1     
+369(10) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]           (f:0.0875,d:1.92e-08)   -->  [f:0.000414,d:9.03e-11]  lambda:1     
+370(11) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:0.000414,d:9.11e-11)  -->  [f:5.63e-07,d:1.68e-13]  lambda:1     
+371(12) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.63e-07,d:1.68e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+372(13) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+373(14) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+374(15) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+375(16) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+376(17) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+377(18) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+378(19) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+379(20) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+380(21) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+381(22) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+382(23) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+383(24) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+384(25) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+385(26) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+386(27) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+387(28) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+388(29) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+389(30) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+390(31) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+391(32) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+392(33) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+393(34) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+394(35) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+395(36) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+396(37) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+397(38) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+398(39) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+399(40) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+400(41) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+401(42) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+402(43) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+403(44) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+404(45) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+405(46) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+406(47) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+407(48) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+408(49) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+409(50) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+410(51) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+411(52) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+412(53) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+413(54) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+414(55) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+415(56) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+416(57) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+417(58) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+418(59) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.66e-07,d:1.66e-13)  -->  [f:5.63e-07,d:1.66e-13]  lambda:1     
+419(60) [phase:1,s:1,ds:0.020313,dump:0,u:0:0]          (f:5.63e-07,d:1.66e-13)  -->  [f:5.66e-07,d:1.66e-13]  lambda:1     
+NLsolver[MinimumEnergyProblem]::solve_with_continuation(phase=1,...) found:
+NLsolver[MinimumEnergyProblem]::solve()
+#phase=1 #it=0/60 lambda=1 tolerance=1e-09 |f|_1=5.626e-07 |f|_inf=0.0007429 |d|_1=1.656e-13 |d|_inf=1.522e-10
+at phase 1, iter 419: NLsolver[MinimumEnergyProblem]::solve, Too many iterations
+
+
+Continuation step N.1 s:0.97969->0.98984, ds=0.010156
+[iter:419,phase:1,s:0.9898,ds:0.010156] |X|=1.502e+04/8.999/342.4, |L|=1.502e+04/8.999/342.4 |B|=0/0/0, |BL|=2.358e-31/3.714e-31/2.72e-31, PARS=0/0/0, U=5.991/2/2.828
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+420(1 ) [phase:1,s:0.9898,ds:0.010156,dump:29,u:0:0]       (f:8.98,d:0.0354)     -->     [f:5.86,d:0.023]      lambda:1.43e-05  #err=371 update:26 angle:1 armijo:3
+421(2 ) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]       (f:5.86,d:8.91e-06)    -->    [f:5.83,d:8.85e-06]    lambda:0.00567 
+422(3 ) [phase:1,s:0.9898,ds:0.010156,dump:1,u:0:0]       (f:5.83,d:8.8e-06)     -->    [f:2.51,d:4.34e-06]    lambda:0.4    #err=  1 armijo:1
+423(4 ) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]       (f:2.51,d:4.31e-06)    -->   [f:0.451,d:1.02e-07]    lambda:1     
+424(5 ) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]       (f:0.451,d:6.8e-08)    -->  [f:0.00915,d:1.99e-09]   lambda:1     
+425(6 ) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:0.00915,d:2.09e-09)   -->  [f:3.56e-06,d:1.32e-12]  lambda:1     
+426(7 ) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:3.56e-06,d:1.32e-12)  -->  [f:7.9e-07,d:3.47e-13]   lambda:1     
+427(8 ) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:7.9e-07,d:3.47e-13)   -->  [f:8.7e-07,d:1.72e-13]   lambda:1     
+428(9 ) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:8.7e-07,d:1.72e-13)   -->  [f:1.01e-06,d:2.31e-15]  lambda:1     
+429(10) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:1.01e-06,d:2.31e-15)  -->  [f:5.49e-07,d:1.75e-13]  lambda:1     
+430(11) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.75e-13)  -->  [f:5.49e-07,d:5.87e-16]  lambda:1     
+431(12) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:5.87e-16)  -->  [f:5.49e-07,d:1.74e-16]  lambda:1     
+432(13) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.74e-16)  -->  [f:5.49e-07,d:1.76e-16]  lambda:1     
+433(14) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.76e-16)  -->  [f:5.49e-07,d:1.77e-16]  lambda:1     
+434(15) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.77e-16)  -->  [f:5.49e-07,d:1.77e-16]  lambda:1     
+435(16) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.77e-16)  -->  [f:5.49e-07,d:1.74e-16]  lambda:1     
+436(17) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.74e-16)  -->  [f:5.49e-07,d:1.74e-16]  lambda:1     
+437(18) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.74e-16)  -->  [f:5.49e-07,d:1.74e-16]  lambda:1     
+438(19) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.74e-16)  -->  [f:5.49e-07,d:1.77e-16]  lambda:1     
+439(20) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.77e-16)  -->  [f:5.49e-07,d:1.76e-16]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+440(21) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.76e-16)  -->  [f:5.49e-07,d:1.75e-16]  lambda:1     
+441(22) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.75e-16)  -->  [f:5.49e-07,d:1.74e-16]  lambda:1     
+442(23) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.74e-16)  -->  [f:5.49e-07,d:1.75e-16]  lambda:1     
+443(24) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.75e-16)  -->  [f:5.49e-07,d:1.74e-16]  lambda:1     
+444(25) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.74e-16)  -->  [f:5.49e-07,d:1.75e-16]  lambda:1     
+445(26) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.75e-16)  -->  [f:5.49e-07,d:1.74e-16]  lambda:1     
+446(27) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.74e-16)  -->  [f:5.49e-07,d:1.75e-16]  lambda:1     
+447(28) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.75e-16)  -->  [f:5.49e-07,d:1.74e-16]  lambda:1     
+448(29) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.74e-16)  -->  [f:5.49e-07,d:1.75e-16]  lambda:1     
+449(30) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.75e-16)  -->  [f:5.49e-07,d:1.74e-16]  lambda:1     
+450(31) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.74e-16)  -->  [f:5.49e-07,d:1.75e-16]  lambda:1     
+451(32) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.75e-16)  -->  [f:5.49e-07,d:1.74e-16]  lambda:1     
+452(33) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.74e-16)  -->  [f:5.49e-07,d:1.75e-16]  lambda:1     
+453(34) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.75e-16)  -->  [f:5.49e-07,d:1.74e-16]  lambda:1     
+454(35) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.74e-16)  -->  [f:5.49e-07,d:1.75e-16]  lambda:1     
+455(36) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.75e-16)  -->  [f:5.49e-07,d:1.74e-16]  lambda:1     
+456(37) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.74e-16)  -->  [f:5.49e-07,d:1.75e-16]  lambda:1     
+457(38) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.75e-16)  -->  [f:5.49e-07,d:1.74e-16]  lambda:1     
+458(39) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.74e-16)  -->  [f:5.49e-07,d:1.75e-16]  lambda:1     
+459(40) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.75e-16)  -->  [f:5.49e-07,d:1.74e-16]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+460(41) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.74e-16)  -->  [f:5.49e-07,d:1.75e-16]  lambda:1     
+461(42) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.75e-16)  -->  [f:5.49e-07,d:1.74e-16]  lambda:1     
+462(43) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.74e-16)  -->  [f:5.49e-07,d:1.75e-16]  lambda:1     
+463(44) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.75e-16)  -->  [f:5.49e-07,d:1.74e-16]  lambda:1     
+464(45) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.74e-16)  -->  [f:5.49e-07,d:1.75e-16]  lambda:1     
+465(46) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.75e-16)  -->  [f:5.49e-07,d:1.74e-16]  lambda:1     
+466(47) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.74e-16)  -->  [f:5.49e-07,d:1.75e-16]  lambda:1     
+467(48) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.75e-16)  -->  [f:5.49e-07,d:1.74e-16]  lambda:1     
+468(49) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.74e-16)  -->  [f:5.49e-07,d:1.75e-16]  lambda:1     
+469(50) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.75e-16)  -->  [f:5.49e-07,d:1.74e-16]  lambda:1     
+470(51) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.74e-16)  -->  [f:5.49e-07,d:1.75e-16]  lambda:1     
+471(52) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.75e-16)  -->  [f:5.49e-07,d:1.74e-16]  lambda:1     
+472(53) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.74e-16)  -->  [f:5.49e-07,d:1.75e-16]  lambda:1     
+473(54) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.75e-16)  -->  [f:5.49e-07,d:1.74e-16]  lambda:1     
+474(55) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.74e-16)  -->  [f:5.49e-07,d:1.75e-16]  lambda:1     
+475(56) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.75e-16)  -->  [f:5.49e-07,d:1.74e-16]  lambda:1     
+476(57) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.74e-16)  -->  [f:5.49e-07,d:1.75e-16]  lambda:1     
+477(58) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.75e-16)  -->  [f:5.49e-07,d:1.74e-16]  lambda:1     
+478(59) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.74e-16)  -->  [f:5.49e-07,d:1.75e-16]  lambda:1     
+479(60) [phase:1,s:0.9898,ds:0.010156,dump:0,u:0:0]     (f:5.49e-07,d:1.75e-16)  -->  [f:5.49e-07,d:1.74e-16]  lambda:1     
+NLsolver[MinimumEnergyProblem]::solve_with_continuation(phase=1,...) found:
+NLsolver[MinimumEnergyProblem]::solve()
+#phase=1 #it=0/60 lambda=1 tolerance=1e-09 |f|_1=5.489e-07 |f|_inf=0.00102 |d|_1=1.753e-16 |d|_inf=1.29e-14
+at phase 1, iter 479: NLsolver[MinimumEnergyProblem]::solve, Too many iterations
+
+
+Continuation step N.1 s:0.97969->0.98477, ds=0.0050781
+[iter:479,phase:1,s:0.9848,ds:0.0050781] |X|=1.502e+04/8.998/342.4, |L|=1.502e+04/8.998/342.4 |B|=0/0/0, |BL|=2.358e-31/3.714e-31/2.72e-31, PARS=0/0/0, U=5.991/2/2.828
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+480(1 ) [phase:1,s:0.9848,ds:0.0050781,dump:29,u:0:0]      (f:8.98,d:0.036)      -->     [f:8.83,d:0.0354]     lambda:6.01e-06  #err=331 update:26 armijo:3
+481(2 ) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]      (f:8.83,d:0.00017)     -->    [f:8.79,d:0.000169]    lambda:0.00368 
+482(3 ) [phase:1,s:0.9848,ds:0.0050781,dump:4,u:0:0]      (f:8.79,d:5.22e-05)    -->    [f:8.36,d:4.5e-05]     lambda:0.0256  #err=  4 armijo:4
+483(4 ) [phase:1,s:0.9848,ds:0.0050781,dump:1,u:0:0]      (f:8.36,d:8.21e-06)    -->    [f:6.93,d:6.48e-06]    lambda:0.096  #err=  1 armijo:1
+484(5 ) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]      (f:6.93,d:3.12e-06)    -->    [f:20.6,d:1.93e-06]    lambda:1     
+485(6 ) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]      (f:20.6,d:4.69e-07)    -->     [f:5,d:9.33e-08]      lambda:1     
+486(7 ) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]        (f:5,d:1.4e-07)      -->   [f:0.678,d:4.33e-09]    lambda:1     
+487(8 ) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]     (f:0.678,d:2.88e-09)    -->   [f:0.0196,d:1.64e-09]   lambda:1     
+488(9 ) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]     (f:0.0196,d:1.87e-09)   -->  [f:1.84e-05,d:6.08e-12]  lambda:1     
+489(10) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:1.84e-05,d:6.1e-12)   -->  [f:7.06e-07,d:1.79e-15]  lambda:1     
+490(11) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.06e-07,d:1.79e-15)  -->  [f:7.08e-07,d:2.17e-15]  lambda:1     
+491(12) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.08e-07,d:2.17e-15)  -->  [f:7.06e-07,d:2.16e-15]  lambda:1     
+492(13) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.06e-07,d:2.16e-15)  -->  [f:7.08e-07,d:2.16e-15]  lambda:1     
+493(14) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.08e-07,d:2.16e-15)  -->  [f:7.06e-07,d:2.16e-15]  lambda:1     
+494(15) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.06e-07,d:2.16e-15)  -->  [f:7.08e-07,d:2.16e-15]  lambda:1     
+495(16) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.08e-07,d:2.16e-15)  -->  [f:7.06e-07,d:2.16e-15]  lambda:1     
+496(17) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.06e-07,d:2.16e-15)  -->  [f:7.08e-07,d:2.16e-15]  lambda:1     
+497(18) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.08e-07,d:2.16e-15)  -->  [f:7.06e-07,d:2.16e-15]  lambda:1     
+498(19) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.06e-07,d:2.16e-15)  -->  [f:7.08e-07,d:2.16e-15]  lambda:1     
+499(20) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.08e-07,d:2.16e-15)  -->  [f:7.06e-07,d:2.16e-15]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+500(21) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.06e-07,d:2.16e-15)  -->  [f:7.08e-07,d:2.16e-15]  lambda:1     
+501(22) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.08e-07,d:2.16e-15)  -->  [f:7.06e-07,d:2.16e-15]  lambda:1     
+502(23) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.06e-07,d:2.16e-15)  -->  [f:7.08e-07,d:2.16e-15]  lambda:1     
+503(24) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.08e-07,d:2.16e-15)  -->  [f:7.06e-07,d:2.16e-15]  lambda:1     
+504(25) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.06e-07,d:2.16e-15)  -->  [f:7.08e-07,d:2.16e-15]  lambda:1     
+505(26) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.08e-07,d:2.16e-15)  -->  [f:7.06e-07,d:2.16e-15]  lambda:1     
+506(27) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.06e-07,d:2.16e-15)  -->  [f:7.08e-07,d:2.16e-15]  lambda:1     
+507(28) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.08e-07,d:2.16e-15)  -->  [f:7.06e-07,d:2.16e-15]  lambda:1     
+508(29) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.06e-07,d:2.16e-15)  -->  [f:7.08e-07,d:2.16e-15]  lambda:1     
+509(30) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.08e-07,d:2.16e-15)  -->  [f:7.06e-07,d:2.16e-15]  lambda:1     
+510(31) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.06e-07,d:2.16e-15)  -->  [f:7.08e-07,d:2.16e-15]  lambda:1     
+511(32) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.08e-07,d:2.16e-15)  -->  [f:7.06e-07,d:2.16e-15]  lambda:1     
+512(33) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.06e-07,d:2.16e-15)  -->  [f:7.08e-07,d:2.16e-15]  lambda:1     
+513(34) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.08e-07,d:2.16e-15)  -->  [f:7.06e-07,d:2.16e-15]  lambda:1     
+514(35) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.06e-07,d:2.16e-15)  -->  [f:7.08e-07,d:2.16e-15]  lambda:1     
+515(36) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.08e-07,d:2.16e-15)  -->  [f:7.06e-07,d:2.16e-15]  lambda:1     
+516(37) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.06e-07,d:2.16e-15)  -->  [f:7.08e-07,d:2.16e-15]  lambda:1     
+517(38) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.08e-07,d:2.16e-15)  -->  [f:7.06e-07,d:2.16e-15]  lambda:1     
+518(39) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.06e-07,d:2.16e-15)  -->  [f:7.08e-07,d:2.16e-15]  lambda:1     
+519(40) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.08e-07,d:2.16e-15)  -->  [f:7.06e-07,d:2.16e-15]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+520(41) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.06e-07,d:2.16e-15)  -->  [f:7.08e-07,d:2.16e-15]  lambda:1     
+521(42) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.08e-07,d:2.16e-15)  -->  [f:7.06e-07,d:2.16e-15]  lambda:1     
+522(43) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.06e-07,d:2.16e-15)  -->  [f:7.08e-07,d:2.16e-15]  lambda:1     
+523(44) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.08e-07,d:2.16e-15)  -->  [f:7.06e-07,d:2.16e-15]  lambda:1     
+524(45) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.06e-07,d:2.16e-15)  -->  [f:7.08e-07,d:2.16e-15]  lambda:1     
+525(46) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.08e-07,d:2.16e-15)  -->  [f:7.06e-07,d:2.16e-15]  lambda:1     
+526(47) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.06e-07,d:2.16e-15)  -->  [f:7.08e-07,d:2.16e-15]  lambda:1     
+527(48) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.08e-07,d:2.16e-15)  -->  [f:7.06e-07,d:2.16e-15]  lambda:1     
+528(49) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.06e-07,d:2.16e-15)  -->  [f:7.08e-07,d:2.16e-15]  lambda:1     
+529(50) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.08e-07,d:2.16e-15)  -->  [f:7.06e-07,d:2.16e-15]  lambda:1     
+530(51) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.06e-07,d:2.16e-15)  -->  [f:7.08e-07,d:2.16e-15]  lambda:1     
+531(52) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.08e-07,d:2.16e-15)  -->  [f:7.06e-07,d:2.16e-15]  lambda:1     
+532(53) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.06e-07,d:2.16e-15)  -->  [f:7.08e-07,d:2.16e-15]  lambda:1     
+533(54) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.08e-07,d:2.16e-15)  -->  [f:7.06e-07,d:2.16e-15]  lambda:1     
+534(55) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.06e-07,d:2.16e-15)  -->  [f:7.08e-07,d:2.16e-15]  lambda:1     
+535(56) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.08e-07,d:2.16e-15)  -->  [f:7.06e-07,d:2.16e-15]  lambda:1     
+536(57) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.06e-07,d:2.16e-15)  -->  [f:7.08e-07,d:2.16e-15]  lambda:1     
+537(58) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.08e-07,d:2.16e-15)  -->  [f:7.06e-07,d:2.16e-15]  lambda:1     
+538(59) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.06e-07,d:2.16e-15)  -->  [f:7.08e-07,d:2.16e-15]  lambda:1     
+539(60) [phase:1,s:0.9848,ds:0.0050781,dump:0,u:0:0]    (f:7.08e-07,d:2.16e-15)  -->  [f:7.06e-07,d:2.16e-15]  lambda:1     
+NLsolver[MinimumEnergyProblem]::solve_with_continuation(phase=1,...) found:
+NLsolver[MinimumEnergyProblem]::solve()
+#phase=1 #it=0/60 lambda=1 tolerance=1e-09 |f|_1=7.076e-07 |f|_inf=0.001094 |d|_1=2.16e-15 |d|_inf=1.507e-12
+at phase 1, iter 539: NLsolver[MinimumEnergyProblem]::solve, Too many iterations
+
+
+Continuation step N.1 s:0.97969->0.98223, ds=0.0025391
+[iter:539,phase:1,s:0.9822,ds:0.0025391] |X|=1.502e+04/8.998/342.4, |L|=1.502e+04/8.998/342.4 |B|=0/0/0, |BL|=2.358e-31/3.714e-31/2.72e-31, PARS=0/0/0, U=5.991/2/2.828
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+540(1 ) [phase:1,s:0.9822,ds:0.0025391,dump:16,u:0:0]     (f:8.98,d:0.00319)     -->    [f:8.84,d:0.00316]     lambda:0.000354  #err=100 update:12 armijo:4
+541(2 ) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]      (f:8.84,d:2.63e-05)    -->    [f:8.26,d:2.04e-05]    lambda:0.0282 
+542(3 ) [phase:1,s:0.9822,ds:0.0025391,dump:2,u:0:0]      (f:8.26,d:7.59e-06)    -->    [f:5.28,d:3.67e-06]    lambda:0.16   #err=  2 armijo:2
+543(4 ) [phase:1,s:0.9822,ds:0.0025391,dump:1,u:0:0]      (f:5.28,d:1.59e-06)    -->   [f:0.604,d:3.92e-07]    lambda:0.721  #err=  1 angle:1 armijo:1
+544(5 ) [phase:1,s:0.9822,ds:0.0025391,dump:1,u:0:0]     (f:0.604,d:4.29e-07)    -->   [f:0.0483,d:1.92e-08]   lambda:0.95   #err=  1 angle:1 armijo:1
+545(6 ) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]     (f:0.0483,d:1.86e-08)   -->  [f:0.000185,d:1.84e-10]  lambda:1     
+546(7 ) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:0.000185,d:1.87e-10)  -->  [f:3.38e-07,d:1.88e-13]  lambda:1     
+547(8 ) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.38e-07,d:1.88e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+548(9 ) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:1.01e-06,d:3.61e-13)  -->  [f:3.39e-07,d:3.61e-13]  lambda:1     
+549(10) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.39e-07,d:3.61e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+550(11) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:1.01e-06,d:3.61e-13)  -->  [f:3.39e-07,d:3.61e-13]  lambda:1     
+551(12) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.39e-07,d:3.61e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+552(13) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:1.01e-06,d:3.61e-13)  -->  [f:3.39e-07,d:3.61e-13]  lambda:1     
+553(14) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.39e-07,d:3.61e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+554(15) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:1.01e-06,d:3.61e-13)  -->  [f:3.39e-07,d:3.61e-13]  lambda:1     
+555(16) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.39e-07,d:3.61e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+556(17) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:1.01e-06,d:3.61e-13)  -->  [f:3.39e-07,d:3.61e-13]  lambda:1     
+557(18) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.39e-07,d:3.61e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+558(19) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:1.01e-06,d:3.61e-13)  -->  [f:3.39e-07,d:3.61e-13]  lambda:1     
+559(20) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.39e-07,d:3.61e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+560(21) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:1.01e-06,d:3.61e-13)  -->  [f:3.39e-07,d:3.61e-13]  lambda:1     
+561(22) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.39e-07,d:3.61e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+562(23) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:1.01e-06,d:3.61e-13)  -->  [f:3.39e-07,d:3.61e-13]  lambda:1     
+563(24) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.39e-07,d:3.61e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+564(25) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:1.01e-06,d:3.61e-13)  -->  [f:3.39e-07,d:3.61e-13]  lambda:1     
+565(26) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.39e-07,d:3.61e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+566(27) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:1.01e-06,d:3.61e-13)  -->  [f:3.39e-07,d:3.61e-13]  lambda:1     
+567(28) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.39e-07,d:3.61e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+568(29) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:1.01e-06,d:3.61e-13)  -->  [f:3.39e-07,d:3.61e-13]  lambda:1     
+569(30) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.39e-07,d:3.61e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+570(31) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:1.01e-06,d:3.61e-13)  -->  [f:3.39e-07,d:3.61e-13]  lambda:1     
+571(32) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.39e-07,d:3.61e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+572(33) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:1.01e-06,d:3.61e-13)  -->  [f:3.39e-07,d:3.61e-13]  lambda:1     
+573(34) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.39e-07,d:3.61e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+574(35) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:1.01e-06,d:3.61e-13)  -->  [f:3.39e-07,d:3.61e-13]  lambda:1     
+575(36) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.39e-07,d:3.61e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+576(37) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:1.01e-06,d:3.61e-13)  -->  [f:3.39e-07,d:3.61e-13]  lambda:1     
+577(38) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.39e-07,d:3.61e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+578(39) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:1.01e-06,d:3.61e-13)  -->  [f:3.39e-07,d:3.61e-13]  lambda:1     
+579(40) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.39e-07,d:3.61e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+580(41) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:1.01e-06,d:3.61e-13)  -->  [f:3.39e-07,d:3.61e-13]  lambda:1     
+581(42) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.39e-07,d:3.61e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+582(43) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:1.01e-06,d:3.61e-13)  -->  [f:3.39e-07,d:3.61e-13]  lambda:1     
+583(44) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.39e-07,d:3.61e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+584(45) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:1.01e-06,d:3.61e-13)  -->  [f:3.39e-07,d:3.61e-13]  lambda:1     
+585(46) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.39e-07,d:3.61e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+586(47) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:1.01e-06,d:3.61e-13)  -->  [f:3.39e-07,d:3.61e-13]  lambda:1     
+587(48) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.39e-07,d:3.61e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+588(49) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:1.01e-06,d:3.61e-13)  -->  [f:3.39e-07,d:3.61e-13]  lambda:1     
+589(50) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.39e-07,d:3.61e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+590(51) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:1.01e-06,d:3.61e-13)  -->  [f:3.39e-07,d:3.61e-13]  lambda:1     
+591(52) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.39e-07,d:3.61e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+592(53) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:1.01e-06,d:3.61e-13)  -->  [f:3.39e-07,d:3.61e-13]  lambda:1     
+593(54) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.39e-07,d:3.61e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+594(55) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:1.01e-06,d:3.61e-13)  -->  [f:3.39e-07,d:3.61e-13]  lambda:1     
+595(56) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.39e-07,d:3.61e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+596(57) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:1.01e-06,d:3.61e-13)  -->  [f:3.39e-07,d:3.61e-13]  lambda:1     
+597(58) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.39e-07,d:3.61e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+598(59) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:1.01e-06,d:3.61e-13)  -->  [f:3.39e-07,d:3.61e-13]  lambda:1     
+599(60) [phase:1,s:0.9822,ds:0.0025391,dump:0,u:0:0]    (f:3.39e-07,d:3.61e-13)  -->  [f:1.01e-06,d:3.61e-13]  lambda:1     
+NLsolver[MinimumEnergyProblem]::solve_with_continuation(phase=1,...) found:
+NLsolver[MinimumEnergyProblem]::solve()
+#phase=1 #it=0/60 lambda=1 tolerance=1e-09 |f|_1=3.386e-07 |f|_inf=0.000451 |d|_1=3.612e-13 |d|_inf=3.311e-10
+at phase 1, iter 599: NLsolver[MinimumEnergyProblem]::solve, Too many iterations
+
+
+Continuation step N.1 s:0.97969->0.98096, ds=0.0012695
+[iter:599,phase:1,s:0.981,ds:0.0012695] |X|=1.449e+04/8.721/330.7, |L|=1.449e+04/8.721/330.7 |B|=0/0/0, |BL|=2.358e-31/3.714e-31/2.72e-31, PARS=0/0/0, U=5.991/2/2.828
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+600(1 ) [phase:1,s:0.981,ds:0.0012695,dump:7,u:0:0]       (f:8.7,d:6.99e-05)     -->    [f:7.11,d:7.58e-06]    lambda:0.0521  #err=  7 angle:4 armijo:7
+601(2 ) [phase:1,s:0.981,ds:0.0012695,dump:1,u:0:0]       (f:7.11,d:1.02e-05)    -->    [f:1.58,d:1.17e-06]    lambda:0.325  #err=  1 angle:1 armijo:1
+602(3 ) [phase:1,s:0.981,ds:0.0012695,dump:2,u:0:0]       (f:1.58,d:7.69e-07)    -->   [f:0.0478,d:5.37e-08]   lambda:0.902  #err=  2 angle:2 armijo:2
+603(4 ) [phase:1,s:0.981,ds:0.0012695,dump:1,u:0:0]      (f:0.0478,d:5.49e-08)   -->  [f:0.00234,d:2.74e-09]   lambda:0.95   #err=  1 angle:1 armijo:1
+604(5 ) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:0.00234,d:2.74e-09)   -->  [f:3.99e-07,d:2.32e-13]  lambda:1     
+605(6 ) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:3.99e-07,d:2.32e-13)  -->  [f:1.27e-07,d:1.17e-15]  lambda:1     
+606(7 ) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.17e-15)  -->  [f:1.27e-07,d:1.83e-16]  lambda:1     
+607(8 ) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.83e-16)  -->  [f:1.27e-07,d:1.78e-16]  lambda:1     
+608(9 ) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.78e-16)  -->  [f:1.27e-07,d:1.81e-16]  lambda:1     
+609(10) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.81e-16)  -->  [f:1.27e-07,d:1.83e-16]  lambda:1     
+610(11) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.83e-16)  -->  [f:1.27e-07,d:1.83e-16]  lambda:1     
+611(12) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.83e-16)  -->  [f:1.27e-07,d:1.84e-16]  lambda:1     
+612(13) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.84e-16)  -->  [f:1.27e-07,d:1.83e-16]  lambda:1     
+613(14) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.83e-16)  -->  [f:1.27e-07,d:1.84e-16]  lambda:1     
+614(15) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.84e-16)  -->  [f:1.27e-07,d:1.84e-16]  lambda:1     
+615(16) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.84e-16)  -->  [f:1.27e-07,d:1.84e-16]  lambda:1     
+616(17) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.84e-16)  -->  [f:1.27e-07,d:1.84e-16]  lambda:1     
+617(18) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.84e-16)  -->  [f:1.27e-07,d:1.83e-16]  lambda:1     
+618(19) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.83e-16)  -->  [f:1.27e-07,d:1.81e-16]  lambda:1     
+619(20) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.81e-16)  -->  [f:1.27e-07,d:1.81e-16]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+620(21) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.81e-16)  -->  [f:1.27e-07,d:1.81e-16]  lambda:1     
+621(22) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.81e-16)  -->  [f:1.27e-07,d:1.81e-16]  lambda:1     
+622(23) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.81e-16)  -->  [f:1.27e-07,d:1.82e-16]  lambda:1     
+623(24) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.82e-16)  -->  [f:1.27e-07,d:1.82e-16]  lambda:1     
+624(25) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.82e-16)  -->  [f:1.27e-07,d:1.82e-16]  lambda:1     
+625(26) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.82e-16)  -->  [f:1.27e-07,d:1.83e-16]  lambda:1     
+626(27) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.83e-16)  -->  [f:1.27e-07,d:1.82e-16]  lambda:1     
+627(28) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.82e-16)  -->  [f:1.27e-07,d:1.82e-16]  lambda:1     
+628(29) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.82e-16)  -->  [f:1.27e-07,d:1.83e-16]  lambda:1     
+629(30) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.83e-16)  -->  [f:1.27e-07,d:1.83e-16]  lambda:1     
+630(31) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.83e-16)  -->  [f:1.27e-07,d:1.82e-16]  lambda:1     
+631(32) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.82e-16)  -->  [f:1.27e-07,d:1.83e-16]  lambda:1     
+632(33) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.83e-16)  -->  [f:1.27e-07,d:1.82e-16]  lambda:1     
+633(34) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.82e-16)  -->  [f:1.27e-07,d:1.82e-16]  lambda:1     
+634(35) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.82e-16)  -->  [f:1.27e-07,d:1.83e-16]  lambda:1     
+635(36) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.83e-16)  -->  [f:1.27e-07,d:1.83e-16]  lambda:1     
+636(37) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.83e-16)  -->  [f:1.27e-07,d:1.82e-16]  lambda:1     
+637(38) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.82e-16)  -->  [f:1.27e-07,d:1.83e-16]  lambda:1     
+638(39) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.83e-16)  -->  [f:1.27e-07,d:1.82e-16]  lambda:1     
+639(40) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.82e-16)  -->  [f:1.27e-07,d:1.82e-16]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+640(41) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.82e-16)  -->  [f:1.27e-07,d:1.83e-16]  lambda:1     
+641(42) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.83e-16)  -->  [f:1.27e-07,d:1.83e-16]  lambda:1     
+642(43) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.83e-16)  -->  [f:1.27e-07,d:1.82e-16]  lambda:1     
+643(44) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.82e-16)  -->  [f:1.27e-07,d:1.83e-16]  lambda:1     
+644(45) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.83e-16)  -->  [f:1.27e-07,d:1.82e-16]  lambda:1     
+645(46) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.82e-16)  -->  [f:1.27e-07,d:1.82e-16]  lambda:1     
+646(47) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.82e-16)  -->  [f:1.27e-07,d:1.83e-16]  lambda:1     
+647(48) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.83e-16)  -->  [f:1.27e-07,d:1.83e-16]  lambda:1     
+648(49) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.83e-16)  -->  [f:1.27e-07,d:1.82e-16]  lambda:1     
+649(50) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.82e-16)  -->  [f:1.27e-07,d:1.83e-16]  lambda:1     
+650(51) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.83e-16)  -->  [f:1.27e-07,d:1.82e-16]  lambda:1     
+651(52) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.82e-16)  -->  [f:1.27e-07,d:1.82e-16]  lambda:1     
+652(53) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.82e-16)  -->  [f:1.27e-07,d:1.83e-16]  lambda:1     
+653(54) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.83e-16)  -->  [f:1.27e-07,d:1.83e-16]  lambda:1     
+654(55) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.83e-16)  -->  [f:1.27e-07,d:1.82e-16]  lambda:1     
+655(56) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.82e-16)  -->  [f:1.27e-07,d:1.83e-16]  lambda:1     
+656(57) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.83e-16)  -->  [f:1.27e-07,d:1.82e-16]  lambda:1     
+657(58) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.82e-16)  -->  [f:1.27e-07,d:1.82e-16]  lambda:1     
+658(59) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.82e-16)  -->  [f:1.27e-07,d:1.83e-16]  lambda:1     
+659(60) [phase:1,s:0.981,ds:0.0012695,dump:0,u:0:0]     (f:1.27e-07,d:1.83e-16)  -->  [f:1.27e-07,d:1.83e-16]  lambda:1     
+
+Continuation step N.1 s:0.98096->0.98286, ds=0.0019043
+[iter:659,phase:1,s:0.9829,ds:0.0019043] |X|=1.498e+04/8.98/341.6, |L|=1.498e+04/8.98/341.6 |B|=0/0/0, |BL|=5.381e-33/7.114e-33/5.653e-33, PARS=0/0/0, U=5.991/2/2.828
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+660(1 ) [phase:1,s:0.9829,ds:0.0019043,dump:10,u:0:0]     (f:8.96,d:0.00163)     -->    [f:8.74,d:0.00141]     lambda:0.00301  #err= 28 update:6 armijo:4
+661(2 ) [phase:1,s:0.9829,ds:0.0019043,dump:1,u:0:0]      (f:8.74,d:0.000126)    -->    [f:7.39,d:0.000103]    lambda:0.0329  #err=  1 armijo:1
+662(3 ) [phase:1,s:0.9829,ds:0.0019043,dump:2,u:0:0]      (f:7.39,d:1.18e-06)    -->    [f:5.76,d:9.71e-07]    lambda:0.16   #err=  2 angle:1 armijo:2
+663(4 ) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]      (f:5.76,d:9.55e-07)    -->    [f:6.38,d:4.9e-07]     lambda:1     
+664(5 ) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]      (f:6.38,d:2.26e-07)    -->    [f:0.99,d:2.24e-08]    lambda:1     
+665(6 ) [phase:1,s:0.9829,ds:0.0019043,dump:1,u:0:0]      (f:0.99,d:2.43e-08)    -->   [f:0.0853,d:3.32e-10]   lambda:0.95   #err=  1 angle:1 armijo:1
+666(7 ) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]     (f:0.0853,d:2.65e-10)   -->  [f:0.000333,d:3.03e-11]  lambda:1     
+667(8 ) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:0.000333,d:3.08e-11)  -->  [f:2.89e-07,d:1.67e-15]  lambda:1     
+668(9 ) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.67e-15)  -->  [f:2.89e-07,d:2.05e-16]  lambda:1     
+669(10) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:2.05e-16)  -->  [f:2.89e-07,d:1.86e-16]  lambda:1     
+670(11) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.86e-16)  -->  [f:2.89e-07,d:1.81e-16]  lambda:1     
+671(12) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.81e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+672(13) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+673(14) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.84e-16]  lambda:1     
+674(15) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.84e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+675(16) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.83e-16]  lambda:1     
+676(17) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.83e-16)  -->  [f:2.89e-07,d:1.81e-16]  lambda:1     
+677(18) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.81e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+678(19) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.83e-16]  lambda:1     
+679(20) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.83e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+680(21) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+681(22) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+682(23) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+683(24) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.83e-16]  lambda:1     
+684(25) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.83e-16)  -->  [f:2.89e-07,d:1.83e-16]  lambda:1     
+685(26) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.83e-16)  -->  [f:2.89e-07,d:1.81e-16]  lambda:1     
+686(27) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.81e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+687(28) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.83e-16]  lambda:1     
+688(29) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.83e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+689(30) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+690(31) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.83e-16]  lambda:1     
+691(32) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.83e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+692(33) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+693(34) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+694(35) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+695(36) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.83e-16]  lambda:1     
+696(37) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.83e-16)  -->  [f:2.89e-07,d:1.83e-16]  lambda:1     
+697(38) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.83e-16)  -->  [f:2.89e-07,d:1.81e-16]  lambda:1     
+698(39) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.81e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+699(40) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.83e-16]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+700(41) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.83e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+701(42) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+702(43) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.83e-16]  lambda:1     
+703(44) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.83e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+704(45) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+705(46) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+706(47) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+707(48) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.83e-16]  lambda:1     
+708(49) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.83e-16)  -->  [f:2.89e-07,d:1.83e-16]  lambda:1     
+709(50) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.83e-16)  -->  [f:2.89e-07,d:1.81e-16]  lambda:1     
+710(51) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.81e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+711(52) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.83e-16]  lambda:1     
+712(53) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.83e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+713(54) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+714(55) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.83e-16]  lambda:1     
+715(56) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.83e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+716(57) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+717(58) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+718(59) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.82e-16]  lambda:1     
+719(60) [phase:1,s:0.9829,ds:0.0019043,dump:0,u:0:0]    (f:2.89e-07,d:1.82e-16)  -->  [f:2.89e-07,d:1.83e-16]  lambda:1     
+
+Continuation step N.1 s:0.98286->0.98572, ds=0.0028564
+[iter:719,phase:1,s:0.9857,ds:0.0028564] |X|=1.502e+04/8.998/342.4, |L|=1.502e+04/8.998/342.4 |B|=0/0/0, |BL|=3.552e-33/4.967e-33/3.824e-33, PARS=0/0/0, U=5.991/2/2.828
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+720(1 ) [phase:1,s:0.9857,ds:0.0028564,dump:23,u:0:0]     (f:8.98,d:0.00451)     -->    [f:1.9,d:0.000939]     lambda:6.93e-05  #err=247 update:19 angle:1 armijo:4
+721(2 ) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]      (f:1.9,d:2.07e-06)     -->    [f:1.88,d:2.04e-06]    lambda:0.0125 
+722(3 ) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]      (f:1.88,d:2.04e-06)    -->   [f:0.217,d:1.84e-08]    lambda:1     
+723(4 ) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]     (f:0.217,d:1.46e-08)    -->  [f:0.00209,d:1.63e-10]   lambda:1     
+724(5 ) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:0.00209,d:1.66e-10)   -->  [f:1.38e-06,d:2.09e-14]  lambda:1     
+725(6 ) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:2.09e-14)  -->  [f:1.5e-06,d:4.82e-15]   lambda:1     
+726(7 ) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.82e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+727(8 ) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.98e-15]   lambda:1     
+728(9 ) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.98e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+729(10) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.98e-15]   lambda:1     
+730(11) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.98e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+731(12) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.99e-15]   lambda:1     
+732(13) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.99e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+733(14) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.99e-15]   lambda:1     
+734(15) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.99e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+735(16) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.98e-15]   lambda:1     
+736(17) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.98e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+737(18) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.99e-15]   lambda:1     
+738(19) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.99e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+739(20) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.98e-15]   lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+740(21) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.98e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+741(22) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.98e-15]   lambda:1     
+742(23) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.98e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+743(24) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.99e-15]   lambda:1     
+744(25) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.99e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+745(26) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.99e-15]   lambda:1     
+746(27) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.99e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+747(28) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.99e-15]   lambda:1     
+748(29) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.99e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+749(30) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.99e-15]   lambda:1     
+750(31) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.99e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+751(32) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.98e-15]   lambda:1     
+752(33) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.98e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+753(34) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.99e-15]   lambda:1     
+754(35) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.99e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+755(36) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.98e-15]   lambda:1     
+756(37) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.98e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+757(38) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.99e-15]   lambda:1     
+758(39) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.99e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+759(40) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.99e-15]   lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+760(41) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.99e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+761(42) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.99e-15]   lambda:1     
+762(43) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.99e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+763(44) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.99e-15]   lambda:1     
+764(45) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.99e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+765(46) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.98e-15]   lambda:1     
+766(47) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.98e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+767(48) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.99e-15]   lambda:1     
+768(49) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.99e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+769(50) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.99e-15]   lambda:1     
+770(51) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.99e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+771(52) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.99e-15]   lambda:1     
+772(53) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.99e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+773(54) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.99e-15]   lambda:1     
+774(55) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.99e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+775(56) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.98e-15]   lambda:1     
+776(57) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.98e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+777(58) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.99e-15]   lambda:1     
+778(59) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.5e-06,d:4.99e-15)   -->  [f:1.38e-06,d:4.99e-15]  lambda:1     
+779(60) [phase:1,s:0.9857,ds:0.0028564,dump:0,u:0:0]    (f:1.38e-06,d:4.99e-15)  -->  [f:1.5e-06,d:4.98e-15]   lambda:1     
+
+Continuation step N.1 s:0.98572->0.99, ds=0.0042847
+[iter:779,phase:1,s:0.99,ds:0.0042847] |X|=1.502e+04/8.999/342.5, |L|=1.502e+04/8.999/342.5 |B|=0/0/0, |BL|=5.19e-33/8.607e-33/6.214e-33, PARS=0/0/0, U=5.991/2/2.828
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+780(1 ) [phase:1,s:0.99,ds:0.0042847,dump:29,u:0:0]        (f:8.98,d:0.0328)     -->     [f:5.96,d:0.0217]     lambda:6.01e-06  #err=357 update:26 armijo:3
+781(2 ) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]        (f:5.96,d:3.93e-06)    -->    [f:5.94,d:3.91e-06]    lambda:0.00368 
+782(3 ) [phase:1,s:0.99,ds:0.0042847,dump:1,u:0:0]        (f:5.94,d:3.89e-06)    -->    [f:2.55,d:1.68e-06]    lambda:0.4    #err=  1 armijo:1
+783(4 ) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]        (f:2.55,d:1.66e-06)    -->   [f:0.462,d:9.58e-08]    lambda:1     
+784(5 ) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]       (f:0.462,d:6.45e-08)    -->  [f:0.00945,d:1.83e-09]   lambda:1     
+785(6 ) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:0.00945,d:1.92e-09)   -->  [f:6.18e-06,d:1.82e-12]  lambda:1     
+786(7 ) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:6.18e-06,d:1.82e-12)  -->  [f:1.9e-06,d:6.94e-13]   lambda:1     
+787(8 ) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.94e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+788(9 ) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.22e-06,d:6.95e-13)  -->  [f:1.9e-06,d:6.95e-13]   lambda:1     
+789(10) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.95e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+790(11) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.22e-06,d:6.95e-13)  -->  [f:1.9e-06,d:6.95e-13]   lambda:1     
+791(12) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.95e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+792(13) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.22e-06,d:6.95e-13)  -->  [f:1.9e-06,d:6.95e-13]   lambda:1     
+793(14) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.95e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+794(15) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.22e-06,d:6.95e-13)  -->  [f:1.9e-06,d:6.95e-13]   lambda:1     
+795(16) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.95e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+796(17) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.22e-06,d:6.95e-13)  -->  [f:1.9e-06,d:6.95e-13]   lambda:1     
+797(18) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.95e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+798(19) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.22e-06,d:6.95e-13)  -->  [f:1.9e-06,d:6.95e-13]   lambda:1     
+799(20) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.95e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+800(21) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.22e-06,d:6.95e-13)  -->  [f:1.9e-06,d:6.95e-13]   lambda:1     
+801(22) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.95e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+802(23) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.22e-06,d:6.95e-13)  -->  [f:1.9e-06,d:6.95e-13]   lambda:1     
+803(24) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.95e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+804(25) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.22e-06,d:6.95e-13)  -->  [f:1.9e-06,d:6.95e-13]   lambda:1     
+805(26) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.95e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+806(27) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.22e-06,d:6.95e-13)  -->  [f:1.9e-06,d:6.95e-13]   lambda:1     
+807(28) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.95e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+808(29) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.22e-06,d:6.95e-13)  -->  [f:1.9e-06,d:6.95e-13]   lambda:1     
+809(30) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.95e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+810(31) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.22e-06,d:6.95e-13)  -->  [f:1.9e-06,d:6.95e-13]   lambda:1     
+811(32) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.95e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+812(33) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.22e-06,d:6.95e-13)  -->  [f:1.9e-06,d:6.95e-13]   lambda:1     
+813(34) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.95e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+814(35) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.22e-06,d:6.95e-13)  -->  [f:1.9e-06,d:6.95e-13]   lambda:1     
+815(36) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.95e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+816(37) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.22e-06,d:6.95e-13)  -->  [f:1.9e-06,d:6.95e-13]   lambda:1     
+817(38) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.95e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+818(39) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.22e-06,d:6.95e-13)  -->  [f:1.9e-06,d:6.95e-13]   lambda:1     
+819(40) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.95e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] MinimumEnergyProblem
+820(41) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.22e-06,d:6.95e-13)  -->  [f:1.9e-06,d:6.95e-13]   lambda:1     
+821(42) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.95e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+822(43) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.22e-06,d:6.95e-13)  -->  [f:1.9e-06,d:6.95e-13]   lambda:1     
+823(44) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.95e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+824(45) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.22e-06,d:6.95e-13)  -->  [f:1.9e-06,d:6.95e-13]   lambda:1     
+825(46) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.95e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+826(47) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.22e-06,d:6.95e-13)  -->  [f:1.9e-06,d:6.95e-13]   lambda:1     
+827(48) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.95e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+828(49) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.22e-06,d:6.95e-13)  -->  [f:1.9e-06,d:6.95e-13]   lambda:1     
+829(50) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.95e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+830(51) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.22e-06,d:6.95e-13)  -->  [f:1.9e-06,d:6.95e-13]   lambda:1     
+831(52) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.95e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+832(53) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.22e-06,d:6.95e-13)  -->  [f:1.9e-06,d:6.95e-13]   lambda:1     
+833(54) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.95e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+834(55) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.22e-06,d:6.95e-13)  -->  [f:1.9e-06,d:6.95e-13]   lambda:1     
+835(56) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.95e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+836(57) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.22e-06,d:6.95e-13)  -->  [f:1.9e-06,d:6.95e-13]   lambda:1     
+837(58) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.95e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+838(59) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.22e-06,d:6.95e-13)  -->  [f:1.9e-06,d:6.95e-13]   lambda:1     
+839(60) [phase:1,s:0.99,ds:0.0042847,dump:0,u:0:0]      (f:1.9e-06,d:6.95e-13)   -->  [f:1.22e-06,d:6.95e-13]  lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 1               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = NO              | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 4008            | N. System pars  = 11011           |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 11.8 [sec]      | timeout         = 0 [ms]          |
+| iteration       = 839             | Memory Used     = 1Mb(+0Kb)       |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 1825            | Jacobian        = 839             |
+| Factorization   = 839             | Inversion       = 1825            |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 0.0018436       | last ||d||_inf  = 6.3789e-10      |
+| last ||f||_1    = 1.2209e-06      | last ||d||_1    = 6.9475e-13      |
+| last ||f||_2    = 4.333e-05       | last ||d||_2    = 1.4271e-11      |
++-----------------------------------------------------------------------+
+|          __  ___     __   __             ___  __   __   ___  __       |
+|    |\ | /  \  |     /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \      |
+|    | \| \__/  |     \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/      |
+|                                                                       |
++-----------------------------------------------------------------------+
+                                                                         
+Solver error list
+BEGIN
+  err #1: NLsolver[MinimumEnergyProblem]::solve_with_continuation(phase=1,...) accumulated iter = 839 too big > 800
+END
+                                                                         
+Check Controls (epsi=0.001): all OK [ 2.559ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 121.6ms ]
+Check DuDxxpm (epsi=0.001): all OK [ 68.78ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001):
+#ERR 1 DabcDxlxlpu [cell=329 of 1000 SEGMENT#0 range:(0,1000)] #x=#l=2 #p=0 #u=1 [ (xlp) x (xlxlpu) = 4 x 9 ]
+DbDx_L(0:1,0:1)[ 0, 0] =        39242 : 39307        [A:FD] ---       64.215 : 0.1634       [err:err(%)]
+DbDx_R(0:1,0:1)[ 0, 0] =        39242 : 39307        [A:FD] ---       64.215 : 0.1634       [err:err(%)]
+
+#ERR 2 DabcDxlxlpu [cell=330 of 1000 SEGMENT#0 range:(0,1000)] #x=#l=2 #p=0 #u=1 [ (xlp) x (xlxlpu) = 4 x 9 ]
+DbDx_L(0:1,0:1)[ 0, 0] =   3.7592e+05 : 3.7872e+05   [A:FD] ---       2792.8 : 0.7374       [err:err(%)]
+DbDx_R(0:1,0:1)[ 0, 0] =   3.7592e+05 : 3.7872e+05   [A:FD] ---       2792.8 : 0.7374       [err:err(%)]
+
+#ERR 3 DabcDxlxlpu [cell=331 of 1000 SEGMENT#0 range:(0,1000)] #x=#l=2 #p=0 #u=1 [ (xlp) x (xlxlpu) = 4 x 9 ]
+DbDx_L(0:1,0:1)[ 0, 0] =   4.3653e+06 : 4.5375e+06   [A:FD] ---   1.7229e+05 : 3.797        [err:err(%)]
+DbDx_R(0:1,0:1)[ 0, 0] =   4.3653e+06 : 4.5375e+06   [A:FD] ---   1.7229e+05 : 3.797        [err:err(%)]
+
+#ERR 4 DabcDxlxlpu [cell=332 of 1000 SEGMENT#0 range:(0,1000)] #x=#l=2 #p=0 #u=1 [ (xlp) x (xlxlpu) = 4 x 9 ]
+DbDx_L(0:1,0:1)[ 0, 0] =   2.3233e+13 : 6.9288e+13   [A:FD] ---   4.6055e+13 : 66.47        [err:err(%)]
+DbDx_R(0:1,0:1)[ 0, 0] =   2.3233e+13 : 6.9288e+13   [A:FD] ---   4.6055e+13 : 66.47        [err:err(%)]
+
+#ERR 5 DabcDxlxlpu [cell=333 of 1000 SEGMENT#0 range:(0,1000)] #x=#l=2 #p=0 #u=1 [ (xlp) x (xlxlpu) = 4 x 9 ]
+DbDx_L(0:1,0:1)[ 0, 0] =   8.9472e+13 : 1.5966e+14   [A:FD] ---   7.0184e+13 : 43.96        [err:err(%)]
+DbDx_R(0:1,0:1)[ 0, 0] =   8.9472e+13 : 1.5966e+14   [A:FD] ---   7.0184e+13 : 43.96        [err:err(%)]
+
+#ERR 6 DabcDxlxlpu [cell=334 of 1000 SEGMENT#0 range:(0,1000)] #x=#l=2 #p=0 #u=1 [ (xlp) x (xlxlpu) = 4 x 9 ]
+DbDx_L(0:1,0:1)[ 0, 0] =    1.228e+07 : 1.5213e+11   [A:FD] ---   1.5211e+11 : 99.99        [err:err(%)]
+DbDx_R(0:1,0:1)[ 0, 0] =    1.228e+07 : 1.5213e+11   [A:FD] ---   1.5211e+11 : 99.99        [err:err(%)]
+
+skipping... [ 39.75ms ]
+Check DodeDxp (epsi=0.001): all OK [ 2.577ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 42.41ms ]
+target [Lagrange,Mayer]            = [ 4, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 0, 2.924e-09 ]
+All Done Folks!

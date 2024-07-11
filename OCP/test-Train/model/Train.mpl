@@ -21,7 +21,7 @@ addControlBound(
   ua,
   controlType = "U_COS_LOGARITHMIC",
   min         = 0,
-  max         = uaMax, 
+  max         = uaMax,
   epsilon     = epsi0,
   tolerance   = tol0
 );

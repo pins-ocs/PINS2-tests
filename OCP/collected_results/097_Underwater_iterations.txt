@@ -1,0 +1,913 @@
++-------------------------- MODEL:Underwater ---------------------------+
++................................ DIMS .................................+
+| dims                      = u=3, q=1, x=6, p=1, bc=12 of 12           |
+| total                     = nZ=12025, nP=31028, nUC=3000, Q=1001      |
+| index start               = omega=12012, p=12024                      |
+| post processing           = n_post=0                                  |
++................................ MESH .................................+
+| num nodes / segments      = 1001 / 1                                  |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 1                               |
+| mesh class pointer        = 0x7ff7bb14b138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 12025 x 12025                             |
+| nblock/block size         = 1000 / 12                                 |
+| qr/qx/nr/nx               = 12 / 12 / 1 / 1                           |
+| last blok rows x cols     = 37 x 37                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x                                                        |
+| [ 1] initial_z                                                        |
+| [ 2] initial_vx                                                       |
+| [ 3] initial_vz                                                       |
+| [ 4] initial_theta                                                    |
+| [ 5] initial_Omega                                                    |
+| [ 6] final_x                                                          |
+| [ 7] final_z                                                          |
+| [ 8] final_vx                                                         |
+| [ 9] final_vz                                                         |
+| [10] final_theta                                                      |
+| [11] final_Omega                                                      |
++..................... Controls penalties/barriers .....................+
+u1Control = { COSLOG (BARRIER) epsilon=0.1, tolerance=0.1 }              
+u2Control = { COSLOG (BARRIER) epsilon=0.1, tolerance=0.1 }              
+u3Control = { COSLOG (BARRIER) epsilon=0.1, tolerance=0.1 }              
++....................... No constraints type LT ........................+
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 1001                                                   
+  Segment N.0: s0 = 0 length = 1 npts = 1001 no data set                 
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|.......................... Omega_f = 0 ................................|
+|.......................... Omega_i = 0 ................................|
+|........................... Tguess = 10 ...............................|
+|.......................... inertia = 0.12 .............................|
+|............................... m1 = 13.2 .............................|
+|............................... m3 = 25.6 .............................|
+|.......................... theta_f = 0 ................................|
+|.......................... theta_i = 0 ................................|
+|.......................... tol_max = 0.1 ..............................|
+|.......................... tol_min = 0.001 ............................|
+|............................. vx_f = 0 ................................|
+|............................. vx_i = 0 ................................|
+|............................. vz_f = 0 ................................|
+|............................. vz_i = 0 ................................|
+|.............................. x_f = 2 ................................|
+|.............................. x_i = 0 ................................|
+|.............................. z_f = 1 ................................|
+|.............................. z_i = 1 ................................|
+|......................... epsi_max = 0.1 ..............................|
+|......................... epsi_min = 1e-07 ............................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=20.67/1.183/4.226, |L|=20.67/1.183/4.226 |B|=0/0/0, |BL|=0.2/0.4003/0.2828, PARS=1/1/1, U=0/0/0
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+  1 [dump:5,u:0:0]        (f:1.18,d:17.2)      -->      [f:1.76,d:16.3]      lambda:0.0102  #err=  5 armijo:5
+  2 [dump:0,u:0:0]       (f:1.76,d:0.806)      -->      [f:1.54,d:0.69]      lambda:0.152 
+  3 [dump:0,u:0:0]        (f:1.54,d:0.74)      -->     [f:6.15,d:0.425]      lambda:1     
+  4 [dump:2,u:0:0]        (f:6.15,d:1.07)      -->     [f:5.48,d:0.675]      lambda:0.16   #err=  2 armijo:2
+  5 [dump:0,u:0:0]       (f:5.48,d:0.629)      -->      [f:3.2,d:0.273]      lambda:1     
+  6 [dump:0,u:0:0]        (f:3.2,d:0.221)      -->     [f:1.32,d:0.117]      lambda:1     
+  7 [dump:1,u:0:0]       (f:1.32,d:0.183)      -->    [f:0.778,d:0.0958]     lambda:0.4    #err=  1 armijo:1
+  8 [dump:2,u:0:0]       (f:0.778,d:0.119)     -->    [f:0.238,d:0.0247]     lambda:0.842  #err=  2 angle:2 armijo:2
+  9 [dump:0,u:0:0]      (f:0.238,d:0.0799)     -->    [f:0.172,d:0.0178]     lambda:1     
+ 10 [dump:1,u:0:0]      (f:0.172,d:0.0892)     -->    [f:0.135,d:0.0501]     lambda:0.505  #err=  1 angle:1 armijo:1
+ 11 [dump:1,u:0:0]       (f:0.135,d:0.138)     -->     [f:0.147,d:0.047]     lambda:0.4    #err=  1 armijo:1
+ 12 [dump:1,u:0:0]       (f:0.147,d:0.109)     -->     [f:0.126,d:0.056]     lambda:0.4    #err=  1 armijo:1
+ 13 [dump:1,u:0:0]        (f:0.126,d:0.1)      -->    [f:0.103,d:0.0474]     lambda:0.4    #err=  1 armijo:1
+ 14 [dump:1,u:0:0]      (f:0.103,d:0.0666)     -->    [f:0.0724,d:0.0378]    lambda:0.4    #err=  1 armijo:1
+ 15 [dump:1,u:0:0]      (f:0.0724,d:0.0438)    -->   [f:0.0362,d:0.00586]    lambda:0.759  #err=  1 angle:1 armijo:1
+ 16 [dump:0,u:0:0]     (f:0.0362,d:0.00965)    -->  [f:0.00233,d:0.000873]   lambda:1     
+ 17 [dump:0,u:0:0]     (f:0.00233,d:0.00104)   -->  [f:1.95e-05,d:5.95e-06]  lambda:1     
+ 18 [dump:0,u:0:0]    (f:1.95e-05,d:6.13e-06)  -->   [f:9.2e-10,d:8.9e-10]   lambda:1     
+ 19 [dump:0,u:0:0]     (f:9.2e-10,d:8.9e-10)   -->  [f:5.84e-14,d:2.65e-16]  lambda:1     
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:19,phase:1,s:0.2,ds:0.2] |X|=8.851/0.2935/1.283, |L|=8.851/0.2928/1.282 |B|=0/0/0, |BL|=6.773e-26/2.209e-25/1.089e-25, PARS=0.03904/0.03904/0.03904, U=0.9606/0.5366/0.6433
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+20 (1 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]               (f:0.293,d:0.0725)     -->    [f:0.0627,d:0.0154]    lambda:1     
+21 (2 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]               (f:0.0627,d:0.0209)    -->   [f:0.00993,d:0.00208]   lambda:1     
+22 (3 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]              (f:0.00993,d:0.00519)   -->  [f:0.000839,d:0.000703]  lambda:1     
+23 (4 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:0.000839,d:0.000862)  -->  [f:1.79e-05,d:6.72e-06]  lambda:1     
+24 (5 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:1.79e-05,d:7.05e-06)  -->  [f:1.63e-09,d:2.24e-09]  lambda:1     
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:24,phase:1,s:0.5,ds:0.3] |X|=17.18/0.674/2.887, |L|=17.18/0.6731/2.886 |B|=0/0/0, |BL|=5.575e-22/1.474e-21/7.801e-22, PARS=0.06137/0.06137/0.06137, U=0.9786/0.6201/0.711
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+25 (1 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]                (f:0.673,d:0.105)     -->    [f:0.169,d:0.0104]     lambda:1     
+26 (2 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]               (f:0.169,d:0.0169)     -->   [f:0.0116,d:0.00548]    lambda:1     
+27 (3 ) [phase:1,s:0.5,ds:0.3,dump:1,u:0:0]               (f:0.0116,d:0.0135)    -->   [f:0.00945,d:0.00102]   lambda:0.95   #err=  1 angle:1 armijo:1
+28 (4 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]              (f:0.00945,d:0.00399)   -->  [f:0.00106,d:0.000898]   lambda:1     
+29 (5 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]              (f:0.00106,d:0.00129)   -->  [f:8.72e-05,d:3.38e-05]  lambda:1     
+30 (6 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:8.72e-05,d:3.95e-05)  -->  [f:9.81e-08,d:1.45e-07]  lambda:1     
+31 (7 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:9.81e-08,d:1.45e-07)  -->  [f:1.13e-12,d:4.42e-13]  lambda:1     
+
+Continuation step N.1 s:0.5->0.95, ds=0.45
+[iter:31,phase:1,s:0.95,ds:0.45] |X|=56.58/3.21/11.95, |L|=56.58/3.209/11.95 |B|=0/0/0, |BL|=1.316e-23/3.346e-23/1.764e-23, PARS=0.1025/0.1025/0.1025, U=0.9987/0.8807/0.9077
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+32 (1 ) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]               (f:3.2,d:0.193)      -->      [f:2.2,d:0.153]      lambda:0.16   #err=  2 armijo:2
+33 (2 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]               (f:2.2,d:0.131)      -->     [f:1.12,d:0.0765]     lambda:0.4    #err=  1 armijo:1
+34 (3 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]              (f:1.12,d:0.0792)     -->     [f:0.65,d:0.0533]     lambda:0.4    #err=  1 armijo:1
+35 (4 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]              (f:0.65,d:0.0511)     -->    [f:0.398,d:0.0292]     lambda:0.4    #err=  1 armijo:1
+36 (5 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]             (f:0.398,d:0.0255)     -->    [f:0.0208,d:0.0018]    lambda:1     
+37 (6 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]            (f:0.0208,d:0.00189)    -->   [f:0.0128,d:0.00134]    lambda:0.4    #err=  1 armijo:1
+38 (7 ) [phase:1,s:0.95,ds:0.45,dump:5,u:0:0]             (f:0.0128,d:0.0118)    -->    [f:0.0127,d:0.0118]    lambda:0.0102  #err=  5 armijo:5
+39 (8 ) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]             (f:0.0127,d:0.0065)    -->    [f:0.0124,d:0.0065]    lambda:0.0243  #err=  2 armijo:2
+40 (9 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]            (f:0.0124,d:0.00693)    -->    [f:0.0164,d:0.0064]    lambda:0.4    #err=  1 armijo:1
+41 (10) [phase:1,s:0.95,ds:0.45,dump:4,u:0:0]             (f:0.0164,d:0.0043)    -->   [f:0.0159,d:0.00424]    lambda:0.0268  #err=  4 armijo:4
+42 (11) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]             (f:0.0159,d:0.0733)    -->    [f:0.0221,d:0.0667]    lambda:0.0393  #err=  2 armijo:2
+43 (12) [phase:1,s:0.95,ds:0.45,dump:5,u:0:0]             (f:0.0221,d:0.0117)    -->    [f:0.0219,d:0.0117]    lambda:0.0102  #err=  5 armijo:5
+44 (13) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]            (f:0.0219,d:0.00614)    -->   [f:0.0214,d:0.00613]    lambda:0.0243  #err=  2 armijo:2
+45 (14) [phase:1,s:0.95,ds:0.45,dump:4,u:0:0]            (f:0.0214,d:0.00631)    -->   [f:0.0209,d:0.00632]    lambda:0.0256  #err=  4 armijo:4
+46 (15) [phase:1,s:0.95,ds:0.45,dump:3,u:0:0]            (f:0.0209,d:0.00568)    -->   [f:0.0206,d:0.00564]    lambda:0.0154  #err=  3 armijo:3
+47 (16) [phase:1,s:0.95,ds:0.45,dump:8,u:0:0]             (f:0.0206,d:0.0578)    -->    [f:0.0205,d:0.0579]    lambda:0.000655  #err=  8 armijo:8
+48 (17) [phase:1,s:0.95,ds:0.45,dump:3,u:0:0]             (f:0.0205,d:0.0195)    -->    [f:0.0205,d:0.0196]    lambda:0.00246  #err=  3 armijo:3
+49 (18) [phase:1,s:0.95,ds:0.45,dump:7,u:0:0]             (f:0.0205,d:0.0226)    -->    [f:0.0205,d:0.0226]    lambda:0.00164  #err=  7 armijo:7
+50 (19) [phase:1,s:0.95,ds:0.45,dump:3,u:0:0]             (f:0.0205,d:0.0118)    -->    [f:0.0204,d:0.0118]    lambda:0.00389  #err=  3 armijo:3
+51 (20) [phase:1,s:0.95,ds:0.45,dump:3,u:0:0]             (f:0.0204,d:0.0664)    -->    [f:0.0375,d:0.064]     lambda:0.064  #err=  3 armijo:3
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+52 (21) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]            (f:0.0375,d:0.00161)    -->   [f:0.0225,d:0.00117]    lambda:0.405  #err=  1 armijo:1
+53 (22) [phase:1,s:0.95,ds:0.45,dump:6,u:0:0]             (f:0.0225,d:0.014)     -->    [f:0.0224,d:0.014]     lambda:0.0041  #err=  6 armijo:6
+54 (23) [phase:1,s:0.95,ds:0.45,dump:4,u:0:0]             (f:0.0224,d:0.0151)    -->    [f:0.0223,d:0.0151]    lambda:0.00246  #err=  4 armijo:4
+55 (24) [phase:1,s:0.95,ds:0.45,dump:3,u:0:0]             (f:0.0223,d:0.0118)    -->    [f:0.0222,d:0.0118]    lambda:0.00476  #err=  3 armijo:3
+56 (25) [phase:1,s:0.95,ds:0.45,dump:7,u:0:0]             (f:0.0222,d:0.0234)    -->    [f:0.0222,d:0.0234]    lambda:0.00164  #err=  7 armijo:7
+57 (26) [phase:1,s:0.95,ds:0.45,dump:5,u:0:0]             (f:0.0222,d:0.0385)    -->    [f:0.0222,d:0.0386]    lambda:0.000622  #err=  5 armijo:5
+58 (27) [phase:1,s:0.95,ds:0.45,dump:3,u:0:0]             (f:0.0222,d:0.0169)    -->    [f:0.0221,d:0.0169]    lambda:0.00239  #err=  3 armijo:3
+59 (28) [phase:1,s:0.95,ds:0.45,dump:11,u:0:0]            (f:0.0221,d:0.509)     -->     [f:0.0221,d:0.51]     lambda:4.19e-05  #err= 11 armijo:11
+60 (29) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]             (f:0.0221,d:0.0138)    -->    [f:0.022,d:0.0138]     lambda:0.00389  #err=  1 armijo:1
+61 (30) [phase:1,s:0.95,ds:0.45,dump:15,u:0:0]             (f:0.022,d:30.4)      -->     [f:0.022,d:30.5]      lambda:1.07e-06  #err= 15 armijo:15
+62 (31) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]             (f:0.022,d:0.00913)    -->    [f:0.022,d:0.00912]    lambda:0.00155 
+63 (32) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]             (f:0.022,d:0.0145)     -->   [f:0.0481,d:0.00487]    lambda:0.4    #err=  1 armijo:1
+64 (33) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]            (f:0.0481,d:0.00145)    -->    [f:0.029,d:0.00136]    lambda:0.4    #err=  1 armijo:1
+65 (34) [phase:1,s:0.95,ds:0.45,dump:7,u:0:0]             (f:0.029,d:0.0243)     -->    [f:0.029,d:0.0245]     lambda:0.00164  #err=  7 armijo:7
+66 (35) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]             (f:0.029,d:0.00382)    -->   [f:0.0287,d:0.00379]    lambda:0.011  #err=  2 armijo:2
+67 (36) [phase:1,s:0.95,ds:0.45,dump:9,u:0:0]             (f:0.0287,d:0.154)     -->    [f:0.0287,d:0.155]     lambda:0.000262  #err=  9 armijo:9
+68 (37) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]            (f:0.0287,d:0.00345)    -->    [f:0.028,d:0.00342]    lambda:0.0243 
+69 (38) [phase:1,s:0.95,ds:0.45,dump:5,u:0:0]             (f:0.028,d:0.00431)    -->   [f:0.0277,d:0.00429]    lambda:0.0102  #err=  5 armijo:5
+70 (39) [phase:1,s:0.95,ds:0.45,dump:5,u:0:0]             (f:0.0277,d:0.014)     -->    [f:0.0277,d:0.014]     lambda:0.00155  #err=  5 armijo:5
+71 (40) [phase:1,s:0.95,ds:0.45,dump:3,u:0:0]            (f:0.0277,d:0.00867)    -->   [f:0.0276,d:0.00867]    lambda:0.00378  #err=  3 armijo:3
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+72 (41) [phase:1,s:0.95,ds:0.45,dump:6,u:0:0]            (f:0.0276,d:0.00691)    -->    [f:0.0274,d:0.0069]    lambda:0.00479  #err=  6 armijo:6
+73 (42) [phase:1,s:0.95,ds:0.45,dump:4,u:0:0]            (f:0.0274,d:0.00867)    -->   [f:0.0273,d:0.00867]    lambda:0.00266  #err=  4 armijo:4
+74 (43) [phase:1,s:0.95,ds:0.45,dump:4,u:0:0]             (f:0.0273,d:0.0137)    -->    [f:0.0273,d:0.0137]    lambda:0.00198  #err=  4 armijo:4
+75 (44) [phase:1,s:0.95,ds:0.45,dump:3,u:0:0]            (f:0.0273,d:0.00651)    -->    [f:0.0272,d:0.0065]    lambda:0.00427  #err=  3 armijo:3
+76 (45) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]             (f:0.0272,d:0.0163)    -->    [f:0.0348,d:0.0158]    lambda:0.16   #err=  2 armijo:2
+77 (46) [phase:1,s:0.95,ds:0.45,dump:4,u:0:0]            (f:0.0348,d:0.00276)    -->   [f:0.0339,d:0.00272]    lambda:0.0269  #err=  4 armijo:4
+78 (47) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]             (f:0.0339,d:0.0114)    -->   [f:0.0358,d:0.00681]    lambda:0.246 
+79 (48) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]            (f:0.0358,d:0.00155)    -->   [f:0.0301,d:0.00141]    lambda:0.16   #err=  2 armijo:2
+80 (49) [phase:1,s:0.95,ds:0.45,dump:9,u:0:0]             (f:0.0301,d:0.0881)    -->    [f:0.0301,d:0.0883]    lambda:0.000262  #err=  9 armijo:9
+81 (50) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]            (f:0.0301,d:0.00934)    -->    [f:0.03,d:0.00933]     lambda:0.00389  #err=  2 armijo:2
+82 (51) [phase:1,s:0.95,ds:0.45,dump:8,u:0:0]              (f:0.03,d:0.0582)     -->    [f:0.0299,d:0.0583]    lambda:0.000655  #err=  8 armijo:8
+83 (52) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]             (f:0.0299,d:0.0113)    -->    [f:0.0298,d:0.0113]    lambda:0.00614  #err=  2 armijo:2
+84 (53) [phase:1,s:0.95,ds:0.45,dump:6,u:0:0]             (f:0.0298,d:0.0131)    -->    [f:0.0296,d:0.0131]    lambda:0.0041  #err=  6 armijo:6
+85 (54) [phase:1,s:0.95,ds:0.45,dump:3,u:0:0]             (f:0.0296,d:0.0075)    -->   [f:0.0295,d:0.00748]    lambda:0.00614  #err=  3 armijo:3
+86 (55) [phase:1,s:0.95,ds:0.45,dump:6,u:0:0]             (f:0.0295,d:0.0131)    -->    [f:0.0293,d:0.0131]    lambda:0.0041  #err=  6 armijo:6
+87 (56) [phase:1,s:0.95,ds:0.45,dump:4,u:0:0]             (f:0.0293,d:0.0188)    -->    [f:0.0293,d:0.0189]    lambda:0.00246  #err=  4 armijo:4
+88 (57) [phase:1,s:0.95,ds:0.45,dump:3,u:0:0]             (f:0.0293,d:0.0108)    -->    [f:0.0291,d:0.0109]    lambda:0.00476  #err=  3 armijo:3
+89 (58) [phase:1,s:0.95,ds:0.45,dump:5,u:0:0]            (f:0.0291,d:0.00862)    -->   [f:0.0288,d:0.00865]    lambda:0.0102  #err=  5 armijo:5
+90 (59) [phase:1,s:0.95,ds:0.45,dump:4,u:0:0]             (f:0.0288,d:0.012)     -->    [f:0.0287,d:0.012]     lambda:0.00389  #err=  4 armijo:4
+91 (60) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]            (f:0.0287,d:0.00615)    -->   [f:0.0283,d:0.00613]    lambda:0.015  #err=  2 armijo:2
+NLsolver[Underwater]::solve_with_continuation(phase=1,...) found:
+NLsolver[Underwater]::solve()
+#phase=1 #it=0/60 lambda=0.015 tolerance=1.78e-07 |f|_1=0.02872 |f|_inf=35.93 |d|_1=0.006145 |d|_inf=0.4096
+at phase 1, iter 91: NLsolver[Underwater]::solve, Too many iterations
+
+
+Continuation step N.1 s:0.5->0.725, ds=0.225
+[iter:91,phase:1,s:0.725,ds:0.225] |X|=19.91/0.8443/3.593, |L|=19.91/0.8438/3.593 |B|=0/0/0, |BL|=1.316e-23/3.346e-23/1.764e-23, PARS=0.04837/0.04837/0.04837, U=0.9896/0.6894/0.7706
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+92 (1 ) [phase:1,s:0.725,ds:0.225,dump:0,u:0:0]           (f:0.843,d:0.0755)     -->    [f:0.203,d:0.00868]    lambda:1     
+93 (2 ) [phase:1,s:0.725,ds:0.225,dump:1,u:0:0]           (f:0.203,d:0.0203)     -->    [f:0.111,d:0.00911]    lambda:0.501  #err=  1 angle:1 armijo:1
+94 (3 ) [phase:1,s:0.725,ds:0.225,dump:2,u:0:0]           (f:0.111,d:0.0138)     -->   [f:0.0296,d:0.00129]    lambda:0.902  #err=  2 angle:2 armijo:2
+95 (4 ) [phase:1,s:0.725,ds:0.225,dump:0,u:0:0]          (f:0.0296,d:0.00721)    -->   [f:0.00817,d:0.0019]    lambda:1     
+96 (5 ) [phase:1,s:0.725,ds:0.225,dump:0,u:0:0]          (f:0.00817,d:0.00483)   -->  [f:0.00347,d:0.000605]   lambda:1     
+97 (6 ) [phase:1,s:0.725,ds:0.225,dump:0,u:0:0]          (f:0.00347,d:0.00152)   -->  [f:0.000353,d:0.00022]   lambda:1     
+98 (7 ) [phase:1,s:0.725,ds:0.225,dump:0,u:0:0]         (f:0.000353,d:0.000287)  -->  [f:1.2e-05,d:5.32e-06]   lambda:1     
+99 (8 ) [phase:1,s:0.725,ds:0.225,dump:0,u:0:0]         (f:1.2e-05,d:5.63e-06)   -->  [f:4.73e-09,d:4.09e-09]  lambda:1     
+100(9 ) [phase:1,s:0.725,ds:0.225,dump:0,u:0:0]         (f:4.73e-09,d:4.09e-09)  -->  [f:5.56e-14,d:1.79e-15]  lambda:1     
+
+Continuation step N.1 s:0.725->1, ds=0.275
+[iter:100,phase:1,s:1,ds:0.275] |X|=78.32/4.912/18.02, |L|=78.32/4.924/18.05 |B|=6.163e-33/6.163e-33/6.163e-33, |BL|=6.273e-25/1.127e-24/6.758e-25, PARS=0.06546/0.06546/0.06546, U=1/1/1
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+101(1 ) [phase:1,s:1,ds:0.275,dump:9,u:0:0]                  (f:4.9,d:2.8)       -->      [f:4.9,d:2.42]       lambda:0.000262  #err=  9 armijo:9
+102(2 ) [phase:1,s:1,ds:0.275,dump:6,u:0:0]                 (f:4.9,d:3.74)       -->      [f:4.9,d:3.56]       lambda:9.95e-05  #err=  6 armijo:6
+103(3 ) [phase:1,s:1,ds:0.275,dump:4,u:0:0]                 (f:4.9,d:0.785)      -->     [f:4.99,d:0.358]      lambda:0.000383  #err=  4 armijo:4
+104(4 ) [phase:1,s:1,ds:0.275,dump:1,u:0:0]                (f:4.99,d:0.335)      -->     [f:5.18,d:0.375]      lambda:0.0117  #err=  1 armijo:1
+105(5 ) [phase:1,s:1,ds:0.275,dump:5,u:0:0]                (f:5.18,d:0.398)      -->     [f:5.11,d:0.366]      lambda:0.0102  #err=  5 armijo:5
+106(6 ) [phase:1,s:1,ds:0.275,dump:5,u:0:0]                (f:5.11,d:0.644)      -->      [f:5.09,d:0.59]      lambda:0.00155  #err=  5 armijo:5
+107(7 ) [phase:1,s:1,ds:0.275,dump:5,u:0:0]                (f:5.09,d:0.765)      -->     [f:5.02,d:0.341]      lambda:0.000606  #err=  5 armijo:5
+108(8 ) [phase:1,s:1,ds:0.275,dump:9,u:0:0]                (f:5.02,d:0.298)      -->     [f:5.15,d:0.259]      lambda:0.0233  #err=  9 angle:9 armijo:9
+109(9 ) [phase:1,s:1,ds:0.275,dump:5,u:0:0]                (f:5.15,d:0.488)      -->     [f:4.99,d:0.353]      lambda:0.00234  #err=  5 armijo:5
+110(10) [phase:1,s:1,ds:0.275,dump:4,u:0:0]                (f:4.99,d:0.655)      -->     [f:5.25,d:0.415]      lambda:0.00186  #err=  4 armijo:4
+111(11) [phase:1,s:1,ds:0.275,dump:9,u:0:0]                (f:5.25,d:0.491)      -->     [f:5.15,d:0.254]      lambda:0.00128  #err=  9 angle:5 armijo:9
+112(12) [phase:1,s:1,ds:0.275,dump:9,u:0:0]                 (f:5.15,d:2.33)      -->      [f:5.14,d:2.33]      lambda:1.41e-05  #err=  9 armijo:9
+113(13) [phase:1,s:1,ds:0.275,dump:5,u:0:0]                 (f:5.14,d:11.4)      -->      [f:5.14,d:2.18]      lambda:5.76e-05  #err=  5 armijo:5
+114(14) [phase:1,s:1,ds:0.275,dump:1,u:0:0]                (f:5.14,d:0.222)      -->      [f:5.18,d:0.19]      lambda:0.00455  #err=  1 armijo:1
+115(15) [phase:1,s:1,ds:0.275,dump:7,u:0:0]                (f:5.18,d:0.162)      -->     [f:5.15,d:0.158]      lambda:0.00164  #err=  7 armijo:7
+116(16) [phase:1,s:1,ds:0.275,dump:3,u:0:0]                (f:5.15,d:0.209)      -->     [f:5.16,d:0.193]      lambda:0.00389  #err=  3 armijo:3
+117(17) [phase:1,s:1,ds:0.275,dump:7,u:0:0]                (f:5.16,d:0.166)      -->     [f:5.15,d:0.151]      lambda:0.00164  #err=  7 armijo:7
+118(18) [phase:1,s:1,ds:0.275,dump:3,u:0:0]                (f:5.15,d:0.184)      -->     [f:5.13,d:0.154]      lambda:0.00389  #err=  3 armijo:3
+119(19) [phase:1,s:1,ds:0.275,dump:5,u:0:0]                (f:5.13,d:0.154)      -->      [f:5.1,d:0.151]      lambda:0.0102  #err=  5 armijo:5
+120(20) [phase:1,s:1,ds:0.275,dump:2,u:0:0]                 (f:5.1,d:0.161)      -->     [f:4.98,d:0.156]      lambda:0.0243  #err=  2 armijo:2
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+121(21) [phase:1,s:1,ds:0.275,dump:6,u:0:0]                (f:4.98,d:0.174)      -->     [f:4.96,d:0.139]      lambda:0.0041  #err=  6 armijo:6
+122(22) [phase:1,s:1,ds:0.275,dump:5,u:0:0]                (f:4.96,d:0.135)      -->     [f:4.96,d:0.133]      lambda:0.000983  #err=  5 armijo:5
+123(23) [phase:1,s:1,ds:0.275,dump:6,u:0:0]                 (f:4.96,d:0.13)      -->      [f:4.96,d:0.13]      lambda:0.000193  #err=  6 armijo:6
+124(24) [phase:1,s:1,ds:0.275,dump:4,u:0:0]                (f:4.96,d:0.131)      -->     [f:4.95,d:0.131]      lambda:0.000533  #err=  4 armijo:4
+125(25) [phase:1,s:1,ds:0.275,dump:2,u:0:0]                (f:4.95,d:0.146)      -->      [f:4.9,d:0.132]      lambda:0.00554  #err=  2 armijo:2
+126(26) [phase:1,s:1,ds:0.275,dump:4,u:0:0]                 (f:4.9,d:0.136)      -->     [f:4.82,d:0.116]      lambda:0.0256  #err=  4 armijo:4
+127(27) [phase:1,s:1,ds:0.275,dump:5,u:0:0]                (f:4.82,d:0.117)      -->     [f:4.81,d:0.114]      lambda:0.00246  #err=  5 armijo:5
+128(28) [phase:1,s:1,ds:0.275,dump:1,u:0:0]                (f:4.81,d:0.114)      -->     [f:4.69,d:0.113]      lambda:0.0297  #err=  1 armijo:1
+129(29) [phase:1,s:1,ds:0.275,dump:5,u:0:0]                (f:4.69,d:0.108)      -->     [f:4.66,d:0.103]      lambda:0.0102  #err=  5 armijo:5
+130(30) [phase:1,s:1,ds:0.275,dump:4,u:0:0]                (f:4.66,d:0.103)      -->     [f:4.64,d:0.102]      lambda:0.00389  #err=  4 armijo:4
+131(31) [phase:1,s:1,ds:0.275,dump:4,u:0:0]                (f:4.64,d:0.102)      -->     [f:4.63,d:0.102]      lambda:0.00239  #err=  4 armijo:4
+132(32) [phase:1,s:1,ds:0.275,dump:4,u:0:0]                (f:4.63,d:0.102)      -->     [f:4.63,d:0.101]      lambda:0.00188  #err=  4 armijo:4
+133(33) [phase:1,s:1,ds:0.275,dump:2,u:0:0]                (f:4.63,d:0.102)      -->      [f:4.58,d:0.1]       lambda:0.0104  #err=  2 armijo:2
+134(34) [phase:1,s:1,ds:0.275,dump:7,u:0:0]                (f:4.58,d:0.0999)     -->     [f:4.58,d:0.0998]     lambda:0.00164  #err=  7 armijo:7
+135(35) [phase:1,s:1,ds:0.275,dump:4,u:0:0]                (f:4.58,d:0.103)      -->     [f:4.57,d:0.102]      lambda:0.00155  #err=  4 armijo:4
+136(36) [phase:1,s:1,ds:0.275,dump:4,u:0:0]                (f:4.57,d:0.102)      -->     [f:4.56,d:0.102]      lambda:0.00151  #err=  4 armijo:4
+137(37) [phase:1,s:1,ds:0.275,dump:4,u:0:0]                (f:4.56,d:0.103)      -->     [f:4.55,d:0.103]      lambda:0.00174  #err=  4 armijo:4
+138(38) [phase:1,s:1,ds:0.275,dump:3,u:0:0]                (f:4.55,d:0.0998)     -->     [f:4.54,d:0.0995]     lambda:0.00401  #err=  3 armijo:3
+139(39) [phase:1,s:1,ds:0.275,dump:7,u:0:0]                (f:4.54,d:0.103)      -->     [f:4.53,d:0.103]      lambda:0.00164  #err=  7 armijo:7
+140(40) [phase:1,s:1,ds:0.275,dump:4,u:0:0]                (f:4.53,d:0.0987)     -->     [f:4.52,d:0.0984]     lambda:0.00155  #err=  4 armijo:4
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+141(41) [phase:1,s:1,ds:0.275,dump:1,u:0:0]                (f:4.52,d:0.101)      -->     [f:4.41,d:0.101]      lambda:0.0273  #err=  1 armijo:1
+142(42) [phase:1,s:1,ds:0.275,dump:6,u:0:0]                (f:4.41,d:0.101)      -->      [f:4.37,d:0.1]       lambda:0.0041  #err=  6 armijo:6
+143(43) [phase:1,s:1,ds:0.275,dump:4,u:0:0]                (f:4.37,d:0.101)      -->      [f:4.36,d:0.1]       lambda:0.00262  #err=  4 armijo:4
+144(44) [phase:1,s:1,ds:0.275,dump:0,u:0:0]                (f:4.36,d:0.0993)     -->     [f:4.25,d:0.0984]     lambda:0.0767 
+145(45) [phase:1,s:1,ds:0.275,dump:4,u:0:0]                (f:4.25,d:0.0905)     -->     [f:4.17,d:0.0836]     lambda:0.0256  #err=  4 armijo:4
+146(46) [phase:1,s:1,ds:0.275,dump:4,u:0:0]                (f:4.17,d:0.0828)     -->     [f:4.13,d:0.0821]     lambda:0.00614  #err=  4 armijo:4
+147(47) [phase:1,s:1,ds:0.275,dump:3,u:0:0]                (f:4.13,d:0.0812)     -->     [f:4.12,d:0.0805]     lambda:0.00752  #err=  3 armijo:3
+148(48) [phase:1,s:1,ds:0.275,dump:6,u:0:0]                (f:4.12,d:0.0811)     -->     [f:4.09,d:0.0804]     lambda:0.0041  #err=  6 armijo:6
+149(49) [phase:1,s:1,ds:0.275,dump:1,u:0:0]                (f:4.09,d:0.0883)     -->     [f:3.93,d:0.0858]     lambda:0.0384  #err=  1 armijo:1
+150(50) [phase:1,s:1,ds:0.275,dump:4,u:0:0]                (f:3.93,d:0.0807)     -->     [f:3.9,d:0.0777]      lambda:0.0256  #err=  4 armijo:4
+151(51) [phase:1,s:1,ds:0.275,dump:3,u:0:0]                (f:3.9,d:0.0753)      -->     [f:3.83,d:0.0724]     lambda:0.0154  #err=  3 armijo:3
+152(52) [phase:1,s:1,ds:0.275,dump:7,u:0:0]                (f:3.83,d:0.0715)     -->     [f:3.83,d:0.0714]     lambda:0.00164  #err=  7 armijo:7
+153(53) [phase:1,s:1,ds:0.275,dump:0,u:0:0]                (f:3.83,d:0.0713)     -->     [f:3.66,d:0.0673]     lambda:0.0607 
+154(54) [phase:1,s:1,ds:0.275,dump:4,u:0:0]                (f:3.66,d:0.0714)     -->     [f:3.58,d:0.0664]     lambda:0.0256  #err=  4 armijo:4
+155(55) [phase:1,s:1,ds:0.275,dump:5,u:0:0]                (f:3.58,d:0.0671)     -->     [f:3.58,d:0.0664]     lambda:0.00246  #err=  5 armijo:5
+156(56) [phase:1,s:1,ds:0.275,dump:4,u:0:0]                (f:3.58,d:0.0651)     -->     [f:3.56,d:0.0637]     lambda:0.0019  #err=  4 armijo:4
+157(57) [phase:1,s:1,ds:0.275,dump:4,u:0:0]                (f:3.56,d:0.0639)     -->     [f:3.55,d:0.0638]     lambda:0.00168  #err=  4 armijo:4
+158(58) [phase:1,s:1,ds:0.275,dump:5,u:0:0]                (f:3.55,d:0.0636)     -->     [f:3.55,d:0.0635]     lambda:0.000629  #err=  5 armijo:5
+159(59) [phase:1,s:1,ds:0.275,dump:5,u:0:0]                (f:3.55,d:0.0626)     -->     [f:3.55,d:0.0626]     lambda:0.000385  #err=  5 armijo:5
+160(60) [phase:1,s:1,ds:0.275,dump:0,u:0:0]                (f:3.55,d:0.0627)     -->     [f:3.46,d:0.0618]     lambda:0.0294 
+NLsolver[Underwater]::solve_with_continuation(phase=1,...) found:
+NLsolver[Underwater]::solve()
+#phase=1 #it=0/60 lambda=0.0294 tolerance=1e-09 |f|_1=3.549 |f|_inf=154.1 |d|_1=0.06271 |d|_inf=0.9719
+at phase 1, iter 160: NLsolver[Underwater]::solve, Too many iterations
+
+
+Continuation step N.1 s:0.725->0.8625, ds=0.1375
+[iter:160,phase:1,s:0.8625,ds:0.1375] |X|=21.41/0.8794/3.67, |L|=21.41/0.8791/3.67 |B|=6.163e-33/6.163e-33/6.163e-33, |BL|=6.273e-25/1.127e-24/6.758e-25, PARS=0.03083/0.03083/0.03083, U=0.9954/0.7356/0.8122
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+161(1 ) [phase:1,s:0.8625,ds:0.1375,dump:0,u:0:0]         (f:0.878,d:0.0474)     -->    [f:0.267,d:0.00829]    lambda:1     
+162(2 ) [phase:1,s:0.8625,ds:0.1375,dump:1,u:0:0]         (f:0.267,d:0.0172)     -->    [f:0.177,d:0.00725]    lambda:0.4    #err=  1 armijo:1
+163(3 ) [phase:1,s:0.8625,ds:0.1375,dump:2,u:0:0]         (f:0.177,d:0.0102)     -->   [f:0.0569,d:0.00117]    lambda:0.815  #err=  2 angle:2 armijo:2
+164(4 ) [phase:1,s:0.8625,ds:0.1375,dump:0,u:0:0]        (f:0.0569,d:0.00533)    -->   [f:0.0116,d:0.00115]    lambda:1     
+165(5 ) [phase:1,s:0.8625,ds:0.1375,dump:0,u:0:0]        (f:0.0116,d:0.00375)    -->  [f:0.00587,d:0.000493]   lambda:1     
+166(6 ) [phase:1,s:0.8625,ds:0.1375,dump:0,u:0:0]        (f:0.00587,d:0.00178)   -->  [f:0.00135,d:0.000311]   lambda:1     
+167(7 ) [phase:1,s:0.8625,ds:0.1375,dump:0,u:0:0]       (f:0.00135,d:0.000536)   -->  [f:0.000118,d:6.13e-05]  lambda:1     
+168(8 ) [phase:1,s:0.8625,ds:0.1375,dump:0,u:0:0]       (f:0.000118,d:7.6e-05)   -->  [f:2.42e-06,d:7.11e-07]  lambda:1     
+169(9 ) [phase:1,s:0.8625,ds:0.1375,dump:0,u:0:0]       (f:2.42e-06,d:7.32e-07)  -->  [f:2.21e-10,d:1.35e-10]  lambda:1     
+170(10) [phase:1,s:0.8625,ds:0.1375,dump:0,u:0:0]       (f:2.21e-10,d:1.36e-10)  -->  [f:5.22e-14,d:4.06e-16]  lambda:1     
+
+Continuation step N.1 s:0.8625->1, ds=0.1375
+[iter:170,phase:1,s:1,ds:0.1375] |X|=77.5/4.601/17.33, |L|=77.5/4.614/17.36 |B|=6.163e-33/6.163e-33/6.163e-33, |BL|=7.057e-27/1.639e-26/9.079e-27, PARS=0.03339/0.03339/0.03339, U=1/1/1
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+171(1 ) [phase:1,s:1,ds:0.1375,dump:10,u:0:0]               (f:4.59,d:2.23)      -->      [f:4.59,d:2.13]      lambda:0.000105  #err= 10 armijo:10
+172(2 ) [phase:1,s:1,ds:0.1375,dump:5,u:0:0]                (f:4.59,d:1.24)      -->      [f:4.7,d:0.352]      lambda:0.000157  #err=  5 armijo:5
+173(3 ) [phase:1,s:1,ds:0.1375,dump:8,u:0:0]                (f:4.7,d:0.316)      -->     [f:4.92,d:0.299]      lambda:0.00525  #err=  8 angle:7 armijo:8
+174(4 ) [phase:1,s:1,ds:0.1375,dump:5,u:0:0]               (f:4.92,d:0.408)      -->      [f:4.8,d:0.156]      lambda:0.00211  #err=  5 angle:1 armijo:5
+175(5 ) [phase:1,s:1,ds:0.1375,dump:2,u:0:0]                (f:4.8,d:0.14)       -->     [f:4.71,d:0.126]      lambda:0.011  #err=  2 armijo:2
+176(6 ) [phase:1,s:1,ds:0.1375,dump:5,u:0:0]               (f:4.71,d:0.128)      -->     [f:4.93,d:0.114]      lambda:0.0102  #err=  5 armijo:5
+177(7 ) [phase:1,s:1,ds:0.1375,dump:3,u:0:0]               (f:4.93,d:0.146)      -->     [f:4.69,d:0.142]      lambda:0.00971  #err=  3 armijo:3
+178(8 ) [phase:1,s:1,ds:0.1375,dump:7,u:0:0]               (f:4.69,d:0.201)      -->     [f:4.76,d:0.155]      lambda:0.00164  #err=  7 armijo:7
+179(9 ) [phase:1,s:1,ds:0.1375,dump:3,u:0:0]               (f:4.76,d:0.142)      -->     [f:4.85,d:0.101]      lambda:0.00389  #err=  3 armijo:3
+180(10) [phase:1,s:1,ds:0.1375,dump:5,u:0:0]                (f:4.85,d:0.11)      -->     [f:4.67,d:0.094]      lambda:0.0102  #err=  5 armijo:5
+181(11) [phase:1,s:1,ds:0.1375,dump:3,u:0:0]               (f:4.67,d:0.0994)     -->     [f:4.69,d:0.0893]     lambda:0.00971  #err=  3 armijo:3
+182(12) [phase:1,s:1,ds:0.1375,dump:4,u:0:0]               (f:4.69,d:0.0905)     -->     [f:4.65,d:0.0815]     lambda:0.0256  #err=  4 armijo:4
+183(13) [phase:1,s:1,ds:0.1375,dump:4,u:0:0]               (f:4.65,d:0.118)      -->     [f:4.63,d:0.125]      lambda:0.00614  #err=  4 armijo:4
+184(14) [phase:1,s:1,ds:0.1375,dump:4,u:0:0]               (f:4.63,d:0.143)      -->     [f:4.59,d:0.113]      lambda:0.00301  #err=  4 armijo:4
+185(15) [phase:1,s:1,ds:0.1375,dump:3,u:0:0]               (f:4.59,d:0.0974)     -->     [f:4.63,d:0.0849]     lambda:0.00527  #err=  3 armijo:3
+186(16) [phase:1,s:1,ds:0.1375,dump:6,u:0:0]               (f:4.63,d:0.0948)     -->     [f:4.58,d:0.0897]     lambda:0.0041  #err=  6 armijo:6
+187(17) [phase:1,s:1,ds:0.1375,dump:3,u:0:0]               (f:4.58,d:0.0733)     -->     [f:4.56,d:0.0694]     lambda:0.00614  #err=  3 armijo:3
+188(18) [phase:1,s:1,ds:0.1375,dump:5,u:0:0]               (f:4.56,d:0.0679)     -->     [f:4.48,d:0.066]      lambda:0.0102  #err=  5 armijo:5
+189(19) [phase:1,s:1,ds:0.1375,dump:4,u:0:0]               (f:4.48,d:0.0659)     -->     [f:4.47,d:0.0656]     lambda:0.00389  #err=  4 armijo:4
+190(20) [phase:1,s:1,ds:0.1375,dump:2,u:0:0]               (f:4.47,d:0.0648)     -->     [f:4.37,d:0.0643]     lambda:0.015  #err=  2 armijo:2
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+191(21) [phase:1,s:1,ds:0.1375,dump:6,u:0:0]               (f:4.37,d:0.0621)     -->     [f:4.35,d:0.0619]     lambda:0.0041  #err=  6 armijo:6
+192(22) [phase:1,s:1,ds:0.1375,dump:4,u:0:0]               (f:4.35,d:0.0621)     -->     [f:4.34,d:0.0619]     lambda:0.00246  #err=  4 armijo:4
+193(23) [phase:1,s:1,ds:0.1375,dump:2,u:0:0]               (f:4.34,d:0.062)      -->     [f:4.28,d:0.0612]     lambda:0.0119  #err=  2 armijo:2
+194(24) [phase:1,s:1,ds:0.1375,dump:7,u:0:0]               (f:4.28,d:0.0602)     -->     [f:4.28,d:0.0601]     lambda:0.00164  #err=  7 armijo:7
+195(25) [phase:1,s:1,ds:0.1375,dump:4,u:0:0]               (f:4.28,d:0.0603)     -->     [f:4.27,d:0.0602]     lambda:0.00155  #err=  4 armijo:4
+196(26) [phase:1,s:1,ds:0.1375,dump:0,u:0:0]               (f:4.27,d:0.0603)     -->     [f:4.05,d:0.0582]     lambda:0.0591 
+197(27) [phase:1,s:1,ds:0.1375,dump:3,u:0:0]               (f:4.05,d:0.0616)     -->     [f:3.95,d:0.051]      lambda:0.064  #err=  3 armijo:3
+198(28) [phase:1,s:1,ds:0.1375,dump:3,u:0:0]               (f:3.95,d:0.0505)     -->     [f:3.79,d:0.0473]     lambda:0.064  #err=  3 armijo:3
+199(29) [phase:1,s:1,ds:0.1375,dump:6,u:0:0]               (f:3.79,d:0.052)      -->     [f:3.76,d:0.0463]     lambda:0.0041  #err=  6 armijo:6
+200(30) [phase:1,s:1,ds:0.1375,dump:3,u:0:0]               (f:3.76,d:0.0459)     -->     [f:3.73,d:0.0455]     lambda:0.00614  #err=  3 armijo:3
+201(31) [phase:1,s:1,ds:0.1375,dump:7,u:0:0]               (f:3.73,d:0.0463)     -->     [f:3.72,d:0.0462]     lambda:0.00164  #err=  7 armijo:7
+202(32) [phase:1,s:1,ds:0.1375,dump:4,u:0:0]               (f:3.72,d:0.046)      -->     [f:3.72,d:0.0458]     lambda:0.00175  #err=  4 armijo:4
+203(33) [phase:1,s:1,ds:0.1375,dump:1,u:0:0]               (f:3.72,d:0.0456)     -->     [f:3.61,d:0.0431]     lambda:0.0251  #err=  1 armijo:1
+204(34) [phase:1,s:1,ds:0.1375,dump:3,u:0:0]               (f:3.61,d:0.043)      -->     [f:3.41,d:0.0395]     lambda:0.064  #err=  3 armijo:3
+205(35) [phase:1,s:1,ds:0.1375,dump:6,u:0:0]               (f:3.41,d:0.0425)     -->     [f:3.4,d:0.0402]      lambda:0.0041  #err=  6 armijo:6
+206(36) [phase:1,s:1,ds:0.1375,dump:4,u:0:0]               (f:3.4,d:0.0386)      -->     [f:3.39,d:0.0385]     lambda:0.00246  #err=  4 armijo:4
+207(37) [phase:1,s:1,ds:0.1375,dump:4,u:0:0]               (f:3.39,d:0.0385)     -->     [f:3.38,d:0.0384]     lambda:0.0019  #err=  4 armijo:4
+208(38) [phase:1,s:1,ds:0.1375,dump:5,u:0:0]               (f:3.38,d:0.0383)     -->     [f:3.38,d:0.0383]     lambda:0.00067  #err=  5 armijo:5
+209(39) [phase:1,s:1,ds:0.1375,dump:4,u:0:0]               (f:3.38,d:0.0381)     -->     [f:3.37,d:0.038]      lambda:0.00102  #err=  4 armijo:4
+210(40) [phase:1,s:1,ds:0.1375,dump:0,u:0:0]               (f:3.37,d:0.0385)     -->     [f:3.24,d:0.0361]     lambda:0.048 
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+211(41) [phase:1,s:1,ds:0.1375,dump:6,u:0:0]               (f:3.24,d:0.0359)     -->     [f:3.22,d:0.0358]     lambda:0.00599  #err=  6 armijo:6
+212(42) [phase:1,s:1,ds:0.1375,dump:0,u:0:0]               (f:3.22,d:0.0359)     -->     [f:2.98,d:0.032]      lambda:0.116 
+213(43) [phase:1,s:1,ds:0.1375,dump:4,u:0:0]               (f:2.98,d:0.0316)     -->     [f:2.92,d:0.0306]     lambda:0.0256  #err=  4 armijo:4
+214(44) [phase:1,s:1,ds:0.1375,dump:0,u:0:0]               (f:2.92,d:0.0308)     -->     [f:2.6,d:0.0272]      lambda:0.24  
+215(45) [phase:1,s:1,ds:0.1375,dump:6,u:0:0]                (f:2.6,d:0.027)      -->     [f:2.59,d:0.0267]     lambda:0.0041  #err=  6 armijo:6
+216(46) [phase:1,s:1,ds:0.1375,dump:4,u:0:0]               (f:2.59,d:0.026)      -->     [f:2.57,d:0.0258]     lambda:0.00246  #err=  4 armijo:4
+217(47) [phase:1,s:1,ds:0.1375,dump:1,u:0:0]               (f:2.57,d:0.0257)     -->     [f:2.5,d:0.0256]      lambda:0.0297  #err=  1 armijo:1
+218(48) [phase:1,s:1,ds:0.1375,dump:4,u:0:0]               (f:2.5,d:0.0254)      -->     [f:2.44,d:0.0241]     lambda:0.0256  #err=  4 armijo:4
+219(49) [phase:1,s:1,ds:0.1375,dump:2,u:0:0]               (f:2.44,d:0.0252)     -->     [f:2.36,d:0.0228]     lambda:0.0384  #err=  2 armijo:2
+220(50) [phase:1,s:1,ds:0.1375,dump:5,u:0:0]               (f:2.36,d:0.025)      -->     [f:2.32,d:0.0266]     lambda:0.0102  #err=  5 armijo:5
+221(51) [phase:1,s:1,ds:0.1375,dump:3,u:0:0]               (f:2.32,d:0.027)      -->     [f:2.3,d:0.0238]      lambda:0.00971  #err=  3 armijo:3
+222(52) [phase:1,s:1,ds:0.1375,dump:6,u:0:0]               (f:2.3,d:0.0232)      -->      [f:2.3,d:0.023]      lambda:0.0041  #err=  6 armijo:6
+223(53) [phase:1,s:1,ds:0.1375,dump:6,u:0:0]                (f:2.3,d:0.022)      -->      [f:2.3,d:0.022]      lambda:0.000393  #err=  6 armijo:6
+224(54) [phase:1,s:1,ds:0.1375,dump:4,u:0:0]               (f:2.3,d:0.0207)      -->     [f:2.29,d:0.0207]     lambda:0.000761  #err=  4 armijo:4
+225(55) [phase:1,s:1,ds:0.1375,dump:0,u:0:0]               (f:2.29,d:0.0202)     -->     [f:2.19,d:0.0193]     lambda:0.0414 
+226(56) [phase:1,s:1,ds:0.1375,dump:3,u:0:0]               (f:2.19,d:0.0199)     -->     [f:2.06,d:0.0214]     lambda:0.064  #err=  3 armijo:3
+227(57) [phase:1,s:1,ds:0.1375,dump:5,u:0:0]               (f:2.06,d:0.023)      -->     [f:2.03,d:0.0229]     lambda:0.0102  #err=  5 armijo:5
+228(58) [phase:1,s:1,ds:0.1375,dump:4,u:0:0]               (f:2.03,d:0.0224)     -->     [f:2.03,d:0.0215]     lambda:0.00441  #err=  4 armijo:4
+229(59) [phase:1,s:1,ds:0.1375,dump:2,u:0:0]               (f:2.03,d:0.0207)     -->      [f:2,d:0.0193]       lambda:0.0159  #err=  2 armijo:2
+230(60) [phase:1,s:1,ds:0.1375,dump:5,u:0:0]                (f:2,d:0.0202)       -->     [f:1.96,d:0.0213]     lambda:0.0102  #err=  5 armijo:5
+NLsolver[Underwater]::solve_with_continuation(phase=1,...) found:
+NLsolver[Underwater]::solve()
+#phase=1 #it=0/60 lambda=0.0102 tolerance=1e-09 |f|_1=1.998 |f|_inf=254.1 |d|_1=0.02017 |d|_inf=1.285
+at phase 1, iter 230: NLsolver[Underwater]::solve, Too many iterations
+
+
+Continuation step N.1 s:0.8625->0.93125, ds=0.06875
+[iter:230,phase:1,s:0.9312,ds:0.06875] |X|=20.34/0.7913/3.137, |L|=20.34/0.7913/3.137 |B|=6.163e-33/6.163e-33/6.163e-33, |BL|=7.057e-27/1.639e-26/9.079e-27, PARS=0.01591/0.01591/0.01591, U=0.9979/0.7564/0.8343
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+231(1 ) [phase:1,s:0.9312,ds:0.06875,dump:0,u:0:0]         (f:0.79,d:0.0254)     -->    [f:0.198,d:0.00423]    lambda:1     
+232(2 ) [phase:1,s:0.9312,ds:0.06875,dump:0,u:0:0]        (f:0.198,d:0.00201)    -->   [f:0.0126,d:0.000365]   lambda:1     
+233(3 ) [phase:1,s:0.9312,ds:0.06875,dump:5,u:0:0]        (f:0.0126,d:0.0839)    -->   [f:0.0167,d:0.00637]    lambda:0.0243  #err=  5 angle:1 armijo:5
+234(4 ) [phase:1,s:0.9312,ds:0.06875,dump:0,u:0:0]       (f:0.0167,d:0.000285)   -->   [f:0.0128,d:0.000219]   lambda:0.234 
+235(5 ) [phase:1,s:0.9312,ds:0.06875,dump:0,u:0:0]       (f:0.0128,d:0.000225)   -->  [f:7.36e-05,d:1.75e-05]  lambda:1     
+236(6 ) [phase:1,s:0.9312,ds:0.06875,dump:0,u:0:0]      (f:7.36e-05,d:2.62e-05)  -->  [f:6.99e-07,d:1.83e-06]  lambda:1     
+237(7 ) [phase:1,s:0.9312,ds:0.06875,dump:0,u:0:0]      (f:6.99e-07,d:2.13e-06)  -->  [f:4.7e-09,d:1.43e-08]   lambda:1     
+238(8 ) [phase:1,s:0.9312,ds:0.06875,dump:0,u:0:0]      (f:4.7e-09,d:1.45e-08)   -->  [f:2.66e-13,d:6.77e-13]  lambda:1     
+
+Continuation step N.1 s:0.93125->1, ds=0.06875
+[iter:238,phase:1,s:1,ds:0.06875] |X|=77.07/4.344/16.82, |L|=77.07/4.356/16.85 |B|=6.163e-33/6.163e-33/6.163e-33, |BL|=7.43e-25/1.197e-24/7.979e-25, PARS=0.01714/0.01714/0.01714, U=1/1/1
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+239(1 ) [phase:1,s:1,ds:0.06875,dump:10,u:0:0]              (f:4.33,d:2.09)      -->     [f:4.38,d:0.993]      lambda:0.000105  #err= 10 armijo:10
+240(2 ) [phase:1,s:1,ds:0.06875,dump:15,u:0:0]              (f:4.38,d:0.35)      -->     [f:4.55,d:0.186]      lambda:0.00126  #err= 15 angle:13 armijo:15
+241(3 ) [phase:1,s:1,ds:0.06875,dump:4,u:0:0]              (f:4.55,d:0.114)      -->      [f:4.5,d:0.111]      lambda:0.00136  #err=  4 armijo:4
+242(4 ) [phase:1,s:1,ds:0.06875,dump:3,u:0:0]               (f:4.5,d:0.111)      -->     [f:4.42,d:0.111]      lambda:0.00355  #err=  3 armijo:3
+243(5 ) [phase:1,s:1,ds:0.06875,dump:4,u:0:0]              (f:4.42,d:0.113)      -->     [f:4.64,d:0.0776]     lambda:0.0256  #err=  4 armijo:4
+244(6 ) [phase:1,s:1,ds:0.06875,dump:5,u:0:0]              (f:4.64,d:0.0967)     -->      [f:4.45,d:0.12]      lambda:0.0139  #err=  5 angle:2 armijo:5
+245(7 ) [phase:1,s:1,ds:0.06875,dump:4,u:0:0]              (f:4.45,d:0.139)      -->     [f:4.43,d:0.0909]     lambda:0.00452  #err=  4 armijo:4
+246(8 ) [phase:1,s:1,ds:0.06875,dump:2,u:0:0]              (f:4.43,d:0.0695)     -->     [f:4.22,d:0.0704]     lambda:0.0161  #err=  2 armijo:2
+247(9 ) [phase:1,s:1,ds:0.06875,dump:6,u:0:0]              (f:4.22,d:0.076)      -->     [f:4.21,d:0.0552]     lambda:0.0041  #err=  6 armijo:6
+248(10) [phase:1,s:1,ds:0.06875,dump:2,u:0:0]              (f:4.21,d:0.0523)     -->     [f:4.17,d:0.0536]     lambda:0.0154  #err=  2 armijo:2
+249(11) [phase:1,s:1,ds:0.06875,dump:5,u:0:0]              (f:4.17,d:0.0568)     -->     [f:4.1,d:0.0496]      lambda:0.0102  #err=  5 armijo:5
+250(12) [phase:1,s:1,ds:0.06875,dump:2,u:0:0]              (f:4.1,d:0.0489)      -->     [f:4.02,d:0.0452]     lambda:0.0243  #err=  2 armijo:2
+251(13) [phase:1,s:1,ds:0.06875,dump:6,u:0:0]              (f:4.02,d:0.0441)     -->      [f:4,d:0.0417]       lambda:0.00421  #err=  6 armijo:6
+252(14) [phase:1,s:1,ds:0.06875,dump:3,u:0:0]               (f:4,d:0.0415)       -->     [f:3.97,d:0.0413]     lambda:0.00623  #err=  3 armijo:3
+253(15) [phase:1,s:1,ds:0.06875,dump:7,u:0:0]              (f:3.97,d:0.0408)     -->     [f:3.96,d:0.0407]     lambda:0.00164  #err=  7 armijo:7
+254(16) [phase:1,s:1,ds:0.06875,dump:4,u:0:0]              (f:3.96,d:0.0407)     -->     [f:3.96,d:0.0406]     lambda:0.00155  #err=  4 armijo:4
+255(17) [phase:1,s:1,ds:0.06875,dump:1,u:0:0]              (f:3.96,d:0.0406)     -->     [f:3.86,d:0.039]      lambda:0.0237  #err=  1 armijo:1
+256(18) [phase:1,s:1,ds:0.06875,dump:4,u:0:0]              (f:3.86,d:0.0395)     -->     [f:3.79,d:0.0374]     lambda:0.0256  #err=  4 armijo:4
+257(19) [phase:1,s:1,ds:0.06875,dump:4,u:0:0]              (f:3.79,d:0.0396)     -->     [f:3.76,d:0.0367]     lambda:0.00614  #err=  4 armijo:4
+258(20) [phase:1,s:1,ds:0.06875,dump:5,u:0:0]              (f:3.76,d:0.036)      -->     [f:3.76,d:0.036]      lambda:0.0012  #err=  5 armijo:5
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+259(21) [phase:1,s:1,ds:0.06875,dump:4,u:0:0]              (f:3.76,d:0.0359)     -->     [f:3.75,d:0.0358]     lambda:0.00133  #err=  4 armijo:4
+260(22) [phase:1,s:1,ds:0.06875,dump:5,u:0:0]              (f:3.75,d:0.0354)     -->     [f:3.75,d:0.0354]     lambda:0.000561  #err=  5 armijo:5
+261(23) [phase:1,s:1,ds:0.06875,dump:4,u:0:0]              (f:3.75,d:0.035)      -->     [f:3.75,d:0.035]      lambda:0.000909  #err=  4 armijo:4
+262(24) [phase:1,s:1,ds:0.06875,dump:1,u:0:0]              (f:3.75,d:0.0348)     -->     [f:3.66,d:0.034]      lambda:0.0225  #err=  1 armijo:1
+263(25) [phase:1,s:1,ds:0.06875,dump:5,u:0:0]              (f:3.66,d:0.0379)     -->     [f:3.63,d:0.0356]     lambda:0.0102  #err=  5 armijo:5
+264(26) [phase:1,s:1,ds:0.06875,dump:4,u:0:0]              (f:3.63,d:0.0366)     -->     [f:3.61,d:0.0362]     lambda:0.00389  #err=  4 armijo:4
+265(27) [phase:1,s:1,ds:0.06875,dump:4,u:0:0]              (f:3.61,d:0.0361)     -->      [f:3.6,d:0.036]      lambda:0.00239  #err=  4 armijo:4
+266(28) [phase:1,s:1,ds:0.06875,dump:5,u:0:0]              (f:3.6,d:0.0349)      -->     [f:3.6,d:0.0349]      lambda:0.000751  #err=  5 armijo:5
+267(29) [phase:1,s:1,ds:0.06875,dump:4,u:0:0]              (f:3.6,d:0.0339)      -->     [f:3.6,d:0.0339]      lambda:0.00105  #err=  4 armijo:4
+268(30) [phase:1,s:1,ds:0.06875,dump:0,u:0:0]              (f:3.6,d:0.0332)      -->     [f:3.48,d:0.0309]     lambda:0.0487 
+269(31) [phase:1,s:1,ds:0.06875,dump:4,u:0:0]              (f:3.48,d:0.0331)     -->     [f:3.43,d:0.0303]     lambda:0.0256  #err=  4 armijo:4
+270(32) [phase:1,s:1,ds:0.06875,dump:4,u:0:0]              (f:3.43,d:0.0317)     -->      [f:3.42,d:0.03]      lambda:0.00614  #err=  4 armijo:4
+271(33) [phase:1,s:1,ds:0.06875,dump:3,u:0:0]              (f:3.42,d:0.0298)     -->     [f:3.4,d:0.0287]      lambda:0.00752  #err=  3 armijo:3
+272(34) [phase:1,s:1,ds:0.06875,dump:7,u:0:0]              (f:3.4,d:0.0283)      -->     [f:3.39,d:0.0283]     lambda:0.00164  #err=  7 armijo:7
+273(35) [phase:1,s:1,ds:0.06875,dump:0,u:0:0]              (f:3.39,d:0.0279)     -->     [f:3.2,d:0.0261]      lambda:0.0607 
+274(36) [phase:1,s:1,ds:0.06875,dump:3,u:0:0]              (f:3.2,d:0.0285)      -->     [f:3.1,d:0.0251]      lambda:0.064  #err=  3 armijo:3
+275(37) [phase:1,s:1,ds:0.06875,dump:5,u:0:0]              (f:3.1,d:0.0283)      -->     [f:3.07,d:0.0246]     lambda:0.0102  #err=  5 armijo:5
+276(38) [phase:1,s:1,ds:0.06875,dump:3,u:0:0]              (f:3.07,d:0.0244)     -->     [f:3.03,d:0.0241]     lambda:0.00971  #err=  3 armijo:3
+277(39) [phase:1,s:1,ds:0.06875,dump:5,u:0:0]              (f:3.03,d:0.0242)     -->      [f:3,d:0.0239]       lambda:0.0102  #err=  5 armijo:5
+278(40) [phase:1,s:1,ds:0.06875,dump:5,u:0:0]               (f:3,d:0.0232)       -->      [f:3,d:0.0232]       lambda:0.00155  #err=  5 armijo:5
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+279(41) [phase:1,s:1,ds:0.06875,dump:5,u:0:0]               (f:3,d:0.0224)       -->      [f:3,d:0.0224]       lambda:0.000606  #err=  5 armijo:5
+280(42) [phase:1,s:1,ds:0.06875,dump:4,u:0:0]               (f:3,d:0.0222)       -->     [f:2.99,d:0.0221]     lambda:0.000945  #err=  4 armijo:4
+281(43) [phase:1,s:1,ds:0.06875,dump:0,u:0:0]              (f:2.99,d:0.0222)     -->     [f:2.84,d:0.0215]     lambda:0.0461 
+282(44) [phase:1,s:1,ds:0.06875,dump:3,u:0:0]              (f:2.84,d:0.0243)     -->     [f:2.62,d:0.0219]     lambda:0.064  #err=  3 armijo:3
+283(45) [phase:1,s:1,ds:0.06875,dump:4,u:0:0]              (f:2.62,d:0.0226)     -->     [f:2.56,d:0.0204]     lambda:0.0256  #err=  4 armijo:4
+284(46) [phase:1,s:1,ds:0.06875,dump:6,u:0:0]              (f:2.56,d:0.0199)     -->     [f:2.56,d:0.0198]     lambda:0.000983  #err=  6 armijo:6
+285(47) [phase:1,s:1,ds:0.06875,dump:4,u:0:0]              (f:2.56,d:0.0194)     -->     [f:2.55,d:0.0194]     lambda:0.0012  #err=  4 armijo:4
+286(48) [phase:1,s:1,ds:0.06875,dump:1,u:0:0]              (f:2.55,d:0.0193)     -->     [f:2.51,d:0.0183]     lambda:0.0208  #err=  1 armijo:1
+287(49) [phase:1,s:1,ds:0.06875,dump:4,u:0:0]               (f:2.51,d:0.02)      -->     [f:2.47,d:0.0188]     lambda:0.0256  #err=  4 armijo:4
+288(50) [phase:1,s:1,ds:0.06875,dump:4,u:0:0]              (f:2.47,d:0.0215)     -->     [f:2.45,d:0.0203]     lambda:0.00614  #err=  4 armijo:4
+289(51) [phase:1,s:1,ds:0.06875,dump:5,u:0:0]              (f:2.45,d:0.0196)     -->     [f:2.44,d:0.0196]     lambda:0.0012  #err=  5 armijo:5
+290(52) [phase:1,s:1,ds:0.06875,dump:5,u:0:0]              (f:2.44,d:0.0185)     -->     [f:2.44,d:0.0185]     lambda:0.000533  #err=  5 armijo:5
+291(53) [phase:1,s:1,ds:0.06875,dump:4,u:0:0]              (f:2.44,d:0.0178)     -->     [f:2.44,d:0.0178]     lambda:0.000887  #err=  4 armijo:4
+292(54) [phase:1,s:1,ds:0.06875,dump:0,u:0:0]              (f:2.44,d:0.0175)     -->     [f:2.36,d:0.0167]     lambda:0.0447 
+293(55) [phase:1,s:1,ds:0.06875,dump:3,u:0:0]              (f:2.36,d:0.0197)     -->     [f:2.24,d:0.018]      lambda:0.064  #err=  3 armijo:3
+294(56) [phase:1,s:1,ds:0.06875,dump:4,u:0:0]              (f:2.24,d:0.0199)     -->     [f:2.17,d:0.0171]     lambda:0.0256  #err=  4 armijo:4
+295(57) [phase:1,s:1,ds:0.06875,dump:3,u:0:0]              (f:2.17,d:0.0155)     -->     [f:2.13,d:0.0152]     lambda:0.0154  #err=  3 armijo:3
+296(58) [phase:1,s:1,ds:0.06875,dump:2,u:0:0]              (f:2.13,d:0.0152)     -->     [f:1.91,d:0.0137]     lambda:0.16   #err=  2 armijo:2
+297(59) [phase:1,s:1,ds:0.06875,dump:5,u:0:0]              (f:1.91,d:0.0158)     -->     [f:1.87,d:0.0149]     lambda:0.0102  #err=  5 armijo:5
+298(60) [phase:1,s:1,ds:0.06875,dump:3,u:0:0]              (f:1.87,d:0.016)      -->     [f:1.85,d:0.0149]     lambda:0.00971  #err=  3 armijo:3
+NLsolver[Underwater]::solve_with_continuation(phase=1,...) found:
+NLsolver[Underwater]::solve()
+#phase=1 #it=0/60 lambda=0.00971 tolerance=1e-09 |f|_1=1.874 |f|_inf=147.9 |d|_1=0.016 |d|_inf=0.6858
+at phase 1, iter 298: NLsolver[Underwater]::solve, Too many iterations
+
+
+Continuation step N.1 s:0.93125->0.96562, ds=0.034375
+[iter:298,phase:1,s:0.9656,ds:0.034375] |X|=19.55/0.7234/2.845, |L|=19.55/0.7234/2.845 |B|=6.163e-33/6.163e-33/6.163e-33, |BL|=7.43e-25/1.197e-24/7.979e-25, PARS=0.008164/0.008164/0.008164, U=0.9991/0.7856/0.8526
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+299(1 ) [phase:1,s:0.9656,ds:0.034375,dump:1,u:0:0]       (f:0.722,d:0.0145)     -->    [f:0.108,d:0.00265]    lambda:0.95   #err=  1 angle:1 armijo:1
+300(2 ) [phase:1,s:0.9656,ds:0.034375,dump:0,u:0:0]       (f:0.108,d:0.0035)     -->   [f:0.0168,d:0.00102]    lambda:1     
+301(3 ) [phase:1,s:0.9656,ds:0.034375,dump:3,u:0:0]      (f:0.0168,d:0.000335)   -->  [f:0.00254,d:3.07e-05]   lambda:0.857  #err=  3 angle:3 armijo:3
+302(4 ) [phase:1,s:0.9656,ds:0.034375,dump:0,u:0:0]     (f:0.00254,d:2.86e-05)   -->  [f:3.43e-06,d:1.15e-07]  lambda:1     
+303(5 ) [phase:1,s:0.9656,ds:0.034375,dump:0,u:0:0]     (f:3.43e-06,d:1.15e-07)  -->  [f:1.01e-11,d:3.42e-12]  lambda:1     
+304(6 ) [phase:1,s:0.9656,ds:0.034375,dump:0,u:0:0]     (f:1.01e-11,d:3.42e-12)  -->  [f:5.26e-14,d:8.39e-16]  lambda:1     
+
+Continuation step N.1 s:0.96562->1, ds=0.034375
+[iter:304,phase:1,s:1,ds:0.034375] |X|=76.76/4.134/16.43, |L|=76.76/4.147/16.46 |B|=0/0/0, |BL|=2.94e-28/4.953e-28/3.133e-28, PARS=0.008839/0.008839/0.008839, U=1/0.9999/0.9999
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+305(1 ) [phase:1,s:1,ds:0.034375,dump:10,u:0:0]            (f:4.13,d:0.744)      -->     [f:4.14,d:0.606]      lambda:0.000105  #err= 10 armijo:10
+306(2 ) [phase:1,s:1,ds:0.034375,dump:5,u:0:0]              (f:4.14,d:0.13)      -->      [f:4.14,d:0.13]      lambda:0.000157  #err=  5 armijo:5
+307(3 ) [phase:1,s:1,ds:0.034375,dump:2,u:0:0]             (f:4.14,d:0.127)      -->     [f:4.47,d:0.128]      lambda:0.00301  #err=  2 armijo:2
+308(4 ) [phase:1,s:1,ds:0.034375,dump:72,u:0:0]            (f:4.47,d:0.177)      -->     [f:4.27,d:0.125]      lambda:0.000782  #err= 72 angle:68 armijo:72
+309(5 ) [phase:1,s:1,ds:0.034375,dump:3,u:0:0]             (f:4.27,d:0.0925)     -->     [f:4.24,d:0.0917]     lambda:0.00272  #err=  3 armijo:3
+310(6 ) [phase:1,s:1,ds:0.034375,dump:4,u:0:0]             (f:4.24,d:0.0738)     -->     [f:4.28,d:0.0482]     lambda:0.0256  #err=  4 armijo:4
+311(7 ) [phase:1,s:1,ds:0.034375,dump:3,u:0:0]             (f:4.28,d:0.0648)     -->     [f:4.17,d:0.0568]     lambda:0.0154  #err=  3 armijo:3
+312(8 ) [phase:1,s:1,ds:0.034375,dump:6,u:0:0]              (f:4.17,d:0.06)      -->     [f:4.12,d:0.0597]     lambda:0.0041  #err=  6 armijo:6
+313(9 ) [phase:1,s:1,ds:0.034375,dump:3,u:0:0]             (f:4.12,d:0.0568)     -->     [f:4.05,d:0.0556]     lambda:0.00614  #err=  3 armijo:3
+314(10) [phase:1,s:1,ds:0.034375,dump:6,u:0:0]             (f:4.05,d:0.0356)     -->     [f:4.04,d:0.035]      lambda:0.0051  #err=  6 armijo:6
+315(11) [phase:1,s:1,ds:0.034375,dump:0,u:0:0]             (f:4.04,d:0.0322)     -->     [f:4.11,d:0.0332]     lambda:0.107 
+316(12) [phase:1,s:1,ds:0.034375,dump:2,u:0:0]             (f:4.11,d:0.0356)     -->     [f:4.26,d:0.028]      lambda:0.16   #err=  2 armijo:2
+317(13) [phase:1,s:1,ds:0.034375,dump:4,u:0:0]             (f:4.26,d:0.0332)     -->     [f:4.22,d:0.0317]     lambda:0.0256  #err=  4 armijo:4
+318(14) [phase:1,s:1,ds:0.034375,dump:3,u:0:0]             (f:4.22,d:0.033)      -->     [f:4.12,d:0.0312]     lambda:0.0154  #err=  3 armijo:3
+319(15) [phase:1,s:1,ds:0.034375,dump:5,u:0:0]             (f:4.12,d:0.027)      -->     [f:4.07,d:0.0256]     lambda:0.0102  #err=  5 armijo:5
+320(16) [phase:1,s:1,ds:0.034375,dump:5,u:0:0]             (f:4.07,d:0.0255)     -->     [f:4.07,d:0.0254]     lambda:0.00155  #err=  5 armijo:5
+321(17) [phase:1,s:1,ds:0.034375,dump:4,u:0:0]             (f:4.07,d:0.0264)     -->     [f:4.06,d:0.0264]     lambda:0.00151  #err=  4 armijo:4
+322(18) [phase:1,s:1,ds:0.034375,dump:5,u:0:0]             (f:4.06,d:0.026)      -->     [f:4.06,d:0.0259]     lambda:0.000598  #err=  5 armijo:5
+323(19) [phase:1,s:1,ds:0.034375,dump:1,u:0:0]             (f:4.06,d:0.0257)     -->     [f:3.96,d:0.024]      lambda:0.0153  #err=  1 armijo:1
+324(20) [phase:1,s:1,ds:0.034375,dump:4,u:0:0]             (f:3.96,d:0.0291)     -->     [f:3.85,d:0.0265]     lambda:0.0256  #err=  4 armijo:4
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+325(21) [phase:1,s:1,ds:0.034375,dump:3,u:0:0]             (f:3.85,d:0.024)      -->     [f:3.78,d:0.0222]     lambda:0.0154  #err=  3 armijo:3
+326(22) [phase:1,s:1,ds:0.034375,dump:7,u:0:0]             (f:3.78,d:0.0192)     -->     [f:3.77,d:0.0192]     lambda:0.00164  #err=  7 armijo:7
+327(23) [phase:1,s:1,ds:0.034375,dump:4,u:0:0]             (f:3.77,d:0.0182)     -->     [f:3.77,d:0.0182]     lambda:0.00155  #err=  4 armijo:4
+328(24) [phase:1,s:1,ds:0.034375,dump:4,u:0:0]             (f:3.77,d:0.0174)     -->     [f:3.76,d:0.0174]     lambda:0.00151  #err=  4 armijo:4
+329(25) [phase:1,s:1,ds:0.034375,dump:1,u:0:0]             (f:3.76,d:0.0164)     -->     [f:3.57,d:0.0162]     lambda:0.0233  #err=  1 armijo:1
+330(26) [phase:1,s:1,ds:0.034375,dump:2,u:0:0]             (f:3.57,d:0.0176)     -->     [f:3.19,d:0.0146]     lambda:0.16   #err=  2 armijo:2
+331(27) [phase:1,s:1,ds:0.034375,dump:4,u:0:0]             (f:3.19,d:0.0196)     -->     [f:3.12,d:0.0164]     lambda:0.0256  #err=  4 armijo:4
+332(28) [phase:1,s:1,ds:0.034375,dump:3,u:0:0]             (f:3.12,d:0.0151)     -->     [f:3.04,d:0.0148]     lambda:0.0154  #err=  3 armijo:3
+333(29) [phase:1,s:1,ds:0.034375,dump:5,u:0:0]             (f:3.04,d:0.0144)     -->     [f:3.01,d:0.0143]     lambda:0.0102  #err=  5 armijo:5
+334(30) [phase:1,s:1,ds:0.034375,dump:5,u:0:0]             (f:3.01,d:0.0135)     -->      [f:3,d:0.0134]       lambda:0.00155  #err=  5 armijo:5
+335(31) [phase:1,s:1,ds:0.034375,dump:0,u:0:0]              (f:3,d:0.0134)       -->     [f:2.73,d:0.0121]     lambda:0.0591 
+336(32) [phase:1,s:1,ds:0.034375,dump:6,u:0:0]             (f:2.73,d:0.0172)     -->     [f:2.72,d:0.0145]     lambda:0.0041  #err=  6 armijo:6
+337(33) [phase:1,s:1,ds:0.034375,dump:5,u:0:0]             (f:2.72,d:0.0117)     -->     [f:2.72,d:0.0117]     lambda:0.000983  #err=  5 armijo:5
+338(34) [phase:1,s:1,ds:0.034375,dump:0,u:0:0]             (f:2.72,d:0.0108)     -->    [f:2.57,d:0.00951]     lambda:0.047 
+339(35) [phase:1,s:1,ds:0.034375,dump:7,u:0:0]             (f:2.57,d:0.0137)     -->     [f:2.57,d:0.0137]     lambda:0.00164  #err=  7 armijo:7
+340(36) [phase:1,s:1,ds:0.034375,dump:4,u:0:0]             (f:2.57,d:0.0116)     -->     [f:2.56,d:0.0115]     lambda:0.00155  #err=  4 armijo:4
+341(37) [phase:1,s:1,ds:0.034375,dump:0,u:0:0]            (f:2.56,d:0.00909)     -->    [f:2.42,d:0.00852]     lambda:0.0591 
+342(38) [phase:1,s:1,ds:0.034375,dump:4,u:0:0]             (f:2.42,d:0.0106)     -->     [f:2.35,d:0.0122]     lambda:0.0256  #err=  4 armijo:4
+343(39) [phase:1,s:1,ds:0.034375,dump:3,u:0:0]             (f:2.35,d:0.0151)     -->     [f:2.3,d:0.0138]      lambda:0.0154  #err=  3 armijo:3
+344(40) [phase:1,s:1,ds:0.034375,dump:7,u:0:0]             (f:2.3,d:0.0134)      -->     [f:2.3,d:0.0134]      lambda:0.00164  #err=  7 armijo:7
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+345(41) [phase:1,s:1,ds:0.034375,dump:4,u:0:0]              (f:2.3,d:0.013)      -->     [f:2.29,d:0.013]      lambda:0.00155  #err=  4 armijo:4
+346(42) [phase:1,s:1,ds:0.034375,dump:4,u:0:0]             (f:2.29,d:0.0117)     -->     [f:2.29,d:0.0117]     lambda:0.00151  #err=  4 armijo:4
+347(43) [phase:1,s:1,ds:0.034375,dump:4,u:0:0]            (f:2.29,d:0.00978)     -->    [f:2.28,d:0.00975]     lambda:0.00149  #err=  4 armijo:4
+348(44) [phase:1,s:1,ds:0.034375,dump:0,u:0:0]            (f:2.28,d:0.00812)     -->     [f:2.16,d:0.0076]     lambda:0.058 
+349(45) [phase:1,s:1,ds:0.034375,dump:5,u:0:0]            (f:2.16,d:0.00909)     -->    [f:2.14,d:0.00941]     lambda:0.0102  #err=  5 armijo:5
+350(46) [phase:1,s:1,ds:0.034375,dump:4,u:0:0]             (f:2.14,d:0.0124)     -->     [f:2.13,d:0.0124]     lambda:0.00389  #err=  4 armijo:4
+351(47) [phase:1,s:1,ds:0.034375,dump:4,u:0:0]             (f:2.13,d:0.0124)     -->     [f:2.12,d:0.0124]     lambda:0.00239  #err=  4 armijo:4
+352(48) [phase:1,s:1,ds:0.034375,dump:5,u:0:0]             (f:2.12,d:0.0101)     -->     [f:2.12,d:0.0101]     lambda:0.000751  #err=  5 armijo:5
+353(49) [phase:1,s:1,ds:0.034375,dump:4,u:0:0]            (f:2.12,d:0.00875)     -->    [f:2.12,d:0.00874]     lambda:0.00105  #err=  4 armijo:4
+354(50) [phase:1,s:1,ds:0.034375,dump:2,u:0:0]            (f:2.12,d:0.00756)     -->    [f:2.11,d:0.00734]     lambda:0.00779  #err=  2 armijo:2
+355(51) [phase:1,s:1,ds:0.034375,dump:5,u:0:0]            (f:2.11,d:0.00772)     -->    [f:2.08,d:0.00792]     lambda:0.0102  #err=  5 armijo:5
+356(52) [phase:1,s:1,ds:0.034375,dump:5,u:0:0]             (f:2.08,d:0.0115)     -->     [f:2.08,d:0.0115]     lambda:0.00155  #err=  5 armijo:5
+357(53) [phase:1,s:1,ds:0.034375,dump:4,u:0:0]             (f:2.08,d:0.0104)     -->     [f:2.07,d:0.0104]     lambda:0.00151  #err=  4 armijo:4
+358(54) [phase:1,s:1,ds:0.034375,dump:4,u:0:0]            (f:2.07,d:0.00886)     -->    [f:2.07,d:0.00883]     lambda:0.00149  #err=  4 armijo:4
+359(55) [phase:1,s:1,ds:0.034375,dump:0,u:0:0]            (f:2.07,d:0.00719)     -->    [f:1.97,d:0.00682]     lambda:0.058 
+360(56) [phase:1,s:1,ds:0.034375,dump:4,u:0:0]            (f:1.97,d:0.00836)     -->    [f:1.89,d:0.00936]     lambda:0.0256  #err=  4 armijo:4
+361(57) [phase:1,s:1,ds:0.034375,dump:3,u:0:0]             (f:1.89,d:0.0127)     -->     [f:1.85,d:0.0117]     lambda:0.0154  #err=  3 armijo:3
+362(58) [phase:1,s:1,ds:0.034375,dump:7,u:0:0]             (f:1.85,d:0.0102)     -->     [f:1.85,d:0.0102]     lambda:0.00164  #err=  7 armijo:7
+363(59) [phase:1,s:1,ds:0.034375,dump:4,u:0:0]            (f:1.85,d:0.00799)     -->    [f:1.84,d:0.00796]     lambda:0.00155  #err=  4 armijo:4
+364(60) [phase:1,s:1,ds:0.034375,dump:0,u:0:0]            (f:1.84,d:0.00644)     -->     [f:1.74,d:0.006]      lambda:0.0591 
+NLsolver[Underwater]::solve_with_continuation(phase=1,...) found:
+NLsolver[Underwater]::solve()
+#phase=1 #it=0/60 lambda=0.0591 tolerance=1e-09 |f|_1=1.843 |f|_inf=221 |d|_1=0.006438 |d|_inf=0.3091
+at phase 1, iter 364: NLsolver[Underwater]::solve, Too many iterations
+
+
+Continuation step N.1 s:0.96562->0.98281, ds=0.017188
+[iter:364,phase:1,s:0.9828,ds:0.017188] |X|=18.86/0.6586/2.708, |L|=18.86/0.6587/2.708 |B|=0/0/0, |BL|=2.94e-28/4.953e-28/3.133e-28, PARS=0.00419/0.00419/0.00419, U=0.9996/0.8057/0.8684
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+365(1 ) [phase:1,s:0.9828,ds:0.017188,dump:2,u:0:0]       (f:0.657,d:0.00844)    -->   [f:0.0859,d:0.00151]    lambda:0.902  #err=  2 angle:2 armijo:2
+366(2 ) [phase:1,s:0.9828,ds:0.017188,dump:0,u:0:0]      (f:0.0859,d:0.00121)    -->  [f:0.00332,d:6.94e-05]   lambda:1     
+367(3 ) [phase:1,s:0.9828,ds:0.017188,dump:0,u:0:0]     (f:0.00332,d:7.49e-05)   -->  [f:3.42e-05,d:1.09e-06]  lambda:1     
+368(4 ) [phase:1,s:0.9828,ds:0.017188,dump:0,u:0:0]     (f:3.42e-05,d:1.13e-06)  -->  [f:1.13e-08,d:2.74e-10]  lambda:1     
+369(5 ) [phase:1,s:0.9828,ds:0.017188,dump:0,u:0:0]     (f:1.13e-08,d:2.74e-10)  -->  [f:5.11e-14,d:1.18e-15]  lambda:1     
+
+Continuation step N.1 s:0.98281->1, ds=0.017188
+[iter:369,phase:1,s:1,ds:0.017188] |X|=76.46/3.937/16.05, |L|=76.46/3.95/16.08 |B|=0/0/0, |BL|=2.798e-26/7.265e-26/3.472e-26, PARS=0.004587/0.004587/0.004587, U=1/0.9993/0.9996
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+370(1 ) [phase:1,s:1,ds:0.017188,dump:9,u:0:0]             (f:3.93,d:0.166)      -->     [f:3.93,d:0.166]      lambda:0.000262  #err=  9 armijo:9
+371(2 ) [phase:1,s:1,ds:0.017188,dump:7,u:0:0]             (f:3.93,d:0.105)      -->     [f:4.29,d:0.0908]     lambda:0.00301  #err=  7 angle:5 armijo:7
+372(3 ) [phase:1,s:1,ds:0.017188,dump:38,u:0:0]            (f:4.29,d:0.0901)     -->     [f:3.95,d:0.0929]     lambda:0.00493  #err= 38 angle:37 armijo:38
+373(4 ) [phase:1,s:1,ds:0.017188,dump:4,u:0:0]             (f:3.95,d:0.0967)     -->     [f:4.14,d:0.0871]     lambda:0.0027  #err=  4 armijo:4
+374(5 ) [phase:1,s:1,ds:0.017188,dump:25,u:0:0]            (f:4.14,d:0.0755)     -->     [f:4.15,d:0.0546]     lambda:0.00383  #err= 25 angle:23 armijo:25
+375(6 ) [phase:1,s:1,ds:0.017188,dump:1,u:0:0]             (f:4.15,d:0.0371)     -->     [f:3.94,d:0.0306]     lambda:0.0371  #err=  1 armijo:1
+376(7 ) [phase:1,s:1,ds:0.017188,dump:6,u:0:0]             (f:3.94,d:0.0464)     -->     [f:3.88,d:0.0415]     lambda:0.0041  #err=  6 armijo:6
+377(8 ) [phase:1,s:1,ds:0.017188,dump:4,u:0:0]             (f:3.88,d:0.0357)     -->     [f:3.86,d:0.0356]     lambda:0.00246  #err=  4 armijo:4
+378(9 ) [phase:1,s:1,ds:0.017188,dump:5,u:0:0]              (f:3.86,d:0.03)      -->     [f:3.76,d:0.0281]     lambda:0.0575  #err=  5 angle:5 armijo:5
+379(10) [phase:1,s:1,ds:0.017188,dump:25,u:0:0]            (f:3.76,d:0.0427)     -->     [f:3.73,d:0.0308]     lambda:0.0177  #err= 25 angle:23 armijo:25
+380(11) [phase:1,s:1,ds:0.017188,dump:6,u:0:0]             (f:3.73,d:0.0281)     -->     [f:3.72,d:0.0281]     lambda:0.000817  #err=  6 armijo:6
+381(12) [phase:1,s:1,ds:0.017188,dump:1,u:0:0]             (f:3.72,d:0.0276)     -->     [f:3.66,d:0.0265]     lambda:0.0172  #err=  1 armijo:1
+382(13) [phase:1,s:1,ds:0.017188,dump:5,u:0:0]             (f:3.66,d:0.0242)     -->     [f:3.61,d:0.0239]     lambda:0.0102  #err=  5 armijo:5
+383(14) [phase:1,s:1,ds:0.017188,dump:4,u:0:0]             (f:3.61,d:0.0258)     -->     [f:3.59,d:0.0237]     lambda:0.00389  #err=  4 armijo:4
+384(15) [phase:1,s:1,ds:0.017188,dump:4,u:0:0]             (f:3.59,d:0.0216)     -->     [f:3.58,d:0.0216]     lambda:0.00239  #err=  4 armijo:4
+385(16) [phase:1,s:1,ds:0.017188,dump:5,u:0:0]             (f:3.58,d:0.0204)     -->     [f:3.58,d:0.0204]     lambda:0.000751  #err=  5 armijo:5
+386(17) [phase:1,s:1,ds:0.017188,dump:4,u:0:0]             (f:3.58,d:0.0185)     -->     [f:3.58,d:0.0185]     lambda:0.00105  #err=  4 armijo:4
+387(18) [phase:1,s:1,ds:0.017188,dump:2,u:0:0]             (f:3.58,d:0.0169)     -->     [f:3.56,d:0.0163]     lambda:0.00779  #err=  2 armijo:2
+388(19) [phase:1,s:1,ds:0.017188,dump:3,u:0:0]             (f:3.56,d:0.015)      -->     [f:3.37,d:0.0147]     lambda:0.064  #err=  3 armijo:3
+389(20) [phase:1,s:1,ds:0.017188,dump:5,u:0:0]             (f:3.37,d:0.0248)     -->     [f:3.34,d:0.0212]     lambda:0.0102  #err=  5 armijo:5
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+390(21) [phase:1,s:1,ds:0.017188,dump:5,u:0:0]             (f:3.34,d:0.0174)     -->     [f:3.34,d:0.0174]     lambda:0.00155  #err=  5 armijo:5
+391(22) [phase:1,s:1,ds:0.017188,dump:2,u:0:0]             (f:3.34,d:0.013)      -->     [f:3.32,d:0.0128]     lambda:0.00946  #err=  2 armijo:2
+392(23) [phase:1,s:1,ds:0.017188,dump:8,u:0:0]             (f:3.32,d:0.0127)     -->     [f:3.31,d:0.0127]     lambda:0.000655  #err=  8 armijo:8
+393(24) [phase:1,s:1,ds:0.017188,dump:0,u:0:0]             (f:3.31,d:0.0125)     -->     [f:3.16,d:0.0121]     lambda:0.0384 
+394(25) [phase:1,s:1,ds:0.017188,dump:6,u:0:0]             (f:3.16,d:0.0159)     -->     [f:3.14,d:0.0158]     lambda:0.0041  #err=  6 armijo:6
+395(26) [phase:1,s:1,ds:0.017188,dump:4,u:0:0]             (f:3.14,d:0.0151)     -->     [f:3.13,d:0.0151]     lambda:0.00246  #err=  4 armijo:4
+396(27) [phase:1,s:1,ds:0.017188,dump:0,u:0:0]             (f:3.13,d:0.0127)     -->     [f:2.84,d:0.0121]     lambda:0.0744 
+397(28) [phase:1,s:1,ds:0.017188,dump:4,u:0:0]             (f:2.84,d:0.0145)     -->     [f:2.73,d:0.0168]     lambda:0.0256  #err=  4 armijo:4
+398(29) [phase:1,s:1,ds:0.017188,dump:2,u:0:0]             (f:2.73,d:0.0139)     -->     [f:2.67,d:0.0117]     lambda:0.0384  #err=  2 armijo:2
+399(30) [phase:1,s:1,ds:0.017188,dump:3,u:0:0]             (f:2.67,d:0.0119)     -->     [f:2.51,d:0.0132]     lambda:0.064  #err=  3 armijo:3
+400(31) [phase:1,s:1,ds:0.017188,dump:3,u:0:0]             (f:2.51,d:0.0133)     -->     [f:2.38,d:0.0135]     lambda:0.064  #err=  3 armijo:3
+401(32) [phase:1,s:1,ds:0.017188,dump:4,u:0:0]             (f:2.38,d:0.0144)     -->     [f:2.32,d:0.0115]     lambda:0.0256  #err=  4 armijo:4
+402(33) [phase:1,s:1,ds:0.017188,dump:2,u:0:0]             (f:2.32,d:0.0109)     -->     [f:2.22,d:0.0118]     lambda:0.0384  #err=  2 armijo:2
+403(34) [phase:1,s:1,ds:0.017188,dump:4,u:0:0]             (f:2.22,d:0.0118)     -->     [f:2.16,d:0.0118]     lambda:0.0256  #err=  4 armijo:4
+404(35) [phase:1,s:1,ds:0.017188,dump:4,u:0:0]             (f:2.16,d:0.012)      -->     [f:2.13,d:0.0111]     lambda:0.00614  #err=  4 armijo:4
+405(36) [phase:1,s:1,ds:0.017188,dump:3,u:0:0]             (f:2.13,d:0.0111)     -->     [f:2.12,d:0.011]      lambda:0.00752  #err=  3 armijo:3
+406(37) [phase:1,s:1,ds:0.017188,dump:2,u:0:0]            (f:2.12,d:0.00841)     -->    [f:1.89,d:0.00688]     lambda:0.16   #err=  2 armijo:2
+407(38) [phase:1,s:1,ds:0.017188,dump:4,u:0:0]             (f:1.89,d:0.0122)     -->     [f:1.81,d:0.0115]     lambda:0.0302  #err=  4 armijo:4
+408(39) [phase:1,s:1,ds:0.017188,dump:3,u:0:0]             (f:1.81,d:0.0116)     -->     [f:1.78,d:0.0114]     lambda:0.0227  #err=  3 angle:1 armijo:3
+409(40) [phase:1,s:1,ds:0.017188,dump:6,u:0:0]             (f:1.78,d:0.0112)     -->     [f:1.76,d:0.011]      lambda:0.0041  #err=  6 armijo:6
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+410(41) [phase:1,s:1,ds:0.017188,dump:4,u:0:0]            (f:1.76,d:0.00887)     -->    [f:1.76,d:0.00884]     lambda:0.00246  #err=  4 armijo:4
+411(42) [phase:1,s:1,ds:0.017188,dump:4,u:0:0]            (f:1.76,d:0.00802)     -->    [f:1.76,d:0.00801]     lambda:0.0019  #err=  4 armijo:4
+412(43) [phase:1,s:1,ds:0.017188,dump:4,u:0:0]            (f:1.76,d:0.00732)     -->    [f:1.75,d:0.00731]     lambda:0.00168  #err=  4 armijo:4
+413(44) [phase:1,s:1,ds:0.017188,dump:0,u:0:0]             (f:1.75,d:0.0057)     -->    [f:1.65,d:0.00507]     lambda:0.0614 
+414(45) [phase:1,s:1,ds:0.017188,dump:4,u:0:0]            (f:1.65,d:0.00785)     -->    [f:1.59,d:0.00806]     lambda:0.0256  #err=  4 armijo:4
+415(46) [phase:1,s:1,ds:0.017188,dump:3,u:0:0]            (f:1.59,d:0.00756)     -->    [f:1.58,d:0.00742]     lambda:0.0154  #err=  3 armijo:3
+416(47) [phase:1,s:1,ds:0.017188,dump:5,u:0:0]            (f:1.58,d:0.00739)     -->    [f:1.56,d:0.00732]     lambda:0.0102  #err=  5 armijo:5
+417(48) [phase:1,s:1,ds:0.017188,dump:4,u:0:0]            (f:1.56,d:0.00714)     -->    [f:1.56,d:0.00711]     lambda:0.00389  #err=  4 armijo:4
+418(49) [phase:1,s:1,ds:0.017188,dump:5,u:0:0]            (f:1.56,d:0.00536)     -->    [f:1.56,d:0.00535]     lambda:0.00106  #err=  5 armijo:5
+419(50) [phase:1,s:1,ds:0.017188,dump:0,u:0:0]            (f:1.56,d:0.00465)     -->     [f:1.5,d:0.0043]      lambda:0.0488 
+420(51) [phase:1,s:1,ds:0.017188,dump:26,u:0:0]            (f:1.5,d:0.0069)      -->    [f:1.45,d:0.00724]     lambda:0.0197  #err= 26 angle:23 armijo:26
+421(52) [phase:1,s:1,ds:0.017188,dump:3,u:0:0]            (f:1.45,d:0.00718)     -->     [f:1.44,d:0.0071]     lambda:0.0135  #err=  3 armijo:3
+422(53) [phase:1,s:1,ds:0.017188,dump:6,u:0:0]            (f:1.44,d:0.00751)     -->    [f:1.44,d:0.00748]     lambda:0.0041  #err=  6 armijo:6
+423(54) [phase:1,s:1,ds:0.017188,dump:4,u:0:0]            (f:1.44,d:0.00759)     -->    [f:1.43,d:0.00758]     lambda:0.00246  #err=  4 armijo:4
+424(55) [phase:1,s:1,ds:0.017188,dump:4,u:0:0]            (f:1.43,d:0.00729)     -->    [f:1.43,d:0.00728]     lambda:0.0019  #err=  4 armijo:4
+425(56) [phase:1,s:1,ds:0.017188,dump:4,u:0:0]            (f:1.43,d:0.00645)     -->    [f:1.43,d:0.00644]     lambda:0.00168  #err=  4 armijo:4
+426(57) [phase:1,s:1,ds:0.017188,dump:0,u:0:0]            (f:1.43,d:0.00471)     -->    [f:1.36,d:0.00428]     lambda:0.0614 
+427(58) [phase:1,s:1,ds:0.017188,dump:10,u:0:0]           (f:1.36,d:0.00841)     -->    [f:1.34,d:0.00831]     lambda:0.00792  #err= 10 angle:5 armijo:10
+428(59) [phase:1,s:1,ds:0.017188,dump:0,u:0:0]            (f:1.34,d:0.00372)     -->    [f:1.14,d:0.00335]     lambda:0.134 
+429(60) [phase:1,s:1,ds:0.017188,dump:5,u:0:0]            (f:1.14,d:0.00671)     -->    [f:1.13,d:0.00618]     lambda:0.0102  #err=  5 armijo:5
+NLsolver[Underwater]::solve_with_continuation(phase=1,...) found:
+NLsolver[Underwater]::solve()
+#phase=1 #it=0/60 lambda=0.0102 tolerance=1e-09 |f|_1=1.141 |f|_inf=100.1 |d|_1=0.006712 |d|_inf=0.4894
+at phase 1, iter 429: NLsolver[Underwater]::solve, Too many iterations
+
+
+Continuation step N.1 s:0.98281->0.99141, ds=0.0085938
+[iter:429,phase:1,s:0.9914,ds:0.0085938] |X|=18.24/0.6057/2.56, |L|=18.24/0.6059/2.56 |B|=0/0/0, |BL|=2.798e-26/7.265e-26/3.472e-26, PARS=0.002157/0.002157/0.002157, U=0.9998/0.8187/0.8789
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+430(1 ) [phase:1,s:0.9914,ds:0.0085938,dump:1,u:0:0]      (f:0.604,d:0.00493)    -->    [f:0.086,d:0.00135]    lambda:0.95   #err=  1 angle:1 armijo:1
+431(2 ) [phase:1,s:0.9914,ds:0.0085938,dump:0,u:0:0]      (f:0.086,d:0.00061)    -->   [f:0.00496,d:6.1e-05]   lambda:1     
+432(3 ) [phase:1,s:0.9914,ds:0.0085938,dump:1,u:0:0]     (f:0.00496,d:6.3e-05)   -->  [f:0.000258,d:2.25e-06]  lambda:0.95   #err=  1 angle:1 armijo:1
+433(4 ) [phase:1,s:0.9914,ds:0.0085938,dump:0,u:0:0]    (f:0.000258,d:2.22e-06)  -->  [f:8.14e-08,d:8.78e-10]  lambda:1     
+434(5 ) [phase:1,s:0.9914,ds:0.0085938,dump:0,u:0:0]    (f:8.14e-08,d:8.8e-10)   -->  [f:9.27e-14,d:1.34e-15]  lambda:1     
+
+Continuation step N.1 s:0.99141->1, ds=0.0085937
+[iter:434,phase:1,s:1,ds:0.0085937] |X|=76.14/3.785/15.72, |L|=76.14/3.798/15.75 |B|=0/0/0, |BL|=5.098e-26/1.262e-25/6.843e-26, PARS=0.002403/0.002403/0.002403, U=1/0.9999/0.9999
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+435(1 ) [phase:1,s:1,ds:0.0085937,dump:9,u:0:0]            (f:3.78,d:0.0784)     -->     [f:3.78,d:0.0783]     lambda:0.000262  #err=  9 armijo:9
+436(2 ) [phase:1,s:1,ds:0.0085937,dump:3,u:0:0]            (f:3.78,d:0.0578)     -->     [f:4.13,d:0.0528]     lambda:0.00155  #err=  3 armijo:3
+437(3 ) [phase:1,s:1,ds:0.0085937,dump:5,u:0:0]            (f:4.13,d:0.0539)     -->     [f:3.86,d:0.0436]     lambda:0.0102  #err=  5 armijo:5
+438(4 ) [phase:1,s:1,ds:0.0085937,dump:5,u:0:0]            (f:3.86,d:0.0958)     -->     [f:3.95,d:0.0604]     lambda:0.00155  #err=  5 armijo:5
+439(5 ) [phase:1,s:1,ds:0.0085937,dump:3,u:0:0]            (f:3.95,d:0.0578)     -->     [f:3.83,d:0.0582]     lambda:0.00378  #err=  3 armijo:3
+440(6 ) [phase:1,s:1,ds:0.0085937,dump:6,u:0:0]            (f:3.83,d:0.0471)     -->     [f:3.82,d:0.0334]     lambda:0.0041  #err=  6 armijo:6
+441(7 ) [phase:1,s:1,ds:0.0085937,dump:3,u:0:0]            (f:3.82,d:0.0266)     -->     [f:3.8,d:0.0326]      lambda:0.00614  #err=  3 armijo:3
+442(8 ) [phase:1,s:1,ds:0.0085937,dump:5,u:0:0]            (f:3.8,d:0.0299)      -->     [f:3.76,d:0.0277]     lambda:0.0102  #err=  5 armijo:5
+443(9 ) [phase:1,s:1,ds:0.0085937,dump:3,u:0:0]            (f:3.76,d:0.0203)     -->     [f:3.69,d:0.0196]     lambda:0.00971  #err=  3 armijo:3
+444(10) [phase:1,s:1,ds:0.0085937,dump:6,u:0:0]            (f:3.69,d:0.0185)     -->     [f:3.67,d:0.0174]     lambda:0.0041  #err=  6 armijo:6
+445(11) [phase:1,s:1,ds:0.0085937,dump:5,u:0:0]            (f:3.67,d:0.0167)     -->     [f:3.66,d:0.0166]     lambda:0.000983  #err=  5 armijo:5
+446(12) [phase:1,s:1,ds:0.0085937,dump:4,u:0:0]            (f:3.66,d:0.0143)     -->     [f:3.66,d:0.0143]     lambda:0.0012  #err=  4 armijo:4
+447(13) [phase:1,s:1,ds:0.0085937,dump:0,u:0:0]            (f:3.66,d:0.0126)     -->     [f:3.2,d:0.0116]      lambda:0.052 
+448(14) [phase:1,s:1,ds:0.0085937,dump:6,u:0:0]            (f:3.2,d:0.0192)      -->     [f:3.18,d:0.0157]     lambda:0.0041  #err=  6 armijo:6
+449(15) [phase:1,s:1,ds:0.0085937,dump:4,u:0:0]            (f:3.18,d:0.0177)     -->     [f:3.17,d:0.0176]     lambda:0.00246  #err=  4 armijo:4
+450(16) [phase:1,s:1,ds:0.0085937,dump:5,u:0:0]            (f:3.17,d:0.0137)     -->     [f:3.17,d:0.0137]     lambda:0.000761  #err=  5 armijo:5
+451(17) [phase:1,s:1,ds:0.0085937,dump:4,u:0:0]            (f:3.17,d:0.0112)     -->     [f:3.17,d:0.0112]     lambda:0.00106  #err=  4 armijo:4
+452(18) [phase:1,s:1,ds:0.0085937,dump:1,u:0:0]            (f:3.17,d:0.0107)     -->     [f:3.11,d:0.0105]     lambda:0.0195  #err=  1 armijo:1
+453(19) [phase:1,s:1,ds:0.0085937,dump:4,u:0:0]            (f:3.11,d:0.0119)     -->      [f:3,d:0.0128]       lambda:0.0256  #err=  4 armijo:4
+454(20) [phase:1,s:1,ds:0.0085937,dump:4,u:0:0]              (f:3,d:0.016)       -->     [f:2.98,d:0.0159]     lambda:0.00614  #err=  4 armijo:4
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+455(21) [phase:1,s:1,ds:0.0085937,dump:4,u:0:0]            (f:2.98,d:0.0159)     -->     [f:2.97,d:0.0159]     lambda:0.00301  #err=  4 armijo:4
+456(22) [phase:1,s:1,ds:0.0085937,dump:3,u:0:0]            (f:2.97,d:0.0134)     -->     [f:2.95,d:0.0133]     lambda:0.00527  #err=  3 armijo:3
+457(23) [phase:1,s:1,ds:0.0085937,dump:7,u:0:0]            (f:2.95,d:0.0124)     -->     [f:2.95,d:0.0124]     lambda:0.00164  #err=  7 armijo:7
+458(24) [phase:1,s:1,ds:0.0085937,dump:4,u:0:0]            (f:2.95,d:0.0102)     -->     [f:2.94,d:0.0102]     lambda:0.00155  #err=  4 armijo:4
+459(25) [phase:1,s:1,ds:0.0085937,dump:0,u:0:0]           (f:2.94,d:0.00935)     -->    [f:2.73,d:0.00911]     lambda:0.0591 
+460(26) [phase:1,s:1,ds:0.0085937,dump:5,u:0:0]            (f:2.73,d:0.0118)     -->     [f:2.67,d:0.0112]     lambda:0.0129  #err=  5 armijo:5
+461(27) [phase:1,s:1,ds:0.0085937,dump:4,u:0:0]            (f:2.67,d:0.0142)     -->     [f:2.66,d:0.0141]     lambda:0.00436  #err=  4 armijo:4
+462(28) [phase:1,s:1,ds:0.0085937,dump:4,u:0:0]            (f:2.66,d:0.0137)     -->     [f:2.65,d:0.0137]     lambda:0.00253  #err=  4 armijo:4
+463(29) [phase:1,s:1,ds:0.0085937,dump:4,u:0:0]            (f:2.65,d:0.0113)     -->     [f:2.64,d:0.0113]     lambda:0.00193  #err=  4 armijo:4
+464(30) [phase:1,s:1,ds:0.0085937,dump:4,u:0:0]            (f:2.64,d:0.0108)     -->     [f:2.64,d:0.0108]     lambda:0.00169  #err=  4 armijo:4
+465(31) [phase:1,s:1,ds:0.0085937,dump:2,u:0:0]            (f:2.64,d:0.0093)     -->    [f:2.63,d:0.00836]     lambda:0.00986  #err=  2 armijo:2
+466(32) [phase:1,s:1,ds:0.0085937,dump:3,u:0:0]            (f:2.63,d:0.0109)     -->     [f:2.47,d:0.0121]     lambda:0.064  #err=  3 armijo:3
+467(33) [phase:1,s:1,ds:0.0085937,dump:3,u:0:0]            (f:2.47,d:0.0122)     -->     [f:2.33,d:0.0108]     lambda:0.064  #err=  3 armijo:3
+468(34) [phase:1,s:1,ds:0.0085937,dump:5,u:0:0]            (f:2.33,d:0.0106)     -->     [f:2.3,d:0.0105]      lambda:0.0102  #err=  5 armijo:5
+469(35) [phase:1,s:1,ds:0.0085937,dump:4,u:0:0]            (f:2.3,d:0.0114)      -->     [f:2.29,d:0.0114]     lambda:0.00389  #err=  4 armijo:4
+470(36) [phase:1,s:1,ds:0.0085937,dump:4,u:0:0]            (f:2.29,d:0.011)      -->     [f:2.29,d:0.011]      lambda:0.00239  #err=  4 armijo:4
+471(37) [phase:1,s:1,ds:0.0085937,dump:4,u:0:0]            (f:2.29,d:0.0072)     -->    [f:2.28,d:0.00695]     lambda:0.00188  #err=  4 armijo:4
+472(38) [phase:1,s:1,ds:0.0085937,dump:0,u:0:0]           (f:2.28,d:0.00586)     -->    [f:2.14,d:0.00538]     lambda:0.065 
+473(39) [phase:1,s:1,ds:0.0085937,dump:3,u:0:0]           (f:2.14,d:0.00533)     -->    [f:2.03,d:0.00502]     lambda:0.064  #err=  3 armijo:3
+474(40) [phase:1,s:1,ds:0.0085937,dump:5,u:0:0]           (f:2.03,d:0.00487)     -->      [f:2,d:0.00482]      lambda:0.0102  #err=  5 armijo:5
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+475(41) [phase:1,s:1,ds:0.0085937,dump:1,u:0:0]             (f:2,d:0.00488)      -->     [f:1.9,d:0.00443]     lambda:0.0607  #err=  1 armijo:1
+476(42) [phase:1,s:1,ds:0.0085937,dump:2,u:0:0]            (f:1.9,d:0.00445)     -->    [f:1.68,d:0.00444]     lambda:0.16   #err=  2 armijo:2
+477(43) [phase:1,s:1,ds:0.0085937,dump:6,u:0:0]           (f:1.68,d:0.00534)     -->    [f:1.68,d:0.00531]     lambda:0.0041  #err=  6 armijo:6
+478(44) [phase:1,s:1,ds:0.0085937,dump:4,u:0:0]           (f:1.68,d:0.00508)     -->    [f:1.67,d:0.00506]     lambda:0.00246  #err=  4 armijo:4
+479(45) [phase:1,s:1,ds:0.0085937,dump:4,u:0:0]           (f:1.67,d:0.00465)     -->    [f:1.67,d:0.00464]     lambda:0.0019  #err=  4 armijo:4
+480(46) [phase:1,s:1,ds:0.0085937,dump:0,u:0:0]           (f:1.67,d:0.00439)     -->    [f:1.53,d:0.00344]     lambda:0.0654 
+481(47) [phase:1,s:1,ds:0.0085937,dump:4,u:0:0]           (f:1.53,d:0.00355)     -->    [f:1.49,d:0.00346]     lambda:0.0256  #err=  4 armijo:4
+482(48) [phase:1,s:1,ds:0.0085937,dump:3,u:0:0]           (f:1.49,d:0.00342)     -->    [f:1.47,d:0.00336]     lambda:0.0154  #err=  3 armijo:3
+483(49) [phase:1,s:1,ds:0.0085937,dump:5,u:0:0]            (f:1.47,d:0.0033)     -->    [f:1.45,d:0.00326]     lambda:0.0102  #err=  5 armijo:5
+484(50) [phase:1,s:1,ds:0.0085937,dump:1,u:0:0]            (f:1.45,d:0.0032)     -->    [f:1.36,d:0.00313]     lambda:0.0607  #err=  1 armijo:1
+485(51) [phase:1,s:1,ds:0.0085937,dump:2,u:0:0]           (f:1.36,d:0.00371)     -->    [f:1.24,d:0.00321]     lambda:0.16   #err=  2 armijo:2
+486(52) [phase:1,s:1,ds:0.0085937,dump:4,u:0:0]           (f:1.24,d:0.00342)     -->    [f:1.16,d:0.00333]     lambda:0.0256  #err=  4 armijo:4
+487(53) [phase:1,s:1,ds:0.0085937,dump:2,u:0:0]            (f:1.16,d:0.0029)     -->    [f:1.11,d:0.00274]     lambda:0.0384  #err=  2 armijo:2
+488(54) [phase:1,s:1,ds:0.0085937,dump:3,u:0:0]            (f:1.11,d:0.0027)     -->     [f:1.04,d:0.0026]     lambda:0.0719  #err=  3 armijo:3
+489(55) [phase:1,s:1,ds:0.0085937,dump:3,u:0:0]           (f:1.04,d:0.00246)     -->    [f:0.974,d:0.00223]    lambda:0.064  #err=  3 armijo:3
+490(56) [phase:1,s:1,ds:0.0085937,dump:4,u:0:0]           (f:0.974,d:0.00253)    -->    [f:0.949,d:0.00272]    lambda:0.0256  #err=  4 armijo:4
+491(57) [phase:1,s:1,ds:0.0085937,dump:3,u:0:0]           (f:0.949,d:0.00232)    -->    [f:0.934,d:0.00228]    lambda:0.0154  #err=  3 armijo:3
+492(58) [phase:1,s:1,ds:0.0085937,dump:5,u:0:0]           (f:0.934,d:0.00224)    -->    [f:0.924,d:0.00222]    lambda:0.0102  #err=  5 armijo:5
+493(59) [phase:1,s:1,ds:0.0085937,dump:3,u:0:0]           (f:0.924,d:0.00214)    -->    [f:0.915,d:0.00211]    lambda:0.00971  #err=  3 armijo:3
+494(60) [phase:1,s:1,ds:0.0085937,dump:5,u:0:0]           (f:0.915,d:0.00194)    -->    [f:0.906,d:0.00192]    lambda:0.0102  #err=  5 armijo:5
+NLsolver[Underwater]::solve_with_continuation(phase=1,...) found:
+NLsolver[Underwater]::solve()
+#phase=1 #it=0/60 lambda=0.0102 tolerance=1e-09 |f|_1=0.9151 |f|_inf=99.18 |d|_1=0.001939 |d|_inf=0.2206
+at phase 1, iter 494: NLsolver[Underwater]::solve, Too many iterations
+
+
+Continuation step N.1 s:0.99141->0.9957, ds=0.0042969
+[iter:494,phase:1,s:0.9957,ds:0.0042969] |X|=17.7/0.5722/2.448, |L|=17.7/0.5725/2.448 |B|=0/0/0, |BL|=5.098e-26/1.262e-25/6.843e-26, PARS=0.001119/0.001119/0.001119, U=0.9999/0.8287/0.8862
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+495(1 ) [phase:1,s:0.9957,ds:0.0042969,dump:0,u:0:0]      (f:0.571,d:0.00284)    -->   [f:0.0778,d:0.000657]   lambda:1     
+496(2 ) [phase:1,s:0.9957,ds:0.0042969,dump:1,u:0:0]     (f:0.0778,d:0.000415)   -->  [f:0.00814,d:5.86e-05]   lambda:0.95   #err=  1 angle:1 armijo:1
+497(3 ) [phase:1,s:0.9957,ds:0.0042969,dump:1,u:0:0]    (f:0.00814,d:9.71e-05)   -->   [f:0.00431,d:4.8e-05]   lambda:0.41   #err=  1 armijo:1
+498(4 ) [phase:1,s:0.9957,ds:0.0042969,dump:1,u:0:0]     (f:0.00431,d:3.6e-05)   -->  [f:0.000376,d:3.67e-06]  lambda:0.95   #err=  1 angle:1 armijo:1
+499(5 ) [phase:1,s:0.9957,ds:0.0042969,dump:0,u:0:0]    (f:0.000376,d:2.96e-06)  -->  [f:4.59e-06,d:3.63e-08]  lambda:1     
+500(6 ) [phase:1,s:0.9957,ds:0.0042969,dump:0,u:0:0]    (f:4.59e-06,d:3.77e-08)  -->  [f:1.96e-09,d:1.58e-11]  lambda:1     
+501(7 ) [phase:1,s:0.9957,ds:0.0042969,dump:0,u:0:0]    (f:1.96e-09,d:1.58e-11)  -->  [f:5.09e-14,d:1.49e-15]  lambda:1     
+
+Continuation step N.1 s:0.9957->1, ds=0.0042969
+[iter:501,phase:1,s:1,ds:0.0042969] |X|=75.67/3.644/15.42, |L|=75.67/3.657/15.45 |B|=0/0/0, |BL|=7.466e-28/2.019e-27/1.074e-27, PARS=0.001271/0.001271/0.001271, U=1/0.9997/0.9997
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+502(1 ) [phase:1,s:1,ds:0.0042969,dump:8,u:0:0]            (f:3.64,d:0.0417)     -->     [f:3.63,d:0.0417]     lambda:0.000667  #err=  8 armijo:8
+503(2 ) [phase:1,s:1,ds:0.0042969,dump:2,u:0:0]            (f:3.63,d:0.0326)     -->     [f:4.09,d:0.0223]     lambda:0.0062  #err=  2 armijo:2
+504(3 ) [phase:1,s:1,ds:0.0042969,dump:51,u:0:0]           (f:4.09,d:0.0354)     -->     [f:3.64,d:0.0288]     lambda:0.00546  #err= 51 angle:48 armijo:51
+505(4 ) [phase:1,s:1,ds:0.0042969,dump:5,u:0:0]            (f:3.64,d:0.034)      -->     [f:3.64,d:0.034]      lambda:0.00113  #err=  5 armijo:5
+506(5 ) [phase:1,s:1,ds:0.0042969,dump:4,u:0:0]            (f:3.64,d:0.0252)     -->     [f:3.63,d:0.0251]     lambda:0.00129  #err=  4 armijo:4
+507(6 ) [phase:1,s:1,ds:0.0042969,dump:3,u:0:0]            (f:3.63,d:0.0221)     -->     [f:3.61,d:0.022]      lambda:0.00345  #err=  3 armijo:3
+508(7 ) [phase:1,s:1,ds:0.0042969,dump:3,u:0:0]            (f:3.61,d:0.0142)     -->     [f:3.89,d:0.0156]     lambda:0.064  #err=  3 armijo:3
+509(8 ) [phase:1,s:1,ds:0.0042969,dump:43,u:0:0]           (f:3.89,d:0.0308)     -->     [f:3.53,d:0.0173]     lambda:0.00974  #err= 43 angle:40 armijo:43
+510(9 ) [phase:1,s:1,ds:0.0042969,dump:2,u:0:0]            (f:3.53,d:0.0219)     -->     [f:3.47,d:0.017]      lambda:0.0237  #err=  2 armijo:2
+511(10) [phase:1,s:1,ds:0.0042969,dump:6,u:0:0]            (f:3.47,d:0.025)      -->     [f:3.37,d:0.0205]     lambda:0.0041  #err=  6 armijo:6
+512(11) [phase:1,s:1,ds:0.0042969,dump:4,u:0:0]            (f:3.37,d:0.0154)     -->     [f:3.36,d:0.0153]     lambda:0.00246  #err=  4 armijo:4
+513(12) [phase:1,s:1,ds:0.0042969,dump:4,u:0:0]            (f:3.36,d:0.014)      -->     [f:3.36,d:0.014]      lambda:0.0019  #err=  4 armijo:4
+514(13) [phase:1,s:1,ds:0.0042969,dump:4,u:0:0]            (f:3.36,d:0.0119)     -->     [f:3.35,d:0.0119]     lambda:0.00168  #err=  4 armijo:4
+515(14) [phase:1,s:1,ds:0.0042969,dump:2,u:0:0]           (f:3.35,d:0.00886)     -->    [f:3.32,d:0.00863]     lambda:0.00982  #err=  2 armijo:2
+516(15) [phase:1,s:1,ds:0.0042969,dump:5,u:0:0]           (f:3.32,d:0.00733)     -->    [f:3.27,d:0.00724]     lambda:0.0102  #err=  5 armijo:5
+517(16) [phase:1,s:1,ds:0.0042969,dump:5,u:0:0]            (f:3.27,d:0.0103)     -->     [f:3.26,d:0.0103]     lambda:0.00155  #err=  5 armijo:5
+518(17) [phase:1,s:1,ds:0.0042969,dump:4,u:0:0]           (f:3.26,d:0.00698)     -->    [f:3.26,d:0.00697]     lambda:0.00151  #err=  4 armijo:4
+519(18) [phase:1,s:1,ds:0.0042969,dump:2,u:0:0]           (f:3.26,d:0.00657)     -->    [f:3.23,d:0.00651]     lambda:0.00934  #err=  2 armijo:2
+520(19) [phase:1,s:1,ds:0.0042969,dump:4,u:0:0]           (f:3.23,d:0.00622)     -->    [f:3.15,d:0.00609]     lambda:0.0256  #err=  4 armijo:4
+521(20) [phase:1,s:1,ds:0.0042969,dump:6,u:0:0]           (f:3.15,d:0.00673)     -->    [f:3.15,d:0.00673]     lambda:0.000983  #err=  6 armijo:6
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+522(21) [phase:1,s:1,ds:0.0042969,dump:0,u:0:0]           (f:3.15,d:0.00593)     -->    [f:2.93,d:0.00563]     lambda:0.047 
+523(22) [phase:1,s:1,ds:0.0042969,dump:19,u:0:0]           (f:2.93,d:0.0146)     -->     [f:2.88,d:0.0107]     lambda:0.00903  #err= 19 angle:15 armijo:19
+524(23) [phase:1,s:1,ds:0.0042969,dump:3,u:0:0]           (f:2.88,d:0.00983)     -->    [f:2.86,d:0.00974]     lambda:0.00912  #err=  3 armijo:3
+525(24) [phase:1,s:1,ds:0.0042969,dump:6,u:0:0]            (f:2.86,d:0.0096)     -->    [f:2.84,d:0.00956]     lambda:0.0041  #err=  6 armijo:6
+526(25) [phase:1,s:1,ds:0.0042969,dump:5,u:0:0]           (f:2.84,d:0.00928)     -->    [f:2.84,d:0.00927]     lambda:0.000983  #err=  5 armijo:5
+527(26) [phase:1,s:1,ds:0.0042969,dump:4,u:0:0]           (f:2.84,d:0.00794)     -->    [f:2.84,d:0.00793]     lambda:0.0012  #err=  4 armijo:4
+528(27) [phase:1,s:1,ds:0.0042969,dump:4,u:0:0]           (f:2.84,d:0.00545)     -->    [f:2.83,d:0.00544]     lambda:0.00133  #err=  4 armijo:4
+529(28) [phase:1,s:1,ds:0.0042969,dump:1,u:0:0]           (f:2.83,d:0.00507)     -->    [f:2.78,d:0.00497]     lambda:0.0219  #err=  1 armijo:1
+530(29) [phase:1,s:1,ds:0.0042969,dump:4,u:0:0]           (f:2.78,d:0.00681)     -->    [f:2.72,d:0.00646]     lambda:0.0256  #err=  4 armijo:4
+531(30) [phase:1,s:1,ds:0.0042969,dump:5,u:0:0]            (f:2.72,d:0.0112)     -->     [f:2.71,d:0.0112]     lambda:0.00267  #err=  5 armijo:5
+532(31) [phase:1,s:1,ds:0.0042969,dump:3,u:0:0]            (f:2.71,d:0.0117)     -->     [f:2.7,d:0.0116]      lambda:0.00496  #err=  3 armijo:3
+533(32) [phase:1,s:1,ds:0.0042969,dump:6,u:0:0]            (f:2.7,d:0.0109)      -->    [f:2.67,d:0.00981]     lambda:0.0041  #err=  6 armijo:6
+534(33) [phase:1,s:1,ds:0.0042969,dump:4,u:0:0]           (f:2.67,d:0.00829)     -->    [f:2.67,d:0.00821]     lambda:0.00246  #err=  4 armijo:4
+535(34) [phase:1,s:1,ds:0.0042969,dump:0,u:0:0]           (f:2.67,d:0.00447)     -->    [f:2.46,d:0.00417]     lambda:0.0744 
+536(35) [phase:1,s:1,ds:0.0042969,dump:2,u:0:0]           (f:2.46,d:0.00407)     -->    [f:2.12,d:0.00385]     lambda:0.16   #err=  2 armijo:2
+537(36) [phase:1,s:1,ds:0.0042969,dump:5,u:0:0]            (f:2.12,d:0.0102)     -->    [f:2.07,d:0.00892]     lambda:0.0102  #err=  5 armijo:5
+538(37) [phase:1,s:1,ds:0.0042969,dump:3,u:0:0]           (f:2.07,d:0.00882)     -->    [f:2.05,d:0.00872]     lambda:0.00971  #err=  3 armijo:3
+539(38) [phase:1,s:1,ds:0.0042969,dump:7,u:0:0]           (f:2.05,d:0.00309)     -->    [f:2.05,d:0.00308]     lambda:0.00164  #err=  7 armijo:7
+540(39) [phase:1,s:1,ds:0.0042969,dump:0,u:0:0]           (f:2.05,d:0.00285)     -->    [f:1.94,d:0.00271]     lambda:0.0607 
+541(40) [phase:1,s:1,ds:0.0042969,dump:63,u:0:0]          (f:1.94,d:0.00869)     -->    [f:1.92,d:0.00465]     lambda:0.00124  #err= 63 angle:59 armijo:63
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+542(41) [phase:1,s:1,ds:0.0042969,dump:0,u:0:0]           (f:1.92,d:0.00263)     -->    [f:1.82,d:0.00249]     lambda:0.0529 
+543(42) [phase:1,s:1,ds:0.0042969,dump:3,u:0:0]           (f:1.82,d:0.00246)     -->     [f:1.7,d:0.00232]     lambda:0.064  #err=  3 armijo:3
+544(43) [phase:1,s:1,ds:0.0042969,dump:4,u:0:0]            (f:1.7,d:0.00227)     -->    [f:1.66,d:0.00222]     lambda:0.0256  #err=  4 armijo:4
+545(44) [phase:1,s:1,ds:0.0042969,dump:0,u:0:0]           (f:1.66,d:0.00222)     -->     [f:1.3,d:0.00182]     lambda:0.24  
+546(45) [phase:1,s:1,ds:0.0042969,dump:2,u:0:0]            (f:1.3,d:0.00221)     -->    [f:1.14,d:0.00147]     lambda:0.16   #err=  2 armijo:2
+547(46) [phase:1,s:1,ds:0.0042969,dump:1,u:0:0]           (f:1.14,d:0.00144)     -->   [f:0.682,d:0.000826]    lambda:0.4    #err=  1 armijo:1
+548(47) [phase:1,s:1,ds:0.0042969,dump:4,u:0:0]          (f:0.682,d:0.000803)    -->   [f:0.664,d:0.000782]    lambda:0.0256  #err=  4 armijo:4
+549(48) [phase:1,s:1,ds:0.0042969,dump:2,u:0:0]          (f:0.664,d:0.000764)    -->   [f:0.638,d:0.000734]    lambda:0.0384  #err=  2 armijo:2
+550(49) [phase:1,s:1,ds:0.0042969,dump:1,u:0:0]          (f:0.638,d:0.000741)    -->   [f:0.404,d:0.000499]    lambda:0.4    #err=  1 armijo:1
+551(50) [phase:1,s:1,ds:0.0042969,dump:3,u:0:0]          (f:0.404,d:0.000657)    -->   [f:0.363,d:0.000567]    lambda:0.064  #err=  3 armijo:3
+552(51) [phase:1,s:1,ds:0.0042969,dump:4,u:0:0]          (f:0.363,d:0.000449)    -->   [f:0.354,d:0.000438]    lambda:0.0256  #err=  4 armijo:4
+553(52) [phase:1,s:1,ds:0.0042969,dump:0,u:0:0]          (f:0.354,d:0.000432)    -->   [f:0.302,d:0.000376]    lambda:0.24  
+554(53) [phase:1,s:1,ds:0.0042969,dump:2,u:0:0]          (f:0.302,d:0.000461)    -->   [f:0.251,d:0.000293]    lambda:0.16   #err=  2 armijo:2
+555(54) [phase:1,s:1,ds:0.0042969,dump:3,u:0:0]          (f:0.251,d:0.000422)    -->   [f:0.226,d:0.000401]    lambda:0.064  #err=  3 armijo:3
+556(55) [phase:1,s:1,ds:0.0042969,dump:4,u:0:0]          (f:0.226,d:0.000354)    -->    [f:0.22,d:0.000345]    lambda:0.0256  #err=  4 armijo:4
+557(56) [phase:1,s:1,ds:0.0042969,dump:2,u:0:0]           (f:0.22,d:0.000305)    -->   [f:0.212,d:0.000289]    lambda:0.0384  #err=  2 armijo:2
+558(57) [phase:1,s:1,ds:0.0042969,dump:4,u:0:0]          (f:0.212,d:0.000224)    -->   [f:0.206,d:0.000218]    lambda:0.0256  #err=  4 armijo:4
+559(58) [phase:1,s:1,ds:0.0042969,dump:0,u:0:0]          (f:0.206,d:0.000211)    -->   [f:0.172,d:0.000191]    lambda:0.24  
+560(59) [phase:1,s:1,ds:0.0042969,dump:1,u:0:0]          (f:0.172,d:0.000246)    -->   [f:0.106,d:0.000112]    lambda:0.4    #err=  1 armijo:1
+561(60) [phase:1,s:1,ds:0.0042969,dump:2,u:0:0]          (f:0.106,d:0.000219)    -->   [f:0.0927,d:0.000188]   lambda:0.16   #err=  2 armijo:2
+NLsolver[Underwater]::solve_with_continuation(phase=1,...) found:
+NLsolver[Underwater]::solve()
+#phase=1 #it=0/60 lambda=0.16 tolerance=1e-09 |f|_1=0.106 |f|_inf=103.4 |d|_1=0.0002195 |d|_inf=0.1507
+at phase 1, iter 561: NLsolver[Underwater]::solve, Too many iterations
+
+
+Continuation step N.1 s:0.9957->0.99785, ds=0.0021484
+[iter:561,phase:1,s:0.9979,ds:0.0021484] |X|=17.28/0.5397/2.357, |L|=17.28/0.54/2.357 |B|=0/0/0, |BL|=7.466e-28/2.019e-27/1.074e-27, PARS=0.0005879/0.0005879/0.0005879, U=1/0.8358/0.8917
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+562(1 ) [phase:1,s:0.9979,ds:0.0021484,dump:1,u:0:0]      (f:0.539,d:0.00174)    -->   [f:0.0389,d:0.000311]   lambda:0.95   #err=  1 angle:1 armijo:1
+563(2 ) [phase:1,s:0.9979,ds:0.0021484,dump:0,u:0:0]     (f:0.0389,d:0.000142)   -->  [f:0.00128,d:3.14e-05]   lambda:1     
+564(3 ) [phase:1,s:0.9979,ds:0.0021484,dump:0,u:0:0]     (f:0.00128,d:2.5e-05)   -->  [f:2.92e-05,d:2.89e-07]  lambda:1     
+565(4 ) [phase:1,s:0.9979,ds:0.0021484,dump:0,u:0:0]    (f:2.92e-05,d:2.96e-07)  -->  [f:1.11e-08,d:2.22e-10]  lambda:1     
+566(5 ) [phase:1,s:0.9979,ds:0.0021484,dump:0,u:0:0]    (f:1.11e-08,d:2.22e-10)  -->  [f:6.12e-14,d:7.31e-16]  lambda:1     
+
+Continuation step N.1 s:0.99785->1, ds=0.0021484
+[iter:566,phase:1,s:1,ds:0.0021484] |X|=75.02/3.519/15.16, |L|=75.02/3.532/15.19 |B|=0/0/0, |BL|=6.307e-26/2.048e-25/1.032e-25, PARS=0.0006767/0.0006767/0.0006767, U=1/0.9996/0.9996
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+567(1 ) [phase:1,s:1,ds:0.0021484,dump:6,u:0:0]            (f:3.51,d:0.024)      -->     [f:4.02,d:0.0201]     lambda:0.0041  #err=  6 armijo:6
+568(2 ) [phase:1,s:1,ds:0.0021484,dump:56,u:0:0]           (f:4.02,d:0.0337)     -->     [f:3.67,d:0.0249]     lambda:0.00229  #err= 56 angle:55 armijo:56
+569(3 ) [phase:1,s:1,ds:0.0021484,dump:4,u:0:0]            (f:3.67,d:0.0202)     -->     [f:3.66,d:0.0201]     lambda:0.00184  #err=  4 armijo:4
+570(4 ) [phase:1,s:1,ds:0.0021484,dump:3,u:0:0]           (f:3.66,d:0.00967)     -->     [f:3.63,d:0.0096]     lambda:0.00411  #err=  3 armijo:3
+571(5 ) [phase:1,s:1,ds:0.0021484,dump:4,u:0:0]           (f:3.63,d:0.00788)     -->    [f:3.44,d:0.00795]     lambda:0.0256  #err=  4 armijo:4
+572(6 ) [phase:1,s:1,ds:0.0021484,dump:2,u:0:0]           (f:3.44,d:0.00681)     -->    [f:2.95,d:0.00635]     lambda:0.0384  #err=  2 armijo:2
+573(7 ) [phase:1,s:1,ds:0.0021484,dump:5,u:0:0]           (f:2.95,d:0.00601)     -->    [f:2.91,d:0.00593]     lambda:0.0112  #err=  5 armijo:5
+574(8 ) [phase:1,s:1,ds:0.0021484,dump:2,u:0:0]           (f:2.91,d:0.00518)     -->    [f:2.84,d:0.00486]     lambda:0.0254  #err=  2 armijo:2
+575(9 ) [phase:1,s:1,ds:0.0021484,dump:3,u:0:0]           (f:2.84,d:0.00432)     -->    [f:2.61,d:0.00411]     lambda:0.064  #err=  3 armijo:3
+576(10) [phase:1,s:1,ds:0.0021484,dump:2,u:0:0]           (f:2.61,d:0.00371)     -->    [f:2.05,d:0.00277]     lambda:0.163  #err=  2 armijo:2
+577(11) [phase:1,s:1,ds:0.0021484,dump:2,u:0:0]           (f:2.05,d:0.00295)     -->    [f:1.71,d:0.00319]     lambda:0.16   #err=  2 armijo:2
+578(12) [phase:1,s:1,ds:0.0021484,dump:4,u:0:0]           (f:1.71,d:0.00326)     -->    [f:1.67,d:0.00216]     lambda:0.0259  #err=  4 armijo:4
+579(13) [phase:1,s:1,ds:0.0021484,dump:2,u:0:0]           (f:1.67,d:0.00225)     -->     [f:1.6,d:0.00256]     lambda:0.0387  #err=  2 armijo:2
+580(14) [phase:1,s:1,ds:0.0021484,dump:4,u:0:0]            (f:1.6,d:0.00202)     -->    [f:1.55,d:0.00195]     lambda:0.0316  #err=  4 armijo:4
+581(15) [phase:1,s:1,ds:0.0021484,dump:2,u:0:0]           (f:1.55,d:0.00185)     -->    [f:1.49,d:0.00176]     lambda:0.0427  #err=  2 armijo:2
+582(16) [phase:1,s:1,ds:0.0021484,dump:1,u:0:0]           (f:1.49,d:0.00174)     -->    [f:1.03,d:0.00191]     lambda:0.4    #err=  1 armijo:1
+583(17) [phase:1,s:1,ds:0.0021484,dump:9,u:0:0]           (f:1.03,d:0.00805)     -->    [f:1.01,d:0.00205]     lambda:0.00834  #err=  9 angle:4 armijo:9
+584(18) [phase:1,s:1,ds:0.0021484,dump:2,u:0:0]           (f:1.01,d:0.00116)     -->    [f:0.989,d:0.00113]    lambda:0.022  #err=  2 armijo:2
+585(19) [phase:1,s:1,ds:0.0021484,dump:3,u:0:0]           (f:0.989,d:0.00113)    -->    [f:0.927,d:0.0011]     lambda:0.064  #err=  3 armijo:3
+586(20) [phase:1,s:1,ds:0.0021484,dump:4,u:0:0]           (f:0.927,d:0.00115)    -->    [f:0.893,d:0.00138]    lambda:0.0256  #err=  4 armijo:4
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+587(21) [phase:1,s:1,ds:0.0021484,dump:0,u:0:0]           (f:0.893,d:0.00102)    -->   [f:0.666,d:0.000873]    lambda:0.24  
+588(22) [phase:1,s:1,ds:0.0021484,dump:5,u:0:0]           (f:0.666,d:0.00253)    -->    [f:0.659,d:0.00103]    lambda:0.0102  #err=  5 armijo:5
+589(23) [phase:1,s:1,ds:0.0021484,dump:3,u:0:0]          (f:0.659,d:0.000879)    -->   [f:0.653,d:0.000869]    lambda:0.00971  #err=  3 armijo:3
+590(24) [phase:1,s:1,ds:0.0021484,dump:3,u:0:0]          (f:0.653,d:0.000728)    -->   [f:0.601,d:0.000891]    lambda:0.064  #err=  3 armijo:3
+591(25) [phase:1,s:1,ds:0.0021484,dump:1,u:0:0]          (f:0.601,d:0.000611)    -->    [f:0.352,d:0.00036]    lambda:0.4    #err=  1 armijo:1
+592(26) [phase:1,s:1,ds:0.0021484,dump:2,u:0:0]          (f:0.352,d:0.000376)    -->    [f:0.287,d:0.0003]     lambda:0.16   #err=  2 armijo:2
+593(27) [phase:1,s:1,ds:0.0021484,dump:5,u:0:0]          (f:0.287,d:0.000625)    -->   [f:0.284,d:0.000618]    lambda:0.0102  #err=  5 armijo:5
+594(28) [phase:1,s:1,ds:0.0021484,dump:3,u:0:0]          (f:0.284,d:0.000451)    -->   [f:0.281,d:0.000445]    lambda:0.00971  #err=  3 armijo:3
+595(29) [phase:1,s:1,ds:0.0021484,dump:3,u:0:0]           (f:0.281,d:0.00032)    -->   [f:0.263,d:0.000382]    lambda:0.064  #err=  3 armijo:3
+596(30) [phase:1,s:1,ds:0.0021484,dump:3,u:0:0]          (f:0.263,d:0.000435)    -->   [f:0.246,d:0.000311]    lambda:0.064  #err=  3 armijo:3
+597(31) [phase:1,s:1,ds:0.0021484,dump:4,u:0:0]          (f:0.246,d:0.000601)    -->    [f:0.24,d:0.000554]    lambda:0.0256  #err=  4 armijo:4
+598(32) [phase:1,s:1,ds:0.0021484,dump:0,u:0:0]           (f:0.24,d:0.000233)    -->   [f:0.182,d:0.000182]    lambda:0.24  
+599(33) [phase:1,s:1,ds:0.0021484,dump:1,u:0:0]          (f:0.182,d:0.000193)    -->    [f:0.11,d:0.000112]    lambda:0.4    #err=  1 armijo:1
+600(34) [phase:1,s:1,ds:0.0021484,dump:5,u:0:0]           (f:0.11,d:0.000511)    -->   [f:0.109,d:0.000505]    lambda:0.0102  #err=  5 armijo:5
+601(35) [phase:1,s:1,ds:0.0021484,dump:3,u:0:0]          (f:0.109,d:0.000424)    -->   [f:0.108,d:0.000419]    lambda:0.00971  #err=  3 armijo:3
+602(36) [phase:1,s:1,ds:0.0021484,dump:5,u:0:0]          (f:0.108,d:0.000226)    -->   [f:0.107,d:0.000223]    lambda:0.0102  #err=  5 armijo:5
+603(37) [phase:1,s:1,ds:0.0021484,dump:0,u:0:0]          (f:0.107,d:0.000134)    -->   [f:0.0905,d:0.000174]   lambda:0.152 
+604(38) [phase:1,s:1,ds:0.0021484,dump:2,u:0:0]          (f:0.0905,d:0.000205)   -->   [f:0.076,d:0.000128]    lambda:0.16   #err=  2 armijo:2
+605(39) [phase:1,s:1,ds:0.0021484,dump:4,u:0:0]           (f:0.076,d:0.00046)    -->   [f:0.0741,d:0.000445]   lambda:0.0256  #err=  4 armijo:4
+606(40) [phase:1,s:1,ds:0.0021484,dump:3,u:0:0]          (f:0.0741,d:0.000178)   -->   [f:0.0729,d:0.000172]   lambda:0.0154  #err=  3 armijo:3
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Underwater
+607(41) [phase:1,s:1,ds:0.0021484,dump:1,u:0:0]          (f:0.0729,d:8.05e-05)   -->   [f:0.0439,d:6.91e-05]   lambda:0.4    #err=  1 armijo:1
+608(42) [phase:1,s:1,ds:0.0021484,dump:31,u:0:0]         (f:0.0439,d:0.000201)   -->   [f:0.0423,d:0.000165]   lambda:0.0361  #err= 31 angle:29 armijo:31
+609(43) [phase:1,s:1,ds:0.0021484,dump:0,u:0:0]          (f:0.0423,d:4.17e-05)   -->   [f:0.0302,d:2.99e-05]   lambda:0.285 
+610(44) [phase:1,s:1,ds:0.0021484,dump:0,u:0:0]          (f:0.0302,d:2.99e-05)   -->  [f:0.000583,d:3.95e-07]  lambda:1     
+611(45) [phase:1,s:1,ds:0.0021484,dump:0,u:0:0]         (f:0.000583,d:3.15e-07)  -->  [f:7.22e-06,d:6.04e-09]  lambda:1     
+612(46) [phase:1,s:1,ds:0.0021484,dump:0,u:0:0]         (f:7.22e-06,d:6.44e-09)  -->  [f:7.2e-09,d:7.05e-12]   lambda:1     
+613(47) [phase:1,s:1,ds:0.0021484,dump:0,u:0:0]         (f:7.2e-09,d:7.07e-12)   -->  [f:6.57e-14,d:3.72e-14]  lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 3               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 12025           | N. System pars  = 31028           |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 35.3 [sec]      | timeout         = 0 [ms]          |
+| iteration       = 613             | Memory Used     = 4Mb(+70Kb)      |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 3629            | Jacobian        = 613             |
+| Factorization   = 613             | Inversion       = 3629            |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 5.1443e-11      | last ||d||_inf  = 4.0961e-12      |
+| last ||f||_1    = 6.5714e-14      | last ||d||_1    = 3.7171e-14      |
+| last ||f||_2    = 8.0661e-13      | last ||d||_2    = 2.3966e-13      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 3.309ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 396.2ms ]
+Check DuDxxpm (epsi=0.001):
+#ERR 1 DuDxxpm [cell=34 of 1000 SEGMENT#0 range:(0,1000)] #x=6 #u=3 #p=1 [ (u) * (xxpm) = 3 x 19 ]
+jac[  2, 18] =  -1.8252e+08 : -5.6257e+07  [A:FD] ---   1.2626e+08 : 69.177       [err:err(%)]
+
+#ERR 2 DuDxxpm [cell=80 of 1000 SEGMENT#0 range:(0,1000)] #x=6 #u=3 #p=1 [ (u) * (xxpm) = 3 x 19 ]
+jac[  2, 18] =  -7.8008e+07 : -4.4639e+07  [A:FD] ---    3.337e+07 : 42.777       [err:err(%)]
+
+#ERR 3 DuDxxpm [cell=90 of 1000 SEGMENT#0 range:(0,1000)] #x=6 #u=3 #p=1 [ (u) * (xxpm) = 3 x 19 ]
+jac[  2, 18] =       -47797 : -47934       [A:FD] ---          137 : 0.2858       [err:err(%)]
+
+#ERR 4 DuDxxpm [cell=91 of 1000 SEGMENT#0 range:(0,1000)] #x=6 #u=3 #p=1 [ (u) * (xxpm) = 3 x 19 ]
+jac[  2, 18] =  -8.9222e+07 : -4.6392e+07  [A:FD] ---    4.283e+07 : 48.004       [err:err(%)]
+
+#ERR 5 DuDxxpm [cell=92 of 1000 SEGMENT#0 range:(0,1000)] #x=6 #u=3 #p=1 [ (u) * (xxpm) = 3 x 19 ]
+jac[  2, 18] =  -1.1579e+06 : -1.2464e+06  [A:FD] ---        88482 : 7.0992       [err:err(%)]
+
+#ERR 6 DuDxxpm [cell=93 of 1000 SEGMENT#0 range:(0,1000)] #x=6 #u=3 #p=1 [ (u) * (xxpm) = 3 x 19 ]
+jac[  2, 18] =  -3.5967e+06 : -4.687e+06   [A:FD] ---   1.0902e+06 : 23.261       [err:err(%)]
+
+skipping... [ 19.65ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001):
+#ERR 1 DabcDxlxlpu [cell=0 of 1000 SEGMENT#0 range:(0,1000)] #x=#l=6 #p=1 #u=3 [ (xlp) x (xlxlpu) = 13 x 28 ]
+DcDu(0:0,0:2)[ 0, 2] =      0.20573 : 0.21307      [A:FD] ---    0.0073311 : 0.7331       [err:err(%)]
+
+#ERR 2 DabcDxlxlpu [cell=1 of 1000 SEGMENT#0 range:(0,1000)] #x=#l=6 #p=1 #u=3 [ (xlp) x (xlxlpu) = 13 x 28 ]
+DcDu(0:0,0:2)[ 0, 2] =      0.20285 : 0.20986      [A:FD] ---    0.0070088 : 0.7009       [err:err(%)]
+
+#ERR 3 DabcDxlxlpu [cell=2 of 1000 SEGMENT#0 range:(0,1000)] #x=#l=6 #p=1 #u=3 [ (xlp) x (xlxlpu) = 13 x 28 ]
+DcDu(0:0,0:2)[ 0, 2] =       0.1995 : 0.20614      [A:FD] ---    0.0066471 : 0.6647       [err:err(%)]
+
+#ERR 4 DabcDxlxlpu [cell=3 of 1000 SEGMENT#0 range:(0,1000)] #x=#l=6 #p=1 #u=3 [ (xlp) x (xlxlpu) = 13 x 28 ]
+DcDu(0:0,0:2)[ 0, 2] =      0.19567 : 0.20192      [A:FD] ---    0.0062513 : 0.6251       [err:err(%)]
+
+#ERR 5 DabcDxlxlpu [cell=4 of 1000 SEGMENT#0 range:(0,1000)] #x=#l=6 #p=1 #u=3 [ (xlp) x (xlxlpu) = 13 x 28 ]
+DcDu(0:0,0:2)[ 0, 2] =      0.19138 : 0.19721      [A:FD] ---    0.0058275 : 0.5827       [err:err(%)]
+
+#ERR 6 DabcDxlxlpu [cell=5 of 1000 SEGMENT#0 range:(0,1000)] #x=#l=6 #p=1 #u=3 [ (xlp) x (xlxlpu) = 13 x 28 ]
+DcDu(0:0,0:2)[ 0, 2] =      0.18661 : 0.192        [A:FD] ---     0.005382 : 0.5382       [err:err(%)]
+
+skipping... [ 2.753ms ]
+Check DodeDxp (epsi=0.001): all OK [ 7.018ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 10.14ms ]
+target [Lagrange,Mayer]            = [ 0, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 5.143e-06, 0 ]
+Optimization parameters:
+T: 9.25479299273806788
+All Done Folks!

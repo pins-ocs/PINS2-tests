@@ -1,0 +1,280 @@
++---------------- MODEL:ICLOCS_MinimumFuelOrbitRaising -----------------+
++................................ DIMS .................................+
+| dims                      = u=1, q=1, x=3, p=0, bc=5 of 5             |
+| total                     = nZ=2411, nP=6015, nUC=400, Q=401          |
+| index start               = omega=2406, p=2411                        |
+| post processing           = n_post=6                                  |
++................................ MESH .................................+
+| num nodes / segments      = 401 / 1                                   |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 2                               |
+| mesh class pointer        = 0x7ff7b70fe128                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 2411 x 2411                               |
+| nblock/block size         = 400 / 6                                   |
+| qr/qx/nr/nx               = 5 / 5 / 0 / 0                             |
+| last blok rows x cols     = 17 x 17                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_r                                                        |
+| [ 1] initial_vr                                                       |
+| [ 2] initial_vt                                                       |
+| [ 3] final_vr                                                         |
+| [ 4] rvt                                                              |
++.................... No control penalties/barriers ....................+
++....................... No constraints type LT ........................+
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 401                                                    
+  Segment N.0: s0 = 0 length = 3.32 npts = 401 no data set               
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|................................ T = 0.1405 ...........................|
+|............................... WG = 1 ................................|
+|.............................. WG0 = 1 ................................|
+|............................... md = 0.0749 ...........................|
+|............................... tf = 3.32 .............................|
+|...................... epsilon_max = 1 ................................|
+|...................... epsilon_min = 0 ................................|
+|........................ theta_max = 6.2832 ...........................|
+|........................ theta_min = 0 ................................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=1/0.1985/0.4128, |L|=1/0.1985/0.4128 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=6.275/3.142/3.628
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_MinimumFuelOrbitRaising
+  1 [dump:1,u:7.3:21]      (f:0.2,d:4.39)       -->     [f:0.658,d:1.21]      lambda:0.4    #err=  1 armijo:1
+  2 [dump:3,u:4.1:5]     (f:0.658,d:1.08)      -->    [f:0.0976,d:0.158]     lambda:0.857  #err=  3 angle:3 armijo:3
+  3 [dump:1,u:4:4]      (f:0.0976,d:0.184)     -->   [f:0.00471,d:0.00863]   lambda:0.95   #err=  1 angle:1 armijo:1
+  4 [dump:0,u:3.3:4]   (f:0.00471,d:0.00875)   -->  [f:3.85e-06,d:4.44e-06]  lambda:1     
+  5 [dump:0,u:2.2:3]  (f:3.85e-06,d:4.44e-06)  -->  [f:1.63e-12,d:1.13e-11]  lambda:1     
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:5,phase:1,s:0.2,ds:0.2] |X|=0.1237/0.02079/0.03566, |L|=0.1237/0.02083/0.03568 |B|=1.039e-13/1.53e-13/1.149e-13, |BL|=4.974e-14/4.974e-14/4.974e-14, PARS=0/0/0, U=6.612/3.111/3.845
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_MinimumFuelOrbitRaising
+6  (1 ) [phase:1,s:0.2,ds:0.2,dump:0,u:4.2:5]             (f:0.0383,d:0.333)     -->   [f:0.00123,d:0.00849]   lambda:1     
+7  (2 ) [phase:1,s:0.2,ds:0.2,dump:0,u:3.6:4]            (f:0.00123,d:0.0085)    -->  [f:8.52e-06,d:4.47e-05]  lambda:1     
+8  (3 ) [phase:1,s:0.2,ds:0.2,dump:0,u:2.9:3]           (f:8.52e-06,d:4.47e-05)  -->  [f:5.88e-11,d:2.12e-10]  lambda:1     
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:8,phase:1,s:0.5,ds:0.3] |X|=0.186/0.03362/0.05507, |L|=0.186/0.03372/0.05514 |B|=6.357e-11/8.448e-11/6.692e-11, |BL|=4.54e-13/4.54e-13/4.54e-13, PARS=0/0/0, U=6.638/3.1/3.905
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_MinimumFuelOrbitRaising
+9  (1 ) [phase:1,s:0.5,ds:0.3,dump:0,u:4.6:5]             (f:0.0612,d:0.491)     -->   [f:0.00736,d:0.0383]    lambda:1     
+10 (2 ) [phase:1,s:0.5,ds:0.3,dump:0,u:3.9:4]            (f:0.00736,d:0.0287)    -->  [f:0.000132,d:0.000625]  lambda:1     
+11 (3 ) [phase:1,s:0.5,ds:0.3,dump:0,u:3.1:4]           (f:0.000132,d:0.000624)  -->  [f:2.11e-08,d:6.71e-08]  lambda:1     
+12 (4 ) [phase:1,s:0.5,ds:0.3,dump:0,u:2:2]             (f:2.11e-08,d:6.71e-08)  -->  [f:8.24e-15,d:9.78e-16]  lambda:1     
+
+Continuation step N.1 s:0.5->0.95, ds=0.45
+[iter:12,phase:1,s:0.95,ds:0.45] |X|=0.281/0.06573/0.09857, |L|=0.281/0.06598/0.09889 |B|=1.332e-15/2.276e-15/1.633e-15, |BL|=1.981e-23/1.981e-23/1.981e-23, PARS=0/0/0, U=6.822/3.096/4.322
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_MinimumFuelOrbitRaising
+13 (1 ) [phase:1,s:0.95,ds:0.45,dump:1,u:11:29]            (f:0.109,d:10.6)      -->     [f:0.651,d:1.61]      lambda:0.4    #err=  1 armijo:1
+14 (2 ) [phase:1,s:0.95,ds:0.45,dump:3,u:15:27]            (f:0.651,d:26.4)      -->     [f:0.675,d:12.2]      lambda:0.102  #err=  3 angle:1 armijo:3
+15 (3 ) [phase:1,s:0.95,ds:0.45,dump:3,u:7.2:19]           (f:0.675,d:0.859)     -->     [f:0.632,d:0.813]     lambda:0.064  #err=  3 armijo:3
+16 (4 ) [phase:1,s:0.95,ds:0.45,dump:3,u:8:23]             (f:0.632,d:1.19)      -->     [f:0.592,d:1.13]      lambda:0.064  #err=  3 armijo:3
+17 (5 ) [phase:1,s:0.95,ds:0.45,dump:2,u:8.1:24]           (f:0.592,d:1.95)      -->      [f:0.5,d:1.83]       lambda:0.16   #err=  2 armijo:2
+18 (6 ) [phase:1,s:0.95,ds:0.45,dump:2,u:4.9:26]            (f:0.5,d:12.7)       -->     [f:0.489,d:12.6]      lambda:0.185  #err=  2 armijo:2
+19 (7 ) [phase:1,s:0.95,ds:0.45,dump:2,u:3.4:4]             (f:0.489,d:307)      -->      [f:70.6,d:167]       lambda:0.369  #err=  2 angle:1 armijo:2
+20 (8 ) [phase:1,s:0.95,ds:0.45,dump:2,u:7.6:26]            (f:70.6,d:66.8)      -->      [f:59.3,d:61.1]      lambda:0.169  #err=  2 armijo:2
+21 (9 ) [phase:1,s:0.95,ds:0.45,dump:2,u:9.5:28]            (f:59.3,d:112)       -->      [f:50.7,d:88.7]      lambda:0.16   #err=  2 armijo:2
+22 (10) [phase:1,s:0.95,ds:0.45,dump:1,u:8.7:27]             (f:50.7,d:70)       -->      [f:34.1,d:67.2]      lambda:0.4    #err=  1 armijo:1
+23 (11) [phase:1,s:0.95,ds:0.45,dump:2,u:11:27]             (f:34.1,d:70.8)      -->      [f:28.9,d:60.1]      lambda:0.16   #err=  2 armijo:2
+24 (12) [phase:1,s:0.95,ds:0.45,dump:2,u:11:24]              (f:28.9,d:61)       -->      [f:24.4,d:51.2]      lambda:0.16   #err=  2 armijo:2
+25 (13) [phase:1,s:0.95,ds:0.45,dump:2,u:12:27]             (f:24.4,d:52.2)      -->      [f:20.6,d:43.9]      lambda:0.16   #err=  2 armijo:2
+26 (14) [phase:1,s:0.95,ds:0.45,dump:2,u:11:29]             (f:20.6,d:45.4)      -->      [f:17.5,d:38.3]      lambda:0.16   #err=  2 armijo:2
+27 (15) [phase:1,s:0.95,ds:0.45,dump:1,u:11:27]             (f:17.5,d:39.8)      -->       [f:11,d:32.8]       lambda:0.4    #err=  1 armijo:1
+28 (16) [phase:1,s:0.95,ds:0.45,dump:2,u:14:28]              (f:11,d:37.5)       -->      [f:9.27,d:31.2]      lambda:0.16   #err=  2 armijo:2
+29 (17) [phase:1,s:0.95,ds:0.45,dump:1,u:11:24]             (f:9.27,d:28.9)      -->       [f:5.78,d:23]       lambda:0.4    #err=  1 armijo:1
+30 (18) [phase:1,s:0.95,ds:0.45,dump:3,u:15:30]             (f:5.78,d:24.5)      -->      [f:5.41,d:22.6]      lambda:0.064  #err=  3 armijo:3
+31 (19) [phase:1,s:0.95,ds:0.45,dump:2,u:14:24]             (f:5.41,d:18.2)      -->       [f:4.56,d:15]       lambda:0.16   #err=  2 armijo:2
+32 (20) [phase:1,s:0.95,ds:0.45,dump:2,u:15:32]             (f:4.56,d:13.4)      -->      [f:3.84,d:11.3]      lambda:0.16   #err=  2 armijo:2
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_MinimumFuelOrbitRaising
+33 (21) [phase:1,s:0.95,ds:0.45,dump:2,u:12:26]              (f:3.84,d:11)       -->      [f:3.23,d:9.31]      lambda:0.16   #err=  2 armijo:2
+34 (22) [phase:1,s:0.95,ds:0.45,dump:2,u:9.1:34]            (f:3.23,d:10.3)      -->      [f:2.64,d:8.83]      lambda:0.186  #err=  2 armijo:2
+35 (23) [phase:1,s:0.95,ds:0.45,dump:5,u:11:30]             (f:2.64,d:44.6)      -->      [f:2.62,d:44.6]      lambda:0.0102  #err=  5 armijo:5
+36 (24) [phase:1,s:0.95,ds:0.45,dump:1,u:8.3:22]             (f:2.62,d:34)       -->      [f:2.48,d:6.48]      lambda:0.0607  #err=  1 armijo:1
+37 (25) [phase:1,s:0.95,ds:0.45,dump:7,u:9.3:29]            (f:2.48,d:9.4)       -->      [f:2.48,d:9.38]      lambda:0.00164  #err=  7 armijo:7
+38 (26) [phase:1,s:0.95,ds:0.45,dump:4,u:5.6:23]            (f:2.48,d:9.05)      -->      [f:2.48,d:9.04]      lambda:0.00155  #err=  4 armijo:4
+39 (27) [phase:1,s:0.95,ds:0.45,dump:4,u:5.6:20]            (f:2.48,d:8.78)      -->      [f:2.47,d:8.77]      lambda:0.00151  #err=  4 armijo:4
+40 (28) [phase:1,s:0.95,ds:0.45,dump:4,u:5.6:18]            (f:2.47,d:8.56)      -->      [f:2.47,d:8.55]      lambda:0.00149  #err=  4 armijo:4
+41 (29) [phase:1,s:0.95,ds:0.45,dump:4,u:5.5:18]            (f:2.47,d:8.38)      -->      [f:2.47,d:8.36]      lambda:0.00148  #err=  4 armijo:4
+42 (30) [phase:1,s:0.95,ds:0.45,dump:4,u:5.5:20]            (f:2.47,d:8.21)      -->      [f:2.46,d:8.2]       lambda:0.00148  #err=  4 armijo:4
+43 (31) [phase:1,s:0.95,ds:0.45,dump:4,u:5.5:20]            (f:2.46,d:8.07)      -->      [f:2.46,d:8.05]      lambda:0.00148  #err=  4 armijo:4
+44 (32) [phase:1,s:0.95,ds:0.45,dump:4,u:5.4:20]            (f:2.46,d:7.93)      -->      [f:2.45,d:7.92]      lambda:0.00148  #err=  4 armijo:4
+45 (33) [phase:1,s:0.95,ds:0.45,dump:4,u:5.4:20]            (f:2.45,d:7.81)      -->      [f:2.45,d:7.8]       lambda:0.00148  #err=  4 armijo:4
+46 (34) [phase:1,s:0.95,ds:0.45,dump:4,u:5.4:19]            (f:2.45,d:7.7)       -->      [f:2.45,d:7.69]      lambda:0.00147  #err=  4 armijo:4
+47 (35) [phase:1,s:0.95,ds:0.45,dump:3,u:5.4:19]            (f:2.45,d:7.6)       -->      [f:2.44,d:7.57]      lambda:0.00369  #err=  3 armijo:3
+48 (36) [phase:1,s:0.95,ds:0.45,dump:6,u:8.9:23]            (f:2.44,d:7.37)      -->      [f:2.43,d:7.34]      lambda:0.0041  #err=  6 armijo:6
+49 (37) [phase:1,s:0.95,ds:0.45,dump:4,u:5.4:18]            (f:2.43,d:7.16)      -->      [f:2.42,d:7.14]      lambda:0.00246  #err=  4 armijo:4
+50 (38) [phase:1,s:0.95,ds:0.45,dump:3,u:5.5:18]            (f:2.42,d:7.05)      -->      [f:2.41,d:7.02]      lambda:0.00476  #err=  3 armijo:3
+51 (39) [phase:1,s:0.95,ds:0.45,dump:6,u:8.9:18]            (f:2.41,d:6.86)      -->      [f:2.4,d:6.83]       lambda:0.0041  #err=  6 armijo:6
+52 (40) [phase:1,s:0.95,ds:0.45,dump:4,u:5.4:19]            (f:2.4,d:6.71)       -->       [f:2.4,d:6.7]       lambda:0.00246  #err=  4 armijo:4
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_MinimumFuelOrbitRaising
+53 (41) [phase:1,s:0.95,ds:0.45,dump:3,u:5.5:20]            (f:2.4,d:6.64)       -->      [f:2.38,d:6.6]       lambda:0.00476  #err=  3 armijo:3
+54 (42) [phase:1,s:0.95,ds:0.45,dump:6,u:8.9:19]            (f:2.38,d:6.5)       -->      [f:2.37,d:6.47]      lambda:0.0041  #err=  6 armijo:6
+55 (43) [phase:1,s:0.95,ds:0.45,dump:3,u:5.4:17]            (f:2.37,d:6.39)      -->      [f:2.36,d:6.35]      lambda:0.00614  #err=  3 armijo:3
+56 (44) [phase:1,s:0.95,ds:0.45,dump:5,u:8.9:17]            (f:2.36,d:6.25)      -->      [f:2.34,d:6.2]       lambda:0.0102  #err=  5 armijo:5
+57 (45) [phase:1,s:0.95,ds:0.45,dump:3,u:5.4:16]            (f:2.34,d:6.25)      -->      [f:2.31,d:6.24]      lambda:0.00971  #err=  3 armijo:3
+58 (46) [phase:1,s:0.95,ds:0.45,dump:6,u:8.8:20]            (f:2.31,d:6.55)      -->      [f:2.3,d:6.52]       lambda:0.0041  #err=  6 armijo:6
+59 (47) [phase:1,s:0.95,ds:0.45,dump:3,u:5.4:17]            (f:2.3,d:6.45)       -->      [f:2.29,d:6.41]      lambda:0.00614  #err=  3 armijo:3
+60 (48) [phase:1,s:0.95,ds:0.45,dump:6,u:8.8:20]            (f:2.29,d:6.33)      -->      [f:2.28,d:6.31]      lambda:0.0041  #err=  6 armijo:6
+61 (49) [phase:1,s:0.95,ds:0.45,dump:3,u:5.4:17]            (f:2.28,d:6.26)      -->      [f:2.27,d:6.22]      lambda:0.00614  #err=  3 armijo:3
+62 (50) [phase:1,s:0.95,ds:0.45,dump:6,u:8.7:17]            (f:2.27,d:6.16)      -->      [f:2.26,d:6.14]      lambda:0.0041  #err=  6 armijo:6
+63 (51) [phase:1,s:0.95,ds:0.45,dump:3,u:5.3:17]            (f:2.26,d:6.11)      -->      [f:2.24,d:6.07]      lambda:0.00614  #err=  3 armijo:3
+64 (52) [phase:1,s:0.95,ds:0.45,dump:6,u:8.7:17]            (f:2.24,d:6.03)      -->      [f:2.23,d:6.01]      lambda:0.0041  #err=  6 armijo:6
+65 (53) [phase:1,s:0.95,ds:0.45,dump:3,u:5.3:17]            (f:2.23,d:5.99)      -->      [f:2.22,d:5.95]      lambda:0.00614  #err=  3 armijo:3
+66 (54) [phase:1,s:0.95,ds:0.45,dump:5,u:8.6:19]            (f:2.22,d:5.93)      -->      [f:2.2,d:5.87]       lambda:0.0102  #err=  5 armijo:5
+67 (55) [phase:1,s:0.95,ds:0.45,dump:3,u:5.4:15]            (f:2.2,d:5.87)       -->      [f:2.18,d:5.81]      lambda:0.00971  #err=  3 armijo:3
+68 (56) [phase:1,s:0.95,ds:0.45,dump:5,u:8.5:17]            (f:2.18,d:5.83)      -->      [f:2.15,d:5.77]      lambda:0.0102  #err=  5 armijo:5
+69 (57) [phase:1,s:0.95,ds:0.45,dump:3,u:5.4:15]            (f:2.15,d:5.84)      -->      [f:2.13,d:5.78]      lambda:0.00971  #err=  3 armijo:3
+70 (58) [phase:1,s:0.95,ds:0.45,dump:5,u:8.3:17]            (f:2.13,d:5.89)      -->      [f:2.11,d:5.84]      lambda:0.0102  #err=  5 armijo:5
+71 (59) [phase:1,s:0.95,ds:0.45,dump:3,u:5.3:16]            (f:2.11,d:6.04)      -->      [f:2.09,d:5.98]      lambda:0.00971  #err=  3 armijo:3
+72 (60) [phase:1,s:0.95,ds:0.45,dump:5,u:7.9:19]            (f:2.09,d:6.31)      -->      [f:2.07,d:6.25]      lambda:0.0102  #err=  5 armijo:5
+NLsolver[ICLOCS_MinimumFuelOrbitRaising]::solve_with_continuation(phase=1,...) found:
+NLsolver[ICLOCS_MinimumFuelOrbitRaising]::solve()
+#phase=1 #it=0/60 lambda=0.0102 tolerance=1.78e-07 |f|_1=2.09 |f|_inf=11.51 |d|_1=6.314 |d|_inf=34.83
+at phase 1, iter 72: NLsolver[ICLOCS_MinimumFuelOrbitRaising]::solve, Too many iterations
+
+
+Continuation step N.1 s:0.5->0.725, ds=0.225
+[iter:72,phase:1,s:0.725,ds:0.225] |X|=0.1405/0.02891/0.04491, |L|=0.1405/0.02904/0.04504 |B|=1.332e-15/2.276e-15/1.633e-15, |BL|=1.981e-23/1.981e-23/1.981e-23, PARS=0/0/0, U=6.551/3.08/3.917
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_MinimumFuelOrbitRaising
+73 (1 ) [phase:1,s:0.725,ds:0.225,dump:1,u:5:13]          (f:0.0511,d:0.415)     -->    [f:0.0294,d:0.381]     lambda:0.4    #err=  1 armijo:1
+74 (2 ) [phase:1,s:0.725,ds:0.225,dump:0,u:4.6:6]          (f:0.0294,d:0.22)     -->   [f:0.00215,d:0.00927]   lambda:1     
+75 (3 ) [phase:1,s:0.725,ds:0.225,dump:0,u:4:5]          (f:0.00215,d:0.00953)   -->  [f:3.93e-05,d:0.000143]  lambda:1     
+76 (4 ) [phase:1,s:0.725,ds:0.225,dump:0,u:3.1:4]       (f:3.93e-05,d:0.000143)  -->  [f:2.03e-09,d:5.46e-09]  lambda:1     
+77 (5 ) [phase:1,s:0.725,ds:0.225,dump:0,u:2:2]         (f:2.03e-09,d:5.46e-09)  -->  [f:6.3e-15,d:4.66e-16]   lambda:1     
+
+Continuation step N.1 s:0.725->1, ds=0.275
+[iter:77,phase:1,s:1,ds:0.275] |X|=0.2951/0.05336/0.08065, |L|=0.2951/0.05347/0.08072 |B|=0/0/0, |BL|=2.22e-16/2.22e-16/2.22e-16, PARS=0/0/0, U=31.15/3.093/4.593
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_MinimumFuelOrbitRaising
+78 (1 ) [phase:1,s:1,ds:0.275,dump:1,u:8.6:28]             (f:0.0812,d:9.64)     -->     [f:0.817,d:7.35]      lambda:0.4    #err=  1 armijo:1
+79 (2 ) [phase:1,s:1,ds:0.275,dump:3,u:10:22]              (f:0.817,d:9.83)      -->     [f:0.773,d:8.78]      lambda:0.064  #err=  3 armijo:3
+80 (3 ) [phase:1,s:1,ds:0.275,dump:3,u:10:20]              (f:0.773,d:3.31)      -->     [f:0.723,d:3.06]      lambda:0.064  #err=  3 armijo:3
+81 (4 ) [phase:1,s:1,ds:0.275,dump:2,u:8.7:15]             (f:0.723,d:2.16)      -->     [f:0.598,d:1.72]      lambda:0.16   #err=  2 armijo:2
+82 (5 ) [phase:1,s:1,ds:0.275,dump:3,u:7.6:23]             (f:0.598,d:3.52)      -->     [f:0.549,d:3.39]      lambda:0.0689  #err=  3 armijo:3
+83 (6 ) [phase:1,s:1,ds:0.275,dump:3,u:4:4]                (f:0.549,d:8.65)      -->     [f:0.494,d:8.42]      lambda:0.064  #err=  3 armijo:3
+84 (7 ) [phase:1,s:1,ds:0.275,dump:3,u:3.9:4]              (f:0.494,d:28.6)      -->     [f:0.393,d:28.3]      lambda:0.064  #err=  3 armijo:3
+85 (8 ) [phase:1,s:1,ds:0.275,dump:5,u:3.8:4]               (f:0.393,d:269)      -->      [f:0.352,d:268]      lambda:0.0127  #err=  5 armijo:5
+86 (9 ) [phase:1,s:1,ds:0.275,dump:4,u:3.2:4]            (f:0.352,d:2.08e+03)    -->   [f:0.318,d:2.07e+03]    lambda:0.00433  #err=  4 armijo:4
+87 (10) [phase:1,s:1,ds:0.275,dump:6,u:3.1:51]           (f:0.318,d:3.28e+04)    -->   [f:0.315,d:3.28e+04]    lambda:0.00045  #err=  6 armijo:6
+88 (11) [phase:1,s:1,ds:0.275,dump:6,u:16:51]            (f:0.315,d:2.92e+05)    -->   [f:0.317,d:2.92e+05]    lambda:0.00013  #err=  6 armijo:6
+89 (12) [phase:1,s:1,ds:0.275,dump:8,u:42:51]            (f:0.317,d:7.27e+06)    -->   [f:0.331,d:7.27e+06]    lambda:1.12e-05  #err=  8 armijo:8
+NLsolver[ICLOCS_MinimumFuelOrbitRaising]::solve_with_continuation(phase=1,...) found:
+NLsolver[ICLOCS_MinimumFuelOrbitRaising]::solve()
+#phase=1 #it=0/60 lambda=5.27e-07 tolerance=1e-09 |f|_1=0.3309 |f|_inf=1.466 |d|_1=5.848e+08 |d|_inf=2.854e+09
+at phase 1, iter 90: NLsolver[ICLOCS_MinimumFuelOrbitRaising]::solve [phase:1,iter:13/60,lambda:5.269930815607686e-07,dump:10] failed linesearch
+
+
+Continuation step N.1 s:0.725->0.8625, ds=0.1375
+[iter:90,phase:1,s:0.8625,ds:0.1375] |X|=0.1037/0.02191/0.03387, |L|=0.1037/0.02207/0.03409 |B|=0/0/0, |BL|=2.22e-16/2.22e-16/2.22e-16, PARS=0/0/0, U=6.328/3.048/3.889
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_MinimumFuelOrbitRaising
+91 (1 ) [phase:1,s:0.8625,ds:0.1375,dump:4,u:5.6:19]       (f:0.0367,d:0.43)     -->    [f:0.0358,d:0.418]     lambda:0.0256  #err=  4 armijo:4
+92 (2 ) [phase:1,s:0.8625,ds:0.1375,dump:3,u:4.7:15]      (f:0.0358,d:0.369)     -->    [f:0.0352,d:0.363]     lambda:0.0154  #err=  3 armijo:3
+93 (3 ) [phase:1,s:0.8625,ds:0.1375,dump:5,u:5.6:18]       (f:0.0352,d:0.34)     -->    [f:0.0349,d:0.337]     lambda:0.0102  #err=  5 armijo:5
+94 (4 ) [phase:1,s:0.8625,ds:0.1375,dump:3,u:4.5:19]      (f:0.0349,d:0.324)     -->    [f:0.0345,d:0.321]     lambda:0.00971  #err=  3 armijo:3
+95 (5 ) [phase:1,s:0.8625,ds:0.1375,dump:5,u:5.5:20]       (f:0.0345,d:0.31)     -->    [f:0.0342,d:0.307]     lambda:0.0102  #err=  5 armijo:5
+96 (6 ) [phase:1,s:0.8625,ds:0.1375,dump:3,u:4.5:20]      (f:0.0342,d:0.296)     -->    [f:0.0338,d:0.293]     lambda:0.00971  #err=  3 armijo:3
+97 (7 ) [phase:1,s:0.8625,ds:0.1375,dump:5,u:5.5:19]      (f:0.0338,d:0.285)     -->    [f:0.0335,d:0.282]     lambda:0.0102  #err=  5 armijo:5
+98 (8 ) [phase:1,s:0.8625,ds:0.1375,dump:4,u:4.5:20]      (f:0.0335,d:0.274)     -->    [f:0.0334,d:0.273]     lambda:0.00389  #err=  4 armijo:4
+99 (9 ) [phase:1,s:0.8625,ds:0.1375,dump:3,u:4.4:16]       (f:0.0334,d:0.27)     -->    [f:0.0332,d:0.268]     lambda:0.00598  #err=  3 armijo:3
+100(10) [phase:1,s:0.8625,ds:0.1375,dump:5,u:5.4:22]      (f:0.0332,d:0.264)     -->    [f:0.0328,d:0.261]     lambda:0.0102  #err=  5 armijo:5
+101(11) [phase:1,s:0.8625,ds:0.1375,dump:4,u:4.5:25]      (f:0.0328,d:0.255)     -->    [f:0.0327,d:0.254]     lambda:0.00389  #err=  4 armijo:4
+102(12) [phase:1,s:0.8625,ds:0.1375,dump:3,u:4.4:24]      (f:0.0327,d:0.252)     -->    [f:0.0325,d:0.251]     lambda:0.00598  #err=  3 armijo:3
+103(13) [phase:1,s:0.8625,ds:0.1375,dump:1,u:5.3:12]      (f:0.0325,d:0.248)     -->     [f:0.0176,d:0.23]     lambda:0.44   #err=  1 armijo:1
+104(14) [phase:1,s:0.8625,ds:0.1375,dump:0,u:4.9:6]       (f:0.0176,d:0.0889)    -->   [f:0.00129,d:0.00893]   lambda:1     
+105(15) [phase:1,s:0.8625,ds:0.1375,dump:0,u:4.2:5]      (f:0.00129,d:0.00901)   -->  [f:2.32e-05,d:2.92e-05]  lambda:1     
+106(16) [phase:1,s:0.8625,ds:0.1375,dump:0,u:3.1:4]     (f:2.32e-05,d:2.94e-05)  -->  [f:6.25e-10,d:1.15e-09]  lambda:1     
+107(17) [phase:1,s:0.8625,ds:0.1375,dump:0,u:2:2]       (f:6.25e-10,d:1.15e-09)  -->  [f:5.28e-15,d:1.59e-16]  lambda:1     
+
+Continuation step N.1 s:0.8625->1, ds=0.1375
+[iter:107,phase:1,s:1,ds:0.1375] |X|=0.2873/0.03661/0.06196, |L|=0.2902/0.03686/0.06253 |B|=0/0/0, |BL|=1.251e-24/1.719e-24/1.336e-24, PARS=0/0/0, U=18.98/3.189/4.611
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_MinimumFuelOrbitRaising
+108(1 ) [phase:1,s:1,ds:0.1375,dump:17,u:12:16]            (f:0.0531,d:1.36)     -->     [f:0.032,d:0.47]      lambda:0.21   #err= 17 angle:17 armijo:17
+109(2 ) [phase:1,s:1,ds:0.1375,dump:0,u:5.4:11]            (f:0.032,d:0.102)     -->    [f:0.0167,d:0.0359]    lambda:0.687 
+110(3 ) [phase:1,s:1,ds:0.1375,dump:0,u:4.7:8]            (f:0.0167,d:0.0427)    -->   [f:0.00195,d:0.00486]   lambda:1     
+111(4 ) [phase:1,s:1,ds:0.1375,dump:0,u:4.2:6]           (f:0.00195,d:0.00597)   -->  [f:9.08e-05,d:5.77e-05]  lambda:1     
+112(5 ) [phase:1,s:1,ds:0.1375,dump:0,u:3.2:4]          (f:9.08e-05,d:5.87e-05)  -->  [f:5.95e-09,d:1.69e-08]  lambda:1     
+113(6 ) [phase:1,s:1,ds:0.1375,dump:0,u:2.2:3]          (f:5.95e-09,d:1.69e-08)  -->  [f:4.68e-15,d:6.97e-16]  lambda:1     
+Continuation step N.2
+
+Continuation step N.2 s:0->0.2, ds=0.2
+[iter:113,phase:2,s:0.2,ds:0.2] |X|=4.613e-14/4.85e-15/7.654e-15, |L|=6.528e-14/4.905e-15/7.886e-15 |B|=2.22e-16/3.331e-16/2.483e-16, |BL|=2.22e-16/2.22e-16/2.22e-16, PARS=0/0/0, U=17.5/3.48/4.666
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_MinimumFuelOrbitRaising
+114(1 ) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]             (f:4.68e-15,d:6.98e-16)  -->  [f:4.23e-15,d:3.67e-17]  lambda:1     
+
+Continuation step N.2 s:0.2->0.5, ds=0.3
+[iter:114,phase:2,s:0.5,ds:0.3] |X|=2.522e-14/4.696e-15/7.234e-15, |L|=2.522e-14/4.694e-15/7.231e-15 |B|=5.551e-17/5.551e-17/5.551e-17, |BL|=3.218e-31/4.986e-31/3.672e-31, PARS=0/0/0, U=17.5/3.48/4.666
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_MinimumFuelOrbitRaising
+115(1 ) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]             (f:4.23e-15,d:3.66e-17)  -->  [f:4.26e-15,d:2.71e-17]  lambda:1     
+
+Continuation step N.2 s:0.5->0.95, ds=0.45
+[iter:115,phase:2,s:0.95,ds:0.45] |X|=2.531e-14/4.763e-15/7.406e-15, |L|=2.531e-14/4.759e-15/7.403e-15 |B|=0/0/0, |BL|=6.096e-33/7.607e-33/6.281e-33, PARS=0/0/0, U=17.5/3.48/4.666
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_MinimumFuelOrbitRaising
+116(1 ) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:4.26e-15,d:2.71e-17)  -->  [f:4.17e-15,d:2.67e-17]  lambda:1     
+
+Continuation step N.2 s:0.95->1, ds=0.05
+[iter:116,phase:2,s:1,ds:0.05] |X|=2.52e-14/4.659e-15/7.234e-15, |L|=2.52e-14/4.655e-15/7.23e-15 |B|=0/0/0, |BL|=9.451e-33/1.431e-32/1.063e-32, PARS=0/0/0, U=17.5/3.48/4.666
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_MinimumFuelOrbitRaising
+117(1 ) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:4.17e-15,d:2.67e-17)  -->  [f:4.2e-15,d:2.81e-17]   lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 1               | Hessian type    = Diagonal        |
++-------------------------- MinimizeHeavyBall --------------------------+
+| last f          = 0               | |g|_inf         = 5.5511e-17      |
++-----------------------------------------------------------------------+
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 2411            | N. System pars  = 6015            |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 21.3 [sec]      | timeout         = 0 [ms]          |
+| iteration       = 117             | Memory Used     = 669Kb(+77b)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 565             | Jacobian        = 117             |
+| Factorization   = 117             | Inversion       = 565             |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 2.5202e-14      | last ||d||_inf  = 1.7867e-16      |
+| last ||f||_1    = 4.2025e-15      | last ||d||_1    = 2.8098e-17      |
+| last ||f||_2    = 6.6305e-15      | last ||d||_2    = 3.9803e-17      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 1.045ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 87.51ms ]
+Check DuDxxpm (epsi=0.001): all OK [ 230.3ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001): all OK [ 69.91ms ]
+Check DodeDxp (epsi=0.001): all OK [ 1.377ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 71.42ms ]
+target [Lagrange,Mayer]            = [ -0.5253, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 0, 0 ]
+All Done Folks!

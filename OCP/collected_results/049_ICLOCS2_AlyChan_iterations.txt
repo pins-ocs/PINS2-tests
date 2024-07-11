@@ -1,0 +1,275 @@
++------------------------ MODEL:ICLOCS2_AlyChan ------------------------+
++................................ DIMS .................................+
+| dims                      = u=1, q=1, x=3, p=0, bc=3 of 3             |
+| total                     = nZ=2409, nP=6015, nUC=400, Q=401          |
+| index start               = omega=2406, p=2409                        |
+| post processing           = n_post=0                                  |
++................................ MESH .................................+
+| num nodes / segments      = 401 / 1                                   |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 1                               |
+| mesh class pointer        = 0x7ff7b009b138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 2409 x 2409                               |
+| nblock/block size         = 400 / 6                                   |
+| qr/qx/nr/nx               = 3 / 3 / 0 / 0                             |
+| last blok rows x cols     = 15 x 15                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x1                                                       |
+| [ 1] initial_x2                                                       |
+| [ 2] initial_x3                                                       |
++..................... Controls penalties/barriers .....................+
+uControl = { COSLOG (BARRIER) epsilon=1e-06, tolerance=1e-06 }           
++....................... No constraints type LT ........................+
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 401                                                    
+  Segment N.0: s0 = 0 length = 1.571 npts = 401 no data set              
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|............................. x1_i = 0 ................................|
+|............................. x2_i = 1 ................................|
+|............................. x3_i = 0 ................................|
+|....................... u_epsi_max = 1e-06 ............................|
+|....................... u_epsi_min = 1e-10 ............................|
+|........................ u_tol_max = 1e-06 ............................|
+|........................ u_tol_min = 1e-10 ............................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=1/0.25/0.4564, |L|=1/0.25/0.4564 |B|=1/1/1, |BL|=0/0/0, PARS=0/0/0, U=0/0/0
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS2_AlyChan
+  1 [dump:10,u:0:0]    (f:0.249,d:1.62e+06)    -->  [f:3.61e+05,d:3.29e+05]  lambda:0.000591  #err= 10 angle:2 armijo:10
+  2 [dump:0,u:0:0]    (f:3.61e+05,d:3.1e+05)   -->  [f:3.48e+05,d:2.96e+05]  lambda:0.0365 
+  3 [dump:1,u:0:0]    (f:3.48e+05,d:2.12e+05)  -->  [f:2.59e+05,d:7.95e+04]  lambda:0.431  #err=  1 armijo:1
+  4 [dump:1,u:0:0]    (f:2.59e+05,d:3.08e+04)  -->  [f:1.73e+05,d:3.01e+04]  lambda:0.4    #err=  1 armijo:1
+  5 [dump:0,u:0:0]    (f:1.73e+05,d:6.48e+04)  -->  [f:3.86e+04,d:2.6e+04]   lambda:1     
+  6 [dump:0,u:0:0]    (f:3.86e+04,d:2.6e+04)   -->      [f:0.332,d:0.9]      lambda:1     
+  7 [dump:1,u:0:0]        (f:0.332,d:0.9)      -->     [f:0.227,d:0.527]     lambda:0.4    #err=  1 armijo:1
+  8 [dump:1,u:0:0]       (f:0.227,d:0.488)     -->     [f:0.146,d:0.288]     lambda:0.4    #err=  1 armijo:1
+  9 [dump:2,u:0:0]       (f:0.146,d:0.275)     -->     [f:0.103,d:0.189]     lambda:0.311  #err=  2 angle:1 armijo:2
+ 10 [dump:3,u:0:0]       (f:0.103,d:0.189)     -->    [f:0.0961,d:0.176]     lambda:0.064  #err=  3 armijo:3
+ 11 [dump:4,u:0:0]      (f:0.0961,d:0.177)     -->    [f:0.0937,d:0.172]     lambda:0.0256  #err=  4 armijo:4
+ 12 [dump:3,u:0:0]      (f:0.0937,d:0.172)     -->    [f:0.0991,d:0.123]     lambda:0.0154  #err=  3 armijo:3
+ 13 [dump:9,u:0:0]      (f:0.0991,d:0.0572)    -->    [f:0.0991,d:0.0572]    lambda:0.000311  #err=  9 armijo:9
+ 14 [dump:0,u:0:0]      (f:0.0991,d:0.0659)    -->    [f:0.102,d:0.0624]     lambda:0.0264 
+ 15 [dump:2,u:0:0]      (f:0.102,d:0.0585)     -->    [f:0.144,d:0.0513]     lambda:0.16   #err=  2 armijo:2
+ 16 [dump:61,u:0:0]      (f:0.144,d:0.186)     -->    [f:0.106,d:0.0407]     lambda:0.0125  #err= 61 angle:60 armijo:61
+ 17 [dump:7,u:0:0]      (f:0.106,d:0.0427)     -->    [f:0.106,d:0.0427]     lambda:0.000274  #err=  7 armijo:7
+ 18 [dump:0,u:0:0]      (f:0.106,d:0.0463)     -->    [f:0.106,d:0.0459]     lambda:0.0248 
+ 19 [dump:2,u:0:0]      (f:0.106,d:0.0481)     -->     [f:0.142,d:0.029]     lambda:0.16   #err=  2 armijo:2
+ 20 [dump:81,u:0:0]      (f:0.142,d:0.108)     -->    [f:0.0936,d:0.031]     lambda:0.00843  #err= 81 angle:81 armijo:81
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS2_AlyChan
+ 21 [dump:6,u:0:0]      (f:0.0936,d:0.0219)    -->    [f:0.0935,d:0.0219]    lambda:0.000707  #err=  6 armijo:6
+ 22 [dump:5,u:0:0]      (f:0.0935,d:0.0354)    -->    [f:0.0935,d:0.0353]    lambda:0.000408  #err=  5 armijo:5
+ 23 [dump:0,u:0:0]      (f:0.0935,d:0.0437)    -->    [f:0.0973,d:0.0421]    lambda:0.0303 
+ 24 [dump:2,u:0:0]      (f:0.0973,d:0.0378)    -->    [f:0.149,d:0.0305]     lambda:0.16   #err=  2 armijo:2
+ 25 [dump:86,u:0:0]      (f:0.149,d:0.113)     -->    [f:0.0859,d:0.022]     lambda:0.00703  #err= 86 angle:86 armijo:86
+ 26 [dump:3,u:0:0]      (f:0.0859,d:0.0253)    -->     [f:0.1,d:0.0302]      lambda:0.00805  #err=  3 armijo:3
+ 27 [dump:6,u:0:0]       (f:0.1,d:0.0278)      -->    [f:0.0998,d:0.0276]    lambda:0.0041  #err=  6 armijo:6
+ 28 [dump:5,u:0:0]      (f:0.0998,d:0.0258)    -->    [f:0.0997,d:0.0258]    lambda:0.000983  #err=  5 armijo:5
+ 29 [dump:4,u:0:0]      (f:0.0997,d:0.0287)    -->    [f:0.0996,d:0.0287]    lambda:0.0012  #err=  4 armijo:4
+ 30 [dump:0,u:0:0]      (f:0.0996,d:0.0386)    -->    [f:0.0999,d:0.0342]    lambda:0.052 
+ 31 [dump:7,u:0:0]      (f:0.0999,d:0.026)     -->    [f:0.0997,d:0.0259]    lambda:0.00164  #err=  7 armijo:7
+ 32 [dump:4,u:0:0]      (f:0.0997,d:0.0279)    -->    [f:0.0996,d:0.0278]    lambda:0.00155  #err=  4 armijo:4
+ 33 [dump:4,u:0:0]      (f:0.0996,d:0.0307)    -->    [f:0.0994,d:0.0306]    lambda:0.00168  #err=  4 armijo:4
+ 34 [dump:0,u:0:0]      (f:0.0994,d:0.0332)    -->    [f:0.0963,d:0.032]     lambda:0.0615 
+ 35 [dump:3,u:0:0]      (f:0.0963,d:0.0366)    -->    [f:0.134,d:0.0177]     lambda:0.152  #err=  3 angle:1 armijo:3
+ 36 [dump:2,u:0:0]       (f:0.134,d:0.015)     -->    [f:0.107,d:0.0224]     lambda:0.16   #err=  2 armijo:2
+ 37 [dump:6,u:0:0]       (f:0.107,d:0.016)     -->     [f:0.107,d:0.016]     lambda:0.0041  #err=  6 armijo:6
+ 38 [dump:4,u:0:0]      (f:0.107,d:0.0176)     -->    [f:0.106,d:0.0175]     lambda:0.00246  #err=  4 armijo:4
+ 39 [dump:4,u:0:0]      (f:0.106,d:0.0215)     -->    [f:0.106,d:0.0215]     lambda:0.0019  #err=  4 armijo:4
+ 40 [dump:0,u:0:0]      (f:0.106,d:0.0235)     -->    [f:0.097,d:0.0228]     lambda:0.0654 
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS2_AlyChan
+ 41 [dump:2,u:0:0]      (f:0.097,d:0.0232)     -->    [f:0.125,d:0.0139]     lambda:0.16   #err=  2 armijo:2
+ 42 [dump:2,u:0:0]      (f:0.125,d:0.0187)     -->    [f:0.0975,d:0.019]     lambda:0.16   #err=  2 armijo:2
+ 43 [dump:3,u:0:0]      (f:0.0975,d:0.0277)    -->    [f:0.108,d:0.0188]     lambda:0.064  #err=  3 armijo:3
+ 44 [dump:3,u:0:0]      (f:0.108,d:0.0177)     -->    [f:0.115,d:0.00828]    lambda:0.064  #err=  3 armijo:3
+ 45 [dump:5,u:0:0]       (f:0.115,d:0.017)     -->    [f:0.115,d:0.0157]     lambda:0.0107  #err=  5 armijo:5
+ 46 [dump:0,u:0:0]      (f:0.115,d:0.0137)     -->    [f:0.131,d:0.00679]    lambda:0.155 
+ 47 [dump:8,u:0:0]      (f:0.131,d:0.00889)    -->   [f:0.0996,d:0.00532]    lambda:0.0209  #err=  8 angle:4 armijo:8
+ 48 [dump:2,u:0:0]     (f:0.0996,d:0.00998)    -->    [f:0.117,d:0.00467]    lambda:0.0347  #err=  2 armijo:2
+ 49 [dump:3,u:0:0]      (f:0.117,d:0.00901)    -->    [f:0.102,d:0.00276]    lambda:0.064  #err=  3 armijo:3
+ 50 [dump:4,u:0:0]       (f:0.102,d:0.01)      -->   [f:0.0958,d:0.00453]    lambda:0.0256  #err=  4 armijo:4
+ 51 [dump:1,u:0:0]     (f:0.0958,d:0.00751)    -->   [f:0.0956,d:0.00472]    lambda:0.096  #err=  1 armijo:1
+ 52 [dump:3,u:0:0]     (f:0.0956,d:0.00701)    -->   [f:0.0845,d:0.00517]    lambda:0.064  #err=  3 armijo:3
+ 53 [dump:3,u:0:0]     (f:0.0845,d:0.00703)    -->    [f:0.0752,d:0.0052]    lambda:0.064  #err=  3 armijo:3
+ 54 [dump:2,u:0:0]     (f:0.0752,d:0.00645)    -->   [f:0.0771,d:0.00139]    lambda:0.16   #err=  2 armijo:2
+ 55 [dump:3,u:0:0]     (f:0.0771,d:0.00497)    -->   [f:0.0599,d:0.00237]    lambda:0.064  #err=  3 armijo:3
+ 56 [dump:2,u:0:0]     (f:0.0599,d:0.00413)    -->    [f:0.05,d:0.00335]     lambda:0.16   #err=  2 armijo:2
+ 57 [dump:2,u:0:0]      (f:0.05,d:0.00369)     -->   [f:0.0395,d:0.00309]    lambda:0.16   #err=  2 armijo:2
+ 58 [dump:2,u:0:0]     (f:0.0395,d:0.00316)    -->   [f:0.0312,d:0.00266]    lambda:0.16   #err=  2 armijo:2
+ 59 [dump:2,u:0:0]     (f:0.0312,d:0.00238)    -->   [f:0.0333,d:0.00118]    lambda:0.16   #err=  2 armijo:2
+ 60 [dump:2,u:0:0]     (f:0.0333,d:0.00135)    -->   [f:0.0218,d:0.00142]    lambda:0.16   #err=  2 armijo:2
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS2_AlyChan
+ 61 [dump:3,u:0:0]     (f:0.0218,d:0.00152)    -->   [f:0.0215,d:0.00139]    lambda:0.064  #err=  3 armijo:3
+ 62 [dump:3,u:0:0]     (f:0.0215,d:0.00125)    -->    [f:0.02,d:0.00116]     lambda:0.064  #err=  3 armijo:3
+ 63 [dump:1,u:0:0]      (f:0.02,d:0.00099)     -->   [f:0.0198,d:0.000307]   lambda:0.4    #err=  1 armijo:1
+ 64 [dump:50,u:0:0]     (f:0.0198,d:0.001)     -->   [f:0.0119,d:0.000431]   lambda:0.0324  #err= 50 angle:49 armijo:50
+ 65 [dump:0,u:0:0]     (f:0.0119,d:0.000299)   -->   [f:0.0116,d:0.000174]   lambda:0.27  
+ 66 [dump:0,u:0:0]     (f:0.0116,d:0.000184)   -->  [f:0.00265,d:3.13e-05]   lambda:1     
+ 67 [dump:2,u:0:0]    (f:0.00265,d:2.38e-05)   -->  [f:0.00283,d:1.76e-05]   lambda:0.16   #err=  2 armijo:2
+ 68 [dump:2,u:0:0]    (f:0.00283,d:1.33e-05)   -->    [f:0.00243,d:1e-05]    lambda:0.16   #err=  2 armijo:2
+ 69 [dump:2,u:0:0]    (f:0.00243,d:9.37e-06)   -->  [f:0.00205,d:8.31e-06]   lambda:0.16   #err=  2 armijo:2
+ 70 [dump:2,u:0:0]    (f:0.00205,d:1.01e-05)   -->  [f:0.00167,d:8.53e-06]   lambda:0.16   #err=  2 armijo:2
+ 71 [dump:2,u:0:0]      (f:0.00167,d:9e-06)    -->  [f:0.00138,d:7.58e-06]   lambda:0.16   #err=  2 armijo:2
+ 72 [dump:1,u:0:0]    (f:0.00138,d:7.76e-06)   -->  [f:0.00069,d:4.82e-06]   lambda:0.4    #err=  1 armijo:1
+ 73 [dump:0,u:0:0]    (f:0.00069,d:5.12e-06)   -->  [f:8.55e-05,d:2.11e-07]  lambda:1     
+ 74 [dump:0,u:0:0]    (f:8.55e-05,d:2.55e-07)  -->  [f:6.05e-06,d:7.27e-09]  lambda:1     
+ 75 [dump:0,u:0:0]    (f:6.05e-06,d:8.85e-09)  -->  [f:6.91e-08,d:1.01e-10]  lambda:1     
+ 76 [dump:0,u:0:0]    (f:6.91e-08,d:1.04e-10)  -->  [f:1.19e-11,d:1.8e-14]   lambda:1     
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:76,phase:1,s:0.2,ds:0.2] |X|=0.07611/0.009707/0.02505, |L|=0.07611/0.009747/0.0251 |B|=1.38e-31/1.38e-31/1.38e-31, |BL|=3.027e-29/3.027e-29/3.027e-29, PARS=0/0/0, U=0.9941/0.6782/0.7372
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS2_AlyChan
+77 (1 ) [phase:1,s:0.2,ds:0.2,dump:4,u:0:0]             (f:0.00658,d:3.62e-05)   -->  [f:0.000508,d:2.75e-07]  lambda:0.815  #err=  4 angle:4 armijo:4
+78 (2 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:0.000508,d:2.55e-07)  -->  [f:3.32e-06,d:1.57e-08]  lambda:1     
+79 (3 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:3.32e-06,d:1.56e-08)  -->  [f:2.11e-10,d:1.09e-12]  lambda:1     
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:79,phase:1,s:0.5,ds:0.3] |X|=0.1587/0.02058/0.05264, |L|=0.1587/0.02066/0.05273 |B|=3.204e-26/3.204e-26/3.204e-26, |BL|=2.12e-26/2.12e-26/2.12e-26, PARS=0/0/0, U=0.9958/0.7207/0.77
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS2_AlyChan
+80 (1 ) [phase:1,s:0.5,ds:0.3,dump:1,u:0:0]              (f:0.0135,d:7.11e-05)   -->  [f:0.00712,d:3.53e-05]   lambda:0.4    #err=  1 armijo:1
+81 (2 ) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]             (f:0.00712,d:2.26e-05)   -->  [f:0.000556,d:4.89e-07]  lambda:0.815  #err=  4 angle:4 armijo:4
+82 (3 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:0.000556,d:2.53e-07)  -->  [f:3.62e-06,d:1.1e-08]   lambda:1     
+83 (4 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:3.62e-06,d:1.08e-08)  -->  [f:2.28e-10,d:1.14e-12]  lambda:1     
+
+Continuation step N.1 s:0.5->0.95, ds=0.45
+[iter:83,phase:1,s:0.95,ds:0.45] |X|=0.6366/0.0811/0.205, |L|=0.6366/0.0813/0.2052 |B|=3.938e-26/3.938e-26/3.938e-26, |BL|=4.524e-27/4.524e-27/4.524e-27, PARS=0/0/0, U=0.9995/0.9307/0.9375
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS2_AlyChan
+84 (1 ) [phase:1,s:0.95,ds:0.45,dump:3,u:0:0]            (f:0.0482,d:0.000509)   -->   [f:0.0424,d:0.000443]   lambda:0.064  #err=  3 armijo:3
+85 (2 ) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]            (f:0.0424,d:0.000189)   -->   [f:0.0301,d:0.000135]   lambda:0.16   #err=  2 armijo:2
+86 (3 ) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]            (f:0.0301,d:6.9e-05)    -->   [f:0.0127,d:1.38e-05]   lambda:0.38   #err=  2 angle:1 armijo:2
+87 (4 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]            (f:0.0127,d:4.22e-06)   -->  [f:0.00181,d:2.78e-06]   lambda:0.74   #err=  1 angle:1 armijo:1
+88 (5 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]            (f:0.00181,d:2.7e-06)   -->  [f:4.33e-05,d:1.01e-07]  lambda:1     
+89 (6 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:4.33e-05,d:1.41e-07)  -->  [f:6.31e-07,d:6.62e-09]  lambda:1     
+90 (7 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:6.31e-07,d:7.47e-09)  -->  [f:2.41e-09,d:2.89e-11]  lambda:1     
+
+Continuation step N.1 s:0.95->1, ds=0.05
+[iter:90,phase:1,s:1,ds:0.05] |X|=0.9516/0.09876/0.2533, |L|=0.9516/0.099/0.2535 |B|=3.733e-30/3.733e-30/3.733e-30, |BL|=6.733e-27/6.733e-27/6.733e-27, PARS=0/0/0, U=1/0.9984/0.9985
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS2_AlyChan
+91 (1 ) [phase:1,s:1,ds:0.05,dump:8,u:0:0]               (f:0.0577,d:0.00116)    -->   [f:0.0576,d:0.00115]    lambda:0.000655  #err=  8 armijo:8
+92 (2 ) [phase:1,s:1,ds:0.05,dump:4,u:0:0]               (f:0.0576,d:0.000621)   -->   [f:0.0575,d:0.00062]    lambda:0.000983  #err=  4 armijo:4
+93 (3 ) [phase:1,s:1,ds:0.05,dump:3,u:0:0]               (f:0.0575,d:0.000408)   -->   [f:0.0571,d:0.000405]   lambda:0.00301  #err=  3 armijo:3
+94 (4 ) [phase:1,s:1,ds:0.05,dump:6,u:0:0]               (f:0.0571,d:0.000225)   -->   [f:0.0567,d:0.000224]   lambda:0.0041  #err=  6 armijo:6
+95 (5 ) [phase:1,s:1,ds:0.05,dump:3,u:0:0]                (f:0.0567,d:0.0002)    -->   [f:0.0563,d:0.000199]   lambda:0.00614  #err=  3 armijo:3
+96 (6 ) [phase:1,s:1,ds:0.05,dump:5,u:0:0]               (f:0.0563,d:0.000183)   -->   [f:0.0554,d:0.000181]   lambda:0.0102  #err=  5 armijo:5
+97 (7 ) [phase:1,s:1,ds:0.05,dump:3,u:0:0]               (f:0.0554,d:0.00017)    -->   [f:0.0547,d:0.000168]   lambda:0.00971  #err=  3 armijo:3
+98 (8 ) [phase:1,s:1,ds:0.05,dump:5,u:0:0]               (f:0.0547,d:0.00014)    -->   [f:0.0541,d:0.000138]   lambda:0.0102  #err=  5 armijo:5
+99 (9 ) [phase:1,s:1,ds:0.05,dump:3,u:0:0]               (f:0.0541,d:0.000103)   -->   [f:0.0534,d:0.000102]   lambda:0.00971  #err=  3 armijo:3
+100(10) [phase:1,s:1,ds:0.05,dump:5,u:0:0]               (f:0.0534,d:9.92e-05)   -->   [f:0.0528,d:9.82e-05]   lambda:0.0102  #err=  5 armijo:5
+101(11) [phase:1,s:1,ds:0.05,dump:2,u:0:0]               (f:0.0528,d:9.65e-05)   -->   [f:0.0511,d:9.32e-05]   lambda:0.0243  #err=  2 armijo:2
+102(12) [phase:1,s:1,ds:0.05,dump:4,u:0:0]               (f:0.0511,d:8.94e-05)   -->   [f:0.0495,d:8.66e-05]   lambda:0.0256  #err=  4 armijo:4
+103(13) [phase:1,s:1,ds:0.05,dump:3,u:0:0]               (f:0.0495,d:8.11e-05)   -->   [f:0.0487,d:7.98e-05]   lambda:0.0154  #err=  3 armijo:3
+104(14) [phase:1,s:1,ds:0.05,dump:4,u:0:0]               (f:0.0487,d:8.02e-05)   -->   [f:0.0473,d:7.82e-05]   lambda:0.0256  #err=  4 armijo:4
+105(15) [phase:1,s:1,ds:0.05,dump:2,u:0:0]               (f:0.0473,d:7.91e-05)   -->   [f:0.0451,d:7.6e-05]    lambda:0.0384  #err=  2 armijo:2
+106(16) [phase:1,s:1,ds:0.05,dump:4,u:0:0]               (f:0.0451,d:7.72e-05)   -->   [f:0.0439,d:7.52e-05]   lambda:0.0256  #err=  4 armijo:4
+107(17) [phase:1,s:1,ds:0.05,dump:2,u:0:0]               (f:0.0439,d:7.54e-05)   -->   [f:0.042,d:7.24e-05]    lambda:0.0384  #err=  2 armijo:2
+108(18) [phase:1,s:1,ds:0.05,dump:3,u:0:0]               (f:0.042,d:7.28e-05)    -->   [f:0.0388,d:6.8e-05]    lambda:0.064  #err=  3 armijo:3
+109(19) [phase:1,s:1,ds:0.05,dump:3,u:0:0]               (f:0.0388,d:6.95e-05)   -->   [f:0.036,d:6.49e-05]    lambda:0.064  #err=  3 armijo:3
+110(20) [phase:1,s:1,ds:0.05,dump:3,u:0:0]               (f:0.036,d:6.58e-05)    -->   [f:0.0335,d:6.16e-05]   lambda:0.064  #err=  3 armijo:3
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS2_AlyChan
+111(21) [phase:1,s:1,ds:0.05,dump:3,u:0:0]               (f:0.0335,d:6.21e-05)   -->   [f:0.0312,d:5.81e-05]   lambda:0.064  #err=  3 armijo:3
+112(22) [phase:1,s:1,ds:0.05,dump:3,u:0:0]               (f:0.0312,d:5.85e-05)   -->   [f:0.029,d:5.47e-05]    lambda:0.064  #err=  3 armijo:3
+113(23) [phase:1,s:1,ds:0.05,dump:3,u:0:0]               (f:0.029,d:5.48e-05)    -->   [f:0.0271,d:5.13e-05]   lambda:0.064  #err=  3 armijo:3
+114(24) [phase:1,s:1,ds:0.05,dump:2,u:0:0]               (f:0.0271,d:5.12e-05)   -->   [f:0.0233,d:4.85e-05]   lambda:0.16   #err=  2 armijo:2
+115(25) [phase:1,s:1,ds:0.05,dump:2,u:0:0]               (f:0.0233,d:4.03e-05)   -->   [f:0.0201,d:3.03e-05]   lambda:0.16   #err=  2 armijo:2
+116(26) [phase:1,s:1,ds:0.05,dump:6,u:0:0]               (f:0.0201,d:2.08e-05)   -->    [f:0.02,d:2.07e-05]    lambda:0.0041  #err=  6 armijo:6
+117(27) [phase:1,s:1,ds:0.05,dump:3,u:0:0]                (f:0.02,d:2.6e-05)     -->   [f:0.0199,d:2.58e-05]   lambda:0.00614  #err=  3 armijo:3
+118(28) [phase:1,s:1,ds:0.05,dump:5,u:0:0]               (f:0.0199,d:2.81e-05)   -->   [f:0.0197,d:2.79e-05]   lambda:0.0102  #err=  5 armijo:5
+119(29) [phase:1,s:1,ds:0.05,dump:0,u:0:0]               (f:0.0197,d:2.83e-05)   -->   [f:0.0156,d:2.15e-05]   lambda:0.152 
+120(30) [phase:1,s:1,ds:0.05,dump:2,u:0:0]               (f:0.0156,d:4.1e-05)    -->   [f:0.0235,d:1.86e-05]   lambda:0.16   #err=  2 armijo:2
+121(31) [phase:1,s:1,ds:0.05,dump:48,u:0:0]              (f:0.0235,d:5.1e-05)    -->   [f:0.0225,d:2.23e-05]   lambda:0.00636  #err= 48 angle:45 armijo:48
+122(32) [phase:1,s:1,ds:0.05,dump:3,u:0:0]               (f:0.0225,d:3.21e-05)   -->   [f:0.0223,d:3.18e-05]   lambda:0.00833  #err=  3 armijo:3
+123(33) [phase:1,s:1,ds:0.05,dump:4,u:0:0]               (f:0.0223,d:3.58e-05)   -->   [f:0.0216,d:3.5e-05]    lambda:0.0256  #err=  4 armijo:4
+124(34) [phase:1,s:1,ds:0.05,dump:0,u:0:0]               (f:0.0216,d:3.97e-05)   -->   [f:0.0104,d:3.24e-05]   lambda:0.24  
+125(35) [phase:1,s:1,ds:0.05,dump:3,u:0:0]               (f:0.0104,d:3.13e-05)   -->  [f:0.00978,d:2.93e-05]   lambda:0.064  #err=  3 armijo:3
+126(36) [phase:1,s:1,ds:0.05,dump:3,u:0:0]              (f:0.00978,d:2.62e-05)   -->  [f:0.00915,d:2.24e-05]   lambda:0.064  #err=  3 armijo:3
+127(37) [phase:1,s:1,ds:0.05,dump:2,u:0:0]              (f:0.00915,d:5.69e-06)   -->  [f:0.00813,d:4.54e-06]   lambda:0.16   #err=  2 armijo:2
+128(38) [phase:1,s:1,ds:0.05,dump:3,u:0:0]              (f:0.00813,d:3.97e-06)   -->  [f:0.00156,d:3.42e-07]   lambda:0.857  #err=  3 angle:3 armijo:3
+129(39) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:0.00156,d:3.01e-07)   -->  [f:0.000219,d:4.35e-08]  lambda:1     
+130(40) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:0.000219,d:7.05e-08)  -->  [f:1.89e-05,d:6.22e-09]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS2_AlyChan
+131(41) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:1.89e-05,d:7.95e-09)  -->  [f:3.33e-07,d:1.49e-10]  lambda:1     
+132(42) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:3.33e-07,d:1.56e-10)  -->  [f:1.69e-10,d:8.46e-14]  lambda:1     
+133(43) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:1.69e-10,d:8.47e-14)  -->  [f:4.04e-15,d:1.32e-15]  lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 1               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 2409            | N. System pars  = 6015            |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 2.19 [sec]      | timeout         = 0 [ms]          |
+| iteration       = 133             | Memory Used     = 667Kb(+18b)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 914             | Jacobian        = 133             |
+| Factorization   = 133             | Inversion       = 914             |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 5.021e-14       | last ||d||_inf  = 8.1357e-15      |
+| last ||f||_1    = 4.0403e-15      | last ||d||_1    = 1.3186e-15      |
+| last ||f||_2    = 7.3112e-15      | last ||d||_2    = 1.9779e-15      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 1.049ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 74.04ms ]
+Check DuDxxpm (epsi=0.001):
+#ERR 1 DuDxxpm [cell=1 of 400 SEGMENT#0 range:(0,400)] #x=3 #u=1 #p=0 [ (u) * (xxpm) = 1 x 9 ]
+jac[  0,  7] =  -1.5717e+10 : -4.5984e+07  [A:FD] ---   1.5671e+10 : 99.707       [err:err(%)]
+
+#ERR 2 DuDxxpm [cell=2 of 400 SEGMENT#0 range:(0,400)] #x=3 #u=1 #p=0 [ (u) * (xxpm) = 1 x 9 ]
+jac[  0,  7] =  -1.4479e+10 : -4.5142e+07  [A:FD] ---   1.4434e+10 : 99.688       [err:err(%)]
+
+#ERR 3 DuDxxpm [cell=3 of 400 SEGMENT#0 range:(0,400)] #x=3 #u=1 #p=0 [ (u) * (xxpm) = 1 x 9 ]
+jac[  0,  7] =  -1.7483e+10 : -4.7095e+07  [A:FD] ---   1.7436e+10 : 99.731       [err:err(%)]
+
+#ERR 4 DuDxxpm [cell=4 of 400 SEGMENT#0 range:(0,400)] #x=3 #u=1 #p=0 [ (u) * (xxpm) = 1 x 9 ]
+jac[  0,  7] =  -1.4505e+10 : -4.516e+07   [A:FD] ---   1.4459e+10 : 99.689       [err:err(%)]
+
+#ERR 5 DuDxxpm [cell=5 of 400 SEGMENT#0 range:(0,400)] #x=3 #u=1 #p=0 [ (u) * (xxpm) = 1 x 9 ]
+jac[  0,  7] =  -1.9312e+10 : -4.8152e+07  [A:FD] ---   1.9264e+10 : 99.751       [err:err(%)]
+
+#ERR 6 DuDxxpm [cell=6 of 400 SEGMENT#0 range:(0,400)] #x=3 #u=1 #p=0 [ (u) * (xxpm) = 1 x 9 ]
+jac[  0,  7] =  -1.4524e+10 : -4.5174e+07  [A:FD] ---   1.4479e+10 : 99.689       [err:err(%)]
+
+skipping... [ 1.868ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001): all OK [ 68.59ms ]
+Check DodeDxp (epsi=0.001): all OK [ 1.283ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 69.99ms ]
+target [Lagrange,Mayer]            = [ 0, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 1.124e-11, 0 ]
+All Done Folks!

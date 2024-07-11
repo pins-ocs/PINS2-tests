@@ -1,0 +1,113 @@
++------------------------- MODEL:GerdtsKunkel --------------------------+
++................................ DIMS .................................+
+| dims                      = u=1, q=1, x=3, p=0, bc=5 of 5             |
+| total                     = nZ=611, nP=1515, nUC=100, Q=101           |
+| index start               = omega=606, p=611                          |
+| post processing           = n_post=0                                  |
++................................ MESH .................................+
+| num nodes / segments      = 101 / 1                                   |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 1                               |
+| mesh class pointer        = 0x7ff7b5410138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 611 x 611                                 |
+| nblock/block size         = 100 / 6                                   |
+| qr/qx/nr/nx               = 5 / 5 / 0 / 0                             |
+| last blok rows x cols     = 17 x 17                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x1                                                       |
+| [ 1] initial_x2                                                       |
+| [ 2] initial_x3                                                       |
+| [ 3] final_x1                                                         |
+| [ 4] final_x2                                                         |
++.................... No control penalties/barriers ....................+
++......................... Constraints type LT .........................+
+x1Limitation = { LT: Barrier0 [tolerance=0.0001, epsilon=0.0001] active }
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 101                                                    
+  Segment N.0: s0 = 0 length = 1 npts = 101 no data set                  
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|............................. x1_f = 0 ................................|
+|............................. x1_i = 0 ................................|
+|............................. x2_f = -1 ...............................|
+|............................. x2_i = 1 ................................|
+|............................. x3_i = 0 ................................|
+|......................... epsilon0 = 0.0001 ...........................|
+|......................... epsilon1 = 1e-08 ............................|
+|....................... tolerance0 = 0.0001 ...........................|
+|....................... tolerance1 = 1e-08 ............................|
++--------------------------------- END ---------------------------------+
+
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 1               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = NO              | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 611             | N. System pars  = 1515            |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 0.383 [ms]      | timeout         = 0 [ms]          |
+| iteration       = 0               | Memory Used     = 195Kb(+69b)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 0               | Jacobian        = 0               |
+| Factorization   = 0               | Inversion       = 0               |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 0               | last ||d||_inf  = 0               |
+| last ||f||_1    = 0               | last ||d||_1    = 0               |
+| last ||f||_2    = 0               | last ||d||_2    = 0               |
++-----------------------------------------------------------------------+
+|          __  ___     __   __             ___  __   __   ___  __       |
+|    |\ | /  \  |     /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \      |
+|    | \| \__/  |     \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/      |
+|                                                                       |
++-----------------------------------------------------------------------+
+                                                                         
+Solver error list
+BEGIN
+  err #1: NLsolver[GerdtsKunkel]::solve [phase:0,iter:0/300,lambda:1,dump:0] failed initial update_controls
+  err #2: Indirect_OCP[GerdtsKunkel]::UC_eval_thread(n_thread=0,Z,P). At cell 0 u_eval_analytic return NaN in UC
+END
+                                                                         
+Indirect_OCP[GerdtsKunkel]::diagnostic(gc_data,gc) internal error: 
+Indirect_OCP[GerdtsKunkel]::diagnostic(gc_data,gc) call to load_jacobian failed!
+err #1: Indirect_OCP[GerdtsKunkel]::UC_eval_Dxxpm_thread(n_thread=0,Z,P) at node #0 found NaN or Inf in computatation of control derivative
+err #2: Indirect_OCP[GerdtsKunkel]::UC_eval_Dxxpm( C, DuDxxpm ) n_thread=0, at cell #0 maxabs(DHuDu) = -0 (must be finite)
+err #3: NLsolver[GerdtsKunkel]::solve [phase:0,iter:0/300,lambda:1,dump:0] failed initial update_controls
+err #4: Indirect_OCP[GerdtsKunkel]::UC_eval_thread(n_thread=0,Z,P). At cell 0 u_eval_analytic return NaN in UC
+
+On File:Indirect_OCP_IO.cc:963
+
+target [Lagrange,Mayer]            = [ 0, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 0, 1.798e-07 ]
+All Done Folks!

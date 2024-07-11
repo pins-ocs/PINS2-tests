@@ -1,0 +1,129 @@
++------------------------ MODEL:FlowInAchannel -------------------------+
++................................ DIMS .................................+
+| dims                      = u=0, q=1, x=4, p=0, bc=4 of 4             |
+| total                     = nZ=812, nP=1719, nUC=0, Q=101             |
+| index start               = omega=808, p=812                          |
+| post processing           = n_post=0                                  |
++................................ MESH .................................+
+| num nodes / segments      = 101 / 1                                   |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 1                               |
+| mesh class pointer        = 0x7ff7b0935138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 812 x 812                                 |
+| nblock/block size         = 100 / 8                                   |
+| qr/qx/nr/nx               = 4 / 4 / 0 / 0                             |
+| last blok rows x cols     = 20 x 20                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_u                                                        |
+| [ 1] initial_u1                                                       |
+| [ 2] final_u                                                          |
+| [ 3] final_u1                                                         |
++.................... No control penalties/barriers ....................+
++....................... No constraints type LT ........................+
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 101                                                    
+  Segment N.0: s0 = 0 length = 1 npts = 101 no data set                  
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|................................ R = 1 ................................|
+|............................... R0 = 1 ................................|
+|............................... R1 = 10000 ............................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=9.77e-15/1.463e-16/8.998e-16, |L|=9.77e-15/1.441e-16/8.987e-16 |B|=0/0/0, |BL|=1/4/2, PARS=0/0/0, U=0/-nan/-nan
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] FlowInAchannel
+  1 [dump:0,u:0:0]       (f:0.00493,d:2.2)     -->    [f:0.216,d:0.0309]     lambda:1     
+  2 [dump:0,u:0:0]      (f:0.216,d:0.0285)     -->  [f:1.33e-05,d:2.25e-06]  lambda:1     
+  3 [dump:0,u:0:0]    (f:1.33e-05,d:2.25e-06)  -->  [f:1.01e-13,d:1.84e-14]  lambda:1     
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:3,phase:1,s:0.2,ds:0.2] |X|=1.214e+04/1187/3561, |L|=1.214e+04/1215/3608 |B|=0/0/0, |BL|=7.456e-22/1.175e-21/8.603e-22, PARS=0/0/0, U=0/-nan/-nan
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] FlowInAchannel
+4  (1 ) [phase:1,s:0.2,ds:0.2,dump:1,u:0:0]                (f:1.36e+03,d:22)     -->      [f:998,d:13.5]       lambda:0.4    #err=  1 armijo:1
+5  (2 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]                 (f:998,d:13.4)       -->      [f:260,d:1.77]       lambda:1     
+6  (3 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]                 (f:260,d:1.38)       -->     [f:3.91,d:0.0197]     lambda:1     
+7  (4 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]                (f:3.91,d:0.0203)     -->  [f:0.000891,d:4.41e-06]  lambda:1     
+8  (5 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:0.000891,d:4.41e-06)  -->  [f:5.99e-11,d:3.08e-13]  lambda:1     
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:8,phase:1,s:0.5,ds:0.3] |X|=2.434e+05/1896/1.84e+04, |L|=2.434e+05/1551/1.706e+04 |B|=0/0/0, |BL|=1.888e-24/3.121e-24/2.217e-24, PARS=0/0/0, U=0/-nan/-nan
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] FlowInAchannel
+9  (1 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]                 (f:934,d:16.4)       -->      [f:158,d:0.962]      lambda:1     
+10 (2 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]                 (f:158,d:0.831)      -->    [f:1.11,d:0.00509]     lambda:1     
+11 (3 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]               (f:1.11,d:0.00517)     -->  [f:7.22e-05,d:2.81e-07]  lambda:1     
+12 (4 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:7.22e-05,d:2.81e-07)  -->  [f:4.32e-13,d:2.03e-15]  lambda:1     
+
+Continuation step N.1 s:0.5->0.95, ds=0.45
+[iter:12,phase:1,s:0.95,ds:0.45] |X|=5.049e+05/2831/3.425e+04, |L|=5.049e+05/1775/2.696e+04 |B|=0/0/0, |BL|=1.719e-25/1.855e-25/1.723e-25, PARS=0/0/0, U=0/-nan/-nan
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] FlowInAchannel
+13 (1 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]             (f:1.39e+03,d:20.1)    -->      [f:133,d:0.718]      lambda:1     
+14 (2 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]               (f:133,d:0.669)      -->    [f:0.478,d:0.00187]    lambda:1     
+15 (3 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]             (f:0.478,d:0.00188)    -->  [f:4.37e-06,d:2.04e-08]  lambda:1     
+16 (4 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:4.37e-06,d:2.04e-08)  -->  [f:2.5e-13,d:3.03e-15]   lambda:1     
+
+Continuation step N.1 s:0.95->1, ds=0.05
+[iter:16,phase:1,s:1,ds:0.05] |X|=7.271e+04/314.1/4484, |L|=5.249e+04/132.3/2625 |B|=0/0/0, |BL|=3.529e-26/4.47e-26/3.646e-26, PARS=0/0/0, U=0/-nan/-nan
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] FlowInAchannel
+17 (1 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]                  (f:155,d:2.07)       -->    [f:0.952,d:0.00494]    lambda:1     
+18 (2 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]                (f:0.952,d:0.00491)    -->  [f:1.28e-05,d:6.76e-08]  lambda:1     
+19 (3 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:1.28e-05,d:6.76e-08)  -->  [f:8.19e-13,d:1.08e-14]  lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 0               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 812             | N. System pars  = 1719            |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 85.5 [ms]       | timeout         = 0 [ms]          |
+| iteration       = 19              | Memory Used     = 254Kb(+10b)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 39              | Jacobian        = 19              |
+| Factorization   = 19              | Inversion       = 39              |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 4.6566e-10      | last ||d||_inf  = 3.6825e-12      |
+| last ||f||_1    = 8.1897e-13      | last ||d||_1    = 1.0752e-14      |
+| last ||f||_2    = 1.6366e-11      | last ||d||_2    = 1.5875e-13      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check DmuDxlxlp (epsi=0.001): all OK [ 25.04ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 0.123ms ]
+target [Lagrange,Mayer]            = [ 0, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 0, 0 ]
+All Done Folks!

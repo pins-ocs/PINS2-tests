@@ -1,0 +1,108 @@
++------------------------- MODEL:TwoStageCSTR --------------------------+
++................................ DIMS .................................+
+| dims                      = u=2, q=1, x=4, p=0, bc=4 of 4             |
+| total                     = nZ=3212, nP=8419, nUC=800, Q=401          |
+| index start               = omega=3208, p=3212                        |
+| post processing           = n_post=0                                  |
++................................ MESH .................................+
+| num nodes / segments      = 401 / 1                                   |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 0                               |
+| mesh class pointer        = 0x7ff7bcf5c138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 3212 x 3212                               |
+| nblock/block size         = 400 / 8                                   |
+| qr/qx/nr/nx               = 4 / 4 / 0 / 0                             |
+| last blok rows x cols     = 20 x 20                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x1                                                       |
+| [ 1] initial_x2                                                       |
+| [ 2] initial_x3                                                       |
+| [ 3] initial_x4                                                       |
++..................... Controls penalties/barriers .....................+
+u1Control = { COSLOG (BARRIER) epsilon=0.0001, tolerance=0.0001 }        
+u2Control = { COSLOG (BARRIER) epsilon=0.0001, tolerance=0.0001 }        
++....................... No constraints type LT ........................+
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 401                                                    
+  Segment N.0: s0 = 0 length = 2 npts = 401 no data set                  
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|................................ W = 0.1 ..............................|
+|.............................. tau = 0.1 ..............................|
+|............................. x1_i = 0.15 .............................|
+|............................. x2_i = -0.03 ............................|
+|............................. x3_i = 0.1 ..............................|
+|............................. x4_i = 0 ................................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=0.3/0.08103/0.1269, |L|=0.3/0.08103/0.1269 |B|=0/0/0, |BL|=0.1/0.1/0.1, PARS=0/0/0, U=0/0/0
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] TwoStageCSTR
+  1 [dump:0,u:4:5]      (f:0.0808,d:0.0562)    -->    [f:0.0223,d:0.0101]    lambda:1     
+  2 [dump:0,u:4:4]     (f:0.0223,d:0.00659)    -->  [f:0.00094,d:0.000439]   lambda:1     
+  3 [dump:0,u:3.8:4]  (f:0.00094,d:0.000458)   -->  [f:2.03e-06,d:1.42e-06]  lambda:1     
+  4 [dump:0,u:3:3]    (f:2.03e-06,d:1.42e-06)  -->  [f:4.78e-11,d:1.64e-11]  lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 2               | Hessian type    = Diagonal        |
++-------------------------- MinimizeHeavyBall --------------------------+
+| last f          = -1.0951e-15     | |g|_inf         = 4.3941e-13      |
++-----------------------------------------------------------------------+
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 3212            | N. System pars  = 8419            |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 82.3 [ms]       | timeout         = 0 [ms]          |
+| iteration       = 4               | Memory Used     = 1Mb(+1Kb)       |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 8               | Jacobian        = 4               |
+| Factorization   = 4               | Inversion       = 8               |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 5.6605e-10      | last ||d||_inf  = 1.1773e-10      |
+| last ||f||_1    = 4.7761e-11      | last ||d||_1    = 1.6363e-11      |
+| last ||f||_2    = 1.1081e-10      | last ||d||_2    = 3.0303e-11      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 1.261ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 104.1ms ]
+Check DuDxxpm (epsi=0.001): all OK [ 488.6ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001): all OK [ 96.28ms ]
+Check DodeDxp (epsi=0.001): all OK [ 1.859ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 98.3ms ]
+target [Lagrange,Mayer]            = [ 0.02324, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 4.536e-06, 0 ]
+All Done Folks!

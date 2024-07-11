@@ -1,0 +1,157 @@
++----------------------------- MODEL:Brake -----------------------------+
++................................ DIMS .................................+
+| dims                      = u=1, q=1, x=3, p=1, bc=4 of 4             |
+| total                     = nZ=311, nP=766, nUC=50, Q=51              |
+| index start               = omega=306, p=310                          |
+| post processing           = n_post=0                                  |
++................................ MESH .................................+
+| num nodes / segments      = 51 / 1                                    |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 2                               |
+| mesh class pointer        = 0x7ff7b7428148                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 311 x 311                                 |
+| nblock/block size         = 50 / 6                                    |
+| qr/qx/nr/nx               = 4 / 4 / 1 / 1                             |
+| last blok rows x cols     = 17 x 17                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x                                                        |
+| [ 1] initial_v                                                        |
+| [ 2] initial_a_tau                                                    |
+| [ 3] final_v                                                          |
++..................... Controls penalties/barriers .....................+
+aControl = { COSLOG (BARRIER) epsilon=0.1, tolerance=0.1 }               
++......................... Constraints type LT .........................+
+Tpositive = { LT: Barrier0 [tolerance=0.01, epsilon=0.1] active }        
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 51                                                     
+  Segment N.0: s0 = 0 length = 1 npts = 51 no data set                   
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|........................... Tguess = 1 ................................|
+|.......................... W_A_TAU = 0.1 ..............................|
+|.......................... a_tau_i = 0 ................................|
+|............................ epsi0 = 0.1 ..............................|
+|............................ epsi1 = 0.001 ............................|
+|.............................. tau = 0.01 .............................|
+|............................. tol0 = 0.1 ..............................|
+|............................. tol1 = 0.001 ............................|
+|.............................. v_f = 0 ................................|
+|.............................. v_i = 1 ................................|
+|.............................. x_i = 0 ................................|
+|......................... W_A_TAU0 = 0.1 ..............................|
+|......................... W_A_TAU1 = 0 ................................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=1/0.1667/0.4082, |L|=1/0.1667/0.4082 |B|=1/1/1, |BL|=1/1/1, PARS=0.001961/0.001961/0.001961, U=0/0/0
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Brake
+  1 [dump:16,u:4:4]      (f:0.167,d:22.6)      -->     [f:0.169,d:20.8]      lambda:0.00332  #err= 53 update:16
+  2 [dump:0,u:5.6:6]     (f:0.169,d:1.47)      -->     [f:0.165,d:1.41]      lambda:0.0865 
+  3 [dump:2,u:11:14]     (f:0.165,d:2.77)      -->     [f:0.216,d:2.43]      lambda:0.16   #err=  2 armijo:2
+  4 [dump:2,u:8.2:12]     (f:0.216,d:3.58)      -->     [f:0.206,d:1.79]      lambda:0.16   #err=  2 armijo:2
+  5 [dump:2,u:19:27]     (f:0.206,d:0.46)      -->     [f:0.155,d:0.414]     lambda:0.16   #err=  2 armijo:2
+  6 [dump:1,u:23:27]     (f:0.155,d:0.572)     -->    [f:0.0794,d:0.356]     lambda:0.4    #err=  1 armijo:1
+  7 [dump:0,u:17:21]    (f:0.0794,d:0.372)     -->    [f:0.0509,d:0.0281]    lambda:1     
+  8 [dump:0,u:5.5:11]    (f:0.0509,d:0.0343)    -->   [f:0.00636,d:0.00709]   lambda:1     
+  9 [dump:0,u:3.6:5]   (f:0.00636,d:0.0123)    -->   [f:0.00146,d:0.00299]   lambda:1     
+ 10 [dump:0,u:3.6:5]   (f:0.00146,d:0.00625)   -->  [f:0.000447,d:0.00189]   lambda:1     
+ 11 [dump:0,u:3.5:5]  (f:0.000447,d:0.00461)   -->   [f:0.00023,d:0.00228]   lambda:1     
+ 12 [dump:7,u:5.9:11]   (f:0.00023,d:0.0893)    -->   [f:0.00023,d:0.0893]    lambda:0.00164  #err=  7 armijo:7
+ 13 [dump:8,u:3.9:5]    (f:0.00023,d:0.589)    -->    [f:0.00023,d:0.589]    lambda:3.98e-05  #err=  8 armijo:8
+ 14 [dump:9,u:3.9:5]    (f:0.00023,d:2.74)     -->    [f:0.00023,d:2.74]     lambda:2.48e-06  #err=  9 armijo:9
+ 15 [dump:8,u:3.6:5]    (f:0.00023,d:4.28)     -->    [f:0.00023,d:4.28]     lambda:1.55e-06  #err=  8 armijo:8
+ 16 [dump:7,u:3.6:5]    (f:0.00023,d:2.86)     -->    [f:0.00023,d:2.86]     lambda:3.06e-06  #err=  7 armijo:7
+ 17 [dump:7,u:3.6:5]    (f:0.00023,d:2.38)     -->    [f:0.00023,d:2.38]     lambda:4.3e-06  #err=  7 armijo:7
+ 18 [dump:7,u:3.6:5]    (f:0.00023,d:2.08)     -->    [f:0.00023,d:2.08]     lambda:5.09e-06  #err=  7 armijo:7
+ 19 [dump:7,u:3.6:5]    (f:0.00023,d:2.21)     -->    [f:0.00023,d:2.21]     lambda:5.55e-06  #err=  7 armijo:7
+ 20 [dump:7,u:3.6:5]     (f:0.00023,d:1.6)     -->     [f:0.00023,d:1.6]     lambda:5.79e-06  #err=  7 armijo:7
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 1               | Hessian type    = Diagonal        |
++-------------------------- MinimizeHeavyBall --------------------------+
+| last f          = -1.9671e-09     | |g|_inf         = 8.3547e-14      |
++-----------------------------------------------------------------------+
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = NO              | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 311             | N. System pars  = 766             |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 0.616 [sec]     | timeout         = 0 [ms]          |
+| iteration       = 21              | Memory Used     = 133Kb(+74b)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 124             | Jacobian        = 21              |
+| Factorization   = 21              | Inversion       = 124             |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 0.0061547       | last ||d||_inf  = 133.2           |
+| last ||f||_1    = 0.00023015      | last ||d||_1    = 5.3451          |
+| last ||f||_2    = 0.00085892      | last ||d||_2    = 14.044          |
++-----------------------------------------------------------------------+
+|          __  ___     __   __             ___  __   __   ___  __       |
+|    |\ | /  \  |     /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \      |
+|    | \| \__/  |     \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/      |
+|                                                                       |
++-----------------------------------------------------------------------+
+                                                                         
+Solver error list
+BEGIN
+  err #1: NLsolver[Brake]::solve [phase:0,iter:21/300,lambda:9.460503071815098e-07,dump:9] failed linesearch
+  err #2: NLsolver[Brake]::solve [phase:0,iter:21/300,lambda:2.365e-06] failed Armijo
+
+  err #3: NLsolver[Brake]::solve [phase:0,iter:21/300,lambda:5.913e-06] failed Armijo
+
+  err #4: NLsolver[Brake]::solve [phase:0,iter:21/300,lambda:1.478e-05] failed Armijo
+
+  err #5: NLsolver[Brake]::solve [phase:0,iter:21/300,lambda:3.695e-05] failed Armijo
+
+  err #6: NLsolver[Brake]::solve [phase:0,iter:21/300,lambda:9.239e-05] failed Armijo
+
+  err #7: NLsolver[Brake]::solve [phase:0,iter:21/300,lambda:0.000231] failed Armijo
+
+  err #8: NLsolver[Brake]::solve [phase:0,iter:21/300,lambda:0.0005774] failed Armijo
+
+  err #9: NLsolver[Brake]::solve [phase:0,iter:21/300,lambda:0.001444] failed Armijo
+
+  err #10: NLsolver[Brake]::solve [phase:0,iter:21/300,lambda:0.003609] failed Armijo
+
+END
+                                                                         
+Check Controls (epsi=0.001): all OK [ 0.169ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 10.75ms ]
+Check DuDxxpm (epsi=0.001): all OK [ 47.06ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001): all OK [ 9.414ms ]
+Check DodeDxp (epsi=0.001): all OK [ 0.194ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 9.778ms ]
+target [Lagrange,Mayer]            = [ 0.000406, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 0.1131, 0.001658 ]
+Optimization parameters:
+T: 1.19618396674925309
+All Done Folks!

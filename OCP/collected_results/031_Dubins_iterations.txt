@@ -1,0 +1,205 @@
++---------------------------- MODEL:Dubins -----------------------------+
++................................ DIMS .................................+
+| dims                      = u=0, q=1, x=9, p=6, bc=12 of 12           |
+| total                     = nZ=756, nP=1525, nUC=0, Q=41              |
+| index start               = omega=738, p=750                          |
+| post processing           = n_post=15                                 |
++................................ MESH .................................+
+| num nodes / segments      = 41 / 1                                    |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 1                               |
+| mesh class pointer        = 0x7ff7b2a02ff8                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 756 x 756                                 |
+| nblock/block size         = 40 / 18                                   |
+| qr/qx/nr/nx               = 12 / 12 / 6 / 6                           |
+| last blok rows x cols     = 54 x 54                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x__1                                                     |
+| [ 1] initial_y__1                                                     |
+| [ 2] initial_theta__1                                                 |
+| [ 3] final_x__3                                                       |
+| [ 4] final_y__3                                                       |
+| [ 5] final_theta__3                                                   |
+| [ 6] internal_x1                                                      |
+| [ 7] internal_y1                                                      |
+| [ 8] internal_theta1                                                  |
+| [ 9] internal_x2                                                      |
+| [10] internal_y2                                                      |
+| [11] internal_theta2                                                  |
++.................... No control penalties/barriers ....................+
++......................... Constraints type LT .........................+
+L1_limitation = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }     
+L2_limitation = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }     
+L3_limitation = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }     
+kappa1_limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+kappa1_limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+kappa2_limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+kappa2_limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+kappa3_limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+kappa3_limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                         User function `pDubins`                         
+Dubins                                                                   
+C0                                                                       
+x     = 0 : 0.5001988862511283                                           
+y     = 0 : 0.13408945370025038                                          
+theta = 0 : 0.523828444888603                                            
+k     = 1                                                                
+L     = 0.523828444888603                                                
+C1                                                                       
+x     = 0.5001988862511283 : 3.4982084608323833                          
+y     = 0.13408945370025038 : 1.8659092780272895                         
+theta = 0.523828444888603 : 0.523828444888603                            
+k     = 0                                                                
+L     = 3.462262455853544                                                
+C2                                                                       
+x     = 3.4982084608323833 : 3.9999999999999996                          
+y     = 1.8659092780272895 : 4.440892098500626e-16                       
+theta = 0.523828444888603 : -3.139999999999999                           
+k     = -1                                                               
+L     = 3.663828444888602                                                
+                                                                         
+                                                                         
+                                                                         
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 41                                                     
+  Segment N.0: s0 = 0 length = 1 npts = 41 no data set                   
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|............................ epsi0 = 0.1 ..............................|
+|............................ epsi1 = 0.0001 ...........................|
+|............................. tol0 = 0.1 ..............................|
+|............................. tol1 = 0.0001 ...........................|
+|......................... epsilon0 = 0.1 ..............................|
+|......................... epsilon1 = 1e-06 ............................|
+|........................ kappa_max = 1 ................................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=0.03664/0.002418/0.008729, |L|=0.03664/0.002417/0.008729 |B|=0/0/0, |BL|=0/0/0, PARS=105.1/213.1/148.6, U=0/-nan/-nan
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Dubins
+  1 [dump:1,u:0:0]       (f:0.284,d:0.371)     -->     [f:0.212,d:0.201]     lambda:0.4    #err=  1 armijo:1
+  2 [dump:0,u:0:0]       (f:0.212,d:0.226)     -->     [f:0.12,d:0.068]      lambda:1     
+  3 [dump:0,u:0:0]       (f:0.12,d:0.0336)     -->   [f:0.0356,d:0.00449]    lambda:1     
+  4 [dump:0,u:0:0]       (f:0.0356,d:0.01)     -->   [f:0.00587,d:0.00178]   lambda:1     
+  5 [dump:0,u:0:0]     (f:0.00587,d:0.00262)   -->   [f:0.00122,d:0.00029]   lambda:1     
+  6 [dump:0,u:0:0]    (f:0.00122,d:0.000701)   -->  [f:0.000698,d:0.00039]   lambda:1     
+  7 [dump:0,u:0:0]    (f:0.000698,d:0.00643)   -->   [f:0.00062,d:0.00367]   lambda:1     
+  8 [dump:0,u:0:0]     (f:0.00062,d:0.0123)    -->  [f:0.000985,d:0.00618]   lambda:1     
+  9 [dump:0,u:0:0]     (f:0.000985,d:0.0162)   -->   [f:0.00111,d:0.00473]   lambda:1     
+ 10 [dump:0,u:0:0]     (f:0.00111,d:0.00652)   -->  [f:9.99e-05,d:0.000121]  lambda:1     
+ 11 [dump:0,u:0:0]    (f:9.99e-05,d:0.00012)   -->  [f:6.2e-08,d:4.93e-08]   lambda:1     
+ 12 [dump:0,u:0:0]    (f:6.2e-08,d:4.91e-08)   -->  [f:1.79e-14,d:1.59e-13]  lambda:1     
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:12,phase:1,s:0.2,ds:0.2] |X|=2.474e-13/1.724e-14/5.85e-14, |L|=2.474e-13/1.733e-14/5.852e-14 |B|=0/0/0, |BL|=6.082e-24/1.032e-23/7.415e-24, PARS=4.357/4.386/4.357, U=0/-nan/-nan
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Dubins
+13 (1 ) [phase:1,s:0.2,ds:0.2,dump:2,u:0:0]               (f:0.0058,d:0.0444)    -->   [f:0.000926,d:0.0135]   lambda:0.16   #err=  2 armijo:2
+14 (2 ) [phase:1,s:0.2,ds:0.2,dump:2,u:0:0]             (f:0.000926,d:0.00932)   -->  [f:0.000343,d:8.67e-05]  lambda:0.902  #err=  2 angle:2 armijo:2
+15 (3 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:0.000343,d:6.66e-05)  -->  [f:1.92e-07,d:2.83e-06]  lambda:1     
+16 (4 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:1.92e-07,d:2.8e-06)   -->  [f:3.19e-11,d:1.07e-10]  lambda:1     
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:16,phase:1,s:0.5,ds:0.3] |X|=4.336e-10/3.259e-11/1.036e-10, |L|=4.336e-10/3.267e-11/1.036e-10 |B|=0/0/0, |BL|=4.082e-21/5.893e-21/4.325e-21, PARS=4.39/4.432/4.39, U=0/-nan/-nan
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Dubins
+17 (1 ) [phase:1,s:0.5,ds:0.3,dump:7,u:0:0]               (f:0.00586,d:0.125)    -->   [f:0.000923,d:0.0283]   lambda:0.0867  #err= 12 update:4 angle:2 armijo:3
+18 (2 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]              (f:0.000923,d:0.0177)   -->  [f:0.000783,d:0.00898]   lambda:0.442 
+19 (3 ) [phase:1,s:0.5,ds:0.3,dump:3,u:0:0]             (f:0.000783,d:0.00692)   -->  [f:0.000302,d:0.000124]  lambda:0.857  #err=  3 angle:3 armijo:3
+20 (4 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:0.000302,d:0.000182)  -->  [f:3.37e-07,d:3.43e-06]  lambda:1     
+21 (5 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:3.37e-07,d:3.34e-06)  -->  [f:7.11e-11,d:4.43e-10]  lambda:1     
+
+Continuation step N.1 s:0.5->0.95, ds=0.45
+[iter:21,phase:1,s:0.95,ds:0.45] |X|=1.031e-09/7.26e-11/2.447e-10, |L|=1.031e-09/7.267e-11/2.447e-10 |B|=0/0/0, |BL|=9.053e-21/1.128e-20/9.192e-21, PARS=4.548/4.602/4.548, U=0/-nan/-nan
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Dubins
+22 (1 ) [phase:1,s:0.95,ds:0.45,dump:7,u:0:0]             (f:0.00609,d:0.195)    -->    [f:0.00571,d:0.17]     lambda:0.0824  #err= 32 update:7
+23 (2 ) [phase:1,s:0.95,ds:0.45,dump:5,u:0:0]            (f:0.00571,d:0.0614)    -->   [f:0.00541,d:0.0586]    lambda:0.0413  #err= 10 update:4 armijo:1
+24 (3 ) [phase:1,s:0.95,ds:0.45,dump:5,u:0:0]            (f:0.00541,d:0.0491)    -->   [f:0.00451,d:0.0468]    lambda:0.00956  #err= 12 update:2 armijo:3
+25 (4 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]            (f:0.00451,d:0.0387)    -->    [f:0.00388,d:0.033]    lambda:0.147 
+26 (5 ) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]            (f:0.00388,d:0.0325)    -->   [f:0.0031,d:0.00106]    lambda:0.49   #err=  4 update:2
+27 (6 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]            (f:0.0031,d:0.00354)    -->  [f:0.000119,d:1.02e-05]  lambda:1     
+28 (7 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:0.000119,d:1.01e-05)  -->  [f:6.8e-07,d:7.47e-09]   lambda:1     
+29 (8 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:6.8e-07,d:7.57e-09)   -->  [f:3.22e-11,d:3.43e-13]  lambda:1     
+
+Continuation step N.1 s:0.95->1, ds=0.05
+[iter:29,phase:1,s:1,ds:0.05] |X|=2.842e-14/1.403e-15/3.795e-15, |L|=2.842e-14/1.464e-15/3.894e-15 |B|=0/0/0, |BL|=3.75e-24/4.939e-24/3.871e-24, PARS=4.206/4.232/4.206, U=0/-nan/-nan
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Dubins
+30 (1 ) [phase:1,s:1,ds:0.05,dump:13,u:0:0]               (f:0.0056,d:0.191)     -->    [f:0.00536,d:0.184]    lambda:0.00969  #err= 43 update:13
+31 (2 ) [phase:1,s:1,ds:0.05,dump:4,u:0:0]               (f:0.00536,d:0.0277)    -->   [f:0.00519,d:0.0271]    lambda:0.0203  #err=  9 update:3 armijo:1
+32 (3 ) [phase:1,s:1,ds:0.05,dump:4,u:0:0]               (f:0.00519,d:0.0262)    -->   [f:0.00498,d:0.0254]    lambda:0.0293  #err= 11 update:3 armijo:1
+33 (4 ) [phase:1,s:1,ds:0.05,dump:6,u:0:0]               (f:0.00498,d:0.0239)    -->   [f:0.00488,d:0.0235]    lambda:0.0173  #err= 22 update:5 armijo:1
+34 (5 ) [phase:1,s:1,ds:0.05,dump:6,u:0:0]               (f:0.00488,d:0.0193)    -->    [f:0.0365,d:0.018]     lambda:0.0132  #err= 21 update:5 armijo:1
+35 (6 ) [phase:1,s:1,ds:0.05,dump:5,u:0:0]                (f:0.0365,d:0.0116)    -->    [f:0.0359,d:0.0112]    lambda:0.0166  #err= 11 update:4 armijo:1
+36 (7 ) [phase:1,s:1,ds:0.05,dump:4,u:0:0]               (f:0.0359,d:0.00386)    -->   [f:0.0348,d:0.00362]    lambda:0.0307  #err=  8 update:3 armijo:1
+37 (8 ) [phase:1,s:1,ds:0.05,dump:2,u:0:0]               (f:0.0348,d:0.000847)   -->   [f:0.0323,d:0.00072]    lambda:0.0736  #err=  3 update:1 armijo:1
+38 (9 ) [phase:1,s:1,ds:0.05,dump:3,u:0:0]               (f:0.0323,d:0.000175)   -->   [f:0.0263,d:0.00011]    lambda:0.196  #err=  7 update:2 armijo:1
+39 (10) [phase:1,s:1,ds:0.05,dump:1,u:0:0]               (f:0.0263,d:5.05e-05)   -->   [f:0.0171,d:2.8e-05]    lambda:0.4    #err=  1 armijo:1
+40 (11) [phase:1,s:1,ds:0.05,dump:0,u:0:0]               (f:0.0171,d:2.49e-05)   -->  [f:0.00448,d:2.19e-06]   lambda:1     
+41 (12) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:0.00448,d:1.52e-06)   -->  [f:0.000782,d:8.5e-08]   lambda:1     
+42 (13) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:0.000782,d:1.06e-07)  -->  [f:4.28e-05,d:3.03e-09]  lambda:1     
+43 (14) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:4.28e-05,d:3.39e-09)  -->  [f:1.52e-07,d:1.18e-11]  lambda:1     
+44 (15) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:1.52e-07,d:1.19e-11)  -->  [f:1.69e-12,d:1.88e-16]  lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 0               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 756             | N. System pars  = 1525            |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 376 [ms]        | timeout         = 0 [ms]          |
+| iteration       = 44              | Memory Used     = 720Kb(+33b)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 112             | Jacobian        = 44              |
+| Factorization   = 44              | Inversion       = 112             |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 1.2775e-09      | last ||d||_inf  = 1.6692e-15      |
+| last ||f||_1    = 1.6914e-12      | last ||d||_1    = 1.8819e-16      |
+| last ||f||_2    = 4.6463e-11      | last ||d||_2    = 2.6072e-16      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check DmuDxlxlp (epsi=0.001): all OK [ 28.58ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 0.638ms ]
+target [Lagrange,Mayer]            = [ 0, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 0, 0.0001289 ]
+Optimization parameters:
+L__1: 0.524325022845934297
+L__2: 3.4615291645572448
+L__3: 3.66463550545433181
+kappa__1: 0.999181180592774609
+kappa__2: 0.000117062626297939398
+kappa__3: -0.999908696399057773
+All Done Folks!

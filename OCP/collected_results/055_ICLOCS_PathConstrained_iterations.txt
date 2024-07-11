@@ -1,0 +1,330 @@
++-------------------- MODEL:ICLOCS_PathConstrained ---------------------+
++................................ DIMS .................................+
+| dims                      = u=1, q=1, x=2, p=0, bc=2 of 2             |
+| total                     = nZ=1606, nP=4411, nUC=400, Q=401          |
+| index start               = omega=1604, p=1606                        |
+| post processing           = n_post=0                                  |
++................................ MESH .................................+
+| num nodes / segments      = 401 / 1                                   |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 1                               |
+| mesh class pointer        = 0x7ff7b954f138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 1606 x 1606                               |
+| nblock/block size         = 400 / 4                                   |
+| qr/qx/nr/nx               = 2 / 2 / 0 / 0                             |
+| last blok rows x cols     = 10 x 10                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x1                                                       |
+| [ 1] initial_x2                                                       |
++..................... Controls penalties/barriers .....................+
+uControl = { COSLOG (BARRIER) epsilon=0.01, tolerance=0.01 }             
++......................... Constraints type LT .........................+
+x2bound = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }         
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 401                                                    
+  Segment N.0: s0 = 0 length = 1 npts = 401 no data set                  
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|....................... epsi_ctrl0 = 0.01 .............................|
+|....................... epsi_ctrl1 = 1e-06 ............................|
+|........................ tol_ctrl0 = 0.01 .............................|
+|........................ tol_ctrl1 = 1e-06 ............................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=2/0.9999/1.225, |L|=2/0.9999/1.225 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=0/0/0
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_PathConstrained
+  1 [dump:3,u:4.3:6]     (f:0.996,d:0.266)     -->     [f:0.654,d:0.175]     lambda:0.343  #err= 38 update:3
+  2 [dump:5,u:4.3:5]     (f:0.654,d:0.175)     -->     [f:0.543,d:0.146]     lambda:0.168  #err= 59 update:5
+  3 [dump:6,u:4.5:5]     (f:0.543,d:0.149)     -->     [f:0.52,d:0.143]      lambda:0.0413  #err= 53 update:5 armijo:1
+  4 [dump:4,u:4.6:5]     (f:0.52,d:0.144)      -->     [f:0.497,d:0.138]     lambda:0.0418  #err= 37 update:3 armijo:1
+  5 [dump:3,u:4.7:5]     (f:0.497,d:0.14)      -->     [f:0.466,d:0.131]     lambda:0.0601  #err= 24 update:2 armijo:1
+  6 [dump:6,u:4.7:5]     (f:0.466,d:0.132)     -->     [f:0.433,d:0.124]     lambda:0.0672  #err= 69 update:5 armijo:1
+  7 [dump:3,u:4.8:5]     (f:0.433,d:0.124)     -->     [f:0.397,d:0.115]     lambda:0.0762  #err= 24 update:2 armijo:1
+  8 [dump:6,u:4.8:5]     (f:0.397,d:0.116)     -->     [f:0.364,d:0.108]     lambda:0.0672  #err= 58 update:5 armijo:1
+  9 [dump:3,u:4.8:5]     (f:0.364,d:0.108)     -->      [f:0.332,d:0.1]      lambda:0.0762  #err= 25 update:2 armijo:1
+ 10 [dump:5,u:4.8:5]     (f:0.332,d:0.101)     -->    [f:0.302,d:0.0911]     lambda:0.096  #err= 54 update:4 armijo:1
+ 11 [dump:3,u:4.8:5]    (f:0.302,d:0.0915)     -->    [f:0.272,d:0.0832]     lambda:0.0911  #err= 26 update:2 armijo:1
+ 12 [dump:5,u:4.8:5]    (f:0.272,d:0.0834)     -->    [f:0.245,d:0.0755]     lambda:0.096  #err= 53 update:4 armijo:1
+ 13 [dump:2,u:4.8:5]    (f:0.245,d:0.0757)     -->     [f:0.22,d:0.066]      lambda:0.13   #err= 14 update:1 armijo:1
+ 14 [dump:4,u:4.8:5]     (f:0.22,d:0.0661)     -->    [f:0.192,d:0.0571]     lambda:0.137  #err= 28 update:3 armijo:1
+ 15 [dump:2,u:4.9:5]    (f:0.192,d:0.0573)     -->    [f:0.165,d:0.0484]     lambda:0.156  #err=  9 update:1 armijo:1
+ 16 [dump:3,u:4.9:6]    (f:0.165,d:0.0485)     -->     [f:0.138,d:0.039]     lambda:0.196  #err= 18 update:2 armijo:1
+ 17 [dump:2,u:4.9:6]    (f:0.138,d:0.0391)     -->    [f:0.111,d:0.0284]     lambda:0.28   #err= 14 update:1 armijo:1
+ 18 [dump:1,u:4.9:7]    (f:0.111,d:0.0283)     -->    [f:0.0758,d:0.0171]    lambda:0.4    #err=  1 armijo:1
+ 19 [dump:0,u:4.9:6]    (f:0.0758,d:0.017)     -->   [f:0.0989,d:0.00791]    lambda:1     
+ 20 [dump:0,u:4.1:5]   (f:0.0989,d:0.000243)   -->   [f:0.0257,d:1.67e-05]   lambda:1     
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_PathConstrained
+ 21 [dump:0,u:3.6:5]   (f:0.0257,d:3.73e-05)   -->  [f:0.00745,d:1.13e-05]   lambda:1     
+ 22 [dump:0,u:3.4:5]  (f:0.00745,d:3.08e-05)   -->   [f:0.0023,d:8.67e-06]   lambda:1     
+ 23 [dump:0,u:3.3:5]   (f:0.0023,d:2.42e-05)   -->  [f:0.000723,d:6.4e-06]   lambda:1     
+ 24 [dump:0,u:3.1:5]  (f:0.000723,d:1.46e-05)  -->  [f:0.00019,d:2.77e-06]   lambda:1     
+ 25 [dump:0,u:2.8:5]  (f:0.00019,d:4.77e-06)   -->  [f:2.26e-05,d:3.97e-07]  lambda:1     
+ 26 [dump:0,u:2.5:4]  (f:2.26e-05,d:5.04e-07)  -->  [f:4.5e-07,d:8.29e-09]   lambda:1     
+ 27 [dump:0,u:1.7:3]  (f:4.5e-07,d:8.64e-09)   -->  [f:2.13e-10,d:3.67e-12]  lambda:1     
+ 28 [dump:0,u:0.28:2]  (f:2.13e-10,d:3.67e-12)  -->  [f:1.15e-14,d:1.32e-17]  lambda:1     
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:28,phase:1,s:0.2,ds:0.2] |X|=1.35/0.1221/0.3715, |L|=1.35/0.122/0.3715 |B|=1.481e-29/1.481e-29/1.481e-29, |BL|=1.384e-27/1.384e-27/1.384e-27, PARS=0/0/0, U=14.73/1.966/3.136
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_PathConstrained
+29 (1 ) [phase:1,s:0.2,ds:0.2,dump:8,u:4.3:5]             (f:0.117,d:0.0254)     -->    [f:0.0954,d:0.0209]    lambda:0.0576  #err= 75 update:8
+30 (2 ) [phase:1,s:0.2,ds:0.2,dump:2,u:4.4:5]            (f:0.0954,d:0.00453)    -->   [f:0.0821,d:0.00391]    lambda:0.101  #err= 16 update:1 armijo:1
+31 (3 ) [phase:1,s:0.2,ds:0.2,dump:5,u:4.3:5]            (f:0.0821,d:0.00234)    -->   [f:0.0742,d:0.00219]    lambda:0.0549  #err= 41 update:3 armijo:2
+32 (4 ) [phase:1,s:0.2,ds:0.2,dump:2,u:4.2:5]            (f:0.0742,d:0.00189)    -->   [f:0.0783,d:0.00176]    lambda:0.0562  #err=  2 armijo:2
+33 (5 ) [phase:1,s:0.2,ds:0.2,dump:5,u:4.3:5]            (f:0.0783,d:0.00154)    -->   [f:0.0753,d:0.00148]    lambda:0.0314  #err= 30 update:2 armijo:3
+34 (6 ) [phase:1,s:0.2,ds:0.2,dump:2,u:4.1:5]             (f:0.0753,d:0.0014)    -->   [f:0.0705,d:0.00133]    lambda:0.0425  #err=  2 armijo:2
+35 (7 ) [phase:1,s:0.2,ds:0.2,dump:4,u:4.3:5]            (f:0.0705,d:0.00124)    -->   [f:0.0662,d:0.00118]    lambda:0.0448  #err= 12 update:1 armijo:3
+36 (8 ) [phase:1,s:0.2,ds:0.2,dump:2,u:4.1:5]             (f:0.0662,d:0.0011)    -->   [f:0.0616,d:0.00104]    lambda:0.0508  #err=  2 armijo:2
+37 (9 ) [phase:1,s:0.2,ds:0.2,dump:4,u:4.3:5]            (f:0.0616,d:0.000976)   -->   [f:0.0584,d:0.00093]    lambda:0.0448  #err= 15 update:1 armijo:3
+38 (10) [phase:1,s:0.2,ds:0.2,dump:2,u:4:5]              (f:0.0584,d:0.000886)   -->   [f:0.0549,d:0.000838]   lambda:0.0508  #err=  2 armijo:2
+39 (11) [phase:1,s:0.2,ds:0.2,dump:3,u:4.3:5]            (f:0.0549,d:0.000798)   -->   [f:0.0507,d:0.000744]   lambda:0.064  #err=  3 armijo:3
+40 (12) [phase:1,s:0.2,ds:0.2,dump:3,u:4.2:5]            (f:0.0507,d:0.000706)   -->   [f:0.047,d:0.000659]    lambda:0.064  #err=  3 armijo:3
+41 (13) [phase:1,s:0.2,ds:0.2,dump:2,u:4.2:5]            (f:0.047,d:0.000631)    -->   [f:0.0515,d:0.000543]   lambda:0.16   #err=  2 armijo:2
+42 (14) [phase:1,s:0.2,ds:0.2,dump:2,u:4.2:5]            (f:0.0515,d:0.000473)   -->   [f:0.0428,d:0.000391]   lambda:0.16   #err=  2 armijo:2
+43 (15) [phase:1,s:0.2,ds:0.2,dump:1,u:4.1:5]            (f:0.0428,d:0.00037)    -->   [f:0.0279,d:0.000206]   lambda:0.4    #err=  1 armijo:1
+44 (16) [phase:1,s:0.2,ds:0.2,dump:0,u:4:5]              (f:0.0279,d:0.000197)   -->  [f:0.00817,d:5.06e-05]   lambda:1     
+45 (17) [phase:1,s:0.2,ds:0.2,dump:0,u:3.4:4]           (f:0.00817,d:7.94e-06)   -->  [f:0.00158,d:4.07e-07]   lambda:1     
+46 (18) [phase:1,s:0.2,ds:0.2,dump:0,u:3.1:4]            (f:0.00158,d:9.6e-07)   -->  [f:0.000325,d:3.21e-07]  lambda:1     
+47 (19) [phase:1,s:0.2,ds:0.2,dump:0,u:2.5:4]           (f:0.000325,d:7.95e-07)  -->  [f:6.44e-05,d:2.04e-07]  lambda:1     
+48 (20) [phase:1,s:0.2,ds:0.2,dump:0,u:2.1:4]           (f:6.44e-05,d:3.52e-07)  -->  [f:5.57e-06,d:2.49e-08]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_PathConstrained
+49 (21) [phase:1,s:0.2,ds:0.2,dump:0,u:1.9:3]           (f:5.57e-06,d:2.9e-08)   -->  [f:4.35e-08,d:1.65e-10]  lambda:1     
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:49,phase:1,s:0.5,ds:0.3] |X|=1.369/0.1215/0.3783, |L|=1.369/0.1215/0.3783 |B|=1.105e-25/1.105e-25/1.105e-25, |BL|=1.14e-24/1.14e-24/1.14e-24, PARS=0/0/0, U=14.7/1.958/3.135
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_PathConstrained
+50 (1 ) [phase:1,s:0.5,ds:0.3,dump:13,u:3.9:4]            (f:0.117,d:0.0213)     -->    [f:0.116,d:0.0211]     lambda:0.00554  #err=163 update:12 armijo:1
+51 (2 ) [phase:1,s:0.5,ds:0.3,dump:5,u:3.8:4]             (f:0.116,d:0.00887)    -->    [f:0.113,d:0.00871]    lambda:0.0107  #err= 55 update:4 armijo:1
+52 (3 ) [phase:1,s:0.5,ds:0.3,dump:4,u:3.9:4]             (f:0.113,d:0.00345)    -->    [f:0.109,d:0.00333]    lambda:0.0213  #err= 42 update:3 armijo:1
+53 (4 ) [phase:1,s:0.5,ds:0.3,dump:3,u:3.8:4]             (f:0.109,d:0.00137)    -->   [f:0.0839,d:0.00108]    lambda:0.0751  #err= 28 update:3
+54 (5 ) [phase:1,s:0.5,ds:0.3,dump:5,u:3.7:5]            (f:0.0839,d:0.000298)   -->   [f:0.0787,d:0.000281]   lambda:0.0549  #err= 24 update:3 armijo:2
+55 (6 ) [phase:1,s:0.5,ds:0.3,dump:2,u:3.6:5]            (f:0.0787,d:0.000255)   -->   [f:0.0739,d:0.00024]    lambda:0.0562  #err=  2 armijo:2
+56 (7 ) [phase:1,s:0.5,ds:0.3,dump:6,u:3.6:4]            (f:0.0739,d:0.000222)   -->   [f:0.0722,d:0.000217]   lambda:0.022  #err= 26 update:3 armijo:3
+57 (8 ) [phase:1,s:0.5,ds:0.3,dump:3,u:3.6:4]            (f:0.0722,d:0.000211)   -->   [f:0.0702,d:0.000208]   lambda:0.0142  #err=  3 armijo:3
+58 (9 ) [phase:1,s:0.5,ds:0.3,dump:5,u:3.7:5]             (f:0.0702,d:0.0002)    -->   [f:0.0746,d:0.000197]   lambda:0.0314  #err= 22 update:2 armijo:3
+59 (10) [phase:1,s:0.5,ds:0.3,dump:3,u:3.6:4]            (f:0.0746,d:0.000183)   -->    [f:0.073,d:0.00018]    lambda:0.017  #err=  3 armijo:3
+60 (11) [phase:1,s:0.5,ds:0.3,dump:5,u:3.7:5]            (f:0.073,d:0.000175)    -->   [f:0.0689,d:0.000171]   lambda:0.0314  #err= 11 update:2 armijo:3
+61 (12) [phase:1,s:0.5,ds:0.3,dump:3,u:3.6:4]            (f:0.0689,d:0.000164)   -->   [f:0.0676,d:0.000161]   lambda:0.017  #err=  3 armijo:3
+62 (13) [phase:1,s:0.5,ds:0.3,dump:5,u:3.7:5]            (f:0.0676,d:0.000158)   -->   [f:0.0638,d:0.000153]   lambda:0.0314  #err= 11 update:2 armijo:3
+63 (14) [phase:1,s:0.5,ds:0.3,dump:2,u:3.6:4]            (f:0.0638,d:0.000148)   -->   [f:0.0613,d:0.000144]   lambda:0.0425  #err=  2 armijo:2
+64 (15) [phase:1,s:0.5,ds:0.3,dump:5,u:3.7:5]            (f:0.0613,d:0.000137)   -->   [f:0.0589,d:0.000132]   lambda:0.0314  #err=  9 update:2 armijo:3
+65 (16) [phase:1,s:0.5,ds:0.3,dump:2,u:3.6:4]            (f:0.0589,d:0.00013)    -->   [f:0.0553,d:0.000124]   lambda:0.0425  #err=  2 armijo:2
+66 (17) [phase:1,s:0.5,ds:0.3,dump:4,u:3.7:5]            (f:0.0553,d:0.00012)    -->   [f:0.0519,d:0.000114]   lambda:0.0448  #err=  6 update:1 armijo:3
+67 (18) [phase:1,s:0.5,ds:0.3,dump:2,u:3.6:4]            (f:0.0519,d:0.000112)   -->   [f:0.0484,d:0.000105]   lambda:0.0508  #err=  2 armijo:2
+68 (19) [phase:1,s:0.5,ds:0.3,dump:4,u:3.7:5]            (f:0.0484,d:0.000103)   -->   [f:0.0459,d:9.76e-05]   lambda:0.0448  #err=  5 update:1 armijo:3
+69 (20) [phase:1,s:0.5,ds:0.3,dump:2,u:3.5:4]            (f:0.0459,d:9.52e-05)   -->    [f:0.0432,d:9e-05]     lambda:0.0508  #err=  2 armijo:2
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_PathConstrained
+70 (21) [phase:1,s:0.5,ds:0.3,dump:4,u:3.6:5]            (f:0.0432,d:8.82e-05)   -->   [f:0.0411,d:8.41e-05]   lambda:0.0448  #err=  5 update:1 armijo:3
+71 (22) [phase:1,s:0.5,ds:0.3,dump:2,u:3.5:4]            (f:0.0411,d:8.22e-05)   -->   [f:0.0389,d:7.8e-05]    lambda:0.0508  #err=  2 armijo:2
+72 (23) [phase:1,s:0.5,ds:0.3,dump:3,u:3.7:5]            (f:0.0389,d:7.67e-05)   -->   [f:0.0362,d:7.17e-05]   lambda:0.064  #err=  3 armijo:3
+73 (24) [phase:1,s:0.5,ds:0.3,dump:2,u:3.7:5]            (f:0.0362,d:7.01e-05)   -->   [f:0.0301,d:5.88e-05]   lambda:0.16   #err=  2 armijo:2
+74 (25) [phase:1,s:0.5,ds:0.3,dump:2,u:3.6:4]            (f:0.0301,d:5.59e-05)   -->   [f:0.0254,d:4.69e-05]   lambda:0.16   #err=  2 armijo:2
+75 (26) [phase:1,s:0.5,ds:0.3,dump:1,u:3.6:4]            (f:0.0254,d:4.5e-05)    -->   [f:0.0149,d:2.66e-05]   lambda:0.4    #err=  1 armijo:1
+76 (27) [phase:1,s:0.5,ds:0.3,dump:1,u:3.5:4]            (f:0.0149,d:2.53e-05)   -->   [f:0.00892,d:1.5e-05]   lambda:0.4    #err=  1 armijo:1
+77 (28) [phase:1,s:0.5,ds:0.3,dump:1,u:3.4:4]           (f:0.00892,d:1.46e-05)   -->  [f:0.00553,d:9.12e-06]   lambda:0.4    #err=  1 armijo:1
+78 (29) [phase:1,s:0.5,ds:0.3,dump:1,u:3.3:4]           (f:0.00553,d:8.55e-06)   -->  [f:0.000415,d:3.72e-07]  lambda:0.95   #err=  1 angle:1 armijo:1
+79 (30) [phase:1,s:0.5,ds:0.3,dump:0,u:3:4]             (f:0.000415,d:3.76e-07)  -->  [f:1.34e-05,d:3.28e-09]  lambda:1     
+80 (31) [phase:1,s:0.5,ds:0.3,dump:0,u:2.5:3]           (f:1.34e-05,d:4.8e-09)   -->  [f:4.06e-07,d:2.53e-10]  lambda:1     
+81 (32) [phase:1,s:0.5,ds:0.3,dump:0,u:1.2:3]           (f:4.06e-07,d:2.83e-10)  -->  [f:1.28e-09,d:9.28e-13]  lambda:1     
+
+Continuation step N.1 s:0.5->0.95, ds=0.45
+[iter:81,phase:1,s:0.95,ds:0.45] |X|=1.373/0.1216/0.3807, |L|=1.373/0.1216/0.3807 |B|=6.533e-28/6.533e-28/6.533e-28, |BL|=7.99e-27/7.99e-27/7.99e-27, PARS=0/0/0, U=14.69/1.956/3.135
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_PathConstrained
+82 (1 ) [phase:1,s:0.95,ds:0.45,dump:20,u:3.3:4]          (f:0.117,d:0.0198)     -->    [f:0.116,d:0.0197]     lambda:0.000798  #err=288 update:20
+83 (2 ) [phase:1,s:0.95,ds:0.45,dump:7,u:3.3:4]           (f:0.116,d:0.00184)    -->    [f:0.115,d:0.00181]    lambda:0.00349  #err=100 update:7
+84 (3 ) [phase:1,s:0.95,ds:0.45,dump:5,u:3.1:4]          (f:0.115,d:0.000207)    -->   [f:0.113,d:0.000204]    lambda:0.00851  #err= 34 update:4 armijo:1
+85 (4 ) [phase:1,s:0.95,ds:0.45,dump:4,u:3.1:4]          (f:0.113,d:8.98e-05)    -->   [f:0.0996,d:7.9e-05]    lambda:0.0332  #err= 35 update:4
+86 (5 ) [phase:1,s:0.95,ds:0.45,dump:3,u:3.1:4]          (f:0.0996,d:2.42e-05)   -->   [f:0.0927,d:2.27e-05]   lambda:0.0536  #err= 17 update:2 armijo:1
+87 (6 ) [phase:1,s:0.95,ds:0.45,dump:6,u:3.1:4]          (f:0.0927,d:1.79e-05)   -->   [f:0.0849,d:1.65e-05]   lambda:0.0672  #err= 55 update:5 armijo:1
+88 (7 ) [phase:1,s:0.95,ds:0.45,dump:2,u:3.2:4]          (f:0.0849,d:1.38e-05)   -->   [f:0.0732,d:1.22e-05]   lambda:0.109  #err=  3 update:1 armijo:1
+89 (8 ) [phase:1,s:0.95,ds:0.45,dump:6,u:3.2:4]          (f:0.0732,d:1.12e-05)   -->    [f:0.072,d:1.1e-05]    lambda:0.0125  #err= 31 update:2 armijo:4
+90 (9 ) [phase:1,s:0.95,ds:0.45,dump:3,u:3.1:4]           (f:0.072,d:1.1e-05)    -->   [f:0.0704,d:1.09e-05]   lambda:0.0108  #err=  3 armijo:3
+91 (10) [phase:1,s:0.95,ds:0.45,dump:6,u:3.2:4]          (f:0.0704,d:1.09e-05)   -->   [f:0.0685,d:1.08e-05]   lambda:0.0125  #err= 17 update:2 armijo:4
+92 (11) [phase:1,s:0.95,ds:0.45,dump:3,u:3.1:4]          (f:0.0685,d:1.08e-05)   -->   [f:0.0675,d:1.06e-05]   lambda:0.0108  #err=  3 armijo:3
+93 (12) [phase:1,s:0.95,ds:0.45,dump:6,u:3.2:4]          (f:0.0675,d:1.06e-05)   -->   [f:0.0662,d:1.07e-05]   lambda:0.0125  #err= 15 update:2 armijo:4
+94 (13) [phase:1,s:0.95,ds:0.45,dump:3,u:3.1:4]          (f:0.0662,d:1.07e-05)   -->   [f:0.0653,d:1.03e-05]   lambda:0.0108  #err=  3 armijo:3
+95 (14) [phase:1,s:0.95,ds:0.45,dump:6,u:3.2:4]          (f:0.0653,d:1.1e-05)    -->   [f:0.0642,d:1.04e-05]   lambda:0.0125  #err= 20 update:2 armijo:4
+96 (15) [phase:1,s:0.95,ds:0.45,dump:3,u:3.1:4]          (f:0.0642,d:1.06e-05)   -->   [f:0.0634,d:1.06e-05]   lambda:0.0108  #err=  3 armijo:3
+97 (16) [phase:1,s:0.95,ds:0.45,dump:6,u:3.2:4]          (f:0.0634,d:1.04e-05)   -->    [f:0.0624,d:1e-05]     lambda:0.0125  #err= 20 update:2 armijo:4
+98 (17) [phase:1,s:0.95,ds:0.45,dump:3,u:3.1:4]          (f:0.0624,d:1.12e-05)   -->   [f:0.0616,d:1.08e-05]   lambda:0.0108  #err=  3 armijo:3
+99 (18) [phase:1,s:0.95,ds:0.45,dump:6,u:3.2:4]          (f:0.0616,d:1.12e-05)   -->   [f:0.0607,d:1.05e-05]   lambda:0.0125  #err= 20 update:2 armijo:4
+100(19) [phase:1,s:0.95,ds:0.45,dump:3,u:3:4]            (f:0.0607,d:1.11e-05)   -->    [f:0.06,d:1.08e-05]    lambda:0.0108  #err=  3 armijo:3
+101(20) [phase:1,s:0.95,ds:0.45,dump:5,u:3.3:4]           (f:0.06,d:1.02e-05)    -->   [f:0.0586,d:1.02e-05]   lambda:0.0179  #err= 15 update:1 armijo:4
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_PathConstrained
+102(21) [phase:1,s:0.95,ds:0.45,dump:3,u:3.1:4]          (f:0.0586,d:1.06e-05)   -->   [f:0.0578,d:1.02e-05]   lambda:0.0129  #err=  3 armijo:3
+103(22) [phase:1,s:0.95,ds:0.45,dump:5,u:3.3:4]          (f:0.0578,d:1.06e-05)   -->   [f:0.0566,d:9.5e-06]    lambda:0.0179  #err= 17 update:1 armijo:4
+104(23) [phase:1,s:0.95,ds:0.45,dump:3,u:3.1:4]          (f:0.0566,d:1.09e-05)   -->   [f:0.0558,d:1.07e-05]   lambda:0.0129  #err=  3 armijo:3
+105(24) [phase:1,s:0.95,ds:0.45,dump:5,u:3.3:4]          (f:0.0558,d:9.23e-06)   -->   [f:0.0546,d:8.78e-06]   lambda:0.0179  #err= 18 update:1 armijo:4
+106(25) [phase:1,s:0.95,ds:0.45,dump:3,u:3.1:4]          (f:0.0546,d:9.84e-06)   -->   [f:0.0539,d:9.55e-06]   lambda:0.0129  #err=  3 armijo:3
+107(26) [phase:1,s:0.95,ds:0.45,dump:5,u:3.3:4]          (f:0.0539,d:1.13e-05)   -->   [f:0.0528,d:1.06e-05]   lambda:0.0179  #err= 11 update:1 armijo:4
+108(27) [phase:1,s:0.95,ds:0.45,dump:3,u:3.1:4]          (f:0.0528,d:9.12e-06)   -->   [f:0.0521,d:8.93e-06]   lambda:0.0129  #err=  3 armijo:3
+109(28) [phase:1,s:0.95,ds:0.45,dump:5,u:3.3:4]          (f:0.0521,d:1.03e-05)   -->   [f:0.0511,d:9.99e-06]   lambda:0.0179  #err=  7 update:1 armijo:4
+110(29) [phase:1,s:0.95,ds:0.45,dump:3,u:3.1:4]          (f:0.0511,d:9.03e-06)   -->   [f:0.0504,d:8.97e-06]   lambda:0.0129  #err=  3 armijo:3
+111(30) [phase:1,s:0.95,ds:0.45,dump:5,u:3.3:4]          (f:0.0504,d:1.03e-05)   -->   [f:0.0495,d:9.97e-06]   lambda:0.0179  #err=  8 update:1 armijo:4
+112(31) [phase:1,s:0.95,ds:0.45,dump:3,u:3:4]            (f:0.0495,d:9.41e-06)   -->   [f:0.0488,d:9.38e-06]   lambda:0.0129  #err=  3 armijo:3
+113(32) [phase:1,s:0.95,ds:0.45,dump:5,u:3.3:4]          (f:0.0488,d:1.12e-05)   -->   [f:0.0479,d:1.07e-05]   lambda:0.0179  #err=  7 update:1 armijo:4
+114(33) [phase:1,s:0.95,ds:0.45,dump:3,u:3:4]            (f:0.0479,d:9.82e-06)   -->   [f:0.0472,d:9.75e-06]   lambda:0.0129  #err=  3 armijo:3
+115(34) [phase:1,s:0.95,ds:0.45,dump:5,u:3.3:4]          (f:0.0472,d:1.19e-05)   -->   [f:0.0462,d:1.17e-05]   lambda:0.0179  #err=  6 update:1 armijo:4
+116(35) [phase:1,s:0.95,ds:0.45,dump:3,u:3:4]            (f:0.0462,d:9.7e-06)    -->   [f:0.0456,d:9.62e-06]   lambda:0.0129  #err=  3 armijo:3
+117(36) [phase:1,s:0.95,ds:0.45,dump:4,u:3.3:4]          (f:0.0456,d:1.3e-05)    -->   [f:0.0431,d:1.39e-05]   lambda:0.0448  #err=  5 update:1 armijo:3
+118(37) [phase:1,s:0.95,ds:0.45,dump:3,u:3.1:4]          (f:0.0431,d:1.42e-05)   -->   [f:0.0422,d:1.4e-05]    lambda:0.0203  #err=  3 armijo:3
+119(38) [phase:1,s:0.95,ds:0.45,dump:5,u:3.2:4]          (f:0.0422,d:1.64e-05)   -->   [f:0.0414,d:1.62e-05]   lambda:0.0179  #err=  6 update:1 armijo:4
+120(39) [phase:1,s:0.95,ds:0.45,dump:3,u:3:4]            (f:0.0414,d:1.99e-05)   -->   [f:0.0408,d:1.97e-05]   lambda:0.0129  #err=  3 armijo:3
+121(40) [phase:1,s:0.95,ds:0.45,dump:5,u:3.2:4]          (f:0.0408,d:2.03e-05)   -->    [f:0.0401,d:2e-05]     lambda:0.0179  #err=  6 update:1 armijo:4
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_PathConstrained
+122(41) [phase:1,s:0.95,ds:0.45,dump:3,u:3:4]            (f:0.0401,d:2.15e-05)   -->   [f:0.0396,d:2.12e-05]   lambda:0.0129  #err=  3 armijo:3
+123(42) [phase:1,s:0.95,ds:0.45,dump:5,u:3.2:4]          (f:0.0396,d:2.17e-05)   -->   [f:0.0387,d:2.2e-05]    lambda:0.0179  #err=  6 update:1 armijo:4
+124(43) [phase:1,s:0.95,ds:0.45,dump:1,u:3:4]            (f:0.0387,d:2.51e-05)   -->   [f:0.0353,d:2.32e-05]   lambda:0.0803  #err=  1 armijo:1
+125(44) [phase:1,s:0.95,ds:0.45,dump:3,u:3.2:4]          (f:0.0353,d:2.43e-05)   -->   [f:0.0312,d:1.46e-05]   lambda:0.112  #err=  4 update:1 armijo:2
+126(45) [phase:1,s:0.95,ds:0.45,dump:3,u:3.1:4]          (f:0.0312,d:2.1e-05)    -->   [f:0.0275,d:1.86e-05]   lambda:0.112  #err=  4 update:1 armijo:2
+127(46) [phase:1,s:0.95,ds:0.45,dump:3,u:3.1:4]          (f:0.0275,d:1.77e-05)   -->   [f:0.0242,d:1.54e-05]   lambda:0.112  #err=  4 update:1 armijo:2
+128(47) [phase:1,s:0.95,ds:0.45,dump:3,u:3.2:4]          (f:0.0242,d:1.5e-05)    -->   [f:0.0226,d:1.4e-05]    lambda:0.064  #err=  3 armijo:3
+129(48) [phase:1,s:0.95,ds:0.45,dump:2,u:3.1:4]          (f:0.0226,d:1.31e-05)   -->   [f:0.0197,d:1.2e-05]    lambda:0.16   #err=  2 armijo:2
+130(49) [phase:1,s:0.95,ds:0.45,dump:3,u:3.1:4]          (f:0.0197,d:9.81e-06)   -->   [f:0.0184,d:8.54e-06]   lambda:0.064  #err=  3 armijo:3
+131(50) [phase:1,s:0.95,ds:0.45,dump:3,u:3.1:4]          (f:0.0184,d:8.45e-06)   -->   [f:0.0172,d:7.91e-06]   lambda:0.064  #err=  3 armijo:3
+132(51) [phase:1,s:0.95,ds:0.45,dump:3,u:3.1:4]          (f:0.0172,d:7.85e-06)   -->   [f:0.0161,d:7.32e-06]   lambda:0.064  #err=  3 armijo:3
+133(52) [phase:1,s:0.95,ds:0.45,dump:0,u:3:4]            (f:0.0161,d:7.35e-06)   -->  [f:0.00469,d:2.64e-06]   lambda:1     
+134(53) [phase:1,s:0.95,ds:0.45,dump:0,u:3:4]            (f:0.00469,d:4.3e-07)   -->  [f:0.000758,d:7.76e-08]  lambda:1     
+135(54) [phase:1,s:0.95,ds:0.45,dump:0,u:2.9:4]         (f:0.000758,d:1.33e-07)  -->   [f:0.0002,d:1.45e-08]   lambda:1     
+136(55) [phase:1,s:0.95,ds:0.45,dump:0,u:2.7:3]          (f:0.0002,d:2.17e-08)   -->  [f:4.79e-05,d:2.49e-09]  lambda:1     
+137(56) [phase:1,s:0.95,ds:0.45,dump:0,u:2.3:3]         (f:4.79e-05,d:4.49e-09)  -->  [f:6.34e-06,d:5.81e-10]  lambda:1     
+138(57) [phase:1,s:0.95,ds:0.45,dump:0,u:1.3:3]         (f:6.34e-06,d:7.8e-10)   -->  [f:1.67e-07,d:2.05e-11]  lambda:1     
+
+Continuation step N.1 s:0.95->1, ds=0.05
+[iter:138,phase:1,s:1,ds:0.05] |X|=1.164/0.08797/0.2804, |L|=1.164/0.08797/0.2804 |B|=2.377e-30/2.377e-30/2.377e-30, |BL|=9.383e-28/9.383e-28/9.383e-28, PARS=0/0/0, U=14.69/1.956/3.135
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_PathConstrained
+139(1 ) [phase:1,s:1,ds:0.05,dump:5,u:3:4]               (f:0.0842,d:1.65e-05)   -->   [f:0.079,d:1.56e-05]    lambda:0.0549  #err= 45 update:3 armijo:2
+140(2 ) [phase:1,s:1,ds:0.05,dump:2,u:3:4]               (f:0.079,d:1.53e-05)    -->   [f:0.0741,d:1.45e-05]   lambda:0.0562  #err=  2 armijo:2
+141(3 ) [phase:1,s:1,ds:0.05,dump:5,u:3:4]               (f:0.0741,d:1.43e-05)   -->   [f:0.0717,d:1.38e-05]   lambda:0.0314  #err= 27 update:2 armijo:3
+142(4 ) [phase:1,s:1,ds:0.05,dump:2,u:3:4]               (f:0.0717,d:1.38e-05)   -->   [f:0.0685,d:1.32e-05]   lambda:0.0425  #err=  2 armijo:2
+143(5 ) [phase:1,s:1,ds:0.05,dump:6,u:3:4]               (f:0.0685,d:1.15e-05)   -->   [f:0.0621,d:1.07e-05]   lambda:0.0125  #err= 33 update:2 armijo:4
+144(6 ) [phase:1,s:1,ds:0.05,dump:3,u:3:4]               (f:0.0621,d:1.02e-05)   -->   [f:0.0608,d:9.64e-06]   lambda:0.0108  #err=  3 armijo:3
+145(7 ) [phase:1,s:1,ds:0.05,dump:6,u:3:4]               (f:0.0608,d:9.25e-06)   -->   [f:0.0591,d:8.11e-06]   lambda:0.0125  #err= 18 update:2 armijo:4
+146(8 ) [phase:1,s:1,ds:0.05,dump:3,u:3:4]               (f:0.0591,d:8.56e-06)   -->   [f:0.0582,d:8.12e-06]   lambda:0.0108  #err=  3 armijo:3
+147(9 ) [phase:1,s:1,ds:0.05,dump:6,u:3.1:4]             (f:0.0582,d:8.02e-06)   -->   [f:0.0577,d:7.93e-06]   lambda:0.00717  #err= 20 update:1 armijo:5
+148(10) [phase:1,s:1,ds:0.05,dump:3,u:2.9:3]             (f:0.0577,d:7.6e-06)    -->   [f:0.0572,d:7.49e-06]   lambda:0.00813  #err=  3 armijo:3
+149(11) [phase:1,s:1,ds:0.05,dump:5,u:3.1:4]             (f:0.0572,d:7.12e-06)   -->   [f:0.0549,d:5.36e-06]   lambda:0.0179  #err= 19 update:1 armijo:4
+150(12) [phase:1,s:1,ds:0.05,dump:3,u:3:4]               (f:0.0549,d:6.78e-06)   -->   [f:0.054,d:6.49e-06]    lambda:0.0129  #err=  3 armijo:3
+151(13) [phase:1,s:1,ds:0.05,dump:5,u:3.1:4]             (f:0.054,d:6.31e-06)    -->   [f:0.0522,d:5.7e-06]    lambda:0.0179  #err= 14 update:1 armijo:4
+152(14) [phase:1,s:1,ds:0.05,dump:3,u:3:4]               (f:0.0522,d:6.07e-06)   -->   [f:0.0514,d:5.85e-06]   lambda:0.0129  #err=  3 armijo:3
+153(15) [phase:1,s:1,ds:0.05,dump:5,u:3.1:4]             (f:0.0514,d:5.7e-06)    -->   [f:0.0501,d:4.43e-06]   lambda:0.0179  #err=  6 update:1 armijo:4
+154(16) [phase:1,s:1,ds:0.05,dump:3,u:3:4]               (f:0.0501,d:4.7e-06)    -->   [f:0.0494,d:4.6e-06]    lambda:0.0129  #err=  3 armijo:3
+155(17) [phase:1,s:1,ds:0.05,dump:4,u:3.1:4]             (f:0.0494,d:4.56e-06)   -->   [f:0.0478,d:4.96e-06]   lambda:0.0256  #err=  4 armijo:4
+156(18) [phase:1,s:1,ds:0.05,dump:3,u:3:4]               (f:0.0478,d:2.51e-06)   -->    [f:0.047,d:2.3e-06]    lambda:0.0154  #err=  3 armijo:3
+157(19) [phase:1,s:1,ds:0.05,dump:5,u:3.1:4]             (f:0.047,d:1.32e-06)    -->   [f:0.0465,d:1.31e-06]   lambda:0.0102  #err=  5 armijo:5
+158(20) [phase:1,s:1,ds:0.05,dump:3,u:2.9:4]             (f:0.0465,d:1.5e-06)    -->   [f:0.0461,d:1.5e-06]    lambda:0.00971  #err=  3 armijo:3
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_PathConstrained
+159(21) [phase:1,s:1,ds:0.05,dump:5,u:3.1:4]             (f:0.0461,d:2.35e-06)   -->   [f:0.0456,d:2.36e-06]   lambda:0.0102  #err=  5 armijo:5
+160(22) [phase:1,s:1,ds:0.05,dump:4,u:3:4]               (f:0.0456,d:4.14e-06)   -->   [f:0.0454,d:4.13e-06]   lambda:0.00389  #err=  4 armijo:4
+161(23) [phase:1,s:1,ds:0.05,dump:3,u:2.9:3]             (f:0.0454,d:5.44e-06)   -->   [f:0.0451,d:5.42e-06]   lambda:0.00598  #err=  3 armijo:3
+162(24) [phase:1,s:1,ds:0.05,dump:4,u:3:4]               (f:0.0451,d:6.61e-06)   -->   [f:0.0438,d:6.42e-06]   lambda:0.0256  #err=  4 armijo:4
+163(25) [phase:1,s:1,ds:0.05,dump:2,u:3:4]               (f:0.0438,d:8.36e-06)   -->   [f:0.0417,d:6.85e-06]   lambda:0.0384  #err=  2 armijo:2
+164(26) [phase:1,s:1,ds:0.05,dump:4,u:3:4]               (f:0.0417,d:8.81e-06)   -->   [f:0.0406,d:8.71e-06]   lambda:0.0256  #err=  4 armijo:4
+165(27) [phase:1,s:1,ds:0.05,dump:3,u:3:4]               (f:0.0406,d:9.01e-06)   -->   [f:0.0399,d:8.86e-06]   lambda:0.0166  #err=  3 armijo:3
+166(28) [phase:1,s:1,ds:0.05,dump:5,u:3:4]               (f:0.0399,d:9.08e-06)   -->   [f:0.0394,d:8.98e-06]   lambda:0.0118  #err=  5 armijo:5
+167(29) [phase:1,s:1,ds:0.05,dump:2,u:3:4]               (f:0.0394,d:9.78e-06)   -->   [f:0.0384,d:9.53e-06]   lambda:0.0261  #err=  2 armijo:2
+168(30) [phase:1,s:1,ds:0.05,dump:3,u:3:4]               (f:0.0384,d:9.72e-06)   -->   [f:0.0355,d:7.28e-06]   lambda:0.064  #err=  3 armijo:3
+169(31) [phase:1,s:1,ds:0.05,dump:3,u:3:4]               (f:0.0355,d:8.1e-06)    -->   [f:0.0331,d:7.3e-06]    lambda:0.064  #err=  3 armijo:3
+170(32) [phase:1,s:1,ds:0.05,dump:3,u:3:4]               (f:0.0331,d:6.57e-06)   -->   [f:0.0309,d:6.16e-06]   lambda:0.064  #err=  3 armijo:3
+171(33) [phase:1,s:1,ds:0.05,dump:3,u:3:4]               (f:0.0309,d:6.16e-06)   -->   [f:0.0288,d:4.69e-06]   lambda:0.064  #err=  3 armijo:3
+172(34) [phase:1,s:1,ds:0.05,dump:2,u:3:4]               (f:0.0288,d:5.14e-06)   -->   [f:0.0262,d:5.42e-06]   lambda:0.16   #err=  2 armijo:2
+173(35) [phase:1,s:1,ds:0.05,dump:1,u:3:4]               (f:0.0262,d:3.79e-06)   -->   [f:0.0147,d:2.28e-06]   lambda:0.4    #err=  1 armijo:1
+174(36) [phase:1,s:1,ds:0.05,dump:1,u:3:4]               (f:0.0147,d:2.28e-06)   -->  [f:0.00866,d:1.37e-06]   lambda:0.4    #err=  1 armijo:1
+175(37) [phase:1,s:1,ds:0.05,dump:1,u:2.9:4]            (f:0.00866,d:1.35e-06)   -->  [f:0.00518,d:7.37e-07]   lambda:0.4    #err=  1 armijo:1
+176(38) [phase:1,s:1,ds:0.05,dump:1,u:2.9:3]            (f:0.00518,d:7.31e-07)   -->  [f:0.000326,d:3.45e-08]  lambda:0.95   #err=  1 angle:1 armijo:1
+177(39) [phase:1,s:1,ds:0.05,dump:0,u:2.6:3]            (f:0.000326,d:3.39e-08)  -->  [f:6.55e-05,d:4.63e-10]  lambda:1     
+178(40) [phase:1,s:1,ds:0.05,dump:0,u:1.6:3]            (f:6.55e-05,d:9.31e-10)  -->  [f:1.17e-05,d:1.68e-10]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_PathConstrained
+179(41) [phase:1,s:1,ds:0.05,dump:0,u:1.3:3]            (f:1.17e-05,d:2.54e-10)  -->  [f:6.56e-07,d:1.42e-11]  lambda:1     
+180(42) [phase:1,s:1,ds:0.05,dump:0,u:0.43:2]           (f:6.56e-07,d:1.59e-11)  -->  [f:2.85e-09,d:4.66e-14]  lambda:1     
+181(43) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:2.85e-09,d:4.7e-14)   -->  [f:4.76e-10,d:2.17e-15]  lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 1               | Hessian type    = Diagonal        |
++-------------------------- MinimizeHeavyBall --------------------------+
+| last f          = 0               | |g|_inf         = 1.9255e-15      |
++-----------------------------------------------------------------------+
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 1606            | N. System pars  = 4411            |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 5.5 [sec]       | timeout         = 0 [ms]          |
+| iteration       = 181             | Memory Used     = 422Kb(+81b)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 734             | Jacobian        = 181             |
+| Factorization   = 181             | Inversion       = 734             |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 1.9063e-08      | last ||d||_inf  = 6.0371e-14      |
+| last ||f||_1    = 4.7606e-10      | last ||d||_1    = 2.1706e-15      |
+| last ||f||_2    = 1.9769e-09      | last ||d||_2    = 9.0436e-15      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 1.491ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 55.29ms ]
+Check DuDxxpm (epsi=0.001): all OK [ 154ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001):
+#ERR 1 DabcDxlxlpu [cell=116 of 400 SEGMENT#0 range:(0,400)] #x=#l=2 #p=0 #u=1 [ (xlp) x (xlxlpu) = 4 x 9 ]
+DbDx_L(0:1,0:1)[ 1, 1] =   2.3884e+07 : 2.8331e+07   [A:FD] ---   4.4466e+06 : 15.7         [err:err(%)]
+DbDx_R(0:1,0:1)[ 1, 1] =   2.3884e+07 : 2.8396e+07   [A:FD] ---   4.5125e+06 : 15.89        [err:err(%)]
+
+#ERR 2 DabcDxlxlpu [cell=117 of 400 SEGMENT#0 range:(0,400)] #x=#l=2 #p=0 #u=1 [ (xlp) x (xlxlpu) = 4 x 9 ]
+DbDx_L(0:1,0:1)[ 1, 1] =   4.5981e+07 : 5.2737e+07   [A:FD] ---   6.7559e+06 : 12.81        [err:err(%)]
+DbDx_R(0:1,0:1)[ 1, 1] =   4.5981e+07 : 5.2835e+07   [A:FD] ---   6.8542e+06 : 12.97        [err:err(%)]
+
+#ERR 3 DabcDxlxlpu [cell=118 of 400 SEGMENT#0 range:(0,400)] #x=#l=2 #p=0 #u=1 [ (xlp) x (xlxlpu) = 4 x 9 ]
+DbDx_L(0:1,0:1)[ 1, 1] =   2.9118e+07 : 3.4291e+07   [A:FD] ---   5.1731e+06 : 15.09        [err:err(%)]
+DbDx_R(0:1,0:1)[ 1, 1] =   2.9118e+07 : 3.4365e+07   [A:FD] ---   5.2469e+06 : 15.27        [err:err(%)]
+
+#ERR 4 DabcDxlxlpu [cell=119 of 400 SEGMENT#0 range:(0,400)] #x=#l=2 #p=0 #u=1 [ (xlp) x (xlxlpu) = 4 x 9 ]
+DbDx_L(0:1,0:1)[ 1, 1] =   5.1089e+07 : 5.8504e+07   [A:FD] ---   7.4153e+06 : 12.67        [err:err(%)]
+DbDx_R(0:1,0:1)[ 1, 1] =   5.1089e+07 : 5.8608e+07   [A:FD] ---   7.5191e+06 : 12.83        [err:err(%)]
+
+#ERR 5 DabcDxlxlpu [cell=120 of 400 SEGMENT#0 range:(0,400)] #x=#l=2 #p=0 #u=1 [ (xlp) x (xlxlpu) = 4 x 9 ]
+DbDx_L(0:1,0:1)[ 1, 1] =   3.4096e+07 : 3.996e+07    [A:FD] ---   5.8643e+06 : 14.68        [err:err(%)]
+DbDx_R(0:1,0:1)[ 1, 1] =   3.4096e+07 : 4.0041e+07   [A:FD] ---   5.9447e+06 : 14.85        [err:err(%)]
+
+#ERR 6 DabcDxlxlpu [cell=121 of 400 SEGMENT#0 range:(0,400)] #x=#l=2 #p=0 #u=1 [ (xlp) x (xlxlpu) = 4 x 9 ]
+DbDx_L(0:1,0:1)[ 1, 1] =    5.602e+07 : 6.4084e+07   [A:FD] ---   8.0634e+06 : 12.58        [err:err(%)]
+DbDx_R(0:1,0:1)[ 1, 1] =    5.602e+07 : 6.4192e+07   [A:FD] ---    8.172e+06 : 12.73        [err:err(%)]
+
+skipping... [ 14.35ms ]
+Check DodeDxp (epsi=0.001): all OK [ 1.041ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 15.46ms ]
+target [Lagrange,Mayer]            = [ 0.1698, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 2.556e-09, 4.212e-07 ]
+All Done Folks!

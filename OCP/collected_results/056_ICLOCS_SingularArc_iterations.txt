@@ -1,0 +1,230 @@
++---------------------- MODEL:ICLOCS_SingularArc -----------------------+
++................................ DIMS .................................+
+| dims                      = u=1, q=1, x=3, p=1, bc=5 of 5             |
+| total                     = nZ=2412, nP=6016, nUC=400, Q=401          |
+| index start               = omega=2406, p=2411                        |
+| post processing           = n_post=2                                  |
++................................ MESH .................................+
+| num nodes / segments      = 401 / 1                                   |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 2                               |
+| mesh class pointer        = 0x7ff7b891e138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 2412 x 2412                               |
+| nblock/block size         = 400 / 6                                   |
+| qr/qx/nr/nx               = 5 / 5 / 1 / 1                             |
+| last blok rows x cols     = 18 x 18                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x1                                                       |
+| [ 1] initial_x2                                                       |
+| [ 2] initial_x3                                                       |
+| [ 3] final_x2                                                         |
+| [ 4] final_x3                                                         |
++..................... Controls penalties/barriers .....................+
+uControl = { COSLOG (BARRIER) epsilon=0.01, tolerance=0.01 }             
++......................... Constraints type LT .........................+
+Tbound = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }          
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 401                                                    
+  Segment N.0: s0 = 0 length = 1 npts = 401 no data set                  
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|........................... T_init = 100 ..............................|
+|............................... WG = 1 ................................|
+|.............................. WG0 = 1 ................................|
+|............................. x1_i = 1.5708 ...........................|
+|............................. x2_f = 0 ................................|
+|............................. x2_i = 4 ................................|
+|............................. x3_f = 0 ................................|
+|............................. x3_i = 0 ................................|
+|....................... T_epsi_max = 0.01 .............................|
+|....................... T_epsi_min = 0.0001 ...........................|
+|........................ T_tol_max = 0.01 .............................|
+|........................ T_tol_min = 0.0001 ...........................|
+|....................... u_epsi_max = 0.01 .............................|
+|....................... u_epsi_min = 0.0001 ...........................|
+|........................ u_tol_max = 0.01 .............................|
+|........................ u_tol_min = 0.0001 ...........................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=100/22.15/41.47, |L|=100/22.18/41.47 |B|=0/0/0, |BL|=0/0/0, PARS=1/1/1, U=0/0/0
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_SingularArc
+  1 [dump:3,u:0:0]         (f:22,d:3.71)       -->     [f:16.4,d:0.185]      lambda:0.632  #err=  9 update:1 angle:2 armijo:2
+  2 [dump:4,u:0:0]        (f:16.4,d:2.15)      -->      [f:20.7,d:2.18]      lambda:0.0448  #err=  7 update:1 armijo:3
+  3 [dump:1,u:0:0]        (f:20.7,d:2.16)      -->      [f:24.3,d:2.14]      lambda:0.127  #err=  1 armijo:1
+  4 [dump:7,u:0:0]        (f:24.3,d:1.92)      -->      [f:24.3,d:1.92]      lambda:0.00287  #err= 12 update:1 armijo:6
+  5 [dump:0,u:0:0]        (f:24.3,d:1.93)      -->       [f:23,d:1.84]       lambda:0.0803 
+  6 [dump:2,u:0:0]         (f:23,d:1.78)       -->      [f:17.5,d:1.45]      lambda:0.28   #err=  5 update:1 armijo:1
+  7 [dump:1,u:0:0]        (f:17.5,d:1.51)      -->     [f:9.08,d:0.587]      lambda:0.7    #err=  3 update:1
+  8 [dump:3,u:0:0]       (f:9.08,d:0.996)      -->     [f:7.51,d:0.898]      lambda:0.196  #err=  6 update:2 armijo:1
+  9 [dump:3,u:0:0]        (f:7.51,d:1.58)      -->      [f:5.24,d:1.43]      lambda:0.343  #err= 10 update:3
+ 10 [dump:2,u:0:0]        (f:5.24,d:7.74)      -->      [f:4.81,d:7.88]      lambda:0.16   #err=  2 armijo:2
+ 11 [dump:1,u:0:0]        (f:4.81,d:8.71)      -->      [f:4.76,d:2.49]      lambda:0.4    #err=  1 armijo:1
+ 12 [dump:1,u:0:0]        (f:4.76,d:3.77)      -->      [f:3.36,d:2.7]       lambda:0.4    #err=  1 armijo:1
+ 13 [dump:3,u:0:0]        (f:3.36,d:1.5)       -->      [f:3.24,d:1.71]      lambda:0.064  #err=  3 armijo:3
+ 14 [dump:4,u:0:0]        (f:3.24,d:1.19)      -->      [f:3.14,d:1.18]      lambda:0.0256  #err=  4 armijo:4
+ 15 [dump:3,u:0:0]        (f:3.14,d:1.22)      -->      [f:3.09,d:1.2]       lambda:0.0154  #err=  3 armijo:3
+ 16 [dump:5,u:0:0]        (f:3.09,d:1.2)       -->      [f:3.06,d:1.19]      lambda:0.0102  #err=  5 armijo:5
+ 17 [dump:3,u:0:0]        (f:3.06,d:1.22)      -->      [f:3.03,d:1.21]      lambda:0.00971  #err=  3 armijo:3
+ 18 [dump:5,u:0:0]        (f:3.03,d:1.25)      -->      [f:2.99,d:1.24]      lambda:0.0106  #err=  5 armijo:5
+ 19 [dump:2,u:0:0]        (f:2.99,d:1.27)      -->      [f:2.9,d:1.24]       lambda:0.0268  #err=  2 armijo:2
+ 20 [dump:0,u:0:0]        (f:2.9,d:1.25)       -->      [f:2.87,d:1.11]      lambda:1     
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_SingularArc
+ 21 [dump:2,u:0:0]       (f:2.87,d:0.614)      -->     [f:2.44,d:0.561]      lambda:0.16   #err=  2 armijo:2
+ 22 [dump:2,u:0:0]       (f:2.44,d:0.393)      -->     [f:2.05,d:0.313]      lambda:0.16   #err=  2 armijo:2
+ 23 [dump:2,u:0:0]       (f:2.05,d:0.327)      -->     [f:1.77,d:0.305]      lambda:0.16   #err=  2 armijo:2
+ 24 [dump:3,u:0:0]        (f:1.77,d:0.32)      -->     [f:1.59,d:0.261]      lambda:0.064  #err=  3 armijo:3
+ 25 [dump:3,u:0:0]       (f:1.59,d:0.241)      -->     [f:1.47,d:0.226]      lambda:0.064  #err=  3 armijo:3
+ 26 [dump:3,u:0:0]       (f:1.47,d:0.228)      -->     [f:1.35,d:0.214]      lambda:0.064  #err=  3 armijo:3
+ 27 [dump:3,u:0:0]       (f:1.35,d:0.217)      -->     [f:1.22,d:0.204]      lambda:0.064  #err=  3 armijo:3
+ 28 [dump:3,u:0:0]       (f:1.22,d:0.206)      -->     [f:1.13,d:0.193]      lambda:0.0667  #err=  3 armijo:3
+ 29 [dump:0,u:0:0]       (f:1.13,d:0.194)      -->     [f:1.27,d:0.0747]     lambda:1     
+ 30 [dump:1,u:0:0]       (f:1.27,d:0.0572)     -->    [f:0.966,d:0.0334]     lambda:0.4    #err=  1 armijo:1
+ 31 [dump:2,u:0:0]      (f:0.966,d:0.0204)     -->     [f:0.741,d:0.027]     lambda:0.16   #err=  2 armijo:2
+ 32 [dump:3,u:0:0]      (f:0.741,d:0.0137)     -->    [f:0.651,d:0.0126]     lambda:0.064  #err=  3 armijo:3
+ 33 [dump:0,u:0:0]      (f:0.651,d:0.0126)     -->    [f:0.569,d:0.00501]    lambda:1     
+ 34 [dump:2,u:0:0]      (f:0.569,d:0.00621)    -->     [f:0.447,d:0.005]     lambda:0.252  #err=  2 angle:1 armijo:2
+ 35 [dump:2,u:0:0]      (f:0.447,d:0.00218)    -->    [f:0.33,d:0.00289]     lambda:0.203  #err=  2 angle:1 armijo:2
+ 36 [dump:2,u:0:0]       (f:0.33,d:0.0016)     -->    [f:0.264,d:0.00207]    lambda:0.16   #err=  2 armijo:2
+ 37 [dump:0,u:0:0]      (f:0.264,d:0.00114)    -->   [f:0.148,d:0.000578]    lambda:1     
+ 38 [dump:2,u:0:0]     (f:0.148,d:0.000807)    -->    [f:0.103,d:0.00035]    lambda:0.175  #err=  2 armijo:2
+ 39 [dump:1,u:0:0]      (f:0.103,d:0.00023)    -->   [f:0.0408,d:0.000122]   lambda:0.464  #err=  1 armijo:1
+ 40 [dump:0,u:0:0]     (f:0.0408,d:9.6e-05)    -->  [f:0.00388,d:5.66e-06]   lambda:1     
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_SingularArc
+ 41 [dump:1,u:0:0]    (f:0.00388,d:3.82e-06)   -->  [f:0.000119,d:2.17e-07]  lambda:0.95   #err=  1 angle:1 armijo:1
+ 42 [dump:0,u:0:0]    (f:0.000119,d:2.21e-07)  -->  [f:2.58e-08,d:4.87e-11]  lambda:1     
+ 43 [dump:0,u:0:0]    (f:2.58e-08,d:4.87e-11)  -->  [f:6.31e-14,d:1.79e-16]  lambda:1     
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:43,phase:1,s:0.2,ds:0.2] |X|=4.4/0.6787/1.434, |L|=4.4/0.6787/1.434 |B|=2.874e-30/2.874e-30/2.874e-30, |BL|=6.25e-27/1.28e-26/7.787e-27, PARS=1.214/1.214/1.214, U=2/0.5155/0.9367
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_SingularArc
+44 (1 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]                (f:0.764,d:0.424)     -->  [f:0.00127,d:0.000146]   lambda:1     
+45 (2 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:0.00127,d:0.000163)   -->  [f:4.74e-07,d:8.38e-08]  lambda:1     
+46 (3 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:4.74e-07,d:8.38e-08)  -->  [f:1.74e-11,d:7.63e-13]  lambda:1     
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:46,phase:1,s:0.5,ds:0.3] |X|=6.597/1.018/2.149, |L|=6.597/1.018/2.149 |B|=2.293e-25/2.293e-25/2.293e-25, |BL|=4.435e-23/5.244e-23/4.483e-23, PARS=1.821/1.821/1.821, U=2/0.513/0.9353
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_SingularArc
+47 (1 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]                (f:1.15,d:0.636)      -->  [f:0.00483,d:0.000546]   lambda:1     
+48 (2 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:0.00483,d:0.000688)   -->  [f:1.32e-05,d:1.67e-06]  lambda:1     
+49 (3 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:1.32e-05,d:1.67e-06)  -->  [f:1.24e-08,d:4.79e-10]  lambda:1     
+
+Continuation step N.1 s:0.5->0.95, ds=0.45
+[iter:49,phase:1,s:0.95,ds:0.45] |X|=9.882/1.525/3.216, |L|=9.882/1.525/3.216 |B|=9.775e-25/9.775e-25/9.775e-25, |BL|=2.708e-22/5.131e-22/3.24e-22, PARS=2.733/2.733/2.733, U=2/0.5061/0.9318
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_SingularArc
+50 (1 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]              (f:1.72,d:0.958)      -->    [f:0.0769,d:0.0163]    lambda:1     
+51 (2 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]             (f:0.0769,d:0.0109)    -->   [f:0.0447,d:0.000461]   lambda:1     
+52 (3 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]            (f:0.0447,d:0.00127)    -->   [f:0.0269,d:0.000295]   lambda:0.4    #err=  1 armijo:1
+53 (4 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]            (f:0.0269,d:0.000269)   -->  [f:0.00434,d:0.000129]   lambda:1     
+54 (5 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:0.00434,d:4.92e-05)   -->  [f:0.000345,d:6.5e-06]   lambda:1     
+55 (6 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:0.000345,d:8.3e-06)   -->  [f:5.87e-06,d:1.38e-07]  lambda:1     
+56 (7 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:5.87e-06,d:1.43e-07)  -->   [f:1.8e-09,d:4.2e-11]   lambda:1     
+
+Continuation step N.1 s:0.95->1, ds=0.05
+[iter:56,phase:1,s:1,ds:0.05] |X|=1.086/0.1681/0.35, |L|=1.086/0.1681/0.35 |B|=4.056e-25/4.056e-25/4.056e-25, |BL|=0/0/0, PARS=0.3055/0.3055/0.3055, U=1.999/0.4424/0.9011
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_SingularArc
+57 (1 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]                 (f:0.193,d:0.114)     -->   [f:0.0292,d:0.00369]    lambda:1     
+58 (2 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]               (f:0.0292,d:0.00286)    -->   [f:0.00935,d:7.1e-05]   lambda:1     
+59 (3 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:0.00935,d:0.000102)   -->  [f:0.000404,d:6.18e-06]  lambda:1     
+60 (4 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:0.000404,d:5.8e-06)   -->  [f:4.08e-06,d:6.99e-08]  lambda:1     
+61 (5 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:4.08e-06,d:7.17e-08)  -->  [f:5.76e-10,d:1.13e-11]  lambda:1     
+62 (6 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.76e-10,d:1.13e-11)  -->  [f:1.18e-14,d:2.48e-16]  lambda:1     
+Continuation step N.2
+
+Continuation step N.2 s:0->0.2, ds=0.2
+[iter:62,phase:2,s:0.2,ds:0.2] |X|=2.884/0.01625/0.1665, |L|=2.884/0.01625/0.1665 |B|=4.452e-29/4.452e-29/4.452e-29, |BL|=0/0/0, PARS=6.671e-05/6.671e-05/6.671e-05, U=2/0.4081/0.8944
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_SingularArc
+63 (1 ) [phase:2,s:0.2,ds:0.2,dump:1,u:0:0]             (f:0.00809,d:0.000458)   -->  [f:0.00221,d:0.000187]   lambda:0.508  #err=  1 angle:1 armijo:1
+64 (2 ) [phase:2,s:0.2,ds:0.2,dump:1,u:0:0]             (f:0.00221,d:0.000164)   -->  [f:0.000239,d:4.65e-06]  lambda:0.95   #err=  1 angle:1 armijo:1
+65 (3 ) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]             (f:0.000239,d:4.97e-06)  -->  [f:1.29e-06,d:1.49e-08]  lambda:1     
+66 (4 ) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]             (f:1.29e-06,d:1.51e-08)  -->  [f:1.13e-10,d:1.39e-12]  lambda:1     
+
+Continuation step N.2 s:0.2->0.5, ds=0.3
+[iter:66,phase:2,s:0.5,ds:0.3] |X|=4.038/0.01266/0.1739, |L|=4.038/0.01266/0.1739 |B|=3.097e-26/3.097e-26/3.097e-26, |BL|=0/0/0, PARS=2.763e-05/2.763e-05/2.763e-05, U=2/0.4055/0.8959
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_SingularArc
+67 (1 ) [phase:2,s:0.5,ds:0.3,dump:1,u:0:0]              (f:0.0063,d:0.000219)   -->  [f:0.00257,d:0.000109]   lambda:0.4    #err=  1 armijo:1
+68 (2 ) [phase:2,s:0.5,ds:0.3,dump:1,u:0:0]             (f:0.00257,d:9.54e-05)   -->  [f:0.000528,d:2.15e-06]  lambda:0.95   #err=  1 angle:1 armijo:1
+69 (3 ) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]             (f:0.000528,d:2.12e-06)  -->  [f:2.71e-05,d:1.45e-07]  lambda:1     
+70 (4 ) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]             (f:2.71e-05,d:1.66e-07)  -->  [f:1.18e-07,d:7.45e-10]  lambda:1     
+
+Continuation step N.2 s:0.5->0.95, ds=0.45
+[iter:70,phase:2,s:0.95,ds:0.45] |X|=3.565/0.004282/0.1058, |L|=3.565/0.004282/0.1058 |B|=9.117e-26/9.117e-26/9.117e-26, |BL|=0/0/0, PARS=6.363e-06/6.363e-06/6.363e-06, U=2/0.3997/0.8936
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_SingularArc
+71 (1 ) [phase:2,s:0.95,ds:0.45,dump:1,u:0:0]           (f:0.00213,d:6.77e-05)   -->  [f:0.00108,d:3.65e-05]   lambda:0.4    #err=  1 armijo:1
+72 (2 ) [phase:2,s:0.95,ds:0.45,dump:1,u:0:0]           (f:0.00108,d:2.71e-05)   -->  [f:0.00041,d:1.47e-05]   lambda:0.4    #err=  1 armijo:1
+73 (3 ) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:0.00041,d:1.39e-05)   -->  [f:0.000176,d:4.62e-07]  lambda:1     
+74 (4 ) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:0.000176,d:2.52e-07)  -->  [f:1.13e-05,d:1.6e-08]   lambda:1     
+75 (5 ) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:1.13e-05,d:1.83e-08)  -->  [f:5.27e-08,d:8.55e-11]  lambda:1     
+
+Continuation step N.2 s:0.95->1, ds=0.05
+[iter:75,phase:2,s:1,ds:0.05] |X|=0.6709/0.001963/0.03036, |L|=0.6709/0.001963/0.03036 |B|=7.937e-28/7.937e-28/7.937e-28, |BL|=0/0/0, PARS=1.543e-07/1.543e-07/1.543e-07, U=2/0.4027/0.8921
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_SingularArc
+76 (1 ) [phase:2,s:1,ds:0.05,dump:1,u:0:0]              (f:0.000977,d:2.13e-06)  -->  [f:5.83e-05,d:3.82e-08]  lambda:0.95   #err=  1 angle:1 armijo:1
+77 (2 ) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:5.83e-05,d:4.46e-08)  -->  [f:4.09e-07,d:5.53e-10]  lambda:1     
+78 (3 ) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:4.09e-07,d:5.67e-10)  -->  [f:6.46e-11,d:9.1e-14]   lambda:1     
+79 (4 ) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:6.46e-11,d:9.1e-14)   -->  [f:1.17e-14,d:4.83e-16]  lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 1               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 2412            | N. System pars  = 6016            |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 1.05 [sec]      | timeout         = 0 [ms]          |
+| iteration       = 79              | Memory Used     = 749Kb(+60b)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 246             | Jacobian        = 79              |
+| Factorization   = 79              | Inversion       = 246             |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 1.647e-13       | last ||d||_inf  = 2.1787e-15      |
+| last ||f||_1    = 1.1693e-14      | last ||d||_1    = 4.8317e-16      |
+| last ||f||_2    = 2.849e-14       | last ||d||_2    = 9.1541e-16      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 1.068ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 81.75ms ]
+Check DuDxxpm (epsi=0.001): all OK [ 41.53ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001): all OK [ 75.11ms ]
+Check DodeDxp (epsi=0.001): all OK [ 1.524ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 76.85ms ]
+target [Lagrange,Mayer]            = [ 0, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 2.426e-05, 4.628e-09 ]
+Optimization parameters:
+T: 4.32116624574363595
+All Done Folks!

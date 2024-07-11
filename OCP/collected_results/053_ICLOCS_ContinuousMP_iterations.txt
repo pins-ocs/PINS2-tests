@@ -1,0 +1,337 @@
++---------------------- MODEL:ICLOCS_ContinuousMP ----------------------+
++................................ DIMS .................................+
+| dims                      = u=0, q=1, x=80, p=20, bc=80 of 80         |
+| total                     = nZ=8260, nP=16393, nUC=0, Q=51            |
+| index start               = omega=8160, p=8240                        |
+| post processing           = n_post=0                                  |
++................................ MESH .................................+
+| num nodes / segments      = 51 / 1                                    |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 1                               |
+| mesh class pointer        = 0x7ff7b1e40138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 8260 x 8260                               |
+| nblock/block size         = 50 / 160                                  |
+| qr/qx/nr/nx               = 80 / 80 / 20 / 20                         |
+| last blok rows x cols     = 420 x 420                                 |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_xx1                                                      |
+| [ 1] initial_yy1                                                      |
+| [ 2] X1_continuity                                                    |
+| [ 3] X2_continuity                                                    |
+| [ 4] X3_continuity                                                    |
+| [ 5] X4_continuity                                                    |
+| [ 6] X5_continuity                                                    |
+| [ 7] X6_continuity                                                    |
+| [ 8] X7_continuity                                                    |
+| [ 9] X8_continuity                                                    |
+| [10] X9_continuity                                                    |
+| [11] X10_continuity                                                   |
+| [12] X11_continuity                                                   |
+| [13] X12_continuity                                                   |
+| [14] X13_continuity                                                   |
+| [15] X14_continuity                                                   |
+| [16] X15_continuity                                                   |
+| [17] X16_continuity                                                   |
+| [18] X17_continuity                                                   |
+| [19] X18_continuity                                                   |
+| [20] X19_continuity                                                   |
+| [21] Y1_continuity                                                    |
+| [22] Y2_continuity                                                    |
+| [23] Y3_continuity                                                    |
+| [24] Y4_continuity                                                    |
+| [25] Y5_continuity                                                    |
+| [26] Y6_continuity                                                    |
+| [27] Y7_continuity                                                    |
+| [28] Y8_continuity                                                    |
+| [29] Y9_continuity                                                    |
+| [30] Y10_continuity                                                   |
+| [31] Y11_continuity                                                   |
+| [32] Y12_continuity                                                   |
+| [33] Y13_continuity                                                   |
+| [34] Y14_continuity                                                   |
+| [35] Y15_continuity                                                   |
+| [36] Y16_continuity                                                   |
+| [37] Y17_continuity                                                   |
+| [38] Y18_continuity                                                   |
+| [39] Y19_continuity                                                   |
+| [40] X1_initial                                                       |
+| [41] X2_initial                                                       |
+| [42] X3_initial                                                       |
+| [43] X4_initial                                                       |
+| [44] X5_initial                                                       |
+| [45] X6_initial                                                       |
+| [46] X7_initial                                                       |
+| [47] X8_initial                                                       |
+| [48] X9_initial                                                       |
+| [49] X10_initial                                                      |
+| [50] X11_initial                                                      |
+| [51] X12_initial                                                      |
+| [52] X13_initial                                                      |
+| [53] X14_initial                                                      |
+| [54] X15_initial                                                      |
+| [55] X16_initial                                                      |
+| [56] X17_initial                                                      |
+| [57] X18_initial                                                      |
+| [58] X19_initial                                                      |
+| [59] X20_initial                                                      |
+| [60] Y1_initial                                                       |
+| [61] Y2_initial                                                       |
+| [62] Y3_initial                                                       |
+| [63] Y4_initial                                                       |
+| [64] Y5_initial                                                       |
+| [65] Y6_initial                                                       |
+| [66] Y7_initial                                                       |
+| [67] Y8_initial                                                       |
+| [68] Y9_initial                                                       |
+| [69] Y10_initial                                                      |
+| [70] Y11_initial                                                      |
+| [71] Y12_initial                                                      |
+| [72] Y13_initial                                                      |
+| [73] Y14_initial                                                      |
+| [74] Y15_initial                                                      |
+| [75] Y16_initial                                                      |
+| [76] Y17_initial                                                      |
+| [77] Y18_initial                                                      |
+| [78] Y19_initial                                                      |
+| [79] Y20_initial                                                      |
++.................... No control penalties/barriers ....................+
++......................... Constraints type LT .........................+
+u1Limitation_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u1Limitation_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u2Limitation_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u2Limitation_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u3Limitation_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u3Limitation_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u4Limitation_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u4Limitation_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u5Limitation_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u5Limitation_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u6Limitation_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u6Limitation_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u7Limitation_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u7Limitation_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u8Limitation_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u8Limitation_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u9Limitation_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u9Limitation_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u10Limitation_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u10Limitation_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u11Limitation_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u11Limitation_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u12Limitation_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u12Limitation_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u13Limitation_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u13Limitation_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u14Limitation_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u14Limitation_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u15Limitation_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u15Limitation_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u16Limitation_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u16Limitation_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u17Limitation_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u17Limitation_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u18Limitation_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u18Limitation_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u19Limitation_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u19Limitation_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u20Limitation_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+u20Limitation_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+xx1Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx1Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy1Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy1Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx2Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx2Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy2Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy2Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx3Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx3Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy3Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy3Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx4Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx4Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy4Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy4Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx5Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx5Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy5Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy5Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx6Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx6Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy6Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy6Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx7Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx7Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy7Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy7Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx8Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx8Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy8Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy8Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx9Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx9Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy9Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy9Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx10Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx10Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy10Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy10Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx11Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx11Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy11Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy11Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx12Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx12Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy12Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy12Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx13Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx13Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy13Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy13Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx14Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx14Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy14Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy14Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx15Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx15Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy15Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy15Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx16Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx16Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy16Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy16Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx17Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx17Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy17Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy17Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx18Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx18Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy18Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy18Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx19Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx19Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy19Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy19Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx20Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+xx20Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy20Limitation_min__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
+yy20Limitation_max__xo = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 51                                                     
+  Segment N.0: s0 = 0 length = 1 npts = 51 no data set                   
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|.......................... xy_eps0 = 0.1 ..............................|
+|.......................... xy_eps1 = 0.001 ............................|
+|.......................... xy_tol0 = 0.1 ..............................|
+|.......................... xy_tol1 = 0.001 ............................|
+|......................... xy_bound = 2 ................................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=40/4.738/11.58, |L|=40/4.738/11.58 |B|=0/0/0, |BL|=1/32/5.657, PARS=0/0/0, U=0/-nan/-nan
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_ContinuousMP
+  1 [dump:0,u:0:0]        (f:4.59,d:1.35)      -->     [f:0.146,d:0.92]      lambda:1     
+  2 [dump:1,u:0:0]       (f:0.146,d:0.789)     -->   [f:0.00677,d:0.0388]    lambda:0.95   #err=  1 angle:1 armijo:1
+  3 [dump:0,u:0:0]     (f:0.00677,d:0.0387)    -->  [f:1.59e-06,d:1.17e-06]  lambda:1     
+  4 [dump:0,u:0:0]    (f:1.59e-06,d:1.17e-06)  -->  [f:4.37e-15,d:5.16e-15]  lambda:1     
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:4,phase:1,s:0.2,ds:0.2] |X|=0.01657/0.0001342/0.0008863, |L|=0.01657/0.0001342/0.0008863 |B|=1.495e-22/1.495e-22/1.495e-22, |BL|=2.665e-15/6.485e-15/3.352e-15, PARS=1.527e-15/2.211e-15/1.568e-15, U=0/-nan/-nan
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_ContinuousMP
+5  (1 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:0.000114,d:0.000116)  -->  [f:6.87e-11,d:8.44e-11]  lambda:1     
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:5,phase:1,s:0.5,ds:0.3] |X|=0.02048/0.0001581/0.001061, |L|=0.02048/0.0001581/0.001061 |B|=1.592e-21/1.592e-21/1.592e-21, |BL|=1.776e-15/5.677e-15/2.199e-15, PARS=1.249e-15/1.605e-15/1.26e-15, U=0/-nan/-nan
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_ContinuousMP
+6  (1 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:0.000134,d:0.000137)  -->  [f:1.01e-10,d:1.25e-10]  lambda:1     
+
+Continuation step N.1 s:0.5->0.95, ds=0.45
+[iter:6,phase:1,s:0.95,ds:0.45] |X|=0.0159/0.0001144/0.0007859, |L|=0.0159/0.0001144/0.0007859 |B|=6.885e-20/6.885e-20/6.885e-20, |BL|=2.22e-15/7.621e-15/3.158e-15, PARS=1.193e-15/2.449e-15/1.542e-15, U=0/-nan/-nan
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_ContinuousMP
+7  (1 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:9.69e-05,d:9.94e-05)  -->  [f:5.74e-11,d:7.24e-11]  lambda:1     
+
+Continuation step N.1 s:0.95->1, ds=0.05
+[iter:7,phase:1,s:1,ds:0.05] |X|=0.0002586/1.739e-06/1.223e-05, |L|=0.0002586/1.739e-06/1.223e-05 |B|=5.441e-21/5.441e-21/5.441e-21, |BL|=1.776e-15/6.578e-15/2.608e-15, PARS=1.27e-15/2.47e-15/1.651e-15, U=0/-nan/-nan
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_ContinuousMP
+8  (1 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:1.47e-06,d:1.52e-06)  -->  [f:1.53e-14,d:1.84e-14]  lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 0               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 8260            | N. System pars  = 16393           |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 3.53 [sec]      | timeout         = 0 [ms]          |
+| iteration       = 8               | Memory Used     = 37Mb(+83Kb)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 17              | Jacobian        = 8               |
+| Factorization   = 8               | Inversion       = 17              |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 3.8938e-12      | last ||d||_inf  = 1.1515e-12      |
+| last ||f||_1    = 1.5347e-14      | last ||d||_1    = 1.8386e-14      |
+| last ||f||_2    = 1.3903e-13      | last ||d||_2    = 8.9049e-14      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check DmuDxlxlp (epsi=0.001): all OK [ 850.3ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 18.89ms ]
+target [Lagrange,Mayer]            = [ 48.23, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 0, 0.0008853 ]
+Optimization parameters:
+u1: -2.69083311020146043
+u10: 0.0460080329405018196
+u11: 0.0654321858687051255
+u12: 0.025227837165986252
+u13: -0.0378878741287819176
+u14: -0.06657739162665266
+u15: -0.0351604819616512729
+u16: 0.0274936015454539974
+u17: 0.0649263555717231045
+u18: 0.0452468474264103512
+u19: -0.00916380490155250561
+u2: 1.57297719381262513
+u20: -0.0283994560074245922
+u3: -0.204859388366821715
+u4: 0.106878166380399015
+u5: 0.049817401926334888
+u6: 0.00729766668454913132
+u7: -0.0529933640461184643
+u8: -0.0626586147863286702
+u9: -0.0154074335086310469
+All Done Folks!

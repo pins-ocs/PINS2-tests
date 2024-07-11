@@ -1,0 +1,984 @@
++------------------------ MODEL:SoundingRocket -------------------------+
++................................ DIMS .................................+
+| dims                      = u=1, q=1, x=3, p=1, bc=4 of 4             |
+| total                     = nZ=311, nP=766, nUC=50, Q=51              |
+| index start               = omega=306, p=310                          |
+| post processing           = n_post=2                                  |
++................................ MESH .................................+
+| num nodes / segments      = 51 / 1                                    |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 2                               |
+| mesh class pointer        = 0x7ff7b9f93138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 311 x 311                                 |
+| nblock/block size         = 50 / 6                                    |
+| qr/qx/nr/nx               = 4 / 4 / 1 / 1                             |
+| last blok rows x cols     = 17 x 17                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x1                                                       |
+| [ 1] initial_x2                                                       |
+| [ 2] initial_x3                                                       |
+| [ 3] x3_final                                                         |
++..................... Controls penalties/barriers .....................+
+uControl = { COSLOG (BARRIER) epsilon=0.01, tolerance=0.01 }             
++....................... No constraints type LT ........................+
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 51                                                     
+  Segment N.0: s0 = 0 length = 1 npts = 51 no data set                   
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|................................ B = 39.24 ............................|
+|................................ W = 100 ..............................|
+|............................... W0 = 100 ..............................|
+|............................... W1 = 0 ................................|
+|................................ b = 10 ...............................|
+|.............................. b_f = 350 ..............................|
+|.............................. b_i = 10 ...............................|
+|............................ epsi0 = 0.01 .............................|
+|............................ epsi1 = 1e-06 ............................|
+|................................ g = 9.81 .............................|
+|............................ kappa = 0.002 ............................|
+|............................. tol0 = 0.01 .............................|
+|............................. tol1 = 1e-06 ............................|
+|......................... Tf_guess = 20 ...............................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=372.4/98.1/172, |L|=372.4/98.1/172 |B|=1/1/1, |BL|=10/10/10, PARS=0/0/0, U=0.5/0.5/0.5
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+  1 [dump:7,u:0:0]      (f:94.7,d:4.23e+06)    -->  [f:9.83e+04,d:2.67e+06]  lambda:0.00164  #err=  7 armijo:7
+  2 [dump:0,u:0:0]    (f:9.83e+04,d:2.14e+03)  -->  [f:9.23e+04,d:2.02e+03]  lambda:0.0607 
+  3 [dump:1,u:0:0]    (f:9.23e+04,d:2.54e+03)  -->  [f:5.53e+04,d:2.09e+03]  lambda:0.4    #err=  1 armijo:1
+  4 [dump:0,u:0:0]    (f:5.53e+04,d:3.26e+03)  -->    [f:1.35e+04,d:940]     lambda:1     
+  5 [dump:0,u:0:0]    (f:1.35e+04,d:1.49e+03)  -->    [f:4.12e+03,d:223]     lambda:1     
+  6 [dump:9,u:0:0]    (f:4.12e+03,d:8.5e+03)   -->  [f:4.12e+03,d:8.49e+03]  lambda:0.000262  #err=  9 armijo:9
+  7 [dump:4,u:0:0]      (f:4.12e+03,d:827)     -->    [f:4.12e+03,d:827]     lambda:0.000622  #err=  4 armijo:4
+  8 [dump:4,u:0:0]      (f:4.12e+03,d:624)     -->    [f:4.11e+03,d:624]     lambda:0.000957  #err=  4 armijo:4
+  9 [dump:3,u:0:0]      (f:4.11e+03,d:532)     -->     [f:4.1e+03,d:520]     lambda:0.00297  #err=  3 armijo:3
+ 10 [dump:0,u:0:0]       (f:4.1e+03,d:513)     -->    [f:1.02e+03,d:161]     lambda:1     
+ 11 [dump:10,u:0:0]   (f:1.02e+03,d:3.37e+04)  -->  [f:1.02e+03,d:3.37e+04]  lambda:0.000105  #err= 10 armijo:10
+ 12 [dump:5,u:0:0]    (f:1.02e+03,d:4.14e+03)  -->  [f:1.02e+03,d:4.13e+03]  lambda:0.000374  #err=  5 angle:1 armijo:5
+ 13 [dump:4,u:0:0]      (f:1.02e+03,d:402)     -->    [f:1.02e+03,d:364]     lambda:0.000742  #err=  4 armijo:4
+ 14 [dump:0,u:0:0]      (f:1.02e+03,d:312)     -->       [f:979,d:299]       lambda:0.0409 
+ 15 [dump:3,u:0:0]         (f:979,d:308)       -->       [f:923,d:299]       lambda:0.064  #err=  3 armijo:3
+ 16 [dump:0,u:0:0]         (f:923,d:357)       -->      [f:343,d:36.6]       lambda:1     
+ 17 [dump:12,u:0:0]     (f:343,d:1.96e+06)     -->    [f:343,d:1.96e+06]     lambda:1.68e-05  #err= 12 armijo:12
+ 18 [dump:5,u:0:0]      (f:343,d:3.32e+04)     -->    [f:343,d:3.32e+04]     lambda:6.29e-05  #err=  5 armijo:5
+ 19 [dump:5,u:0:0]      (f:343,d:1.11e+04)     -->    [f:343,d:1.11e+04]     lambda:0.000122  #err=  5 armijo:5
+ 20 [dump:5,u:0:0]      (f:343,d:3.13e+03)     -->    [f:343,d:3.13e+03]     lambda:0.00017  #err=  5 armijo:5
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+ 21 [dump:6,u:0:0]      (f:343,d:1.38e+03)     -->    [f:343,d:1.37e+03]     lambda:0.000451  #err=  6 angle:2 armijo:6
+ 22 [dump:0,u:0:0]         (f:343,d:121)       -->       [f:323,d:131]       lambda:0.0319 
+ 23 [dump:0,u:0:0]         (f:323,d:127)       -->      [f:123,d:55.3]       lambda:1     
+ 24 [dump:11,u:0:0]     (f:123,d:1.55e+05)     -->    [f:123,d:1.55e+05]     lambda:4.19e-05  #err= 11 armijo:11
+ 25 [dump:5,u:0:0]      (f:123,d:2.64e+04)     -->    [f:123,d:2.64e+04]     lambda:9.95e-05  #err=  5 armijo:5
+ 26 [dump:5,u:0:0]      (f:123,d:4.74e+03)     -->    [f:123,d:4.74e+03]     lambda:0.000153  #err=  5 armijo:5
+ 27 [dump:5,u:0:0]      (f:123,d:1.81e+03)     -->    [f:123,d:1.81e+03]     lambda:0.00019  #err=  5 armijo:5
+ 28 [dump:5,u:0:0]         (f:123,d:846)       -->       [f:123,d:846]       lambda:0.000212  #err=  5 armijo:5
+ 29 [dump:8,u:0:0]         (f:123,d:433)       -->       [f:118,d:273]       lambda:0.000455  #err=  8 angle:4 armijo:8
+ 30 [dump:0,u:0:0]         (f:118,d:112)       -->       [f:119,d:108]       lambda:0.032 
+ 31 [dump:8,u:0:0]         (f:119,d:230)       -->       [f:115,d:171]       lambda:0.000655  #err=  8 armijo:8
+ 32 [dump:0,u:0:0]         (f:115,d:116)       -->       [f:115,d:116]       lambda:0.0384 
+ 33 [dump:9,u:0:0]         (f:115,d:809)       -->       [f:115,d:808]       lambda:0.000262  #err=  9 armijo:9
+ 34 [dump:4,u:0:0]         (f:115,d:296)       -->       [f:110,d:203]       lambda:0.000622  #err=  4 armijo:4
+ 35 [dump:0,u:0:0]         (f:110,d:114)       -->       [f:111,d:115]       lambda:0.0374 
+ 36 [dump:9,u:0:0]         (f:111,d:757)       -->       [f:111,d:757]       lambda:0.000262  #err=  9 armijo:9
+ 37 [dump:4,u:0:0]         (f:111,d:270)       -->       [f:106,d:190]       lambda:0.000622  #err=  4 armijo:4
+ 38 [dump:0,u:0:0]         (f:106,d:114)       -->       [f:107,d:116]       lambda:0.0374 
+ 39 [dump:9,u:0:0]         (f:107,d:922)       -->       [f:107,d:921]       lambda:0.000262  #err=  9 armijo:9
+ 40 [dump:4,u:0:0]         (f:107,d:288)       -->       [f:102,d:199]       lambda:0.000622  #err=  4 armijo:4
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+ 41 [dump:0,u:0:0]         (f:102,d:112)       -->       [f:103,d:112]       lambda:0.0374 
+ 42 [dump:9,u:0:0]         (f:103,d:735)       -->       [f:103,d:735]       lambda:0.000262  #err=  9 armijo:9
+ 43 [dump:4,u:0:0]         (f:103,d:241)       -->      [f:98.1,d:175]       lambda:0.000622  #err=  4 armijo:4
+ 44 [dump:0,u:0:0]        (f:98.1,d:111)       -->       [f:99,d:112]        lambda:0.0374 
+ 45 [dump:9,u:0:0]         (f:99,d:823)        -->       [f:99,d:822]        lambda:0.000262  #err=  9 armijo:9
+ 46 [dump:4,u:0:0]         (f:99,d:243)        -->      [f:94.5,d:175]       lambda:0.000622  #err=  4 armijo:4
+ 47 [dump:0,u:0:0]        (f:94.5,d:110)       -->      [f:95.4,d:111]       lambda:0.0374 
+ 48 [dump:9,u:0:0]        (f:95.4,d:849)       -->      [f:95.4,d:849]       lambda:0.000262  #err=  9 armijo:9
+ 49 [dump:4,u:0:0]        (f:95.4,d:233)       -->      [f:90.9,d:170]       lambda:0.000622  #err=  4 armijo:4
+ 50 [dump:0,u:0:0]        (f:90.9,d:108)       -->      [f:91.9,d:109]       lambda:0.0374 
+ 51 [dump:9,u:0:0]        (f:91.9,d:768)       -->      [f:91.9,d:768]       lambda:0.000262  #err=  9 armijo:9
+ 52 [dump:4,u:0:0]        (f:91.9,d:214)       -->      [f:87.5,d:160]       lambda:0.000622  #err=  4 armijo:4
+ 53 [dump:0,u:0:0]        (f:87.5,d:106)       -->      [f:88.6,d:103]       lambda:0.0374 
+ 54 [dump:9,u:0:0]        (f:88.6,d:502)       -->      [f:88.6,d:501]       lambda:0.000262  #err=  9 armijo:9
+ 55 [dump:4,u:0:0]        (f:88.6,d:180)       -->      [f:84.3,d:143]       lambda:0.000622  #err=  4 armijo:4
+ 56 [dump:0,u:0:0]        (f:84.3,d:102)       -->       [f:85.4,d:96]       lambda:0.0374 
+ 57 [dump:7,u:0:0]        (f:85.4,d:119)       -->      [f:81.1,d:112]       lambda:0.00164  #err=  7 armijo:7
+ 58 [dump:0,u:0:0]        (f:81.1,d:105)       -->      [f:80.4,d:103]       lambda:0.0607 
+ 59 [dump:9,u:0:0]      (f:80.4,d:1.21e+03)    -->    [f:80.4,d:1.21e+03]    lambda:0.000262  #err=  9 armijo:9
+ 60 [dump:4,u:0:0]        (f:80.4,d:182)       -->      [f:76.3,d:143]       lambda:0.000622  #err=  4 armijo:4
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+ 61 [dump:0,u:0:0]        (f:76.3,d:100)       -->      [f:77.5,d:94.3]      lambda:0.0374 
+ 62 [dump:7,u:0:0]        (f:77.5,d:132)       -->      [f:73.4,d:118]       lambda:0.00164  #err=  7 armijo:7
+ 63 [dump:0,u:0:0]        (f:73.4,d:102)       -->       [f:73,d:95.6]       lambda:0.0607 
+ 64 [dump:9,u:0:0]         (f:73,d:520)        -->       [f:73,d:520]        lambda:0.000262  #err=  9 armijo:9
+ 65 [dump:4,u:0:0]         (f:73,d:165)        -->       [f:69,d:134]        lambda:0.000622  #err=  4 armijo:4
+ 66 [dump:0,u:0:0]         (f:69,d:98.6)       -->      [f:70.3,d:94.8]      lambda:0.0374 
+ 67 [dump:0,u:0:0]        (f:70.3,d:98.3)      -->      [f:56.9,d:50.7]      lambda:1     
+ 68 [dump:1,u:0:0]        (f:56.9,d:140)       -->      [f:37.2,d:97.2]      lambda:0.4    #err=  1 armijo:1
+ 69 [dump:12,u:0:0]     (f:37.2,d:1.74e+06)    -->    [f:37.2,d:1.74e+06]    lambda:1.68e-05  #err= 12 armijo:12
+ 70 [dump:5,u:0:0]      (f:37.2,d:3.59e+04)    -->    [f:37.2,d:3.59e+04]    lambda:6.29e-05  #err=  5 armijo:5
+ 71 [dump:5,u:0:0]      (f:37.2,d:9.24e+03)    -->    [f:37.2,d:9.24e+03]    lambda:0.000122  #err=  5 armijo:5
+ 72 [dump:5,u:0:0]      (f:37.2,d:1.61e+03)    -->    [f:37.2,d:1.61e+03]    lambda:0.00017  #err=  5 armijo:5
+ 73 [dump:5,u:0:0]        (f:37.2,d:457)       -->      [f:37.2,d:457]       lambda:0.0002  #err=  5 armijo:5
+ 74 [dump:4,u:0:0]        (f:37.2,d:204)       -->      [f:37.2,d:202]       lambda:0.000543  #err=  4 armijo:4
+ 75 [dump:0,u:0:0]        (f:37.2,d:93.2)      -->      [f:34.6,d:90.1]      lambda:0.035 
+ 76 [dump:1,u:0:0]        (f:34.6,d:90.1)      -->      [f:67.4,d:47.2]      lambda:0.515  #err=  1 angle:1 armijo:1
+ 77 [dump:0,u:0:0]        (f:67.4,d:54.3)      -->       [f:53.7,d:15]       lambda:1     
+ 78 [dump:13,u:0:0]     (f:53.7,d:8.02e+05)    -->    [f:53.7,d:8.02e+05]    lambda:6.71e-06  #err= 13 armijo:13
+ 79 [dump:6,u:0:0]      (f:53.7,d:3.2e+05)     -->    [f:53.7,d:3.2e+05]     lambda:1.59e-05  #err=  6 armijo:6
+ 80 [dump:6,u:0:0]      (f:53.7,d:2.56e+04)    -->    [f:53.7,d:2.56e+04]    lambda:2.45e-05  #err=  6 armijo:6
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+ 81 [dump:5,u:0:0]      (f:53.7,d:6.31e+03)    -->      [f:56.8,d:333]       lambda:7.6e-05  #err=  5 armijo:5
+ 82 [dump:1,u:0:0]        (f:56.8,d:15.7)      -->      [f:56.5,d:15.6]      lambda:0.00523  #err=  1 armijo:1
+ 83 [dump:1,u:0:0]         (f:56.5,d:12)       -->      [f:39.6,d:7.95]      lambda:0.4    #err=  1 armijo:1
+ 84 [dump:8,u:0:0]        (f:39.6,d:108)       -->      [f:39.6,d:108]       lambda:0.0007  #err=  8 armijo:8
+ 85 [dump:4,u:0:0]        (f:39.6,d:5.71)      -->      [f:39.5,d:5.71]      lambda:0.00102  #err=  4 armijo:4
+ 86 [dump:0,u:0:0]        (f:39.5,d:5.46)      -->      [f:34.7,d:5.84]      lambda:0.0478 
+ 87 [dump:1,u:0:0]        (f:34.7,d:5.95)      -->      [f:25.6,d:4.81]      lambda:0.4    #err=  1 armijo:1
+ 88 [dump:139,u:0:0]      (f:25.6,d:50.6)      -->      [f:25.4,d:5.4]       lambda:0.000669  #err=139 angle:139 armijo:139
+ 89 [dump:0,u:0:0]        (f:25.4,d:3.16)      -->      [f:24.4,d:3.03]      lambda:0.0388 
+ 90 [dump:0,u:0:0]        (f:24.4,d:2.94)      -->      [f:16.4,d:2.62]      lambda:1     
+ 91 [dump:89,u:0:0]       (f:16.4,d:6.97)      -->     [f:7.84,d:0.924]      lambda:0.00824  #err= 89 angle:89 armijo:89
+ 92 [dump:13,u:0:0]      (f:7.84,d:0.857)      -->     [f:7.28,d:0.746]      lambda:0.0699  #err= 13 angle:13 armijo:13
+ 93 [dump:0,u:0:0]        (f:7.28,d:0.51)      -->     [f:5.96,d:0.462]      lambda:0.397 
+ 94 [dump:2,u:0:0]         (f:5.96,d:1)        -->     [f:4.98,d:0.839]      lambda:0.16   #err=  2 armijo:2
+ 95 [dump:4,u:0:0]       (f:4.98,d:0.687)      -->     [f:4.89,d:0.623]      lambda:0.0256  #err=  4 armijo:4
+ 96 [dump:0,u:0:0]       (f:4.89,d:0.219)      -->     [f:5.84,d:0.0992]     lambda:0.24  
+ 97 [dump:5,u:0:0]       (f:5.84,d:0.277)      -->     [f:5.78,d:0.274]      lambda:0.0102  #err=  5 armijo:5
+ 98 [dump:3,u:0:0]       (f:5.78,d:0.155)      -->     [f:5.71,d:0.153]      lambda:0.00971  #err=  3 armijo:3
+ 99 [dump:1,u:0:0]       (f:5.71,d:0.0929)     -->     [f:3.83,d:0.131]      lambda:0.4    #err=  1 armijo:1
+100 [dump:3,u:0:0]       (f:3.83,d:0.251)      -->     [f:4.03,d:0.187]      lambda:0.152  #err=  3 angle:1 armijo:3
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+101 [dump:5,u:0:0]       (f:4.03,d:0.0632)     -->     [f:3.35,d:0.0312]     lambda:0.441  #err=  5 angle:5 armijo:5
+102 [dump:6,u:0:0]       (f:3.35,d:0.307)      -->     [f:3.32,d:0.306]      lambda:0.00408  #err=  6 armijo:6
+103 [dump:3,u:0:0]       (f:3.32,d:0.199)      -->     [f:3.29,d:0.198]      lambda:0.00613  #err=  3 armijo:3
+104 [dump:4,u:0:0]       (f:3.29,d:0.126)      -->     [f:3.29,d:0.112]      lambda:0.0256  #err=  4 armijo:4
+105 [dump:1,u:0:0]       (f:3.29,d:0.0796)     -->     [f:2.89,d:0.0684]     lambda:0.096  #err=  1 armijo:1
+106 [dump:3,u:0:0]        (f:2.89,d:0.02)      -->     [f:2.5,d:0.0174]      lambda:0.064  #err=  3 armijo:3
+107 [dump:0,u:0:0]       (f:2.5,d:0.0137)      -->    [f:1.85,d:0.000576]    lambda:1     
+108 [dump:5,u:0:0]      (f:1.85,d:0.00414)     -->   [f:0.504,d:0.000192]    lambda:0.137  #err=  5 angle:3 armijo:5
+109 [dump:0,u:0:0]     (f:0.504,d:0.000621)    -->   [f:0.269,d:0.000305]    lambda:0.556 
+110 [dump:0,u:0:0]     (f:0.269,d:0.000396)    -->   [f:0.0623,d:6.59e-05]   lambda:1     
+111 [dump:0,u:0:0]     (f:0.0623,d:0.000142)   -->   [f:0.0116,d:2.63e-05]   lambda:1     
+112 [dump:0,u:0:0]     (f:0.0116,d:3.99e-05)   -->  [f:0.000584,d:2.02e-06]  lambda:1     
+113 [dump:0,u:0:0]    (f:0.000584,d:2.24e-06)  -->  [f:1.64e-06,d:6.29e-09]  lambda:1     
+114 [dump:0,u:0:0]    (f:1.64e-06,d:6.33e-09)  -->  [f:9.8e-11,d:4.74e-14]   lambda:1     
+115 [dump:0,u:0:0]    (f:9.8e-11,d:4.74e-14)   -->  [f:7.05e-11,d:4.61e-14]  lambda:1     
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:115,phase:1,s:0.2,ds:0.2] |X|=9.638e-09/1.458e-10/1.119e-09, |L|=9.638e-09/1.333e-10/1.114e-09 |B|=9.192e-30/9.192e-30/9.192e-30, |BL|=68/68/68, PARS=325.9/325.9/325.9, U=0.5417/0.0215/0.1004
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+116(1 ) [phase:1,s:0.2,ds:0.2,dump:1,u:0:0]                 (f:1.27,d:90.9)      -->      [f:104,d:76.1]       lambda:0.4    #err=  1 armijo:1
+117(2 ) [phase:1,s:0.2,ds:0.2,dump:21,u:0:0]                 (f:104,d:130)       -->      [f:65.1,d:38.5]      lambda:0.143  #err= 21 angle:20 armijo:21
+118(3 ) [phase:1,s:0.2,ds:0.2,dump:4,u:0:0]                 (f:65.1,d:94.6)      -->      [f:83.5,d:29.4]      lambda:0.195  #err=  4 angle:3 armijo:4
+119(4 ) [phase:1,s:0.2,ds:0.2,dump:3,u:0:0]                 (f:83.5,d:45.5)      -->      [f:71.5,d:38.2]      lambda:0.0498  #err=  3 armijo:3
+120(5 ) [phase:1,s:0.2,ds:0.2,dump:5,u:0:0]                 (f:71.5,d:39.1)      -->      [f:70.6,d:38.7]      lambda:0.0102  #err=  5 armijo:5
+121(6 ) [phase:1,s:0.2,ds:0.2,dump:77,u:0:0]                (f:70.6,d:86.3)      -->       [f:63,d:48.9]       lambda:0.00292  #err= 77 angle:77 armijo:77
+122(7 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]                  (f:63,d:48.9)       -->      [f:75.9,d:21.5]      lambda:0.0811 
+123(8 ) [phase:1,s:0.2,ds:0.2,dump:95,u:0:0]                (f:75.9,d:127)       -->      [f:64.2,d:22.2]      lambda:0.00279  #err= 95 angle:94 armijo:95
+124(9 ) [phase:1,s:0.2,ds:0.2,dump:2,u:0:0]                 (f:64.2,d:29.4)      -->      [f:67.2,d:27.7]      lambda:0.0127  #err=  2 armijo:2
+125(10) [phase:1,s:0.2,ds:0.2,dump:6,u:0:0]                 (f:67.2,d:27.9)      -->      [f:66.9,d:27.8]      lambda:0.0041  #err=  6 armijo:6
+126(11) [phase:1,s:0.2,ds:0.2,dump:3,u:0:0]                 (f:66.9,d:28.6)      -->      [f:65.2,d:28.4]      lambda:0.00614  #err=  3 armijo:3
+127(12) [phase:1,s:0.2,ds:0.2,dump:2,u:0:0]                 (f:65.2,d:29.1)      -->       [f:64,d:18.5]       lambda:0.16   #err=  2 armijo:2
+128(13) [phase:1,s:0.2,ds:0.2,dump:6,u:0:0]                  (f:64,d:18.6)       -->      [f:63.7,d:18.5]      lambda:0.00416  #err=  6 armijo:6
+129(14) [phase:1,s:0.2,ds:0.2,dump:3,u:0:0]                 (f:63.7,d:18.9)      -->      [f:63.3,d:18.8]      lambda:0.00619  #err=  3 armijo:3
+130(15) [phase:1,s:0.2,ds:0.2,dump:1,u:0:0]                 (f:63.3,d:19.2)      -->      [f:66.9,d:14.5]      lambda:0.4    #err=  1 armijo:1
+131(16) [phase:1,s:0.2,ds:0.2,dump:33,u:0:0]                 (f:66.9,d:33)       -->      [f:37.1,d:7.16]      lambda:0.0775  #err= 33 angle:32 armijo:33
+132(17) [phase:1,s:0.2,ds:0.2,dump:9,u:0:0]                 (f:37.1,d:876)       -->      [f:37.1,d:876]       lambda:0.000109  #err=  9 armijo:9
+133(18) [phase:1,s:0.2,ds:0.2,dump:4,u:0:0]                 (f:37.1,d:140)       -->      [f:43.4,d:96.2]      lambda:0.000402  #err=  4 armijo:4
+134(19) [phase:1,s:0.2,ds:0.2,dump:1,u:0:0]                 (f:43.4,d:18.3)      -->      [f:60.9,d:14.1]      lambda:0.012  #err=  1 armijo:1
+135(20) [phase:1,s:0.2,ds:0.2,dump:4,u:0:0]                 (f:60.9,d:13.2)      -->      [f:49.9,d:9.19]      lambda:0.0256  #err=  4 armijo:4
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+136(21) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]                 (f:49.9,d:10.6)      -->      [f:47.4,d:6.07]      lambda:0.24  
+137(22) [phase:1,s:0.2,ds:0.2,dump:6,u:0:0]                 (f:47.4,d:7.23)      -->      [f:47.2,d:7.2]       lambda:0.0041  #err=  6 armijo:6
+138(23) [phase:1,s:0.2,ds:0.2,dump:3,u:0:0]                 (f:47.2,d:7.49)      -->      [f:46.9,d:7.45]      lambda:0.00614  #err=  3 armijo:3
+139(24) [phase:1,s:0.2,ds:0.2,dump:3,u:0:0]                 (f:46.9,d:7.91)      -->      [f:53.9,d:6.89]      lambda:0.064  #err=  3 armijo:3
+140(25) [phase:1,s:0.2,ds:0.2,dump:1,u:0:0]                 (f:53.9,d:6.93)      -->       [f:51,d:4.14]       lambda:0.478  #err=  1 angle:1 armijo:1
+141(26) [phase:1,s:0.2,ds:0.2,dump:1,u:0:0]                  (f:51,d:4.93)       -->      [f:28.2,d:3.11]      lambda:0.443  #err=  1 armijo:1
+142(27) [phase:1,s:0.2,ds:0.2,dump:5,u:0:0]                 (f:28.2,d:29.7)      -->       [f:36,d:6.28]       lambda:0.0102  #err=  5 armijo:5
+143(28) [phase:1,s:0.2,ds:0.2,dump:1,u:0:0]                  (f:36,d:4.61)       -->       [f:39,d:4.04]       lambda:0.0607  #err=  1 armijo:1
+144(29) [phase:1,s:0.2,ds:0.2,dump:3,u:0:0]                  (f:39,d:3.77)       -->      [f:41.3,d:2.69]      lambda:0.064  #err=  3 armijo:3
+145(30) [phase:1,s:0.2,ds:0.2,dump:6,u:0:0]                 (f:41.3,d:2.67)      -->      [f:41.1,d:2.66]      lambda:0.0041  #err=  6 armijo:6
+146(31) [phase:1,s:0.2,ds:0.2,dump:1,u:0:0]                 (f:41.1,d:2.79)      -->      [f:39.3,d:2.55]      lambda:0.0384  #err=  1 armijo:1
+147(32) [phase:1,s:0.2,ds:0.2,dump:2,u:0:0]                 (f:39.3,d:2.41)      -->      [f:35.2,d:1.77]      lambda:0.16   #err=  2 armijo:2
+148(33) [phase:1,s:0.2,ds:0.2,dump:3,u:0:0]                 (f:35.2,d:1.59)      -->      [f:40.2,d:1.56]      lambda:0.064  #err=  3 armijo:3
+149(34) [phase:1,s:0.2,ds:0.2,dump:2,u:0:0]                 (f:40.2,d:1.17)      -->      [f:27.6,d:1.07]      lambda:0.16   #err=  2 armijo:2
+150(35) [phase:1,s:0.2,ds:0.2,dump:4,u:0:0]                 (f:27.6,d:2.48)      -->      [f:29.7,d:1.56]      lambda:0.0256  #err=  4 armijo:4
+151(36) [phase:1,s:0.2,ds:0.2,dump:2,u:0:0]                 (f:29.7,d:1.43)      -->      [f:28.1,d:1.36]      lambda:0.0384  #err=  2 armijo:2
+152(37) [phase:1,s:0.2,ds:0.2,dump:3,u:0:0]                 (f:28.1,d:1.16)      -->     [f:26.9,d:0.693]      lambda:0.064  #err=  3 armijo:3
+153(38) [phase:1,s:0.2,ds:0.2,dump:3,u:0:0]                (f:26.9,d:0.755)      -->     [f:25.3,d:0.715]      lambda:0.0693  #err=  3 armijo:3
+154(39) [phase:1,s:0.2,ds:0.2,dump:2,u:0:0]                (f:25.3,d:0.572)      -->     [f:16.2,d:0.467]      lambda:0.16   #err=  2 armijo:2
+155(40) [phase:1,s:0.2,ds:0.2,dump:1,u:0:0]                (f:16.2,d:0.438)      -->     [f:8.53,d:0.236]      lambda:0.4    #err=  1 armijo:1
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+156(41) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]                 (f:8.53,d:0.23)      -->     [f:3.1,d:0.0203]      lambda:1     
+157(42) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]                (f:3.1,d:0.00384)     -->   [f:0.572,d:0.000728]    lambda:1     
+158(43) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]               (f:0.572,d:0.00125)    -->   [f:0.0731,d:0.000157]   lambda:1     
+159(44) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]              (f:0.0731,d:0.000227)   -->  [f:0.00335,d:1.13e-05]   lambda:1     
+160(45) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:0.00335,d:1.27e-05)   -->  [f:1.09e-05,d:4.42e-08]  lambda:1     
+161(46) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:1.09e-05,d:4.45e-08)  -->  [f:2.81e-10,d:3.55e-13]  lambda:1     
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:161,phase:1,s:0.5,ds:0.3] |X|=1.963e-08/5.819e-10/2.412e-09, |L|=1.963e-08/5.801e-10/2.412e-09 |B|=4.565e-26/4.565e-26/4.565e-26, |BL|=102/102/102, PARS=137.1/137.1/137.1, U=0.9272/0.1122/0.2079
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+162(1 ) [phase:1,s:0.5,ds:0.3,dump:2,u:0:0]                 (f:0.769,d:104)      -->       [f:52.2,d:73]       lambda:0.16   #err=  2 armijo:2
+163(2 ) [phase:1,s:0.5,ds:0.3,dump:1,u:0:0]                 (f:52.2,d:83.1)      -->        [f:62,d:61]        lambda:0.4    #err=  1 armijo:1
+164(3 ) [phase:1,s:0.5,ds:0.3,dump:2,u:0:0]                   (f:62,d:70)        -->      [f:90.8,d:18.1]      lambda:0.38   #err=  2 angle:1 armijo:2
+165(4 ) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]                 (f:90.8,d:15.9)      -->      [f:83.3,d:13.1]      lambda:0.0256  #err=  4 armijo:4
+166(5 ) [phase:1,s:0.5,ds:0.3,dump:3,u:0:0]                 (f:83.3,d:13.2)      -->       [f:82,d:13.1]       lambda:0.0154  #err=  3 armijo:3
+167(6 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]                  (f:82,d:17.8)       -->      [f:75.4,d:13.7]      lambda:1     
+168(7 ) [phase:1,s:0.5,ds:0.3,dump:32,u:0:0]                (f:75.4,d:28.2)      -->      [f:52.8,d:5.8]       lambda:0.0816  #err= 32 angle:31 armijo:32
+169(8 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]                 (f:52.8,d:5.85)      -->      [f:45.8,d:3.9]       lambda:0.428 
+170(9 ) [phase:1,s:0.5,ds:0.3,dump:3,u:0:0]                 (f:45.8,d:3.61)      -->      [f:52.7,d:2.47]      lambda:0.064  #err=  3 armijo:3
+171(10) [phase:1,s:0.5,ds:0.3,dump:3,u:0:0]                 (f:52.7,d:2.65)      -->      [f:47.2,d:2.46]      lambda:0.064  #err=  3 armijo:3
+172(11) [phase:1,s:0.5,ds:0.3,dump:3,u:0:0]                 (f:47.2,d:2.15)      -->      [f:52.5,d:1.88]      lambda:0.064  #err=  3 armijo:3
+173(12) [phase:1,s:0.5,ds:0.3,dump:3,u:0:0]                 (f:52.5,d:1.76)      -->      [f:44.8,d:1.6]       lambda:0.064  #err=  3 armijo:3
+174(13) [phase:1,s:0.5,ds:0.3,dump:3,u:0:0]                 (f:44.8,d:1.62)      -->      [f:41.4,d:1.51]      lambda:0.064  #err=  3 armijo:3
+175(14) [phase:1,s:0.5,ds:0.3,dump:2,u:0:0]                 (f:41.4,d:1.51)      -->      [f:35.2,d:1.18]      lambda:0.16   #err=  2 armijo:2
+176(15) [phase:1,s:0.5,ds:0.3,dump:1,u:0:0]                 (f:35.2,d:1.11)      -->     [f:26.3,d:0.785]      lambda:0.4    #err=  1 armijo:1
+177(16) [phase:1,s:0.5,ds:0.3,dump:1,u:0:0]                (f:26.3,d:0.813)      -->     [f:22.3,d:0.641]      lambda:0.4    #err=  1 armijo:1
+178(17) [phase:1,s:0.5,ds:0.3,dump:1,u:0:0]                (f:22.3,d:0.685)      -->     [f:20.9,d:0.546]      lambda:0.403  #err=  1 armijo:1
+179(18) [phase:1,s:0.5,ds:0.3,dump:2,u:0:0]                (f:20.9,d:0.615)      -->     [f:15.4,d:0.477]      lambda:0.177  #err=  2 armijo:2
+180(19) [phase:1,s:0.5,ds:0.3,dump:2,u:0:0]                (f:15.4,d:0.384)      -->      [f:10.4,d:0.35]      lambda:0.16   #err=  2 armijo:2
+181(20) [phase:1,s:0.5,ds:0.3,dump:2,u:0:0]                (f:10.4,d:0.348)      -->     [f:8.41,d:0.272]      lambda:0.16   #err=  2 armijo:2
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+182(21) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]                (f:8.41,d:0.178)      -->     [f:7.01,d:0.0877]     lambda:1     
+183(22) [phase:1,s:0.5,ds:0.3,dump:33,u:0:0]               (f:7.01,d:0.185)      -->    [f:0.953,d:0.0175]     lambda:0.115  #err= 33 angle:33 armijo:33
+184(23) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]               (f:0.953,d:0.00552)    -->    [f:0.464,d:0.00261]    lambda:0.51  
+185(24) [phase:1,s:0.5,ds:0.3,dump:1,u:0:0]               (f:0.464,d:0.00246)    -->   [f:0.0225,d:8.13e-05]   lambda:0.95   #err=  1 angle:1 armijo:1
+186(25) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]              (f:0.0225,d:8.19e-05)   -->  [f:2.16e-05,d:5.56e-08]  lambda:1     
+187(26) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:2.16e-05,d:5.58e-08)  -->  [f:1.13e-10,d:1.83e-13]  lambda:1     
+
+Continuation step N.1 s:0.5->0.95, ds=0.45
+[iter:187,phase:1,s:0.95,ds:0.45] |X|=4.947e-09/2.143e-10/6.72e-10, |L|=4.947e-09/2.182e-10/6.729e-10 |B|=7.923e-28/7.923e-28/7.923e-28, |BL|=153/153/153, PARS=44.34/44.34/44.34, U=0.9999/0.2351/0.3473
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+188(1 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]              (f:0.635,d:87.1)      -->      [f:76.4,d:34.2]      lambda:0.4    #err=  1 armijo:1
+189(2 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]               (f:76.4,d:33.5)      -->      [f:90.8,d:12.8]      lambda:1     
+190(3 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]               (f:90.8,d:21.6)      -->      [f:72.6,d:10.6]      lambda:0.4    #err=  1 armijo:1
+191(4 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]               (f:72.6,d:9.24)      -->      [f:46.3,d:3.94]      lambda:0.4    #err=  1 armijo:1
+192(5 ) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]               (f:46.3,d:4.38)      -->      [f:45.5,d:3.82]      lambda:0.16   #err=  2 armijo:2
+193(6 ) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]               (f:45.5,d:3.96)      -->      [f:38.2,d:3.34]      lambda:0.16   #err=  2 armijo:2
+194(7 ) [phase:1,s:0.95,ds:0.45,dump:3,u:0:0]               (f:38.2,d:3.44)      -->      [f:35.8,d:3.22]      lambda:0.064  #err=  3 armijo:3
+195(8 ) [phase:1,s:0.95,ds:0.45,dump:4,u:0:0]               (f:35.8,d:3.31)      -->      [f:34.9,d:3.22]      lambda:0.0256  #err=  4 armijo:4
+196(9 ) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]               (f:34.9,d:3.37)      -->      [f:33.4,d:3.27]      lambda:0.0384  #err=  2 armijo:2
+197(10) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]               (f:33.4,d:3.83)      -->      [f:36.2,d:3.11]      lambda:0.16   #err=  2 armijo:2
+198(11) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]               (f:36.2,d:3.16)      -->      [f:36.5,d:2.75]      lambda:0.16   #err=  2 armijo:2
+199(12) [phase:1,s:0.95,ds:0.45,dump:3,u:0:0]               (f:36.5,d:2.85)      -->      [f:34.6,d:2.68]      lambda:0.064  #err=  3 armijo:3
+200(13) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]               (f:34.6,d:2.87)      -->      [f:31.7,d:2.66]      lambda:0.175  #err=  2 armijo:2
+201(14) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]               (f:31.7,d:2.72)      -->     [f:31.4,d:0.632]      lambda:1     
+202(15) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]              (f:31.4,d:0.688)      -->     [f:18.7,d:0.333]      lambda:0.415  #err=  1 armijo:1
+203(16) [phase:1,s:0.95,ds:0.45,dump:3,u:0:0]              (f:18.7,d:0.262)      -->     [f:14.3,d:0.171]      lambda:0.0913  #err=  3 angle:1 armijo:3
+204(17) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]              (f:14.3,d:0.107)      -->     [f:6.78,d:0.0529]     lambda:0.576  #err=  1 angle:1 armijo:1
+205(18) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]              (f:6.78,d:0.0375)     -->     [f:2.16,d:0.0238]     lambda:0.4    #err=  1 armijo:1
+206(19) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]              (f:2.16,d:0.0225)     -->   [f:0.0631,d:0.000963]   lambda:0.95   #err=  1 angle:1 armijo:1
+207(20) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]            (f:0.0631,d:0.000965)   -->  [f:1.29e-05,d:9.06e-08]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+208(21) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:1.29e-05,d:9.07e-08)  -->  [f:5.53e-11,d:1.31e-13]  lambda:1     
+
+Continuation step N.1 s:0.95->1, ds=0.05
+[iter:208,phase:1,s:1,ds:0.05] |X|=6.566e-10/7.27e-11/1.714e-10, |L|=6.566e-10/7.346e-11/1.715e-10 |B|=4.963e-25/4.963e-25/4.963e-25, |BL|=17/17/17, PARS=0.3496/0.3496/0.3496, U=0.9999/0.4251/0.5305
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+209(1 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]                 (f:0.0558,d:6.75)     -->      [f:7.5,d:0.674]      lambda:1     
+210(2 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]                 (f:7.5,d:0.0993)      -->     [f:3.93,d:0.0202]     lambda:1     
+211(3 ) [phase:1,s:1,ds:0.05,dump:1,u:0:0]                 (f:3.93,d:0.117)      -->     [f:1.92,d:0.0683]     lambda:0.4    #err=  1 armijo:1
+212(4 ) [phase:1,s:1,ds:0.05,dump:1,u:0:0]                 (f:1.92,d:0.0603)     -->     [f:1.24,d:0.0336]     lambda:0.4    #err=  1 armijo:1
+213(5 ) [phase:1,s:1,ds:0.05,dump:1,u:0:0]                 (f:1.24,d:0.0262)     -->    [f:0.674,d:0.0109]     lambda:0.492  #err=  1 angle:1 armijo:1
+214(6 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]                (f:0.674,d:0.00773)    -->    [f:0.117,d:0.00322]    lambda:1     
+215(7 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]                (f:0.117,d:0.00268)    -->   [f:0.00306,d:9.3e-05]   lambda:1     
+216(8 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:0.00306,d:0.000101)   -->  [f:6.2e-06,d:1.98e-07]   lambda:1     
+217(9 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:6.2e-06,d:1.99e-07)   -->  [f:8.69e-11,d:1.09e-12]  lambda:1     
+218(10) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:8.69e-11,d:1.09e-12)  -->  [f:5.4e-11,d:1.14e-13]   lambda:1     
+Continuation step N.2
+
+Continuation step N.2 s:0->0.2, ds=0.2
+[iter:218,phase:2,s:0.2,ds:0.2] |X|=240.9/28.3/70.62, |L|=240.9/29.17/71.02 |B|=3.614e-29/3.614e-29/3.614e-29, |BL|=1.464e-30/1.464e-30/1.464e-30, PARS=0.007473/0.007473/0.007473, U=1/0.4298/0.5766
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+219(1 ) [phase:2,s:0.2,ds:0.2,dump:1,u:0:0]                 (f:26.2,d:0.23)      -->     [f:14.8,d:0.128]      lambda:0.4    #err=  1 armijo:1
+220(2 ) [phase:2,s:0.2,ds:0.2,dump:3,u:0:0]                (f:14.8,d:0.108)      -->    [f:1.36,d:0.00366]     lambda:0.857  #err=  3 angle:3 armijo:3
+221(3 ) [phase:2,s:0.2,ds:0.2,dump:1,u:0:0]               (f:1.36,d:0.00321)     -->   [f:0.105,d:0.000217]    lambda:0.95   #err=  1 angle:1 armijo:1
+222(4 ) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]               (f:0.105,d:0.00027)    -->  [f:0.000989,d:4.72e-06]  lambda:1     
+223(5 ) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]             (f:0.000989,d:4.9e-06)   -->  [f:3.6e-07,d:2.05e-09]   lambda:1     
+224(6 ) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]             (f:3.6e-07,d:2.05e-09)   -->  [f:2.91e-10,d:1.53e-13]  lambda:1     
+
+Continuation step N.2 s:0.2->0.5, ds=0.3
+[iter:224,phase:2,s:0.5,ds:0.3] |X|=300.4/53.16/115.5, |L|=300.4/57.13/120.5 |B|=1.962e-27/1.962e-27/1.962e-27, |BL|=1.066e-28/1.066e-28/1.066e-28, PARS=0.001199/0.001199/0.001199, U=1/0.4302/0.6349
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+225(1 ) [phase:2,s:0.5,ds:0.3,dump:2,u:0:0]                (f:40.6,d:0.229)      -->     [f:33.4,d:0.212]      lambda:0.16   #err=  2 armijo:2
+226(2 ) [phase:2,s:0.5,ds:0.3,dump:2,u:0:0]                (f:33.4,d:0.115)      -->     [f:26.2,d:0.0894]     lambda:0.16   #err=  2 armijo:2
+227(3 ) [phase:2,s:0.5,ds:0.3,dump:2,u:0:0]                (f:26.2,d:0.051)      -->     [f:21.3,d:0.0411]     lambda:0.16   #err=  2 armijo:2
+228(4 ) [phase:2,s:0.5,ds:0.3,dump:1,u:0:0]                (f:21.3,d:0.0303)     -->     [f:9.69,d:0.0141]     lambda:0.4    #err=  1 armijo:1
+229(5 ) [phase:2,s:0.5,ds:0.3,dump:1,u:0:0]                (f:9.69,d:0.0117)     -->    [f:1.41,d:0.000264]    lambda:0.95   #err=  1 angle:1 armijo:1
+230(6 ) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]               (f:1.41,d:0.000273)    -->   [f:0.221,d:2.67e-05]    lambda:1     
+231(7 ) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]              (f:0.221,d:6.94e-05)    -->   [f:0.0544,d:1.88e-05]   lambda:1     
+232(8 ) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]              (f:0.0544,d:3.46e-05)   -->  [f:0.00623,d:3.96e-06]   lambda:1     
+233(9 ) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]             (f:0.00623,d:5.06e-06)   -->  [f:0.000103,d:8.36e-08]  lambda:1     
+234(10) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]             (f:0.000103,d:8.64e-08)  -->  [f:3.43e-08,d:2.52e-11]  lambda:1     
+235(11) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]             (f:3.43e-08,d:2.52e-11)  -->  [f:5.46e-09,d:8.83e-13]  lambda:1     
+
+Continuation step N.2 s:0.5->0.95, ds=0.45
+[iter:235,phase:2,s:0.95,ds:0.45] |X|=352/58.02/127.6, |L|=352/61.91/132 |B|=1.938e-28/1.938e-28/1.938e-28, |BL|=1.384e-31/1.384e-31/1.384e-31, PARS=7.129e-05/7.129e-05/7.129e-05, U=1/0.4375/0.6568
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+236(1 ) [phase:2,s:0.95,ds:0.45,dump:4,u:0:0]              (f:39.8,d:0.136)      -->     [f:38.4,d:0.128]      lambda:0.0256  #err=  4 armijo:4
+237(2 ) [phase:2,s:0.95,ds:0.45,dump:3,u:0:0]              (f:38.4,d:0.0465)     -->     [f:33.3,d:0.0372]     lambda:0.0154  #err=  3 armijo:3
+238(3 ) [phase:2,s:0.95,ds:0.45,dump:5,u:0:0]              (f:33.3,d:0.0271)     -->     [f:32.9,d:0.0265]     lambda:0.0102  #err=  5 armijo:5
+239(4 ) [phase:2,s:0.95,ds:0.45,dump:2,u:0:0]              (f:32.9,d:0.0126)     -->      [f:32,d:0.0121]      lambda:0.0243  #err=  2 armijo:2
+240(5 ) [phase:2,s:0.95,ds:0.45,dump:3,u:0:0]              (f:32,d:0.00563)      -->    [f:28.7,d:0.00485]     lambda:0.064  #err=  3 armijo:3
+241(6 ) [phase:2,s:0.95,ds:0.45,dump:2,u:0:0]             (f:28.7,d:0.00206)     -->    [f:20.6,d:0.00163]     lambda:0.16   #err=  2 armijo:2
+242(7 ) [phase:2,s:0.95,ds:0.45,dump:1,u:0:0]             (f:20.6,d:0.00132)     -->    [f:2.84,d:0.000485]    lambda:0.57   #err=  1 angle:1 armijo:1
+243(8 ) [phase:2,s:0.95,ds:0.45,dump:1,u:0:0]             (f:2.84,d:0.000512)    -->    [f:0.328,d:2.5e-05]    lambda:0.95   #err=  1 angle:1 armijo:1
+244(9 ) [phase:2,s:0.95,ds:0.45,dump:1,u:0:0]            (f:0.328,d:2.46e-05)    -->   [f:0.0229,d:1.19e-06]   lambda:0.95   #err=  1 angle:1 armijo:1
+245(10) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]            (f:0.0229,d:1.18e-06)   -->  [f:4.9e-05,d:4.55e-10]   lambda:1     
+246(11) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:4.9e-05,d:4.59e-10)   -->  [f:5.23e-07,d:6.6e-13]   lambda:1     
+247(12) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:5.23e-07,d:6.6e-13)   -->  [f:5.15e-07,d:8.37e-13]  lambda:1     
+248(13) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:5.15e-07,d:8.37e-13)  -->  [f:6.8e-07,d:5.92e-13]   lambda:1     
+249(14) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:6.8e-07,d:5.92e-13)   -->  [f:4.41e-07,d:1.68e-13]  lambda:1     
+250(15) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:4.41e-07,d:1.68e-13)  -->  [f:4.5e-07,d:5.81e-13]   lambda:1     
+251(16) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:4.5e-07,d:5.81e-13)   -->  [f:6.5e-07,d:2.71e-13]   lambda:1     
+252(17) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:6.5e-07,d:2.71e-13)   -->  [f:7.69e-07,d:3.68e-13]  lambda:1     
+253(18) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:7.69e-07,d:3.68e-13)  -->  [f:3.65e-07,d:3.9e-13]   lambda:1     
+254(19) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:3.65e-07,d:3.9e-13)   -->  [f:5.82e-07,d:1.43e-12]  lambda:1     
+255(20) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:5.82e-07,d:1.43e-12)  -->  [f:5.15e-07,d:7.83e-13]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+256(21) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:5.15e-07,d:7.83e-13)  -->  [f:6.48e-07,d:1.63e-12]  lambda:1     
+257(22) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:6.48e-07,d:1.63e-12)  -->  [f:5.84e-07,d:1.27e-12]  lambda:1     
+258(23) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:5.84e-07,d:1.27e-12)  -->  [f:8.93e-07,d:1.23e-12]  lambda:1     
+259(24) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:8.93e-07,d:1.23e-12)  -->  [f:6.51e-07,d:5.88e-13]  lambda:1     
+260(25) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:6.51e-07,d:5.88e-13)  -->  [f:6.42e-07,d:1.63e-13]  lambda:1     
+261(26) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:6.42e-07,d:1.63e-13)  -->  [f:4.89e-07,d:1.21e-13]  lambda:1     
+262(27) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:4.89e-07,d:1.21e-13)  -->   [f:6.13e-07,d:2e-13]    lambda:1     
+263(28) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]            (f:6.13e-07,d:2e-13)    -->  [f:6.23e-07,d:2.83e-13]  lambda:1     
+264(29) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:6.23e-07,d:2.83e-13)  -->  [f:6.43e-07,d:3.44e-13]  lambda:1     
+265(30) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:6.43e-07,d:3.44e-13)  -->  [f:5.87e-07,d:3.72e-13]  lambda:1     
+266(31) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:5.87e-07,d:3.72e-13)  -->  [f:5.86e-07,d:7.44e-13]  lambda:1     
+267(32) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:5.86e-07,d:7.44e-13)  -->  [f:6.85e-07,d:3.89e-13]  lambda:1     
+268(33) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:6.85e-07,d:3.89e-13)  -->  [f:5.58e-07,d:4.28e-13]  lambda:1     
+269(34) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:5.58e-07,d:4.28e-13)  -->  [f:6.54e-07,d:9.83e-13]  lambda:1     
+270(35) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:6.54e-07,d:9.83e-13)  -->  [f:6.48e-07,d:5.21e-13]  lambda:1     
+271(36) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:6.48e-07,d:5.21e-13)  -->  [f:4.63e-07,d:6.62e-13]  lambda:1     
+272(37) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:4.63e-07,d:6.62e-13)  -->  [f:7.47e-07,d:5.39e-13]  lambda:1     
+273(38) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:7.47e-07,d:5.39e-13)  -->  [f:4.81e-07,d:7.46e-13]  lambda:1     
+274(39) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:4.81e-07,d:7.46e-13)  -->  [f:5.08e-07,d:1.36e-12]  lambda:1     
+275(40) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:5.08e-07,d:1.36e-12)  -->  [f:5.4e-07,d:6.59e-13]   lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+276(41) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:5.4e-07,d:6.59e-13)   -->  [f:5.51e-07,d:1.75e-13]  lambda:1     
+277(42) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:5.51e-07,d:1.75e-13)  -->  [f:6.37e-07,d:7.35e-13]  lambda:1     
+278(43) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:6.37e-07,d:7.35e-13)  -->  [f:5.02e-07,d:6.68e-13]  lambda:1     
+279(44) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:5.02e-07,d:6.68e-13)  -->  [f:6.81e-07,d:3.3e-13]   lambda:1     
+280(45) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:6.81e-07,d:3.3e-13)   -->  [f:6.13e-07,d:6.81e-13]  lambda:1     
+281(46) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:6.13e-07,d:6.81e-13)  -->  [f:6.53e-07,d:1.46e-12]  lambda:1     
+282(47) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:6.53e-07,d:1.46e-12)  -->  [f:6.99e-07,d:5.78e-13]  lambda:1     
+283(48) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:6.99e-07,d:5.78e-13)  -->  [f:7.04e-07,d:1.09e-12]  lambda:1     
+284(49) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:7.04e-07,d:1.09e-12)  -->  [f:5.77e-07,d:9.71e-13]  lambda:1     
+285(50) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:5.77e-07,d:9.71e-13)  -->  [f:4.38e-07,d:9.4e-13]   lambda:1     
+286(51) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:4.38e-07,d:9.4e-13)   -->  [f:4.65e-07,d:5.35e-13]  lambda:1     
+287(52) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:4.65e-07,d:5.35e-13)  -->  [f:5.98e-07,d:1.53e-12]  lambda:1     
+288(53) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:5.98e-07,d:1.53e-12)  -->  [f:8.57e-07,d:1.85e-12]  lambda:1     
+289(54) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:8.57e-07,d:1.85e-12)  -->  [f:5.89e-07,d:4.41e-13]  lambda:1     
+290(55) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:5.89e-07,d:4.41e-13)  -->  [f:5.08e-07,d:8.75e-13]  lambda:1     
+291(56) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:5.08e-07,d:8.75e-13)  -->  [f:6.02e-07,d:4.13e-13]  lambda:1     
+292(57) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:6.02e-07,d:4.13e-13)  -->  [f:5.6e-07,d:3.38e-13]   lambda:1     
+293(58) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:5.6e-07,d:3.38e-13)   -->  [f:5.89e-07,d:5.31e-13]  lambda:1     
+294(59) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:5.89e-07,d:5.31e-13)  -->  [f:5.24e-07,d:3.69e-13]  lambda:1     
+295(60) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:5.24e-07,d:3.69e-13)  -->  [f:5.23e-07,d:8.32e-13]  lambda:1     
+
+Continuation step N.2 s:0.95->1, ds=0.05
+[iter:295,phase:2,s:1,ds:0.05] |X|=63.52/9.789/21.78, |L|=63.52/10.54/22.72 |B|=1.932e-31/1.932e-31/1.932e-31, |BL|=8.013e-31/8.013e-31/8.013e-31, PARS=3.663e-07/3.663e-07/3.663e-07, U=1/0.4301/0.5851
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+296(1 ) [phase:2,s:1,ds:0.05,dump:1,u:0:0]                (f:8.06,d:3.5e-05)     -->    [f:2.78,d:1.08e-05]    lambda:0.533  #err=  1 angle:1 armijo:1
+297(2 ) [phase:2,s:1,ds:0.05,dump:1,u:0:0]                (f:2.78,d:7.64e-06)    -->   [f:0.0807,d:1.34e-07]   lambda:0.95   #err=  1 angle:1 armijo:1
+298(3 ) [phase:2,s:1,ds:0.05,dump:0,u:0:0]               (f:0.0807,d:1.23e-07)   -->  [f:0.000183,d:4.15e-10]  lambda:1     
+299(4 ) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:0.000183,d:4.18e-10)  -->  [f:9.23e-07,d:1.32e-12]  lambda:1     
+300(5 ) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:9.23e-07,d:1.32e-12)  -->  [f:8.61e-07,d:4.17e-13]  lambda:1     
+301(6 ) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:8.61e-07,d:4.17e-13)  -->    [f:1e-06,d:1.3e-12]    lambda:1     
+302(7 ) [phase:2,s:1,ds:0.05,dump:0,u:0:0]                (f:1e-06,d:1.3e-12)    -->  [f:1.09e-06,d:4.83e-13]  lambda:1     
+303(8 ) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:1.09e-06,d:4.83e-13)  -->  [f:7.43e-07,d:6.81e-13]  lambda:1     
+304(9 ) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:7.43e-07,d:6.81e-13)  -->  [f:8.04e-07,d:1.57e-12]  lambda:1     
+305(10) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:8.04e-07,d:1.57e-12)  -->  [f:8.65e-07,d:6.51e-13]  lambda:1     
+306(11) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:8.65e-07,d:6.51e-13)  -->  [f:1.09e-06,d:2.17e-13]  lambda:1     
+307(12) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:1.09e-06,d:2.17e-13)  -->  [f:8.17e-07,d:2.73e-13]  lambda:1     
+308(13) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:8.17e-07,d:2.73e-13)  -->  [f:1.2e-06,d:3.41e-13]   lambda:1     
+309(14) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:1.2e-06,d:3.41e-13)   -->  [f:1.05e-06,d:3.02e-13]  lambda:1     
+310(15) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:1.05e-06,d:3.02e-13)  -->  [f:9.48e-07,d:7.19e-13]  lambda:1     
+311(16) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:9.48e-07,d:7.19e-13)  -->  [f:1.16e-06,d:3.95e-13]  lambda:1     
+312(17) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:1.16e-06,d:3.95e-13)  -->  [f:9.02e-07,d:5.48e-13]  lambda:1     
+313(18) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:9.02e-07,d:5.48e-13)  -->  [f:7.35e-07,d:1.48e-12]  lambda:1     
+314(19) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:7.35e-07,d:1.48e-12)  -->  [f:1.54e-06,d:1.83e-12]  lambda:1     
+315(20) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:1.54e-06,d:1.83e-12)  -->  [f:8.56e-07,d:5.57e-13]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+316(21) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:8.56e-07,d:5.57e-13)  -->  [f:1.06e-06,d:6.41e-13]  lambda:1     
+317(22) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:1.06e-06,d:6.41e-13)  -->  [f:1.09e-06,d:7.16e-13]  lambda:1     
+318(23) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:1.09e-06,d:7.16e-13)  -->  [f:9.11e-07,d:7.98e-13]  lambda:1     
+319(24) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:9.11e-07,d:7.98e-13)  -->  [f:8.58e-07,d:1.09e-12]  lambda:1     
+320(25) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:8.58e-07,d:1.09e-12)  -->  [f:1.04e-06,d:8.79e-13]  lambda:1     
+321(26) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:1.04e-06,d:8.79e-13)  -->  [f:8.82e-07,d:9.6e-13]   lambda:1     
+322(27) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:8.82e-07,d:9.6e-13)   -->  [f:9.5e-07,d:1.52e-12]   lambda:1     
+323(28) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:9.5e-07,d:1.52e-12)   -->  [f:8.89e-07,d:2.27e-13]  lambda:1     
+324(29) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:8.89e-07,d:2.27e-13)  -->  [f:8.39e-07,d:8.07e-13]  lambda:1     
+325(30) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:8.39e-07,d:8.07e-13)  -->  [f:9.75e-07,d:7.63e-13]  lambda:1     
+326(31) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:9.75e-07,d:7.63e-13)  -->  [f:9.39e-07,d:3.61e-13]  lambda:1     
+327(32) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:9.39e-07,d:3.61e-13)  -->  [f:1.19e-06,d:1.63e-13]  lambda:1     
+328(33) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:1.19e-06,d:1.63e-13)  -->  [f:9.21e-07,d:1.33e-13]  lambda:1     
+329(34) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:9.21e-07,d:1.33e-13)  -->  [f:7.63e-07,d:4.34e-13]  lambda:1     
+330(35) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:7.63e-07,d:4.34e-13)  -->  [f:7.8e-07,d:1.05e-12]   lambda:1     
+331(36) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:7.8e-07,d:1.05e-12)   -->  [f:8.01e-07,d:1.7e-13]   lambda:1     
+332(37) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:8.01e-07,d:1.7e-13)   -->  [f:9.62e-07,d:1.5e-13]   lambda:1     
+333(38) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:9.62e-07,d:1.5e-13)   -->  [f:8.57e-07,d:5.49e-13]  lambda:1     
+334(39) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:8.57e-07,d:5.49e-13)  -->  [f:8.8e-07,d:1.51e-13]   lambda:1     
+335(40) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:8.8e-07,d:1.51e-13)   -->  [f:1.2e-06,d:1.37e-12]   lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+336(41) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:1.2e-06,d:1.37e-12)   -->  [f:1.11e-06,d:4.86e-13]  lambda:1     
+337(42) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:1.11e-06,d:4.86e-13)  -->  [f:1.19e-06,d:3.93e-13]  lambda:1     
+338(43) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:1.19e-06,d:3.93e-13)  -->  [f:1.37e-06,d:7.88e-13]  lambda:1     
+339(44) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:1.37e-06,d:7.88e-13)  -->  [f:9.94e-07,d:1.63e-12]  lambda:1     
+340(45) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:9.94e-07,d:1.63e-12)  -->  [f:1.01e-06,d:1.02e-12]  lambda:1     
+341(46) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:1.01e-06,d:1.02e-12)  -->  [f:1.12e-06,d:4.7e-13]   lambda:1     
+342(47) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:1.12e-06,d:4.7e-13)   -->  [f:1.31e-06,d:4.05e-13]  lambda:1     
+343(48) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:1.31e-06,d:4.05e-13)  -->  [f:9.02e-07,d:3.22e-13]  lambda:1     
+344(49) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:9.02e-07,d:3.22e-13)  -->  [f:6.68e-07,d:1.15e-12]  lambda:1     
+345(50) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:6.68e-07,d:1.15e-12)  -->  [f:1.04e-06,d:9.22e-14]  lambda:1     
+346(51) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:1.04e-06,d:9.22e-14)  -->  [f:1.02e-06,d:8.81e-13]  lambda:1     
+347(52) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:1.02e-06,d:8.81e-13)  -->  [f:5.95e-07,d:5.7e-13]   lambda:1     
+348(53) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:5.95e-07,d:5.7e-13)   -->  [f:8.15e-07,d:1.46e-12]  lambda:1     
+349(54) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:8.15e-07,d:1.46e-12)  -->  [f:1.25e-06,d:2.08e-12]  lambda:1     
+350(55) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:1.25e-06,d:2.08e-12)  -->  [f:8.6e-07,d:3.83e-13]   lambda:1     
+351(56) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:8.6e-07,d:3.83e-13)   -->  [f:1.1e-06,d:3.53e-13]   lambda:1     
+352(57) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:1.1e-06,d:3.53e-13)   -->  [f:1.03e-06,d:4.26e-13]  lambda:1     
+353(58) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:1.03e-06,d:4.26e-13)  -->  [f:7.65e-07,d:4.47e-13]  lambda:1     
+354(59) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:7.65e-07,d:4.47e-13)  -->  [f:6.81e-07,d:4.04e-13]  lambda:1     
+355(60) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:6.81e-07,d:4.04e-13)  -->   [f:1e-06,d:1.92e-12]    lambda:1     
+NLsolver[SoundingRocket]::solve_with_continuation(phase=2,...) found:
+NLsolver[SoundingRocket]::solve()
+#phase=2 #it=0/60 lambda=1 tolerance=1e-09 |f|_1=6.81e-07 |f|_inf=2.251e-05 |d|_1=4.039e-13 |d|_inf=3.939e-12
+at phase 2, iter 355: NLsolver[SoundingRocket]::solve, Too many iterations
+
+
+Continuation step N.2 s:0.95->0.975, ds=0.025
+[iter:355,phase:2,s:0.975,ds:0.025] |X|=31.93/4.858/10.87, |L|=31.93/5.21/11.29 |B|=1.932e-31/1.932e-31/1.932e-31, |BL|=8.013e-31/8.013e-31/8.013e-31, PARS=2.037e-07/2.037e-07/2.037e-07, U=1/0.4302/0.578
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+356(1 ) [phase:2,s:0.975,ds:0.025,dump:4,u:0:0]           (f:4.07,d:1.67e-05)    -->     [f:0.344,d:1e-06]     lambda:0.815  #err=  4 angle:4 armijo:4
+357(2 ) [phase:2,s:0.975,ds:0.025,dump:1,u:0:0]          (f:0.344,d:9.75e-07)    -->   [f:0.0154,d:4.54e-08]   lambda:0.95   #err=  1 angle:1 armijo:1
+358(3 ) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]          (f:0.0154,d:4.51e-08)   -->  [f:4.43e-06,d:8.97e-12]  lambda:1     
+359(4 ) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.43e-06,d:8.97e-12)  -->  [f:5.89e-07,d:6.02e-13]  lambda:1     
+360(5 ) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:5.89e-07,d:6.02e-13)  -->  [f:6.58e-07,d:8.07e-13]  lambda:1     
+361(6 ) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:6.58e-07,d:8.07e-13)  -->  [f:6.5e-07,d:3.89e-13]   lambda:1     
+362(7 ) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:6.5e-07,d:3.89e-13)   -->  [f:6.17e-07,d:1.78e-13]  lambda:1     
+363(8 ) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:6.17e-07,d:1.78e-13)  -->  [f:9.87e-07,d:3.38e-13]  lambda:1     
+364(9 ) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.87e-07,d:3.38e-13)  -->  [f:9.52e-07,d:4.58e-13]  lambda:1     
+365(10) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.52e-07,d:4.58e-13)  -->  [f:8.55e-07,d:4.68e-13]  lambda:1     
+366(11) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:8.55e-07,d:4.68e-13)  -->  [f:7.21e-07,d:9.51e-13]  lambda:1     
+367(12) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:7.21e-07,d:9.51e-13)  -->   [f:7.59e-07,d:6e-13]    lambda:1     
+368(13) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]          (f:7.59e-07,d:6e-13)    -->  [f:8.38e-07,d:1.85e-13]  lambda:1     
+369(14) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:8.38e-07,d:1.85e-13)  -->  [f:6.2e-07,d:1.93e-13]   lambda:1     
+370(15) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:6.2e-07,d:1.93e-13)   -->  [f:9.81e-07,d:1.56e-13]  lambda:1     
+371(16) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.81e-07,d:1.56e-13)  -->  [f:5.09e-07,d:1.61e-13]  lambda:1     
+372(17) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:5.09e-07,d:1.61e-13)  -->  [f:4.48e-07,d:8.44e-13]  lambda:1     
+373(18) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.48e-07,d:8.44e-13)  -->  [f:6.18e-07,d:6.96e-13]  lambda:1     
+374(19) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:6.18e-07,d:6.96e-13)  -->  [f:4.12e-07,d:5.18e-13]  lambda:1     
+375(20) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.12e-07,d:5.18e-13)  -->  [f:6.28e-07,d:2.65e-13]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+376(21) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:6.28e-07,d:2.65e-13)  -->  [f:4.69e-07,d:2.67e-13]  lambda:1     
+377(22) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.69e-07,d:2.67e-13)  -->  [f:6.51e-07,d:7.26e-13]  lambda:1     
+378(23) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:6.51e-07,d:7.26e-13)  -->  [f:5.48e-07,d:3.91e-13]  lambda:1     
+379(24) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:5.48e-07,d:3.91e-13)  -->  [f:6.51e-07,d:2.39e-13]  lambda:1     
+380(25) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:6.51e-07,d:2.39e-13)  -->  [f:1.03e-06,d:9.88e-13]  lambda:1     
+381(26) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:1.03e-06,d:9.88e-13)  -->  [f:6.97e-07,d:1.17e-12]  lambda:1     
+382(27) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:6.97e-07,d:1.17e-12)  -->  [f:5.99e-07,d:4.44e-13]  lambda:1     
+383(28) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:5.99e-07,d:4.44e-13)  -->   [f:9e-07,d:5.73e-13]    lambda:1     
+384(29) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]          (f:9e-07,d:5.73e-13)    -->   [f:9e-07,d:1.03e-12]    lambda:1     
+385(30) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]          (f:9e-07,d:1.03e-12)    -->  [f:8.65e-07,d:1.36e-12]  lambda:1     
+386(31) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:8.65e-07,d:1.36e-12)  -->  [f:9.59e-07,d:1.58e-12]  lambda:1     
+387(32) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.59e-07,d:1.58e-12)  -->   [f:8.6e-07,d:1.6e-12]   lambda:1     
+388(33) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]          (f:8.6e-07,d:1.6e-12)   -->  [f:9.04e-07,d:1.01e-12]  lambda:1     
+389(34) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.04e-07,d:1.01e-12)  -->  [f:8.51e-07,d:5.93e-13]  lambda:1     
+390(35) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:8.51e-07,d:5.93e-13)  -->   [f:8e-07,d:3.33e-13]    lambda:1     
+391(36) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]          (f:8e-07,d:3.33e-13)    -->  [f:6.07e-07,d:1.23e-12]  lambda:1     
+392(37) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:6.07e-07,d:1.23e-12)  -->  [f:6.03e-07,d:6.92e-13]  lambda:1     
+393(38) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:6.03e-07,d:6.92e-13)  -->  [f:6.92e-07,d:6.54e-13]  lambda:1     
+394(39) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:6.92e-07,d:6.54e-13)  -->  [f:7.08e-07,d:1.1e-12]   lambda:1     
+395(40) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:7.08e-07,d:1.1e-12)   -->  [f:8.37e-07,d:2.25e-12]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+396(41) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:8.37e-07,d:2.25e-12)  -->  [f:7.28e-07,d:1.85e-12]  lambda:1     
+397(42) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:7.28e-07,d:1.85e-12)  -->  [f:5.44e-07,d:9.12e-13]  lambda:1     
+398(43) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:5.44e-07,d:9.12e-13)  -->  [f:7.29e-07,d:2.59e-13]  lambda:1     
+399(44) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:7.29e-07,d:2.59e-13)  -->  [f:8.01e-07,d:6.82e-13]  lambda:1     
+400(45) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:8.01e-07,d:6.82e-13)  -->  [f:7.19e-07,d:6.18e-13]  lambda:1     
+401(46) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:7.19e-07,d:6.18e-13)  -->  [f:7.7e-07,d:7.21e-13]   lambda:1     
+402(47) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:7.7e-07,d:7.21e-13)   -->  [f:7.43e-07,d:7.53e-13]  lambda:1     
+403(48) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:7.43e-07,d:7.53e-13)  -->  [f:6.55e-07,d:1.5e-12]   lambda:1     
+404(49) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:6.55e-07,d:1.5e-12)   -->  [f:8.53e-07,d:3.94e-13]  lambda:1     
+405(50) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:8.53e-07,d:3.94e-13)  -->  [f:8.36e-07,d:2.53e-13]  lambda:1     
+406(51) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:8.36e-07,d:2.53e-13)  -->  [f:6.41e-07,d:1.61e-12]  lambda:1     
+407(52) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:6.41e-07,d:1.61e-12)  -->  [f:6.57e-07,d:1.51e-12]  lambda:1     
+408(53) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:6.57e-07,d:1.51e-12)  -->  [f:6.41e-07,d:2.81e-13]  lambda:1     
+409(54) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:6.41e-07,d:2.81e-13)  -->  [f:8.69e-07,d:6.92e-13]  lambda:1     
+410(55) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:8.69e-07,d:6.92e-13)  -->  [f:5.99e-07,d:5.09e-13]  lambda:1     
+411(56) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:5.99e-07,d:5.09e-13)  -->  [f:7.68e-07,d:2.68e-13]  lambda:1     
+412(57) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:7.68e-07,d:2.68e-13)  -->  [f:7.2e-07,d:3.78e-13]   lambda:1     
+413(58) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:7.2e-07,d:3.78e-13)   -->  [f:9.55e-07,d:3.88e-13]  lambda:1     
+414(59) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:9.55e-07,d:3.88e-13)  -->  [f:7.97e-07,d:1.51e-12]  lambda:1     
+415(60) [phase:2,s:0.975,ds:0.025,dump:0,u:0:0]         (f:7.97e-07,d:1.51e-12)  -->  [f:6.27e-07,d:8.57e-13]  lambda:1     
+NLsolver[SoundingRocket]::solve_with_continuation(phase=2,...) found:
+NLsolver[SoundingRocket]::solve()
+#phase=2 #it=0/60 lambda=1 tolerance=1e-09 |f|_1=7.971e-07 |f|_inf=1.799e-05 |d|_1=1.512e-12 |d|_inf=1.392e-11
+at phase 2, iter 415: NLsolver[SoundingRocket]::solve, Too many iterations
+
+
+Continuation step N.2 s:0.95->0.9625, ds=0.0125
+[iter:415,phase:2,s:0.9625,ds:0.0125] |X|=16.04/2.415/5.423, |L|=16.04/2.585/5.62 |B|=1.932e-31/1.932e-31/1.932e-31, |BL|=8.013e-31/8.013e-31/8.013e-31, PARS=1.076e-07/1.076e-07/1.076e-07, U=1/0.4302/0.5746
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+416(1 ) [phase:2,s:0.9625,ds:0.0125,dump:2,u:0:0]         (f:2.04,d:8.22e-06)    -->   [f:0.0886,d:2.91e-07]   lambda:0.902  #err=  2 angle:2 armijo:2
+417(2 ) [phase:2,s:0.9625,ds:0.0125,dump:1,u:0:0]        (f:0.0886,d:2.85e-07)   -->   [f:0.00431,d:1.4e-08]   lambda:0.95   #err=  1 angle:1 armijo:1
+418(3 ) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]        (f:0.00431,d:1.4e-08)   -->  [f:7.18e-07,d:8.54e-13]  lambda:1     
+419(4 ) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:7.18e-07,d:8.54e-13)  -->  [f:7.17e-07,d:8.87e-13]  lambda:1     
+420(5 ) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:7.17e-07,d:8.87e-13)  -->  [f:5.16e-07,d:7.44e-13]  lambda:1     
+421(6 ) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:5.16e-07,d:7.44e-13)  -->  [f:7.69e-07,d:5.87e-13]  lambda:1     
+422(7 ) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:7.69e-07,d:5.87e-13)  -->  [f:9.09e-07,d:9.47e-13]  lambda:1     
+423(8 ) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:9.09e-07,d:9.47e-13)  -->  [f:7.34e-07,d:2.72e-13]  lambda:1     
+424(9 ) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:7.34e-07,d:2.72e-13)  -->  [f:6.45e-07,d:1.03e-12]  lambda:1     
+425(10) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:6.45e-07,d:1.03e-12)  -->  [f:7.87e-07,d:2.18e-13]  lambda:1     
+426(11) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:7.87e-07,d:2.18e-13)  -->  [f:5.38e-07,d:5.66e-13]  lambda:1     
+427(12) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:5.38e-07,d:5.66e-13)  -->  [f:5.79e-07,d:1.53e-13]  lambda:1     
+428(13) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:5.79e-07,d:1.53e-13)  -->  [f:7.95e-07,d:8.74e-13]  lambda:1     
+429(14) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:7.95e-07,d:8.74e-13)  -->  [f:8.4e-07,d:1.71e-13]   lambda:1     
+430(15) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:8.4e-07,d:1.71e-13)   -->  [f:6.92e-07,d:5.42e-13]  lambda:1     
+431(16) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:6.92e-07,d:5.42e-13)  -->  [f:6.23e-07,d:1.3e-12]   lambda:1     
+432(17) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:6.23e-07,d:1.3e-12)   -->  [f:8.19e-07,d:1.13e-12]  lambda:1     
+433(18) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:8.19e-07,d:1.13e-12)  -->  [f:9.83e-07,d:8.08e-13]  lambda:1     
+434(19) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:9.83e-07,d:8.08e-13)  -->  [f:6.59e-07,d:1.84e-12]  lambda:1     
+435(20) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:6.59e-07,d:1.84e-12)  -->  [f:5.58e-07,d:1.43e-12]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+436(21) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:5.58e-07,d:1.43e-12)  -->  [f:5.14e-07,d:3.82e-13]  lambda:1     
+437(22) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:5.14e-07,d:3.82e-13)  -->  [f:5.17e-07,d:3.24e-13]  lambda:1     
+438(23) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:5.17e-07,d:3.24e-13)  -->  [f:5.37e-07,d:5.27e-13]  lambda:1     
+439(24) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:5.37e-07,d:5.27e-13)  -->  [f:4.86e-07,d:6.58e-13]  lambda:1     
+440(25) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:4.86e-07,d:6.58e-13)  -->  [f:6.44e-07,d:5.56e-13]  lambda:1     
+441(26) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:6.44e-07,d:5.56e-13)  -->  [f:7.29e-07,d:7.4e-13]   lambda:1     
+442(27) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:7.29e-07,d:7.4e-13)   -->  [f:5.82e-07,d:1.05e-12]  lambda:1     
+443(28) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:5.82e-07,d:1.05e-12)  -->  [f:7.45e-07,d:8.81e-13]  lambda:1     
+444(29) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:7.45e-07,d:8.81e-13)  -->  [f:5.72e-07,d:1.12e-12]  lambda:1     
+445(30) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:5.72e-07,d:1.12e-12)  -->  [f:7.22e-07,d:1.25e-13]  lambda:1     
+446(31) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:7.22e-07,d:1.25e-13)  -->  [f:6.04e-07,d:6.3e-13]   lambda:1     
+447(32) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:6.04e-07,d:6.3e-13)   -->  [f:9.3e-07,d:3.27e-13]   lambda:1     
+448(33) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:9.3e-07,d:3.27e-13)   -->  [f:6.8e-07,d:3.31e-13]   lambda:1     
+449(34) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:6.8e-07,d:3.31e-13)   -->  [f:8.29e-07,d:4.49e-13]  lambda:1     
+450(35) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:8.29e-07,d:4.49e-13)  -->  [f:6.72e-07,d:8.88e-13]  lambda:1     
+451(36) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:6.72e-07,d:8.88e-13)  -->  [f:8.91e-07,d:5.69e-13]  lambda:1     
+452(37) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:8.91e-07,d:5.69e-13)  -->  [f:9.45e-07,d:9.43e-13]  lambda:1     
+453(38) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:9.45e-07,d:9.43e-13)  -->  [f:7.59e-07,d:1.16e-12]  lambda:1     
+454(39) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:7.59e-07,d:1.16e-12)  -->  [f:6.86e-07,d:6.84e-13]  lambda:1     
+455(40) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:6.86e-07,d:6.84e-13)  -->  [f:8.91e-07,d:2.9e-13]   lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+456(41) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:8.91e-07,d:2.9e-13)   -->  [f:6.25e-07,d:5.45e-13]  lambda:1     
+457(42) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:6.25e-07,d:5.45e-13)  -->  [f:6.03e-07,d:8.89e-13]  lambda:1     
+458(43) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:6.03e-07,d:8.89e-13)  -->  [f:8.65e-07,d:4.01e-13]  lambda:1     
+459(44) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:8.65e-07,d:4.01e-13)  -->  [f:6.07e-07,d:5.5e-13]   lambda:1     
+460(45) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:6.07e-07,d:5.5e-13)   -->  [f:5.09e-07,d:5.74e-13]  lambda:1     
+461(46) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:5.09e-07,d:5.74e-13)  -->  [f:5.53e-07,d:1.13e-12]  lambda:1     
+462(47) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:5.53e-07,d:1.13e-12)  -->  [f:5.82e-07,d:1.06e-12]  lambda:1     
+463(48) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:5.82e-07,d:1.06e-12)  -->  [f:7.23e-07,d:7.85e-13]  lambda:1     
+464(49) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:7.23e-07,d:7.85e-13)  -->  [f:7.38e-07,d:1.02e-12]  lambda:1     
+465(50) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:7.38e-07,d:1.02e-12)  -->  [f:7.15e-07,d:3.78e-13]  lambda:1     
+466(51) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:7.15e-07,d:3.78e-13)  -->  [f:6.86e-07,d:1.53e-12]  lambda:1     
+467(52) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:6.86e-07,d:1.53e-12)  -->  [f:6.35e-07,d:1.41e-12]  lambda:1     
+468(53) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:6.35e-07,d:1.41e-12)  -->  [f:8.21e-07,d:1.31e-13]  lambda:1     
+469(54) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:8.21e-07,d:1.31e-13)  -->  [f:7.6e-07,d:1.03e-13]   lambda:1     
+470(55) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:7.6e-07,d:1.03e-13)   -->  [f:7.95e-07,d:2.34e-13]  lambda:1     
+471(56) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:7.95e-07,d:2.34e-13)  -->  [f:6.83e-07,d:1.45e-13]  lambda:1     
+472(57) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:6.83e-07,d:1.45e-13)  -->  [f:6.71e-07,d:9.11e-14]  lambda:1     
+473(58) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:6.71e-07,d:9.11e-14)  -->  [f:9.53e-07,d:3.89e-13]  lambda:1     
+474(59) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:9.53e-07,d:3.89e-13)  -->  [f:5.92e-07,d:2.18e-13]  lambda:1     
+475(60) [phase:2,s:0.9625,ds:0.0125,dump:0,u:0:0]       (f:5.92e-07,d:2.18e-13)  -->  [f:6.21e-07,d:6.59e-13]  lambda:1     
+NLsolver[SoundingRocket]::solve_with_continuation(phase=2,...) found:
+NLsolver[SoundingRocket]::solve()
+#phase=2 #it=0/60 lambda=1 tolerance=1e-09 |f|_1=5.923e-07 |f|_inf=1.635e-05 |d|_1=2.184e-13 |d|_inf=2.521e-12
+at phase 2, iter 475: NLsolver[SoundingRocket]::solve, Too many iterations
+
+
+Continuation step N.2 s:0.95->0.95625, ds=0.00625
+[iter:475,phase:2,s:0.9562,ds:0.00625] |X|=8.027/1.203/2.707, |L|=8.027/1.287/2.802 |B|=1.932e-31/1.932e-31/1.932e-31, |BL|=8.013e-31/8.013e-31/8.013e-31, PARS=5.533e-08/5.533e-08/5.533e-08, U=1/0.4302/0.5729
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+476(1 ) [phase:2,s:0.9562,ds:0.00625,dump:1,u:0:0]        (f:1.02,d:4.09e-06)    -->   [f:0.0225,d:7.82e-08]   lambda:0.95   #err=  1 angle:1 armijo:1
+477(2 ) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]       (f:0.0225,d:7.72e-08)   -->  [f:9.64e-06,d:2.05e-11]  lambda:1     
+478(3 ) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:9.64e-06,d:2.05e-11)  -->  [f:5.13e-07,d:3.63e-13]  lambda:1     
+479(4 ) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:5.13e-07,d:3.63e-13)  -->  [f:4.46e-07,d:3.52e-13]  lambda:1     
+480(5 ) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:4.46e-07,d:3.52e-13)  -->  [f:7.42e-07,d:7.57e-13]  lambda:1     
+481(6 ) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:7.42e-07,d:7.57e-13)  -->  [f:7.03e-07,d:4.1e-13]   lambda:1     
+482(7 ) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:7.03e-07,d:4.1e-13)   -->  [f:5.18e-07,d:2.3e-13]   lambda:1     
+483(8 ) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:5.18e-07,d:2.3e-13)   -->  [f:7.26e-07,d:1.02e-12]  lambda:1     
+484(9 ) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:7.26e-07,d:1.02e-12)  -->  [f:7.4e-07,d:2.38e-13]   lambda:1     
+485(10) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:7.4e-07,d:2.38e-13)   -->  [f:7.18e-07,d:5.92e-13]  lambda:1     
+486(11) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:7.18e-07,d:5.92e-13)  -->  [f:8.1e-07,d:1.86e-13]   lambda:1     
+487(12) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:8.1e-07,d:1.86e-13)   -->  [f:4.02e-07,d:1.89e-13]  lambda:1     
+488(13) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:4.02e-07,d:1.89e-13)  -->  [f:4.6e-07,d:4.64e-13]   lambda:1     
+489(14) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:4.6e-07,d:4.64e-13)   -->  [f:6.18e-07,d:2.74e-13]  lambda:1     
+490(15) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:6.18e-07,d:2.74e-13)  -->  [f:6.73e-07,d:3.81e-13]  lambda:1     
+491(16) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:6.73e-07,d:3.81e-13)  -->  [f:4.74e-07,d:1.45e-12]  lambda:1     
+492(17) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:4.74e-07,d:1.45e-12)  -->  [f:5.42e-07,d:1.25e-12]  lambda:1     
+493(18) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:5.42e-07,d:1.25e-12)  -->  [f:4.09e-07,d:4.98e-13]  lambda:1     
+494(19) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:4.09e-07,d:4.98e-13)  -->  [f:8.52e-07,d:6.26e-13]  lambda:1     
+495(20) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:8.52e-07,d:6.26e-13)  -->  [f:5.6e-07,d:2.22e-13]   lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+496(21) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:5.6e-07,d:2.22e-13)   -->  [f:8.47e-07,d:3.18e-13]  lambda:1     
+497(22) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:8.47e-07,d:3.18e-13)  -->  [f:8.31e-07,d:2.91e-13]  lambda:1     
+498(23) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:8.31e-07,d:2.91e-13)  -->  [f:6.15e-07,d:4.97e-13]  lambda:1     
+499(24) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:6.15e-07,d:4.97e-13)  -->  [f:6.04e-07,d:3.95e-13]  lambda:1     
+500(25) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:6.04e-07,d:3.95e-13)  -->  [f:8.05e-07,d:3.95e-13]  lambda:1     
+501(26) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:8.05e-07,d:3.95e-13)  -->  [f:7.31e-07,d:3.73e-13]  lambda:1     
+502(27) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:7.31e-07,d:3.73e-13)  -->  [f:5.69e-07,d:4.24e-13]  lambda:1     
+503(28) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:5.69e-07,d:4.24e-13)  -->  [f:5.66e-07,d:5.63e-13]  lambda:1     
+504(29) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:5.66e-07,d:5.63e-13)  -->  [f:5.43e-07,d:2.57e-13]  lambda:1     
+505(30) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:5.43e-07,d:2.57e-13)  -->  [f:8.37e-07,d:3.61e-13]  lambda:1     
+506(31) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:8.37e-07,d:3.61e-13)  -->  [f:7.01e-07,d:5.71e-13]  lambda:1     
+507(32) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:7.01e-07,d:5.71e-13)  -->  [f:7.36e-07,d:8.43e-13]  lambda:1     
+508(33) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:7.36e-07,d:8.43e-13)  -->  [f:6.11e-07,d:1.24e-12]  lambda:1     
+509(34) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:6.11e-07,d:1.24e-12)  -->  [f:6.52e-07,d:1.57e-12]  lambda:1     
+510(35) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:6.52e-07,d:1.57e-12)  -->  [f:7.23e-07,d:7.86e-13]  lambda:1     
+511(36) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:7.23e-07,d:7.86e-13)  -->  [f:4.85e-07,d:6.49e-13]  lambda:1     
+512(37) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:4.85e-07,d:6.49e-13)  -->   [f:5e-07,d:5.64e-13]    lambda:1     
+513(38) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]       (f:5e-07,d:5.64e-13)    -->  [f:6.51e-07,d:1.84e-12]  lambda:1     
+514(39) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:6.51e-07,d:1.84e-12)  -->  [f:4.64e-07,d:4.85e-13]  lambda:1     
+515(40) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:4.64e-07,d:4.85e-13)  -->  [f:4.94e-07,d:3.09e-13]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+516(41) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:4.94e-07,d:3.09e-13)  -->  [f:5.76e-07,d:7.05e-13]  lambda:1     
+517(42) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:5.76e-07,d:7.05e-13)  -->  [f:8.02e-07,d:3.48e-13]  lambda:1     
+518(43) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:8.02e-07,d:3.48e-13)  -->  [f:6.77e-07,d:9.52e-13]  lambda:1     
+519(44) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:6.77e-07,d:9.52e-13)  -->  [f:5.1e-07,d:1.14e-12]   lambda:1     
+520(45) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:5.1e-07,d:1.14e-12)   -->  [f:4.27e-07,d:6.2e-13]   lambda:1     
+521(46) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:4.27e-07,d:6.2e-13)   -->    [f:5e-07,d:3.2e-13]    lambda:1     
+522(47) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]        (f:5e-07,d:3.2e-13)    -->  [f:7.28e-07,d:2.76e-13]  lambda:1     
+523(48) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:7.28e-07,d:2.76e-13)  -->  [f:4.6e-07,d:1.17e-12]   lambda:1     
+524(49) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:4.6e-07,d:1.17e-12)   -->  [f:6.21e-07,d:2.87e-13]  lambda:1     
+525(50) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:6.21e-07,d:2.87e-13)  -->  [f:7.95e-07,d:9.18e-13]  lambda:1     
+526(51) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:7.95e-07,d:9.18e-13)  -->  [f:4.42e-07,d:1.64e-13]  lambda:1     
+527(52) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:4.42e-07,d:1.64e-13)  -->  [f:3.29e-07,d:2.07e-13]  lambda:1     
+528(53) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:3.29e-07,d:2.07e-13)  -->  [f:6.29e-07,d:4.61e-13]  lambda:1     
+529(54) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:6.29e-07,d:4.61e-13)  -->  [f:6.01e-07,d:7.84e-13]  lambda:1     
+530(55) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:6.01e-07,d:7.84e-13)  -->  [f:4.69e-07,d:1.03e-12]  lambda:1     
+531(56) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:4.69e-07,d:1.03e-12)  -->  [f:6.59e-07,d:6.63e-13]  lambda:1     
+532(57) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:6.59e-07,d:6.63e-13)  -->  [f:4.88e-07,d:7.71e-14]  lambda:1     
+533(58) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:4.88e-07,d:7.71e-14)  -->  [f:6.94e-07,d:9.07e-13]  lambda:1     
+534(59) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:6.94e-07,d:9.07e-13)  -->  [f:5.61e-07,d:8.04e-13]  lambda:1     
+535(60) [phase:2,s:0.9562,ds:0.00625,dump:0,u:0:0]      (f:5.61e-07,d:8.04e-13)  -->  [f:5.68e-07,d:6.03e-13]  lambda:1     
+NLsolver[SoundingRocket]::solve_with_continuation(phase=2,...) found:
+NLsolver[SoundingRocket]::solve()
+#phase=2 #it=0/60 lambda=1 tolerance=1e-09 |f|_1=5.607e-07 |f|_inf=9.478e-06 |d|_1=8.038e-13 |d|_inf=7.774e-12
+at phase 2, iter 535: NLsolver[SoundingRocket]::solve, Too many iterations
+
+
+Continuation step N.2 s:0.95->0.95312, ds=0.003125
+[iter:535,phase:2,s:0.9531,ds:0.003125] |X|=4.013/0.6006/1.352, |L|=4.013/0.6419/1.399 |B|=1.932e-31/1.932e-31/1.932e-31, |BL|=8.013e-31/8.013e-31/8.013e-31, PARS=2.806e-08/2.806e-08/2.806e-08, U=1/0.4302/0.572
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+536(1 ) [phase:2,s:0.9531,ds:0.003125,dump:1,u:0:0]       (f:0.51,d:2.04e-06)    -->   [f:0.0182,d:7.19e-08]   lambda:0.95   #err=  1 angle:1 armijo:1
+537(2 ) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]      (f:0.0182,d:7.02e-08)   -->  [f:7.8e-06,d:2.68e-11]   lambda:1     
+538(3 ) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:7.8e-06,d:2.68e-11)   -->  [f:7.16e-07,d:5.86e-13]  lambda:1     
+539(4 ) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:7.16e-07,d:5.86e-13)  -->  [f:8.34e-07,d:9.69e-13]  lambda:1     
+540(5 ) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:8.34e-07,d:9.69e-13)  -->  [f:7.19e-07,d:2.87e-13]  lambda:1     
+541(6 ) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:7.19e-07,d:2.87e-13)  -->  [f:3.91e-07,d:1.48e-12]  lambda:1     
+542(7 ) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:3.91e-07,d:1.48e-12)  -->  [f:5.04e-07,d:6.53e-13]  lambda:1     
+543(8 ) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:5.04e-07,d:6.53e-13)  -->  [f:4.98e-07,d:1.34e-12]  lambda:1     
+544(9 ) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:4.98e-07,d:1.34e-12)  -->  [f:6.03e-07,d:1.17e-12]  lambda:1     
+545(10) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:6.03e-07,d:1.17e-12)  -->  [f:4.71e-07,d:4.6e-13]   lambda:1     
+546(11) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:4.71e-07,d:4.6e-13)   -->  [f:6.92e-07,d:1.34e-12]  lambda:1     
+547(12) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:6.92e-07,d:1.34e-12)  -->  [f:5.31e-07,d:2.51e-13]  lambda:1     
+548(13) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:5.31e-07,d:2.51e-13)  -->  [f:5.6e-07,d:2.63e-13]   lambda:1     
+549(14) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:5.6e-07,d:2.63e-13)   -->  [f:4.03e-07,d:4.03e-13]  lambda:1     
+550(15) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:4.03e-07,d:4.03e-13)  -->  [f:7.99e-07,d:2.82e-13]  lambda:1     
+551(16) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:7.99e-07,d:2.82e-13)  -->  [f:5.5e-07,d:4.55e-13]   lambda:1     
+552(17) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:5.5e-07,d:4.55e-13)   -->  [f:5.95e-07,d:6.98e-13]  lambda:1     
+553(18) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:5.95e-07,d:6.98e-13)  -->  [f:4.92e-07,d:1.39e-12]  lambda:1     
+554(19) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:4.92e-07,d:1.39e-12)  -->  [f:6.52e-07,d:3.29e-13]  lambda:1     
+555(20) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:6.52e-07,d:3.29e-13)  -->  [f:7.87e-07,d:2.6e-13]   lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+556(21) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:7.87e-07,d:2.6e-13)   -->  [f:6.57e-07,d:9.17e-13]  lambda:1     
+557(22) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:6.57e-07,d:9.17e-13)  -->  [f:6.19e-07,d:2.57e-12]  lambda:1     
+558(23) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:6.19e-07,d:2.57e-12)  -->  [f:5.54e-07,d:2.17e-12]  lambda:1     
+559(24) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:5.54e-07,d:2.17e-12)  -->  [f:4.88e-07,d:2.21e-13]  lambda:1     
+560(25) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:4.88e-07,d:2.21e-13)  -->  [f:3.71e-07,d:7.47e-13]  lambda:1     
+561(26) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:3.71e-07,d:7.47e-13)  -->  [f:4.76e-07,d:8.15e-13]  lambda:1     
+562(27) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:4.76e-07,d:8.15e-13)  -->  [f:6.05e-07,d:3.89e-13]  lambda:1     
+563(28) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:6.05e-07,d:3.89e-13)  -->  [f:4.95e-07,d:5.19e-13]  lambda:1     
+564(29) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:4.95e-07,d:5.19e-13)  -->  [f:5.58e-07,d:2.37e-13]  lambda:1     
+565(30) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:5.58e-07,d:2.37e-13)  -->  [f:5.94e-07,d:9.64e-13]  lambda:1     
+566(31) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:5.94e-07,d:9.64e-13)  -->  [f:4.16e-07,d:1.68e-12]  lambda:1     
+567(32) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:4.16e-07,d:1.68e-12)  -->  [f:8.34e-07,d:2.89e-13]  lambda:1     
+568(33) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:8.34e-07,d:2.89e-13)  -->  [f:4.55e-07,d:1.59e-13]  lambda:1     
+569(34) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:4.55e-07,d:1.59e-13)  -->  [f:4.76e-07,d:5.56e-13]  lambda:1     
+570(35) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:4.76e-07,d:5.56e-13)  -->  [f:4.86e-07,d:1.04e-12]  lambda:1     
+571(36) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:4.86e-07,d:1.04e-12)  -->  [f:3.9e-07,d:3.13e-13]   lambda:1     
+572(37) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:3.9e-07,d:3.13e-13)   -->  [f:6.22e-07,d:3.22e-13]  lambda:1     
+573(38) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:6.22e-07,d:3.22e-13)  -->  [f:5.68e-07,d:5.85e-13]  lambda:1     
+574(39) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:5.68e-07,d:5.85e-13)  -->  [f:5.8e-07,d:7.78e-13]   lambda:1     
+575(40) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:5.8e-07,d:7.78e-13)   -->  [f:7.38e-07,d:3.24e-13]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+576(41) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:7.38e-07,d:3.24e-13)  -->  [f:7.63e-07,d:1.12e-12]  lambda:1     
+577(42) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:7.63e-07,d:1.12e-12)  -->  [f:5.47e-07,d:8.14e-13]  lambda:1     
+578(43) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:5.47e-07,d:8.14e-13)  -->  [f:6.08e-07,d:4.79e-13]  lambda:1     
+579(44) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:6.08e-07,d:4.79e-13)  -->  [f:5.85e-07,d:3.3e-13]   lambda:1     
+580(45) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:5.85e-07,d:3.3e-13)   -->  [f:6.01e-07,d:2.92e-13]  lambda:1     
+581(46) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:6.01e-07,d:2.92e-13)  -->  [f:7.9e-07,d:8.89e-13]   lambda:1     
+582(47) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:7.9e-07,d:8.89e-13)   -->  [f:4.85e-07,d:3.09e-13]  lambda:1     
+583(48) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:4.85e-07,d:3.09e-13)  -->  [f:4.63e-07,d:9.99e-13]  lambda:1     
+584(49) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:4.63e-07,d:9.99e-13)  -->  [f:5.1e-07,d:1.69e-12]   lambda:1     
+585(50) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:5.1e-07,d:1.69e-12)   -->  [f:5.59e-07,d:4.27e-13]  lambda:1     
+586(51) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:5.59e-07,d:4.27e-13)  -->  [f:4.52e-07,d:1.31e-12]  lambda:1     
+587(52) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:4.52e-07,d:1.31e-12)  -->  [f:5.46e-07,d:2.12e-13]  lambda:1     
+588(53) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:5.46e-07,d:2.12e-13)  -->  [f:5.34e-07,d:1.31e-13]  lambda:1     
+589(54) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:5.34e-07,d:1.31e-13)  -->  [f:6.49e-07,d:8.95e-13]  lambda:1     
+590(55) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:6.49e-07,d:8.95e-13)  -->  [f:5.59e-07,d:9.34e-13]  lambda:1     
+591(56) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:5.59e-07,d:9.34e-13)  -->  [f:7.17e-07,d:4.29e-13]  lambda:1     
+592(57) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:7.17e-07,d:4.29e-13)  -->  [f:5.71e-07,d:5.43e-13]  lambda:1     
+593(58) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:5.71e-07,d:5.43e-13)  -->  [f:5.43e-07,d:8.37e-13]  lambda:1     
+594(59) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:5.43e-07,d:8.37e-13)  -->  [f:7.11e-07,d:4.04e-13]  lambda:1     
+595(60) [phase:2,s:0.9531,ds:0.003125,dump:0,u:0:0]     (f:7.11e-07,d:4.04e-13)  -->  [f:5.49e-07,d:9.34e-13]  lambda:1     
+NLsolver[SoundingRocket]::solve_with_continuation(phase=2,...) found:
+NLsolver[SoundingRocket]::solve()
+#phase=2 #it=0/60 lambda=1 tolerance=1e-09 |f|_1=7.111e-07 |f|_inf=1.212e-05 |d|_1=4.041e-13 |d|_inf=4.114e-12
+at phase 2, iter 595: NLsolver[SoundingRocket]::solve, Too many iterations
+
+
+Continuation step N.2 s:0.95->0.95156, ds=0.0015625
+[iter:595,phase:2,s:0.9516,ds:0.0015625] |X|=2.006/0.3/0.6759, |L|=2.006/0.3206/0.6989 |B|=1.932e-31/1.932e-31/1.932e-31, |BL|=8.013e-31/8.013e-31/8.013e-31, PARS=1.413e-08/1.413e-08/1.413e-08, U=1/0.4302/0.5716
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+596(1 ) [phase:2,s:0.9516,ds:0.0015625,dump:1,u:0:0]     (f:0.255,d:1.02e-06)    -->   [f:0.011,d:4.36e-08]    lambda:0.95   #err=  1 angle:1 armijo:1
+597(2 ) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]      (f:0.011,d:4.3e-08)    -->  [f:3.42e-06,d:1.33e-11]  lambda:1     
+598(3 ) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:3.42e-06,d:1.33e-11)  -->  [f:3.52e-07,d:4.47e-13]  lambda:1     
+599(4 ) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:3.52e-07,d:4.47e-13)  -->  [f:5.49e-07,d:1.56e-12]  lambda:1     
+600(5 ) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:5.49e-07,d:1.56e-12)  -->  [f:4.69e-07,d:4.12e-13]  lambda:1     
+601(6 ) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:4.69e-07,d:4.12e-13)  -->  [f:5.36e-07,d:8.17e-13]  lambda:1     
+602(7 ) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:5.36e-07,d:8.17e-13)  -->  [f:6.07e-07,d:2.64e-13]  lambda:1     
+603(8 ) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:6.07e-07,d:2.64e-13)  -->  [f:7.77e-07,d:1.55e-12]  lambda:1     
+604(9 ) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:7.77e-07,d:1.55e-12)  -->  [f:6.64e-07,d:1.12e-12]  lambda:1     
+605(10) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:6.64e-07,d:1.12e-12)  -->  [f:4.55e-07,d:1.96e-13]  lambda:1     
+606(11) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:4.55e-07,d:1.96e-13)  -->  [f:5.08e-07,d:9.63e-13]  lambda:1     
+607(12) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:5.08e-07,d:9.63e-13)  -->  [f:6.15e-07,d:3.33e-13]  lambda:1     
+608(13) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:6.15e-07,d:3.33e-13)  -->  [f:5.39e-07,d:7.05e-13]  lambda:1     
+609(14) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:5.39e-07,d:7.05e-13)  -->    [f:6.3e-07,d:1e-12]    lambda:1     
+610(15) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]      (f:6.3e-07,d:1e-12)    -->  [f:5.06e-07,d:6.07e-13]  lambda:1     
+611(16) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:5.06e-07,d:6.07e-13)  -->  [f:7.75e-07,d:8.77e-13]  lambda:1     
+612(17) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:7.75e-07,d:8.77e-13)  -->  [f:6.73e-07,d:1.53e-12]  lambda:1     
+613(18) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:6.73e-07,d:1.53e-12)  -->  [f:5.35e-07,d:5.97e-13]  lambda:1     
+614(19) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:5.35e-07,d:5.97e-13)  -->  [f:6.53e-07,d:1.56e-12]  lambda:1     
+615(20) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:6.53e-07,d:1.56e-12)  -->  [f:5.08e-07,d:1.02e-12]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+616(21) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:5.08e-07,d:1.02e-12)  -->  [f:6.55e-07,d:2.66e-13]  lambda:1     
+617(22) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:6.55e-07,d:2.66e-13)  -->  [f:5.32e-07,d:1.12e-12]  lambda:1     
+618(23) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:5.32e-07,d:1.12e-12)  -->  [f:5.55e-07,d:7.25e-13]  lambda:1     
+619(24) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:5.55e-07,d:7.25e-13)  -->  [f:5.89e-07,d:7.21e-13]  lambda:1     
+620(25) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:5.89e-07,d:7.21e-13)  -->  [f:5.96e-07,d:3.65e-13]  lambda:1     
+621(26) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:5.96e-07,d:3.65e-13)  -->  [f:5.01e-07,d:4.05e-13]  lambda:1     
+622(27) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:5.01e-07,d:4.05e-13)  -->  [f:5.33e-07,d:1.67e-13]  lambda:1     
+623(28) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:5.33e-07,d:1.67e-13)  -->  [f:6.79e-07,d:6.02e-13]  lambda:1     
+624(29) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:6.79e-07,d:6.02e-13)  -->   [f:5e-07,d:2.81e-13]    lambda:1     
+625(30) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]     (f:5e-07,d:2.81e-13)    -->  [f:5.17e-07,d:1.58e-12]  lambda:1     
+626(31) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:5.17e-07,d:1.58e-12)  -->  [f:6.27e-07,d:6.17e-13]  lambda:1     
+627(32) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:6.27e-07,d:6.17e-13)  -->  [f:5.67e-07,d:3.97e-13]  lambda:1     
+628(33) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:5.67e-07,d:3.97e-13)  -->  [f:5.91e-07,d:4.61e-13]  lambda:1     
+629(34) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:5.91e-07,d:4.61e-13)  -->  [f:7.38e-07,d:1.22e-12]  lambda:1     
+630(35) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:7.38e-07,d:1.22e-12)  -->  [f:4.23e-07,d:6.79e-13]  lambda:1     
+631(36) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:4.23e-07,d:6.79e-13)  -->  [f:5.92e-07,d:4.53e-13]  lambda:1     
+632(37) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:5.92e-07,d:4.53e-13)  -->  [f:7.3e-07,d:4.67e-13]   lambda:1     
+633(38) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:7.3e-07,d:4.67e-13)   -->  [f:8.22e-07,d:6.51e-13]  lambda:1     
+634(39) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:8.22e-07,d:6.51e-13)  -->  [f:3.67e-07,d:1.37e-12]  lambda:1     
+635(40) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:3.67e-07,d:1.37e-12)  -->  [f:7.51e-07,d:8.64e-13]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+636(41) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:7.51e-07,d:8.64e-13)  -->  [f:5.76e-07,d:1.59e-13]  lambda:1     
+637(42) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:5.76e-07,d:1.59e-13)  -->  [f:3.79e-07,d:2.8e-13]   lambda:1     
+638(43) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:3.79e-07,d:2.8e-13)   -->  [f:4.04e-07,d:1.78e-13]  lambda:1     
+639(44) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:4.04e-07,d:1.78e-13)  -->  [f:6.71e-07,d:5.88e-13]  lambda:1     
+640(45) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:6.71e-07,d:5.88e-13)  -->  [f:5.38e-07,d:2.3e-13]   lambda:1     
+641(46) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:5.38e-07,d:2.3e-13)   -->  [f:6.02e-07,d:4.2e-13]   lambda:1     
+642(47) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:6.02e-07,d:4.2e-13)   -->  [f:4.64e-07,d:4.66e-13]  lambda:1     
+643(48) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:4.64e-07,d:4.66e-13)  -->  [f:7.22e-07,d:1.75e-12]  lambda:1     
+644(49) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:7.22e-07,d:1.75e-12)  -->  [f:4.73e-07,d:2.09e-12]  lambda:1     
+645(50) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:4.73e-07,d:2.09e-12)  -->  [f:6.36e-07,d:1.05e-12]  lambda:1     
+646(51) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:6.36e-07,d:1.05e-12)  -->  [f:4.97e-07,d:1.82e-12]  lambda:1     
+647(52) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:4.97e-07,d:1.82e-12)  -->  [f:6.67e-07,d:8.08e-13]  lambda:1     
+648(53) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:6.67e-07,d:8.08e-13)  -->  [f:8.36e-07,d:6.02e-13]  lambda:1     
+649(54) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:8.36e-07,d:6.02e-13)  -->  [f:6.32e-07,d:5.14e-13]  lambda:1     
+650(55) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:6.32e-07,d:5.14e-13)  -->  [f:6.57e-07,d:1.47e-12]  lambda:1     
+651(56) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:6.57e-07,d:1.47e-12)  -->  [f:3.96e-07,d:7.02e-13]  lambda:1     
+652(57) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:3.96e-07,d:7.02e-13)  -->  [f:7.16e-07,d:6.68e-13]  lambda:1     
+653(58) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:7.16e-07,d:6.68e-13)  -->  [f:4.96e-07,d:5.42e-13]  lambda:1     
+654(59) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:4.96e-07,d:5.42e-13)  -->  [f:5.49e-07,d:6.2e-13]   lambda:1     
+655(60) [phase:2,s:0.9516,ds:0.0015625,dump:0,u:0:0]    (f:5.49e-07,d:6.2e-13)   -->  [f:5.94e-07,d:1.6e-13]   lambda:1     
+NLsolver[SoundingRocket]::solve_with_continuation(phase=2,...) found:
+NLsolver[SoundingRocket]::solve()
+#phase=2 #it=0/60 lambda=1 tolerance=1e-09 |f|_1=5.493e-07 |f|_inf=1.167e-05 |d|_1=6.199e-13 |d|_inf=5.639e-12
+at phase 2, iter 655: NLsolver[SoundingRocket]::solve, Too many iterations
+
+
+Continuation step N.2 s:0.95->0.95078, ds=0.00078125
+[iter:655,phase:2,s:0.9508,ds:0.00078125] |X|=1.003/0.1499/0.3378, |L|=1.003/0.1602/0.3493 |B|=1.932e-31/1.932e-31/1.932e-31, |BL|=8.013e-31/8.013e-31/8.013e-31, PARS=7.088e-09/7.088e-09/7.088e-09, U=1/0.4302/0.5714
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+656(1 ) [phase:2,s:0.9508,ds:0.00078125,dump:1,u:0:0]    (f:0.127,d:5.11e-07)    -->  [f:0.00593,d:2.37e-08]   lambda:0.95   #err=  1 angle:1 armijo:1
+657(2 ) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:0.00593,d:2.35e-08)   -->  [f:1.27e-06,d:4.51e-12]  lambda:1     
+658(3 ) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:1.27e-06,d:4.51e-12)  -->  [f:6.99e-07,d:1.24e-12]  lambda:1     
+659(4 ) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:6.99e-07,d:1.24e-12)  -->  [f:6.48e-07,d:8.52e-13]  lambda:1     
+660(5 ) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:6.48e-07,d:8.52e-13)  -->  [f:6.13e-07,d:4.15e-13]  lambda:1     
+661(6 ) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:6.13e-07,d:4.15e-13)  -->  [f:6.93e-07,d:7.94e-13]  lambda:1     
+662(7 ) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:6.93e-07,d:7.94e-13)  -->  [f:5.66e-07,d:6.53e-13]  lambda:1     
+663(8 ) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:5.66e-07,d:6.53e-13)  -->  [f:7.3e-07,d:1.15e-12]   lambda:1     
+664(9 ) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:7.3e-07,d:1.15e-12)   -->  [f:7.54e-07,d:1.17e-12]  lambda:1     
+665(10) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:7.54e-07,d:1.17e-12)  -->  [f:7.12e-07,d:8.27e-13]  lambda:1     
+666(11) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:7.12e-07,d:8.27e-13)  -->  [f:5.5e-07,d:5.42e-13]   lambda:1     
+667(12) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:5.5e-07,d:5.42e-13)   -->  [f:5.57e-07,d:1.38e-12]  lambda:1     
+668(13) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:5.57e-07,d:1.38e-12)  -->  [f:7.33e-07,d:1.34e-12]  lambda:1     
+669(14) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:7.33e-07,d:1.34e-12)  -->  [f:5.06e-07,d:2.1e-13]   lambda:1     
+670(15) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:5.06e-07,d:2.1e-13)   -->  [f:5.15e-07,d:2.2e-13]   lambda:1     
+671(16) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:5.15e-07,d:2.2e-13)   -->  [f:6.46e-07,d:4.62e-13]  lambda:1     
+672(17) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:6.46e-07,d:4.62e-13)  -->  [f:7.5e-07,d:1.46e-12]   lambda:1     
+673(18) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:7.5e-07,d:1.46e-12)   -->  [f:4.89e-07,d:2.09e-13]  lambda:1     
+674(19) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:4.89e-07,d:2.09e-13)  -->  [f:6.1e-07,d:1.55e-12]   lambda:1     
+675(20) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:6.1e-07,d:1.55e-12)   -->  [f:8.46e-07,d:2.01e-12]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+676(21) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:8.46e-07,d:2.01e-12)  -->  [f:5.15e-07,d:3.44e-13]  lambda:1     
+677(22) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:5.15e-07,d:3.44e-13)  -->  [f:6.26e-07,d:1.1e-12]   lambda:1     
+678(23) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:6.26e-07,d:1.1e-12)   -->  [f:4.87e-07,d:1.06e-12]  lambda:1     
+679(24) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:4.87e-07,d:1.06e-12)  -->  [f:5.59e-07,d:6.79e-13]  lambda:1     
+680(25) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:5.59e-07,d:6.79e-13)  -->  [f:5.09e-07,d:1.98e-13]  lambda:1     
+681(26) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:5.09e-07,d:1.98e-13)  -->  [f:6.07e-07,d:2.55e-13]  lambda:1     
+682(27) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:6.07e-07,d:2.55e-13)  -->  [f:5.64e-07,d:8.06e-13]  lambda:1     
+683(28) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:5.64e-07,d:8.06e-13)  -->  [f:5.47e-07,d:1.3e-12]   lambda:1     
+684(29) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:5.47e-07,d:1.3e-12)   -->  [f:4.83e-07,d:3.16e-13]  lambda:1     
+685(30) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:4.83e-07,d:3.16e-13)  -->  [f:5.32e-07,d:2.65e-13]  lambda:1     
+686(31) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:5.32e-07,d:2.65e-13)  -->  [f:5.36e-07,d:6.37e-13]  lambda:1     
+687(32) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:5.36e-07,d:6.37e-13)  -->  [f:6.02e-07,d:2.46e-13]  lambda:1     
+688(33) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:6.02e-07,d:2.46e-13)  -->  [f:4.91e-07,d:4.81e-13]  lambda:1     
+689(34) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:4.91e-07,d:4.81e-13)  -->  [f:6.42e-07,d:5.87e-13]  lambda:1     
+690(35) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:6.42e-07,d:5.87e-13)  -->  [f:7.13e-07,d:2.26e-13]  lambda:1     
+691(36) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:7.13e-07,d:2.26e-13)  -->  [f:6.05e-07,d:1.96e-13]  lambda:1     
+692(37) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:6.05e-07,d:1.96e-13)  -->  [f:6.51e-07,d:8.99e-13]  lambda:1     
+693(38) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:6.51e-07,d:8.99e-13)  -->  [f:7.88e-07,d:1.47e-12]  lambda:1     
+694(39) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:7.88e-07,d:1.47e-12)  -->  [f:5.55e-07,d:3.33e-13]  lambda:1     
+695(40) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:5.55e-07,d:3.33e-13)  -->  [f:7.27e-07,d:6.31e-13]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SoundingRocket
+696(41) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:7.27e-07,d:6.31e-13)  -->  [f:6.4e-07,d:2.37e-13]   lambda:1     
+697(42) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:6.4e-07,d:2.37e-13)   -->  [f:6.38e-07,d:2.79e-13]  lambda:1     
+698(43) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:6.38e-07,d:2.79e-13)  -->  [f:8.23e-07,d:4.04e-13]  lambda:1     
+699(44) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:8.23e-07,d:4.04e-13)  -->  [f:5.88e-07,d:5.47e-13]  lambda:1     
+700(45) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:5.88e-07,d:5.47e-13)  -->  [f:6.38e-07,d:3.57e-13]  lambda:1     
+701(46) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:6.38e-07,d:3.57e-13)  -->  [f:5.93e-07,d:7.86e-13]  lambda:1     
+702(47) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:5.93e-07,d:7.86e-13)  -->  [f:5.41e-07,d:3.45e-13]  lambda:1     
+703(48) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:5.41e-07,d:3.45e-13)  -->  [f:5.78e-07,d:9.86e-13]  lambda:1     
+704(49) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:5.78e-07,d:9.86e-13)  -->  [f:4.63e-07,d:1.32e-12]  lambda:1     
+705(50) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:4.63e-07,d:1.32e-12)  -->  [f:5.9e-07,d:7.16e-13]   lambda:1     
+706(51) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:5.9e-07,d:7.16e-13)   -->  [f:3.9e-07,d:2.46e-13]   lambda:1     
+707(52) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:3.9e-07,d:2.46e-13)   -->  [f:7.5e-07,d:3.97e-13]   lambda:1     
+708(53) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:7.5e-07,d:3.97e-13)   -->  [f:6.45e-07,d:7.52e-13]  lambda:1     
+709(54) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:6.45e-07,d:7.52e-13)  -->  [f:8.79e-07,d:1.17e-12]  lambda:1     
+710(55) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:8.79e-07,d:1.17e-12)  -->  [f:5.7e-07,d:4.85e-13]   lambda:1     
+711(56) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:5.7e-07,d:4.85e-13)   -->  [f:6.32e-07,d:2.47e-13]  lambda:1     
+712(57) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:6.32e-07,d:2.47e-13)  -->  [f:6.38e-07,d:7.02e-13]  lambda:1     
+713(58) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:6.38e-07,d:7.02e-13)  -->   [f:4.25e-07,d:1e-12]    lambda:1     
+714(59) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]    (f:4.25e-07,d:1e-12)    -->  [f:5.69e-07,d:1.27e-12]  lambda:1     
+715(60) [phase:2,s:0.9508,ds:0.00078125,dump:0,u:0:0]   (f:5.69e-07,d:1.27e-12)  -->   [f:6e-07,d:8.13e-13]    lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 1               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = NO              | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 311             | N. System pars  = 766             |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 3.05 [sec]      | timeout         = 0 [ms]          |
+| iteration       = 715             | Memory Used     = 133Kb(+12b)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 2593            | Jacobian        = 715             |
+| Factorization   = 715             | Inversion       = 2593            |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 1.4407e-05      | last ||d||_inf  = 1.1458e-11      |
+| last ||f||_1    = 5.6948e-07      | last ||d||_1    = 1.2687e-12      |
+| last ||f||_2    = 1.9106e-06      | last ||d||_2    = 3.2483e-12      |
++-----------------------------------------------------------------------+
+|          __  ___     __   __             ___  __   __   ___  __       |
+|    |\ | /  \  |     /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \      |
+|    | \| \__/  |     \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/      |
+|                                                                       |
++-----------------------------------------------------------------------+
+                                                                         
+Solver error list
+BEGIN
+  err #1: NLsolver[SoundingRocket]::solve_with_continuation(phase=2,...) continuation step too short [s=0.95,ds=0.0007813<ds_min_step=0.001]
+
+  err #2: NLsolver[SoundingRocket]::solve, Too many iterations
+END
+                                                                         
+Check Controls (epsi=0.001): all OK [ 0.15ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 9.803ms ]
+Check DuDxxpm (epsi=0.001):
+#ERR 1 DuDxxpm [cell=7 of 50 SEGMENT#0 range:(0,50)] #x=3 #u=1 #p=1 [ (u) * (xxpm) = 1 x 10 ]
+jac[  0,  8] =  -1.4111e+06 : -2.6133e+06  [A:FD] ---   1.2022e+06 : 46.004       [err:err(%)]
+jac[  0,  9] =  -1.4111e+06 : -2.6133e+06  [A:FD] ---   1.2022e+06 : 46.004       [err:err(%)]
+
+#ERR 2 DuDxxpm [cell=8 of 50 SEGMENT#0 range:(0,50)] #x=3 #u=1 #p=1 [ (u) * (xxpm) = 1 x 10 ]
+jac[  0,  8] =  -3.0236e+06 : -3.4456e+06  [A:FD] ---   4.2206e+05 : 12.249       [err:err(%)]
+jac[  0,  9] =  -3.0236e+06 : -3.4456e+06  [A:FD] ---   4.2206e+05 : 12.249       [err:err(%)]
+
+#ERR 3 DuDxxpm [cell=9 of 50 SEGMENT#0 range:(0,50)] #x=3 #u=1 #p=1 [ (u) * (xxpm) = 1 x 10 ]
+jac[  0,  8] =   -5.164e+06 : -4.0787e+06  [A:FD] ---   1.0854e+06 : 21.018       [err:err(%)]
+jac[  0,  9] =   -5.164e+06 : -4.0787e+06  [A:FD] ---   1.0854e+06 : 21.018       [err:err(%)]
+
+#ERR 4 DuDxxpm [cell=10 of 50 SEGMENT#0 range:(0,50)] #x=3 #u=1 #p=1 [ (u) * (xxpm) = 1 x 10 ]
+jac[  0,  8] =  -7.7469e+06 : -4.5941e+06  [A:FD] ---   3.1528e+06 : 40.698       [err:err(%)]
+jac[  0,  9] =  -7.7469e+06 : -4.5941e+06  [A:FD] ---   3.1528e+06 : 40.698       [err:err(%)]
+
+#ERR 5 DuDxxpm [cell=11 of 50 SEGMENT#0 range:(0,50)] #x=3 #u=1 #p=1 [ (u) * (xxpm) = 1 x 10 ]
+jac[  0,  8] =   -1.067e+07 : -5.0236e+06  [A:FD] ---   5.6463e+06 : 52.918       [err:err(%)]
+jac[  0,  9] =   -1.067e+07 : -5.0236e+06  [A:FD] ---   5.6463e+06 : 52.918       [err:err(%)]
+
+#ERR 6 DuDxxpm [cell=12 of 50 SEGMENT#0 range:(0,50)] #x=3 #u=1 #p=1 [ (u) * (xxpm) = 1 x 10 ]
+jac[  0,  8] =  -1.3816e+07 : -5.3849e+06  [A:FD] ---   8.4315e+06 : 61.026       [err:err(%)]
+jac[  0,  9] =  -1.3816e+07 : -5.3849e+06  [A:FD] ---   8.4315e+06 : 61.026       [err:err(%)]
+
+skipping... [ 1.681ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001):
+#ERR 1 DabcDxlxlpu [cell=4 of 50 SEGMENT#0 range:(0,50)] #x=#l=3 #p=1 #u=1 [ (xlp) x (xlxlpu) = 7 x 14 ]
+DcDu(0:0,0:0)[ 0, 0] =       4.0751 : 8.0789       [A:FD] ---       4.0038 : 49.56        [err:err(%)]
+
+#ERR 2 DabcDxlxlpu [cell=5 of 50 SEGMENT#0 range:(0,50)] #x=#l=3 #p=1 #u=1 [ (xlp) x (xlxlpu) = 7 x 14 ]
+DcDu(0:0,0:0)[ 0, 0] =       1.0817 : 1.0981       [A:FD] ---     0.016371 : 1.491        [err:err(%)]
+
+#ERR 3 DabcDxlxlpu [cell=37 of 50 SEGMENT#0 range:(0,50)] #x=#l=3 #p=1 #u=1 [ (xlp) x (xlxlpu) = 7 x 14 ]
+DcDu(0:0,0:0)[ 0, 0] =      -1.0085 : -1.0118      [A:FD] ---    0.0032203 : 0.3183       [err:err(%)]
+
+#ERR 4 DabcDxlxlpu [cell=38 of 50 SEGMENT#0 range:(0,50)] #x=#l=3 #p=1 #u=1 [ (xlp) x (xlxlpu) = 7 x 14 ]
+DcDu(0:0,0:0)[ 0, 0] =      -3.8809 : -4.0882      [A:FD] ---       0.2073 : 5.071        [err:err(%)]
+ [ 9.528ms ]
+Check DodeDxp (epsi=0.001): all OK [ 0.198ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 9.89ms ]
+target [Lagrange,Mayer]            = [ 0, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 1.888e-05, 0 ]
+Optimization parameters:
+Tf: 20.7318835260005443
+All Done Folks!

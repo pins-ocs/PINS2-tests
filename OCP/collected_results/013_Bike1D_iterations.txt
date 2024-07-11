@@ -1,0 +1,428 @@
++---------------------------- MODEL:Bike1D -----------------------------+
++................................ DIMS .................................+
+| dims                      = u=2, q=1, x=1, p=0, bc=2 of 2             |
+| total                     = nZ=404, nP=1807, nUC=400, Q=201           |
+| index start               = omega=402, p=404                          |
+| post processing           = n_post=13                                 |
++................................ MESH .................................+
+| num nodes / segments      = 201 / 1                                   |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 1                               |
+| mesh class pointer        = 0x7ff7b7b30148                            |
+| W-proxi x/u/p             = 0/0.0001/0                                |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 404 x 404                                 |
+| nblock/block size         = 200 / 2                                   |
+| qr/qx/nr/nx               = 2 / 2 / 0 / 0                             |
+| last blok rows x cols     = 6 x 6                                     |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_v                                                        |
+| [ 1] final_v                                                          |
++..................... Controls penalties/barriers .....................+
+murControl = { COSLOG (BARRIER) epsilon=0.1, tolerance=0.1 }             
+mufControl = { COSLOG (BARRIER) epsilon=0.1, tolerance=0.1 }             
++......................... Constraints type LT .........................+
+vMinLimit = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }         
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 201                                                    
+  Segment N.0: s0 = 0 length = 1000 npts = 201 no data set               
+END Mesh[mesh]                                                           
+                                                                         
++........................ User mapped functions ........................+
+`clip1' mapped with: ClipIntervalWithErf [h=0.1, delta=0, delta2=0, internal kappa=1.4105]
+`clip2' mapped with: ClipIntervalWithSinAtan [h=0.1, delta=0, delta2=0, internal kappa=0.19091]
+`clip3' mapped with: ClipIntervalWithTanh [h=0.1, delta=0, delta2=0]     
+`clip4' mapped with: ClipIntervalWithPolynomial [h=0.1, delta=0, delta2=0, internal h=0.53333]
++.......................... MODEL PARAMETERS ...........................+
+|............................. Pmax = 50000 ............................|
+|............................... W1 = 1 ................................|
+|............................... W2 = 0 ................................|
+|............................... W3 = 0 ................................|
+|............................... W4 = 0 ................................|
+|................................ g = 9.81 .............................|
+|.......................... h_clip0 = 0.1 ..............................|
+|.......................... h_clip1 = 0.01 .............................|
+|................................ m = 275 ..............................|
+|.......................... muf_min = -1 ...............................|
+|.......................... mur_max = 1 ................................|
+|.......................... mur_min = -1 ...............................|
+|.......................... u_epsi0 = 0.1 ..............................|
+|.......................... u_epsi1 = 0.001 ............................|
+|........................... u_tol0 = 0.1 ..............................|
+|........................... u_tol1 = 0.001 ............................|
+|.............................. v_f = 10 ...............................|
+|.............................. v_i = 10 ...............................|
+|............................ v_min = 1 ................................|
+|............................. vmax = 100 ..............................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=4.885/2.447/3.454, |L|=4.885/2.447/3.454 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=0.4994/0.2505/0.3532
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Bike1D
+  1 [dump:0,u:8:8]        (f:2.42,d:2.46)      -->      [f:0.255,d:1.1]      lambda:1      U:0.0001->0.0001
+  2 [dump:0,u:7:9]       (f:0.252,d:3.64)      -->     [f:0.0766,d:1.59]     lambda:1      U:0.0001->1e-05
+  3 [dump:0,u:5.4:10]     (f:0.0763,d:5.27)     -->     [f:0.155,d:2.25]      lambda:1      U:0.0001->1e-06
+  4 [dump:0,u:5.6:11]     (f:0.155,d:7.26)      -->     [f:0.348,d:2.93]      lambda:1      U:0.0001->1e-06
+  5 [dump:0,u:7.8:11]     (f:0.348,d:8.72)      -->     [f:0.776,d:2.87]      lambda:1      U:0.0001->1e-06
+U_solver::u_eval( C, err_msg ) i_cell=94 control not admissible
+  6 [dump:1,u:8.6:32]     (f:0.776,d:6.01)      -->      [f:0.9,d:1.59]       lambda:0.7    U:0.0001->1e-06 #err=  2 controls:1
+  7 [dump:0,u:7.4:10]     (f:0.899,d:1.17)      -->     [f:0.425,d:0.737]     lambda:1      U:0.0001->5e-07
+  8 [dump:0,u:6.1:9]     (f:0.425,d:0.574)     -->    [f:0.102,d:0.0918]     lambda:1      U:0.0001->5e-08
+  9 [dump:0,u:5.5:9]      (f:0.102,d:0.1)      -->   [f:0.0123,d:0.00891]    lambda:1      U:0.0001->5e-09
+ 10 [dump:0,u:4.4:6]    (f:0.0123,d:0.0107)    -->  [f:0.00012,d:0.000346]   lambda:1      U:0.0001->5e-09
+ 11 [dump:0,u:3.7:5]  (f:0.00012,d:0.000368)   -->  [f:7.89e-08,d:3.83e-07]  lambda:1      U:0.0001->5e-09
+ 12 [dump:0,u:2.4:3]  (f:7.89e-08,d:3.83e-07)  -->  [f:9.3e-14,d:3.82e-13]   lambda:1      U:0.0001->5e-09
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:12,phase:1,s:0.2,ds:0.2] |X|=1.076/0.2801/0.4276, |L|=1.094/0.2844/0.4342 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=0.9687/0.5652/0.6679
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Bike1D
+13 (1 ) [phase:1,s:0.2,ds:0.2,dump:6,u:6.5:15]             (f:0.408,d:0.796)     -->     [f:0.131,d:0.13]      lambda:0.735  U:0.0001->0.0001 #err=  6 angle:6 armijo:6
+14 (2 ) [phase:1,s:0.2,ds:0.2,dump:0,u:6.2:10]             (f:0.135,d:0.115)     -->   [f:0.0161,d:0.00283]    lambda:1      U:0.0001->5e-05
+15 (3 ) [phase:1,s:0.2,ds:0.2,dump:1,u:4.7:7]            (f:0.0168,d:0.00303)    -->   [f:0.00105,d:0.00014]   lambda:0.95   U:0.0001->5e-06 #err=  1 angle:1 armijo:1
+16 (4 ) [phase:1,s:0.2,ds:0.2,dump:0,u:4:5]             (f:0.00103,d:0.000142)   -->  [f:7.61e-07,d:4.6e-07]   lambda:1      U:0.0001->5e-07
+17 (5 ) [phase:1,s:0.2,ds:0.2,dump:0,u:2.4:3]           (f:6.31e-07,d:3.22e-07)  -->  [f:1.91e-09,d:8.62e-09]  lambda:1      U:0.0001->5e-08
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:17,phase:1,s:0.5,ds:0.3] |X|=1.814/0.4129/0.6474, |L|=1.859/0.4206/0.6603 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=0.9827/0.5879/0.7041
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Bike1D
+18 (1 ) [phase:1,s:0.5,ds:0.3,dump:0,u:7.7:31]             (f:0.701,d:0.898)     -->     [f:0.467,d:0.157]     lambda:1      U:0.0001->0.0001
+U_solver::u_eval( C, err_msg ) i_cell=120 control not admissible
+19 (2 ) [phase:1,s:0.5,ds:0.3,dump:8,u:6.5:15]             (f:0.529,d:0.226)     -->    [f:0.358,d:0.0225]     lambda:0.489  U:0.0001->1e-05 #err=  9 controls:1 angle:7 armijo:7
+20 (3 ) [phase:1,s:0.5,ds:0.3,dump:0,u:5.8:11]             (f:0.358,d:0.119)     -->    [f:0.0231,d:0.016]     lambda:1      U:0.0001->5e-06
+21 (4 ) [phase:1,s:0.5,ds:0.3,dump:0,u:4.9:9]             (f:0.0229,d:0.0138)    -->  [f:0.000205,d:7.23e-05]  lambda:1      U:0.0001->5e-07
+22 (5 ) [phase:1,s:0.5,ds:0.3,dump:0,u:3.3:5]           (f:0.000207,d:7.32e-05)  -->  [f:1.62e-08,d:1.18e-08]  lambda:1      U:0.0001->5e-08
+23 (6 ) [phase:1,s:0.5,ds:0.3,dump:0,u:1.3:3]           (f:1.56e-08,d:6.1e-09)   -->  [f:1.24e-09,d:5.49e-09]  lambda:1      U:0.0001->5e-08
+
+Continuation step N.1 s:0.5->0.95, ds=0.45
+[iter:23,phase:1,s:0.95,ds:0.45] |X|=3.505/0.5778/0.9779, |L|=3.686/0.5945/1.012 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=0.9988/0.6043/0.7567
+U_solver::u_eval( C, err_msg ) i_cell=100 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=104 control not admissible
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Bike1D
+24 (1 ) [phase:1,s:0.95,ds:0.45,dump:2,u:9.1:25]            (f:1.33,d:1.48)      -->     [f:0.768,d:0.624]     lambda:0.49   U:0.0001->0.0001 #err=  4 controls:2
+U_solver::u_eval( C, err_msg ) i_cell=99 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=100 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+25 (2 ) [phase:1,s:0.95,ds:0.45,dump:7,u:6.3:24]           (f:0.873,d:0.956)     -->      [f:0.8,d:0.875]      lambda:0.0824  U:0.0001->5e-05 #err= 14 controls:7
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+26 (3 ) [phase:1,s:0.95,ds:0.45,dump:7,u:5.8:23]           (f:0.815,d:0.822)     -->     [f:0.786,d:0.792]     lambda:0.0355  U:0.0001->5e-05 #err= 15 controls:7
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=107 control not admissible
+27 (4 ) [phase:1,s:0.95,ds:0.45,dump:8,u:5.1:25]           (f:0.786,d:0.788)     -->     [f:0.773,d:0.775]     lambda:0.0163  U:0.0001->5e-05 #err= 17 controls:8
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=107 control not admissible
+28 (5 ) [phase:1,s:0.95,ds:0.45,dump:7,u:5:22]             (f:0.771,d:0.777)     -->     [f:0.759,d:0.765]     lambda:0.0158  U:0.0001->5e-05 #err= 17 controls:7
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+29 (6 ) [phase:1,s:0.95,ds:0.45,dump:7,u:5:23]             (f:0.756,d:0.763)     -->     [f:0.745,d:0.752]     lambda:0.0155  U:0.0001->5e-05 #err= 16 controls:7
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+30 (7 ) [phase:1,s:0.95,ds:0.45,dump:7,u:5:25]             (f:0.742,d:0.742)     -->     [f:0.731,d:0.73]      lambda:0.0154  U:0.0001->5e-05 #err= 16 controls:7
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=107 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+31 (8 ) [phase:1,s:0.95,ds:0.45,dump:7,u:4.9:18]           (f:0.728,d:0.713)     -->     [f:0.717,d:0.702]     lambda:0.0153  U:0.0001->5e-05 #err= 17 controls:7
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=107 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+32 (9 ) [phase:1,s:0.95,ds:0.45,dump:7,u:4.9:25]           (f:0.714,d:0.681)     -->     [f:0.704,d:0.671]     lambda:0.0153  U:0.0001->5e-05 #err= 18 controls:7
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=107 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=108 control not admissible
+33 (10) [phase:1,s:0.95,ds:0.45,dump:6,u:5.1:22]           (f:0.702,d:0.651)     -->     [f:0.687,d:0.636]     lambda:0.0218  U:0.0001->5e-05 #err= 15 controls:6
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=107 control not admissible
+34 (11) [phase:1,s:0.95,ds:0.45,dump:6,u:5.1:24]           (f:0.684,d:0.611)     -->     [f:0.667,d:0.595]     lambda:0.0261  U:0.0001->5e-05 #err= 14 controls:6
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+35 (12) [phase:1,s:0.95,ds:0.45,dump:7,u:5.1:24]           (f:0.665,d:0.631)     -->     [f:0.653,d:0.622]     lambda:0.0199  U:0.0001->5e-05 #err= 14 controls:7
+36 (13) [phase:1,s:0.95,ds:0.45,dump:3,u:5.9:22]           (f:0.651,d:0.517)     -->     [f:0.643,d:0.512]     lambda:0.0136  U:0.0001->5e-05 #err=  3 armijo:3
+U_solver::u_eval( C, err_msg ) i_cell=102 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=102 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=107 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=107 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+37 (14) [phase:1,s:0.95,ds:0.45,dump:11,u:5.4:25]          (f:0.643,d:0.636)     -->     [f:0.632,d:0.629]     lambda:0.0198  U:0.0001->5e-05 #err= 24 controls:11
+38 (15) [phase:1,s:0.95,ds:0.45,dump:0,u:6:28]             (f:0.631,d:0.435)     -->     [f:0.498,d:0.373]     lambda:0.211  U:0.0001->5e-05
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+39 (16) [phase:1,s:0.95,ds:0.45,dump:9,u:5.7:26]           (f:0.498,d:0.441)     -->     [f:0.48,d:0.422]      lambda:0.0404  U:0.0001->2.5e-05 #err= 18 controls:9
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=105 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=106 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=107 control not admissible
+40 (17) [phase:1,s:0.95,ds:0.45,dump:4,u:5.5:24]           (f:0.48,d:0.365)      -->     [f:0.448,d:0.336]     lambda:0.0723  U:0.0001->2.5e-05 #err=  9 controls:4
+U_solver::u_eval( C, err_msg ) i_cell=112 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=117 control not admissible
+41 (18) [phase:1,s:0.95,ds:0.45,dump:2,u:6.5:38]           (f:0.448,d:0.291)     -->     [f:0.366,d:0.231]     lambda:0.198  U:0.0001->2.5e-05 #err=  4 controls:2
+U_solver::u_eval( C, err_msg ) i_cell=119 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=121 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=122 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=124 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=130 control not admissible
+42 (19) [phase:1,s:0.95,ds:0.45,dump:4,u:6.3:31]           (f:0.366,d:0.233)     -->     [f:0.279,d:0.177]     lambda:0.24   U:0.0001->1.2e-05 #err=  9 controls:4
+U_solver::u_eval( C, err_msg ) i_cell=124 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=129 control not admissible
+43 (20) [phase:1,s:0.95,ds:0.45,dump:2,u:6.3:30]           (f:0.28,d:0.178)      -->     [f:0.178,d:0.114]     lambda:0.36   U:0.0001->6.2e-06 #err=  4 controls:2
+U_solver::u_eval( C, err_msg ) i_cell=126 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=134 control not admissible
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Bike1D
+44 (21) [phase:1,s:0.95,ds:0.45,dump:2,u:6.2:28]           (f:0.178,d:0.114)     -->    [f:0.0908,d:0.0584]    lambda:0.49   U:0.0001->3.1e-06 #err=  4 controls:2
+45 (22) [phase:1,s:0.95,ds:0.45,dump:0,u:5.5:22]          (f:0.0906,d:0.0581)    -->  [f:0.00164,d:0.000622]   lambda:1      U:0.0001->1.6e-06
+46 (23) [phase:1,s:0.95,ds:0.45,dump:0,u:3.7:6]         (f:0.00168,d:0.000614)   -->  [f:1.4e-06,d:6.01e-07]   lambda:1      U:0.0001->1.6e-07
+47 (24) [phase:1,s:0.95,ds:0.45,dump:0,u:2.3:3]         (f:1.41e-06,d:5.97e-07)  -->  [f:4.52e-11,d:1.55e-10]  lambda:1      U:0.0001->1.6e-08
+
+Continuation step N.1 s:0.95->1, ds=0.05
+[iter:47,phase:1,s:1,ds:0.05] |X|=0.4029/0.06131/0.1184, |L|=0.4029/0.06319/0.1217 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=0.9998/0.515/0.7037
+U_solver::u_eval( C, err_msg ) i_cell=108 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=110 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=110 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=110 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=110 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=111 control not admissible
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Bike1D
+48 (1 ) [phase:1,s:1,ds:0.05,dump:8,u:6.5:28]              (f:0.167,d:0.108)     -->     [f:0.157,d:0.101]     lambda:0.0576  U:0.0001->0.0001 #err= 16 controls:8
+U_solver::u_eval( C, err_msg ) i_cell=110 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=110 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=110 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=110 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=110 control not admissible
+49 (2 ) [phase:1,s:1,ds:0.05,dump:5,u:6.3:31]              (f:0.157,d:0.101)     -->    [f:0.147,d:0.0952]     lambda:0.0605  U:0.0001->0.0001 #err= 10 controls:5
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=110 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=110 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=110 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=110 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=110 control not admissible
+50 (3 ) [phase:1,s:1,ds:0.05,dump:5,u:6.3:37]             (f:0.146,d:0.0951)     -->    [f:0.137,d:0.0892]     lambda:0.062  U:0.0001->0.0001 #err= 11 controls:5
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=110 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=110 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=110 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=110 control not admissible
+51 (4 ) [phase:1,s:1,ds:0.05,dump:5,u:6.1:29]             (f:0.136,d:0.0892)     -->    [f:0.127,d:0.0836]     lambda:0.0628  U:0.0001->0.0001 #err= 10 controls:5
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=110 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=110 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=110 control not admissible
+52 (5 ) [phase:1,s:1,ds:0.05,dump:5,u:5.9:27]             (f:0.126,d:0.0836)     -->    [f:0.118,d:0.0783]     lambda:0.0632  U:0.0001->0.0001 #err= 10 controls:5
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=110 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=110 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=110 control not admissible
+53 (6 ) [phase:1,s:1,ds:0.05,dump:5,u:5.8:27]             (f:0.116,d:0.0783)     -->    [f:0.108,d:0.0733]     lambda:0.0634  U:0.0001->0.0001 #err= 10 controls:5
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=110 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=110 control not admissible
+54 (7 ) [phase:1,s:1,ds:0.05,dump:5,u:5.7:35]             (f:0.106,d:0.0733)     -->    [f:0.0997,d:0.0686]    lambda:0.0635  U:0.0001->0.0001 #err= 10 controls:5
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+55 (8 ) [phase:1,s:1,ds:0.05,dump:4,u:6.1:25]             (f:0.0976,d:0.0686)    -->    [f:0.0888,d:0.0624]    lambda:0.0907  U:0.0001->0.0001 #err=  8 controls:4
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+56 (9 ) [phase:1,s:1,ds:0.05,dump:5,u:5.6:24]             (f:0.0894,d:0.0624)    -->    [f:0.0826,d:0.0577]    lambda:0.0759  U:0.0001->0.0001 #err= 10 controls:5
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+57 (10) [phase:1,s:1,ds:0.05,dump:4,u:6:25]               (f:0.0846,d:0.0577)    -->    [f:0.0762,d:0.0519]    lambda:0.0992  U:0.0001->0.0001 #err=  8 controls:4
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+58 (11) [phase:1,s:1,ds:0.05,dump:4,u:6.2:26]             (f:0.0779,d:0.0519)    -->    [f:0.0691,d:0.046]     lambda:0.113  U:0.0001->0.0001 #err=  8 controls:4
+U_solver::u_eval( C, err_msg ) i_cell=108 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+59 (12) [phase:1,s:1,ds:0.05,dump:4,u:6:24]               (f:0.0715,d:0.046)     -->    [f:0.0628,d:0.0404]    lambda:0.121  U:0.0001->5e-05 #err=  8 controls:4
+U_solver::u_eval( C, err_msg ) i_cell=108 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=108 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=109 control not admissible
+60 (13) [phase:1,s:1,ds:0.05,dump:4,u:5.9:29]             (f:0.0654,d:0.0404)    -->    [f:0.0572,d:0.0353]    lambda:0.125  U:0.0001->2.5e-05 #err=  8 controls:4
+U_solver::u_eval( C, err_msg ) i_cell=108 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=108 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=108 control not admissible
+61 (14) [phase:1,s:1,ds:0.05,dump:3,u:6.2:28]             (f:0.0588,d:0.0353)    -->    [f:0.0481,d:0.0288]    lambda:0.182  U:0.0001->1.2e-05 #err=  6 controls:3
+U_solver::u_eval( C, err_msg ) i_cell=108 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=108 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=108 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=108 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=108 control not admissible
+62 (15) [phase:1,s:1,ds:0.05,dump:5,u:5.7:23]             (f:0.0483,d:0.0288)    -->    [f:0.0402,d:0.024]     lambda:0.168  U:0.0001->6.2e-06 #err= 10 controls:5
+U_solver::u_eval( C, err_msg ) i_cell=108 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=108 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=108 control not admissible
+63 (16) [phase:1,s:1,ds:0.05,dump:3,u:5.7:23]              (f:0.04,d:0.0239)     -->    [f:0.0315,d:0.0189]    lambda:0.211  U:0.0001->3.1e-06 #err=  6 controls:3
+U_solver::u_eval( C, err_msg ) i_cell=108 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=108 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=108 control not admissible
+64 (17) [phase:1,s:1,ds:0.05,dump:3,u:6.3:37]             (f:0.0313,d:0.0189)    -->    [f:0.0206,d:0.0124]    lambda:0.343  U:0.0001->1.6e-06 #err=  6 controls:3
+U_solver::u_eval( C, err_msg ) i_cell=108 control not admissible
+U_solver::u_eval( C, err_msg ) i_cell=108 control not admissible
+65 (18) [phase:1,s:1,ds:0.05,dump:2,u:6.1:25]             (f:0.0204,d:0.0124)    -->   [f:0.0104,d:0.00633]    lambda:0.49   U:0.0001->7.8e-07 #err=  4 controls:2
+66 (19) [phase:1,s:1,ds:0.05,dump:0,u:6.1:37]            (f:0.0103,d:0.00634)    -->  [f:3.41e-05,d:1.63e-05]  lambda:1      U:0.0001->3.9e-07
+67 (20) [phase:1,s:1,ds:0.05,dump:1,u:2.4:5]            (f:5.82e-05,d:1.67e-05)  -->  [f:2.88e-06,d:8.2e-07]   lambda:0.95   U:0.0001->3.9e-08 #err=  1 angle:1 armijo:1
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Bike1D
+68 (21) [phase:1,s:1,ds:0.05,dump:1,u:2.1:4]            (f:2.96e-06,d:8.18e-07)  -->  [f:1.48e-07,d:4.09e-08]  lambda:0.95   U:0.0001->3.9e-09 #err=  1 angle:1 armijo:1
+69 (22) [phase:1,s:1,ds:0.05,dump:0,u:1.6:3]            (f:1.48e-07,d:4.09e-08)  -->  [f:4.44e-13,d:5.71e-13]  lambda:1      U:0.0001->3.9e-10
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 2               | Hessian type    = Diagonal        |
++-------------------------- MinimizeHeavyBall --------------------------+
+| last f          = 0               | |g|_inf         = 2.7759e-13      |
++-----------------------------------------------------------------------+
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 404             | N. System pars  = 1807            |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 4.83 [sec]      | timeout         = 0 [ms]          |
+| iteration       = 69              | Memory Used     = 144Kb(+65b)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 157             | Jacobian        = 69              |
+| Factorization   = 69              | Inversion       = 157             |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 4.286e-11       | last ||d||_inf  = 1.2453e-11      |
+| last ||f||_1    = 4.4428e-13      | last ||d||_1    = 5.7138e-13      |
+| last ||f||_2    = 2.5374e-12      | last ||d||_2    = 1.5681e-12      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 0.726ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 12.94ms ]
+Check DuDxxpm (epsi=0.001): all OK [ 122.2ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001): all OK [ 17.27ms ]
+Check DodeDxp (epsi=0.001): all OK [ 0.444ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 17.78ms ]
+target [Lagrange,Mayer]            = [ 16.21, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 0.03179, 0.007772 ]
+All Done Folks!

@@ -156,8 +156,8 @@ version: 1.5.3-d282dirty-osx_14.3.1
    path:
   .
   ./mrblib
-  /Library/Frameworks/MechatronixInterfaceMruby.framework/Resources/mrblib
-license: (expire:158 days left) (devkit:on) (pins:on) (runtime:on) 
+  /Library/Frameworks/PINS_InterfaceMruby.framework/Resources/mrblib
+license: (expire:158 days left) (devkit:on) (pins:on) (runtime:on)
 
 (C) 2013 Bertolazzi, Biral, Bosetti (University of Trento)
 Module '     XOptima PINS-1.5.3-d282dirty', Copyright (C) B-cube Team -- University of Trento 2006-2015
@@ -263,7 +263,7 @@ Lagrange term = </Text-field>
   ua,
   controlType = &quot;U_COS_LOGARITHMIC&quot;,
   min         = 0,
-  max         = uaMax, 
+  max         = uaMax,
   epsilon     = epsi0,
   tolerance   = tol0
 );</Text-field>
@@ -486,7 +486,7 @@ Generating DbcDxxp_mat:              4 x 4
 
 Step 8: generate Mesh (if required)
 -----------------------------------
-Mapped function(s) of class: Mechatronix#MeshStd instance: *pMesh.
+Mapped function(s) of class: PINS#MeshStd instance: *pMesh.
 
 Step 9: setup parameters
 ------------------------
@@ -718,13 +718,15 @@ Parameter lapack version = Accelerate
 </Output>
 </Group>
 <Group labelreference="L106248" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">display(&lt;XOptimaPlots:-plotSolution(
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">display(&lt;
+XOptimaPlots:-plotSolution(
   zeta,[lambda1__xo],
   line_opts  = [[color=&quot;Blue&quot;,thickness=1]],
   plot_opts  = [gridlines=true, axes=boxed,labels=[&quot;Time&quot;,&quot;States&quot;],scaling=unconstrained],
   plot_title = project_name,
   stair      = false
-)|XOptimaPlots:-plotSolution(
+)|
+XOptimaPlots:-plotSolution(
   zeta,[lambda2__xo],
   line_opts  = [[color=&quot;Red&quot;,thickness=1]],
   plot_opts  = [gridlines=true, axes=boxed,labels=[&quot;Time&quot;,&quot;States&quot;],scaling=unconstrained],

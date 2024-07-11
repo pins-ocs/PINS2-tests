@@ -1,0 +1,152 @@
++-------------------------- MODEL:gtocX_2burn --------------------------+
++................................ DIMS .................................+
+| dims                      = u=0, q=1, x=6, p=0, bc=6 of 6             |
+| total                     = nZ=618, nP=1277, nUC=0, Q=51              |
+| index start               = omega=612, p=618                          |
+| post processing           = n_post=20                                 |
++................................ MESH .................................+
+| num nodes / segments      = 51 / 1                                    |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 2                               |
+| mesh class pointer        = 0x7ff7b23e6138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 618 x 618                                 |
+| nblock/block size         = 50 / 12                                   |
+| qr/qx/nr/nx               = 6 / 6 / 0 / 0                             |
+| last blok rows x cols     = 30 x 30                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x                                                        |
+| [ 1] initial_y                                                        |
+| [ 2] initial_z                                                        |
+| [ 3] final_x                                                          |
+| [ 4] final_y                                                          |
+| [ 5] final_z                                                          |
++.................... No control penalties/barriers ....................+
++......................... Constraints type LT .........................+
+ray_positive = { LT: Barrier0 [tolerance=0.001, epsilon=0.001] active }  
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 51                                                     
+  Segment N.0: s0 = 0 length = 1 npts = 51 no data set                   
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|.............................. muS = 0.57587 ..........................|
+|........................... time_f = 27 ...............................|
+|........................... time_i = 0 ................................|
+|.......................... w_guess = 0 ................................|
+|........................ epsi_norm = 0.01 .............................|
+|....................... retrograde = -1 ...............................|
+|......................... w_nonlin = 0 ................................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=0.000201/1.115e-05/3.277e-05, |L|=0.000201/1.141e-05/3.311e-05 |B|=0/0/0, |BL|=1.207e-14/2.397e-14/1.384e-14, PARS=0/0/0, U=0/-nan/-nan
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] gtocX_2burn
+  1 [dump:0,u:0:0]    (f:0.000121,d:0.00024)   -->  [f:1.14e-07,d:6.48e-08]  lambda:1     
+  2 [dump:0,u:0:0]    (f:1.14e-07,d:6.49e-08)  -->  [f:6.13e-15,d:2.42e-15]  lambda:1     
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:2,phase:1,s:0.2,ds:0.2] |X|=9.295e-05/1.225e-05/2.849e-05, |L|=9.295e-05/1.225e-05/2.849e-05 |B|=5.742e-16/1.369e-15/8.042e-16, |BL|=2.025e-15/4.978e-15/2.583e-15, PARS=0/0/0, U=0/-nan/-nan
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] gtocX_2burn
+3  (1 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:1.78e-05,d:3.27e-05)  -->  [f:1.16e-15,d:5.65e-17]  lambda:1     
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:3,phase:1,s:0.5,ds:0.3] |X|=0.0001394/1.838e-05/4.273e-05, |L|=0.0001394/1.838e-05/4.273e-05 |B|=1.084e-19/2.804e-19/1.389e-19, |BL|=2.025e-15/3.182e-15/2.127e-15, PARS=0/0/0, U=0/-nan/-nan
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] gtocX_2burn
+4  (1 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:2.67e-05,d:4.91e-05)  -->  [f:1.24e-15,d:7.53e-17]  lambda:1     
+
+Continuation step N.1 s:0.5->0.95, ds=0.45
+[iter:4,phase:1,s:0.95,ds:0.45] |X|=0.0002091/2.757e-05/6.41e-05, |L|=0.0002091/2.757e-05/6.41e-05 |B|=5.421e-20/1.215e-19/7.179e-20, |BL|=2.025e-15/4.486e-15/2.739e-15, PARS=0/0/0, U=0/-nan/-nan
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] gtocX_2burn
+5  (1 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]            (f:4e-05,d:7.37e-05)    -->  [f:1.14e-15,d:4.64e-17]  lambda:1     
+
+Continuation step N.1 s:0.95->1, ds=0.05
+[iter:5,phase:1,s:1,ds:0.05] |X|=2.324e-05/3.064e-06/7.122e-06, |L|=2.324e-05/3.064e-06/7.122e-06 |B|=3.43e-20/1.063e-19/5.2e-20, |BL|=2.025e-15/4.958e-15/2.771e-15, PARS=0/0/0, U=0/-nan/-nan
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] gtocX_2burn
+6  (1 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:4.45e-06,d:8.19e-06)  -->  [f:1.19e-15,d:1.37e-16]  lambda:1     
+Continuation step N.2
+
+Continuation step N.2 s:0->0.2, ds=0.2
+[iter:6,phase:2,s:0.2,ds:0.2] |X|=0.04471/0.001511/0.005841, |L|=0.05002/0.001741/0.006611 |B|=5.506e-21/1.786e-20/8.487e-21, |BL|=3.553e-15/6.261e-15/4.119e-15, PARS=0/0/0, U=0/-nan/-nan
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] gtocX_2burn
+7  (1 ) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]               (f:0.0179,d:0.0217)    -->  [f:0.000188,d:0.000217]  lambda:1     
+8  (2 ) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]             (f:0.000188,d:0.000209)  -->  [f:5.52e-08,d:1.25e-07]  lambda:1     
+9  (3 ) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]             (f:5.52e-08,d:1.25e-07)  -->  [f:1.03e-14,d:1.23e-14]  lambda:1     
+
+Continuation step N.2 s:0.2->0.5, ds=0.3
+[iter:9,phase:2,s:0.5,ds:0.3] |X|=0.07003/0.002326/0.009066, |L|=0.07849/0.002686/0.01028 |B|=5.671e-19/1.319e-18/7.619e-19, |BL|=2.025e-15/3.649e-15/2.262e-15, PARS=0/0/0, U=0/-nan/-nan
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] gtocX_2burn
+10 (1 ) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]               (f:0.0275,d:0.0359)    -->  [f:0.000816,d:0.000806]  lambda:1     
+11 (2 ) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]             (f:0.000816,d:0.000761)  -->  [f:7.13e-07,d:1.23e-06]  lambda:1     
+12 (3 ) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]             (f:7.13e-07,d:1.23e-06)  -->  [f:1.23e-12,d:9.67e-13]  lambda:1     
+
+Continuation step N.2 s:0.5->0.95, ds=0.45
+[iter:12,phase:2,s:0.95,ds:0.45] |X|=0.113/0.003644/0.01441, |L|=0.1271/0.004219/0.01638 |B|=6.156e-17/1.129e-16/6.985e-17, |BL|=2.448e-15/9.503e-15/4.112e-15, PARS=0/0/0, U=0/-nan/-nan
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] gtocX_2burn
+13 (1 ) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]             (f:0.043,d:0.0646)     -->   [f:0.00528,d:0.00458]   lambda:1     
+14 (2 ) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]            (f:0.00528,d:0.00427)   -->  [f:2.05e-05,d:2.71e-05]  lambda:1     
+15 (3 ) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:2.05e-05,d:2.75e-05)  -->  [f:1.13e-09,d:5.86e-10]  lambda:1     
+
+Continuation step N.2 s:0.95->1, ds=0.05
+[iter:15,phase:2,s:1,ds:0.05] |X|=0.01443/0.0004372/0.001783, |L|=0.01634/0.0005093/0.002041 |B|=1.623e-13/2.953e-13/1.836e-13, |BL|=4.005e-12/5.561e-12/4.173e-12, PARS=0/0/0, U=0/-nan/-nan
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] gtocX_2burn
+16 (1 ) [phase:2,s:1,ds:0.05,dump:0,u:0:0]               (f:0.00519,d:0.00926)   -->  [f:0.000153,d:0.000122]  lambda:1     
+17 (2 ) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:0.000153,d:0.000121)  -->  [f:1.78e-08,d:2.28e-08]  lambda:1     
+18 (3 ) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:1.78e-08,d:2.28e-08)  -->  [f:1.73e-15,d:5.6e-16]   lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 0               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 618             | N. System pars  = 1277            |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 80.9 [ms]       | timeout         = 0 [ms]          |
+| iteration       = 18              | Memory Used     = 287Kb(+25b)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 36              | Jacobian        = 18              |
+| Factorization   = 18              | Inversion       = 36              |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 4.0412e-14      | last ||d||_inf  = 3.5824e-15      |
+| last ||f||_1    = 1.7314e-15      | last ||d||_1    = 5.5965e-16      |
+| last ||f||_2    = 5.3678e-15      | last ||d||_2    = 1.251e-15       |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check DmuDxlxlp (epsi=0.001): all OK [ 19.08ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 0.473ms ]
+target [Lagrange,Mayer]            = [ 0, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 0, 5.647e-06 ]
+All Done Folks!

@@ -1,0 +1,1345 @@
++--------------- MODEL:wheel_slip_dynamics_with_actuator ---------------+
++................................ DIMS .................................+
+| dims                      = u=1, q=1, x=6, p=0, bc=7 of 7             |
+| total                     = nZ=60019, nP=135027, nUC=5000, Q=5001     |
+| index start               = omega=60012, p=60019                      |
+| post processing           = n_post=5                                  |
++................................ MESH .................................+
+| num nodes / segments      = 5001 / 1                                  |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 2                               |
+| mesh class pointer        = 0x7ff7b48ed128                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 60019 x 60019                             |
+| nblock/block size         = 5000 / 12                                 |
+| qr/qx/nr/nx               = 7 / 7 / 0 / 0                             |
+| last blok rows x cols     = 31 x 31                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x                                                        |
+| [ 1] initial_v                                                        |
+| [ 2] final_x                                                          |
+| [ 3] final_v                                                          |
+| [ 4] SS_kappa                                                         |
+| [ 5] SS_Tw                                                            |
+| [ 6] SS_omega                                                         |
++..................... Controls penalties/barriers .....................+
+TwoControl = { COSLOG (BARRIER) epsilon=0.1, tolerance=0.1 }             
++......................... Constraints type LT .........................+
+PositiveTime = { LT: Barrier0 [tolerance=1e-05, epsilon=1e-05] active }  
+SpeedPositive = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }     
+SpeedMax = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }          
+PowerMax = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }          
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 5001                                                   
+  Segment N.0: s0 = 0 length = 1 npts = 5001 no data set                 
+END Mesh[mesh]                                                           
+                                                                         
++........................ User mapped functions ........................+
+`max_reg' mapped with: MaxValueRegularized, AbsoluteValueRegularizedWithSinAtan [h=0.1]
++.......................... MODEL PARAMETERS ...........................+
+|............................... Bx = 15 ...............................|
+|............................... Cx = 1.6 ..............................|
+|............................ J__wz = 5 ................................|
+|................................ L = 1000 .............................|
+|............................ TBmax = -3000 ............................|
+|............................ TTmax = 3000 .............................|
+|.............................. Tw0 = 9 ................................|
+|.......................... epsilon = 1e-06 ............................|
+|................................ g = 9.81 .............................|
+|............................... kD = 0.3 ..............................|
+|................................ m = 375 ..............................|
+|............................ mu__x = 1 ................................|
+|.......................... p_epsi0 = 0.1 ..............................|
+|.......................... p_epsi1 = 1e-05 ............................|
+|........................... p_tol0 = 0.1 ..............................|
+|........................... p_tol1 = 1e-05 ............................|
+|............................... rw = 0.3 ..............................|
+|.......................... tau__Tw = 0.001 ............................|
+|............................... tf = 50 ...............................|
+|.......................... u_epsi0 = 0.1 ..............................|
+|.......................... u_epsi1 = 1e-05 ............................|
+|........................... u_tol0 = 0.1 ..............................|
+|........................... u_tol1 = 1e-05 ............................|
+|............................... v0 = 10 ...............................|
+|........................... v__max = 83.333 ...........................|
+|........................... v_mean = 20 ...............................|
+|........................... wKappa = 0 ................................|
+|............................... wT = 0.01 .............................|
+|.............................. wT0 = 0.01 .............................|
+|.............................. wT1 = 1 ................................|
+|......................... Pow__max = 75000 ............................|
+|......................... sigma__x = 0.1 ..............................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=500/86.9/195.7, |L|=500/86.9/195.7 |B|=0.01/0.01/0.01, |BL|=1.8/1.96/1.804, PARS=0/0/0, U=0/0/0
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+  1 [dump:0,u:0:0]        (f:86.8,d:24.5)      -->       [f:98.1,d:28]       lambda:1     
+  2 [dump:4,u:0:0]        (f:98.1,d:284)       -->       [f:128,d:178]       lambda:0.186  #err= 34 update:3 angle:1 armijo:1
+  3 [dump:1,u:0:0]        (f:128,d:47.8)       -->      [f:63.8,d:25.5]      lambda:0.258  #err=  1 armijo:1
+  4 [dump:0,u:0:0]        (f:63.8,d:24.7)      -->      [f:46.3,d:16.4]      lambda:1     
+  5 [dump:2,u:0:0]        (f:46.3,d:11.6)      -->      [f:38.8,d:9.29]      lambda:0.16   #err=  2 armijo:2
+  6 [dump:2,u:0:0]        (f:38.8,d:11.4)      -->      [f:33.7,d:9.34]      lambda:0.16   #err=  2 armijo:2
+  7 [dump:2,u:0:0]        (f:33.7,d:7.96)      -->      [f:28.5,d:6.88]      lambda:0.16   #err=  2 armijo:2
+  8 [dump:1,u:0:0]        (f:28.5,d:6.82)      -->      [f:18.4,d:4.45]      lambda:0.4    #err=  1 armijo:1
+  9 [dump:2,u:0:0]        (f:18.4,d:4.45)      -->      [f:15.7,d:3.75]      lambda:0.16   #err=  2 armijo:2
+ 10 [dump:2,u:0:0]        (f:15.7,d:4.11)      -->      [f:13.7,d:3.55]      lambda:0.16   #err=  2 armijo:2
+ 11 [dump:4,u:0:0]        (f:13.7,d:3.59)      -->      [f:13.3,d:3.49]      lambda:0.0312  #err=  4 armijo:4
+ 12 [dump:1,u:0:0]        (f:13.3,d:9.43)      -->       [f:21,d:9.95]       lambda:0.106  #err=  1 armijo:1
+ 13 [dump:2,u:0:0]         (f:21,d:5.13)       -->      [f:19.9,d:4.35]      lambda:0.16   #err=  2 armijo:2
+ 14 [dump:4,u:0:0]        (f:19.9,d:3.68)      -->      [f:19.4,d:3.62]      lambda:0.0256  #err=  4 armijo:4
+ 15 [dump:2,u:0:0]        (f:19.4,d:3.62)      -->      [f:18.6,d:3.52]      lambda:0.0384  #err=  2 armijo:2
+ 16 [dump:4,u:0:0]        (f:18.6,d:3.27)      -->       [f:18,d:3.2]        lambda:0.032  #err=  4 armijo:4
+ 17 [dump:5,u:0:0]         (f:18,d:9.55)       -->       [f:18,d:9.54]       lambda:0.00275  #err=  5 armijo:5
+ 18 [dump:4,u:0:0]         (f:18,d:11.9)       -->      [f:17.9,d:11.9]      lambda:0.00201  #err=  4 armijo:4
+ 19 [dump:4,u:0:0]        (f:17.9,d:16.3)      -->      [f:17.9,d:16.3]      lambda:0.00172  #err=  4 armijo:4
+ 20 [dump:4,u:0:0]        (f:17.9,d:19.6)      -->      [f:17.9,d:19.6]      lambda:0.00159  #err=  4 armijo:4
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+ 21 [dump:9,u:0:0]        (f:17.9,d:151)       -->      [f:17.9,d:151]       lambda:8.41e-05  #err= 28 update:3 armijo:6
+ 22 [dump:4,u:0:0]        (f:17.9,d:79.2)      -->      [f:17.9,d:79.2]      lambda:0.000352  #err=  4 armijo:4
+ 23 [dump:0,u:0:0]        (f:17.9,d:48.3)      -->      [f:18.9,d:10.7]      lambda:0.0282 
+ 24 [dump:1,u:0:0]        (f:18.9,d:2.4)       -->      [f:13.6,d:1.54]      lambda:0.4    #err=  1 armijo:1
+ 25 [dump:0,u:0:0]        (f:13.6,d:1.61)      -->     [f:4.59,d:0.362]      lambda:1     
+ 26 [dump:1,u:0:0]       (f:4.59,d:0.319)      -->     [f:3.73,d:0.373]      lambda:0.465  #err=  1 armijo:1
+ 27 [dump:1,u:0:0]       (f:3.73,d:0.485)      -->     [f:2.66,d:0.378]      lambda:0.4    #err=  1 armijo:1
+ 28 [dump:2,u:0:0]       (f:2.66,d:0.387)      -->     [f:2.48,d:0.363]      lambda:0.16   #err=  2 armijo:2
+ 29 [dump:3,u:0:0]        (f:2.48,d:1.59)      -->      [f:2.71,d:1.61]      lambda:0.064  #err=  3 armijo:3
+ 30 [dump:5,u:0:0]        (f:2.71,d:1.98)      -->      [f:2.69,d:1.97]      lambda:0.0102  #err=  5 armijo:5
+ 31 [dump:5,u:0:0]        (f:2.69,d:5.04)      -->      [f:2.69,d:5.04]      lambda:0.00155  #err=  5 armijo:5
+ 32 [dump:8,u:0:0]        (f:2.69,d:66.3)      -->      [f:2.69,d:66.3]      lambda:3.88e-05  #err=  8 armijo:8
+ 33 [dump:4,u:0:0]        (f:2.69,d:15.8)      -->      [f:2.69,d:15.8]      lambda:0.000239  #err=  4 armijo:4
+ 34 [dump:5,u:0:0]        (f:2.69,d:19.5)      -->      [f:2.69,d:19.5]      lambda:0.000237  #err=  5 armijo:5
+ 35 [dump:4,u:0:0]        (f:2.69,d:11.1)      -->      [f:2.69,d:11.1]      lambda:0.000592  #err=  4 armijo:4
+ 36 [dump:5,u:0:0]        (f:2.69,d:9.21)      -->      [f:2.69,d:9.21]      lambda:0.000374  #err=  5 armijo:5
+ 37 [dump:12,u:0:0]       (f:2.69,d:392)       -->      [f:2.69,d:392]       lambda:7.98e-06  #err= 63 update:5 armijo:7
+ 38 [dump:3,u:0:0]        (f:2.69,d:10.3)      -->      [f:2.69,d:10.3]      lambda:0.00029  #err=  3 armijo:3
+ 39 [dump:22,u:0:0]     (f:2.69,d:1.24e+03)    -->    [f:2.69,d:1.24e+03]    lambda:1.45e-06  #err=160 update:12 armijo:10
+ 40 [dump:3,u:0:0]        (f:2.69,d:18.6)      -->      [f:2.69,d:18.6]      lambda:0.000116  #err=  3 armijo:3
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+ 41 [dump:14,u:0:0]       (f:2.69,d:92.3)      -->      [f:2.69,d:92.4]      lambda:4.41e-05  #err= 78 update:5 armijo:9
+ 42 [dump:3,u:0:0]        (f:2.69,d:9.03)      -->      [f:2.69,d:9.03]      lambda:0.000637  #err=  3 armijo:3
+ 43 [dump:9,u:0:0]         (f:2.69,d:17)       -->       [f:2.69,d:17]       lambda:0.000262  #err=  9 armijo:9
+ 44 [dump:5,u:0:0]        (f:2.69,d:12.7)      -->      [f:2.69,d:12.7]      lambda:0.000249  #err=  5 armijo:5
+ 45 [dump:7,u:0:0]        (f:2.69,d:64.9)      -->      [f:2.69,d:64.9]      lambda:3.88e-05  #err=  7 armijo:7
+ 46 [dump:4,u:0:0]        (f:2.69,d:16.3)      -->      [f:2.69,d:16.3]      lambda:0.000239  #err=  4 armijo:4
+ 47 [dump:5,u:0:0]        (f:2.69,d:17.6)      -->      [f:2.69,d:17.6]      lambda:0.000237  #err=  5 armijo:5
+ 48 [dump:5,u:0:0]        (f:2.69,d:13.8)      -->      [f:2.69,d:13.8]      lambda:0.000237  #err=  5 armijo:5
+ 49 [dump:6,u:0:0]         (f:2.69,d:39)       -->       [f:2.69,d:39]       lambda:9.45e-05  #err=  6 armijo:6
+ 50 [dump:4,u:0:0]        (f:2.69,d:11.6)      -->      [f:2.69,d:11.6]      lambda:0.000373  #err=  4 armijo:4
+ 51 [dump:6,u:0:0]        (f:2.69,d:23.6)      -->      [f:2.69,d:23.6]      lambda:0.000119  #err=  6 armijo:6
+ 52 [dump:5,u:0:0]        (f:2.69,d:22.1)      -->      [f:2.69,d:22.1]      lambda:0.000167  #err=  5 armijo:5
+ 53 [dump:5,u:0:0]        (f:2.69,d:14.4)      -->      [f:2.69,d:14.4]      lambda:0.000199  #err=  5 armijo:5
+ 54 [dump:6,u:0:0]        (f:2.69,d:46.3)      -->      [f:2.69,d:46.3]      lambda:8.66e-05  #err=  6 armijo:6
+ 55 [dump:4,u:0:0]        (f:2.69,d:9.51)      -->      [f:2.68,d:9.51]      lambda:0.000357  #err=  4 armijo:4
+ 56 [dump:10,u:0:0]       (f:2.68,d:214)       -->      [f:2.68,d:214]       lambda:1.59e-05  #err= 36 update:3 armijo:7
+ 57 [dump:3,u:0:0]        (f:2.68,d:9.61)      -->      [f:2.68,d:9.61]      lambda:0.000383  #err=  3 armijo:3
+ 58 [dump:17,u:0:0]       (f:2.68,d:68.7)      -->      [f:2.68,d:68.7]      lambda:4.63e-05  #err=144 update:10 armijo:7
+ 59 [dump:4,u:0:0]        (f:2.68,d:11.6)      -->      [f:2.68,d:11.6]      lambda:0.000261  #err=  4 armijo:4
+ 60 [dump:7,u:0:0]         (f:2.68,d:88)       -->       [f:2.68,d:88]       lambda:3.97e-05  #err=  7 armijo:7
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+ 61 [dump:3,u:0:0]         (f:2.68,d:10)       -->       [f:2.68,d:10]       lambda:0.000605  #err=  3 armijo:3
+ 62 [dump:11,u:0:0]       (f:2.68,d:11.1)      -->      [f:2.68,d:11.1]      lambda:0.000688  #err= 60 update:5 armijo:6
+ 63 [dump:4,u:0:0]        (f:2.68,d:6.96)      -->      [f:2.68,d:6.96]      lambda:0.00101  #err=  4 armijo:4
+ 64 [dump:5,u:0:0]        (f:2.68,d:12.4)      -->      [f:2.68,d:12.4]      lambda:0.000488  #err=  5 armijo:5
+ 65 [dump:5,u:0:0]        (f:2.68,d:9.66)      -->      [f:2.68,d:9.66]      lambda:0.000339  #err=  5 armijo:5
+ 66 [dump:12,u:0:0]       (f:2.68,d:375)       -->      [f:2.68,d:375]       lambda:7.61e-06  #err= 59 update:5 armijo:7
+ 67 [dump:3,u:0:0]        (f:2.68,d:11.3)      -->      [f:2.68,d:11.3]      lambda:0.000265  #err=  3 armijo:3
+ 68 [dump:19,u:0:0]       (f:2.68,d:124)       -->      [f:2.68,d:124]       lambda:2.27e-05  #err=169 update:12 armijo:7
+ 69 [dump:3,u:0:0]        (f:2.68,d:12.3)      -->      [f:2.68,d:12.4]      lambda:0.000457  #err=  3 armijo:3
+ 70 [dump:11,u:0:0]       (f:2.68,d:10.5)      -->      [f:2.68,d:10.5]      lambda:0.000688  #err= 60 update:5 armijo:6
+ 71 [dump:4,u:0:0]        (f:2.68,d:7.88)      -->      [f:2.68,d:7.88]      lambda:0.00101  #err=  4 armijo:4
+ 72 [dump:5,u:0:0]        (f:2.68,d:8.18)      -->      [f:2.68,d:8.17]      lambda:0.000525  #err=  5 armijo:5
+ 73 [dump:10,u:0:0]       (f:2.68,d:632)       -->      [f:2.68,d:633]       lambda:6.31e-06  #err= 24 update:1 armijo:9
+ 74 [dump:2,u:0:0]        (f:2.68,d:8.51)      -->      [f:2.68,d:8.51]      lambda:0.000603  #err=  2 armijo:2
+ 75 [dump:11,u:0:0]       (f:2.68,d:30.5)      -->      [f:2.68,d:30.5]      lambda:0.000128  #err= 39 update:2 armijo:9
+ 76 [dump:4,u:0:0]        (f:2.68,d:11.4)      -->      [f:2.67,d:11.4]      lambda:0.000435  #err=  4 armijo:4
+ 77 [dump:5,u:0:0]        (f:2.67,d:15.8)      -->      [f:2.67,d:15.8]      lambda:0.00032  #err=  5 armijo:5
+ 78 [dump:4,u:0:0]        (f:2.67,d:10.6)      -->      [f:2.67,d:10.6]      lambda:0.000687  #err=  4 armijo:4
+ 79 [dump:4,u:0:0]        (f:2.67,d:7.72)      -->      [f:2.67,d:7.72]      lambda:0.00101  #err=  4 armijo:4
+ 80 [dump:5,u:0:0]        (f:2.67,d:8.65)      -->      [f:2.67,d:8.64]      lambda:0.000487  #err=  5 armijo:5
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+ 81 [dump:8,u:0:0]        (f:2.67,d:142)       -->      [f:2.67,d:142]       lambda:2.17e-05  #err=  8 armijo:8
+ 82 [dump:3,u:0:0]        (f:2.67,d:11.5)      -->      [f:2.67,d:11.5]      lambda:0.000447  #err=  3 armijo:3
+ 83 [dump:9,u:0:0]        (f:2.67,d:14.5)      -->      [f:2.67,d:14.5]      lambda:0.000262  #err=  9 armijo:9
+ 84 [dump:5,u:0:0]        (f:2.67,d:19.6)      -->      [f:2.67,d:19.6]      lambda:0.000249  #err=  5 armijo:5
+ 85 [dump:4,u:0:0]        (f:2.67,d:9.87)      -->      [f:2.67,d:9.87]      lambda:0.000606  #err=  4 armijo:4
+ 86 [dump:5,u:0:0]        (f:2.67,d:11.4)      -->      [f:2.67,d:11.4]      lambda:0.000378  #err=  5 armijo:5
+ 87 [dump:6,u:0:0]        (f:2.67,d:23.9)      -->      [f:2.67,d:23.9]      lambda:0.000119  #err=  6 armijo:6
+ 88 [dump:5,u:0:0]         (f:2.67,d:21)       -->       [f:2.67,d:21]       lambda:0.000168  #err=  5 armijo:5
+ 89 [dump:5,u:0:0]        (f:2.67,d:16.2)      -->      [f:2.67,d:16.2]      lambda:0.000199  #err=  5 armijo:5
+ 90 [dump:6,u:0:0]        (f:2.67,d:24.9)      -->      [f:2.67,d:24.9]      lambda:8.67e-05  #err=  6 armijo:6
+ 91 [dump:6,u:0:0]        (f:2.67,d:37.8)      -->      [f:2.67,d:37.8]      lambda:5.72e-05  #err=  6 armijo:6
+ 92 [dump:5,u:0:0]        (f:2.67,d:24.2)      -->      [f:2.67,d:24.2]      lambda:0.000116  #err=  5 armijo:5
+ 93 [dump:5,u:0:0]        (f:2.67,d:21.6)      -->      [f:2.67,d:21.6]      lambda:0.000166  #err=  5 armijo:5
+ 94 [dump:5,u:0:0]        (f:2.67,d:15.3)      -->      [f:2.67,d:15.3]      lambda:0.000198  #err=  5 armijo:5
+ 95 [dump:6,u:0:0]        (f:2.67,d:38.1)      -->      [f:2.67,d:38.1]      lambda:8.64e-05  #err=  6 armijo:6
+ 96 [dump:4,u:0:0]        (f:2.67,d:13.3)      -->      [f:2.67,d:13.3]      lambda:0.000357  #err=  4 armijo:4
+ 97 [dump:5,u:0:0]        (f:2.67,d:14.3)      -->      [f:2.67,d:14.3]      lambda:0.00029  #err=  5 armijo:5
+ 98 [dump:5,u:0:0]        (f:2.67,d:16.2)      -->      [f:2.67,d:16.2]      lambda:0.000262  #err=  5 armijo:5
+ 99 [dump:5,u:0:0]        (f:2.67,d:14.4)      -->      [f:2.67,d:14.4]      lambda:0.000248  #err=  5 armijo:5
+100 [dump:6,u:0:0]        (f:2.67,d:22.4)      -->      [f:2.67,d:22.3]      lambda:9.68e-05  #err=  6 armijo:6
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+101 [dump:6,u:0:0]        (f:2.67,d:45.5)      -->      [f:2.67,d:45.5]      lambda:6.05e-05  #err=  6 armijo:6
+102 [dump:4,u:0:0]        (f:2.67,d:15.8)      -->      [f:2.67,d:15.8]      lambda:0.000299  #err=  4 armijo:4
+103 [dump:5,u:0:0]        (f:2.67,d:12.1)      -->      [f:2.67,d:12.1]      lambda:0.000265  #err=  5 armijo:5
+104 [dump:0,u:0:0]        (f:2.67,d:47.3)      -->       [f:24,d:15.3]       lambda:0.0244 
+105 [dump:3,u:0:0]         (f:24,d:7.26)       -->      [f:23.2,d:7.3]       lambda:0.0826  #err=  3 armijo:3
+106 [dump:1,u:0:0]        (f:23.2,d:9.14)      -->      [f:21.8,d:4.17]      lambda:0.4    #err=  1 armijo:1
+107 [dump:12,u:0:0]       (f:21.8,d:30.3)      -->      [f:22.1,d:29.4]      lambda:0.00791  #err= 68 update:11 armijo:1
+108 [dump:0,u:0:0]        (f:22.1,d:4.5)       -->      [f:19.4,d:3.35]      lambda:0.133 
+109 [dump:0,u:0:0]        (f:19.4,d:2.69)      -->      [f:18.1,d:1.5]       lambda:1     
+110 [dump:1,u:0:0]        (f:18.1,d:3.07)      -->      [f:13.3,d:2.29]      lambda:0.4    #err=  1 armijo:1
+111 [dump:4,u:0:0]        (f:13.3,d:3.76)      -->      [f:13.1,d:3.76]      lambda:0.0256  #err=  4 armijo:4
+112 [dump:2,u:0:0]        (f:13.1,d:2.43)      -->      [f:12.6,d:2.41]      lambda:0.0384  #err=  2 armijo:2
+113 [dump:4,u:0:0]        (f:12.6,d:3.73)      -->      [f:12.4,d:3.72]      lambda:0.0256  #err=  4 armijo:4
+114 [dump:2,u:0:0]        (f:12.4,d:2.58)      -->       [f:12,d:2.56]       lambda:0.0384  #err=  2 armijo:2
+115 [dump:4,u:0:0]         (f:12,d:3.65)       -->      [f:11.8,d:3.62]      lambda:0.0256  #err=  4 armijo:4
+116 [dump:0,u:0:0]        (f:11.8,d:4.96)      -->       [f:19.9,d:7]        lambda:0.24  
+117 [dump:0,u:0:0]        (f:19.9,d:1.79)      -->       [f:7.78,d:1]        lambda:1     
+118 [dump:2,u:0:0]        (f:7.78,d:1.42)      -->      [f:8.69,d:1.06]      lambda:0.28   #err=  3 update:1 armijo:1
+119 [dump:7,u:0:0]        (f:8.69,d:4.95)      -->      [f:8.46,d:4.89]      lambda:0.0269  #err= 23 update:5 armijo:2
+120 [dump:4,u:0:0]        (f:8.46,d:13.7)      -->      [f:14.8,d:4.96]      lambda:0.0844  #err=  4 angle:3 armijo:4
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+121 [dump:0,u:0:0]        (f:14.8,d:1.42)      -->      [f:9.8,d:0.872]      lambda:0.436 
+122 [dump:0,u:0:0]        (f:9.8,d:1.09)       -->     [f:4.39,d:0.828]      lambda:1     
+123 [dump:0,u:0:0]       (f:4.39,d:0.449)      -->     [f:1.37,d:0.0504]     lambda:1     
+124 [dump:4,u:0:0]       (f:1.37,d:0.425)      -->     [f:1.34,d:0.419]      lambda:0.0308  #err=  4 armijo:4
+125 [dump:4,u:0:0]       (f:1.34,d:0.532)      -->     [f:1.33,d:0.531]      lambda:0.00674  #err=  4 armijo:4
+126 [dump:6,u:0:0]        (f:1.33,d:2.44)      -->      [f:1.33,d:2.44]      lambda:0.000504  #err=  6 armijo:6
+127 [dump:2,u:0:0]        (f:1.33,d:6.5)       -->     [f:13.3,d:0.418]      lambda:0.0304  #err=  2 angle:2 armijo:2
+128 [dump:1,u:0:0]       (f:13.3,d:0.263)      -->     [f:11.7,d:0.268]      lambda:0.4    #err=  1 armijo:1
+129 [dump:1,u:0:0]       (f:11.7,d:0.132)      -->     [f:7.53,d:0.0898]     lambda:0.4    #err=  1 armijo:1
+130 [dump:1,u:0:0]       (f:7.53,d:0.196)      -->       [f:5,d:0.193]       lambda:0.4    #err=  1 armijo:1
+131 [dump:1,u:0:0]         (f:5,d:0.259)       -->     [f:3.74,d:0.204]      lambda:0.4    #err=  1 armijo:1
+132 [dump:1,u:0:0]       (f:3.74,d:0.129)      -->      [f:2.4,d:0.115]      lambda:0.4    #err=  1 armijo:1
+133 [dump:2,u:0:0]        (f:2.4,d:0.232)      -->     [f:2.21,d:0.229]      lambda:0.16   #err=  2 armijo:2
+134 [dump:2,u:0:0]       (f:2.21,d:0.185)      -->     [f:1.96,d:0.181]      lambda:0.16   #err=  2 armijo:2
+135 [dump:3,u:0:0]       (f:1.96,d:0.317)      -->     [f:1.89,d:0.312]      lambda:0.064  #err=  3 armijo:3
+136 [dump:4,u:0:0]       (f:1.89,d:0.446)      -->     [f:1.86,d:0.444]      lambda:0.0256  #err=  4 armijo:4
+137 [dump:0,u:0:0]       (f:1.86,d:0.763)      -->     [f:6.92,d:0.693]      lambda:0.24  
+138 [dump:0,u:0:0]       (f:6.92,d:0.0847)     -->     [f:9.03,d:0.046]      lambda:1     
+139 [dump:4,u:0:0]        (f:9.03,d:0.31)      -->     [f:8.76,d:0.305]      lambda:0.0321  #err=  4 armijo:4
+140 [dump:5,u:0:0]        (f:8.76,d:1.15)      -->      [f:8.74,d:1.15]      lambda:0.00275  #err=  5 armijo:5
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+141 [dump:4,u:0:0]        (f:8.74,d:1.19)      -->      [f:8.72,d:1.19]      lambda:0.00201  #err=  4 armijo:4
+142 [dump:0,u:0:0]        (f:8.72,d:2.66)      -->     [f:12.9,d:0.585]      lambda:0.0673 
+143 [dump:2,u:0:0]       (f:12.9,d:0.198)      -->     [f:10.2,d:0.101]      lambda:0.257  #err=  2 angle:1 armijo:2
+144 [dump:1,u:0:0]       (f:10.2,d:0.177)      -->     [f:4.22,d:0.0483]     lambda:0.578  #err=  1 angle:1 armijo:1
+145 [dump:2,u:0:0]       (f:4.22,d:0.161)      -->     [f:3.64,d:0.153]      lambda:0.16   #err=  2 armijo:2
+146 [dump:2,u:0:0]        (f:3.64,d:1.04)      -->     [f:6.76,d:0.837]      lambda:0.16   #err=  2 armijo:2
+147 [dump:2,u:0:0]       (f:6.76,d:0.0812)     -->     [f:6.03,d:0.0747]     lambda:0.16   #err=  2 armijo:2
+148 [dump:1,u:0:0]       (f:6.03,d:0.119)      -->     [f:3.21,d:0.0528]     lambda:0.4    #err=  1 armijo:1
+149 [dump:1,u:0:0]       (f:3.21,d:0.073)      -->       [f:2,d:0.055]       lambda:0.42   #err=  1 armijo:1
+150 [dump:3,u:0:0]         (f:2,d:0.276)       -->     [f:1.92,d:0.272]      lambda:0.064  #err=  3 armijo:3
+151 [dump:5,u:0:0]        (f:1.92,d:0.8)       -->     [f:1.91,d:0.796]      lambda:0.0107  #err=  5 armijo:5
+152 [dump:5,u:0:0]        (f:1.91,d:1.9)       -->      [f:1.91,d:1.9]       lambda:0.00159  #err=  5 armijo:5
+153 [dump:6,u:0:0]        (f:1.91,d:4.51)      -->      [f:1.91,d:4.51]      lambda:0.000245  #err=  6 armijo:6
+154 [dump:7,u:0:0]        (f:1.91,d:27.3)      -->      [f:1.91,d:27.3]      lambda:3.85e-05  #err=  7 armijo:7
+155 [dump:4,u:0:0]        (f:1.91,d:4.73)      -->      [f:1.91,d:4.73]      lambda:0.000238  #err=  4 armijo:4
+156 [dump:7,u:0:0]        (f:1.91,d:18.8)      -->      [f:1.91,d:18.8]      lambda:3.79e-05  #err=  7 armijo:7
+157 [dump:5,u:0:0]        (f:1.91,d:8.52)      -->      [f:1.91,d:8.52]      lambda:9.46e-05  #err=  5 armijo:5
+158 [dump:6,u:0:0]        (f:1.91,d:13.5)      -->      [f:1.91,d:13.5]      lambda:5.98e-05  #err=  6 armijo:6
+159 [dump:5,u:0:0]        (f:1.91,d:8.35)      -->      [f:1.91,d:8.35]      lambda:0.000119  #err=  5 armijo:5
+160 [dump:5,u:0:0]        (f:1.91,d:8.6)       -->      [f:1.91,d:8.6]       lambda:0.000167  #err=  5 armijo:5
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+161 [dump:4,u:0:0]        (f:1.91,d:4.41)      -->      [f:1.91,d:4.41]      lambda:0.000497  #err=  4 armijo:4
+162 [dump:5,u:0:0]        (f:1.91,d:3.39)      -->      [f:1.91,d:3.39]      lambda:0.000351  #err=  5 armijo:5
+163 [dump:14,u:0:0]       (f:1.91,d:994)       -->      [f:1.91,d:994]       lambda:1.24e-06  #err= 49 update:5 armijo:9
+164 [dump:1,u:0:0]        (f:1.91,d:3.47)      -->      [f:1.91,d:3.47]      lambda:0.000668  #err=  1 armijo:1
+165 [dump:8,u:0:0]        (f:1.91,d:3.85)      -->      [f:1.91,d:3.85]      lambda:0.000655  #err=  8 armijo:8
+166 [dump:4,u:0:0]        (f:1.91,d:2.88)      -->      [f:1.91,d:2.88]      lambda:0.000983  #err=  4 armijo:4
+167 [dump:5,u:0:0]        (f:1.91,d:3.1)       -->      [f:1.91,d:3.1]       lambda:0.000482  #err=  5 armijo:5
+168 [dump:7,u:0:0]        (f:1.91,d:21.9)      -->      [f:1.91,d:21.9]      lambda:5.39e-05  #err=  7 armijo:7
+169 [dump:4,u:0:0]        (f:1.91,d:4.16)      -->      [f:1.91,d:4.16]      lambda:0.000282  #err=  4 armijo:4
+170 [dump:2,u:0:0]        (f:1.91,d:21.2)      -->     [f:6.98,d:0.388]      lambda:0.00957  #err=  2 angle:1 armijo:2
+171 [dump:2,u:0:0]       (f:6.98,d:0.0839)     -->     [f:6.58,d:0.0777]     lambda:0.16   #err=  2 armijo:2
+172 [dump:1,u:0:0]       (f:6.58,d:0.114)      -->     [f:3.06,d:0.0569]     lambda:0.484  #err=  1 angle:1 armijo:1
+173 [dump:1,u:0:0]       (f:3.06,d:0.0716)     -->     [f:2.06,d:0.0541]     lambda:0.4    #err=  1 armijo:1
+174 [dump:2,u:0:0]       (f:2.06,d:0.194)      -->     [f:1.85,d:0.192]      lambda:0.16   #err=  2 armijo:2
+175 [dump:3,u:0:0]       (f:1.85,d:0.358)      -->      [f:1.8,d:0.35]       lambda:0.064  #err=  3 armijo:3
+176 [dump:5,u:0:0]        (f:1.8,d:0.595)      -->     [f:1.79,d:0.592]      lambda:0.0105  #err=  5 armijo:5
+177 [dump:4,u:0:0]        (f:1.79,d:51.3)      -->      [f:6.68,d:40.1]      lambda:0.00393  #err=  4 armijo:4
+178 [dump:0,u:0:0]       (f:6.68,d:0.0744)     -->     [f:6.29,d:0.067]      lambda:0.0941 
+179 [dump:1,u:0:0]       (f:6.29,d:0.078)      -->     [f:4.14,d:0.0593]     lambda:0.426  #err=  1 armijo:1
+180 [dump:1,u:0:0]       (f:4.14,d:0.0652)     -->     [f:2.71,d:0.0448]     lambda:0.4    #err=  1 armijo:1
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+181 [dump:0,u:0:0]       (f:2.71,d:0.0865)     -->     [f:1.47,d:0.0844]     lambda:1     
+182 [dump:1,u:0:0]       (f:1.47,d:0.215)      -->      [f:1.4,d:0.195]      lambda:0.4    #err=  1 armijo:1
+183 [dump:1,u:0:0]        (f:1.4,d:0.113)      -->     [f:1.06,d:0.107]      lambda:0.4    #err=  1 armijo:1
+184 [dump:3,u:0:0]       (f:1.06,d:0.295)      -->     [f:1.02,d:0.282]      lambda:0.0672  #err=  3 armijo:3
+185 [dump:7,u:0:0]        (f:1.02,d:2.23)      -->      [f:1.02,d:2.23]      lambda:0.00164  #err=  7 armijo:7
+186 [dump:4,u:0:0]        (f:1.02,d:2.14)      -->      [f:1.02,d:2.14]      lambda:0.00155  #err=  4 armijo:4
+187 [dump:5,u:0:0]        (f:1.02,d:2.63)      -->      [f:1.02,d:2.63]      lambda:0.000606  #err=  5 armijo:5
+188 [dump:9,u:0:0]        (f:1.02,d:141)       -->      [f:1.02,d:141]       lambda:9.68e-06  #err=  9 armijo:9
+189 [dump:2,u:0:0]        (f:1.02,d:3.05)      -->      [f:1.02,d:3.05]      lambda:0.000747  #err=  2 armijo:2
+190 [dump:9,u:0:0]        (f:1.02,d:4.21)      -->      [f:1.02,d:4.21]      lambda:0.000262  #err=  9 armijo:9
+191 [dump:1,u:0:0]        (f:1.02,d:22.1)      -->      [f:17.2,d:2.42]      lambda:0.0231  #err=  1 angle:1 armijo:1
+192 [dump:8,u:0:0]        (f:17.2,d:1.18)      -->     [f:11.6,d:0.385]      lambda:0.279  #err=  8 angle:7 armijo:8
+193 [dump:1,u:0:0]       (f:11.6,d:0.349)      -->     [f:8.38,d:0.204]      lambda:0.317  #err=  1 armijo:1
+194 [dump:1,u:0:0]       (f:8.38,d:0.306)      -->     [f:5.09,d:0.162]      lambda:0.4    #err=  1 armijo:1
+195 [dump:1,u:0:0]       (f:5.09,d:0.107)      -->     [f:3.08,d:0.066]      lambda:0.4    #err=  1 armijo:1
+196 [dump:0,u:0:0]       (f:3.08,d:0.0797)     -->    [f:0.985,d:0.0151]     lambda:1     
+197 [dump:0,u:0:0]      (f:0.985,d:0.0166)     -->    [f:0.128,d:0.00133]    lambda:1     
+198 [dump:0,u:0:0]      (f:0.128,d:0.00151)    -->   [f:0.0126,d:9.93e-05]   lambda:1     
+199 [dump:0,u:0:0]     (f:0.0126,d:0.000122)   -->  [f:0.000234,d:1.61e-06]  lambda:1     
+200 [dump:0,u:0:0]    (f:0.000234,d:1.67e-06)  -->  [f:8.73e-08,d:6.12e-10]  lambda:1     
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+201 [dump:0,u:0:0]    (f:8.73e-08,d:6.12e-10)  -->  [f:1.43e-11,d:1.58e-14]  lambda:1     
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:201,phase:1,s:0.2,ds:0.2] |X|=2.781e-10/8.571e-12/2.693e-11, |L|=2.781e-10/8.574e-12/2.694e-11 |B|=0.198/0.198/0.198, |BL|=1.947e-16/2.043e-16/1.95e-16, PARS=0/0/0, U=1160/539.2/614.9
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+202(1 ) [phase:1,s:0.2,ds:0.2,dump:7,u:0:0]                (f:3.3e-06,d:452)     -->      [f:92.4,d:395]       lambda:0.0824  #err= 39 update:7
+203(2 ) [phase:1,s:0.2,ds:0.2,dump:6,u:0:0]                 (f:92.4,d:130)       -->      [f:98.8,d:122]       lambda:0.0506  #err= 90 update:6
+204(3 ) [phase:1,s:0.2,ds:0.2,dump:7,u:0:0]                 (f:98.8,d:87.7)      -->      [f:98.1,d:84.6]      lambda:0.0278  #err= 83 update:7
+205(4 ) [phase:1,s:0.2,ds:0.2,dump:5,u:0:0]                 (f:98.1,d:62.8)      -->      [f:96.3,d:59.4]      lambda:0.042  #err= 79 update:5
+206(5 ) [phase:1,s:0.2,ds:0.2,dump:6,u:0:0]                 (f:96.3,d:54.3)      -->      [f:93.5,d:52.2]      lambda:0.0362  #err= 93 update:6
+207(6 ) [phase:1,s:0.2,ds:0.2,dump:5,u:0:0]                 (f:93.5,d:47.4)      -->      [f:89.9,d:45.2]      lambda:0.048  #err= 80 update:5
+208(7 ) [phase:1,s:0.2,ds:0.2,dump:6,u:0:0]                 (f:89.9,d:41.1)      -->       [f:88,d:40.1]       lambda:0.0221  #err= 79 update:5 armijo:1
+209(8 ) [phase:1,s:0.2,ds:0.2,dump:4,u:0:0]                  (f:88,d:38.8)       -->       [f:84,d:36.5]       lambda:0.0535  #err= 62 update:4
+210(9 ) [phase:1,s:0.2,ds:0.2,dump:5,u:0:0]                  (f:84,d:34.1)       -->       [f:79.7,d:32]       lambda:0.0583  #err= 79 update:5
+211(10) [phase:1,s:0.2,ds:0.2,dump:5,u:0:0]                 (f:79.7,d:30.1)      -->      [f:75.4,d:28.2]      lambda:0.0609  #err= 80 update:5
+212(11) [phase:1,s:0.2,ds:0.2,dump:5,u:0:0]                 (f:75.4,d:26.8)      -->      [f:71.2,d:25.1]      lambda:0.0622  #err= 80 update:5
+213(12) [phase:1,s:0.2,ds:0.2,dump:5,u:0:0]                  (f:71.2,d:24)       -->      [f:68.7,d:23.2]      lambda:0.0359  #err= 60 update:4 armijo:1
+214(13) [phase:1,s:0.2,ds:0.2,dump:4,u:0:0]                 (f:68.7,d:22.6)      -->       [f:64.5,d:21]       lambda:0.0683  #err= 40 update:4
+215(14) [phase:1,s:0.2,ds:0.2,dump:4,u:0:0]                 (f:64.5,d:20.1)      -->      [f:59.1,d:18.2]      lambda:0.0941  #err= 63 update:4
+216(15) [phase:1,s:0.2,ds:0.2,dump:5,u:0:0]                 (f:59.1,d:17.7)      -->      [f:56.5,d:16.9]      lambda:0.0442  #err= 60 update:4 armijo:1
+217(16) [phase:1,s:0.2,ds:0.2,dump:3,u:0:0]                 (f:56.5,d:16.7)      -->       [f:50.8,d:15]       lambda:0.108  #err= 48 update:3
+218(17) [phase:1,s:0.2,ds:0.2,dump:6,u:0:0]                 (f:50.8,d:14.2)      -->      [f:45.2,d:12.5]      lambda:0.118  #err= 95 update:6
+219(18) [phase:1,s:0.2,ds:0.2,dump:4,u:0:0]                  (f:45.2,d:12)       -->      [f:39.9,d:10.5]      lambda:0.124  #err= 64 update:4
+220(19) [phase:1,s:0.2,ds:0.2,dump:4,u:0:0]                 (f:39.9,d:10.2)      -->      [f:37.1,d:9.49]      lambda:0.0723  #err= 48 update:3 armijo:1
+221(20) [phase:1,s:0.2,ds:0.2,dump:3,u:0:0]                 (f:37.1,d:9.38)      -->      [f:34.3,d:8.63]      lambda:0.0791  #err= 33 update:2 armijo:1
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+222(21) [phase:1,s:0.2,ds:0.2,dump:5,u:0:0]                 (f:34.3,d:8.53)      -->      [f:28.8,d:7.07]      lambda:0.168  #err= 78 update:5
+223(22) [phase:1,s:0.2,ds:0.2,dump:3,u:0:0]                 (f:28.8,d:6.91)      -->       [f:23,d:5.42]       lambda:0.211  #err= 47 update:3
+224(23) [phase:1,s:0.2,ds:0.2,dump:4,u:0:0]                  (f:23,d:5.31)       -->      [f:19.9,d:4.57]      lambda:0.137  #err= 49 update:3 armijo:1
+225(24) [phase:1,s:0.2,ds:0.2,dump:2,u:0:0]                 (f:19.9,d:4.53)      -->      [f:16.9,d:3.82]      lambda:0.156  #err= 16 update:1 armijo:1
+226(25) [phase:1,s:0.2,ds:0.2,dump:3,u:0:0]                 (f:16.9,d:3.78)      -->      [f:11.3,d:2.47]      lambda:0.343  #err= 37 update:3
+227(26) [phase:1,s:0.2,ds:0.2,dump:1,u:0:0]                 (f:11.3,d:2.43)      -->     [f:3.82,d:0.944]      lambda:0.7    #err= 16 update:1
+228(27) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]                (f:3.82,d:0.743)      -->    [f:0.131,d:0.0328]     lambda:1     
+229(28) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]               (f:0.131,d:0.0508)     -->   [f:0.00653,d:0.00446]   lambda:1     
+230(29) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]              (f:0.00653,d:0.00677)   -->  [f:0.000137,d:0.000593]  lambda:1     
+231(30) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:0.000137,d:0.00115)   -->  [f:6.98e-06,d:0.000215]  lambda:1     
+232(31) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:6.98e-06,d:0.000378)  -->  [f:1.3e-06,d:4.04e-05]   lambda:1     
+233(32) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:1.3e-06,d:5.26e-05)   -->  [f:3.42e-08,d:1.09e-06]  lambda:1     
+234(33) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:3.42e-08,d:1.15e-06)  -->  [f:3.77e-11,d:7.29e-10]  lambda:1     
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:234,phase:1,s:0.5,ds:0.3] |X|=2.765e-10/9.224e-12/2.816e-11, |L|=2.765e-10/9.231e-12/2.817e-11 |B|=0.297/0.297/0.297, |BL|=1.947e-16/2.078e-16/1.95e-16, PARS=0/0/0, U=2395/1085/1127
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+235(1 ) [phase:1,s:0.5,ds:0.3,dump:8,u:0:0]               (f:4.95e-06,d:8.05)    -->     [f:0.0422,d:7.77]     lambda:0.0329  #err=113 update:7 armijo:1
+236(2 ) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]                (f:0.0422,d:7.18)     -->     [f:0.175,d:6.67]      lambda:0.0654  #err= 58 update:4
+237(3 ) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]                (f:0.175,d:5.78)      -->     [f:0.347,d:5.23]      lambda:0.0921  #err= 64 update:4
+238(4 ) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]                (f:0.347,d:4.38)      -->     [f:0.474,d:3.88]      lambda:0.109  #err= 64 update:4
+239(5 ) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]                (f:0.474,d:3.28)      -->     [f:0.537,d:2.86]      lambda:0.119  #err= 60 update:4
+240(6 ) [phase:1,s:0.5,ds:0.3,dump:3,u:0:0]                (f:0.537,d:2.49)      -->     [f:0.605,d:2.19]      lambda:0.178  #err= 46 update:3
+241(7 ) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]                (f:0.605,d:1.71)      -->     [f:0.612,d:1.45]      lambda:0.24   #err= 63 update:4
+242(8 ) [phase:1,s:0.5,ds:0.3,dump:3,u:0:0]                (f:0.612,d:1.08)      -->     [f:0.548,d:0.922]     lambda:0.144  #err= 33 update:2 armijo:1
+243(9 ) [phase:1,s:0.5,ds:0.3,dump:3,u:0:0]                (f:0.548,d:0.868)     -->     [f:0.45,d:0.556]      lambda:0.343  #err= 39 update:3
+244(10) [phase:1,s:0.5,ds:0.3,dump:1,u:0:0]                (f:0.45,d:0.494)      -->     [f:0.265,d:0.205]     lambda:0.7    #err= 14 update:1
+245(11) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]                (f:0.265,d:0.118)     -->   [f:0.0181,d:0.00489]    lambda:1     
+246(12) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]              (f:0.0181,d:0.00544)    -->   [f:4.07e-05,d:0.0004]   lambda:1     
+247(13) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:4.07e-05,d:0.000885)  -->   [f:5.74e-06,d:0.0002]   lambda:1     
+248(14) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:5.74e-06,d:0.000383)  -->  [f:1.72e-06,d:5.68e-05]  lambda:1     
+249(15) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:1.72e-06,d:8.34e-05)  -->  [f:1.2e-07,d:3.94e-06]   lambda:1     
+250(16) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:1.2e-07,d:4.42e-06)   -->  [f:4.79e-10,d:1.76e-08]  lambda:1     
+
+Continuation step N.1 s:0.5->0.95, ds=0.45
+[iter:250,phase:1,s:0.95,ds:0.45] |X|=2.769e-10/9.284e-12/2.836e-11, |L|=2.769e-10/9.289e-12/2.836e-11 |B|=0.4455/0.4455/0.4455, |BL|=1.952e-16/2.048e-16/1.954e-16, PARS=0/0/0, U=2664/1121/1151
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+251(1 ) [phase:1,s:0.95,ds:0.45,dump:7,u:0:0]             (f:7.42e-06,d:2.75)    -->     [f:0.0175,d:2.62]     lambda:0.0471  #err= 89 update:6 armijo:1
+252(2 ) [phase:1,s:0.95,ds:0.45,dump:3,u:0:0]              (f:0.0175,d:2.45)     -->     [f:0.0948,d:2.15]     lambda:0.112  #err= 43 update:3
+253(3 ) [phase:1,s:0.95,ds:0.45,dump:6,u:0:0]              (f:0.0948,d:1.86)     -->     [f:0.138,d:1.63]      lambda:0.118  #err= 85 update:6
+254(4 ) [phase:1,s:0.95,ds:0.45,dump:3,u:0:0]              (f:0.138,d:1.44)      -->     [f:0.191,d:1.23]      lambda:0.176  #err= 44 update:3
+255(5 ) [phase:1,s:0.95,ds:0.45,dump:5,u:0:0]                (f:0.191,d:1)       -->     [f:0.185,d:0.903]     lambda:0.096  #err= 61 update:4 armijo:1
+256(6 ) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]              (f:0.185,d:0.851)     -->     [f:0.192,d:0.646]     lambda:0.228  #err= 23 update:2
+257(7 ) [phase:1,s:0.95,ds:0.45,dump:3,u:0:0]              (f:0.192,d:0.571)     -->     [f:0.18,d:0.378]      lambda:0.343  #err= 40 update:3
+258(8 ) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]               (f:0.18,d:0.32)      -->     [f:0.129,d:0.158]     lambda:0.49   #err= 14 update:2
+259(9 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]              (f:0.129,d:0.141)     -->    [f:0.0317,d:0.0121]    lambda:1     
+260(10) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]            (f:0.0317,d:0.00854)    -->  [f:0.000123,d:0.000302]  lambda:1     
+261(11) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:0.000123,d:0.000502)  -->  [f:2.65e-06,d:4.79e-05]  lambda:1     
+262(12) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:2.65e-06,d:6.19e-05)  -->  [f:6.49e-08,d:1.23e-06]  lambda:1     
+263(13) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:6.49e-08,d:1.29e-06)  -->  [f:5.5e-11,d:8.63e-10]   lambda:1     
+
+Continuation step N.1 s:0.95->1, ds=0.05
+[iter:263,phase:1,s:1,ds:0.05] |X|=2.785e-10/9.216e-12/2.819e-11, |L|=2.785e-10/9.22e-12/2.819e-11 |B|=0.0495/0.0495/0.0495, |BL|=1.947e-16/2.181e-16/1.954e-16, PARS=0/0/0, U=2794/1136/1162
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+264(1 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]                (f:8.25e-07,d:0.11)    -->   [f:0.0176,d:0.00859]    lambda:1     
+265(2 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]               (f:0.0176,d:0.00537)    -->  [f:4.43e-05,d:0.000261]  lambda:1     
+266(3 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:4.43e-05,d:0.000389)  -->  [f:1.1e-06,d:2.16e-05]   lambda:1     
+267(4 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:1.1e-06,d:2.49e-05)   -->  [f:6.79e-09,d:1.46e-07]  lambda:1     
+268(5 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:6.79e-09,d:1.48e-07)  -->  [f:1.57e-11,d:7.83e-12]  lambda:1     
+Continuation step N.2
+
+Continuation step N.2 s:0->0.2, ds=0.2
+[iter:268,phase:2,s:0.2,ds:0.2] |X|=6034/492.7/1708, |L|=6034/492.9/1708 |B|=7.891e-27/7.891e-27/7.891e-27, |BL|=1.952e-16/2.601e-16/1.993e-16, PARS=0/0/0, U=2858/1438/1464
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+269(1 ) [phase:2,s:0.2,ds:0.2,dump:5,u:0:0]                 (f:473,d:0.877)      -->      [f:392,d:0.728]      lambda:0.168  #err= 74 update:5
+270(2 ) [phase:2,s:0.2,ds:0.2,dump:3,u:0:0]                 (f:392,d:0.649)      -->      [f:307,d:0.515]      lambda:0.211  #err= 35 update:3
+271(3 ) [phase:2,s:0.2,ds:0.2,dump:4,u:0:0]                 (f:307,d:0.457)      -->      [f:232,d:0.342]      lambda:0.24   #err= 41 update:4
+272(4 ) [phase:2,s:0.2,ds:0.2,dump:2,u:0:0]                 (f:232,d:0.315)      -->       [f:146,d:0.2]       lambda:0.36   #err= 14 update:2
+273(5 ) [phase:2,s:0.2,ds:0.2,dump:2,u:0:0]                 (f:146,d:0.18)       -->     [f:97.1,d:0.119]      lambda:0.331  #err=  8 update:1 armijo:1
+274(6 ) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]                (f:97.1,d:0.113)      -->     [f:2.47,d:0.0203]     lambda:1     
+275(7 ) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]               (f:2.47,d:0.00616)     -->  [f:0.00178,d:0.000361]   lambda:1     
+276(8 ) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]             (f:0.00178,d:0.000797)   -->  [f:7.03e-06,d:0.000187]  lambda:1     
+277(9 ) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]             (f:7.03e-06,d:0.000378)  -->  [f:2.45e-06,d:6.5e-05]   lambda:1     
+278(10) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]              (f:2.45e-06,d:0.0001)   -->  [f:2.53e-07,d:7.49e-06]  lambda:1     
+279(11) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]             (f:2.53e-07,d:8.93e-06)  -->  [f:1.95e-09,d:7.26e-08]  lambda:1     
+
+Continuation step N.2 s:0.2->0.5, ds=0.3
+[iter:279,phase:2,s:0.5,ds:0.3] |X|=1.192e+04/985.7/3416, |L|=1.192e+04/986/3416 |B|=8.847e-26/8.862e-26/8.847e-26, |BL|=1.952e-16/2.463e-16/1.978e-16, PARS=0/0/0, U=2924/1751/1774
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+280(1 ) [phase:2,s:0.5,ds:0.3,dump:8,u:0:0]                  (f:957,d:1.7)       -->      [f:900,d:1.59]       lambda:0.0576  #err=115 update:8
+281(2 ) [phase:2,s:0.5,ds:0.3,dump:5,u:0:0]                 (f:900,d:1.45)       -->      [f:845,d:1.36]       lambda:0.0605  #err= 58 update:5
+282(3 ) [phase:2,s:0.5,ds:0.3,dump:5,u:0:0]                 (f:845,d:1.25)       -->      [f:791,d:1.17]       lambda:0.062  #err= 54 update:5
+283(4 ) [phase:2,s:0.5,ds:0.3,dump:5,u:0:0]                 (f:791,d:1.09)       -->      [f:762,d:1.05]       lambda:0.0359  #err= 48 update:4 armijo:1
+284(5 ) [phase:2,s:0.5,ds:0.3,dump:4,u:0:0]                 (f:762,d:1.01)       -->      [f:732,d:0.973]      lambda:0.039  #err= 34 update:3 armijo:1
+285(6 ) [phase:2,s:0.5,ds:0.3,dump:4,u:0:0]                 (f:732,d:0.938)      -->       [f:702,d:0.9]       lambda:0.0406  #err= 35 update:3 armijo:1
+286(7 ) [phase:2,s:0.5,ds:0.3,dump:3,u:0:0]                 (f:702,d:0.868)      -->      [f:627,d:0.813]      lambda:0.104  #err= 32 update:3
+287(8 ) [phase:2,s:0.5,ds:0.3,dump:6,u:0:0]                 (f:627,d:0.711)      -->      [f:551,d:0.641]      lambda:0.118  #err= 74 update:6
+288(9 ) [phase:2,s:0.5,ds:0.3,dump:4,u:0:0]                 (f:551,d:0.577)      -->      [f:482,d:0.502]      lambda:0.124  #err= 36 update:4
+289(10) [phase:2,s:0.5,ds:0.3,dump:4,u:0:0]                 (f:482,d:0.469)      -->      [f:446,d:0.435]      lambda:0.0723  #err= 27 update:3 armijo:1
+290(11) [phase:2,s:0.5,ds:0.3,dump:3,u:0:0]                 (f:446,d:0.421)      -->      [f:411,d:0.387]      lambda:0.0791  #err= 17 update:2 armijo:1
+291(12) [phase:2,s:0.5,ds:0.3,dump:5,u:0:0]                 (f:411,d:0.374)      -->      [f:340,d:0.309]      lambda:0.168  #err= 52 update:5
+292(13) [phase:2,s:0.5,ds:0.3,dump:3,u:0:0]                 (f:340,d:0.29)       -->      [f:267,d:0.227]      lambda:0.211  #err= 17 update:3
+293(14) [phase:2,s:0.5,ds:0.3,dump:3,u:0:0]                 (f:267,d:0.214)      -->      [f:173,d:0.156]      lambda:0.343  #err= 21 update:3
+294(15) [phase:2,s:0.5,ds:0.3,dump:2,u:0:0]                 (f:173,d:0.128)      -->     [f:86.2,d:0.0663]     lambda:0.49   #err=  9 update:2
+295(16) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]                (f:86.2,d:0.0596)     -->     [f:1.9,d:0.00549]     lambda:1     
+296(17) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]                (f:1.9,d:0.00256)     -->  [f:0.000986,d:0.000217]  lambda:1     
+297(18) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]             (f:0.000986,d:0.000431)  -->  [f:2.07e-06,d:7.21e-05]  lambda:1     
+298(19) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]             (f:2.07e-06,d:0.00011)   -->  [f:2.07e-07,d:5.92e-06]  lambda:1     
+299(20) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]             (f:2.07e-07,d:6.7e-06)   -->  [f:1.1e-09,d:3.07e-08]   lambda:1     
+
+Continuation step N.2 s:0.5->0.95, ds=0.45
+[iter:299,phase:2,s:0.95,ds:0.45] |X|=3.887e+04/2619/9089, |L|=3.887e+04/2620/9092 |B|=3.244e-26/3.245e-26/3.244e-26, |BL|=1.947e-16/2.042e-16/1.95e-16, PARS=0/0/0, U=2996/2842/2844
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+300(1 ) [phase:2,s:0.95,ds:0.45,dump:17,u:0:0]            (f:2.66e+03,d:28.1)    -->     [f:2.65e+03,d:28]     lambda:0.00233  #err=267 update:17
+301(2 ) [phase:2,s:0.95,ds:0.45,dump:10,u:0:0]            (f:2.65e+03,d:24.7)    -->    [f:2.65e+03,d:24.7]    lambda:0.00204  #err=125 update:10
+302(3 ) [phase:2,s:0.95,ds:0.45,dump:10,u:0:0]            (f:2.65e+03,d:22.6)    -->    [f:2.64e+03,d:22.6]    lambda:0.00192  #err= 97 update:10
+303(4 ) [phase:2,s:0.95,ds:0.45,dump:9,u:0:0]             (f:2.64e+03,d:20.9)    -->    [f:2.63e+03,d:20.8]    lambda:0.00265  #err= 70 update:9
+304(5 ) [phase:2,s:0.95,ds:0.45,dump:9,u:0:0]             (f:2.63e+03,d:18.6)    -->    [f:2.63e+03,d:18.6]    lambda:0.00312  #err= 80 update:9
+305(6 ) [phase:2,s:0.95,ds:0.45,dump:9,u:0:0]             (f:2.63e+03,d:16.2)    -->    [f:2.62e+03,d:16.1]    lambda:0.00338  #err= 60 update:9
+306(7 ) [phase:2,s:0.95,ds:0.45,dump:9,u:0:0]             (f:2.62e+03,d:13.9)    -->    [f:2.61e+03,d:13.9]    lambda:0.00352  #err= 73 update:9
+307(8 ) [phase:2,s:0.95,ds:0.45,dump:9,u:0:0]              (f:2.61e+03,d:12)     -->     [f:2.6e+03,d:12]      lambda:0.00359  #err= 72 update:9
+308(9 ) [phase:2,s:0.95,ds:0.45,dump:10,u:0:0]            (f:2.6e+03,d:10.6)     -->    [f:2.59e+03,d:10.6]    lambda:0.00254  #err= 70 update:10
+309(10) [phase:2,s:0.95,ds:0.45,dump:8,u:0:0]             (f:2.59e+03,d:9.93)    -->    [f:2.58e+03,d:9.88]    lambda:0.00436  #err= 54 update:8
+310(11) [phase:2,s:0.95,ds:0.45,dump:9,u:0:0]              (f:2.58e+03,d:9)      -->    [f:2.57e+03,d:8.96]    lambda:0.004  #err= 73 update:9
+311(12) [phase:2,s:0.95,ds:0.45,dump:9,u:0:0]             (f:2.57e+03,d:8.31)    -->    [f:2.56e+03,d:8.28]    lambda:0.00383  #err= 72 update:9
+312(13) [phase:2,s:0.95,ds:0.45,dump:9,u:0:0]             (f:2.56e+03,d:7.79)    -->    [f:2.55e+03,d:7.75]    lambda:0.00374  #err= 61 update:9
+313(14) [phase:2,s:0.95,ds:0.45,dump:9,u:0:0]             (f:2.55e+03,d:7.35)    -->    [f:2.54e+03,d:7.32]    lambda:0.0037  #err= 65 update:9
+314(15) [phase:2,s:0.95,ds:0.45,dump:8,u:0:0]             (f:2.54e+03,d:6.95)    -->    [f:2.53e+03,d:6.91]    lambda:0.00526  #err= 60 update:8
+315(16) [phase:2,s:0.95,ds:0.45,dump:9,u:0:0]             (f:2.53e+03,d:6.46)    -->    [f:2.51e+03,d:6.43]    lambda:0.00439  #err= 74 update:9
+316(17) [phase:2,s:0.95,ds:0.45,dump:8,u:0:0]             (f:2.51e+03,d:6.1)     -->    [f:2.5e+03,d:6.06]     lambda:0.00573  #err= 66 update:8
+317(18) [phase:2,s:0.95,ds:0.45,dump:9,u:0:0]              (f:2.5e+03,d:5.7)     -->    [f:2.49e+03,d:5.67]    lambda:0.00458  #err= 76 update:9
+318(19) [phase:2,s:0.95,ds:0.45,dump:8,u:0:0]             (f:2.49e+03,d:5.42)    -->    [f:2.47e+03,d:5.35]    lambda:0.00585  #err= 62 update:8
+319(20) [phase:2,s:0.95,ds:0.45,dump:9,u:0:0]             (f:2.47e+03,d:5.1)     -->    [f:2.46e+03,d:5.06]    lambda:0.00463  #err= 71 update:9
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+320(21) [phase:2,s:0.95,ds:0.45,dump:9,u:0:0]             (f:2.46e+03,d:4.89)    -->    [f:2.45e+03,d:4.87]    lambda:0.00412  #err= 62 update:9
+321(22) [phase:2,s:0.95,ds:0.45,dump:9,u:0:0]             (f:2.45e+03,d:4.72)    -->    [f:2.44e+03,d:4.7]     lambda:0.00388  #err= 64 update:9
+322(23) [phase:2,s:0.95,ds:0.45,dump:8,u:0:0]             (f:2.44e+03,d:4.57)    -->    [f:2.43e+03,d:4.54]    lambda:0.00539  #err= 67 update:8
+323(24) [phase:2,s:0.95,ds:0.45,dump:9,u:0:0]             (f:2.43e+03,d:4.39)    -->    [f:2.42e+03,d:4.37]    lambda:0.00444  #err= 67 update:9
+324(25) [phase:2,s:0.95,ds:0.45,dump:9,u:0:0]             (f:2.42e+03,d:4.26)    -->    [f:2.41e+03,d:4.24]    lambda:0.00404  #err= 70 update:9
+325(26) [phase:2,s:0.95,ds:0.45,dump:8,u:0:0]             (f:2.41e+03,d:4.14)    -->    [f:2.39e+03,d:4.2]     lambda:0.00549  #err= 67 update:8
+326(27) [phase:2,s:0.95,ds:0.45,dump:9,u:0:0]             (f:2.39e+03,d:3.99)    -->    [f:2.38e+03,d:3.97]    lambda:0.00449  #err= 62 update:9
+327(28) [phase:2,s:0.95,ds:0.45,dump:9,u:0:0]             (f:2.38e+03,d:3.88)    -->    [f:2.37e+03,d:3.87]    lambda:0.00405  #err= 69 update:9
+328(29) [phase:2,s:0.95,ds:0.45,dump:9,u:0:0]             (f:2.37e+03,d:3.79)    -->    [f:2.37e+03,d:3.78]    lambda:0.0022  #err= 66 update:8 armijo:1
+329(30) [phase:2,s:0.95,ds:0.45,dump:7,u:0:0]             (f:2.37e+03,d:3.75)    -->    [f:2.35e+03,d:3.72]    lambda:0.0058  #err= 61 update:7
+330(31) [phase:2,s:0.95,ds:0.45,dump:9,u:0:0]             (f:2.35e+03,d:3.64)    -->    [f:2.34e+03,d:3.62]    lambda:0.00461  #err= 72 update:9
+331(32) [phase:2,s:0.95,ds:0.45,dump:8,u:0:0]             (f:2.34e+03,d:3.58)    -->    [f:2.33e+03,d:3.55]    lambda:0.00587  #err= 67 update:8
+332(33) [phase:2,s:0.95,ds:0.45,dump:9,u:0:0]             (f:2.33e+03,d:3.51)    -->    [f:2.32e+03,d:3.49]    lambda:0.00464  #err= 72 update:9
+333(34) [phase:2,s:0.95,ds:0.45,dump:8,u:0:0]             (f:2.32e+03,d:3.43)    -->    [f:2.3e+03,d:3.42]     lambda:0.00589  #err= 66 update:8
+334(35) [phase:2,s:0.95,ds:0.45,dump:9,u:0:0]             (f:2.3e+03,d:3.37)     -->    [f:2.3e+03,d:3.36]     lambda:0.00265  #err= 73 update:8 armijo:1
+335(36) [phase:2,s:0.95,ds:0.45,dump:8,u:0:0]             (f:2.3e+03,d:3.32)     -->    [f:2.29e+03,d:3.32]    lambda:0.00255  #err= 66 update:7 armijo:1
+336(37) [phase:2,s:0.95,ds:0.45,dump:8,u:0:0]             (f:2.29e+03,d:3.29)    -->    [f:2.28e+03,d:3.28]    lambda:0.00436  #err= 66 update:8
+337(38) [phase:2,s:0.95,ds:0.45,dump:8,u:0:0]             (f:2.28e+03,d:3.24)    -->    [f:2.27e+03,d:3.22]    lambda:0.00571  #err= 64 update:8
+338(39) [phase:2,s:0.95,ds:0.45,dump:8,u:0:0]             (f:2.27e+03,d:3.17)    -->    [f:2.25e+03,d:3.14]    lambda:0.00654  #err= 68 update:8
+339(40) [phase:2,s:0.95,ds:0.45,dump:8,u:0:0]             (f:2.25e+03,d:3.09)    -->    [f:2.24e+03,d:3.07]    lambda:0.00699  #err= 70 update:8
+NLsolver[wheel_slip_dynamics_with_actuator]::solve_with_continuation(phase=2,...) found:
+NLsolver[wheel_slip_dynamics_with_actuator]::solve()
+#phase=2 #it=0/40 lambda=0.00699 tolerance=1.78e-07 |f|_1=2251 |f|_inf=3.431e+04 |d|_1=3.09 |d|_inf=2047
+at phase 2, iter 339: NLsolver[wheel_slip_dynamics_with_actuator]::solve, Too many iterations
+
+
+Continuation step N.2 s:0.5->0.725, ds=0.225
+[iter:339,phase:2,s:0.725,ds:0.225] |X|=1.419e+04/1171/4057, |L|=1.419e+04/1171/4057 |B|=3.244e-26/3.245e-26/3.244e-26, |BL|=1.947e-16/2.042e-16/1.95e-16, PARS=0/0/0, U=2963/1880/1897
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+340(1 ) [phase:2,s:0.725,ds:0.225,dump:9,u:0:0]           (f:1.15e+03,d:1.44)    -->    [f:1.1e+03,d:1.39]     lambda:0.0404  #err=128 update:9
+341(2 ) [phase:2,s:0.725,ds:0.225,dump:6,u:0:0]           (f:1.1e+03,d:1.27)     -->    [f:1.06e+03,d:1.22]    lambda:0.0355  #err= 49 update:6
+342(3 ) [phase:2,s:0.725,ds:0.225,dump:5,u:0:0]           (f:1.06e+03,d:1.15)    -->    [f:1.01e+03,d:1.11]    lambda:0.0475  #err= 45 update:5
+343(4 ) [phase:2,s:0.725,ds:0.225,dump:6,u:0:0]           (f:1.01e+03,d:1.02)    -->      [f:984,d:0.997]      lambda:0.022  #err= 48 update:5 armijo:1
+344(5 ) [phase:2,s:0.725,ds:0.225,dump:5,u:0:0]             (f:984,d:0.969)      -->      [f:963,d:0.948]      lambda:0.0214  #err= 31 update:4 armijo:1
+345(6 ) [phase:2,s:0.725,ds:0.225,dump:4,u:0:0]             (f:963,d:0.924)      -->      [f:911,d:0.873]      lambda:0.0526  #err= 31 update:4
+346(7 ) [phase:2,s:0.725,ds:0.225,dump:5,u:0:0]             (f:911,d:0.821)      -->      [f:857,d:0.774]      lambda:0.0578  #err= 41 update:5
+347(8 ) [phase:2,s:0.725,ds:0.225,dump:5,u:0:0]             (f:857,d:0.73)       -->      [f:804,d:0.684]      lambda:0.0606  #err= 37 update:5
+348(9 ) [phase:2,s:0.725,ds:0.225,dump:5,u:0:0]             (f:804,d:0.649)      -->      [f:753,d:0.607]      lambda:0.0621  #err= 34 update:5
+349(10) [phase:2,s:0.725,ds:0.225,dump:5,u:0:0]             (f:753,d:0.579)      -->      [f:705,d:0.542]      lambda:0.0628  #err= 31 update:5
+350(11) [phase:2,s:0.725,ds:0.225,dump:4,u:0:0]             (f:705,d:0.519)      -->      [f:640,d:0.488]      lambda:0.0903  #err= 27 update:4
+351(12) [phase:2,s:0.725,ds:0.225,dump:5,u:0:0]             (f:640,d:0.446)      -->      [f:612,d:0.427]      lambda:0.0433  #err= 27 update:4 armijo:1
+352(13) [phase:2,s:0.725,ds:0.225,dump:3,u:0:0]             (f:612,d:0.418)      -->      [f:545,d:0.401]      lambda:0.107  #err= 17 update:3
+353(14) [phase:2,s:0.725,ds:0.225,dump:6,u:0:0]             (f:545,d:0.353)      -->      [f:479,d:0.31]       lambda:0.118  #err= 47 update:6
+354(15) [phase:2,s:0.725,ds:0.225,dump:4,u:0:0]             (f:479,d:0.296)      -->      [f:419,d:0.259]      lambda:0.124  #err= 19 update:4
+355(16) [phase:2,s:0.725,ds:0.225,dump:3,u:0:0]             (f:419,d:0.248)      -->      [f:341,d:0.213]      lambda:0.181  #err= 14 update:3
+356(17) [phase:2,s:0.725,ds:0.225,dump:4,u:0:0]             (f:341,d:0.193)      -->      [f:257,d:0.16]       lambda:0.24   #err= 20 update:4
+357(18) [phase:2,s:0.725,ds:0.225,dump:3,u:0:0]             (f:257,d:0.138)      -->      [f:220,d:0.118]      lambda:0.144  #err=  9 update:2 armijo:1
+358(19) [phase:2,s:0.725,ds:0.225,dump:3,u:0:0]             (f:220,d:0.115)      -->     [f:143,d:0.0859]      lambda:0.343  #err= 13 update:3
+359(20) [phase:2,s:0.725,ds:0.225,dump:2,u:0:0]             (f:143,d:0.072)      -->     [f:102,d:0.0516]      lambda:0.28   #err=  4 update:1 armijo:1
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+360(21) [phase:2,s:0.725,ds:0.225,dump:1,u:0:0]            (f:102,d:0.0507)      -->     [f:29.4,d:0.0162]     lambda:0.7    #err=  2 update:1
+361(22) [phase:2,s:0.725,ds:0.225,dump:0,u:0:0]            (f:29.4,d:0.0144)     -->   [f:0.209,d:0.000248]    lambda:1     
+362(23) [phase:2,s:0.725,ds:0.225,dump:0,u:0:0]          (f:0.209,d:0.000357)    -->  [f:1.2e-05,d:3.76e-05]   lambda:1     
+363(24) [phase:2,s:0.725,ds:0.225,dump:0,u:0:0]         (f:1.2e-05,d:5.22e-05)   -->  [f:1.97e-08,d:1.63e-06]  lambda:1     
+364(25) [phase:2,s:0.725,ds:0.225,dump:0,u:0:0]         (f:1.97e-08,d:1.74e-06)  -->  [f:3.37e-11,d:1.92e-09]  lambda:1     
+365(26) [phase:2,s:0.725,ds:0.225,dump:0,u:0:0]         (f:3.37e-11,d:1.93e-09)  -->  [f:1.54e-11,d:1.95e-13]  lambda:1     
+
+Continuation step N.2 s:0.725->1, ds=0.275
+[iter:365,phase:2,s:1,ds:0.275] |X|=5.173e+04/2838/9855, |L|=5.173e+04/2839/9858 |B|=1.819e-30/1.819e-30/1.819e-30, |BL|=1.947e-16/2.183e-16/1.954e-16, PARS=0/0/0, U=3000/3000/3000
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+366(1 ) [phase:2,s:1,ds:0.275,dump:26,u:0:0]               (f:2.9e+03,d:174)     -->     [f:2.9e+03,d:175]     lambda:9.39e-05  #err=368 update:26
+367(2 ) [phase:2,s:1,ds:0.275,dump:17,u:0:0]               (f:2.9e+03,d:117)     -->     [f:2.9e+03,d:117]     lambda:3.38e-05  #err=270 update:17
+368(3 ) [phase:2,s:1,ds:0.275,dump:20,u:0:0]               (f:2.9e+03,d:158)     -->     [f:2.9e+03,d:158]     lambda:6.96e-06  #err=256 update:20
+369(4 ) [phase:2,s:1,ds:0.275,dump:18,u:0:0]               (f:2.9e+03,d:146)     -->     [f:2.9e+03,d:146]     lambda:6.44e-06  #err=246 update:18
+370(5 ) [phase:2,s:1,ds:0.275,dump:18,u:0:0]               (f:2.9e+03,d:139)     -->     [f:2.9e+03,d:139]     lambda:6.2e-06  #err=280 update:18
+371(6 ) [phase:2,s:1,ds:0.275,dump:18,u:0:0]               (f:2.9e+03,d:134)     -->     [f:2.9e+03,d:134]     lambda:6.08e-06  #err=270 update:18
+372(7 ) [phase:2,s:1,ds:0.275,dump:18,u:0:0]               (f:2.9e+03,d:129)     -->     [f:2.9e+03,d:129]     lambda:6.02e-06  #err=263 update:18
+373(8 ) [phase:2,s:1,ds:0.275,dump:18,u:0:0]               (f:2.9e+03,d:125)     -->     [f:2.9e+03,d:125]     lambda:6e-06  #err=272 update:18
+374(9 ) [phase:2,s:1,ds:0.275,dump:18,u:0:0]               (f:2.9e+03,d:122)     -->     [f:2.9e+03,d:122]     lambda:5.98e-06  #err=270 update:18
+375(10) [phase:2,s:1,ds:0.275,dump:18,u:0:0]               (f:2.9e+03,d:119)     -->     [f:2.9e+03,d:119]     lambda:5.97e-06  #err=280 update:18
+376(11) [phase:2,s:1,ds:0.275,dump:18,u:0:0]               (f:2.9e+03,d:116)     -->     [f:2.9e+03,d:116]     lambda:5.97e-06  #err=285 update:18
+377(12) [phase:2,s:1,ds:0.275,dump:18,u:0:0]               (f:2.9e+03,d:113)     -->     [f:2.9e+03,d:113]     lambda:5.97e-06  #err=285 update:18
+378(13) [phase:2,s:1,ds:0.275,dump:18,u:0:0]               (f:2.9e+03,d:111)     -->     [f:2.9e+03,d:111]     lambda:5.97e-06  #err=277 update:18
+379(14) [phase:2,s:1,ds:0.275,dump:18,u:0:0]               (f:2.9e+03,d:108)     -->     [f:2.9e+03,d:108]     lambda:5.97e-06  #err=282 update:18
+380(15) [phase:2,s:1,ds:0.275,dump:18,u:0:0]               (f:2.9e+03,d:106)     -->     [f:2.9e+03,d:106]     lambda:5.97e-06  #err=279 update:18
+381(16) [phase:2,s:1,ds:0.275,dump:18,u:0:0]               (f:2.9e+03,d:103)     -->     [f:2.9e+03,d:103]     lambda:5.97e-06  #err=271 update:18
+382(17) [phase:2,s:1,ds:0.275,dump:18,u:0:0]               (f:2.9e+03,d:101)     -->     [f:2.9e+03,d:101]     lambda:5.97e-06  #err=282 update:18
+383(18) [phase:2,s:1,ds:0.275,dump:18,u:0:0]              (f:2.9e+03,d:98.2)     -->    [f:2.9e+03,d:98.2]     lambda:5.97e-06  #err=248 update:18
+384(19) [phase:2,s:1,ds:0.275,dump:18,u:0:0]              (f:2.9e+03,d:96.1)     -->    [f:2.9e+03,d:96.1]     lambda:5.97e-06  #err=270 update:18
+385(20) [phase:2,s:1,ds:0.275,dump:18,u:0:0]              (f:2.9e+03,d:94.1)     -->    [f:2.9e+03,d:94.1]     lambda:5.97e-06  #err=260 update:18
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+386(21) [phase:2,s:1,ds:0.275,dump:18,u:0:0]              (f:2.9e+03,d:92.2)     -->    [f:2.9e+03,d:92.2]     lambda:5.97e-06  #err=264 update:18
+387(22) [phase:2,s:1,ds:0.275,dump:18,u:0:0]              (f:2.9e+03,d:90.5)     -->    [f:2.9e+03,d:90.5]     lambda:5.97e-06  #err=273 update:18
+388(23) [phase:2,s:1,ds:0.275,dump:18,u:0:0]              (f:2.9e+03,d:88.8)     -->    [f:2.9e+03,d:88.8]     lambda:5.97e-06  #err=224 update:18
+389(24) [phase:2,s:1,ds:0.275,dump:18,u:0:0]              (f:2.9e+03,d:87.3)     -->    [f:2.9e+03,d:87.3]     lambda:5.97e-06  #err=230 update:18
+390(25) [phase:2,s:1,ds:0.275,dump:18,u:0:0]              (f:2.9e+03,d:85.8)     -->    [f:2.9e+03,d:85.8]     lambda:5.97e-06  #err=263 update:18
+391(26) [phase:2,s:1,ds:0.275,dump:18,u:0:0]              (f:2.9e+03,d:84.4)     -->    [f:2.9e+03,d:84.4]     lambda:5.97e-06  #err=261 update:18
+392(27) [phase:2,s:1,ds:0.275,dump:18,u:0:0]              (f:2.9e+03,d:83.1)     -->    [f:2.9e+03,d:83.1]     lambda:5.97e-06  #err=260 update:18
+393(28) [phase:2,s:1,ds:0.275,dump:18,u:0:0]              (f:2.9e+03,d:81.9)     -->    [f:2.9e+03,d:81.9]     lambda:5.97e-06  #err=261 update:18
+394(29) [phase:2,s:1,ds:0.275,dump:18,u:0:0]              (f:2.9e+03,d:80.7)     -->    [f:2.9e+03,d:80.7]     lambda:5.97e-06  #err=212 update:18
+395(30) [phase:2,s:1,ds:0.275,dump:18,u:0:0]              (f:2.9e+03,d:79.6)     -->    [f:2.9e+03,d:79.6]     lambda:5.97e-06  #err=259 update:18
+396(31) [phase:2,s:1,ds:0.275,dump:18,u:0:0]              (f:2.9e+03,d:78.6)     -->    [f:2.9e+03,d:78.6]     lambda:5.97e-06  #err=254 update:18
+397(32) [phase:2,s:1,ds:0.275,dump:18,u:0:0]              (f:2.9e+03,d:77.6)     -->    [f:2.9e+03,d:77.6]     lambda:5.97e-06  #err=259 update:18
+398(33) [phase:2,s:1,ds:0.275,dump:18,u:0:0]              (f:2.9e+03,d:76.6)     -->    [f:2.9e+03,d:76.6]     lambda:5.97e-06  #err=263 update:18
+399(34) [phase:2,s:1,ds:0.275,dump:18,u:0:0]              (f:2.9e+03,d:75.7)     -->    [f:2.9e+03,d:75.7]     lambda:5.97e-06  #err=235 update:18
+400(35) [phase:2,s:1,ds:0.275,dump:18,u:0:0]              (f:2.9e+03,d:74.9)     -->    [f:2.9e+03,d:74.9]     lambda:5.97e-06  #err=229 update:18
+401(36) [phase:2,s:1,ds:0.275,dump:18,u:0:0]              (f:2.9e+03,d:74.1)     -->    [f:2.9e+03,d:74.1]     lambda:5.97e-06  #err=254 update:18
+402(37) [phase:2,s:1,ds:0.275,dump:18,u:0:0]              (f:2.9e+03,d:73.3)     -->    [f:2.9e+03,d:73.3]     lambda:5.97e-06  #err=240 update:18
+403(38) [phase:2,s:1,ds:0.275,dump:18,u:0:0]              (f:2.9e+03,d:72.6)     -->    [f:2.9e+03,d:72.6]     lambda:5.97e-06  #err=250 update:18
+404(39) [phase:2,s:1,ds:0.275,dump:18,u:0:0]              (f:2.9e+03,d:71.9)     -->    [f:2.9e+03,d:71.9]     lambda:5.97e-06  #err=253 update:18
+405(40) [phase:2,s:1,ds:0.275,dump:18,u:0:0]              (f:2.9e+03,d:71.2)     -->    [f:2.9e+03,d:71.2]     lambda:5.97e-06  #err=254 update:18
+NLsolver[wheel_slip_dynamics_with_actuator]::solve_with_continuation(phase=2,...) found:
+NLsolver[wheel_slip_dynamics_with_actuator]::solve()
+#phase=2 #it=0/40 lambda=5.97e-06 tolerance=1e-09 |f|_1=2895 |f|_inf=6.139e+04 |d|_1=71.21 |d|_inf=1.562e+06
+at phase 2, iter 405: NLsolver[wheel_slip_dynamics_with_actuator]::solve, Too many iterations
+
+
+Continuation step N.2 s:0.725->0.8625, ds=0.1375
+[iter:405,phase:2,s:0.8625,ds:0.1375] |X|=1.557e+04/1279/4434, |L|=1.557e+04/1280/4435 |B|=1.819e-30/1.819e-30/1.819e-30, |BL|=1.947e-16/2.183e-16/1.954e-16, PARS=0/0/0, U=2984/1957/1972
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+406(1 ) [phase:2,s:0.8625,ds:0.1375,dump:11,u:0:0]        (f:1.26e+03,d:1.06)    -->    [f:1.24e+03,d:1.05]    lambda:0.0113  #err=129 update:10 armijo:1
+407(2 ) [phase:2,s:0.8625,ds:0.1375,dump:5,u:0:0]         (f:1.24e+03,d:1.03)    -->   [f:1.21e+03,d:0.998]    lambda:0.0268  #err= 44 update:5
+408(3 ) [phase:2,s:0.8625,ds:0.1375,dump:6,u:0:0]        (f:1.21e+03,d:0.951)    -->   [f:1.17e+03,d:0.922]    lambda:0.0289  #err= 41 update:6
+409(4 ) [phase:2,s:0.8625,ds:0.1375,dump:6,u:0:0]         (f:1.17e+03,d:0.88)    -->   [f:1.14e+03,d:0.851]    lambda:0.03   #err= 30 update:6
+410(5 ) [phase:2,s:0.8625,ds:0.1375,dump:6,u:0:0]        (f:1.14e+03,d:0.816)    -->    [f:1.1e+03,d:0.789]    lambda:0.0306  #err= 30 update:6
+411(6 ) [phase:2,s:0.8625,ds:0.1375,dump:6,u:0:0]         (f:1.1e+03,d:0.758)    -->   [f:1.07e+03,d:0.734]    lambda:0.0309  #err= 30 update:6
+412(7 ) [phase:2,s:0.8625,ds:0.1375,dump:6,u:0:0]        (f:1.07e+03,d:0.708)    -->   [f:1.05e+03,d:0.695]    lambda:0.0177  #err= 28 update:5 armijo:1
+413(8 ) [phase:2,s:0.8625,ds:0.1375,dump:5,u:0:0]        (f:1.05e+03,d:0.683)    -->   [f:1.01e+03,d:0.659]    lambda:0.0336  #err= 23 update:5
+414(9 ) [phase:2,s:0.8625,ds:0.1375,dump:6,u:0:0]        (f:1.01e+03,d:0.638)    -->      [f:980,d:0.617]      lambda:0.0323  #err= 28 update:6
+415(10) [phase:2,s:0.8625,ds:0.1375,dump:6,u:0:0]           (f:980,d:0.599)      -->      [f:962,d:0.588]      lambda:0.0181  #err= 25 update:5 armijo:1
+416(11) [phase:2,s:0.8625,ds:0.1375,dump:4,u:0:0]           (f:962,d:0.578)      -->      [f:914,d:0.548]      lambda:0.0485  #err= 18 update:4
+417(12) [phase:2,s:0.8625,ds:0.1375,dump:6,u:0:0]           (f:914,d:0.53)       -->      [f:893,d:0.518]      lambda:0.0222  #err= 24 update:5 armijo:1
+418(13) [phase:2,s:0.8625,ds:0.1375,dump:4,u:0:0]           (f:893,d:0.509)      -->      [f:845,d:0.481]      lambda:0.0537  #err= 18 update:4
+419(14) [phase:2,s:0.8625,ds:0.1375,dump:5,u:0:0]           (f:845,d:0.466)      -->      [f:794,d:0.436]      lambda:0.0584  #err= 21 update:5
+420(15) [phase:2,s:0.8625,ds:0.1375,dump:5,u:0:0]           (f:794,d:0.422)      -->      [f:745,d:0.396]      lambda:0.0609  #err= 20 update:5
+421(16) [phase:2,s:0.8625,ds:0.1375,dump:5,u:0:0]           (f:745,d:0.383)      -->      [f:698,d:0.357]      lambda:0.0622  #err= 20 update:5
+422(17) [phase:2,s:0.8625,ds:0.1375,dump:5,u:0:0]           (f:698,d:0.348)      -->      [f:653,d:0.325]      lambda:0.0629  #err= 19 update:5
+423(18) [phase:2,s:0.8625,ds:0.1375,dump:5,u:0:0]           (f:653,d:0.318)      -->      [f:611,d:0.297]      lambda:0.0632  #err= 17 update:5
+424(19) [phase:2,s:0.8625,ds:0.1375,dump:4,u:0:0]           (f:611,d:0.291)      -->      [f:555,d:0.263]      lambda:0.0906  #err= 14 update:4
+425(20) [phase:2,s:0.8625,ds:0.1375,dump:5,u:0:0]           (f:555,d:0.256)      -->      [f:530,d:0.245]      lambda:0.0434  #err= 15 update:4 armijo:1
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+426(21) [phase:2,s:0.8625,ds:0.1375,dump:3,u:0:0]           (f:530,d:0.241)      -->      [f:472,d:0.216]      lambda:0.107  #err=  9 update:3
+427(22) [phase:2,s:0.8625,ds:0.1375,dump:6,u:0:0]           (f:472,d:0.208)      -->      [f:416,d:0.184]      lambda:0.118  #err= 27 update:6
+428(23) [phase:2,s:0.8625,ds:0.1375,dump:4,u:0:0]           (f:416,d:0.178)      -->      [f:364,d:0.156]      lambda:0.124  #err= 12 update:4
+429(24) [phase:2,s:0.8625,ds:0.1375,dump:4,u:0:0]           (f:364,d:0.153)      -->      [f:337,d:0.142]      lambda:0.0723  #err=  9 update:3 armijo:1
+430(25) [phase:2,s:0.8625,ds:0.1375,dump:2,u:0:0]           (f:337,d:0.139)      -->      [f:269,d:0.123]      lambda:0.198  #err=  6 update:2
+431(26) [phase:2,s:0.8625,ds:0.1375,dump:4,u:0:0]           (f:269,d:0.108)      -->     [f:203,d:0.0828]      lambda:0.24   #err= 13 update:4
+432(27) [phase:2,s:0.8625,ds:0.1375,dump:3,u:0:0]          (f:203,d:0.0796)      -->     [f:174,d:0.0679]      lambda:0.144  #err=  6 update:2 armijo:1
+433(28) [phase:2,s:0.8625,ds:0.1375,dump:3,u:0:0]          (f:174,d:0.0669)      -->     [f:139,d:0.0537]      lambda:0.196  #err=  8 update:2 armijo:1
+434(29) [phase:2,s:0.8625,ds:0.1375,dump:2,u:0:0]          (f:139,d:0.0532)      -->     [f:69.9,d:0.0283]     lambda:0.49   #err=  5 update:2
+435(30) [phase:2,s:0.8625,ds:0.1375,dump:0,u:0:0]          (f:69.9,d:0.0261)     -->    [f:1.22,d:0.00103]     lambda:1     
+436(31) [phase:2,s:0.8625,ds:0.1375,dump:0,u:0:0]         (f:1.22,d:0.000664)    -->  [f:0.000392,d:5.09e-05]  lambda:1     
+437(32) [phase:2,s:0.8625,ds:0.1375,dump:0,u:0:0]       (f:0.000392,d:6.91e-05)  -->  [f:5.82e-08,d:1.64e-06]  lambda:1     
+438(33) [phase:2,s:0.8625,ds:0.1375,dump:0,u:0:0]       (f:5.82e-08,d:1.72e-06)  -->   [f:5.38e-11,d:1e-09]    lambda:1     
+439(34) [phase:2,s:0.8625,ds:0.1375,dump:0,u:0:0]        (f:5.38e-11,d:1e-09)    -->  [f:1.55e-11,d:3.05e-13]  lambda:1     
+
+Continuation step N.2 s:0.8625->1, ds=0.1375
+[iter:439,phase:2,s:1,ds:0.1375] |X|=5.267e+04/2836/9849, |L|=5.267e+04/2837/9852 |B|=3.157e-11/3.158e-11/3.157e-11, |BL|=1.947e-16/2.458e-16/1.993e-16, PARS=0/0/0, U=3000/2999/2999
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+440(1 ) [phase:2,s:1,ds:0.1375,dump:27,u:0:0]             (f:2.89e+03,d:85.9)    -->    [f:2.89e+03,d:85.9]    lambda:6.57e-05  #err=419 update:27
+441(2 ) [phase:2,s:1,ds:0.1375,dump:19,u:0:0]             (f:2.89e+03,d:89.9)    -->    [f:2.89e+03,d:89.9]    lambda:1.39e-05  #err=301 update:19
+442(3 ) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:86.6)    -->    [f:2.89e+03,d:86.6]    lambda:1.3e-05  #err=270 update:17
+443(4 ) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:81.1)    -->    [f:2.89e+03,d:81.1]    lambda:1.26e-05  #err=232 update:17
+444(5 ) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:75.8)    -->    [f:2.89e+03,d:75.8]    lambda:1.24e-05  #err=267 update:17
+445(6 ) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:71.2)    -->    [f:2.89e+03,d:71.2]    lambda:1.23e-05  #err=269 update:17
+446(7 ) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:67.5)    -->    [f:2.89e+03,d:67.5]    lambda:1.22e-05  #err=268 update:17
+447(8 ) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:64.5)    -->    [f:2.89e+03,d:64.5]    lambda:1.22e-05  #err=269 update:17
+448(9 ) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:62.1)    -->    [f:2.89e+03,d:62.1]    lambda:1.22e-05  #err=270 update:17
+449(10) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:60.1)    -->    [f:2.89e+03,d:60.1]    lambda:1.22e-05  #err=270 update:17
+450(11) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:58.5)    -->    [f:2.89e+03,d:58.5]    lambda:1.22e-05  #err=255 update:17
+451(12) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:57.1)    -->    [f:2.89e+03,d:57.1]    lambda:1.22e-05  #err=252 update:17
+452(13) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]              (f:2.89e+03,d:56)     -->     [f:2.89e+03,d:56]     lambda:1.22e-05  #err=265 update:17
+453(14) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:55.1)    -->    [f:2.89e+03,d:55.1]    lambda:1.22e-05  #err=265 update:17
+454(15) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:54.2)    -->    [f:2.89e+03,d:54.2]    lambda:1.22e-05  #err=210 update:17
+455(16) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:53.6)    -->    [f:2.89e+03,d:53.6]    lambda:1.22e-05  #err=212 update:17
+456(17) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]              (f:2.89e+03,d:53)     -->     [f:2.89e+03,d:53]     lambda:1.22e-05  #err=243 update:17
+457(18) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:52.4)    -->    [f:2.89e+03,d:52.4]    lambda:1.22e-05  #err=248 update:17
+458(19) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]              (f:2.89e+03,d:52)     -->     [f:2.89e+03,d:52]     lambda:1.22e-05  #err=249 update:17
+459(20) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:51.6)    -->    [f:2.89e+03,d:51.6]    lambda:1.22e-05  #err=244 update:17
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+460(21) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:51.2)    -->    [f:2.89e+03,d:51.2]    lambda:1.22e-05  #err=241 update:17
+461(22) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:50.9)    -->    [f:2.89e+03,d:50.9]    lambda:1.22e-05  #err=240 update:17
+462(23) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:50.7)    -->    [f:2.89e+03,d:50.7]    lambda:1.22e-05  #err=231 update:17
+463(24) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:50.4)    -->    [f:2.89e+03,d:50.4]    lambda:1.22e-05  #err=236 update:17
+464(25) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:50.2)    -->    [f:2.89e+03,d:50.2]    lambda:1.22e-05  #err=233 update:17
+465(26) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]              (f:2.89e+03,d:50)     -->     [f:2.89e+03,d:50]     lambda:1.22e-05  #err=184 update:17
+466(27) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:49.8)    -->    [f:2.89e+03,d:49.8]    lambda:1.22e-05  #err=186 update:17
+467(28) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:49.7)    -->    [f:2.89e+03,d:49.7]    lambda:1.22e-05  #err=231 update:17
+468(29) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:49.5)    -->    [f:2.89e+03,d:49.5]    lambda:1.22e-05  #err=230 update:17
+469(30) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:49.4)    -->    [f:2.89e+03,d:49.4]    lambda:1.22e-05  #err=227 update:17
+470(31) [phase:2,s:1,ds:0.1375,dump:16,u:0:0]             (f:2.89e+03,d:49.3)    -->    [f:2.89e+03,d:49.3]    lambda:1.74e-05  #err=218 update:16
+471(32) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:49.1)    -->    [f:2.89e+03,d:49.1]    lambda:1.46e-05  #err=216 update:17
+472(33) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]              (f:2.89e+03,d:49)     -->     [f:2.89e+03,d:49]     lambda:1.33e-05  #err=195 update:17
+473(34) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:48.9)    -->    [f:2.89e+03,d:48.9]    lambda:1.27e-05  #err=212 update:17
+474(35) [phase:2,s:1,ds:0.1375,dump:16,u:0:0]             (f:2.89e+03,d:48.9)    -->    [f:2.89e+03,d:48.9]    lambda:1.78e-05  #err=214 update:16
+475(36) [phase:2,s:1,ds:0.1375,dump:16,u:0:0]             (f:2.89e+03,d:48.8)    -->    [f:2.89e+03,d:48.8]    lambda:2.1e-05  #err=219 update:16
+476(37) [phase:2,s:1,ds:0.1375,dump:16,u:0:0]             (f:2.89e+03,d:48.6)    -->    [f:2.89e+03,d:48.6]    lambda:2.29e-05  #err=220 update:16
+477(38) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:48.5)    -->    [f:2.89e+03,d:48.5]    lambda:1.67e-05  #err=221 update:17
+478(39) [phase:2,s:1,ds:0.1375,dump:17,u:0:0]             (f:2.89e+03,d:48.5)    -->    [f:2.89e+03,d:48.5]    lambda:1.43e-05  #err=217 update:17
+479(40) [phase:2,s:1,ds:0.1375,dump:16,u:0:0]             (f:2.89e+03,d:48.4)    -->    [f:2.89e+03,d:48.4]    lambda:1.88e-05  #err=209 update:16
+NLsolver[wheel_slip_dynamics_with_actuator]::solve_with_continuation(phase=2,...) found:
+NLsolver[wheel_slip_dynamics_with_actuator]::solve()
+#phase=2 #it=0/40 lambda=1.88e-05 tolerance=1e-09 |f|_1=2888 |f|_inf=5.466e+04 |d|_1=48.41 |d|_inf=1.152e+06
+at phase 2, iter 479: NLsolver[wheel_slip_dynamics_with_actuator]::solve, Too many iterations
+
+
+Continuation step N.2 s:0.8625->0.93125, ds=0.06875
+[iter:479,phase:2,s:0.9312,ds:0.06875] |X|=1.502e+04/1235/4282, |L|=1.502e+04/1236/4283 |B|=3.157e-11/3.158e-11/3.157e-11, |BL|=1.947e-16/2.458e-16/1.993e-16, PARS=0/0/0, U=2993/1934/1948
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+480(1 ) [phase:2,s:0.9312,ds:0.06875,dump:11,u:0:0]      (f:1.21e+03,d:0.692)    -->   [f:1.19e+03,d:0.678]    lambda:0.0198  #err=115 update:11
+481(2 ) [phase:2,s:0.9312,ds:0.06875,dump:5,u:0:0]       (f:1.19e+03,d:0.662)    -->   [f:1.15e+03,d:0.637]    lambda:0.0355  #err= 27 update:5
+482(3 ) [phase:2,s:0.9312,ds:0.06875,dump:5,u:0:0]       (f:1.15e+03,d:0.609)    -->   [f:1.09e+03,d:0.578]    lambda:0.0475  #err= 27 update:5
+483(4 ) [phase:2,s:0.9312,ds:0.06875,dump:6,u:0:0]        (f:1.09e+03,d:0.55)    -->   [f:1.07e+03,d:0.538]    lambda:0.022  #err= 24 update:5 armijo:1
+484(5 ) [phase:2,s:0.9312,ds:0.06875,dump:6,u:0:0]       (f:1.07e+03,d:0.527)    -->   [f:1.05e+03,d:0.519]    lambda:0.0149  #err= 18 update:5 armijo:1
+485(6 ) [phase:2,s:0.9312,ds:0.06875,dump:6,u:0:0]       (f:1.05e+03,d:0.508)    -->   [f:1.04e+03,d:0.501]    lambda:0.0123  #err= 17 update:5 armijo:1
+486(7 ) [phase:2,s:0.9312,ds:0.06875,dump:5,u:0:0]       (f:1.04e+03,d:0.495)    -->   [f:1.02e+03,d:0.487]    lambda:0.016  #err= 14 update:4 armijo:1
+487(8 ) [phase:2,s:0.9312,ds:0.06875,dump:4,u:0:0]       (f:1.02e+03,d:0.485)    -->      [f:974,d:0.461]      lambda:0.0455  #err= 15 update:4
+488(9 ) [phase:2,s:0.9312,ds:0.06875,dump:5,u:0:0]          (f:974,d:0.448)      -->      [f:920,d:0.423]      lambda:0.0538  #err= 18 update:5
+489(10) [phase:2,s:0.9312,ds:0.06875,dump:6,u:0:0]          (f:920,d:0.406)      -->      [f:898,d:0.396]      lambda:0.0234  #err= 22 update:5 armijo:1
+490(11) [phase:2,s:0.9312,ds:0.06875,dump:4,u:0:0]          (f:898,d:0.394)      -->      [f:848,d:0.371]      lambda:0.0551  #err= 14 update:4
+491(12) [phase:2,s:0.9312,ds:0.06875,dump:4,u:0:0]          (f:848,d:0.36)       -->      [f:774,d:0.323]      lambda:0.0845  #err= 14 update:4
+492(13) [phase:2,s:0.9312,ds:0.06875,dump:5,u:0:0]          (f:774,d:0.317)      -->      [f:716,d:0.293]      lambda:0.0733  #err= 14 update:5
+493(14) [phase:2,s:0.9312,ds:0.06875,dump:6,u:0:0]          (f:716,d:0.281)      -->      [f:681,d:0.268]      lambda:0.0478  #err= 18 update:6
+494(15) [phase:2,s:0.9312,ds:0.06875,dump:4,u:0:0]          (f:681,d:0.267)      -->      [f:626,d:0.246]      lambda:0.0787  #err= 10 update:4
+495(16) [phase:2,s:0.9312,ds:0.06875,dump:5,u:0:0]          (f:626,d:0.236)      -->      [f:581,d:0.223]      lambda:0.0707  #err= 14 update:5
+496(17) [phase:2,s:0.9312,ds:0.06875,dump:4,u:0:0]          (f:581,d:0.218)      -->      [f:524,d:0.196]      lambda:0.0958  #err= 10 update:4
+497(18) [phase:2,s:0.9312,ds:0.06875,dump:3,u:0:0]          (f:524,d:0.191)      -->      [f:439,d:0.161]      lambda:0.159  #err= 10 update:3
+498(19) [phase:2,s:0.9312,ds:0.06875,dump:7,u:0:0]          (f:439,d:0.154)      -->      [f:402,d:0.14]       lambda:0.0824  #err= 20 update:7
+499(20) [phase:2,s:0.9312,ds:0.06875,dump:2,u:0:0]          (f:402,d:0.14)       -->      [f:315,d:0.11]       lambda:0.211  #err=  4 update:2
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+500(21) [phase:2,s:0.9312,ds:0.06875,dump:6,u:0:0]          (f:315,d:0.105)      -->     [f:294,d:0.0975]      lambda:0.0672  #err= 15 update:5 armijo:1
+501(22) [phase:2,s:0.9312,ds:0.06875,dump:2,u:0:0]         (f:294,d:0.0974)      -->     [f:261,d:0.0868]      lambda:0.109  #err=  3 update:1 armijo:1
+502(23) [phase:2,s:0.9312,ds:0.06875,dump:3,u:0:0]         (f:261,d:0.0865)      -->     [f:169,d:0.0562]      lambda:0.343  #err=  8 update:3
+503(24) [phase:2,s:0.9312,ds:0.06875,dump:3,u:0:0]         (f:169,d:0.0535)      -->     [f:110,d:0.0405]      lambda:0.343  #err=  7 update:3
+504(25) [phase:2,s:0.9312,ds:0.06875,dump:0,u:0:0]         (f:110,d:0.0349)      -->    [f:3.16,d:0.00395]     lambda:1     
+505(26) [phase:2,s:0.9312,ds:0.06875,dump:0,u:0:0]        (f:3.16,d:0.000986)    -->  [f:0.00261,d:0.000103]   lambda:1     
+506(27) [phase:2,s:0.9312,ds:0.06875,dump:0,u:0:0]      (f:0.00261,d:0.000281)   -->  [f:1.13e-06,d:7.79e-05]  lambda:1     
+507(28) [phase:2,s:0.9312,ds:0.06875,dump:0,u:0:0]      (f:1.13e-06,d:0.000144)  -->  [f:2.94e-07,d:1.4e-05]   lambda:1     
+508(29) [phase:2,s:0.9312,ds:0.06875,dump:0,u:0:0]      (f:2.94e-07,d:1.71e-05)  -->  [f:4.17e-09,d:1.71e-07]  lambda:1     
+509(30) [phase:2,s:0.9312,ds:0.06875,dump:0,u:0:0]      (f:4.17e-09,d:1.74e-07)  -->  [f:1.6e-11,d:1.78e-11]   lambda:1     
+
+Continuation step N.2 s:0.93125->1, ds=0.06875
+[iter:509,phase:2,s:1,ds:0.06875] |X|=5.421e+04/2833/9840, |L|=5.421e+04/2835/9842 |B|=3.316e-11/3.316e-11/3.316e-11, |BL|=1.947e-16/2.181e-16/1.954e-16, PARS=0/0/0, U=3000/2998/2998
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+510(1 ) [phase:2,s:1,ds:0.06875,dump:29,u:0:0]            (f:2.88e+03,d:59.7)    -->    [f:2.88e+03,d:59.7]    lambda:3.22e-05  #err=460 update:29
+511(2 ) [phase:2,s:1,ds:0.06875,dump:17,u:0:0]            (f:2.88e+03,d:45.2)    -->    [f:2.88e+03,d:45.2]    lambda:1.98e-05  #err=260 update:17
+512(3 ) [phase:2,s:1,ds:0.06875,dump:16,u:0:0]            (f:2.88e+03,d:29.9)    -->    [f:2.88e+03,d:29.9]    lambda:2.22e-05  #err=245 update:16
+513(4 ) [phase:2,s:1,ds:0.06875,dump:16,u:0:0]            (f:2.88e+03,d:22.6)    -->    [f:2.88e+03,d:22.6]    lambda:2.35e-05  #err=255 update:16
+514(5 ) [phase:2,s:1,ds:0.06875,dump:16,u:0:0]             (f:2.88e+03,d:19)     -->     [f:2.88e+03,d:19]     lambda:2.42e-05  #err=175 update:16
+515(6 ) [phase:2,s:1,ds:0.06875,dump:16,u:0:0]            (f:2.88e+03,d:17.2)    -->    [f:2.88e+03,d:17.2]    lambda:2.45e-05  #err=248 update:16
+516(7 ) [phase:2,s:1,ds:0.06875,dump:16,u:0:0]            (f:2.88e+03,d:16.3)    -->    [f:2.88e+03,d:16.3]    lambda:2.47e-05  #err=254 update:16
+517(8 ) [phase:2,s:1,ds:0.06875,dump:16,u:0:0]            (f:2.88e+03,d:15.9)    -->    [f:2.88e+03,d:15.9]    lambda:2.48e-05  #err=252 update:16
+518(9 ) [phase:2,s:1,ds:0.06875,dump:16,u:0:0]            (f:2.88e+03,d:15.8)    -->    [f:2.88e+03,d:15.8]    lambda:2.48e-05  #err=248 update:16
+519(10) [phase:2,s:1,ds:0.06875,dump:16,u:0:0]             (f:2.88e+03,d:16)     -->     [f:2.88e+03,d:16]     lambda:2.48e-05  #err=246 update:16
+520(11) [phase:2,s:1,ds:0.06875,dump:16,u:0:0]            (f:2.88e+03,d:16.3)    -->    [f:2.88e+03,d:16.3]    lambda:2.48e-05  #err=236 update:16
+521(12) [phase:2,s:1,ds:0.06875,dump:16,u:0:0]            (f:2.88e+03,d:16.7)    -->    [f:2.88e+03,d:16.7]    lambda:2.48e-05  #err=229 update:16
+522(13) [phase:2,s:1,ds:0.06875,dump:16,u:0:0]            (f:2.88e+03,d:17.3)    -->    [f:2.88e+03,d:17.2]    lambda:2.48e-05  #err=220 update:16
+523(14) [phase:2,s:1,ds:0.06875,dump:16,u:0:0]            (f:2.88e+03,d:17.8)    -->    [f:2.88e+03,d:17.8]    lambda:2.48e-05  #err=227 update:16
+524(15) [phase:2,s:1,ds:0.06875,dump:16,u:0:0]            (f:2.88e+03,d:18.4)    -->    [f:2.88e+03,d:18.4]    lambda:2.48e-05  #err=219 update:16
+525(16) [phase:2,s:1,ds:0.06875,dump:16,u:0:0]            (f:2.88e+03,d:19.1)    -->    [f:2.88e+03,d:19.1]    lambda:2.48e-05  #err=220 update:16
+526(17) [phase:2,s:1,ds:0.06875,dump:16,u:0:0]            (f:2.88e+03,d:19.7)    -->    [f:2.88e+03,d:19.7]    lambda:2.48e-05  #err=170 update:16
+527(18) [phase:2,s:1,ds:0.06875,dump:16,u:0:0]            (f:2.88e+03,d:20.4)    -->    [f:2.88e+03,d:20.4]    lambda:2.48e-05  #err=209 update:16
+528(19) [phase:2,s:1,ds:0.06875,dump:16,u:0:0]            (f:2.88e+03,d:21.1)    -->    [f:2.88e+03,d:21.1]    lambda:2.48e-05  #err=210 update:16
+529(20) [phase:2,s:1,ds:0.06875,dump:15,u:0:0]            (f:2.88e+03,d:21.7)    -->    [f:2.88e+03,d:21.7]    lambda:3.55e-05  #err=207 update:15
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+530(21) [phase:2,s:1,ds:0.06875,dump:15,u:0:0]            (f:2.88e+03,d:22.7)    -->    [f:2.88e+03,d:22.7]    lambda:4.24e-05  #err=197 update:15
+531(22) [phase:2,s:1,ds:0.06875,dump:17,u:0:0]            (f:2.88e+03,d:23.8)    -->    [f:2.88e+03,d:23.8]    lambda:2.27e-05  #err=177 update:17
+532(23) [phase:2,s:1,ds:0.06875,dump:15,u:0:0]            (f:2.88e+03,d:24.4)    -->    [f:2.88e+03,d:24.4]    lambda:3.4e-05  #err=191 update:15
+533(24) [phase:2,s:1,ds:0.06875,dump:17,u:0:0]            (f:2.88e+03,d:25.2)    -->    [f:2.88e+03,d:25.2]    lambda:2.03e-05  #err=210 update:17
+534(25) [phase:2,s:1,ds:0.06875,dump:14,u:0:0]            (f:2.88e+03,d:25.6)    -->    [f:2.88e+03,d:25.6]    lambda:4.59e-05  #err=188 update:14
+535(26) [phase:2,s:1,ds:0.06875,dump:16,u:0:0]            (f:2.88e+03,d:26.7)    -->    [f:2.88e+03,d:26.7]    lambda:3.38e-05  #err=201 update:16
+536(27) [phase:2,s:1,ds:0.06875,dump:16,u:0:0]            (f:2.88e+03,d:27.3)    -->    [f:2.88e+03,d:27.3]    lambda:2.9e-05  #err=198 update:16
+537(28) [phase:2,s:1,ds:0.06875,dump:13,u:0:0]            (f:2.88e+03,d:27.9)    -->    [f:2.88e+03,d:27.9]    lambda:7.82e-05  #err=184 update:13
+538(29) [phase:2,s:1,ds:0.06875,dump:18,u:0:0]            (f:2.88e+03,d:29.4)    -->    [f:2.88e+03,d:29.4]    lambda:2.16e-05  #err=210 update:18
+539(30) [phase:2,s:1,ds:0.06875,dump:16,u:0:0]            (f:2.88e+03,d:29.7)    -->    [f:2.88e+03,d:29.7]    lambda:2.32e-05  #err=182 update:16
+540(31) [phase:2,s:1,ds:0.06875,dump:12,u:0:0]             (f:2.88e+03,d:30)     -->     [f:2.88e+03,d:30]     lambda:9.99e-05  #err=161 update:12
+541(32) [phase:2,s:1,ds:0.06875,dump:15,u:0:0]            (f:2.88e+03,d:31.7)    -->    [f:2.88e+03,d:31.7]    lambda:7.12e-05  #err=201 update:15
+542(33) [phase:2,s:1,ds:0.06875,dump:18,u:0:0]            (f:2.88e+03,d:32.6)    -->    [f:2.88e+03,d:32.6]    lambda:2.06e-05  #err=200 update:18
+543(34) [phase:2,s:1,ds:0.06875,dump:15,u:0:0]            (f:2.88e+03,d:32.8)    -->    [f:2.88e+03,d:32.8]    lambda:3.23e-05  #err=166 update:15
+544(35) [phase:2,s:1,ds:0.06875,dump:16,u:0:0]            (f:2.88e+03,d:33.1)    -->    [f:2.88e+03,d:33.1]    lambda:2.83e-05  #err=178 update:16
+545(36) [phase:2,s:1,ds:0.06875,dump:12,u:0:0]            (f:2.88e+03,d:33.4)    -->    [f:2.88e+03,d:33.4]    lambda:0.000111  #err=169 update:12
+546(37) [phase:2,s:1,ds:0.06875,dump:14,u:0:0]            (f:2.88e+03,d:34.6)    -->    [f:2.88e+03,d:34.6]    lambda:0.000107  #err=176 update:14
+547(38) [phase:2,s:1,ds:0.06875,dump:14,u:0:0]            (f:2.88e+03,d:35.6)    -->    [f:2.88e+03,d:35.6]    lambda:0.000105  #err=169 update:14
+548(39) [phase:2,s:1,ds:0.06875,dump:15,u:0:0]            (f:2.88e+03,d:36.4)    -->    [f:2.88e+03,d:36.4]    lambda:7.3e-05  #err=169 update:15
+549(40) [phase:2,s:1,ds:0.06875,dump:18,u:0:0]            (f:2.88e+03,d:36.8)    -->    [f:2.88e+03,d:36.8]    lambda:2.09e-05  #err=163 update:18
+NLsolver[wheel_slip_dynamics_with_actuator]::solve_with_continuation(phase=2,...) found:
+NLsolver[wheel_slip_dynamics_with_actuator]::solve()
+#phase=2 #it=0/40 lambda=2.09e-05 tolerance=1e-09 |f|_1=2880 |f|_inf=5.413e+04 |d|_1=36.83 |d|_inf=8.314e+05
+at phase 2, iter 549: NLsolver[wheel_slip_dynamics_with_actuator]::solve, Too many iterations
+
+
+Continuation step N.2 s:0.93125->0.96562, ds=0.034375
+[iter:549,phase:2,s:0.9656,ds:0.034375] |X|=1.461e+04/1203/4170, |L|=1.461e+04/1203/4171 |B|=3.316e-11/3.316e-11/3.316e-11, |BL|=1.947e-16/2.181e-16/1.954e-16, PARS=0/0/0, U=2997/1916/1930
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+550(1 ) [phase:2,s:0.9656,ds:0.034375,dump:12,u:0:0]     (f:1.18e+03,d:0.501)    -->   [f:1.17e+03,d:0.494]    lambda:0.0138  #err= 84 update:12
+551(2 ) [phase:2,s:0.9656,ds:0.034375,dump:3,u:0:0]      (f:1.17e+03,d:0.491)    -->   [f:1.09e+03,d:0.462]    lambda:0.0605  #err= 14 update:3
+552(3 ) [phase:2,s:0.9656,ds:0.034375,dump:11,u:0:0]      (f:1.09e+03,d:0.43)    -->   [f:1.07e+03,d:0.419]    lambda:0.0198  #err= 48 update:11
+553(4 ) [phase:2,s:0.9656,ds:0.034375,dump:3,u:0:0]      (f:1.07e+03,d:0.418)    -->      [f:990,d:0.387]      lambda:0.0723  #err=  7 update:3
+554(5 ) [phase:2,s:0.9656,ds:0.034375,dump:11,u:0:0]        (f:990,d:0.367)      -->      [f:971,d:0.359]      lambda:0.0198  #err= 38 update:11
+555(6 ) [phase:2,s:0.9656,ds:0.034375,dump:3,u:0:0]         (f:971,d:0.356)      -->      [f:898,d:0.334]      lambda:0.0723  #err=  9 update:3
+556(7 ) [phase:2,s:0.9656,ds:0.034375,dump:9,u:0:0]         (f:898,d:0.32)       -->      [f:861,d:0.302]      lambda:0.0404  #err= 27 update:9
+557(8 ) [phase:2,s:0.9656,ds:0.034375,dump:3,u:0:0]         (f:861,d:0.298)      -->      [f:769,d:0.266]      lambda:0.103  #err=  7 update:3
+558(9 ) [phase:2,s:0.9656,ds:0.034375,dump:9,u:0:0]         (f:769,d:0.257)      -->      [f:737,d:0.245]      lambda:0.0404  #err= 25 update:9
+559(10) [phase:2,s:0.9656,ds:0.034375,dump:3,u:0:0]         (f:737,d:0.24)       -->      [f:693,d:0.226]      lambda:0.0591  #err=  7 update:2 armijo:1
+560(11) [phase:2,s:0.9656,ds:0.034375,dump:6,u:0:0]         (f:693,d:0.224)      -->      [f:609,d:0.197]      lambda:0.118  #err= 17 update:6
+561(12) [phase:2,s:0.9656,ds:0.034375,dump:7,u:0:0]         (f:609,d:0.184)      -->      [f:583,d:0.176]      lambda:0.0424  #err= 17 update:7
+562(13) [phase:2,s:0.9656,ds:0.034375,dump:1,u:0:0]         (f:583,d:0.178)      -->      [f:451,d:0.139]      lambda:0.216  #err=  2 update:1
+563(14) [phase:2,s:0.9656,ds:0.034375,dump:7,u:0:0]         (f:451,d:0.133)      -->      [f:413,d:0.119]      lambda:0.0824  #err= 17 update:7
+564(15) [phase:2,s:0.9656,ds:0.034375,dump:0,u:0:0]         (f:413,d:0.119)      -->     [f:225,d:0.0663]      lambda:0.43  
+565(16) [phase:2,s:0.9656,ds:0.034375,dump:6,u:0:0]        (f:225,d:0.0619)      -->     [f:210,d:0.0576]      lambda:0.0672  #err= 11 update:5 armijo:1
+566(17) [phase:2,s:0.9656,ds:0.034375,dump:2,u:0:0]        (f:210,d:0.0566)      -->     [f:169,d:0.0485]      lambda:0.191  #err=  4 update:2
+567(18) [phase:2,s:0.9656,ds:0.034375,dump:0,u:0:0]        (f:169,d:0.0461)      -->    [f:7.82,d:0.00232]     lambda:1     
+568(19) [phase:2,s:0.9656,ds:0.034375,dump:0,u:0:0]       (f:7.82,d:0.00204)     -->   [f:0.0159,d:1.21e-05]   lambda:1     
+569(20) [phase:2,s:0.9656,ds:0.034375,dump:0,u:0:0]      (f:0.0159,d:1.24e-05)   -->   [f:8e-08,d:2.32e-08]    lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+570(21) [phase:2,s:0.9656,ds:0.034375,dump:0,u:0:0]      (f:8e-08,d:2.37e-08)    -->  [f:1.57e-11,d:3.61e-12]  lambda:1     
+
+Continuation step N.2 s:0.96562->1, ds=0.034375
+[iter:570,phase:2,s:1,ds:0.034375] |X|=5.368e+04/2829/9826, |L|=5.368e+04/2830/9829 |B|=2.675e-11/2.675e-11/2.675e-11, |BL|=1.947e-16/2.32e-16/1.969e-16, PARS=0/0/0, U=3000/2996/2996
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+571(1 ) [phase:2,s:1,ds:0.034375,dump:30,u:0:0]           (f:2.88e+03,d:56.2)    -->    [f:2.88e+03,d:56.2]    lambda:2.25e-05  #err=475 update:30
+572(2 ) [phase:2,s:1,ds:0.034375,dump:15,u:0:0]           (f:2.88e+03,d:25.9)    -->    [f:2.88e+03,d:25.9]    lambda:3.38e-05  #err=239 update:15
+573(3 ) [phase:2,s:1,ds:0.034375,dump:16,u:0:0]            (f:2.88e+03,d:21)     -->     [f:2.88e+03,d:21]     lambda:2.9e-05  #err=255 update:16
+574(4 ) [phase:2,s:1,ds:0.034375,dump:16,u:0:0]           (f:2.88e+03,d:20.1)    -->    [f:2.88e+03,d:20.1]    lambda:2.68e-05  #err=241 update:16
+575(5 ) [phase:2,s:1,ds:0.034375,dump:16,u:0:0]           (f:2.88e+03,d:19.8)    -->    [f:2.88e+03,d:19.8]    lambda:2.58e-05  #err=240 update:16
+576(6 ) [phase:2,s:1,ds:0.034375,dump:16,u:0:0]           (f:2.88e+03,d:19.8)    -->    [f:2.88e+03,d:19.8]    lambda:2.53e-05  #err=220 update:16
+577(7 ) [phase:2,s:1,ds:0.034375,dump:16,u:0:0]           (f:2.88e+03,d:19.9)    -->    [f:2.88e+03,d:19.9]    lambda:1.43e-05  #err=215 update:15 armijo:1
+578(8 ) [phase:2,s:1,ds:0.034375,dump:15,u:0:0]            (f:2.88e+03,d:20)     -->     [f:2.88e+03,d:20]     lambda:2.7e-05  #err=200 update:15
+579(9 ) [phase:2,s:1,ds:0.034375,dump:15,u:0:0]           (f:2.88e+03,d:20.3)    -->    [f:2.88e+03,d:20.3]    lambda:3.7e-05  #err=205 update:15
+580(10) [phase:2,s:1,ds:0.034375,dump:16,u:0:0]           (f:2.88e+03,d:20.6)    -->    [f:2.88e+03,d:20.6]    lambda:3.03e-05  #err=183 update:16
+581(11) [phase:2,s:1,ds:0.034375,dump:16,u:0:0]            (f:2.88e+03,d:21)     -->     [f:2.88e+03,d:21]     lambda:2.74e-05  #err=184 update:16
+582(12) [phase:2,s:1,ds:0.034375,dump:15,u:0:0]           (f:2.88e+03,d:21.3)    -->    [f:2.88e+03,d:21.3]    lambda:3.73e-05  #err=192 update:15
+583(13) [phase:2,s:1,ds:0.034375,dump:15,u:0:0]           (f:2.88e+03,d:21.7)    -->    [f:2.88e+03,d:21.7]    lambda:4.35e-05  #err=195 update:15
+584(14) [phase:2,s:1,ds:0.034375,dump:15,u:0:0]           (f:2.88e+03,d:22.3)    -->    [f:2.88e+03,d:22.3]    lambda:4.7e-05  #err=197 update:15
+585(15) [phase:2,s:1,ds:0.034375,dump:16,u:0:0]           (f:2.88e+03,d:22.9)    -->    [f:2.88e+03,d:22.9]    lambda:3.42e-05  #err=194 update:16
+586(16) [phase:2,s:1,ds:0.034375,dump:13,u:0:0]           (f:2.88e+03,d:23.4)    -->    [f:2.88e+03,d:23.4]    lambda:8.49e-05  #err=180 update:13
+587(17) [phase:2,s:1,ds:0.034375,dump:14,u:0:0]           (f:2.88e+03,d:24.6)    -->    [f:2.88e+03,d:24.6]    lambda:9.38e-05  #err=195 update:14
+588(18) [phase:2,s:1,ds:0.034375,dump:17,u:0:0]           (f:2.88e+03,d:25.8)    -->    [f:2.88e+03,d:25.8]    lambda:3.38e-05  #err=200 update:17
+589(19) [phase:2,s:1,ds:0.034375,dump:12,u:0:0]           (f:2.88e+03,d:26.3)    -->    [f:2.88e+03,d:26.2]    lambda:0.000121  #err=170 update:12
+590(20) [phase:2,s:1,ds:0.034375,dump:16,u:0:0]           (f:2.88e+03,d:27.8)    -->    [f:2.88e+03,d:27.8]    lambda:5.48e-05  #err=191 update:16
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+591(21) [phase:2,s:1,ds:0.034375,dump:12,u:0:0]           (f:2.88e+03,d:28.4)    -->    [f:2.88e+03,d:28.4]    lambda:0.000154  #err=175 update:12
+592(22) [phase:2,s:1,ds:0.034375,dump:13,u:0:0]           (f:2.88e+03,d:30.2)    -->    [f:2.88e+03,d:30.2]    lambda:0.00018  #err=184 update:13
+593(23) [phase:2,s:1,ds:0.034375,dump:13,u:0:0]           (f:2.88e+03,d:31.9)    -->    [f:2.87e+03,d:31.9]    lambda:0.000195  #err=162 update:13
+594(24) [phase:2,s:1,ds:0.034375,dump:13,u:0:0]           (f:2.87e+03,d:32.9)    -->    [f:2.87e+03,d:32.9]    lambda:0.000203  #err=161 update:13
+595(25) [phase:2,s:1,ds:0.034375,dump:13,u:0:0]           (f:2.87e+03,d:32.8)    -->    [f:2.87e+03,d:32.8]    lambda:0.000207  #err=156 update:13
+596(26) [phase:2,s:1,ds:0.034375,dump:13,u:0:0]           (f:2.87e+03,d:30.1)    -->    [f:2.87e+03,d:30.1]    lambda:0.000209  #err=130 update:13
+597(27) [phase:2,s:1,ds:0.034375,dump:13,u:0:0]           (f:2.87e+03,d:21.7)    -->    [f:2.87e+03,d:21.7]    lambda:0.00021  #err=133 update:13
+598(28) [phase:2,s:1,ds:0.034375,dump:13,u:0:0]           (f:2.87e+03,d:16.4)    -->    [f:2.87e+03,d:16.4]    lambda:0.000211  #err=132 update:13
+599(29) [phase:2,s:1,ds:0.034375,dump:13,u:0:0]           (f:2.87e+03,d:16.7)    -->    [f:2.87e+03,d:16.7]    lambda:0.000211  #err=128 update:13
+600(30) [phase:2,s:1,ds:0.034375,dump:12,u:0:0]           (f:2.87e+03,d:16.9)    -->    [f:2.87e+03,d:16.9]    lambda:0.000302  #err=124 update:12
+601(31) [phase:2,s:1,ds:0.034375,dump:13,u:0:0]           (f:2.87e+03,d:16.7)    -->    [f:2.87e+03,d:16.7]    lambda:0.000252  #err=108 update:13
+602(32) [phase:2,s:1,ds:0.034375,dump:12,u:0:0]           (f:2.87e+03,d:16.3)    -->    [f:2.87e+03,d:16.3]    lambda:0.00033  #err= 99 update:12
+603(33) [phase:2,s:1,ds:0.034375,dump:12,u:0:0]           (f:2.87e+03,d:15.7)    -->    [f:2.87e+03,d:15.9]    lambda:0.000377  #err= 86 update:12
+604(34) [phase:2,s:1,ds:0.034375,dump:13,u:0:0]           (f:2.87e+03,d:15.2)    -->    [f:2.87e+03,d:15.2]    lambda:0.000282  #err= 80 update:13
+605(35) [phase:2,s:1,ds:0.034375,dump:12,u:0:0]           (f:2.87e+03,d:14.9)    -->    [f:2.86e+03,d:14.9]    lambda:0.000349  #err= 78 update:12
+606(36) [phase:2,s:1,ds:0.034375,dump:12,u:0:0]           (f:2.86e+03,d:14.6)    -->    [f:2.86e+03,d:14.6]    lambda:0.000388  #err= 71 update:12
+607(37) [phase:2,s:1,ds:0.034375,dump:12,u:0:0]           (f:2.86e+03,d:14.3)    -->    [f:2.86e+03,d:14.3]    lambda:0.000409  #err= 67 update:12
+608(38) [phase:2,s:1,ds:0.034375,dump:12,u:0:0]            (f:2.86e+03,d:14)     -->     [f:2.86e+03,d:14]     lambda:0.00042  #err= 66 update:12
+609(39) [phase:2,s:1,ds:0.034375,dump:12,u:0:0]           (f:2.86e+03,d:13.8)    -->    [f:2.86e+03,d:13.8]    lambda:0.000425  #err= 79 update:12
+610(40) [phase:2,s:1,ds:0.034375,dump:12,u:0:0]           (f:2.86e+03,d:13.6)    -->    [f:2.86e+03,d:13.6]    lambda:0.000428  #err= 70 update:12
+NLsolver[wheel_slip_dynamics_with_actuator]::solve_with_continuation(phase=2,...) found:
+NLsolver[wheel_slip_dynamics_with_actuator]::solve()
+#phase=2 #it=0/40 lambda=0.000428 tolerance=1e-09 |f|_1=2860 |f|_inf=5.334e+04 |d|_1=13.58 |d|_inf=1.555e+05
+at phase 2, iter 610: NLsolver[wheel_slip_dynamics_with_actuator]::solve, Too many iterations
+
+
+Continuation step N.2 s:0.96562->0.98281, ds=0.017188
+[iter:610,phase:2,s:0.9828,ds:0.017188] |X|=1.429e+04/1177/4080, |L|=1.429e+04/1177/4081 |B|=2.675e-11/2.675e-11/2.675e-11, |BL|=1.947e-16/2.32e-16/1.969e-16, PARS=0/0/0, U=2999/1901/1915
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+611(1 ) [phase:2,s:0.9828,ds:0.017188,dump:10,u:0:0]     (f:1.16e+03,d:0.396)    -->   [f:1.12e+03,d:0.384]    lambda:0.0282  #err= 80 update:10
+612(2 ) [phase:2,s:0.9828,ds:0.017188,dump:8,u:0:0]      (f:1.12e+03,d:0.367)    -->   [f:1.11e+03,d:0.358]    lambda:0.0145  #err= 21 update:8
+613(3 ) [phase:2,s:0.9828,ds:0.017188,dump:1,u:0:0]       (f:1.11e+03,d:0.36)    -->      [f:956,d:0.313]      lambda:0.127  #err=  3 update:1
+614(4 ) [phase:2,s:0.9828,ds:0.017188,dump:10,u:0:0]        (f:956,d:0.294)      -->      [f:929,d:0.277]      lambda:0.0282  #err= 26 update:10
+615(5 ) [phase:2,s:0.9828,ds:0.017188,dump:1,u:0:0]         (f:929,d:0.275)      -->      [f:752,d:0.225]      lambda:0.176  #err=  2 update:1
+616(6 ) [phase:2,s:0.9828,ds:0.017188,dump:9,u:0:0]         (f:752,d:0.213)      -->      [f:721,d:0.195]      lambda:0.0404  #err= 22 update:9
+617(7 ) [phase:2,s:0.9828,ds:0.017188,dump:0,u:0:0]         (f:721,d:0.195)      -->      [f:484,d:0.134]      lambda:0.301 
+618(8 ) [phase:2,s:0.9828,ds:0.017188,dump:8,u:0:0]         (f:484,d:0.125)      -->      [f:456,d:0.113]      lambda:0.0576  #err= 18 update:8
+619(9 ) [phase:2,s:0.9828,ds:0.017188,dump:0,u:0:0]         (f:456,d:0.114)      -->     [f:283,d:0.0723]      lambda:0.36  
+620(10) [phase:2,s:0.9828,ds:0.017188,dump:2,u:0:0]        (f:283,d:0.0692)      -->     [f:138,d:0.0348]      lambda:0.49   #err=  4 update:2
+621(11) [phase:2,s:0.9828,ds:0.017188,dump:3,u:0:0]        (f:138,d:0.0339)      -->     [f:90.4,d:0.0219]     lambda:0.343  #err=  6 update:3
+622(12) [phase:2,s:0.9828,ds:0.017188,dump:3,u:0:0]        (f:90.4,d:0.0202)     -->     [f:59.1,d:0.0156]     lambda:0.343  #err=  6 update:3
+623(13) [phase:2,s:0.9828,ds:0.017188,dump:0,u:0:0]        (f:59.1,d:0.0135)     -->    [f:0.865,d:0.00023]    lambda:1     
+624(14) [phase:2,s:0.9828,ds:0.017188,dump:0,u:0:0]      (f:0.865,d:0.000229)    -->  [f:0.000193,d:6.84e-06]  lambda:1     
+625(15) [phase:2,s:0.9828,ds:0.017188,dump:0,u:0:0]     (f:0.000193,d:1.01e-05)  -->  [f:1.34e-09,d:4.51e-07]  lambda:1     
+626(16) [phase:2,s:0.9828,ds:0.017188,dump:0,u:0:0]     (f:1.34e-09,d:4.95e-07)  -->  [f:1.87e-11,d:1.11e-09]  lambda:1     
+627(17) [phase:2,s:0.9828,ds:0.017188,dump:0,u:0:0]     (f:1.87e-11,d:1.12e-09)  -->  [f:1.53e-11,d:1.07e-12]  lambda:1     
+
+Continuation step N.2 s:0.98281->1, ds=0.017188
+[iter:627,phase:2,s:1,ds:0.017188] |X|=5.229e+04/2821/9800, |L|=5.229e+04/2822/9802 |B|=1.929e-11/1.93e-11/1.929e-11, |BL|=1.952e-16/2.187e-16/1.959e-16, PARS=0/0/0, U=3000/2991/2991
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+628(1 ) [phase:2,s:1,ds:0.017188,dump:28,u:0:0]           (f:2.87e+03,d:174)     -->    [f:2.87e+03,d:174]     lambda:2.63e-05  #err=427 update:27 armijo:1
+629(2 ) [phase:2,s:1,ds:0.017188,dump:12,u:0:0]           (f:2.87e+03,d:164)     -->    [f:2.87e+03,d:164]     lambda:0.000106  #err=186 update:12
+630(3 ) [phase:2,s:1,ds:0.017188,dump:15,u:0:0]           (f:2.87e+03,d:50.6)    -->    [f:2.87e+03,d:50.6]    lambda:7.35e-05  #err=222 update:15
+631(4 ) [phase:2,s:1,ds:0.017188,dump:15,u:0:0]           (f:2.87e+03,d:33.5)    -->    [f:2.87e+03,d:33.5]    lambda:6.1e-05  #err=201 update:15
+632(5 ) [phase:2,s:1,ds:0.017188,dump:14,u:0:0]           (f:2.87e+03,d:27.1)    -->    [f:2.87e+03,d:27.1]    lambda:7.95e-05  #err=184 update:14
+633(6 ) [phase:2,s:1,ds:0.017188,dump:15,u:0:0]           (f:2.87e+03,d:21.9)    -->    [f:2.87e+03,d:21.9]    lambda:6.35e-05  #err=186 update:15
+634(7 ) [phase:2,s:1,ds:0.017188,dump:14,u:0:0]           (f:2.87e+03,d:19.3)    -->    [f:2.87e+03,d:19.3]    lambda:8.11e-05  #err=178 update:14
+635(8 ) [phase:2,s:1,ds:0.017188,dump:11,u:0:0]           (f:2.87e+03,d:16.8)    -->    [f:2.87e+03,d:16.8]    lambda:0.000267  #err=174 update:11
+636(9 ) [phase:2,s:1,ds:0.017188,dump:13,u:0:0]           (f:2.87e+03,d:12.8)    -->    [f:2.87e+03,d:12.8]    lambda:0.000237  #err=192 update:13
+637(10) [phase:2,s:1,ds:0.017188,dump:13,u:0:0]           (f:2.87e+03,d:11.4)    -->    [f:2.86e+03,d:11.4]    lambda:0.000224  #err=173 update:13
+638(11) [phase:2,s:1,ds:0.017188,dump:14,u:0:0]           (f:2.86e+03,d:10.5)    -->    [f:2.86e+03,d:10.5]    lambda:0.000152  #err=164 update:14
+639(12) [phase:2,s:1,ds:0.017188,dump:16,u:0:0]           (f:2.86e+03,d:9.96)    -->    [f:2.86e+03,d:9.95]    lambda:6.15e-05  #err=167 update:16
+640(13) [phase:2,s:1,ds:0.017188,dump:11,u:0:0]           (f:2.86e+03,d:9.77)    -->    [f:2.86e+03,d:9.76]    lambda:0.000233  #err=138 update:11
+641(14) [phase:2,s:1,ds:0.017188,dump:12,u:0:0]           (f:2.86e+03,d:9.2)     -->    [f:2.86e+03,d:9.19]    lambda:0.000317  #err=145 update:12
+642(15) [phase:2,s:1,ds:0.017188,dump:13,u:0:0]           (f:2.86e+03,d:8.65)    -->    [f:2.86e+03,d:8.64]    lambda:0.000259  #err=124 update:13
+643(16) [phase:2,s:1,ds:0.017188,dump:12,u:0:0]           (f:2.86e+03,d:8.31)    -->    [f:2.86e+03,d:8.31]    lambda:0.000334  #err=100 update:12
+644(17) [phase:2,s:1,ds:0.017188,dump:12,u:0:0]           (f:2.86e+03,d:7.99)    -->    [f:2.86e+03,d:7.99]    lambda:0.000379  #err=114 update:12
+645(18) [phase:2,s:1,ds:0.017188,dump:12,u:0:0]           (f:2.86e+03,d:7.75)    -->    [f:2.86e+03,d:7.74]    lambda:0.000404  #err= 98 update:12
+646(19) [phase:2,s:1,ds:0.017188,dump:12,u:0:0]           (f:2.86e+03,d:7.59)    -->    [f:2.86e+03,d:7.59]    lambda:0.000418  #err= 96 update:12
+647(20) [phase:2,s:1,ds:0.017188,dump:12,u:0:0]           (f:2.86e+03,d:7.51)    -->    [f:2.86e+03,d:7.51]    lambda:0.000424  #err= 80 update:12
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+648(21) [phase:2,s:1,ds:0.017188,dump:12,u:0:0]           (f:2.86e+03,d:7.5)     -->    [f:2.85e+03,d:7.5]     lambda:0.000428  #err= 98 update:12
+649(22) [phase:2,s:1,ds:0.017188,dump:11,u:0:0]           (f:2.85e+03,d:7.56)    -->    [f:2.85e+03,d:7.56]    lambda:0.000613  #err= 72 update:11
+650(23) [phase:2,s:1,ds:0.017188,dump:12,u:0:0]           (f:2.85e+03,d:7.75)    -->    [f:2.85e+03,d:7.74]    lambda:0.000514  #err= 86 update:12
+651(24) [phase:2,s:1,ds:0.017188,dump:12,u:0:0]           (f:2.85e+03,d:7.98)    -->    [f:2.85e+03,d:7.97]    lambda:0.000471  #err= 87 update:12
+652(25) [phase:2,s:1,ds:0.017188,dump:11,u:0:0]           (f:2.85e+03,d:8.27)    -->    [f:2.85e+03,d:8.26]    lambda:0.000644  #err= 82 update:11
+653(26) [phase:2,s:1,ds:0.017188,dump:12,u:0:0]           (f:2.85e+03,d:8.77)    -->    [f:2.85e+03,d:8.77]    lambda:0.000527  #err= 74 update:12
+654(27) [phase:2,s:1,ds:0.017188,dump:11,u:0:0]           (f:2.85e+03,d:9.32)    -->    [f:2.84e+03,d:9.31]    lambda:0.000681  #err= 82 update:11
+655(28) [phase:2,s:1,ds:0.017188,dump:11,u:0:0]           (f:2.84e+03,d:10.2)    -->    [f:2.84e+03,d:10.2]    lambda:0.000774  #err= 75 update:11
+656(29) [phase:2,s:1,ds:0.017188,dump:11,u:0:0]           (f:2.84e+03,d:11.7)    -->    [f:2.84e+03,d:11.6]    lambda:0.000825  #err= 79 update:11
+657(30) [phase:2,s:1,ds:0.017188,dump:10,u:0:0]           (f:2.84e+03,d:13.9)    -->    [f:2.84e+03,d:13.9]    lambda:0.00122  #err= 79 update:10
+658(31) [phase:2,s:1,ds:0.017188,dump:10,u:0:0]           (f:2.84e+03,d:19.7)    -->    [f:2.83e+03,d:19.7]    lambda:0.00148  #err= 81 update:10
+659(32) [phase:2,s:1,ds:0.017188,dump:11,u:0:0]           (f:2.83e+03,d:29.3)    -->    [f:2.83e+03,d:29.3]    lambda:0.00114  #err= 81 update:11
+660(33) [phase:2,s:1,ds:0.017188,dump:16,u:0:0]           (f:2.83e+03,d:26.1)    -->    [f:2.83e+03,d:26.1]    lambda:0.000168  #err= 78 update:16
+661(34) [phase:2,s:1,ds:0.017188,dump:21,u:0:0]           (f:2.83e+03,d:23.9)    -->    [f:2.83e+03,d:23.9]    lambda:1.09e-05  #err= 60 update:21
+662(35) [phase:2,s:1,ds:0.017188,dump:17,u:0:0]           (f:2.83e+03,d:11.4)    -->    [f:2.83e+03,d:10.6]    lambda:1.15e-05  #err= 36 update:17
+663(36) [phase:2,s:1,ds:0.017188,dump:5,u:0:0]            (f:2.83e+03,d:3.62)    -->    [f:2.82e+03,d:3.61]    lambda:0.000855  #err= 12 update:5
+664(37) [phase:2,s:1,ds:0.017188,dump:9,u:0:0]            (f:2.82e+03,d:3.54)    -->    [f:2.82e+03,d:3.53]    lambda:0.00177  #err= 50 update:9
+665(38) [phase:2,s:1,ds:0.017188,dump:10,u:0:0]           (f:2.82e+03,d:3.52)    -->    [f:2.81e+03,d:3.51]    lambda:0.00178  #err= 70 update:10
+666(39) [phase:2,s:1,ds:0.017188,dump:11,u:0:0]           (f:2.81e+03,d:3.66)    -->    [f:2.81e+03,d:3.65]    lambda:0.000716  #err= 63 update:10 armijo:1
+667(40) [phase:2,s:1,ds:0.017188,dump:10,u:0:0]           (f:2.81e+03,d:3.71)    -->    [f:2.81e+03,d:3.7]     lambda:0.00113  #err= 45 update:10
+NLsolver[wheel_slip_dynamics_with_actuator]::solve_with_continuation(phase=2,...) found:
+NLsolver[wheel_slip_dynamics_with_actuator]::solve()
+#phase=2 #it=0/40 lambda=0.00113 tolerance=1e-09 |f|_1=2811 |f|_inf=5.159e+04 |d|_1=3.706 |d|_inf=1.719e+04
+at phase 2, iter 667: NLsolver[wheel_slip_dynamics_with_actuator]::solve, Too many iterations
+
+
+Continuation step N.2 s:0.98281->0.99141, ds=0.0085938
+[iter:667,phase:2,s:0.9914,ds:0.0085938] |X|=1.4e+04/1154/4001, |L|=1.4e+04/1154/4002 |B|=1.929e-11/1.93e-11/1.929e-11, |BL|=1.952e-16/2.187e-16/1.959e-16, PARS=0/0/0, U=2999/1887/1902
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+668(1 ) [phase:2,s:0.9914,ds:0.0085938,dump:10,u:0:0]    (f:1.13e+03,d:0.315)    -->    [f:1.1e+03,d:0.308]    lambda:0.0282  #err= 66 update:10
+669(2 ) [phase:2,s:0.9914,ds:0.0085938,dump:1,u:0:0]      (f:1.1e+03,d:0.302)    -->      [f:885,d:0.246]      lambda:0.176  #err=  2 update:1
+670(3 ) [phase:2,s:0.9914,ds:0.0085938,dump:12,u:0:0]       (f:885,d:0.226)      -->      [f:873,d:0.223]      lambda:0.0138  #err= 27 update:12
+671(4 ) [phase:2,s:0.9914,ds:0.0085938,dump:4,u:0:0]        (f:873,d:0.214)      -->      [f:835,d:0.206]      lambda:0.0424  #err=  8 update:4
+672(5 ) [phase:2,s:0.9914,ds:0.0085938,dump:0,u:0:0]        (f:835,d:0.204)      -->      [f:546,d:0.138]      lambda:0.309 
+673(6 ) [phase:2,s:0.9914,ds:0.0085938,dump:6,u:0:0]        (f:546,d:0.13)       -->      [f:481,d:0.114]      lambda:0.118  #err= 12 update:6
+674(7 ) [phase:2,s:0.9914,ds:0.0085938,dump:7,u:0:0]        (f:481,d:0.101)      -->     [f:460,d:0.0965]      lambda:0.0424  #err= 14 update:7
+675(8 ) [phase:2,s:0.9914,ds:0.0085938,dump:0,u:0:0]       (f:460,d:0.0974)      -->     [f:311,d:0.0667]      lambda:0.309 
+676(9 ) [phase:2,s:0.9914,ds:0.0085938,dump:3,u:0:0]       (f:311,d:0.0648)      -->     [f:201,d:0.0423]      lambda:0.343  #err=  6 update:3
+677(10) [phase:2,s:0.9914,ds:0.0085938,dump:4,u:0:0]       (f:201,d:0.0411)      -->     [f:173,d:0.0354]      lambda:0.137  #err=  7 update:3 armijo:1
+678(11) [phase:2,s:0.9914,ds:0.0085938,dump:1,u:0:0]       (f:173,d:0.0352)      -->     [f:134,d:0.0274]      lambda:0.222  #err=  1 armijo:1
+679(12) [phase:2,s:0.9914,ds:0.0085938,dump:0,u:0:0]       (f:134,d:0.0273)      -->    [f:4.77,d:0.00128]     lambda:1     
+680(13) [phase:2,s:0.9914,ds:0.0085938,dump:0,u:0:0]      (f:4.77,d:0.00116)     -->  [f:0.00588,d:4.21e-05]   lambda:1     
+681(14) [phase:2,s:0.9914,ds:0.0085938,dump:0,u:0:0]    (f:0.00588,d:7.07e-05)   -->  [f:1.59e-07,d:4.68e-06]  lambda:1     
+682(15) [phase:2,s:0.9914,ds:0.0085938,dump:0,u:0:0]    (f:1.59e-07,d:5.58e-06)  -->  [f:1.29e-09,d:1.64e-07]  lambda:1     
+683(16) [phase:2,s:0.9914,ds:0.0085938,dump:0,u:0:0]    (f:1.29e-09,d:1.77e-07)  -->  [f:1.66e-11,d:2.43e-10]  lambda:1     
+
+Continuation step N.2 s:0.99141->1, ds=0.0085937
+[iter:683,phase:2,s:1,ds:0.0085937] |X|=5.043e+04/2805/9744, |L|=5.043e+04/2806/9747 |B|=2.213e-08/2.222e-08/2.213e-08, |BL|=8.527e-14/8.548e-14/8.527e-14, PARS=0/0/0, U=3000/2980/2980
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+684(1 ) [phase:2,s:1,ds:0.0085937,dump:28,u:0:0]          (f:2.85e+03,d:48.9)    -->    [f:2.85e+03,d:48.8]    lambda:4.6e-05  #err=405 update:28
+685(2 ) [phase:2,s:1,ds:0.0085937,dump:15,u:0:0]          (f:2.85e+03,d:34.1)    -->    [f:2.85e+03,d:34.1]    lambda:4.83e-05  #err=192 update:15
+686(3 ) [phase:2,s:1,ds:0.0085937,dump:15,u:0:0]          (f:2.85e+03,d:26.1)    -->    [f:2.85e+03,d:26.1]    lambda:4.95e-05  #err=171 update:15
+687(4 ) [phase:2,s:1,ds:0.0085937,dump:12,u:0:0]          (f:2.85e+03,d:21.7)    -->    [f:2.85e+03,d:21.7]    lambda:0.000146  #err=146 update:12
+688(5 ) [phase:2,s:1,ds:0.0085937,dump:9,u:0:0]           (f:2.85e+03,d:14.4)    -->    [f:2.85e+03,d:14.3]    lambda:0.000732  #err=142 update:9
+689(6 ) [phase:2,s:1,ds:0.0085937,dump:13,u:0:0]          (f:2.85e+03,d:5.57)    -->    [f:2.85e+03,d:5.57]    lambda:0.000393  #err=179 update:13
+690(7 ) [phase:2,s:1,ds:0.0085937,dump:12,u:0:0]          (f:2.85e+03,d:5.26)    -->    [f:2.85e+03,d:5.26]    lambda:0.000412  #err=128 update:12
+691(8 ) [phase:2,s:1,ds:0.0085937,dump:13,u:0:0]          (f:2.85e+03,d:4.97)    -->    [f:2.84e+03,d:4.97]    lambda:0.000295  #err=127 update:13
+692(9 ) [phase:2,s:1,ds:0.0085937,dump:12,u:0:0]          (f:2.84e+03,d:4.72)    -->    [f:2.84e+03,d:4.72]    lambda:0.000357  #err=121 update:12
+693(10) [phase:2,s:1,ds:0.0085937,dump:11,u:0:0]          (f:2.84e+03,d:4.53)    -->    [f:2.84e+03,d:4.53]    lambda:0.00056  #err=120 update:11
+694(11) [phase:2,s:1,ds:0.0085937,dump:11,u:0:0]          (f:2.84e+03,d:4.26)    -->    [f:2.84e+03,d:4.25]    lambda:0.000702  #err=114 update:11
+695(12) [phase:2,s:1,ds:0.0085937,dump:11,u:0:0]          (f:2.84e+03,d:3.92)    -->    [f:2.84e+03,d:3.92]    lambda:0.000786  #err=105 update:11
+696(13) [phase:2,s:1,ds:0.0085937,dump:10,u:0:0]          (f:2.84e+03,d:3.53)    -->    [f:2.83e+03,d:3.53]    lambda:0.00119  #err= 86 update:10
+697(14) [phase:2,s:1,ds:0.0085937,dump:11,u:0:0]          (f:2.83e+03,d:2.88)    -->    [f:2.83e+03,d:2.88]    lambda:0.00102  #err= 79 update:11
+698(15) [phase:2,s:1,ds:0.0085937,dump:11,u:0:0]          (f:2.83e+03,d:2.54)    -->    [f:2.83e+03,d:2.54]    lambda:0.000948  #err= 81 update:11
+699(16) [phase:2,s:1,ds:0.0085937,dump:10,u:0:0]          (f:2.83e+03,d:2.45)    -->    [f:2.82e+03,d:2.45]    lambda:0.0013  #err= 62 update:10
+700(17) [phase:2,s:1,ds:0.0085937,dump:12,u:0:0]          (f:2.82e+03,d:2.47)    -->    [f:2.82e+03,d:2.46]    lambda:0.00075  #err= 61 update:12
+701(18) [phase:2,s:1,ds:0.0085937,dump:13,u:0:0]          (f:2.82e+03,d:2.56)    -->    [f:2.82e+03,d:2.56]    lambda:0.000398  #err= 63 update:13
+702(19) [phase:2,s:1,ds:0.0085937,dump:8,u:0:0]           (f:2.82e+03,d:2.6)     -->    [f:2.81e+03,d:2.61]    lambda:0.00173  #err= 46 update:8
+703(20) [phase:2,s:1,ds:0.0085937,dump:11,u:0:0]          (f:2.81e+03,d:2.76)    -->    [f:2.81e+03,d:2.75]    lambda:0.00123  #err= 52 update:11
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+704(21) [phase:2,s:1,ds:0.0085937,dump:8,u:0:0]           (f:2.81e+03,d:2.86)    -->    [f:2.8e+03,d:2.85]     lambda:0.00304  #err= 52 update:8
+705(22) [phase:2,s:1,ds:0.0085937,dump:11,u:0:0]          (f:2.8e+03,d:3.26)     -->    [f:2.8e+03,d:3.25]     lambda:0.00163  #err= 64 update:11
+706(23) [phase:2,s:1,ds:0.0085937,dump:9,u:0:0]           (f:2.8e+03,d:3.53)     -->    [f:2.79e+03,d:3.52]    lambda:0.00245  #err= 53 update:9
+707(24) [phase:2,s:1,ds:0.0085937,dump:10,u:0:0]          (f:2.79e+03,d:4.08)    -->    [f:2.78e+03,d:4.08]    lambda:0.0021  #err= 57 update:10
+708(25) [phase:2,s:1,ds:0.0085937,dump:10,u:0:0]          (f:2.78e+03,d:4.79)    -->    [f:2.78e+03,d:4.78]    lambda:0.00194  #err= 51 update:10
+709(26) [phase:2,s:1,ds:0.0085937,dump:7,u:0:0]           (f:2.78e+03,d:5.71)    -->    [f:2.76e+03,d:5.7]     lambda:0.00544  #err= 34 update:7
+710(27) [phase:2,s:1,ds:0.0085937,dump:8,u:0:0]           (f:2.76e+03,d:9.54)    -->    [f:2.74e+03,d:8.06]    lambda:0.00638  #err= 67 update:8
+711(28) [phase:2,s:1,ds:0.0085937,dump:5,u:0:0]           (f:2.74e+03,d:2.14)    -->    [f:2.65e+03,d:2.1]     lambda:0.0201  #err= 19 update:5
+712(29) [phase:2,s:1,ds:0.0085937,dump:18,u:0:0]          (f:2.65e+03,d:2.51)    -->    [f:2.65e+03,d:2.5]     lambda:0.000347  #err= 66 update:18
+713(30) [phase:2,s:1,ds:0.0085937,dump:12,u:0:0]          (f:2.65e+03,d:2.57)    -->    [f:2.65e+03,d:2.57]    lambda:0.000387  #err= 24 update:12
+714(31) [phase:2,s:1,ds:0.0085937,dump:9,u:0:0]           (f:2.65e+03,d:2.56)    -->    [f:2.64e+03,d:2.55]    lambda:0.00119  #err= 18 update:9
+715(32) [phase:2,s:1,ds:0.0085937,dump:5,u:0:0]           (f:2.64e+03,d:2.56)    -->    [f:2.62e+03,d:2.54]    lambda:0.0087  #err= 11 update:5
+716(33) [phase:2,s:1,ds:0.0085937,dump:15,u:0:0]          (f:2.62e+03,d:2.62)    -->    [f:2.62e+03,d:2.62]    lambda:0.000664  #err= 44 update:15
+717(34) [phase:2,s:1,ds:0.0085937,dump:16,u:0:0]          (f:2.62e+03,d:4.69)    -->    [f:2.62e+03,d:4.69]    lambda:0.000128  #err= 36 update:16
+718(35) [phase:2,s:1,ds:0.0085937,dump:7,u:0:0]           (f:2.62e+03,d:6.18)    -->    [f:2.61e+03,d:6.18]    lambda:0.0014  #err= 15 update:7
+719(36) [phase:2,s:1,ds:0.0085937,dump:4,u:0:0]           (f:2.61e+03,d:5.21)    -->    [f:2.59e+03,d:5.12]    lambda:0.0077  #err= 16 update:3 armijo:1
+720(37) [phase:2,s:1,ds:0.0085937,dump:7,u:0:0]           (f:2.59e+03,d:2.42)    -->    [f:2.56e+03,d:2.39]    lambda:0.0108  #err= 24 update:7
+721(38) [phase:2,s:1,ds:0.0085937,dump:11,u:0:0]          (f:2.56e+03,d:2.31)    -->    [f:2.55e+03,d:2.3]     lambda:0.00309  #err= 36 update:11
+722(39) [phase:2,s:1,ds:0.0085937,dump:15,u:0:0]          (f:2.55e+03,d:2.32)    -->    [f:2.55e+03,d:2.32]    lambda:0.000396  #err= 33 update:15
+723(40) [phase:2,s:1,ds:0.0085937,dump:13,u:0:0]          (f:2.55e+03,d:2.56)    -->    [f:2.55e+03,d:2.56]    lambda:0.000289  #err= 26 update:13
+NLsolver[wheel_slip_dynamics_with_actuator]::solve_with_continuation(phase=2,...) found:
+NLsolver[wheel_slip_dynamics_with_actuator]::solve()
+#phase=2 #it=0/40 lambda=0.000289 tolerance=1e-09 |f|_1=2550 |f|_inf=4.587e+04 |d|_1=2.562 |d|_inf=1.344e+04
+at phase 2, iter 723: NLsolver[wheel_slip_dynamics_with_actuator]::solve, Too many iterations
+
+
+Continuation step N.2 s:0.99141->0.9957, ds=0.0042969
+[iter:723,phase:2,s:0.9957,ds:0.0042969] |X|=1.371e+04/1130/3920, |L|=1.371e+04/1131/3920 |B|=2.213e-08/2.222e-08/2.213e-08, |BL|=8.527e-14/8.548e-14/8.527e-14, PARS=0/0/0, U=3000/1873/1888
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+724(1 ) [phase:2,s:0.9957,ds:0.0042969,dump:8,u:0:0]     (f:1.11e+03,d:0.279)    -->   [f:1.04e+03,d:0.263]    lambda:0.0576  #err= 39 update:8
+725(2 ) [phase:2,s:0.9957,ds:0.0042969,dump:5,u:0:0]     (f:1.04e+03,d:0.257)    -->      [f:979,d:0.241]      lambda:0.0605  #err= 10 update:5
+726(3 ) [phase:2,s:0.9957,ds:0.0042969,dump:9,u:0:0]        (f:979,d:0.212)      -->      [f:964,d:0.209]      lambda:0.0149  #err= 18 update:9
+727(4 ) [phase:2,s:0.9957,ds:0.0042969,dump:2,u:0:0]        (f:964,d:0.212)      -->      [f:874,d:0.192]      lambda:0.0897  #err=  4 update:2
+728(5 ) [phase:2,s:0.9957,ds:0.0042969,dump:11,u:0:0]       (f:874,d:0.184)      -->      [f:864,d:0.182]      lambda:0.0113  #err= 21 update:10 armijo:1
+729(6 ) [phase:2,s:0.9957,ds:0.0042969,dump:5,u:0:0]        (f:864,d:0.184)      -->      [f:841,d:0.179]      lambda:0.0268  #err= 10 update:5
+730(7 ) [phase:2,s:0.9957,ds:0.0042969,dump:2,u:0:0]        (f:841,d:0.18)       -->      [f:735,d:0.158]      lambda:0.12   #err=  4 update:2
+731(8 ) [phase:2,s:0.9957,ds:0.0042969,dump:2,u:0:0]        (f:735,d:0.154)      -->     [f:317,d:0.0745]      lambda:0.49   #err=  4 update:2
+732(9 ) [phase:2,s:0.9957,ds:0.0042969,dump:9,u:0:0]       (f:317,d:0.0684)      -->     [f:310,d:0.0668]      lambda:0.0231  #err= 17 update:8 armijo:1
+733(10) [phase:2,s:0.9957,ds:0.0042969,dump:3,u:0:0]       (f:310,d:0.0636)      -->     [f:286,d:0.0574]      lambda:0.0781  #err=  6 update:3
+734(11) [phase:2,s:0.9957,ds:0.0042969,dump:4,u:0:0]       (f:286,d:0.0568)      -->     [f:216,d:0.0431]      lambda:0.24   #err=  8 update:4
+735(12) [phase:2,s:0.9957,ds:0.0042969,dump:5,u:0:0]       (f:216,d:0.0424)      -->     [f:189,d:0.0358]      lambda:0.124  #err= 10 update:5
+736(13) [phase:2,s:0.9957,ds:0.0042969,dump:0,u:0:0]       (f:189,d:0.0357)      -->     [f:86.6,d:0.0167]     lambda:0.527 
+737(14) [phase:2,s:0.9957,ds:0.0042969,dump:0,u:0:0]       (f:86.6,d:0.0167)     -->    [f:1.89,d:0.000628]    lambda:1     
+738(15) [phase:2,s:0.9957,ds:0.0042969,dump:0,u:0:0]      (f:1.89,d:0.00284)     -->  [f:0.00104,d:0.000337]   lambda:1     
+739(16) [phase:2,s:0.9957,ds:0.0042969,dump:0,u:0:0]    (f:0.00104,d:0.000395)   -->  [f:3.04e-06,d:1.87e-07]  lambda:1     
+740(17) [phase:2,s:0.9957,ds:0.0042969,dump:0,u:0:0]    (f:3.04e-06,d:1.87e-07)  -->  [f:1.82e-11,d:3.07e-12]  lambda:1     
+741(18) [phase:2,s:0.9957,ds:0.0042969,dump:1,u:0:0]    (f:1.82e-11,d:3.08e-12)  -->  [f:1.7e-11,d:1.33e-12]   lambda:0.777  #err=  1 angle:1 armijo:1
+
+Continuation step N.2 s:0.9957->1, ds=0.0042969
+[iter:741,phase:2,s:1,ds:0.0042969] |X|=4.783e+04/2771/9625, |L|=4.783e+04/2772/9628 |B|=6.495e-08/6.518e-08/6.495e-08, |BL|=1.599e-13/1.605e-13/1.599e-13, PARS=0/0/0, U=3000/2957/2957
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+742(1 ) [phase:2,s:1,ds:0.0042969,dump:25,u:0:0]          (f:2.81e+03,d:12.2)    -->    [f:2.81e+03,d:12.2]    lambda:0.000134  #err=365 update:25
+743(2 ) [phase:2,s:1,ds:0.0042969,dump:13,u:0:0]          (f:2.81e+03,d:10.1)    -->    [f:2.81e+03,d:10.1]    lambda:0.000168  #err=142 update:13
+744(3 ) [phase:2,s:1,ds:0.0042969,dump:11,u:0:0]          (f:2.81e+03,d:8.97)    -->    [f:2.81e+03,d:8.97]    lambda:0.000385  #err=133 update:11
+745(4 ) [phase:2,s:1,ds:0.0042969,dump:8,u:0:0]           (f:2.81e+03,d:7.35)    -->    [f:2.81e+03,d:7.33]    lambda:0.0017  #err=111 update:8
+746(5 ) [phase:2,s:1,ds:0.0042969,dump:11,u:0:0]          (f:2.81e+03,d:4.34)    -->    [f:2.8e+03,d:4.33]     lambda:0.00122  #err=122 update:11
+747(6 ) [phase:2,s:1,ds:0.0042969,dump:10,u:0:0]          (f:2.8e+03,d:3.52)     -->    [f:2.8e+03,d:3.52]     lambda:0.00148  #err= 90 update:10
+748(7 ) [phase:2,s:1,ds:0.0042969,dump:13,u:0:0]          (f:2.8e+03,d:2.84)     -->    [f:2.8e+03,d:2.83]     lambda:0.000559  #err= 85 update:13
+749(8 ) [phase:2,s:1,ds:0.0042969,dump:8,u:0:0]           (f:2.8e+03,d:2.64)     -->    [f:2.79e+03,d:2.63]    lambda:0.00204  #err= 59 update:8
+750(9 ) [phase:2,s:1,ds:0.0042969,dump:9,u:0:0]           (f:2.79e+03,d:2.12)    -->    [f:2.78e+03,d:2.11]    lambda:0.00274  #err= 61 update:9
+751(10) [phase:2,s:1,ds:0.0042969,dump:8,u:0:0]           (f:2.78e+03,d:1.7)     -->    [f:2.77e+03,d:1.69]    lambda:0.00452  #err= 76 update:8
+752(11) [phase:2,s:1,ds:0.0042969,dump:11,u:0:0]          (f:2.77e+03,d:1.4)     -->    [f:2.76e+03,d:1.4]     lambda:0.00199  #err= 73 update:11
+753(12) [phase:2,s:1,ds:0.0042969,dump:7,u:0:0]           (f:2.76e+03,d:1.35)    -->    [f:2.74e+03,d:1.34]    lambda:0.00552  #err= 37 update:7
+754(13) [phase:2,s:1,ds:0.0042969,dump:7,u:0:0]           (f:2.74e+03,d:1.24)    -->    [f:2.71e+03,d:1.23]    lambda:0.00918  #err= 52 update:7
+755(14) [phase:2,s:1,ds:0.0042969,dump:11,u:0:0]          (f:2.71e+03,d:1.26)    -->    [f:2.7e+03,d:1.26]     lambda:0.00284  #err= 54 update:11
+756(15) [phase:2,s:1,ds:0.0042969,dump:16,u:0:0]          (f:2.7e+03,d:1.26)     -->    [f:2.7e+03,d:1.26]     lambda:0.000266  #err= 33 update:16
+757(16) [phase:2,s:1,ds:0.0042969,dump:8,u:0:0]             (f:2.7e+03,d:1)      -->      [f:2.7e+03,d:1]      lambda:0.00141  #err= 16 update:8
+758(17) [phase:2,s:1,ds:0.0042969,dump:13,u:0:0]          (f:2.7e+03,d:1.01)     -->    [f:2.7e+03,d:1.01]     lambda:0.000546  #err= 28 update:13
+759(18) [phase:2,s:1,ds:0.0042969,dump:6,u:0:0]           (f:2.7e+03,d:1.02)     -->    [f:2.69e+03,d:1.02]    lambda:0.00412  #err= 12 update:6
+760(19) [phase:2,s:1,ds:0.0042969,dump:4,u:0:0]           (f:2.69e+03,d:1.06)    -->    [f:2.64e+03,d:1.05]    lambda:0.0132  #err= 11 update:3 armijo:1
+761(20) [phase:2,s:1,ds:0.0042969,dump:5,u:0:0]           (f:2.64e+03,d:1.25)    -->    [f:2.59e+03,d:1.23]    lambda:0.0166  #err= 31 update:4 armijo:1
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+762(21) [phase:2,s:1,ds:0.0042969,dump:4,u:0:0]           (f:2.59e+03,d:1.43)    -->    [f:2.38e+03,d:1.36]    lambda:0.0463  #err= 27 update:4
+763(22) [phase:2,s:1,ds:0.0042969,dump:5,u:0:0]           (f:2.38e+03,d:1.42)    -->    [f:2.21e+03,d:1.33]    lambda:0.0543  #err= 20 update:5
+764(23) [phase:2,s:1,ds:0.0042969,dump:10,u:0:0]          (f:2.21e+03,d:1.27)    -->    [f:2.19e+03,d:1.26]    lambda:0.00987  #err= 22 update:10
+765(24) [phase:2,s:1,ds:0.0042969,dump:11,u:0:0]          (f:2.19e+03,d:1.26)    -->    [f:2.18e+03,d:1.26]    lambda:0.00295  #err= 22 update:11
+766(25) [phase:2,s:1,ds:0.0042969,dump:13,u:0:0]          (f:2.18e+03,d:1.25)    -->    [f:2.18e+03,d:1.25]    lambda:0.000789  #err= 26 update:13
+767(26) [phase:2,s:1,ds:0.0042969,dump:10,u:0:0]          (f:2.18e+03,d:1.24)    -->    [f:2.18e+03,d:1.24]    lambda:0.00119  #err= 20 update:10
+768(27) [phase:2,s:1,ds:0.0042969,dump:3,u:0:0]           (f:2.18e+03,d:1.24)    -->    [f:2.14e+03,d:1.22]    lambda:0.0177  #err=  6 update:3
+769(28) [phase:2,s:1,ds:0.0042969,dump:7,u:0:0]           (f:2.14e+03,d:1.23)    -->    [f:1.91e+03,d:1.14]    lambda:0.0824  #err= 39 update:7
+770(29) [phase:2,s:1,ds:0.0042969,dump:8,u:0:0]           (f:1.91e+03,d:1.23)    -->    [f:1.86e+03,d:1.2]     lambda:0.0248  #err= 18 update:8
+771(30) [phase:2,s:1,ds:0.0042969,dump:13,u:0:0]          (f:1.86e+03,d:1.21)    -->    [f:1.85e+03,d:1.21]    lambda:0.00229  #err= 27 update:13
+772(31) [phase:2,s:1,ds:0.0042969,dump:13,u:0:0]          (f:1.85e+03,d:1.16)    -->    [f:1.85e+03,d:1.16]    lambda:0.000695  #err= 26 update:13
+773(32) [phase:2,s:1,ds:0.0042969,dump:0,u:0:0]           (f:1.85e+03,d:1.25)    -->    [f:1.77e+03,d:1.2]     lambda:0.0396 
+774(33) [phase:2,s:1,ds:0.0042969,dump:5,u:0:0]           (f:1.77e+03,d:1.26)    -->    [f:1.37e+03,d:1.1]     lambda:0.168  #err= 20 update:5
+775(34) [phase:2,s:1,ds:0.0042969,dump:5,u:0:0]           (f:1.37e+03,d:1.31)    -->    [f:1.29e+03,d:1.23]    lambda:0.0591  #err= 12 update:4 armijo:1
+776(35) [phase:2,s:1,ds:0.0042969,dump:4,u:0:0]           (f:1.29e+03,d:1.15)    -->    [f:1.17e+03,d:1.05]    lambda:0.0876  #err=  8 update:4
+777(36) [phase:2,s:1,ds:0.0042969,dump:9,u:0:0]           (f:1.17e+03,d:1.39)    -->    [f:1.15e+03,d:1.36]    lambda:0.0179  #err= 20 update:9
+778(37) [phase:2,s:1,ds:0.0042969,dump:11,u:0:0]          (f:1.15e+03,d:1.31)    -->    [f:1.14e+03,d:1.31]    lambda:0.00397  #err= 22 update:11
+779(38) [phase:2,s:1,ds:0.0042969,dump:13,u:0:0]          (f:1.14e+03,d:1.27)    -->    [f:1.14e+03,d:1.27]    lambda:0.000916  #err= 26 update:13
+780(39) [phase:2,s:1,ds:0.0042969,dump:4,u:0:0]           (f:1.14e+03,d:1.28)    -->    [f:1.13e+03,d:1.27]    lambda:0.0109  #err=  8 update:4
+781(40) [phase:2,s:1,ds:0.0042969,dump:2,u:0:0]           (f:1.13e+03,d:1.24)    -->    [f:1.04e+03,d:1.14]    lambda:0.0767  #err=  4 update:2
+NLsolver[wheel_slip_dynamics_with_actuator]::solve_with_continuation(phase=2,...) found:
+NLsolver[wheel_slip_dynamics_with_actuator]::solve()
+#phase=2 #it=0/40 lambda=0.0767 tolerance=1e-09 |f|_1=1129 |f|_inf=2.166e+04 |d|_1=1.243 |d|_inf=8013
+at phase 2, iter 781: NLsolver[wheel_slip_dynamics_with_actuator]::solve, Too many iterations
+
+
+Continuation step N.2 s:0.9957->0.99785, ds=0.0021484
+[iter:781,phase:2,s:0.9979,ds:0.0021484] |X|=1.336e+04/1101/3820, |L|=1.336e+04/1102/3820 |B|=6.495e-08/6.518e-08/6.495e-08, |BL|=1.599e-13/1.605e-13/1.599e-13, PARS=0/0/0, U=3000/1856/1870
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+782(1 ) [phase:2,s:0.9979,ds:0.0021484,dump:8,u:0:0]     (f:1.08e+03,d:0.237)    -->   [f:1.02e+03,d:0.224]    lambda:0.0576  #err= 31 update:8
+783(2 ) [phase:2,s:0.9979,ds:0.0021484,dump:0,u:0:0]     (f:1.02e+03,d:0.221)    -->      [f:574,d:0.141]      lambda:0.36  
+784(3 ) [phase:2,s:0.9979,ds:0.0021484,dump:3,u:0:0]        (f:574,d:0.139)      -->     [f:363,d:0.0909]      lambda:0.343  #err=  6 update:3
+785(4 ) [phase:2,s:0.9979,ds:0.0021484,dump:7,u:0:0]       (f:363,d:0.0893)      -->      [f:333,d:0.08]       lambda:0.0824  #err= 14 update:7
+786(5 ) [phase:2,s:0.9979,ds:0.0021484,dump:3,u:0:0]       (f:333,d:0.0644)      -->     [f:283,d:0.0551]      lambda:0.148  #err=  6 update:3
+787(6 ) [phase:2,s:0.9979,ds:0.0021484,dump:0,u:0:0]       (f:283,d:0.0543)      -->      [f:24,d:0.0032]      lambda:1     
+788(7 ) [phase:2,s:0.9979,ds:0.0021484,dump:0,u:0:0]       (f:24,d:0.00292)      -->   [f:0.145,d:3.23e-05]    lambda:1     
+789(8 ) [phase:2,s:0.9979,ds:0.0021484,dump:0,u:0:0]     (f:0.145,d:3.87e-05)    -->  [f:6.26e-06,d:7.57e-07]  lambda:1     
+790(9 ) [phase:2,s:0.9979,ds:0.0021484,dump:0,u:0:0]    (f:6.26e-06,d:9.71e-07)  -->  [f:2.35e-11,d:1.18e-08]  lambda:1     
+791(10) [phase:2,s:0.9979,ds:0.0021484,dump:0,u:0:0]    (f:2.35e-11,d:1.22e-08)  -->  [f:1.65e-11,d:5.32e-12]  lambda:1     
+
+Continuation step N.2 s:0.99785->1, ds=0.0021484
+[iter:791,phase:2,s:1,ds:0.0021484] |X|=4.338e+04/2699/9376, |L|=4.338e+04/2701/9379 |B|=6.824e-08/6.846e-08/6.824e-08, |BL|=1.119e-13/1.121e-13/1.119e-13, PARS=0/0/0, U=3000/2909/2909
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+792(1 ) [phase:2,s:1,ds:0.0021484,dump:26,u:0:0]          (f:2.74e+03,d:2.76)    -->    [f:2.74e+03,d:2.76]    lambda:9.39e-05  #err=319 update:26
+793(2 ) [phase:2,s:1,ds:0.0021484,dump:10,u:0:0]          (f:2.74e+03,d:2.76)    -->    [f:2.73e+03,d:2.76]    lambda:0.000411  #err=114 update:10
+794(3 ) [phase:2,s:1,ds:0.0021484,dump:8,u:0:0]           (f:2.73e+03,d:2.4)     -->    [f:2.73e+03,d:2.39]    lambda:0.00175  #err=106 update:8
+795(4 ) [phase:2,s:1,ds:0.0021484,dump:6,u:0:0]           (f:2.73e+03,d:1.59)    -->    [f:2.71e+03,d:1.55]    lambda:0.00739  #err= 96 update:6
+796(5 ) [phase:2,s:1,ds:0.0021484,dump:10,u:0:0]          (f:2.71e+03,d:1.43)    -->    [f:2.7e+03,d:1.42]     lambda:0.00364  #err= 32 update:10
+797(6 ) [phase:2,s:1,ds:0.0021484,dump:6,u:0:0]           (f:2.7e+03,d:1.54)     -->    [f:2.66e+03,d:1.53]    lambda:0.0106  #err= 19 update:6
+798(7 ) [phase:2,s:1,ds:0.0021484,dump:5,u:0:0]           (f:2.66e+03,d:1.52)    -->    [f:2.56e+03,d:1.14]    lambda:0.026  #err= 23 update:5
+799(8 ) [phase:2,s:1,ds:0.0021484,dump:9,u:0:0]          (f:2.56e+03,d:0.899)    -->   [f:2.53e+03,d:0.891]    lambda:0.00976  #err= 27 update:9
+800(9 ) [phase:2,s:1,ds:0.0021484,dump:12,u:0:0]         (f:2.53e+03,d:0.929)    -->   [f:2.53e+03,d:0.924]    lambda:0.00205  #err= 24 update:12
+801(10) [phase:2,s:1,ds:0.0021484,dump:0,u:0:0]          (f:2.53e+03,d:0.918)    -->   [f:2.19e+03,d:0.876]    lambda:0.0679 
+802(11) [phase:2,s:1,ds:0.0021484,dump:5,u:0:0]           (f:2.19e+03,d:1.1)     -->   [f:1.43e+03,d:0.919]    lambda:0.168  #err= 36 update:5
+803(12) [phase:2,s:1,ds:0.0021484,dump:6,u:0:0]           (f:1.43e+03,d:1.12)    -->    [f:1.32e+03,d:1.04]    lambda:0.0723  #err= 14 update:6
+804(13) [phase:2,s:1,ds:0.0021484,dump:12,u:0:0]          (f:1.32e+03,d:1.02)    -->    [f:1.31e+03,d:1.01]    lambda:0.00558  #err= 26 update:12
+805(14) [phase:2,s:1,ds:0.0021484,dump:11,u:0:0]          (f:1.31e+03,d:1.01)    -->     [f:1.31e+03,d:1]      lambda:0.00222  #err= 23 update:11
+806(15) [phase:2,s:1,ds:0.0021484,dump:8,u:0:0]           (f:1.31e+03,d:1.15)    -->    [f:1.31e+03,d:1.15]    lambda:0.00233  #err= 15 update:7 armijo:1
+807(16) [phase:2,s:1,ds:0.0021484,dump:5,u:0:0]           (f:1.31e+03,d:1.15)    -->    [f:1.29e+03,d:1.14]    lambda:0.0122  #err= 10 update:5
+808(17) [phase:2,s:1,ds:0.0021484,dump:3,u:0:0]           (f:1.29e+03,d:1.13)    -->    [f:1.21e+03,d:1.07]    lambda:0.0567  #err=  6 update:3
+809(18) [phase:2,s:1,ds:0.0021484,dump:12,u:0:0]          (f:1.21e+03,d:1.01)    -->    [f:1.2e+03,d:0.998]    lambda:0.0138  #err= 31 update:12
+810(19) [phase:2,s:1,ds:0.0021484,dump:13,u:0:0]          (f:1.2e+03,d:0.88)     -->   [f:1.19e+03,d:0.878]    lambda:0.00171  #err= 26 update:13
+811(20) [phase:2,s:1,ds:0.0021484,dump:13,u:0:0]          (f:1.19e+03,d:0.86)    -->   [f:1.19e+03,d:0.859]    lambda:0.000601  #err= 26 update:13
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+812(21) [phase:2,s:1,ds:0.0021484,dump:10,u:0:0]         (f:1.19e+03,d:0.916)    -->   [f:1.19e+03,d:0.916]    lambda:0.00104  #err= 23 update:10
+813(22) [phase:2,s:1,ds:0.0021484,dump:6,u:0:0]          (f:1.19e+03,d:0.952)    -->   [f:1.19e+03,d:0.947]    lambda:0.00569  #err= 14 update:6
+814(23) [phase:2,s:1,ds:0.0021484,dump:11,u:0:0]         (f:1.19e+03,d:0.939)    -->   [f:1.18e+03,d:0.936]    lambda:0.00224  #err= 22 update:11
+815(24) [phase:2,s:1,ds:0.0021484,dump:8,u:0:0]          (f:1.18e+03,d:0.982)    -->    [f:1.18e+03,d:0.98]    lambda:0.00234  #err= 15 update:7 armijo:1
+816(25) [phase:2,s:1,ds:0.0021484,dump:5,u:0:0]          (f:1.18e+03,d:0.989)    -->   [f:1.17e+03,d:0.977]    lambda:0.0122  #err= 10 update:5
+817(26) [phase:2,s:1,ds:0.0021484,dump:7,u:0:0]          (f:1.17e+03,d:0.976)    -->   [f:1.15e+03,d:0.963]    lambda:0.0136  #err= 14 update:7
+818(27) [phase:2,s:1,ds:0.0021484,dump:11,u:0:0]          (f:1.15e+03,d:0.96)    -->   [f:1.15e+03,d:0.956]    lambda:0.00346  #err= 22 update:11
+819(28) [phase:2,s:1,ds:0.0021484,dump:7,u:0:0]          (f:1.15e+03,d:0.937)    -->   [f:1.14e+03,d:0.932]    lambda:0.00727  #err= 14 update:7
+820(29) [phase:2,s:1,ds:0.0021484,dump:0,u:0:0]          (f:1.14e+03,d:0.937)    -->      [f:980,d:0.832]      lambda:0.128 
+821(30) [phase:2,s:1,ds:0.0021484,dump:5,u:0:0]             (f:980,d:0.903)      -->      [f:803,d:0.756]      lambda:0.168  #err= 12 update:5
+822(31) [phase:2,s:1,ds:0.0021484,dump:7,u:0:0]             (f:803,d:0.794)      -->      [f:761,d:0.754]      lambda:0.0506  #err= 15 update:7
+823(32) [phase:2,s:1,ds:0.0021484,dump:10,u:0:0]            (f:761,d:0.759)      -->      [f:754,d:0.752]      lambda:0.00954  #err= 20 update:10
+824(33) [phase:2,s:1,ds:0.0021484,dump:12,u:0:0]            (f:754,d:0.722)      -->      [f:752,d:0.719]      lambda:0.00203  #err= 24 update:12
+825(34) [phase:2,s:1,ds:0.0021484,dump:12,u:0:0]            (f:752,d:1.68)       -->      [f:752,d:1.68]       lambda:0.000534  #err= 23 update:11 armijo:1
+826(35) [phase:2,s:1,ds:0.0021484,dump:8,u:0:0]             (f:752,d:2.12)       -->      [f:751,d:2.12]       lambda:0.002  #err= 16 update:8
+827(36) [phase:2,s:1,ds:0.0021484,dump:2,u:0:0]             (f:751,d:2.32)       -->      [f:726,d:2.27]       lambda:0.0329  #err=  4 update:2
+828(37) [phase:2,s:1,ds:0.0021484,dump:4,u:0:0]             (f:726,d:1.83)       -->      [f:622,d:1.34]       lambda:0.137  #err=  9 update:3 armijo:1
+829(38) [phase:2,s:1,ds:0.0021484,dump:0,u:0:0]             (f:622,d:0.602)      -->      [f:231,d:0.59]       lambda:0.556 
+830(39) [phase:2,s:1,ds:0.0021484,dump:6,u:0:0]             (f:231,d:0.21)       -->      [f:204,d:0.185]      lambda:0.118  #err= 12 update:6
+831(40) [phase:2,s:1,ds:0.0021484,dump:2,u:0:0]             (f:204,d:0.241)      -->      [f:152,d:0.181]      lambda:0.252  #err=  4 update:2
+NLsolver[wheel_slip_dynamics_with_actuator]::solve_with_continuation(phase=2,...) found:
+NLsolver[wheel_slip_dynamics_with_actuator]::solve()
+#phase=2 #it=0/40 lambda=0.252 tolerance=1e-09 |f|_1=203.9 |f|_inf=2.16e+04 |d|_1=0.2407 |d|_inf=1075
+at phase 2, iter 831: NLsolver[wheel_slip_dynamics_with_actuator]::solve, Too many iterations
+
+
+Continuation step N.2 s:0.99785->0.99893, ds=0.0010742
+[iter:831,phase:2,s:0.9989,ds:0.0010742] |X|=1.284e+04/1059/3674, |L|=1.284e+04/1060/3675 |B|=6.824e-08/6.846e-08/6.824e-08, |BL|=1.119e-13/1.121e-13/1.119e-13, PARS=0/0/0, U=3000/1830/1844
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+832(1 ) [phase:2,s:0.9989,ds:0.0010742,dump:6,u:0:0]     (f:1.04e+03,d:0.213)    -->      [f:910,d:0.188]      lambda:0.118  #err= 28 update:6
+833(2 ) [phase:2,s:0.9989,ds:0.0010742,dump:2,u:0:0]        (f:910,d:0.18)       -->      [f:655,d:0.134]      lambda:0.252  #err=  4 update:2
+834(3 ) [phase:2,s:0.9989,ds:0.0010742,dump:6,u:0:0]        (f:655,d:0.133)      -->      [f:575,d:0.118]      lambda:0.118  #err= 12 update:6
+835(4 ) [phase:2,s:0.9989,ds:0.0010742,dump:6,u:0:0]        (f:575,d:0.117)      -->      [f:540,d:0.11]       lambda:0.0605  #err= 12 update:6
+836(5 ) [phase:2,s:0.9989,ds:0.0010742,dump:0,u:0:0]        (f:540,d:0.11)       -->     [f:326,d:0.0692]      lambda:0.369 
+837(6 ) [phase:2,s:0.9989,ds:0.0010742,dump:1,u:0:0]       (f:326,d:0.0679)      -->    [f:14.3,d:0.00632]     lambda:0.95   #err=  1 angle:1 armijo:1
+838(7 ) [phase:2,s:0.9989,ds:0.0010742,dump:0,u:0:0]      (f:14.3,d:0.00564)     -->   [f:0.0586,d:0.00011]    lambda:1     
+839(8 ) [phase:2,s:0.9989,ds:0.0010742,dump:0,u:0:0]     (f:0.0586,d:0.000754)   -->  [f:9.75e-06,d:0.000472]  lambda:1     
+840(9 ) [phase:2,s:0.9989,ds:0.0010742,dump:0,u:0:0]    (f:9.75e-06,d:0.00194)   -->  [f:6.08e-05,d:6.61e-05]  lambda:1     
+841(10) [phase:2,s:0.9989,ds:0.0010742,dump:1,u:0:0]    (f:6.08e-05,d:6.93e-05)  -->  [f:3.11e-06,d:3.45e-06]  lambda:0.95   #err=  1 angle:1 armijo:1
+842(11) [phase:2,s:0.9989,ds:0.0010742,dump:1,u:0:0]    (f:3.11e-06,d:3.45e-06)  -->  [f:1.56e-07,d:1.72e-07]  lambda:0.95   #err=  1 angle:1 armijo:1
+843(12) [phase:2,s:0.9989,ds:0.0010742,dump:0,u:0:0]    (f:1.56e-07,d:1.72e-07)  -->  [f:1.76e-11,d:7.56e-12]  lambda:1     
+
+Continuation step N.2 s:0.99893->1, ds=0.0010742
+[iter:843,phase:2,s:1,ds:0.0010742] |X|=3.576e+04/2556/8877, |L|=3.576e+04/2557/8880 |B|=5.737e-08/5.753e-08/5.737e-08, |BL|=6.217e-14/6.243e-14/6.217e-14, PARS=0/0/0, U=3000/2811/2812
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+844(1 ) [phase:2,s:1,ds:0.0010742,dump:21,u:0:0]          (f:2.58e+03,d:1.85)    -->    [f:2.58e+03,d:1.85]    lambda:0.000559  #err=225 update:21
+845(2 ) [phase:2,s:1,ds:0.0010742,dump:5,u:0:0]           (f:2.58e+03,d:1.67)    -->    [f:2.56e+03,d:1.65]    lambda:0.00596  #err= 54 update:5
+846(3 ) [phase:2,s:1,ds:0.0010742,dump:6,u:0:0]           (f:2.56e+03,d:1.08)    -->    [f:2.53e+03,d:1.06]    lambda:0.0136  #err= 68 update:6
+847(4 ) [phase:2,s:1,ds:0.0010742,dump:3,u:0:0]           (f:2.53e+03,d:0.85)    -->   [f:2.25e+03,d:0.774]    lambda:0.06   #err= 34 update:3
+848(5 ) [phase:2,s:1,ds:0.0010742,dump:11,u:0:0]         (f:2.25e+03,d:0.892)    -->   [f:2.21e+03,d:0.875]    lambda:0.0198  #err= 26 update:11
+849(6 ) [phase:2,s:1,ds:0.0010742,dump:10,u:0:0]         (f:2.21e+03,d:0.895)    -->   [f:2.19e+03,d:0.889]    lambda:0.00596  #err= 21 update:10
+850(7 ) [phase:2,s:1,ds:0.0010742,dump:13,u:0:0]         (f:2.19e+03,d:0.888)    -->   [f:2.19e+03,d:0.886]    lambda:0.00112  #err= 26 update:13
+851(8 ) [phase:2,s:1,ds:0.0010742,dump:8,u:0:0]          (f:2.19e+03,d:0.735)    -->   [f:2.19e+03,d:0.733]    lambda:0.00166  #err= 21 update:7 armijo:1
+852(9 ) [phase:2,s:1,ds:0.0010742,dump:6,u:0:0]          (f:2.19e+03,d:0.738)    -->   [f:2.17e+03,d:0.733]    lambda:0.00718  #err= 18 update:6
+853(10) [phase:2,s:1,ds:0.0010742,dump:12,u:0:0]         (f:2.17e+03,d:0.736)    -->   [f:2.17e+03,d:0.735]    lambda:0.00176  #err= 27 update:12
+854(11) [phase:2,s:1,ds:0.0010742,dump:13,u:0:0]         (f:2.17e+03,d:0.729)    -->   [f:2.17e+03,d:0.728]    lambda:0.00061  #err= 26 update:13
+855(12) [phase:2,s:1,ds:0.0010742,dump:6,u:0:0]          (f:2.17e+03,d:0.783)    -->   [f:2.16e+03,d:0.779]    lambda:0.00436  #err= 12 update:6
+856(13) [phase:2,s:1,ds:0.0010742,dump:2,u:0:0]          (f:2.16e+03,d:0.788)    -->   [f:2.03e+03,d:0.752]    lambda:0.0485  #err=  5 update:2
+857(14) [phase:2,s:1,ds:0.0010742,dump:7,u:0:0]          (f:2.03e+03,d:0.816)    -->   [f:1.83e+03,d:0.752]    lambda:0.0824  #err= 22 update:7
+858(15) [phase:2,s:1,ds:0.0010742,dump:12,u:0:0]          (f:1.83e+03,d:0.85)    -->   [f:1.82e+03,d:0.845]    lambda:0.00596  #err= 26 update:12
+859(16) [phase:2,s:1,ds:0.0010742,dump:11,u:0:0]         (f:1.82e+03,d:0.847)    -->   [f:1.81e+03,d:0.845]    lambda:0.00229  #err= 22 update:11
+860(17) [phase:2,s:1,ds:0.0010742,dump:12,u:0:0]         (f:1.81e+03,d:0.818)    -->   [f:1.81e+03,d:0.817]    lambda:0.000568  #err= 23 update:11 armijo:1
+861(18) [phase:2,s:1,ds:0.0010742,dump:7,u:0:0]          (f:1.81e+03,d:0.833)    -->   [f:1.81e+03,d:0.831]    lambda:0.00294  #err= 14 update:7
+862(19) [phase:2,s:1,ds:0.0010742,dump:0,u:0:0]          (f:1.81e+03,d:0.839)    -->   [f:1.64e+03,d:0.777]    lambda:0.0814 
+863(20) [phase:2,s:1,ds:0.0010742,dump:5,u:0:0]          (f:1.64e+03,d:0.858)    -->   [f:1.29e+03,d:0.722]    lambda:0.168  #err= 12 update:5
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+864(21) [phase:2,s:1,ds:0.0010742,dump:8,u:0:0]          (f:1.29e+03,d:0.802)    -->   [f:1.24e+03,d:0.773]    lambda:0.0355  #err= 18 update:8
+865(22) [phase:2,s:1,ds:0.0010742,dump:14,u:0:0]          (f:1.24e+03,d:1.39)    -->    [f:1.24e+03,d:1.39]    lambda:0.00192  #err= 28 update:14
+866(23) [phase:2,s:1,ds:0.0010742,dump:3,u:0:0]           (f:1.24e+03,d:1.53)    -->    [f:1.21e+03,d:1.49]    lambda:0.0225  #err=  6 update:3
+867(24) [phase:2,s:1,ds:0.0010742,dump:4,u:0:0]           (f:1.21e+03,d:1.36)    -->    [f:1.03e+03,d:1.01]    lambda:0.137  #err= 11 update:3 armijo:1
+868(25) [phase:2,s:1,ds:0.0010742,dump:1,u:0:0]          (f:1.03e+03,d:0.613)    -->      [f:542,d:0.339]      lambda:0.389  #err=  2 update:1
+869(26) [phase:2,s:1,ds:0.0010742,dump:4,u:0:0]             (f:542,d:0.379)      -->      [f:406,d:0.288]      lambda:0.24   #err=  8 update:4
+870(27) [phase:2,s:1,ds:0.0010742,dump:7,u:0:0]             (f:406,d:0.289)      -->      [f:381,d:0.271]      lambda:0.0605  #err= 14 update:7
+871(28) [phase:2,s:1,ds:0.0010742,dump:7,u:0:0]             (f:381,d:0.274)      -->      [f:369,d:0.266]      lambda:0.0304  #err= 14 update:7
+872(29) [phase:2,s:1,ds:0.0010742,dump:0,u:0:0]             (f:369,d:0.267)      -->      [f:270,d:0.197]      lambda:0.262 
+873(30) [phase:2,s:1,ds:0.0010742,dump:3,u:0:0]             (f:270,d:0.197)      -->      [f:175,d:0.129]      lambda:0.343  #err=  7 update:3
+874(31) [phase:2,s:1,ds:0.0010742,dump:5,u:0:0]             (f:175,d:0.128)      -->      [f:145,d:0.107]      lambda:0.168  #err= 12 update:5
+875(32) [phase:2,s:1,ds:0.0010742,dump:9,u:0:0]             (f:145,d:0.106)      -->      [f:142,d:0.103]      lambda:0.0248  #err= 19 update:9
+876(33) [phase:2,s:1,ds:0.0010742,dump:8,u:0:0]            (f:142,d:0.0972)      -->     [f:140,d:0.0958]      lambda:0.0136  #err= 16 update:8
+877(34) [phase:2,s:1,ds:0.0010742,dump:0,u:0:0]             (f:140,d:0.105)      -->      [f:115,d:0.087]      lambda:0.175 
+878(35) [phase:2,s:1,ds:0.0010742,dump:0,u:0:0]            (f:115,d:0.0886)      -->     [f:3.33,d:0.0041]     lambda:1     
+879(36) [phase:2,s:1,ds:0.0010742,dump:0,u:0:0]           (f:3.33,d:0.00455)     -->   [f:0.0027,d:0.000317]   lambda:1     
+880(37) [phase:2,s:1,ds:0.0010742,dump:0,u:0:0]           (f:0.0027,d:0.0536)    -->   [f:0.0378,d:0.00515]    lambda:1     
+881(38) [phase:2,s:1,ds:0.0010742,dump:0,u:0:0]          (f:0.0378,d:0.00333)    -->  [f:0.000554,d:7.91e-05]  lambda:1     
+882(39) [phase:2,s:1,ds:0.0010742,dump:0,u:0:0]         (f:0.000554,d:8.6e-05)   -->  [f:1.02e-07,d:1.11e-06]  lambda:1     
+883(40) [phase:2,s:1,ds:0.0010742,dump:0,u:0:0]         (f:1.02e-07,d:1.81e-06)  -->  [f:5.2e-11,d:1.46e-07]   lambda:1     
+NLsolver[wheel_slip_dynamics_with_actuator]::solve_with_continuation(phase=2,...) found:
+NLsolver[wheel_slip_dynamics_with_actuator]::solve()
+#phase=2 #it=0/40 lambda=1 tolerance=1e-09 |f|_1=1.017e-07 |f|_inf=0.001718 |d|_1=1.808e-06 |d|_inf=0.0259
+at phase 2, iter 883: NLsolver[wheel_slip_dynamics_with_actuator]::solve, Too many iterations
+
+
+Continuation step N.2 s:0.99893->0.99946, ds=0.00053711
+[iter:883,phase:2,s:0.9995,ds:0.00053711] |X|=1.203e+04/992.5/3442, |L|=1.203e+04/992.9/3443 |B|=5.737e-08/5.753e-08/5.737e-08, |BL|=6.217e-14/6.243e-14/6.217e-14, PARS=0/0/0, U=3000/1787/1803
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+884(1 ) [phase:2,s:0.9995,ds:0.00053711,dump:5,u:0:0]       (f:973,d:0.226)      -->      [f:796,d:0.187]      lambda:0.168  #err= 22 update:5
+885(2 ) [phase:2,s:0.9995,ds:0.00053711,dump:2,u:0:0]       (f:796,d:0.18)       -->      [f:530,d:0.125]      lambda:0.301  #err=  4 update:2
+886(3 ) [phase:2,s:0.9995,ds:0.00053711,dump:9,u:0:0]       (f:530,d:0.119)      -->      [f:509,d:0.114]      lambda:0.0404  #err= 18 update:9
+887(4 ) [phase:2,s:0.9995,ds:0.00053711,dump:9,u:0:0]       (f:509,d:0.112)      -->      [f:502,d:0.109]      lambda:0.0122  #err= 18 update:9
+888(5 ) [phase:2,s:0.9995,ds:0.00053711,dump:0,u:0:0]       (f:502,d:0.119)      -->      [f:417,d:0.101]      lambda:0.165 
+889(6 ) [phase:2,s:0.9995,ds:0.00053711,dump:5,u:0:0]        (f:417,d:0.1)       -->     [f:345,d:0.0837]      lambda:0.168  #err= 10 update:5
+890(7 ) [phase:2,s:0.9995,ds:0.00053711,dump:9,u:0:0]      (f:345,d:0.0837)      -->     [f:337,d:0.0814]      lambda:0.0248  #err= 18 update:9
+891(8 ) [phase:2,s:0.9995,ds:0.00053711,dump:5,u:0:0]       (f:337,d:0.079)      -->     [f:323,d:0.0769]      lambda:0.0397  #err= 10 update:5
+892(9 ) [phase:2,s:0.9995,ds:0.00053711,dump:3,u:0:0]      (f:323,d:0.0778)      -->     [f:290,d:0.0722]      lambda:0.103  #err=  6 update:3
+893(10) [phase:2,s:0.9995,ds:0.00053711,dump:0,u:0:0]      (f:290,d:0.0716)      -->    [f:25.7,d:0.00446]     lambda:1     
+894(11) [phase:2,s:0.9995,ds:0.00053711,dump:0,u:0:0]     (f:25.7,d:0.00331)     -->    [f:0.171,d:9.8e-05]    lambda:1     
+895(12) [phase:2,s:0.9995,ds:0.00053711,dump:0,u:0:0]    (f:0.171,d:0.000117)    -->  [f:9.45e-06,d:1.32e-06]  lambda:1     
+896(13) [phase:2,s:0.9995,ds:0.00053711,dump:0,u:0:0]   (f:9.45e-06,d:1.84e-06)  -->  [f:4.29e-11,d:4.09e-08]  lambda:1     
+897(14) [phase:2,s:0.9995,ds:0.00053711,dump:0,u:0:0]   (f:4.29e-11,d:4.35e-08)  -->  [f:1.7e-11,d:5.19e-11]   lambda:1     
+
+Continuation step N.2 s:0.99946->1, ds=0.00053711
+[iter:897,phase:2,s:1,ds:0.00053711] |X|=3.12e+04/2291/7953, |L|=3.12e+04/2292/7955 |B|=4.627e-08/4.638e-08/4.627e-08, |BL|=3.553e-14/3.576e-14/3.553e-14, PARS=0/0/0, U=3000/2632/2634
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+898(1 ) [phase:2,s:1,ds:0.00053711,dump:20,u:0:0]         (f:2.3e+03,d:0.667)    -->    [f:2.3e+03,d:0.667]    lambda:0.000798  #err=172 update:20
+899(2 ) [phase:2,s:1,ds:0.00053711,dump:6,u:0:0]          (f:2.3e+03,d:0.711)    -->   [f:2.29e+03,d:0.709]    lambda:0.00285  #err= 15 update:5 armijo:1
+900(3 ) [phase:2,s:1,ds:0.00053711,dump:5,u:0:0]          (f:2.29e+03,d:0.7)     -->   [f:2.27e+03,d:0.695]    lambda:0.00769  #err= 33 update:4 armijo:1
+901(4 ) [phase:2,s:1,ds:0.00053711,dump:4,u:0:0]         (f:2.27e+03,d:0.674)    -->   [f:2.19e+03,d:0.649]    lambda:0.0316  #err= 37 update:4
+902(5 ) [phase:2,s:1,ds:0.00053711,dump:5,u:0:0]         (f:2.19e+03,d:0.719)    -->   [f:2.08e+03,d:0.689]    lambda:0.0448  #err= 24 update:5
+903(6 ) [phase:2,s:1,ds:0.00053711,dump:12,u:0:0]        (f:2.08e+03,d:0.781)    -->   [f:2.07e+03,d:0.777]    lambda:0.00439  #err= 24 update:12
+904(7 ) [phase:2,s:1,ds:0.00053711,dump:12,u:0:0]         (f:2.07e+03,d:0.76)    -->   [f:2.06e+03,d:0.758]    lambda:0.00138  #err= 24 update:12
+905(8 ) [phase:2,s:1,ds:0.00053711,dump:6,u:0:0]         (f:2.06e+03,d:0.709)    -->   [f:2.05e+03,d:0.705]    lambda:0.00655  #err= 12 update:6
+906(9 ) [phase:2,s:1,ds:0.00053711,dump:1,u:0:0]         (f:2.05e+03,d:0.711)    -->   [f:1.83e+03,d:0.651]    lambda:0.085  #err=  2 update:1
+907(10) [phase:2,s:1,ds:0.00053711,dump:6,u:0:0]         (f:1.83e+03,d:0.665)    -->   [f:1.56e+03,d:0.585]    lambda:0.118  #err= 32 update:6
+908(11) [phase:2,s:1,ds:0.00053711,dump:2,u:0:0]         (f:1.56e+03,d:0.609)    -->   [f:1.02e+03,d:0.467]    lambda:0.252  #err=  4 update:2
+909(12) [phase:2,s:1,ds:0.00053711,dump:4,u:0:0]         (f:1.02e+03,d:0.551)    -->      [f:745,d:0.421]      lambda:0.24   #err=  8 update:4
+910(13) [phase:2,s:1,ds:0.00053711,dump:8,u:0:0]            (f:745,d:0.44)       -->      [f:713,d:0.422]      lambda:0.0424  #err= 16 update:8
+911(14) [phase:2,s:1,ds:0.00053711,dump:4,u:0:0]            (f:713,d:0.424)      -->      [f:682,d:0.406]      lambda:0.0424  #err=  7 update:3 armijo:1
+912(15) [phase:2,s:1,ds:0.00053711,dump:0,u:0:0]            (f:682,d:0.407)      -->      [f:454,d:0.31]       lambda:0.309 
+913(16) [phase:2,s:1,ds:0.00053711,dump:3,u:0:0]            (f:454,d:0.286)      -->      [f:291,d:0.188]      lambda:0.343  #err=  8 update:3
+914(17) [phase:2,s:1,ds:0.00053711,dump:5,u:0:0]            (f:291,d:0.192)      -->      [f:241,d:0.161]      lambda:0.168  #err= 10 update:5
+915(18) [phase:2,s:1,ds:0.00053711,dump:9,u:0:0]            (f:241,d:0.18)       -->      [f:238,d:0.178]      lambda:0.0142  #err= 17 update:8 armijo:1
+916(19) [phase:2,s:1,ds:0.00053711,dump:6,u:0:0]            (f:238,d:0.179)      -->      [f:233,d:0.175]      lambda:0.021  #err= 12 update:6
+917(20) [phase:2,s:1,ds:0.00053711,dump:3,u:0:0]            (f:233,d:0.181)      -->      [f:223,d:0.174]      lambda:0.0426  #err=  5 update:2 armijo:1
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] wheel_slip_dynamics_with_actuator
+918(21) [phase:2,s:1,ds:0.00053711,dump:4,u:0:0]            (f:223,d:0.174)      -->      [f:168,d:0.132]      lambda:0.24   #err=  8 update:4
+919(22) [phase:2,s:1,ds:0.00053711,dump:0,u:0:0]            (f:168,d:0.131)      -->     [f:40.6,d:0.033]      lambda:0.735 
+920(23) [phase:2,s:1,ds:0.00053711,dump:1,u:0:0]           (f:40.6,d:0.0323)     -->    [f:1.68,d:0.00156]     lambda:0.95   #err=  1 angle:1 armijo:1
+921(24) [phase:2,s:1,ds:0.00053711,dump:0,u:0:0]          (f:1.68,d:0.00157)     -->  [f:0.000641,d:1.97e-06]  lambda:1     
+922(25) [phase:2,s:1,ds:0.00053711,dump:0,u:0:0]        (f:0.000641,d:5.09e-06)  -->  [f:2.29e-10,d:1.29e-06]  lambda:1     
+923(26) [phase:2,s:1,ds:0.00053711,dump:0,u:0:0]        (f:2.29e-10,d:4.06e-06)  -->  [f:1.6e-10,d:1.72e-06]   lambda:1     
+924(27) [phase:2,s:1,ds:0.00053711,dump:0,u:0:0]        (f:1.6e-10,d:5.72e-06)   -->  [f:3.15e-10,d:2.5e-06]   lambda:1     
+925(28) [phase:2,s:1,ds:0.00053711,dump:0,u:0:0]        (f:3.15e-10,d:8.16e-06)  -->  [f:6.18e-10,d:3.47e-06]  lambda:1     
+926(29) [phase:2,s:1,ds:0.00053711,dump:0,u:0:0]        (f:6.18e-10,d:1.09e-05)  -->  [f:1.09e-09,d:4.39e-06]  lambda:1     
+927(30) [phase:2,s:1,ds:0.00053711,dump:0,u:0:0]        (f:1.09e-09,d:1.27e-05)  -->  [f:1.46e-09,d:4.46e-06]  lambda:1     
+928(31) [phase:2,s:1,ds:0.00053711,dump:0,u:0:0]        (f:1.46e-09,d:1.08e-05)  -->  [f:1.07e-09,d:2.72e-06]  lambda:1     
+929(32) [phase:2,s:1,ds:0.00053711,dump:0,u:0:0]        (f:1.07e-09,d:4.91e-06)  -->  [f:2.35e-10,d:5.33e-07]  lambda:1     
+930(33) [phase:2,s:1,ds:0.00053711,dump:0,u:0:0]        (f:2.35e-10,d:6.72e-07)  -->  [f:2.32e-11,d:1.02e-08]  lambda:1     
+931(34) [phase:2,s:1,ds:0.00053711,dump:0,u:0:0]        (f:2.32e-11,d:1.05e-08)  -->  [f:1.91e-11,d:1.1e-10]   lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 1               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 60019           | N. System pars  = 135027          |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 172 [sec]       | timeout         = 0 [ms]          |
+| iteration       = 931             | Memory Used     = 18Mb(+74Kb)     |
+| max iterations  = 300             | max acc. iter.  = 1000            |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 40              | Initial Step    = 0.2             |
+| Minimum Step    = 1e-06           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 2655            | Jacobian        = 931             |
+| Factorization   = 931             | Inversion       = 2655            |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 1.9526e-08      | last ||d||_inf  = 1.3911e-07      |
+| last ||f||_1    = 1.9055e-11      | last ||d||_1    = 1.1006e-10      |
+| last ||f||_2    = 1.0474e-10      | last ||d||_2    = 2.5312e-09      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 13.06ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 1902ms ]
+Check DuDxxpm (epsi=0.001):
+#ERR 1 DuDxxpm [cell=4 of 5000 SEGMENT#0 range:(0,5000)] #x=6 #u=1 #p=0 [ (u) * (xxpm) = 1 x 18 ]
+jac[  0, 16] =  -7.2458e+10 : -7.277e+10   [A:FD] ---   3.1192e+08 : 0.42864      [err:err(%)]
+
+#ERR 2 DuDxxpm [cell=5 of 5000 SEGMENT#0 range:(0,5000)] #x=6 #u=1 #p=0 [ (u) * (xxpm) = 1 x 18 ]
+jac[  0, 16] =  -3.9782e+12 : -1.9667e+11  [A:FD] ---   3.7815e+12 : 95.056       [err:err(%)]
+
+#ERR 3 DuDxxpm [cell=6 of 5000 SEGMENT#0 range:(0,5000)] #x=6 #u=1 #p=0 [ (u) * (xxpm) = 1 x 18 ]
+jac[  0, 16] =  -3.8108e+08 : -4.0027e+08  [A:FD] ---   1.9189e+07 : 4.7941       [err:err(%)]
+
+#ERR 4 DuDxxpm [cell=7 of 5000 SEGMENT#0 range:(0,5000)] #x=6 #u=1 #p=0 [ (u) * (xxpm) = 1 x 18 ]
+jac[  0, 16] =  -3.2155e+12 : -1.8796e+11  [A:FD] ---   3.0275e+12 : 94.155       [err:err(%)]
+
+#ERR 5 DuDxxpm [cell=8 of 5000 SEGMENT#0 range:(0,5000)] #x=6 #u=1 #p=0 [ (u) * (xxpm) = 1 x 18 ]
+jac[  0, 16] =  -3.7954e+12 : -1.9472e+11  [A:FD] ---   3.6006e+12 : 94.869       [err:err(%)]
+
+#ERR 6 DuDxxpm [cell=9 of 5000 SEGMENT#0 range:(0,5000)] #x=6 #u=1 #p=0 [ (u) * (xxpm) = 1 x 18 ]
+jac[  0, 16] =  -1.6388e+11 : -9.1432e+10  [A:FD] ---   7.2444e+10 : 44.207       [err:err(%)]
+
+skipping... [ 2.123ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001):
+#ERR 1 DabcDxlxlpu [cell=1446 of 5000 SEGMENT#0 range:(0,5000)] #x=#l=6 #p=0 #u=1 [ (xlp) x (xlxlpu) = 12 x 25 ]
+DbDx_L(0:5,0:5)[ 1, 1] =       1379.2 : 1380.6       [A:FD] ---       1.3951 : 0.1011       [err:err(%)]
+DbDx_L(0:5,0:5)[ 4, 1] =       60.485 : 60.546       [A:FD] ---     0.061184 : 0.1011       [err:err(%)]
+DbDx_R(0:5,0:5)[ 1, 1] =       1379.2 : 1380.6       [A:FD] ---       1.3964 : 0.1011       [err:err(%)]
+DbDx_R(0:5,0:5)[ 4, 1] =       60.485 : 60.546       [A:FD] ---     0.061241 : 0.1011       [err:err(%)]
+
+#ERR 2 DabcDxlxlpu [cell=1447 of 5000 SEGMENT#0 range:(0,5000)] #x=#l=6 #p=0 #u=1 [ (xlp) x (xlxlpu) = 12 x 25 ]
+DbDx_L(0:5,0:5)[ 1, 1] =       1420.6 : 1422.1       [A:FD] ---       1.4665 : 0.1031       [err:err(%)]
+DbDx_L(0:5,0:5)[ 4, 1] =       62.359 : 62.424       [A:FD] ---     0.064377 : 0.1031       [err:err(%)]
+DbDx_L(0:5,0:5)[ 1, 4] =       62.359 : 62.422       [A:FD] ---     0.063036 : 0.101        [err:err(%)]
+DbDx_L(0:5,0:5)[ 4, 4] =       2.7374 : 2.7401       [A:FD] ---    0.0027671 : 0.101        [err:err(%)]
+DbDx_R(0:5,0:5)[ 1, 1] =       1420.6 : 1422.1       [A:FD] ---       1.4679 : 0.1032       [err:err(%)]
+DbDx_R(0:5,0:5)[ 4, 1] =       62.359 : 62.424       [A:FD] ---     0.064437 : 0.1032       [err:err(%)]
+
+#ERR 3 DabcDxlxlpu [cell=1448 of 5000 SEGMENT#0 range:(0,5000)] #x=#l=6 #p=0 #u=1 [ (xlp) x (xlxlpu) = 12 x 25 ]
+DbDx_L(0:5,0:5)[ 1, 1] =       1462.4 : 1463.9       [A:FD] ---       1.5402 : 0.1052       [err:err(%)]
+DbDx_L(0:5,0:5)[ 4, 1] =       64.254 : 64.322       [A:FD] ---     0.067673 : 0.1052       [err:err(%)]
+DbDx_L(0:5,0:5)[ 1, 4] =       64.254 : 64.319       [A:FD] ---     0.064805 : 0.1008       [err:err(%)]
+DbDx_L(0:5,0:5)[ 4, 4] =       2.8232 : 2.826        [A:FD] ---    0.0028474 : 0.1008       [err:err(%)]
+DbDx_R(0:5,0:5)[ 1, 1] =       1462.4 : 1463.9       [A:FD] ---       1.5416 : 0.1053       [err:err(%)]
+DbDx_R(0:5,0:5)[ 4, 1] =       64.254 : 64.322       [A:FD] ---     0.067735 : 0.1053       [err:err(%)]
+DbDx_R(0:5,0:5)[ 1, 4] =       64.254 : 64.321       [A:FD] ---     0.066201 : 0.1029       [err:err(%)]
+DbDx_R(0:5,0:5)[ 4, 4] =       2.8232 : 2.8261       [A:FD] ---    0.0029087 : 0.1029       [err:err(%)]
+
+#ERR 4 DabcDxlxlpu [cell=1449 of 5000 SEGMENT#0 range:(0,5000)] #x=#l=6 #p=0 #u=1 [ (xlp) x (xlxlpu) = 12 x 25 ]
+DbDx_L(0:5,0:5)[ 1, 1] =       1504.6 : 1506.2       [A:FD] ---        1.616 : 0.1073       [err:err(%)]
+DbDx_L(0:5,0:5)[ 4, 1] =       66.171 : 66.242       [A:FD] ---      0.07107 : 0.1073       [err:err(%)]
+DbDx_L(0:5,0:5)[ 1, 4] =       66.171 : 66.24        [A:FD] ---     0.069592 : 0.1051       [err:err(%)]
+DbDx_L(0:5,0:5)[ 4, 4] =       2.9101 : 2.9132       [A:FD] ---    0.0030606 : 0.1051       [err:err(%)]
+DbDx_R(0:5,0:5)[ 1, 1] =       1504.6 : 1506.2       [A:FD] ---       1.6175 : 0.1074       [err:err(%)]
+DbDx_R(0:5,0:5)[ 4, 1] =       66.171 : 66.242       [A:FD] ---     0.071134 : 0.1074       [err:err(%)]
+DbDx_R(0:5,0:5)[ 1, 4] =       66.171 : 66.239       [A:FD] ---     0.067997 : 0.1027       [err:err(%)]
+DbDx_R(0:5,0:5)[ 4, 4] =       2.9101 : 2.9131       [A:FD] ---    0.0029904 : 0.1027       [err:err(%)]
+
+#ERR 5 DabcDxlxlpu [cell=1450 of 5000 SEGMENT#0 range:(0,5000)] #x=#l=6 #p=0 #u=1 [ (xlp) x (xlxlpu) = 12 x 25 ]
+DbDx_L(0:5,0:5)[ 1, 1] =       1547.2 : 1548.9       [A:FD] ---        1.694 : 0.1094       [err:err(%)]
+DbDx_L(0:5,0:5)[ 4, 1] =       68.107 : 68.182       [A:FD] ---      0.07457 : 0.1094       [err:err(%)]
+DbDx_L(0:5,0:5)[ 1, 4] =       68.107 : 68.179       [A:FD] ---     0.071414 : 0.1047       [err:err(%)]
+DbDx_L(0:5,0:5)[ 4, 4] =       2.9981 : 3.0012       [A:FD] ---    0.0031436 : 0.1047       [err:err(%)]
+DbDx_R(0:5,0:5)[ 1, 1] =       1547.2 : 1548.9       [A:FD] ---       1.6956 : 0.1095       [err:err(%)]
+DbDx_R(0:5,0:5)[ 4, 1] =       68.107 : 68.182       [A:FD] ---     0.074638 : 0.1095       [err:err(%)]
+DbDx_R(0:5,0:5)[ 1, 4] =       68.107 : 68.18        [A:FD] ---     0.072953 : 0.107        [err:err(%)]
+DbDx_R(0:5,0:5)[ 4, 4] =       2.9981 : 3.0013       [A:FD] ---    0.0032114 : 0.107        [err:err(%)]
+
+#ERR 6 DabcDxlxlpu [cell=1451 of 5000 SEGMENT#0 range:(0,5000)] #x=#l=6 #p=0 #u=1 [ (xlp) x (xlxlpu) = 12 x 25 ]
+DbDx_L(0:5,0:5)[ 1, 1] =       1590.2 : 1592         [A:FD] ---       1.7743 : 0.1115       [err:err(%)]
+DbDx_L(0:5,0:5)[ 4, 1] =       70.064 : 70.142       [A:FD] ---     0.078175 : 0.1115       [err:err(%)]
+DbDx_L(0:5,0:5)[ 1, 4] =       70.064 : 70.14        [A:FD] ---     0.076552 : 0.1091       [err:err(%)]
+DbDx_L(0:5,0:5)[ 4, 4] =        3.087 : 3.0904       [A:FD] ---    0.0033729 : 0.1091       [err:err(%)]
+DbDx_R(0:5,0:5)[ 1, 1] =       1590.2 : 1592         [A:FD] ---       1.7759 : 0.1116       [err:err(%)]
+DbDx_R(0:5,0:5)[ 4, 1] =       70.064 : 70.142       [A:FD] ---     0.078247 : 0.1116       [err:err(%)]
+DbDx_R(0:5,0:5)[ 1, 4] =       70.064 : 70.139       [A:FD] ---     0.074797 : 0.1066       [err:err(%)]
+DbDx_R(0:5,0:5)[ 4, 4] =        3.087 : 3.0903       [A:FD] ---    0.0032956 : 0.1066       [err:err(%)]
+
+skipping... [ 570.8ms ]
+Check DodeDxp (epsi=0.001):
+#ERR 1 DodeDxp [cell=40 of 5000 SEGMENT#0 range:(0,5000)] #x=6 #u=1 #p=0 [ (x) * (xp) = 6 x 6]
+DodeDx(0:5,0:5)[ 2, 3] =    0.0020462 : 0.00080424   [A:FD] ---     0.001242 : 0.1242       [err:err(%)]
+
+#ERR 2 DodeDxp [cell=41 of 5000 SEGMENT#0 range:(0,5000)] #x=6 #u=1 #p=0 [ (x) * (xp) = 6 x 6]
+DodeDx(0:5,0:5)[ 2, 3] =   -0.0018516 : -0.00035866  [A:FD] ---    0.0014929 : 0.1493       [err:err(%)]
+
+#ERR 3 DodeDxp [cell=3367 of 5000 SEGMENT#0 range:(0,5000)] #x=6 #u=1 #p=0 [ (x) * (xp) = 6 x 6]
+DodeDx(0:5,0:5)[ 2, 3] =    0.0020711 : 0.00093527   [A:FD] ---    0.0011359 : 0.1136       [err:err(%)]
+
+#ERR 4 DodeDxp [cell=3403 of 5000 SEGMENT#0 range:(0,5000)] #x=6 #u=1 #p=0 [ (x) * (xp) = 6 x 6]
+DodeDx(0:5,0:5)[ 2, 3] =   -0.0023098 : -0.0012716   [A:FD] ---    0.0010382 : 0.1038       [err:err(%)]
+
+#ERR 5 DodeDxp [cell=3406 of 5000 SEGMENT#0 range:(0,5000)] #x=6 #u=1 #p=0 [ (x) * (xp) = 6 x 6]
+DodeDx(0:5,0:5)[ 2, 3] =    -0.002191 : -0.0011615   [A:FD] ---    0.0010296 : 0.103        [err:err(%)]
+
+#ERR 6 DodeDxp [cell=3407 of 5000 SEGMENT#0 range:(0,5000)] #x=6 #u=1 #p=0 [ (x) * (xp) = 6 x 6]
+DodeDx(0:5,0:5)[ 2, 3] =   -0.0021538 : -0.001053    [A:FD] ---    0.0011008 : 0.1101       [err:err(%)]
+
+skipping... [ 23.84ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 594.9ms ]
+target [Lagrange,Mayer]            = [ 0, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 4.059e-06, 1.958e-06 ]
+All Done Folks!

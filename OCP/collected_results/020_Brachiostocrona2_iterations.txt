@@ -1,0 +1,144 @@
++----------------------- MODEL:Brachiostocrona2 ------------------------+
++................................ DIMS .................................+
+| dims                      = u=1, q=1, x=3, p=1, bc=5 of 5             |
+| total                     = nZ=3012, nP=7516, nUC=500, Q=501          |
+| index start               = omega=3006, p=3011                        |
+| post processing           = n_post=0                                  |
++................................ MESH .................................+
+| num nodes / segments      = 501 / 1                                   |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 1                               |
+| mesh class pointer        = 0x7ff7bb6e7138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 3012 x 3012                               |
+| nblock/block size         = 500 / 6                                   |
+| qr/qx/nr/nx               = 5 / 5 / 1 / 1                             |
+| last blok rows x cols     = 18 x 18                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x                                                        |
+| [ 1] initial_y                                                        |
+| [ 2] initial_v                                                        |
+| [ 3] final_x                                                          |
+| [ 4] final_y                                                          |
++.................... No control penalties/barriers ....................+
++......................... Constraints type LT .........................+
+TimePositive = { LT: Barrier0 [tolerance=0.01, epsilon=0.1] active }     
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 501                                                    
+  Segment N.0: s0 = 0 length = 1 npts = 501 no data set                  
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|............................... Tf = 0.63855 ..........................|
+|............................... Vf = 8.4334 ...........................|
+|............................. epsi = 1 ................................|
+|............................ epsi0 = 1 ................................|
+|............................ epsi1 = 0 ................................|
+|................................ g = 9.81 .............................|
+|............................. mass = 1 ................................|
+|........................... theta0 = -0.38051 .........................|
+|............................... xf = 5 ................................|
+|............................... yf = -2 ...............................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=6.107/1.893/3.006, |L|=6.107/1.89/3.003 |B|=0/0/0, |BL|=0/0/0, PARS=0.9952/0.9952/0.9952, U=0.3805/0.3805/0.3805
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Brachiostocrona2
+  1 [dump:1,u:4:4]        (f:1.6,d:0.406)      -->     [f:0.811,d:0.154]     lambda:0.485  #err=  1 angle:1 armijo:1
+  2 [dump:0,u:4:4]       (f:0.811,d:0.196)     -->    [f:0.102,d:0.0266]     lambda:1     
+  3 [dump:0,u:3.9:4]    (f:0.102,d:0.0244)     -->  [f:0.00099,d:0.000222]   lambda:1     
+  4 [dump:0,u:3:3]    (f:0.00099,d:0.000226)   -->  [f:4.05e-07,d:6.16e-08]  lambda:1     
+  5 [dump:0,u:2:2]    (f:4.05e-07,d:6.16e-08)  -->  [f:5.27e-14,d:5.52e-15]  lambda:1     
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:5,phase:1,s:0.2,ds:0.2] |X|=0.5238/0.1018/0.1861, |L|=0.5238/0.1016/0.1857 |B|=2.727e-24/2.727e-24/2.727e-24, |BL|=0/0/0, PARS=0.01534/0.01534/0.01534, U=1.023/0.5179/0.5985
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Brachiostocrona2
+6  (1 ) [phase:1,s:0.2,ds:0.2,dump:0,u:3.7:4]             (f:0.0867,d:0.0183)    -->  [f:0.000555,d:0.000174]  lambda:1     
+7  (2 ) [phase:1,s:0.2,ds:0.2,dump:0,u:2.9:3]           (f:0.000555,d:0.000173)  -->  [f:2.87e-08,d:8.72e-09]  lambda:1     
+8  (3 ) [phase:1,s:0.2,ds:0.2,dump:0,u:2:2]             (f:2.87e-08,d:8.72e-09)  -->  [f:2.9e-14,d:6.23e-17]   lambda:1     
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:8,phase:1,s:0.5,ds:0.3] |X|=0.9362/0.1973/0.3509, |L|=0.9362/0.1972/0.3503 |B|=2.102e-25/2.102e-25/2.102e-25, |BL|=0/0/0, PARS=0.026/0.026/0.026, U=1.148/0.5502/0.6538
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Brachiostocrona2
+9  (1 ) [phase:1,s:0.5,ds:0.3,dump:0,u:3.9:4]             (f:0.172,d:0.0369)     -->   [f:0.00214,d:0.0006]    lambda:1     
+10 (2 ) [phase:1,s:0.5,ds:0.3,dump:0,u:3:3]             (f:0.00214,d:0.000594)   -->  [f:2.63e-07,d:9.41e-08]  lambda:1     
+11 (3 ) [phase:1,s:0.5,ds:0.3,dump:0,u:2:2]             (f:2.63e-07,d:9.41e-08)  -->  [f:3.51e-14,d:2.14e-15]  lambda:1     
+
+Continuation step N.1 s:0.5->0.95, ds=0.45
+[iter:11,phase:1,s:0.95,ds:0.45] |X|=1.997/0.4717/0.7842, |L|=1.997/0.4722/0.7842 |B|=2.153e-24/2.153e-24/2.153e-24, |BL|=0/0/0, PARS=0.03628/0.03628/0.03628, U=1.503/0.6815/0.8271
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Brachiostocrona2
+12 (1 ) [phase:1,s:0.95,ds:0.45,dump:0,u:4:4]              (f:0.451,d:0.104)     -->   [f:0.0142,d:0.00256]    lambda:1     
+13 (2 ) [phase:1,s:0.95,ds:0.45,dump:0,u:3.4:4]          (f:0.0142,d:0.00263)    -->  [f:1.35e-05,d:2.44e-06]  lambda:1     
+14 (3 ) [phase:1,s:0.95,ds:0.45,dump:0,u:3:3]           (f:1.35e-05,d:2.44e-06)  -->  [f:1.17e-10,d:6.37e-12]  lambda:1     
+
+Continuation step N.1 s:0.95->1, ds=0.05
+[iter:14,phase:1,s:1,ds:0.05] |X|=0.3158/0.07644/0.1229, |L|=0.3158/0.07664/0.123 |B|=7.351e-23/7.351e-23/7.351e-23, |BL|=0/0/0, PARS=0.0009297/0.0009297/0.0009297, U=1.569/0.6804/0.8312
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Brachiostocrona2
+15 (1 ) [phase:1,s:1,ds:0.05,dump:0,u:3:3]                (f:0.078,d:0.0192)     -->  [f:0.000313,d:4.26e-05]  lambda:1     
+16 (2 ) [phase:1,s:1,ds:0.05,dump:0,u:3:3]              (f:0.000313,d:4.29e-05)  -->  [f:7.88e-09,d:1.13e-09]  lambda:1     
+17 (3 ) [phase:1,s:1,ds:0.05,dump:0,u:2:2]              (f:7.88e-09,d:1.13e-09)  -->  [f:3.41e-14,d:7.37e-17]  lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 1               | Hessian type    = Diagonal        |
++-------------------------- MinimizeHeavyBall --------------------------+
+| last f          = 0               | |g|_inf         = 2.8588e-15      |
++-----------------------------------------------------------------------+
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 3012            | N. System pars  = 7516            |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 455 [ms]        | timeout         = 0 [ms]          |
+| iteration       = 17              | Memory Used     = 924Kb(+87b)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 35              | Jacobian        = 17              |
+| Factorization   = 17              | Inversion       = 35              |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 4.3876e-13      | last ||d||_inf  = 5.4665e-16      |
+| last ||f||_1    = 3.4104e-14      | last ||d||_1    = 7.3668e-17      |
+| last ||f||_2    = 7.4371e-14      | last ||d||_2    = 1.1423e-16      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 1.283ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 103.7ms ]
+Check DuDxxpm (epsi=0.001): all OK [ 461.8ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001): all OK [ 92.67ms ]
+Check DodeDxp (epsi=0.001): all OK [ 1.878ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 94.74ms ]
+target [Lagrange,Mayer]            = [ 0, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 0, 0.001535 ]
+Optimization parameters:
+T: 1.29313697316261722
+All Done Folks!

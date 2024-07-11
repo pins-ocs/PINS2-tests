@@ -1,0 +1,392 @@
++-------------- MODEL:Bocop_SecondOrderSingularRegulator ---------------+
++................................ DIMS .................................+
+| dims                      = u=1, q=1, x=2, p=0, bc=2 of 2             |
+| total                     = nZ=806, nP=2211, nUC=200, Q=201           |
+| index start               = omega=804, p=806                          |
+| post processing           = n_post=0                                  |
++................................ MESH .................................+
+| num nodes / segments      = 201 / 1                                   |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 1                               |
+| mesh class pointer        = 0x7ff7bda95128                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 806 x 806                                 |
+| nblock/block size         = 200 / 4                                   |
+| qr/qx/nr/nx               = 2 / 2 / 0 / 0                             |
+| last blok rows x cols     = 10 x 10                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_y1                                                       |
+| [ 1] initial_y2                                                       |
++..................... Controls penalties/barriers .....................+
+uControl = { LOG (BARRIER) epsilon=0.01, tolerance=0.01 }                
++......................... Constraints type LT .........................+
+y2bound = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }         
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 201                                                    
+  Segment N.0: s0 = 0 length = 5 npts = 201 no data set                  
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|............................. eps0 = 0.01 .............................|
+|............................. eps1 = 1e-06 ............................|
+|............................. tol0 = 0.01 .............................|
+|............................. tol1 = 1e-06 ............................|
+|........................... u_eps0 = 0.01 .............................|
+|........................... u_eps1 = 1e-08 ............................|
+|........................... u_tol0 = 0.01 .............................|
+|........................... u_tol1 = 1e-08 ............................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=2/0.75/1.118, |L|=2/0.75/1.118 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=0/0/0
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Bocop_SecondOrderSingularRegulator
+  1 [dump:0,u:0:0]       (f:0.744,d:0.257)     -->    [f:0.044,d:0.0066]     lambda:1     
+  2 [dump:0,u:0:0]      (f:0.044,d:0.0384)     -->   [f:0.0411,d:0.00938]    lambda:1     
+  3 [dump:0,u:0:0]      (f:0.0411,d:0.0447)    -->    [f:0.0399,d:0.012]     lambda:1     
+  4 [dump:1,u:0:0]      (f:0.0399,d:0.0454)    -->    [f:0.0375,d:0.0309]    lambda:0.4    #err=  1 armijo:1
+  5 [dump:1,u:0:0]      (f:0.0375,d:0.0557)    -->    [f:0.0415,d:0.029]     lambda:0.7    #err=  5 update:1
+  6 [dump:0,u:0:0]      (f:0.0415,d:0.0484)    -->    [f:0.0417,d:0.0118]    lambda:1     
+  7 [dump:6,u:0:0]      (f:0.0417,d:0.0257)    -->    [f:0.0408,d:0.0248]    lambda:0.0384  #err= 10 update:4 armijo:2
+  8 [dump:1,u:0:0]      (f:0.0408,d:0.0292)    -->    [f:0.0458,d:0.0278]    lambda:0.118  #err=  1 armijo:1
+  9 [dump:8,u:0:0]      (f:0.0458,d:0.0371)    -->    [f:0.0452,d:0.0364]    lambda:0.0188  #err= 14 update:6 armijo:2
+ 10 [dump:7,u:0:0]      (f:0.0452,d:0.0438)    -->    [f:0.0451,d:0.0436]    lambda:0.00316  #err= 11 update:4 armijo:3
+ 11 [dump:3,u:0:0]      (f:0.0451,d:0.0506)    -->    [f:0.0454,d:0.0504]    lambda:0.0054  #err=  3 armijo:3
+ 12 [dump:1,u:0:0]      (f:0.0454,d:0.0606)    -->    [f:0.264,d:0.0642]     lambda:0.4    #err=  1 armijo:1
+ 13 [dump:2,u:0:0]       (f:0.264,d:1.11)      -->     [f:0.839,d:1.02]      lambda:0.49   #err=  4 update:2
+ 14 [dump:7,u:0:0]       (f:0.839,d:1.62)      -->     [f:0.975,d:1.55]      lambda:0.0505  #err= 14 update:6 armijo:1
+ 15 [dump:0,u:0:0]       (f:0.975,d:16.7)      -->      [f:7.71,d:7.49]      lambda:0.337 
+ 16 [dump:4,u:0:0]        (f:7.71,d:5.97)      -->      [f:6.39,d:4.42]      lambda:0.24   #err=  8 update:4
+ 17 [dump:3,u:0:0]        (f:6.39,d:4.21)      -->      [f:13.6,d:3.63]      lambda:0.252  #err=  6 update:3
+ 18 [dump:2,u:0:0]        (f:13.6,d:42.2)      -->      [f:33.4,d:1.35]      lambda:0.51   #err=  2 angle:2 armijo:2
+ 19 [dump:5,u:0:0]        (f:33.4,d:21.4)      -->      [f:28.2,d:17.5]      lambda:0.168  #err= 10 update:5
+ 20 [dump:1,u:0:0]      (f:28.2,d:3.05e+03)    -->    [f:1.76e+03,d:145]     lambda:0.584  #err=  1 angle:1 armijo:1
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Bocop_SecondOrderSingularRegulator
+ 21 [dump:7,u:0:0]    (f:1.76e+03,d:1.8e+03)   -->  [f:1.61e+03,d:1.65e+03]  lambda:0.0824  #err= 14 update:7
+ 22 [dump:0,u:0:0]    (f:1.61e+03,d:1.65e+03)  -->       [f:923,d:940]       lambda:0.43  
+ 23 [dump:3,u:0:0]         (f:923,d:927)       -->       [f:613,d:613]       lambda:0.343  #err=  6 update:3
+ 24 [dump:3,u:0:0]         (f:613,d:606)       -->       [f:414,d:398]       lambda:0.343  #err=  6 update:3
+ 25 [dump:4,u:0:0]      (f:414,d:1.02e+03)     -->       [f:600,d:209]       lambda:0.24   #err=  8 update:4
+ 26 [dump:0,u:0:0]         (f:600,d:665)       -->       [f:160,d:176]       lambda:0.735 
+ 27 [dump:1,u:0:0]         (f:160,d:176)       -->      [f:49.3,d:52.4]      lambda:0.7    #err=  2 update:1
+ 28 [dump:0,u:0:0]         (f:49.3,d:40)       -->      [f:12.2,d:15.9]      lambda:1     
+ 29 [dump:5,u:0:0]         (f:12.2,d:15)       -->      [f:10.9,d:13.5]      lambda:0.168  #err= 15 update:5
+ 30 [dump:7,u:0:0]        (f:10.9,d:28.8)      -->      [f:12.7,d:1.4]       lambda:0.0506  #err= 14 update:7
+ 31 [dump:6,u:0:0]        (f:12.7,d:341)       -->      [f:12.7,d:341]       lambda:0.00138  #err=  6 armijo:6
+ 32 [dump:4,u:0:0]        (f:12.7,d:92.5)      -->      [f:12.7,d:91.8]      lambda:0.00143  #err=  4 armijo:4
+ 33 [dump:3,u:0:0]        (f:12.7,d:8.23)      -->      [f:12.6,d:8.21]      lambda:0.00363  #err=  3 armijo:3
+ 34 [dump:1,u:0:0]        (f:12.6,d:10.9)      -->      [f:5.42,d:4.48]      lambda:0.7    #err=  2 update:1
+ 35 [dump:23,u:0:0]       (f:5.42,d:114)       -->      [f:5.48,d:103]       lambda:0.0045  #err= 49 update:11 angle:11 armijo:12
+ 36 [dump:0,u:0:0]        (f:5.48,d:3.39)      -->      [f:5.12,d:3.05]      lambda:0.101 
+ 37 [dump:6,u:0:0]        (f:5.12,d:3.11)      -->      [f:4.84,d:2.9]       lambda:0.0672  #err= 13 update:5 armijo:1
+ 38 [dump:4,u:0:0]        (f:4.84,d:2.92)      -->      [f:4.66,d:2.77]      lambda:0.0534  #err=  7 update:3 armijo:1
+ 39 [dump:0,u:0:0]        (f:4.66,d:3.16)      -->      [f:5.09,d:2.27]      lambda:0.346 
+ 40 [dump:8,u:0:0]        (f:5.09,d:4.2)       -->     [f:7.33,d:0.704]      lambda:0.0576  #err= 21 update:8
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Bocop_SecondOrderSingularRegulator
+ 41 [dump:8,u:0:0]        (f:7.33,d:1.81)      -->      [f:7.35,d:1.79]      lambda:0.00678  #err= 14 update:6 armijo:2
+ 42 [dump:2,u:0:0]        (f:7.35,d:1.26)      -->      [f:7.22,d:1.1]       lambda:0.0198  #err=  2 armijo:2
+ 43 [dump:3,u:0:0]        (f:7.22,d:1.17)      -->      [f:6.78,d:1.1]       lambda:0.064  #err=  3 armijo:3
+ 44 [dump:2,u:0:0]        (f:6.78,d:1.2)       -->      [f:5.83,d:1.04]      lambda:0.16   #err=  2 armijo:2
+ 45 [dump:1,u:0:0]        (f:5.83,d:1.14)      -->      [f:3.96,d:0.68]      lambda:0.425  #err=  1 armijo:1
+ 46 [dump:1,u:0:0]       (f:3.96,d:0.734)      -->     [f:2.75,d:0.441]      lambda:0.4    #err=  1 armijo:1
+ 47 [dump:1,u:0:0]       (f:2.75,d:0.439)      -->      [f:1.9,d:0.261]      lambda:0.4    #err=  1 armijo:1
+ 48 [dump:1,u:0:0]        (f:1.9,d:0.248)      -->     [f:1.31,d:0.146]      lambda:0.4    #err=  1 armijo:1
+ 49 [dump:1,u:0:0]       (f:1.31,d:0.132)      -->    [f:0.891,d:0.0778]     lambda:0.4    #err=  1 armijo:1
+ 50 [dump:2,u:0:0]      (f:0.891,d:0.0745)     -->     [f:0.759,d:0.063]     lambda:0.16   #err=  2 armijo:2
+ 51 [dump:2,u:0:0]      (f:0.759,d:0.0667)     -->    [f:0.636,d:0.0558]     lambda:0.174  #err=  2 armijo:2
+ 52 [dump:0,u:0:0]      (f:0.636,d:0.0595)     -->     [f:0.154,d:0.02]      lambda:1     
+ 53 [dump:2,u:0:0]      (f:0.154,d:0.00529)    -->    [f:0.134,d:0.00382]    lambda:0.16   #err=  2 armijo:2
+ 54 [dump:3,u:0:0]      (f:0.134,d:0.00194)    -->   [f:0.0887,d:0.000589]   lambda:0.361  #err=  3 angle:2 armijo:3
+ 55 [dump:0,u:0:0]     (f:0.0887,d:0.000678)   -->   [f:0.0239,d:0.00049]    lambda:1     
+ 56 [dump:1,u:0:0]     (f:0.0239,d:5.16e-05)   -->   [f:0.0155,d:4.17e-05]   lambda:0.4    #err=  1 armijo:1
+ 57 [dump:0,u:0:0]      (f:0.0155,d:0.0001)    -->   [f:0.00469,d:6.3e-05]   lambda:1     
+ 58 [dump:0,u:0:0]    (f:0.00469,d:0.000327)   -->  [f:0.00139,d:6.93e-05]   lambda:1     
+ 59 [dump:0,u:0:0]     (f:0.00139,d:0.00011)   -->  [f:0.000307,d:4.51e-06]  lambda:1     
+ 60 [dump:0,u:0:0]    (f:0.000307,d:6.63e-06)  -->  [f:3.93e-05,d:7.34e-07]  lambda:1     
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Bocop_SecondOrderSingularRegulator
+ 61 [dump:0,u:0:0]    (f:3.93e-05,d:1.06e-06)  -->  [f:1.46e-06,d:4.77e-08]  lambda:1     
+ 62 [dump:0,u:0:0]    (f:1.46e-06,d:5.31e-08)  -->  [f:4.14e-09,d:1.68e-10]  lambda:1     
+ 63 [dump:0,u:0:0]    (f:4.14e-09,d:1.69e-10)  -->  [f:5.87e-14,d:2.16e-15]  lambda:1     
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:63,phase:1,s:0.2,ds:0.2] |X|=0.3654/0.01203/0.03523, |L|=0.3654/0.01213/0.03529 |B|=7.858e-31/7.858e-31/7.858e-31, |BL|=3.718e-26/3.718e-26/3.718e-26, PARS=0/0/0, U=0.9994/0.3137/0.5037
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Bocop_SecondOrderSingularRegulator
+64 (1 ) [phase:1,s:0.2,ds:0.2,dump:1,u:0:0]              (f:0.00901,d:0.00385)   -->   [f:0.00579,d:0.00197]   lambda:0.4    #err=  1 armijo:1
+65 (2 ) [phase:1,s:0.2,ds:0.2,dump:1,u:0:0]              (f:0.00579,d:0.00206)   -->  [f:0.00448,d:0.000967]   lambda:0.4    #err=  1 armijo:1
+66 (3 ) [phase:1,s:0.2,ds:0.2,dump:1,u:0:0]              (f:0.00448,d:0.00115)   -->  [f:0.00196,d:0.000179]   lambda:0.75   #err=  1 angle:1 armijo:1
+67 (4 ) [phase:1,s:0.2,ds:0.2,dump:1,u:0:0]             (f:0.00196,d:0.000259)   -->  [f:0.000394,d:1.09e-05]  lambda:0.95   #err=  1 angle:1 armijo:1
+68 (5 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:0.000394,d:9.58e-06)  -->  [f:7.05e-05,d:8.98e-07]  lambda:1     
+69 (6 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:7.05e-05,d:1.53e-06)  -->  [f:7.69e-06,d:1.76e-07]  lambda:1     
+70 (7 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:7.69e-06,d:2.37e-07)  -->  [f:2.08e-07,d:6.66e-09]  lambda:1     
+71 (8 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:2.08e-07,d:7.06e-09)  -->  [f:1.89e-10,d:6.49e-12]  lambda:1     
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:71,phase:1,s:0.5,ds:0.3] |X|=0.4649/0.02164/0.05776, |L|=0.4649/0.0219/0.058 |B|=1.319e-27/1.319e-27/1.319e-27, |BL|=1.338e-24/1.338e-24/1.338e-24, PARS=0/0/0, U=0.9996/0.3371/0.5117
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Bocop_SecondOrderSingularRegulator
+72 (1 ) [phase:1,s:0.5,ds:0.3,dump:1,u:0:0]              (f:0.0176,d:0.00614)    -->   [f:0.00996,d:0.00346]   lambda:0.4    #err=  1 armijo:1
+73 (2 ) [phase:1,s:0.5,ds:0.3,dump:1,u:0:0]              (f:0.00996,d:0.00296)   -->   [f:0.00809,d:0.00148]   lambda:0.4    #err=  1 armijo:1
+74 (3 ) [phase:1,s:0.5,ds:0.3,dump:1,u:0:0]              (f:0.00809,d:0.00161)   -->  [f:0.00586,d:0.000821]   lambda:0.4    #err=  1 armijo:1
+75 (4 ) [phase:1,s:0.5,ds:0.3,dump:2,u:0:0]             (f:0.00586,d:0.000916)   -->  [f:0.00178,d:8.86e-05]   lambda:0.902  #err=  2 angle:2 armijo:2
+76 (5 ) [phase:1,s:0.5,ds:0.3,dump:1,u:0:0]             (f:0.00178,d:6.65e-05)   -->  [f:0.000452,d:2.39e-06]  lambda:0.95   #err=  1 angle:1 armijo:1
+77 (6 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:0.000452,d:2.32e-06)  -->  [f:9.06e-05,d:7.44e-07]  lambda:1     
+78 (7 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:9.06e-05,d:1.37e-06)  -->  [f:1.42e-05,d:2.3e-07]   lambda:1     
+79 (8 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:1.42e-05,d:3.77e-07)  -->  [f:1.18e-06,d:3.22e-08]  lambda:1     
+80 (9 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:1.18e-06,d:3.88e-08)  -->  [f:1.16e-08,d:3.8e-10]   lambda:1     
+
+Continuation step N.1 s:0.5->0.95, ds=0.45
+[iter:80,phase:1,s:0.95,ds:0.45] |X|=0.7343/0.08249/0.1966, |L|=0.7343/0.08413/0.1993 |B|=2.071e-28/2.071e-28/2.071e-28, |BL|=6.632e-24/6.632e-24/6.632e-24, PARS=0/0/0, U=1/0.6598/0.7094
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Bocop_SecondOrderSingularRegulator
+81 (1 ) [phase:1,s:0.95,ds:0.45,dump:8,u:0:0]             (f:0.104,d:0.0261)     -->     [f:0.1,d:0.0251]      lambda:0.0329  #err=102 update:7 armijo:1
+82 (2 ) [phase:1,s:0.95,ds:0.45,dump:3,u:0:0]              (f:0.1,d:0.0188)      -->    [f:0.0943,d:0.0175]    lambda:0.0534  #err= 33 update:2 armijo:1
+83 (3 ) [phase:1,s:0.95,ds:0.45,dump:5,u:0:0]             (f:0.0943,d:0.0126)    -->   [f:0.0711,d:0.00801]    lambda:0.168  #err= 69 update:5
+84 (4 ) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]            (f:0.0711,d:0.00534)    -->   [f:0.0449,d:0.00263]    lambda:0.301  #err=  6 update:2
+85 (5 ) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]            (f:0.0449,d:0.00242)    -->   [f:0.0322,d:0.00175]    lambda:0.28   #err=  4 update:1 armijo:1
+86 (6 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]             (f:0.0322,d:0.0016)    -->   [f:0.0186,d:0.000933]   lambda:0.4    #err=  1 armijo:1
+87 (7 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]            (f:0.0186,d:0.000882)   -->   [f:0.011,d:0.000522]    lambda:0.4    #err=  1 armijo:1
+88 (8 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]             (f:0.011,d:0.00051)    -->  [f:0.00664,d:0.000309]   lambda:0.4    #err=  1 armijo:1
+89 (9 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]           (f:0.00664,d:0.000303)   -->  [f:0.000333,d:1.26e-05]  lambda:0.95   #err=  1 angle:1 armijo:1
+90 (10) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:0.000333,d:1.27e-05)  -->  [f:1.22e-05,d:2.85e-08]  lambda:1     
+91 (11) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:1.22e-05,d:3.85e-08)  -->  [f:4.45e-07,d:1.27e-09]  lambda:1     
+92 (12) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:4.45e-07,d:1.37e-09)  -->  [f:7.59e-10,d:2.31e-12]  lambda:1     
+
+Continuation step N.1 s:0.95->1, ds=0.05
+[iter:92,phase:1,s:1,ds:0.05] |X|=0.996/0.1419/0.3467, |L|=0.996/0.144/0.3492 |B|=7.822e-31/7.822e-31/7.822e-31, |BL|=3.324e-25/3.324e-25/3.324e-25, PARS=0/0/0, U=1/0.9996/0.9996
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Bocop_SecondOrderSingularRegulator
+93 (1 ) [phase:1,s:1,ds:0.05,dump:17,u:0:0]               (f:0.186,d:0.0979)     -->     [f:0.21,d:0.0759]     lambda:0.00233  #err=205 update:17
+94 (2 ) [phase:1,s:1,ds:0.05,dump:23,u:0:0]                (f:0.21,d:0.807)      -->     [f:0.202,d:0.22]      lambda:0.000168  #err=197 update:16 angle:7 armijo:7
+95 (3 ) [phase:1,s:1,ds:0.05,dump:10,u:0:0]                (f:0.202,d:0.205)     -->     [f:0.203,d:0.194]     lambda:0.000179  #err=101 update:8 armijo:2
+96 (4 ) [phase:1,s:1,ds:0.05,dump:11,u:0:0]                (f:0.203,d:0.153)     -->     [f:0.204,d:0.127]     lambda:0.000176  #err=110 update:8 angle:1 armijo:3
+97 (5 ) [phase:1,s:1,ds:0.05,dump:23,u:0:0]               (f:0.204,d:0.0926)     -->     [f:0.2,d:0.0708]      lambda:0.000392  #err=125 update:9 angle:14 armijo:14
+98 (6 ) [phase:1,s:1,ds:0.05,dump:11,u:0:0]                (f:0.2,d:0.0715)      -->    [f:0.196,d:0.0549]     lambda:0.000192  #err=107 update:9 armijo:2
+99 (7 ) [phase:1,s:1,ds:0.05,dump:8,u:0:0]                (f:0.196,d:0.0457)     -->    [f:0.197,d:0.0422]     lambda:0.0012  #err= 92 update:8
+100(8 ) [phase:1,s:1,ds:0.05,dump:29,u:0:0]               (f:0.197,d:0.0632)     -->    [f:0.193,d:0.0458]     lambda:0.000408  #err=145 update:11 angle:18 armijo:18
+101(9 ) [phase:1,s:1,ds:0.05,dump:8,u:0:0]                (f:0.193,d:0.0368)     -->    [f:0.199,d:0.0343]     lambda:0.00175  #err= 89 update:8
+102(10) [phase:1,s:1,ds:0.05,dump:12,u:0:0]               (f:0.199,d:0.0367)     -->    [f:0.197,d:0.0323]     lambda:0.000496  #err=106 update:11 armijo:1
+103(11) [phase:1,s:1,ds:0.05,dump:10,u:0:0]               (f:0.197,d:0.0289)     -->    [f:0.192,d:0.0277]     lambda:0.000308  #err= 76 update:8 armijo:2
+104(12) [phase:1,s:1,ds:0.05,dump:9,u:0:0]                (f:0.192,d:0.0255)     -->    [f:0.191,d:0.0236]     lambda:0.000347  #err= 59 update:7 armijo:2
+105(13) [phase:1,s:1,ds:0.05,dump:8,u:0:0]                 (f:0.191,d:0.021)     -->    [f:0.198,d:0.0192]     lambda:0.00092  #err= 63 update:7 armijo:1
+106(14) [phase:1,s:1,ds:0.05,dump:9,u:0:0]                (f:0.198,d:0.0191)     -->    [f:0.188,d:0.0204]     lambda:0.00184  #err= 80 update:9
+107(15) [phase:1,s:1,ds:0.05,dump:10,u:0:0]               (f:0.188,d:0.0222)     -->    [f:0.192,d:0.0187]     lambda:0.00104  #err= 78 update:9 armijo:1
+108(16) [phase:1,s:1,ds:0.05,dump:11,u:0:0]               (f:0.192,d:0.0157)     -->    [f:0.191,d:0.0156]     lambda:0.000312  #err= 70 update:9 armijo:2
+109(17) [phase:1,s:1,ds:0.05,dump:9,u:0:0]                (f:0.191,d:0.0143)     -->    [f:0.191,d:0.0143]     lambda:0.000349  #err= 42 update:7 armijo:2
+110(18) [phase:1,s:1,ds:0.05,dump:7,u:0:0]                (f:0.191,d:0.0106)     -->    [f:0.192,d:0.0105]     lambda:0.00231  #err= 38 update:7
+111(19) [phase:1,s:1,ds:0.05,dump:9,u:0:0]                (f:0.192,d:0.0109)     -->    [f:0.189,d:0.0112]     lambda:0.00291  #err= 64 update:9
+112(20) [phase:1,s:1,ds:0.05,dump:10,u:0:0]               (f:0.189,d:0.0134)     -->    [f:0.188,d:0.0121]     lambda:0.00131  #err= 60 update:9 armijo:1
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Bocop_SecondOrderSingularRegulator
+113(21) [phase:1,s:1,ds:0.05,dump:10,u:0:0]               (f:0.188,d:0.0106)     -->    [f:0.189,d:0.0101]     lambda:0.0005  #err= 44 update:8 armijo:2
+114(22) [phase:1,s:1,ds:0.05,dump:8,u:0:0]                (f:0.189,d:0.00969)    -->    [f:0.19,d:0.00884]     lambda:0.000631  #err= 27 update:6 armijo:2
+115(23) [phase:1,s:1,ds:0.05,dump:7,u:0:0]                (f:0.19,d:0.00849)     -->    [f:0.189,d:0.00854]    lambda:0.0031  #err= 30 update:7
+116(24) [phase:1,s:1,ds:0.05,dump:13,u:0:0]               (f:0.189,d:0.0123)     -->    [f:0.189,d:0.0123]     lambda:0.000151  #err= 50 update:10 armijo:3
+117(25) [phase:1,s:1,ds:0.05,dump:4,u:0:0]                (f:0.189,d:0.00777)    -->    [f:0.188,d:0.00739]    lambda:0.00443  #err= 11 update:4
+118(26) [phase:1,s:1,ds:0.05,dump:17,u:0:0]               (f:0.188,d:0.0478)     -->    [f:0.188,d:0.0268]     lambda:4.33e-05  #err= 61 update:14 armijo:3
+119(27) [phase:1,s:1,ds:0.05,dump:9,u:0:0]                (f:0.188,d:0.0195)     -->    [f:0.188,d:0.0195]     lambda:5.76e-05  #err= 19 update:4 angle:1 armijo:5
+120(28) [phase:1,s:1,ds:0.05,dump:7,u:0:0]                (f:0.188,d:0.0118)     -->    [f:0.188,d:0.0118]     lambda:0.0001  #err= 15 update:3 armijo:4
+121(29) [phase:1,s:1,ds:0.05,dump:6,u:0:0]                (f:0.188,d:0.00602)    -->    [f:0.188,d:0.00602]    lambda:0.000329  #err= 12 update:3 armijo:3
+122(30) [phase:1,s:1,ds:0.05,dump:5,u:0:0]                (f:0.188,d:0.00683)    -->     [f:0.186,d:0.006]     lambda:0.00457  #err= 16 update:5
+123(31) [phase:1,s:1,ds:0.05,dump:13,u:0:0]               (f:0.186,d:0.00947)    -->    [f:0.186,d:0.00947]    lambda:0.000183  #err= 74 update:10 armijo:3
+124(32) [phase:1,s:1,ds:0.05,dump:8,u:0:0]                (f:0.186,d:0.00937)    -->    [f:0.186,d:0.00937]    lambda:0.000219  #err= 33 update:5 armijo:3
+125(33) [phase:1,s:1,ds:0.05,dump:4,u:0:0]                (f:0.186,d:0.00588)    -->    [f:0.187,d:0.0054]     lambda:0.00532  #err= 16 update:4
+126(34) [phase:1,s:1,ds:0.05,dump:51,u:0:0]               (f:0.187,d:0.0122)     -->    [f:0.187,d:0.0122]     lambda:0.000117  #err=124 update:11 angle:39 armijo:40
+127(35) [phase:1,s:1,ds:0.05,dump:28,u:0:0]               (f:0.187,d:0.0105)     -->    [f:0.186,d:0.00915]    lambda:0.00114  #err= 43 update:4 angle:24 armijo:24
+128(36) [phase:1,s:1,ds:0.05,dump:11,u:0:0]               (f:0.186,d:0.0112)     -->    [f:0.186,d:0.0111]     lambda:0.000327  #err= 63 update:9 armijo:2
+129(37) [phase:1,s:1,ds:0.05,dump:8,u:0:0]                (f:0.186,d:0.00985)    -->    [f:0.186,d:0.00981]    lambda:0.000292  #err= 25 update:5 armijo:3
+130(38) [phase:1,s:1,ds:0.05,dump:9,u:0:0]                (f:0.186,d:0.0085)     -->    [f:0.186,d:0.0085]     lambda:0.00011  #err= 25 update:5 armijo:4
+131(39) [phase:1,s:1,ds:0.05,dump:8,u:0:0]                (f:0.186,d:0.00648)    -->    [f:0.186,d:0.00648]    lambda:9.68e-05  #err= 15 update:4 armijo:4
+132(40) [phase:1,s:1,ds:0.05,dump:7,u:0:0]                (f:0.186,d:0.00463)    -->    [f:0.186,d:0.00463]    lambda:0.00013  #err= 12 update:3 armijo:4
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Bocop_SecondOrderSingularRegulator
+133(41) [phase:1,s:1,ds:0.05,dump:6,u:0:0]                (f:0.186,d:0.00389)    -->    [f:0.186,d:0.00389]    lambda:0.000375  #err= 12 update:3 armijo:3
+134(42) [phase:1,s:1,ds:0.05,dump:6,u:0:0]                (f:0.186,d:0.00388)    -->    [f:0.184,d:0.00386]    lambda:0.00195  #err= 17 update:5 armijo:1
+135(43) [phase:1,s:1,ds:0.05,dump:7,u:0:0]                (f:0.184,d:0.00359)    -->    [f:0.185,d:0.00319]    lambda:0.00546  #err= 36 update:7
+136(44) [phase:1,s:1,ds:0.05,dump:9,u:0:0]                (f:0.185,d:0.00303)    -->    [f:0.183,d:0.0035]     lambda:0.00146  #err= 39 update:7 armijo:2
+137(45) [phase:1,s:1,ds:0.05,dump:5,u:0:0]                (f:0.183,d:0.00299)    -->    [f:0.181,d:0.00286]    lambda:0.00963  #err= 15 update:5
+138(46) [phase:1,s:1,ds:0.05,dump:11,u:0:0]               (f:0.181,d:0.00338)    -->    [f:0.18,d:0.00331]     lambda:0.00166  #err= 60 update:10 armijo:1
+139(47) [phase:1,s:1,ds:0.05,dump:8,u:0:0]                 (f:0.18,d:0.0029)     -->     [f:0.18,d:0.0029]     lambda:0.000658  #err= 22 update:5 armijo:3
+140(48) [phase:1,s:1,ds:0.05,dump:4,u:0:0]                (f:0.18,d:0.00308)     -->    [f:0.179,d:0.00312]    lambda:0.00528  #err=  9 update:3 armijo:1
+141(49) [phase:1,s:1,ds:0.05,dump:9,u:0:0]                (f:0.179,d:0.00327)    -->    [f:0.179,d:0.00327]    lambda:0.000821  #err= 27 update:6 armijo:3
+142(50) [phase:1,s:1,ds:0.05,dump:5,u:0:0]                (f:0.179,d:0.00268)    -->    [f:0.179,d:0.00243]    lambda:0.00236  #err= 11 update:3 armijo:2
+143(51) [phase:1,s:1,ds:0.05,dump:4,u:0:0]                (f:0.179,d:0.0017)     -->    [f:0.175,d:0.0017]     lambda:0.0175  #err= 14 update:4
+144(52) [phase:1,s:1,ds:0.05,dump:11,u:0:0]               (f:0.175,d:0.00259)    -->    [f:0.175,d:0.00259]    lambda:0.00128  #err= 65 update:9 armijo:2
+145(53) [phase:1,s:1,ds:0.05,dump:7,u:0:0]                (f:0.175,d:0.0024)     -->    [f:0.175,d:0.00239]    lambda:0.000825  #err= 27 update:4 armijo:3
+146(54) [phase:1,s:1,ds:0.05,dump:6,u:0:0]                (f:0.175,d:0.00189)    -->    [f:0.174,d:0.00189]    lambda:0.000946  #err=  9 update:3 armijo:3
+147(55) [phase:1,s:1,ds:0.05,dump:6,u:0:0]                (f:0.174,d:0.00174)    -->    [f:0.174,d:0.00174]    lambda:0.00101  #err=  9 update:3 armijo:3
+148(56) [phase:1,s:1,ds:0.05,dump:6,u:0:0]                (f:0.174,d:0.00176)    -->    [f:0.174,d:0.00176]    lambda:0.00183  #err= 10 update:4 armijo:2
+149(57) [phase:1,s:1,ds:0.05,dump:5,u:0:0]                (f:0.174,d:0.00204)    -->    [f:0.173,d:0.00182]    lambda:0.0108  #err= 11 update:5
+150(58) [phase:1,s:1,ds:0.05,dump:6,u:0:0]                (f:0.173,d:0.0019)     -->    [f:0.165,d:0.00162]    lambda:0.0183  #err= 18 update:6
+151(59) [phase:1,s:1,ds:0.05,dump:9,u:0:0]                (f:0.165,d:0.00216)    -->    [f:0.165,d:0.00216]    lambda:0.00162  #err= 18 update:6 armijo:3
+152(60) [phase:1,s:1,ds:0.05,dump:3,u:0:0]                (f:0.165,d:0.0022)     -->    [f:0.163,d:0.0021]     lambda:0.0118  #err=  5 update:2 armijo:1
+NLsolver[Bocop_SecondOrderSingularRegulator]::solve_with_continuation(phase=1,...) found:
+NLsolver[Bocop_SecondOrderSingularRegulator]::solve()
+#phase=1 #it=0/60 lambda=0.0118 tolerance=1e-09 |f|_1=0.165 |f|_inf=1.121 |d|_1=0.002202 |d|_inf=0.04031
+at phase 1, iter 152: NLsolver[Bocop_SecondOrderSingularRegulator]::solve, Too many iterations
+
+
+Continuation step N.1 s:0.95->0.975, ds=0.025
+[iter:152,phase:1,s:0.975,ds:0.025] |X|=0.3711/0.02267/0.0688, |L|=0.3711/0.0231/0.06933 |B|=7.822e-31/7.822e-31/7.822e-31, |BL|=3.324e-25/3.324e-25/3.324e-25, PARS=0/0/0, U=1/0.3537/0.5243
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Bocop_SecondOrderSingularRegulator
+153(1 ) [phase:1,s:0.975,ds:0.025,dump:2,u:0:0]          (f:0.0208,d:0.000748)   -->    [f:0.014,d:0.00046]    lambda:0.28   #err=  9 update:1 armijo:1
+154(2 ) [phase:1,s:0.975,ds:0.025,dump:1,u:0:0]          (f:0.014,d:0.000269)    -->  [f:0.00795,d:0.000146]   lambda:0.4    #err=  1 armijo:1
+155(3 ) [phase:1,s:0.975,ds:0.025,dump:2,u:0:0]         (f:0.00795,d:0.000115)   -->  [f:0.00666,d:9.64e-05]   lambda:0.16   #err=  2 armijo:2
+156(4 ) [phase:1,s:0.975,ds:0.025,dump:2,u:0:0]          (f:0.00666,d:9.3e-05)   -->  [f:0.00555,d:7.85e-05]   lambda:0.16   #err=  2 armijo:2
+157(5 ) [phase:1,s:0.975,ds:0.025,dump:2,u:0:0]         (f:0.00555,d:7.76e-05)   -->  [f:0.00465,d:6.49e-05]   lambda:0.16   #err=  2 armijo:2
+158(6 ) [phase:1,s:0.975,ds:0.025,dump:1,u:0:0]         (f:0.00465,d:6.18e-05)   -->  [f:0.00273,d:3.62e-05]   lambda:0.4    #err=  1 armijo:1
+159(7 ) [phase:1,s:0.975,ds:0.025,dump:1,u:0:0]         (f:0.00273,d:3.54e-05)   -->   [f:0.00163,d:2.1e-05]   lambda:0.4    #err=  1 armijo:1
+160(8 ) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:0.00163,d:2.01e-05)   -->  [f:0.000153,d:2.91e-06]  lambda:1     
+161(9 ) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:0.000153,d:4.28e-07)  -->  [f:3.9e-05,d:3.74e-08]   lambda:1     
+162(10) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:3.9e-05,d:8.28e-08)   -->  [f:8.95e-06,d:1.95e-08]  lambda:1     
+163(11) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:8.95e-06,d:3.4e-08)   -->  [f:9.6e-07,d:3.65e-09]   lambda:1     
+164(12) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]          (f:9.6e-07,d:4.6e-09)   -->   [f:1.5e-08,d:7.2e-11]   lambda:1     
+165(13) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:1.5e-08,d:7.43e-11)   -->  [f:3.85e-12,d:1.9e-14]   lambda:1     
+
+Continuation step N.1 s:0.975->1, ds=0.025
+[iter:165,phase:1,s:1,ds:0.025] |X|=0.9941/0.14/0.3421, |L|=0.9941/0.142/0.3446 |B|=6.92e-32/6.92e-32/6.92e-32, |BL|=5.175e-28/5.175e-28/5.175e-28, PARS=0/0/0, U=1/0.9962/0.9964
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Bocop_SecondOrderSingularRegulator
+166(1 ) [phase:1,s:1,ds:0.025,dump:19,u:0:0]              (f:0.185,d:0.0551)     -->     [f:0.21,d:0.0476]     lambda:0.00114  #err=263 update:19
+167(2 ) [phase:1,s:1,ds:0.025,dump:50,u:0:0]               (f:0.21,d:0.273)      -->      [f:0.2,d:0.104]      lambda:7.35e-05  #err=204 update:13 angle:37 armijo:37
+168(3 ) [phase:1,s:1,ds:0.025,dump:41,u:0:0]                (f:0.2,d:0.109)      -->    [f:0.202,d:0.0669]     lambda:7.8e-05  #err=111 update:7 angle:33 armijo:34
+169(4 ) [phase:1,s:1,ds:0.025,dump:9,u:0:0]                (f:0.202,d:0.048)     -->    [f:0.198,d:0.0384]     lambda:0.000175  #err= 91 update:7 armijo:2
+170(5 ) [phase:1,s:1,ds:0.025,dump:10,u:0:0]              (f:0.198,d:0.0281)     -->    [f:0.198,d:0.0278]     lambda:0.000183  #err= 87 update:8 armijo:2
+171(6 ) [phase:1,s:1,ds:0.025,dump:8,u:0:0]               (f:0.198,d:0.0245)     -->    [f:0.194,d:0.0245]     lambda:0.00117  #err= 75 update:8
+172(7 ) [phase:1,s:1,ds:0.025,dump:10,u:0:0]              (f:0.194,d:0.0172)     -->    [f:0.195,d:0.0171]     lambda:0.00145  #err=106 update:10
+173(8 ) [phase:1,s:1,ds:0.025,dump:9,u:0:0]               (f:0.195,d:0.0138)     -->    [f:0.193,d:0.0137]     lambda:0.0023  #err=104 update:9
+174(9 ) [phase:1,s:1,ds:0.025,dump:10,u:0:0]              (f:0.193,d:0.0115)     -->    [f:0.192,d:0.0104]     lambda:0.00203  #err= 83 update:10
+175(10) [phase:1,s:1,ds:0.025,dump:10,u:0:0]              (f:0.192,d:0.00863)    -->    [f:0.19,d:0.00837]     lambda:0.00109  #err= 84 update:9 armijo:1
+176(11) [phase:1,s:1,ds:0.025,dump:10,u:0:0]              (f:0.19,d:0.00665)     -->    [f:0.193,d:0.00641]    lambda:0.000457  #err= 74 update:8 armijo:2
+177(12) [phase:1,s:1,ds:0.025,dump:7,u:0:0]               (f:0.193,d:0.00573)    -->     [f:0.19,d:0.0057]     lambda:0.00264  #err= 49 update:7
+178(13) [phase:1,s:1,ds:0.025,dump:11,u:0:0]              (f:0.19,d:0.00453)     -->    [f:0.19,d:0.00453]     lambda:0.000498  #err= 78 update:9 armijo:2
+179(14) [phase:1,s:1,ds:0.025,dump:6,u:0:0]               (f:0.19,d:0.00431)     -->    [f:0.189,d:0.00431]    lambda:0.00394  #err= 38 update:6
+180(15) [phase:1,s:1,ds:0.025,dump:9,u:0:0]               (f:0.189,d:0.00348)    -->    [f:0.187,d:0.00336]    lambda:0.0038  #err= 68 update:9
+181(16) [phase:1,s:1,ds:0.025,dump:10,u:0:0]              (f:0.187,d:0.00346)    -->    [f:0.187,d:0.00346]    lambda:0.000853  #err= 59 update:8 armijo:2
+182(17) [phase:1,s:1,ds:0.025,dump:8,u:0:0]               (f:0.187,d:0.00297)    -->    [f:0.187,d:0.00297]    lambda:0.000824  #err= 27 update:6 armijo:2
+183(18) [phase:1,s:1,ds:0.025,dump:8,u:0:0]               (f:0.187,d:0.00254)    -->    [f:0.186,d:0.00254]    lambda:0.000811  #err= 25 update:6 armijo:2
+184(19) [phase:1,s:1,ds:0.025,dump:6,u:0:0]               (f:0.186,d:0.00237)    -->    [f:0.187,d:0.00236]    lambda:0.00502  #err= 23 update:6
+185(20) [phase:1,s:1,ds:0.025,dump:8,u:0:0]               (f:0.187,d:0.00208)    -->    [f:0.184,d:0.00185]    lambda:0.00613  #err= 47 update:8
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Bocop_SecondOrderSingularRegulator
+186(21) [phase:1,s:1,ds:0.025,dump:10,u:0:0]              (f:0.184,d:0.00244)    -->    [f:0.184,d:0.00244]    lambda:0.00108  #err= 49 update:8 armijo:2
+187(22) [phase:1,s:1,ds:0.025,dump:8,u:0:0]               (f:0.184,d:0.00202)    -->    [f:0.184,d:0.00202]    lambda:0.000929  #err= 17 update:6 armijo:2
+188(23) [phase:1,s:1,ds:0.025,dump:7,u:0:0]               (f:0.184,d:0.00163)    -->    [f:0.183,d:0.00163]    lambda:0.00215  #err= 16 update:6 armijo:1
+189(24) [phase:1,s:1,ds:0.025,dump:7,u:0:0]               (f:0.183,d:0.00134)    -->    [f:0.182,d:0.00133]    lambda:0.00573  #err= 20 update:7
+190(25) [phase:1,s:1,ds:0.025,dump:7,u:0:0]               (f:0.182,d:0.00153)    -->    [f:0.18,d:0.00151]     lambda:0.00935  #err= 33 update:7
+191(26) [phase:1,s:1,ds:0.025,dump:8,u:0:0]               (f:0.18,d:0.000941)    -->   [f:0.179,d:0.000937]    lambda:0.00478  #err= 35 update:7 armijo:1
+192(27) [phase:1,s:1,ds:0.025,dump:4,u:0:0]               (f:0.179,d:0.00117)    -->    [f:0.171,d:0.00102]    lambda:0.0249  #err= 14 update:4
+193(28) [phase:1,s:1,ds:0.025,dump:6,u:0:0]               (f:0.171,d:0.00111)    -->    [f:0.167,d:0.00109]    lambda:0.0159  #err= 25 update:5 armijo:1
+194(29) [phase:1,s:1,ds:0.025,dump:5,u:0:0]               (f:0.167,d:0.00136)    -->    [f:0.16,d:0.00131]     lambda:0.0318  #err= 11 update:5
+195(30) [phase:1,s:1,ds:0.025,dump:8,u:0:0]               (f:0.16,d:0.000514)    -->   [f:0.158,d:0.000512]    lambda:0.00881  #err= 17 update:7 armijo:1
+196(31) [phase:1,s:1,ds:0.025,dump:4,u:0:0]              (f:0.158,d:0.000787)    -->   [f:0.155,d:0.000776]    lambda:0.0193  #err=  8 update:3 armijo:1
+197(32) [phase:1,s:1,ds:0.025,dump:3,u:0:0]               (f:0.155,d:0.00101)    -->   [f:0.147,d:0.000977]    lambda:0.0409  #err=  7 update:2 armijo:1
+198(33) [phase:1,s:1,ds:0.025,dump:7,u:0:0]               (f:0.147,d:0.00124)    -->   [f:0.129,d:0.000412]    lambda:0.0824  #err= 57 update:7
+199(34) [phase:1,s:1,ds:0.025,dump:1,u:0:0]              (f:0.129,d:0.000559)    -->   [f:0.0837,d:0.000544]   lambda:0.172  #err=  1 armijo:1
+200(35) [phase:1,s:1,ds:0.025,dump:3,u:0:0]              (f:0.0837,d:0.000718)   -->   [f:0.0649,d:0.000579]   lambda:0.196  #err=  5 update:2 armijo:1
+201(36) [phase:1,s:1,ds:0.025,dump:3,u:0:0]              (f:0.0649,d:0.000586)   -->   [f:0.0404,d:0.000374]   lambda:0.343  #err=  6 update:3
+202(37) [phase:1,s:1,ds:0.025,dump:7,u:0:0]              (f:0.0404,d:0.000197)   -->   [f:0.0358,d:4.77e-05]   lambda:0.112  #err= 13 update:6 angle:1 armijo:1
+203(38) [phase:1,s:1,ds:0.025,dump:1,u:0:0]              (f:0.0358,d:0.000109)   -->   [f:0.0283,d:8.78e-05]   lambda:0.201  #err=  1 armijo:1
+204(39) [phase:1,s:1,ds:0.025,dump:2,u:0:0]              (f:0.0283,d:9.08e-05)   -->   [f:0.0241,d:7.68e-05]   lambda:0.16   #err=  2 armijo:2
+205(40) [phase:1,s:1,ds:0.025,dump:2,u:0:0]              (f:0.0241,d:7.77e-05)   -->   [f:0.0196,d:6.35e-05]   lambda:0.183  #err=  2 armijo:2
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Bocop_SecondOrderSingularRegulator
+206(41) [phase:1,s:1,ds:0.025,dump:1,u:0:0]              (f:0.0196,d:6.42e-05)   -->    [f:0.0137,d:4e-05]     lambda:0.4    #err=  1 armijo:1
+207(42) [phase:1,s:1,ds:0.025,dump:1,u:0:0]              (f:0.0137,d:3.94e-05)   -->  [f:0.00832,d:2.37e-05]   lambda:0.4    #err=  1 armijo:1
+208(43) [phase:1,s:1,ds:0.025,dump:0,u:0:0]             (f:0.00832,d:2.38e-05)   -->  [f:0.000692,d:1.18e-07]  lambda:1     
+209(44) [phase:1,s:1,ds:0.025,dump:0,u:0:0]             (f:0.000692,d:9.28e-08)  -->  [f:0.000176,d:7.28e-10]  lambda:1     
+210(45) [phase:1,s:1,ds:0.025,dump:0,u:0:0]             (f:0.000176,d:1.54e-09)  -->  [f:4.66e-05,d:3.87e-10]  lambda:1     
+211(46) [phase:1,s:1,ds:0.025,dump:0,u:0:0]             (f:4.66e-05,d:7.72e-10)  -->  [f:8.02e-06,d:1.32e-10]  lambda:1     
+212(47) [phase:1,s:1,ds:0.025,dump:0,u:0:0]             (f:8.02e-06,d:1.95e-10)  -->  [f:3.98e-07,d:9.2e-12]   lambda:1     
+213(48) [phase:1,s:1,ds:0.025,dump:0,u:0:0]             (f:3.98e-07,d:1.01e-11)  -->  [f:1.14e-09,d:2.61e-14]  lambda:1     
+214(49) [phase:1,s:1,ds:0.025,dump:0,u:0:0]             (f:1.14e-09,d:2.62e-14)  -->  [f:1.42e-12,d:3.69e-17]  lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 1               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 806             | N. System pars  = 2211            |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 1.46 [sec]      | timeout         = 0 [ms]          |
+| iteration       = 214             | Memory Used     = 222Kb(+27b)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 829             | Jacobian        = 214             |
+| Factorization   = 214             | Inversion       = 829             |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 5.0221e-10      | last ||d||_inf  = 3.8613e-16      |
+| last ||f||_1    = 1.4167e-12      | last ||d||_1    = 3.6867e-17      |
+| last ||f||_2    = 2.1151e-11      | last ||d||_2    = 7.6846e-17      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 0.533ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 24.2ms ]
+Check DuDxxpm (epsi=0.001):
+#ERR 1 DuDxxpm [cell=50 of 200 SEGMENT#0 range:(0,200)] #x=2 #u=1 #p=0 [ (u) * (xxpm) = 1 x 6 ]
+jac[  0,  5] =  -8.8638e+08 : -6.4616e+07  [A:FD] ---   8.2176e+08 : 92.71        [err:err(%)]
+
+#ERR 2 DuDxxpm [cell=51 of 200 SEGMENT#0 range:(0,200)] #x=2 #u=1 #p=0 [ (u) * (xxpm) = 1 x 6 ]
+jac[  0,  5] =  -8.8638e+08 : -6.4616e+07  [A:FD] ---   8.2176e+08 : 92.71        [err:err(%)]
+
+#ERR 3 DuDxxpm [cell=52 of 200 SEGMENT#0 range:(0,200)] #x=2 #u=1 #p=0 [ (u) * (xxpm) = 1 x 6 ]
+jac[  0,  5] =  -8.8638e+08 : -6.4616e+07  [A:FD] ---   8.2176e+08 : 92.71        [err:err(%)]
+
+#ERR 4 DuDxxpm [cell=53 of 200 SEGMENT#0 range:(0,200)] #x=2 #u=1 #p=0 [ (u) * (xxpm) = 1 x 6 ]
+jac[  0,  5] =  -8.8638e+08 : -6.4616e+07  [A:FD] ---   8.2176e+08 : 92.71        [err:err(%)]
+
+#ERR 5 DuDxxpm [cell=54 of 200 SEGMENT#0 range:(0,200)] #x=2 #u=1 #p=0 [ (u) * (xxpm) = 1 x 6 ]
+jac[  0,  5] =  -8.8638e+08 : -6.4616e+07  [A:FD] ---   8.2176e+08 : 92.71        [err:err(%)]
+
+#ERR 6 DuDxxpm [cell=55 of 200 SEGMENT#0 range:(0,200)] #x=2 #u=1 #p=0 [ (u) * (xxpm) = 1 x 6 ]
+jac[  0,  5] =  -8.8638e+08 : -6.4616e+07  [A:FD] ---   8.2176e+08 : 92.71        [err:err(%)]
+
+skipping... [ 4.134ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001):
+#ERR 1 DabcDxlxlpu [cell=50 of 200 SEGMENT#0 range:(0,200)] #x=#l=2 #p=0 #u=1 [ (xlp) x (xlxlpu) = 4 x 9 ]
+DbDx_L(0:1,0:1)[ 1, 1] =   1.7731e+07 : 2.2137e+07   [A:FD] ---   4.4061e+06 : 19.9         [err:err(%)]
+DbDx_R(0:1,0:1)[ 1, 1] =   1.7731e+07 : 2.2137e+07   [A:FD] ---   4.4061e+06 : 19.9         [err:err(%)]
+
+#ERR 2 DabcDxlxlpu [cell=51 of 200 SEGMENT#0 range:(0,200)] #x=#l=2 #p=0 #u=1 [ (xlp) x (xlxlpu) = 4 x 9 ]
+DbDx_L(0:1,0:1)[ 1, 1] =   1.3659e+07 : 1.7419e+07   [A:FD] ---   3.7602e+06 : 21.59        [err:err(%)]
+DbDx_R(0:1,0:1)[ 1, 1] =   1.3659e+07 : 1.7419e+07   [A:FD] ---   3.7602e+06 : 21.59        [err:err(%)]
+
+#ERR 3 DabcDxlxlpu [cell=52 of 200 SEGMENT#0 range:(0,200)] #x=#l=2 #p=0 #u=1 [ (xlp) x (xlxlpu) = 4 x 9 ]
+DbDx_L(0:1,0:1)[ 1, 1] =   9.5104e+06 : 1.2542e+07   [A:FD] ---   3.0311e+06 : 24.17        [err:err(%)]
+DbDx_R(0:1,0:1)[ 1, 1] =   9.5104e+06 : 1.2542e+07   [A:FD] ---   3.0311e+06 : 24.17        [err:err(%)]
+
+#ERR 4 DabcDxlxlpu [cell=53 of 200 SEGMENT#0 range:(0,200)] #x=#l=2 #p=0 #u=1 [ (xlp) x (xlxlpu) = 4 x 9 ]
+DbDx_L(0:1,0:1)[ 1, 1] =   5.2447e+06 : 7.4088e+06   [A:FD] ---   2.1641e+06 : 29.21        [err:err(%)]
+DbDx_R(0:1,0:1)[ 1, 1] =   5.2447e+06 : 7.4088e+06   [A:FD] ---   2.1641e+06 : 29.21        [err:err(%)]
+
+#ERR 5 DabcDxlxlpu [cell=54 of 200 SEGMENT#0 range:(0,200)] #x=#l=2 #p=0 #u=1 [ (xlp) x (xlxlpu) = 4 x 9 ]
+DbDx_L(0:1,0:1)[ 1, 1] =   8.7371e+05 : 1.7844e+06   [A:FD] ---   9.1071e+05 : 51.04        [err:err(%)]
+DbDx_R(0:1,0:1)[ 1, 1] =   8.7371e+05 : 1.7844e+06   [A:FD] ---   9.1071e+05 : 51.04        [err:err(%)]
+ [ 23.52ms ]
+Check DodeDxp (epsi=0.001): all OK [ 0.515ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 24.12ms ]
+target [Lagrange,Mayer]            = [ 0.765, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 1.429e-08, 6.022e-07 ]
+All Done Folks!

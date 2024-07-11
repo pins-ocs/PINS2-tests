@@ -1,0 +1,337 @@
++-------------------------- MODEL:BangBangDH ---------------------------+
++................................ DIMS .................................+
+| dims                      = u=3, q=1, x=3, p=1, bc=6 of 6             |
+| total                     = nZ=613, nP=1916, nUC=300, Q=101           |
+| index start               = omega=606, p=612                          |
+| post processing           = n_post=1                                  |
++................................ MESH .................................+
+| num nodes / segments      = 101 / 1                                   |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 3                               |
+| mesh class pointer        = 0x7ff7bde71138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 613 x 613                                 |
+| nblock/block size         = 100 / 6                                   |
+| qr/qx/nr/nx               = 6 / 6 / 1 / 1                             |
+| last blok rows x cols     = 19 x 19                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x1                                                       |
+| [ 1] initial_x2                                                       |
+| [ 2] initial_x3                                                       |
+| [ 3] final_x1                                                         |
+| [ 4] final_x2                                                         |
+| [ 5] final_x3                                                         |
++..................... Controls penalties/barriers .....................+
+uControl = { COSLOG (BARRIER) epsilon=0.1, tolerance=0.1 }               
++......................... Constraints type LT .........................+
+Tbarrier = { LT: BarrierLog0 [tolerance=0.01, epsilon=0] active }        
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 101                                                    
+  Segment N.0: s0 = 0 length = 1 npts = 101 no data set                  
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|.......................... T_guess = 10 ...............................|
+|............................... WU = 1 ................................|
+|............................ kappa = 0 ................................|
+|.......................... u_epsi0 = 0.1 ..............................|
+|.......................... u_epsi1 = 1e-05 ............................|
+|........................... u_tol0 = 0.1 ..............................|
+|........................... u_tol1 = 1e-05 ............................|
+|............................. x1_f = 0 ................................|
+|............................. x1_i = 0 ................................|
+|............................. x2_f = 0 ................................|
+|............................. x2_i = -1.3 .............................|
+|............................. x3_f = 0 ................................|
+|............................. x3_i = -1.3 .............................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=14.23/3.683/6.136, |L|=14.11/3.64/6.062 |B|=0/0/0, |BL|=0/0/0, PARS=1/1/1, U=0/0/0
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangDH
+  1 [dump:10,u:0:0]       (f:2.55,d:19.2)      -->      [f:2.27,d:16.3]      lambda:0.0282  #err= 33 update:10
+  2 [dump:0,u:0:0]       (f:2.27,d:0.844)      -->     [f:1.72,d:0.647]      lambda:0.252 
+  3 [dump:1,u:0:0]       (f:1.72,d:0.802)      -->     [f:0.803,d:0.469]     lambda:0.7    #err=  2 update:1
+  4 [dump:1,u:0:0]       (f:0.803,d:2.16)      -->     [f:0.662,d:2.05]      lambda:0.4    #err=  1 armijo:1
+  5 [dump:2,u:0:0]       (f:0.662,d:7.05)      -->     [f:0.977,d:1.47]      lambda:0.38   #err=  2 angle:1 armijo:2
+  6 [dump:1,u:0:0]       (f:0.977,d:1.62)      -->     [f:0.364,d:1.35]      lambda:0.4    #err=  1 armijo:1
+  7 [dump:0,u:0:0]       (f:0.364,d:1.54)      -->     [f:0.138,d:0.426]     lambda:1     
+  8 [dump:0,u:0:0]       (f:0.138,d:0.272)     -->    [f:0.138,d:0.0727]     lambda:1     
+  9 [dump:0,u:0:0]      (f:0.138,d:0.0634)     -->    [f:0.0165,d:0.0105]    lambda:1     
+ 10 [dump:0,u:0:0]      (f:0.0165,d:0.0108)    -->  [f:0.000261,d:0.000137]  lambda:1     
+ 11 [dump:0,u:0:0]    (f:0.000261,d:0.000136)  -->  [f:5.14e-08,d:3.17e-08]  lambda:1     
+ 12 [dump:0,u:0:0]    (f:5.14e-08,d:3.17e-08)  -->  [f:9.41e-15,d:2.19e-15]  lambda:1     
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:12,phase:1,s:0.2,ds:0.2] |X|=19.7/1.243/3.643, |L|=19.7/1.239/3.643 |B|=0/0/0, |BL|=8.119e-24/1.502e-23/1.065e-23, PARS=0.4591/0.4591/0.4591, U=1.819/0.9268/0.9792
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangDH
+13 (1 ) [phase:1,s:0.2,ds:0.2,dump:2,u:0:0]                (f:0.618,d:1.26)      -->     [f:0.598,d:1.22]      lambda:0.16   #err=  2 armijo:2
+14 (2 ) [phase:1,s:0.2,ds:0.2,dump:7,u:0:0]                (f:0.598,d:9.79)      -->      [f:0.6,d:9.73]       lambda:0.00878  #err= 18 update:3 armijo:4
+15 (3 ) [phase:1,s:0.2,ds:0.2,dump:2,u:0:0]                  (f:0.6,d:26)        -->      [f:1.01,d:16.7]      lambda:0.0225  #err=  2 armijo:2
+16 (4 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]                (f:1.01,d:0.518)      -->     [f:0.578,d:0.172]     lambda:1     
+17 (5 ) [phase:1,s:0.2,ds:0.2,dump:2,u:0:0]                (f:0.578,d:1.26)      -->     [f:0.562,d:1.16]      lambda:0.16   #err=  2 armijo:2
+18 (6 ) [phase:1,s:0.2,ds:0.2,dump:8,u:0:0]                (f:0.562,d:21.1)      -->     [f:0.562,d:21.1]      lambda:0.000655  #err=  8 armijo:8
+19 (7 ) [phase:1,s:0.2,ds:0.2,dump:6,u:0:0]                (f:0.562,d:37.2)      -->     [f:0.562,d:37.2]      lambda:0.000275  #err= 10 update:1 armijo:5
+20 (8 ) [phase:1,s:0.2,ds:0.2,dump:5,u:0:0]                (f:0.562,d:33.9)      -->     [f:0.562,d:33.9]      lambda:0.000255  #err=  5 armijo:5
+21 (9 ) [phase:1,s:0.2,ds:0.2,dump:6,u:0:0]                (f:0.562,d:57.6)      -->     [f:0.562,d:57.6]      lambda:0.000172  #err=  7 update:1 armijo:5
+22 (10) [phase:1,s:0.2,ds:0.2,dump:4,u:0:0]                (f:0.562,d:27.2)      -->     [f:0.562,d:27.2]      lambda:0.000503  #err=  4 armijo:4
+23 (11) [phase:1,s:0.2,ds:0.2,dump:5,u:0:0]                (f:0.562,d:26.7)      -->     [f:0.562,d:26.7]      lambda:0.000345  #err=  5 armijo:5
+24 (12) [phase:1,s:0.2,ds:0.2,dump:6,u:0:0]                (f:0.562,d:74.2)      -->     [f:0.562,d:74.2]      lambda:0.000114  #err=  6 armijo:6
+25 (13) [phase:1,s:0.2,ds:0.2,dump:4,u:0:0]                (f:0.562,d:30.5)      -->     [f:0.562,d:30.5]      lambda:0.00041  #err=  4 armijo:4
+26 (14) [phase:1,s:0.2,ds:0.2,dump:5,u:0:0]                (f:0.562,d:27.7)      -->     [f:0.562,d:27.7]      lambda:0.000311  #err=  5 armijo:5
+27 (15) [phase:1,s:0.2,ds:0.2,dump:7,u:0:0]                (f:0.562,d:95.1)      -->     [f:0.562,d:95.1]      lambda:0.000133  #err= 16 update:2 armijo:5
+28 (16) [phase:1,s:0.2,ds:0.2,dump:3,u:0:0]                (f:0.562,d:17.2)      -->     [f:0.562,d:17.2]      lambda:0.00111  #err=  3 armijo:3
+29 (17) [phase:1,s:0.2,ds:0.2,dump:14,u:0:0]               (f:0.562,d:22.7)      -->     [f:0.561,d:22.7]      lambda:0.000413  #err= 51 update:9 armijo:5
+30 (18) [phase:1,s:0.2,ds:0.2,dump:2,u:0:0]                 (f:0.561,d:125)      -->       [f:1.6,d:102]       lambda:0.00488  #err=  2 armijo:2
+31 (19) [phase:1,s:0.2,ds:0.2,dump:1,u:0:0]                 (f:1.6,d:0.469)      -->     [f:1.06,d:0.166]      lambda:0.4    #err=  1 armijo:1
+32 (20) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]                (f:1.06,d:0.222)      -->    [f:0.336,d:0.0872]     lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangDH
+33 (21) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]               (f:0.336,d:0.0831)     -->    [f:0.109,d:0.0201]     lambda:1     
+34 (22) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]               (f:0.109,d:0.0159)     -->   [f:0.0023,d:0.00076]    lambda:1     
+35 (23) [phase:1,s:0.2,ds:0.2,dump:1,u:0:0]              (f:0.0023,d:0.000795)   -->  [f:0.000117,d:3.84e-05]  lambda:0.95   #err=  1 angle:1 armijo:1
+36 (24) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:0.000117,d:3.82e-05)  -->  [f:1.49e-08,d:4.44e-09]  lambda:1     
+37 (25) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:1.49e-08,d:4.44e-09)  -->  [f:3.69e-15,d:1.32e-16]  lambda:1     
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:37,phase:1,s:0.5,ds:0.3] |X|=27.86/1.877/5.637, |L|=27.86/1.863/5.629 |B|=0/0/0, |BL|=2.573e-24/2.573e-24/2.573e-24, PARS=0.2755/0.2755/0.2755, U=0.9421/0.3546/0.4771
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangDH
+38 (1 ) [phase:1,s:0.5,ds:0.3,dump:5,u:0:0]                (f:1.54,d:0.605)      -->     [f:1.53,d:0.603]      lambda:0.0102  #err=  5 armijo:5
+39 (2 ) [phase:1,s:0.5,ds:0.3,dump:6,u:0:0]                 (f:1.53,d:3.75)      -->      [f:1.52,d:3.75]      lambda:0.000622  #err=  6 armijo:6
+40 (3 ) [phase:1,s:0.5,ds:0.3,dump:5,u:0:0]                 (f:1.52,d:3.2)       -->      [f:1.52,d:3.2]       lambda:0.000383  #err=  5 armijo:5
+41 (4 ) [phase:1,s:0.5,ds:0.3,dump:8,u:0:0]                 (f:1.52,d:93.3)      -->      [f:1.52,d:93.3]      lambda:1.92e-05  #err=  8 armijo:8
+42 (5 ) [phase:1,s:0.5,ds:0.3,dump:2,u:0:0]                 (f:1.52,d:2.19)      -->      [f:1.52,d:2.19]      lambda:0.00105  #err=  2 armijo:2
+43 (6 ) [phase:1,s:0.5,ds:0.3,dump:9,u:0:0]                 (f:1.52,d:6.34)      -->      [f:1.52,d:6.34]      lambda:0.000262  #err=  9 armijo:9
+44 (7 ) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]                 (f:1.52,d:3.87)      -->      [f:1.52,d:3.87]      lambda:0.000622  #err=  4 armijo:4
+45 (8 ) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]                 (f:1.52,d:2.83)      -->      [f:1.52,d:2.83]      lambda:0.000957  #err=  4 armijo:4
+46 (9 ) [phase:1,s:0.5,ds:0.3,dump:5,u:0:0]                 (f:1.52,d:3.28)      -->      [f:1.52,d:3.28]      lambda:0.000475  #err=  5 armijo:5
+47 (10) [phase:1,s:0.5,ds:0.3,dump:6,u:0:0]                 (f:1.52,d:9.99)      -->      [f:1.52,d:9.99]      lambda:0.000134  #err=  6 armijo:6
+48 (11) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]                 (f:1.52,d:4.26)      -->      [f:1.52,d:4.26]      lambda:0.000444  #err=  4 armijo:4
+49 (12) [phase:1,s:0.5,ds:0.3,dump:5,u:0:0]                 (f:1.52,d:4.07)      -->      [f:1.52,d:4.07]      lambda:0.000324  #err=  5 armijo:5
+50 (13) [phase:1,s:0.5,ds:0.3,dump:6,u:0:0]                 (f:1.52,d:13.8)      -->      [f:1.52,d:13.8]      lambda:0.000111  #err=  6 armijo:6
+51 (14) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]                 (f:1.52,d:3.31)      -->      [f:1.52,d:3.31]      lambda:0.000404  #err=  4 armijo:4
+52 (15) [phase:1,s:0.5,ds:0.3,dump:8,u:0:0]                 (f:1.52,d:62.9)      -->      [f:1.52,d:62.9]      lambda:1.98e-05  #err=  8 armijo:8
+53 (16) [phase:1,s:0.5,ds:0.3,dump:3,u:0:0]                 (f:1.52,d:3.48)      -->      [f:1.52,d:3.48]      lambda:0.000427  #err=  3 armijo:3
+54 (17) [phase:1,s:0.5,ds:0.3,dump:13,u:0:0]                (f:1.52,d:14.8)      -->      [f:1.52,d:14.8]      lambda:0.00011  #err= 25 update:5 armijo:8
+55 (18) [phase:1,s:0.5,ds:0.3,dump:3,u:0:0]                 (f:1.52,d:3.03)      -->      [f:1.51,d:3.03]      lambda:0.00101  #err=  3 armijo:3
+56 (19) [phase:1,s:0.5,ds:0.3,dump:8,u:0:0]                 (f:1.51,d:2.43)      -->      [f:1.51,d:2.43]      lambda:0.000655  #err=  8 armijo:8
+57 (20) [phase:1,s:0.5,ds:0.3,dump:9,u:0:0]                 (f:1.51,d:119)       -->      [f:1.51,d:119]       lambda:1.01e-05  #err=  9 armijo:9
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangDH
+58 (21) [phase:1,s:0.5,ds:0.3,dump:2,u:0:0]                 (f:1.51,d:3.39)      -->      [f:1.51,d:3.39]      lambda:0.000761  #err=  2 armijo:2
+59 (22) [phase:1,s:0.5,ds:0.3,dump:8,u:0:0]                 (f:1.51,d:2.82)      -->      [f:1.51,d:2.82]      lambda:0.000655  #err=  8 armijo:8
+60 (23) [phase:1,s:0.5,ds:0.3,dump:6,u:0:0]                 (f:1.51,d:12.6)      -->      [f:1.51,d:12.6]      lambda:0.000157  #err=  6 armijo:6
+61 (24) [phase:1,s:0.5,ds:0.3,dump:3,u:0:0]                 (f:1.51,d:2.51)      -->      [f:1.51,d:2.51]      lambda:0.0012  #err=  3 armijo:3
+62 (25) [phase:1,s:0.5,ds:0.3,dump:9,u:0:0]                 (f:1.51,d:3.15)      -->      [f:1.51,d:3.15]      lambda:0.000459  #err= 13 update:1 armijo:8
+63 (26) [phase:1,s:0.5,ds:0.3,dump:7,u:0:0]                 (f:1.51,d:19.1)      -->      [f:1.51,d:19.1]      lambda:5.26e-05  #err=  7 armijo:7
+64 (27) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]                 (f:1.51,d:5.09)      -->      [f:1.51,d:5.09]      lambda:0.000279  #err=  4 armijo:4
+65 (28) [phase:1,s:0.5,ds:0.3,dump:5,u:0:0]                 (f:1.51,d:6.36)      -->      [f:1.51,d:6.36]      lambda:0.000256  #err=  5 armijo:5
+66 (29) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]                 (f:1.51,d:4.16)      -->      [f:1.51,d:4.16]      lambda:0.000615  #err=  4 armijo:4
+67 (30) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]                 (f:1.51,d:2.56)      -->      [f:1.51,d:2.56]      lambda:0.000952  #err=  4 armijo:4
+68 (31) [phase:1,s:0.5,ds:0.3,dump:6,u:0:0]                 (f:1.51,d:5.6)       -->      [f:1.51,d:5.6]       lambda:0.00019  #err=  6 armijo:6
+69 (32) [phase:1,s:0.5,ds:0.3,dump:6,u:0:0]                 (f:1.51,d:11.6)      -->      [f:1.51,d:11.6]      lambda:8.46e-05  #err=  6 armijo:6
+70 (33) [phase:1,s:0.5,ds:0.3,dump:5,u:0:0]                 (f:1.51,d:6.49)      -->      [f:1.5,d:6.49]       lambda:0.000141  #err=  5 armijo:5
+71 (34) [phase:1,s:0.5,ds:0.3,dump:6,u:0:0]                 (f:1.5,d:13.6)       -->      [f:1.5,d:13.6]       lambda:7.3e-05  #err=  6 armijo:6
+72 (35) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]                 (f:1.5,d:5.95)       -->      [f:1.5,d:5.95]       lambda:0.000328  #err=  4 armijo:4
+73 (36) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]                 (f:1.5,d:3.24)       -->      [f:1.5,d:3.24]       lambda:0.000696  #err=  4 armijo:4
+74 (37) [phase:1,s:0.5,ds:0.3,dump:5,u:0:0]                 (f:1.5,d:4.49)       -->      [f:1.5,d:4.49]       lambda:0.000405  #err=  5 armijo:5
+75 (38) [phase:1,s:0.5,ds:0.3,dump:5,u:0:0]                 (f:1.5,d:4.41)       -->      [f:1.5,d:4.41]       lambda:0.000309  #err=  5 armijo:5
+76 (39) [phase:1,s:0.5,ds:0.3,dump:6,u:0:0]                 (f:1.5,d:10.5)       -->      [f:1.5,d:10.5]       lambda:0.000108  #err=  6 armijo:6
+77 (40) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]                 (f:1.5,d:5.51)       -->      [f:1.5,d:5.51]       lambda:0.000399  #err=  4 armijo:4
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangDH
+78 (41) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]                 (f:1.5,d:2.85)       -->      [f:1.5,d:2.85]       lambda:0.000767  #err=  4 armijo:4
+79 (42) [phase:1,s:0.5,ds:0.3,dump:5,u:0:0]                   (f:1.5,d:5)        -->        [f:1.5,d:5]        lambda:0.000425  #err=  5 armijo:5
+80 (43) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]                 (f:1.5,d:3.23)       -->      [f:1.5,d:3.23]       lambda:0.000792  #err=  4 armijo:4
+81 (44) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]                 (f:1.5,d:3.12)       -->      [f:1.5,d:3.12]       lambda:0.00108  #err=  4 armijo:4
+82 (45) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]                 (f:1.5,d:2.09)       -->      [f:1.5,d:2.09]       lambda:0.00126  #err=  4 armijo:4
+83 (46) [phase:1,s:0.5,ds:0.3,dump:6,u:0:0]                 (f:1.5,d:5.18)       -->      [f:1.49,d:5.18]      lambda:0.000218  #err=  6 armijo:6
+84 (47) [phase:1,s:0.5,ds:0.3,dump:6,u:0:0]                 (f:1.49,d:13.9)      -->      [f:1.49,d:13.9]      lambda:9.08e-05  #err=  6 armijo:6
+85 (48) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]                 (f:1.49,d:4.39)      -->      [f:1.49,d:4.39]      lambda:0.000366  #err=  4 armijo:4
+86 (49) [phase:1,s:0.5,ds:0.3,dump:5,u:0:0]                 (f:1.49,d:6.78)      -->      [f:1.49,d:6.78]      lambda:0.000294  #err=  5 armijo:5
+87 (50) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]                 (f:1.49,d:3.05)      -->      [f:1.49,d:3.05]      lambda:0.000658  #err=  4 armijo:4
+88 (51) [phase:1,s:0.5,ds:0.3,dump:6,u:0:0]                 (f:1.49,d:7.55)      -->      [f:1.49,d:7.55]      lambda:0.000158  #err=  6 armijo:6
+89 (52) [phase:1,s:0.5,ds:0.3,dump:5,u:0:0]                 (f:1.49,d:6.46)      -->      [f:1.49,d:6.46]      lambda:0.000193  #err=  5 armijo:5
+90 (53) [phase:1,s:0.5,ds:0.3,dump:5,u:0:0]                 (f:1.49,d:7.18)      -->      [f:1.49,d:7.18]      lambda:0.000213  #err=  5 armijo:5
+91 (54) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]                 (f:1.49,d:4.38)      -->      [f:1.49,d:4.38]      lambda:0.000561  #err=  4 armijo:4
+92 (55) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]                 (f:1.49,d:2.84)      -->      [f:1.49,d:2.84]      lambda:0.000909  #err=  4 armijo:4
+93 (56) [phase:1,s:0.5,ds:0.3,dump:5,u:0:0]                 (f:1.49,d:3.55)      -->      [f:1.49,d:3.55]      lambda:0.000463  #err=  5 armijo:5
+94 (57) [phase:1,s:0.5,ds:0.3,dump:6,u:0:0]                 (f:1.49,d:10.5)      -->      [f:1.49,d:10.5]      lambda:0.000132  #err=  6 armijo:6
+95 (58) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]                 (f:1.49,d:4.26)      -->      [f:1.49,d:4.26]      lambda:0.000442  #err=  4 armijo:4
+96 (59) [phase:1,s:0.5,ds:0.3,dump:5,u:0:0]                 (f:1.49,d:4.92)      -->      [f:1.49,d:4.92]      lambda:0.000323  #err=  5 armijo:5
+97 (60) [phase:1,s:0.5,ds:0.3,dump:5,u:0:0]                 (f:1.49,d:5.52)      -->      [f:1.49,d:5.52]      lambda:0.000276  #err=  5 armijo:5
+NLsolver[BangBangDH]::solve_with_continuation(phase=1,...) found:
+NLsolver[BangBangDH]::solve()
+#phase=1 #it=0/60 lambda=0.000276 tolerance=1.78e-07 |f|_1=1.488 |f|_inf=26.89 |d|_1=5.523 |d|_inf=33.47
+at phase 1, iter 97: NLsolver[BangBangDH]::solve, Too many iterations
+
+
+Continuation step N.1 s:0.2->0.35, ds=0.15
+[iter:97,phase:1,s:0.35,ds:0.15] |X|=13.93/0.9385/2.819, |L|=13.93/0.9313/2.814 |B|=0/0/0, |BL|=2.573e-24/2.573e-24/2.573e-24, PARS=0.1377/0.1377/0.1377, U=0.9421/0.3546/0.4771
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangDH
+98 (1 ) [phase:1,s:0.35,ds:0.15,dump:1,u:0:0]              (f:0.77,d:0.121)      -->     [f:0.498,d:0.053]     lambda:0.4    #err=  1 armijo:1
+99 (2 ) [phase:1,s:0.35,ds:0.15,dump:0,u:0:0]             (f:0.498,d:0.0491)     -->    [f:0.0795,d:0.0235]    lambda:1     
+100(3 ) [phase:1,s:0.35,ds:0.15,dump:0,u:0:0]             (f:0.0795,d:0.0153)    -->   [f:0.00374,d:0.00122]   lambda:1     
+101(4 ) [phase:1,s:0.35,ds:0.15,dump:0,u:0:0]            (f:0.00374,d:0.0012)    -->  [f:8.24e-06,d:1.73e-06]  lambda:1     
+102(5 ) [phase:1,s:0.35,ds:0.15,dump:0,u:0:0]           (f:8.24e-06,d:1.73e-06)  -->  [f:4.1e-11,d:1.41e-11]   lambda:1     
+103(6 ) [phase:1,s:0.35,ds:0.15,dump:0,u:0:0]           (f:4.1e-11,d:1.41e-11)   -->  [f:3.05e-15,d:8.53e-17]  lambda:1     
+
+Continuation step N.1 s:0.35->0.575, ds=0.225
+[iter:103,phase:1,s:0.575,ds:0.225] |X|=12.23/0.7994/2.45, |L|=12.23/0.789/2.441 |B|=0/0/0, |BL|=1.085e-27/1.085e-27/1.085e-27, PARS=0.1215/0.1215/0.1215, U=0.9402/0.3614/0.4801
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangDH
+104(1 ) [phase:1,s:0.575,ds:0.225,dump:1,u:0:0]           (f:0.665,d:0.0849)     -->    [f:0.286,d:0.0248]     lambda:0.673  #err=  1 angle:1 armijo:1
+105(2 ) [phase:1,s:0.575,ds:0.225,dump:0,u:0:0]            (f:0.286,d:0.035)     -->    [f:0.0327,d:0.0087]    lambda:1     
+106(3 ) [phase:1,s:0.575,ds:0.225,dump:1,u:0:0]          (f:0.0327,d:0.00715)    -->  [f:0.00211,d:0.000257]   lambda:0.95   #err=  1 angle:1 armijo:1
+107(4 ) [phase:1,s:0.575,ds:0.225,dump:0,u:0:0]         (f:0.00211,d:0.000263)   -->  [f:1.65e-06,d:5.56e-07]  lambda:1     
+108(5 ) [phase:1,s:0.575,ds:0.225,dump:0,u:0:0]         (f:1.65e-06,d:5.55e-07)  -->  [f:1.86e-12,d:9.85e-13]  lambda:1     
+
+Continuation step N.1 s:0.575->0.9125, ds=0.3375
+[iter:108,phase:1,s:0.9125,ds:0.3375] |X|=11.85/0.7354/2.322, |L|=11.85/0.7206/2.304 |B|=0/0/0, |BL|=3.478e-23/3.478e-23/3.478e-23, PARS=0.1123/0.1123/0.1123, U=0.9378/0.3689/0.4852
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangDH
+109(1 ) [phase:1,s:0.9125,ds:0.3375,dump:1,u:0:0]         (f:0.613,d:0.0682)     -->    [f:0.186,d:0.0243]     lambda:0.839  #err=  1 angle:1 armijo:1
+110(2 ) [phase:1,s:0.9125,ds:0.3375,dump:0,u:0:0]         (f:0.186,d:0.0303)     -->   [f:0.0178,d:0.00458]    lambda:1     
+111(3 ) [phase:1,s:0.9125,ds:0.3375,dump:1,u:0:0]        (f:0.0178,d:0.00412)    -->  [f:0.00102,d:0.000159]   lambda:0.95   #err=  1 angle:1 armijo:1
+112(4 ) [phase:1,s:0.9125,ds:0.3375,dump:0,u:0:0]       (f:0.00102,d:0.000156)   -->  [f:4.18e-07,d:1.57e-07]  lambda:1     
+113(5 ) [phase:1,s:0.9125,ds:0.3375,dump:0,u:0:0]       (f:4.18e-07,d:1.57e-07)  -->  [f:1.54e-13,d:6.63e-14]  lambda:1     
+
+Continuation step N.1 s:0.9125->1, ds=0.0875
+[iter:113,phase:1,s:1,ds:0.0875] |X|=2.125/0.1218/0.4024, |L|=2.125/0.1182/0.3966 |B|=0/0/0, |BL|=3.157e-23/3.157e-23/3.157e-23, PARS=0.0181/0.0181/0.0181, U=0.9346/0.3766/0.4928
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangDH
+114(1 ) [phase:1,s:1,ds:0.0875,dump:0,u:0:0]              (f:0.101,d:0.0114)     -->  [f:0.00505,d:0.000968]   lambda:1     
+115(2 ) [phase:1,s:1,ds:0.0875,dump:0,u:0:0]             (f:0.00505,d:0.00102)   -->  [f:1.68e-05,d:2.78e-06]  lambda:1     
+116(3 ) [phase:1,s:1,ds:0.0875,dump:0,u:0:0]            (f:1.68e-05,d:2.78e-06)  -->  [f:7.52e-11,d:2.3e-11]   lambda:1     
+117(4 ) [phase:1,s:1,ds:0.0875,dump:0,u:0:0]            (f:7.52e-11,d:2.3e-11)   -->  [f:3.2e-15,d:8.26e-17]   lambda:1     
+Continuation step N.2
+
+Continuation step N.2 s:0->0.2, ds=0.2
+[iter:117,phase:2,s:0.2,ds:0.2] |X|=0.3316/0.05725/0.1169, |L|=0.3316/0.05741/0.1172 |B|=0/0/0, |BL|=1.503e-26/1.503e-26/1.503e-26, PARS=0.05924/0.05924/0.05924, U=0.9338/0.3505/0.4744
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangDH
+118(1 ) [phase:2,s:0.2,ds:0.2,dump:1,u:0:0]               (f:0.0802,d:0.071)     -->    [f:0.0346,d:0.013]     lambda:0.95   #err=  1 angle:1 armijo:1
+119(2 ) [phase:2,s:0.2,ds:0.2,dump:1,u:0:0]               (f:0.0346,d:0.0127)    -->  [f:0.00222,d:0.000519]   lambda:0.95   #err=  1 angle:1 armijo:1
+120(3 ) [phase:2,s:0.2,ds:0.2,dump:1,u:0:0]             (f:0.00222,d:0.000513)   -->  [f:0.000114,d:2.53e-05]  lambda:0.95   #err=  1 angle:1 armijo:1
+121(4 ) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]             (f:0.000114,d:2.52e-05)  -->  [f:8.84e-09,d:3.22e-09]  lambda:1     
+122(5 ) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]             (f:8.84e-09,d:3.22e-09)  -->  [f:2.83e-15,d:1.34e-16]  lambda:1     
+
+Continuation step N.2 s:0.2->0.5, ds=0.3
+[iter:122,phase:2,s:0.5,ds:0.3] |X|=0.4259/0.07913/0.1498, |L|=0.4259/0.07941/0.1503 |B|=0/0/0, |BL|=5.199e-26/7.25e-26/5.589e-26, PARS=0.07178/0.07178/0.07178, U=0.9439/0.3223/0.4601
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangDH
+123(1 ) [phase:2,s:0.5,ds:0.3,dump:1,u:0:0]                (f:0.108,d:0.263)     -->     [f:0.125,d:0.104]     lambda:0.43   #err=  1 armijo:1
+124(2 ) [phase:2,s:0.5,ds:0.3,dump:1,u:0:0]               (f:0.125,d:0.0589)     -->    [f:0.0207,d:0.0067]    lambda:0.95   #err=  1 angle:1 armijo:1
+125(3 ) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]              (f:0.0207,d:0.00628)    -->  [f:0.00023,d:4.99e-05]   lambda:1     
+126(4 ) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]             (f:0.00023,d:5.03e-05)   -->  [f:3.85e-08,d:9.63e-09]  lambda:1     
+127(5 ) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]             (f:3.85e-08,d:9.63e-09)  -->  [f:3.78e-15,d:4.08e-16]  lambda:1     
+
+Continuation step N.2 s:0.5->0.95, ds=0.45
+[iter:127,phase:2,s:0.95,ds:0.45] |X|=0.409/0.08914/0.1685, |L|=0.409/0.08984/0.1692 |B|=0/0/0, |BL|=7.203e-24/8.119e-24/7.261e-24, PARS=0.07378/0.07378/0.07378, U=0.9518/0.241/0.4382
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangDH
+128(1 ) [phase:2,s:0.95,ds:0.45,dump:2,u:0:0]              (f:0.112,d:2.13)      -->     [f:0.586,d:0.744]     lambda:0.195  #err=  2 armijo:2
+129(2 ) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]             (f:0.586,d:0.0871)     -->    [f:0.0832,d:0.0232]    lambda:1     
+130(3 ) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]             (f:0.0832,d:0.0239)    -->  [f:0.00111,d:0.000139]   lambda:1     
+131(4 ) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:0.00111,d:0.000142)   -->  [f:8.37e-08,d:3.18e-08]  lambda:1     
+132(5 ) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:8.37e-08,d:3.18e-08)  -->  [f:5.85e-15,d:1.47e-15]  lambda:1     
+
+Continuation step N.2 s:0.95->1, ds=0.05
+[iter:132,phase:2,s:1,ds:0.05] |X|=0.005645/0.0008403/0.001596, |L|=0.005645/0.0008346/0.001593 |B|=0/0/0, |BL|=2.001e-24/2.001e-24/2.001e-24, PARS=0.0005792/0.0005792/0.0005792, U=0.9538/0.2736/0.4851
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangDH
+133(1 ) [phase:2,s:1,ds:0.05,dump:0,u:0:0]               (f:0.00101,d:0.00132)   -->  [f:1.1e-05,d:2.53e-06]   lambda:1     
+134(2 ) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:1.1e-05,d:2.53e-06)   -->  [f:3.05e-11,d:8.36e-12]  lambda:1     
+135(3 ) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:3.05e-11,d:8.36e-12)  -->  [f:2.78e-15,d:1.62e-16]  lambda:1     
+Continuation step N.3
+
+Continuation step N.3 s:0->0.2, ds=0.2
+[iter:135,phase:3,s:0.2,ds:0.2] |X|=0.4467/0.03004/0.08568, |L|=0.4467/0.0295/0.08467 |B|=0/0/0, |BL|=1.906e-28/1.906e-28/1.906e-28, PARS=0.02706/0.02706/0.02706, U=0.967/0.2869/0.5057
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangDH
+136(1 ) [phase:3,s:0.2,ds:0.2,dump:1,u:0:0]               (f:0.0275,d:0.0137)    -->  [f:0.00219,d:0.000624]   lambda:0.95   #err=  1 angle:1 armijo:1
+137(2 ) [phase:3,s:0.2,ds:0.2,dump:0,u:0:0]             (f:0.00219,d:0.000623)   -->  [f:9.26e-07,d:1.56e-07]  lambda:1     
+138(3 ) [phase:3,s:0.2,ds:0.2,dump:0,u:0:0]             (f:9.26e-07,d:1.56e-07)  -->  [f:1.21e-13,d:3.28e-14]  lambda:1     
+
+Continuation step N.3 s:0.2->0.5, ds=0.3
+[iter:138,phase:3,s:0.5,ds:0.3] |X|=0.8568/0.04459/0.1361, |L|=0.8568/0.04384/0.1349 |B|=0/0/0, |BL|=3.26e-23/3.26e-23/3.26e-23, PARS=0.04051/0.04051/0.04051, U=0.9825/0.3047/0.5329
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangDH
+139(1 ) [phase:3,s:0.5,ds:0.3,dump:1,u:0:0]               (f:0.0405,d:0.0176)    -->   [f:0.0053,d:0.000991]   lambda:0.95   #err=  1 angle:1 armijo:1
+140(2 ) [phase:3,s:0.5,ds:0.3,dump:0,u:0:0]              (f:0.0053,d:0.000976)   -->  [f:2.82e-06,d:3.27e-07]  lambda:1     
+141(3 ) [phase:3,s:0.5,ds:0.3,dump:0,u:0:0]             (f:2.82e-06,d:3.27e-07)  -->  [f:5.19e-13,d:9.38e-14]  lambda:1     
+
+Continuation step N.3 s:0.5->0.95, ds=0.45
+[iter:141,phase:3,s:0.95,ds:0.45] |X|=1.7/0.05706/0.2021, |L|=1.7/0.05623/0.2011 |B|=0/0/0, |BL|=9.637e-24/9.637e-24/9.637e-24, PARS=0.06029/0.06029/0.06029, U=0.999/0.3293/0.5718
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangDH
+142(1 ) [phase:3,s:0.95,ds:0.45,dump:2,u:0:0]             (f:0.0541,d:0.0188)    -->    [f:0.0449,d:0.0152]    lambda:0.16   #err=  2 armijo:2
+143(2 ) [phase:3,s:0.95,ds:0.45,dump:0,u:0:0]             (f:0.0449,d:0.0139)    -->   [f:0.0132,d:0.00837]    lambda:1     
+144(3 ) [phase:3,s:0.95,ds:0.45,dump:1,u:0:0]            (f:0.0132,d:0.00667)    -->   [f:0.00816,d:0.00117]   lambda:0.95   #err=  1 angle:1 armijo:1
+145(4 ) [phase:3,s:0.95,ds:0.45,dump:1,u:0:0]            (f:0.00816,d:0.00235)   -->  [f:0.00393,d:0.000227]   lambda:0.4    #err=  1 armijo:1
+146(5 ) [phase:3,s:0.95,ds:0.45,dump:0,u:0:0]           (f:0.00393,d:0.000208)   -->  [f:4.11e-05,d:6.18e-06]  lambda:1     
+147(6 ) [phase:3,s:0.95,ds:0.45,dump:0,u:0:0]           (f:4.11e-05,d:5.29e-06)  -->  [f:2.23e-07,d:3.02e-08]  lambda:1     
+148(7 ) [phase:3,s:0.95,ds:0.45,dump:0,u:0:0]           (f:2.23e-07,d:3.06e-08)  -->  [f:8.14e-12,d:1.17e-12]  lambda:1     
+
+Continuation step N.3 s:0.95->1, ds=0.05
+[iter:148,phase:3,s:1,ds:0.05] |X|=2.335/0.01119/0.1354, |L|=2.335/0.01114/0.1354 |B|=0/0/0, |BL|=6.713e-26/6.713e-26/6.713e-26, PARS=0.006397/0.006397/0.006397, U=1/0.3333/0.5773
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangDH
+149(1 ) [phase:3,s:1,ds:0.05,dump:8,u:0:0]                (f:0.00977,d:0.565)    -->    [f:0.00975,d:0.564]    lambda:0.000655  #err=  8 armijo:8
+150(2 ) [phase:3,s:1,ds:0.05,dump:3,u:0:0]               (f:0.00975,d:0.0869)    -->   [f:0.00957,d:0.0848]    lambda:0.00246  #err=  3 armijo:3
+151(3 ) [phase:3,s:1,ds:0.05,dump:4,u:0:0]               (f:0.00957,d:0.00159)   -->   [f:0.00694,d:0.00162]   lambda:0.0256  #err=  4 armijo:4
+152(4 ) [phase:3,s:1,ds:0.05,dump:0,u:0:0]               (f:0.00694,d:0.00172)   -->   [f:0.00431,d:0.00131]   lambda:0.24  
+153(5 ) [phase:3,s:1,ds:0.05,dump:0,u:0:0]               (f:0.00431,d:0.00131)   -->  [f:0.00164,d:1.24e-06]   lambda:1     
+154(6 ) [phase:3,s:1,ds:0.05,dump:0,u:0:0]              (f:0.00164,d:1.11e-06)   -->  [f:0.000175,d:1.77e-08]  lambda:1     
+155(7 ) [phase:3,s:1,ds:0.05,dump:0,u:0:0]              (f:0.000175,d:2.36e-08)  -->  [f:3.82e-06,d:6.21e-10]  lambda:1     
+156(8 ) [phase:3,s:1,ds:0.05,dump:0,u:0:0]              (f:3.82e-06,d:6.59e-10)  -->  [f:3.09e-09,d:5.97e-13]  lambda:1     
+157(9 ) [phase:3,s:1,ds:0.05,dump:0,u:0:0]              (f:3.09e-09,d:5.98e-13)  -->  [f:5.62e-15,d:5.04e-17]  lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 3               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 613             | N. System pars  = 1916            |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 1.05 [sec]      | timeout         = 0 [ms]          |
+| iteration       = 157             | Memory Used     = 277Kb(+10b)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 734             | Jacobian        = 157             |
+| Factorization   = 157             | Inversion       = 734             |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 9.7522e-13      | last ||d||_inf  = 2.7332e-16      |
+| last ||f||_1    = 5.6247e-15      | last ||d||_1    = 5.0419e-17      |
+| last ||f||_2    = 5.1204e-14      | last ||d||_2    = 6.8945e-17      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 0.336ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 19.93ms ]
+Check DuDxxpm (epsi=0.001): all OK [ 10.66ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001): all OK [ 22.09ms ]
+Check DodeDxp (epsi=0.001): all OK [ 0.616ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 23ms ]
+target [Lagrange,Mayer]            = [ 0, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 4.402e-05, 0 ]
+Optimization parameters:
+T: 4.02535240042789422
+All Done Folks!

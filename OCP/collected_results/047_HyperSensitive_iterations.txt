@@ -1,0 +1,100 @@
++------------------------ MODEL:HyperSensitive -------------------------+
++................................ DIMS .................................+
+| dims                      = u=1, q=1, x=1, p=0, bc=2 of 2             |
+| total                     = nZ=104, nP=357, nUC=50, Q=51              |
+| index start               = omega=102, p=104                          |
+| post processing           = n_post=0                                  |
++................................ MESH .................................+
+| num nodes / segments      = 51 / 1                                    |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 0                               |
+| mesh class pointer        = 0x7ff7b1214138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 104 x 104                                 |
+| nblock/block size         = 50 / 2                                    |
+| qr/qx/nr/nx               = 2 / 2 / 0 / 0                             |
+| last blok rows x cols     = 6 x 6                                     |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_y                                                        |
+| [ 1] final_y                                                          |
++.................... No control penalties/barriers ....................+
++....................... No constraints type LT ........................+
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 51                                                     
+  Segment N.0: s0 = 0 length = 1e+04 npts = 51 no data set               
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|.............................. y_f = 1 ................................|
+|.............................. y_i = 1.5 ..............................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=0/0/0, |L|=0/0/0 |B|=0/0/0, |BL|=1.5/2.5/1.803, PARS=0/0/0, U=0/0/0
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] HyperSensitive
+  1 [dump:1,u:0:0]       (f:0.024,d:0.453)     -->    [f:0.0747,d:0.258]     lambda:0.4    #err=  1 armijo:1
+  2 [dump:0,u:0:0]      (f:0.0747,d:0.217)     -->     [f:0.371,d:0.175]     lambda:1     
+  3 [dump:0,u:0:0]       (f:0.371,d:0.114)     -->   [f:0.0267,d:0.00782]    lambda:1     
+  4 [dump:0,u:0:0]     (f:0.0267,d:0.00958)    -->  [f:8.85e-05,d:2.66e-05]  lambda:1     
+  5 [dump:1,u:0:0]    (f:8.85e-05,d:2.6e-05)   -->  [f:4.42e-06,d:1.3e-06]   lambda:0.95   #err=  1 angle:1 armijo:1
+  6 [dump:0,u:0:0]    (f:4.42e-06,d:1.3e-06)   -->  [f:9.33e-12,d:5.2e-12]   lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 1               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 104             | N. System pars  = 357             |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 18.3 [ms]       | timeout         = 0 [ms]          |
+| iteration       = 6               | Memory Used     = 37Kb(+15b)      |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 14              | Jacobian        = 6               |
+| Factorization   = 6               | Inversion       = 14              |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 3.7385e-10      | last ||d||_inf  = 9.6889e-11      |
+| last ||f||_1    = 9.3288e-12      | last ||d||_1    = 5.1992e-12      |
+| last ||f||_2    = 4.9233e-11      | last ||d||_2    = 1.7395e-11      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 0.145ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 3.229ms ]
+Check DuDxxpm (epsi=0.001): all OK [ 1.723ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001): all OK [ 3.134ms ]
+Check DodeDxp (epsi=0.001): all OK [ 0.123ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 3.312ms ]
+target [Lagrange,Mayer]            = [ 2.66, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 0, 0 ]
+All Done Folks!

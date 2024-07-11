@@ -1,0 +1,272 @@
++-------------------- MODEL:DenbighSystemReactions ---------------------+
++................................ DIMS .................................+
+| dims                      = u=1, q=1, x=4, p=0, bc=3 of 3             |
+| total                     = nZ=3211, nP=7619, nUC=400, Q=401          |
+| index start               = omega=3208, p=3211                        |
+| post processing           = n_post=0                                  |
++................................ MESH .................................+
+| num nodes / segments      = 401 / 1                                   |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 2                               |
+| mesh class pointer        = 0x7ff7b5087138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 3211 x 3211                               |
+| nblock/block size         = 400 / 8                                   |
+| qr/qx/nr/nx               = 3 / 3 / 0 / 0                             |
+| last blok rows x cols     = 19 x 19                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x1                                                       |
+| [ 1] initial_x2                                                       |
+| [ 2] initial_x3                                                       |
++..................... Controls penalties/barriers .....................+
+TControl = { COSLOG (BARRIER) epsilon=0.01, tolerance=0.01 }             
++......................... Constraints type LT .........................+
+X1limit_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active } 
+X1limit_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active } 
+X2limit_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active } 
+X2limit_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active } 
+X3limit_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active } 
+X3limit_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active } 
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 401                                                    
+  Segment N.0: s0 = 0 length = 1000 npts = 401 no data set               
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|............................... E1 = 3000 .............................|
+|............................... E2 = 6000 .............................|
+|............................... E3 = 3000 .............................|
+|............................... E4 = 0 ................................|
+|............................. WTAU = 1 ................................|
+|............................ WTAU0 = 1 ................................|
+|............................ WTAU1 = 0.0001 ...........................|
+|............................. eps0 = 0.01 .............................|
+|............................. eps1 = 0.0001 ...........................|
+|.......................... kappa10 = 1000 .............................|
+|.......................... kappa20 = 1e+07 ............................|
+|.......................... kappa30 = 10 ...............................|
+|.......................... kappa40 = 0.001 ............................|
+|.............................. tau = 1 ................................|
+|............................. tol0 = 0.01 .............................|
+|............................. tol1 = 0.0001 ...........................|
+|........................... u_eps0 = 0.01 .............................|
+|........................... u_eps1 = 0.0001 ...........................|
+|........................... u_tol0 = 0.01 .............................|
+|........................... u_tol1 = 0.0001 ...........................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=546/81.91/196.9, |L|=546/81.91/196.9 |B|=1/1/1, |BL|=0.15/0.15/0.15, PARS=0/0/0, U=273/273/273
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] DenbighSystemReactions
+  1 [dump:0,u:40:40]      (f:81.6,d:36.1)      -->      [f:0.076,d:5.9]      lambda:1     
+  2 [dump:1,u:4.1:8]     (f:0.076,d:5.89)      -->    [f:0.00766,d:0.291]    lambda:0.95   #err=  1 angle:1 armijo:1
+  3 [dump:1,u:4:4]      (f:0.00766,d:0.285)    -->   [f:0.00234,d:0.0121]    lambda:0.95   #err=  1 angle:1 armijo:1
+  4 [dump:0,u:4:4]      (f:0.00234,d:0.051)    -->    [f:0.0011,d:0.0285]    lambda:1     
+  5 [dump:0,u:4:4]      (f:0.0011,d:0.112)     -->   [f:0.000549,d:0.0555]   lambda:1     
+  6 [dump:0,u:4:4]     (f:0.000549,d:0.221)    -->   [f:0.000307,d:0.109]    lambda:1     
+  7 [dump:0,u:4:4]     (f:0.000307,d:0.431)    -->    [f:0.000287,d:0.21]    lambda:1     
+  8 [dump:0,u:4:4]      (f:0.000287,d:0.83)    -->   [f:0.000703,d:0.393]    lambda:1     
+  9 [dump:0,u:4:4]      (f:0.000703,d:1.54)    -->    [f:0.00319,d:0.639]    lambda:1     
+ 10 [dump:2,u:4:4]       (f:0.00319,d:2.5)     -->    [f:0.00316,d:1.91]     lambda:0.28   #err=  6 update:1 armijo:1
+ 11 [dump:2,u:4:4]      (f:0.00316,d:2.88)     -->     [f:0.0073,d:2.01]     lambda:0.28   #err=  5 update:1 armijo:1
+ 12 [dump:3,u:4:4]       (f:0.0073,d:3.07)     -->     [f:0.0103,d:2.47]     lambda:0.196  #err= 11 update:2 armijo:1
+ 13 [dump:3,u:4:4]       (f:0.0103,d:3.17)     -->     [f:0.0151,d:2.5]      lambda:0.196  #err= 10 update:2 armijo:1
+ 14 [dump:3,u:4:4]       (f:0.0151,d:3.19)     -->     [f:0.021,d:2.51]      lambda:0.196  #err= 10 update:2 armijo:1
+ 15 [dump:3,u:4:4]       (f:0.021,d:3.17)      -->      [f:0.027,d:2.5]      lambda:0.196  #err= 13 update:2 armijo:1
+ 16 [dump:3,u:4:4]        (f:0.027,d:3.1)      -->     [f:0.0323,d:2.44]     lambda:0.196  #err=  9 update:2 armijo:1
+ 17 [dump:3,u:4:4]       (f:0.0323,d:2.99)     -->     [f:0.0362,d:2.36]     lambda:0.196  #err=  8 update:2 armijo:1
+ 18 [dump:3,u:4:4]       (f:0.0362,d:2.86)     -->     [f:0.0385,d:2.26]     lambda:0.196  #err=  8 update:2 armijo:1
+ 19 [dump:3,u:4:4]       (f:0.0385,d:2.72)     -->     [f:0.0391,d:2.16]     lambda:0.196  #err=  9 update:2 armijo:1
+ 20 [dump:3,u:4:4]       (f:0.0391,d:2.57)     -->     [f:0.0382,d:2.04]     lambda:0.196  #err= 10 update:2 armijo:1
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] DenbighSystemReactions
+ 21 [dump:3,u:4:4]       (f:0.0382,d:2.4)      -->     [f:0.036,d:1.91]      lambda:0.196  #err=  8 update:2 armijo:1
+ 22 [dump:2,u:4:4]       (f:0.036,d:2.21)      -->     [f:0.0346,d:1.44]     lambda:0.28   #err=  4 update:1 armijo:1
+ 23 [dump:2,u:4:4]       (f:0.0346,d:1.91)     -->     [f:0.0304,d:1.34]     lambda:0.28   #err=  4 update:1 armijo:1
+ 24 [dump:1,u:4:4]       (f:0.0304,d:1.48)     -->    [f:0.0233,d:0.812]     lambda:0.4    #err=  1 armijo:1
+ 25 [dump:3,u:4:4]       (f:0.0233,d:0.67)     -->    [f:0.00597,d:0.169]    lambda:0.857  #err=  3 angle:3 armijo:3
+ 26 [dump:0,u:4:4]      (f:0.00597,d:0.191)    -->   [f:0.000319,d:0.073]    lambda:1     
+ 27 [dump:0,u:4:4]     (f:0.000319,d:0.126)    -->  [f:3.23e-05,d:0.00928]   lambda:1     
+ 28 [dump:0,u:4:4]     (f:3.23e-05,d:0.0113)   -->  [f:3.55e-07,d:0.000115]  lambda:1     
+ 29 [dump:0,u:3:3]    (f:3.55e-07,d:0.000118)  -->  [f:4.02e-11,d:1.34e-08]  lambda:1     
+ 30 [dump:0,u:2:2]    (f:4.02e-11,d:1.34e-08)  -->  [f:5.84e-15,d:1.38e-11]  lambda:1     
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:30,phase:1,s:0.2,ds:0.2] |X|=0.1038/0.01405/0.03663, |L|=0.1038/0.01405/0.03663 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=326.2/325.9/325.9
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] DenbighSystemReactions
+31 (1 ) [phase:1,s:0.2,ds:0.2,dump:1,u:4:4]               (f:0.0138,d:0.573)     -->   [f:0.000369,d:0.0612]   lambda:0.95   #err=  1 angle:1 armijo:1
+32 (2 ) [phase:1,s:0.2,ds:0.2,dump:0,u:4:4]              (f:0.000369,d:0.0427)   -->  [f:2.71e-06,d:0.000851]  lambda:1     
+33 (3 ) [phase:1,s:0.2,ds:0.2,dump:0,u:3:3]             (f:2.71e-06,d:0.000902)  -->  [f:2.23e-09,d:7.91e-07]  lambda:1     
+34 (4 ) [phase:1,s:0.2,ds:0.2,dump:0,u:3:3]             (f:2.23e-09,d:7.93e-07)  -->  [f:7.11e-15,d:8.49e-11]  lambda:1     
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:34,phase:1,s:0.5,ds:0.3] |X|=0.1709/0.02259/0.06, |L|=0.1709/0.02259/0.06 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=327.1/326.9/326.9
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] DenbighSystemReactions
+35 (1 ) [phase:1,s:0.5,ds:0.3,dump:1,u:4:4]                (f:0.0223,d:1.21)     -->    [f:0.0122,d:0.494]     lambda:0.4    #err=  1 armijo:1
+36 (2 ) [phase:1,s:0.5,ds:0.3,dump:0,u:4:4]               (f:0.0122,d:0.326)     -->  [f:0.000173,d:0.00178]   lambda:1     
+37 (3 ) [phase:1,s:0.5,ds:0.3,dump:0,u:3:3]             (f:0.000173,d:0.00133)   -->  [f:2.6e-08,d:4.69e-06]   lambda:1     
+38 (4 ) [phase:1,s:0.5,ds:0.3,dump:0,u:3:3]             (f:2.6e-08,d:4.73e-06)   -->  [f:6.15e-14,d:9.36e-12]  lambda:1     
+
+Continuation step N.1 s:0.5->0.95, ds=0.45
+[iter:38,phase:1,s:0.95,ds:0.45] |X|=0.2188/0.02809/0.07643, |L|=0.2188/0.02809/0.07643 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=329.4/329.3/329.3
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] DenbighSystemReactions
+39 (1 ) [phase:1,s:0.95,ds:0.45,dump:0,u:4:4]              (f:0.028,d:0.787)     -->    [f:0.00353,d:0.328]    lambda:1     
+40 (2 ) [phase:1,s:0.95,ds:0.45,dump:17,u:4:4]            (f:0.00353,d:93.6)     -->    [f:0.00285,d:5.41]     lambda:0.0268  #err= 30 update:9 angle:8 armijo:8
+41 (3 ) [phase:1,s:0.95,ds:0.45,dump:0,u:4:4]             (f:0.00285,d:2.03)     -->    [f:0.00221,d:1.74]     lambda:0.245 
+42 (4 ) [phase:1,s:0.95,ds:0.45,dump:1,u:4:4]             (f:0.00221,d:2.91)     -->    [f:0.00146,d:2.43]     lambda:0.4    #err=  1 armijo:1
+43 (5 ) [phase:1,s:0.95,ds:0.45,dump:6,u:4:4]             (f:0.00146,d:8.62)     -->    [f:0.00138,d:8.35]     lambda:0.0444  #err= 11 update:4 armijo:2
+44 (6 ) [phase:1,s:0.95,ds:0.45,dump:4,u:4.4:5]            (f:0.00138,d:14)      -->    [f:0.00134,d:13.8]     lambda:0.0248  #err=  8 update:2 armijo:2
+45 (7 ) [phase:1,s:0.95,ds:0.45,dump:16,u:4.5:5]           (f:0.00134,d:560)     -->     [f:0.00134,d:560]     lambda:8.37e-05  #err= 32 update:12 armijo:4
+46 (8 ) [phase:1,s:0.95,ds:0.45,dump:2,u:4:4]              (f:0.00134,d:120)     -->    [f:0.00136,d:2.26]     lambda:0.00672  #err= 19 update:2
+47 (9 ) [phase:1,s:0.95,ds:0.45,dump:4,u:4:4]             (f:0.00136,d:2.82)     -->    [f:0.00131,d:1.69]     lambda:0.24   #err= 18 update:4
+48 (10) [phase:1,s:0.95,ds:0.45,dump:4,u:4:4]              (f:0.00131,d:2.8)     -->    [f:0.00172,d:2.17]     lambda:0.176  #err= 24 update:4
+49 (11) [phase:1,s:0.95,ds:0.45,dump:8,u:4:4]             (f:0.00172,d:3.61)     -->     [f:0.00819,d:3.5]     lambda:0.0119  #err= 27 update:6 armijo:2
+50 (12) [phase:1,s:0.95,ds:0.45,dump:2,u:4:4]             (f:0.00819,d:3.25)     -->     [f:0.0203,d:3.16]     lambda:0.0457  #err=  6 update:1 armijo:1
+51 (13) [phase:1,s:0.95,ds:0.45,dump:8,u:4:4]              (f:0.0203,d:7.71)     -->     [f:0.0899,d:7.43]     lambda:0.0329  #err= 23 update:7 armijo:1
+52 (14) [phase:1,s:0.95,ds:0.45,dump:7,u:4:4]              (f:0.0899,d:4.29)     -->     [f:0.0897,d:4.27]     lambda:0.00418  #err= 20 update:4 armijo:3
+53 (15) [phase:1,s:0.95,ds:0.45,dump:5,u:4:4]              (f:0.0897,d:5.16)     -->     [f:0.0898,d:5.15]     lambda:0.00174  #err=  7 update:1 armijo:4
+54 (16) [phase:1,s:0.95,ds:0.45,dump:3,u:4:4]              (f:0.0898,d:6.66)     -->     [f:0.0927,d:6.65]     lambda:0.004  #err=  3 armijo:3
+55 (17) [phase:1,s:0.95,ds:0.45,dump:9,u:4:4]              (f:0.0927,d:11.6)     -->      [f:0.13,d:11.5]      lambda:0.0132  #err= 34 update:7 armijo:2
+56 (18) [phase:1,s:0.95,ds:0.45,dump:2,u:4:4]               (f:0.13,d:16.6)      -->       [f:0.4,d:16]        lambda:0.0482  #err=  6 update:1 armijo:1
+57 (19) [phase:1,s:0.95,ds:0.45,dump:7,u:4:4]               (f:0.4,d:24.1)       -->     [f:0.557,d:23.1]      lambda:0.0471  #err= 31 update:6 armijo:1
+58 (20) [phase:1,s:0.95,ds:0.45,dump:5,u:4:4]              (f:0.557,d:22.8)      -->     [f:0.903,d:22.8]      lambda:0.0313  #err= 21 update:4 armijo:1
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] DenbighSystemReactions
+59 (21) [phase:1,s:0.95,ds:0.45,dump:3,u:4:4]              (f:0.903,d:32.8)      -->     [f:0.974,d:31.3]      lambda:0.052  #err= 12 update:2 armijo:1
+60 (22) [phase:1,s:0.95,ds:0.45,dump:7,u:4:4]              (f:0.974,d:39.3)      -->      [f:1.37,d:37.9]      lambda:0.0471  #err= 24 update:6 armijo:1
+61 (23) [phase:1,s:0.95,ds:0.45,dump:3,u:4:4]               (f:1.37,d:41.2)      -->      [f:1.58,d:39.3]      lambda:0.0638  #err= 13 update:2 armijo:1
+62 (24) [phase:1,s:0.95,ds:0.45,dump:5,u:4:4]               (f:1.58,d:53.4)      -->       [f:3.74,d:50]       lambda:0.168  #err= 25 update:5
+63 (25) [phase:1,s:0.95,ds:0.45,dump:3,u:4:5]               (f:3.74,d:76.7)      -->      [f:3.78,d:68.3]      lambda:0.121  #err=  8 update:2 armijo:1
+64 (26) [phase:1,s:0.95,ds:0.45,dump:5,u:4:4]               (f:3.78,d:89.7)      -->      [f:3.89,d:81.7]      lambda:0.098  #err= 12 update:4 armijo:1
+65 (27) [phase:1,s:0.95,ds:0.45,dump:2,u:4:4]               (f:3.89,d:103)       -->      [f:4.99,d:85.6]      lambda:0.23   #err=  9 update:2
+66 (28) [phase:1,s:0.95,ds:0.45,dump:4,u:4:5]               (f:4.99,d:139)       -->      [f:5.65,d:121]       lambda:0.137  #err= 11 update:3 armijo:1
+67 (29) [phase:1,s:0.95,ds:0.45,dump:2,u:4.1:5]             (f:5.65,d:330)       -->      [f:7.96,d:56.1]      lambda:0.211  #err=  2 angle:1 armijo:2
+68 (30) [phase:1,s:0.95,ds:0.45,dump:0,u:4:5]               (f:7.96,d:24.1)      -->       [f:1.52,d:8]        lambda:1     
+69 (31) [phase:1,s:0.95,ds:0.45,dump:2,u:4:4]               (f:1.52,d:7.98)      -->     [f:0.121,d:0.598]     lambda:0.902  #err=  2 angle:2 armijo:2
+70 (32) [phase:1,s:0.95,ds:0.45,dump:0,u:4:4]              (f:0.121,d:0.604)     -->    [f:0.00664,d:0.315]    lambda:1     
+71 (33) [phase:1,s:0.95,ds:0.45,dump:0,u:4:4]            (f:0.00664,d:0.0421)    -->   [f:2.89e-05,d:0.0379]   lambda:1     
+72 (34) [phase:1,s:0.95,ds:0.45,dump:2,u:4:4]             (f:2.89e-05,d:1.76)    -->   [f:5.83e-05,d:0.212]    lambda:0.49   #err=  6 update:2
+73 (35) [phase:1,s:0.95,ds:0.45,dump:2,u:4:4]            (f:5.83e-05,d:0.405)    -->  [f:2.71e-05,d:0.000376]  lambda:0.902  #err=  2 angle:2 armijo:2
+74 (36) [phase:1,s:0.95,ds:0.45,dump:1,u:3:3]            (f:2.71e-05,d:0.0016)   -->  [f:1.63e-05,d:0.000408]  lambda:0.4    #err=  1 armijo:1
+75 (37) [phase:1,s:0.95,ds:0.45,dump:0,u:3:3]           (f:1.63e-05,d:0.00163)   -->  [f:1.86e-08,d:0.00141]   lambda:1     
+76 (38) [phase:1,s:0.95,ds:0.45,dump:0,u:3:3]           (f:1.86e-08,d:0.00151)   -->   [f:1.8e-10,d:2.4e-07]   lambda:1     
+77 (39) [phase:1,s:0.95,ds:0.45,dump:0,u:2:2]            (f:1.8e-10,d:2.4e-07)   -->  [f:5.86e-15,d:4.21e-09]  lambda:1     
+
+Continuation step N.1 s:0.95->1, ds=0.05
+[iter:77,phase:1,s:1,ds:0.05] |X|=0.006111/0.0007743/0.002138, |L|=0.006111/0.0007743/0.002138 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=337.3/337.3/337.3
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] DenbighSystemReactions
+78 (1 ) [phase:1,s:1,ds:0.05,dump:3,u:4:4]               (f:0.000775,d:0.0817)   -->  [f:0.000127,d:0.00438]   lambda:0.857  #err=  3 angle:3 armijo:3
+79 (2 ) [phase:1,s:1,ds:0.05,dump:1,u:3:3]              (f:0.000127,d:0.00255)   -->  [f:6.38e-06,d:8.03e-05]  lambda:0.95   #err=  1 angle:1 armijo:1
+80 (3 ) [phase:1,s:1,ds:0.05,dump:0,u:3:3]              (f:6.38e-06,d:7.64e-05)  -->  [f:3.02e-11,d:7.14e-08]  lambda:1     
+81 (4 ) [phase:1,s:1,ds:0.05,dump:0,u:2:2]              (f:3.02e-11,d:7.13e-08)  -->  [f:5.28e-15,d:8.08e-10]  lambda:1     
+Continuation step N.2
+
+Continuation step N.2 s:0->0.2, ds=0.2
+[iter:81,phase:2,s:0.2,ds:0.2] |X|=6.51e-05/5.027e-06/1.492e-05, |L|=6.51e-05/5.028e-06/1.492e-05 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=336.8/336.8/336.8
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] DenbighSystemReactions
+82 (1 ) [phase:2,s:0.2,ds:0.2,dump:0,u:3:3]             (f:3.08e-06,d:0.000952)  -->  [f:1.22e-10,d:4.48e-08]  lambda:1     
+83 (2 ) [phase:2,s:0.2,ds:0.2,dump:0,u:2:2]             (f:1.22e-10,d:4.47e-08)  -->  [f:4.71e-15,d:3.97e-09]  lambda:1     
+
+Continuation step N.2 s:0.2->0.5, ds=0.3
+[iter:83,phase:2,s:0.5,ds:0.3] |X|=0.0001953/1.508e-05/4.476e-05, |L|=0.0001953/1.509e-05/4.476e-05 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=336.8/336.8/336.8
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] DenbighSystemReactions
+84 (1 ) [phase:2,s:0.5,ds:0.3,dump:0,u:3:4]             (f:9.25e-06,d:0.00286)   -->  [f:1.1e-09,d:3.83e-07]   lambda:1     
+85 (2 ) [phase:2,s:0.5,ds:0.3,dump:0,u:3:3]             (f:1.1e-09,d:3.81e-07)   -->  [f:3.35e-15,d:7.61e-10]  lambda:1     
+
+Continuation step N.2 s:0.5->0.95, ds=0.45
+[iter:85,phase:2,s:0.95,ds:0.45] |X|=0.00468/0.0003615/0.001073, |L|=0.00468/0.0003616/0.001073 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=336.9/336.8/336.8
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] DenbighSystemReactions
+86 (1 ) [phase:2,s:0.95,ds:0.45,dump:0,u:4:5]            (f:0.000222,d:0.0695)   -->  [f:6.56e-07,d:0.00025]   lambda:1     
+87 (2 ) [phase:2,s:0.95,ds:0.45,dump:1,u:3:4]           (f:6.56e-07,d:0.000223)  -->  [f:3.28e-08,d:1.03e-05]  lambda:0.95   #err=  1 angle:1 armijo:1
+88 (3 ) [phase:2,s:0.95,ds:0.45,dump:0,u:3:3]           (f:3.28e-08,d:1.02e-05)  -->  [f:1.08e-13,d:2.38e-09]  lambda:1     
+
+Continuation step N.2 s:0.95->1, ds=0.05
+[iter:88,phase:2,s:1,ds:0.05] |X|=2.623/0.2035/0.6035, |L|=2.623/0.2036/0.6036 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=342.4/339.6/339.6
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] DenbighSystemReactions
+89 (1 ) [phase:2,s:1,ds:0.05,dump:5,u:6.8:10]              (f:0.125,d:7.72)      -->     [f:0.104,d:6.76]      lambda:0.168  #err= 12 update:5
+90 (2 ) [phase:2,s:1,ds:0.05,dump:7,u:6.9:9]               (f:0.104,d:33.9)      -->     [f:0.101,d:33.7]      lambda:0.0289  #err= 16 update:6 armijo:1
+91 (3 ) [phase:2,s:1,ds:0.05,dump:10,u:9.2:21]              (f:0.101,d:254)      -->      [f:0.101,d:253]      lambda:0.00134  #err= 34 update:7 armijo:3
+92 (4 ) [phase:2,s:1,ds:0.05,dump:8,u:8.8:21]               (f:0.101,d:506)      -->      [f:0.101,d:506]      lambda:0.000592  #err= 27 update:5 armijo:3
+93 (5 ) [phase:2,s:1,ds:0.05,dump:18,u:7.9:16]           (f:0.101,d:1.06e+04)    -->   [f:0.101,d:1.06e+04]    lambda:3.62e-06  #err= 74 update:13 armijo:5
+94 (6 ) [phase:2,s:1,ds:0.05,dump:4,u:6.9:8]             (f:0.101,d:6.23e+03)    -->   [f:0.105,d:4.36e+03]    lambda:0.000685  #err= 11 update:4
+95 (7 ) [phase:2,s:1,ds:0.05,dump:0,u:5.3:9]               (f:0.105,d:3.39)      -->     [f:0.101,d:3.24]      lambda:0.0393 
+96 (8 ) [phase:2,s:1,ds:0.05,dump:11,u:4.9:8]              (f:0.101,d:3.06)      -->     [f:0.0996,d:3.02]     lambda:0.0113  #err= 21 update:10 armijo:1
+97 (9 ) [phase:2,s:1,ds:0.05,dump:6,u:5.1:8]               (f:0.0996,d:3.69)     -->     [f:0.0977,d:3.7]      lambda:0.0188  #err= 14 update:6
+98 (10) [phase:2,s:1,ds:0.05,dump:25,u:5:7]                (f:0.0977,d:665)      -->     [f:0.0977,d:665]      lambda:2.94e-06  #err= 49 update:21 armijo:4
+99 (11) [phase:2,s:1,ds:0.05,dump:3,u:6.5:10]              (f:0.0977,d:626)      -->     [f:0.0976,d:496]      lambda:0.000882  #err=  6 update:3
+100(12) [phase:2,s:1,ds:0.05,dump:4,u:6.9:10]              (f:0.0976,d:7.6)      -->     [f:0.0741,d:1.21]     lambda:0.24   #err=  8 update:4
+101(13) [phase:2,s:1,ds:0.05,dump:0,u:6.9:9]               (f:0.0741,d:2.12)     -->     [f:0.0202,d:0.88]     lambda:0.735 
+102(14) [phase:2,s:1,ds:0.05,dump:1,u:6.9:10]              (f:0.0202,d:1.2)      -->    [f:0.00147,d:0.187]    lambda:0.95   #err=  1 angle:1 armijo:1
+103(15) [phase:2,s:1,ds:0.05,dump:0,u:6.4:10]             (f:0.00147,d:0.561)    -->   [f:0.000466,d:0.507]    lambda:1     
+104(16) [phase:2,s:1,ds:0.05,dump:8,u:7.1:10]             (f:0.000466,d:11.6)    -->    [f:0.000611,d:11.2]    lambda:0.0339  #err= 21 update:7 armijo:1
+105(17) [phase:2,s:1,ds:0.05,dump:2,u:7.1:11]             (f:0.000611,d:4.53)    -->    [f:0.00106,d:3.27]     lambda:0.184  #err=  3 update:1 angle:1 armijo:1
+106(18) [phase:2,s:1,ds:0.05,dump:1,u:6.7:11]             (f:0.00106,d:0.394)    -->   [f:0.000698,d:0.212]    lambda:0.4    #err=  1 armijo:1
+107(19) [phase:2,s:1,ds:0.05,dump:0,u:6.2:10]             (f:0.000698,d:0.28)    -->    [f:0.00143,d:0.119]    lambda:1     
+108(20) [phase:2,s:1,ds:0.05,dump:2,u:6.3:15]             (f:0.00143,d:0.334)    -->   [f:0.000394,d:0.0231]   lambda:0.902  #err=  2 angle:2 armijo:2
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] DenbighSystemReactions
+109(21) [phase:2,s:1,ds:0.05,dump:0,u:5.5:11]            (f:0.000394,d:0.0601)   -->  [f:4.43e-05,d:0.00952]   lambda:1     
+110(22) [phase:2,s:1,ds:0.05,dump:0,u:4.9:8]             (f:4.43e-05,d:0.012)    -->  [f:1.74e-06,d:0.000141]  lambda:1     
+111(23) [phase:2,s:1,ds:0.05,dump:1,u:4.1:6]            (f:1.74e-06,d:0.000135)  -->  [f:9.15e-08,d:6.33e-06]  lambda:0.95   #err=  1 angle:1 armijo:1
+112(24) [phase:2,s:1,ds:0.05,dump:1,u:4:4]              (f:9.15e-08,d:6.28e-06)  -->  [f:4.59e-09,d:3.13e-07]  lambda:0.95   #err=  1 angle:1 armijo:1
+113(25) [phase:2,s:1,ds:0.05,dump:0,u:3.2:4]            (f:4.59e-09,d:3.13e-07)  -->  [f:3.89e-14,d:4.65e-12]  lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 1               | Hessian type    = Diagonal        |
++-------------------------- MinimizeHeavyBall --------------------------+
+| last f          = -6.19e-17       | |g|_inf         = 2.5578e-13      |
++-----------------------------------------------------------------------+
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 3211            | N. System pars  = 7619            |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 5.33 [sec]      | timeout         = 0 [ms]          |
+| iteration       = 113             | Memory Used     = 953Kb(+10b)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 327             | Jacobian        = 113             |
+| Factorization   = 113             | Inversion       = 327             |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 2.5693e-11      | last ||d||_inf  = 1.8545e-10      |
+| last ||f||_1    = 3.8887e-14      | last ||d||_1    = 4.6544e-12      |
+| last ||f||_2    = 7.9397e-13      | last ||d||_2    = 2.3263e-11      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 1.112ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 108.6ms ]
+Check DuDxxpm (epsi=0.001): all OK [ 594.8ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001): all OK [ 102ms ]
+Check DodeDxp (epsi=0.001): all OK [ 1.779ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 103.9ms ]
+target [Lagrange,Mayer]            = [ 0.05194, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 0.01504, 0.002555 ]
+All Done Folks!

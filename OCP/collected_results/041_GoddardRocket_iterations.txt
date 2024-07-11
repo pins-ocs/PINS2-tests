@@ -1,0 +1,323 @@
++------------------------- MODEL:GoddardRocket -------------------------+
++................................ DIMS .................................+
+| dims                      = u=1, q=1, x=3, p=1, bc=4 of 4             |
+| total                     = nZ=2411, nP=6016, nUC=400, Q=401          |
+| index start               = omega=2406, p=2410                        |
+| post processing           = n_post=2                                  |
++................................ MESH .................................+
+| num nodes / segments      = 401 / 1                                   |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 2                               |
+| mesh class pointer        = 0x7ff7b46c2138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 2411 x 2411                               |
+| nblock/block size         = 400 / 6                                   |
+| qr/qx/nr/nx               = 4 / 4 / 1 / 1                             |
+| last blok rows x cols     = 17 x 17                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_h                                                        |
+| [ 1] initial_v                                                        |
+| [ 2] initial_m                                                        |
+| [ 3] final_m                                                          |
++..................... Controls penalties/barriers .....................+
+TControl = { COSLOG (BARRIER) epsilon=0.01, tolerance=0.01 }             
++......................... Constraints type LT .........................+
+massPositive = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }    
+vPositive = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }       
+TSPositive = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }      
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 401                                                    
+  Segment N.0: s0 = 0 length = 1 npts = 401 no data set                  
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|............................... Dc = 310 ..............................|
+|............................. Tmax = 3.5 ..............................|
+|............................... WG = 1 ................................|
+|........................... WG_max = 1 ................................|
+|................................ c = 0.5 ..............................|
+|............................... g0 = 1 ................................|
+|.............................. h_i = 1 ................................|
+|............................... hc = 500 ..............................|
+|.............................. m_f = 0.6 ..............................|
+|.............................. m_i = 1 ................................|
+|.............................. v_i = 0 ................................|
+|...................... epsi_TS_max = 0.01 .............................|
+|...................... epsi_TS_min = 1e-10 ............................|
+|....................... epsi_T_max = 0.01 .............................|
+|....................... epsi_T_min = 1e-07 ............................|
+|.................... epsi_mass_max = 0.01 .............................|
+|.................... epsi_mass_min = 0.0001 ...........................|
+|....................... epsi_v_max = 0.01 .............................|
+|....................... epsi_v_min = 0.0001 ...........................|
+|....................... tol_TS_max = 0.01 .............................|
+|....................... tol_TS_min = 0.001 ............................|
+|........................ tol_T_max = 0.01 .............................|
+|........................ tol_T_min = 0.0001 ...........................|
+|..................... tol_mass_max = 0.01 .............................|
+|..................... tol_mass_min = 0.0001 ...........................|
+|........................ tol_v_max = 0.01 .............................|
+|........................ tol_v_min = 0.0001 ...........................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=923.4/9.727/34.61, |L|=923.4/9.794/34.68 |B|=1/1/1, |BL|=0/0/0, PARS=1.623e-05/1.623e-05/1.623e-05, U=1.75/1.75/1.75
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] GoddardRocket
+  1 [dump:0,u:0:0]       (f:10.1,d:0.024)      -->     [f:2.59,d:0.0309]     lambda:1     
+  2 [dump:0,u:0:0]       (f:2.59,d:0.0764)     -->    [f:0.884,d:0.0475]     lambda:1     
+  3 [dump:3,u:0:0]       (f:0.884,d:0.615)     -->     [f:0.786,d:0.585]     lambda:0.112  #err=  4 update:1 armijo:2
+  4 [dump:4,u:0:0]       (f:0.786,d:1.63)      -->     [f:0.711,d:1.56]      lambda:0.0952  #err=  6 update:2 armijo:2
+  5 [dump:2,u:0:0]        (f:0.711,d:4.5)      -->     [f:0.654,d:4.34]      lambda:0.0923  #err=  2 armijo:2
+  6 [dump:2,u:0:0]       (f:0.654,d:15.3)      -->      [f:2.31,d:15.3]      lambda:0.28   #err=  4 update:1 armijo:1
+  7 [dump:1,u:0:0]        (f:2.31,d:17.5)      -->      [f:8.47,d:4.22]      lambda:0.4    #err=  1 armijo:1
+  8 [dump:0,u:0:0]        (f:8.47,d:14.1)      -->      [f:9.54,d:2.72]      lambda:1     
+  9 [dump:3,u:0:0]        (f:9.54,d:3.78)      -->      [f:8.52,d:2.83]      lambda:0.112  #err=  7 update:1 armijo:2
+ 10 [dump:1,u:0:0]        (f:8.52,d:1.93)      -->     [f:4.73,d:0.887]      lambda:0.4    #err=  1 armijo:1
+ 11 [dump:5,u:0:0]        (f:4.73,d:1.61)      -->      [f:1.31,d:0.27]      lambda:0.774  #err=  5 angle:5 armijo:5
+ 12 [dump:1,u:0:0]        (f:1.31,d:0.24)      -->     [f:1.11,d:0.178]      lambda:0.4    #err=  1 armijo:1
+ 13 [dump:0,u:0:0]       (f:1.11,d:0.218)      -->     [f:1.14,d:0.073]      lambda:1     
+ 14 [dump:0,u:0:0]       (f:1.14,d:0.0528)     -->    [f:0.571,d:0.0283]     lambda:1     
+ 15 [dump:1,u:0:0]      (f:0.571,d:0.0102)     -->    [f:0.395,d:0.0159]     lambda:0.4    #err=  1 armijo:1
+ 16 [dump:2,u:0:0]      (f:0.395,d:0.0092)     -->    [f:0.333,d:0.00782]    lambda:0.16   #err=  2 armijo:2
+ 17 [dump:1,u:0:0]      (f:0.333,d:0.00823)    -->     [f:0.21,d:0.0055]     lambda:0.4    #err=  1 armijo:1
+ 18 [dump:0,u:0:0]      (f:0.21,d:0.00541)     -->   [f:0.0421,d:0.000487]   lambda:1     
+ 19 [dump:0,u:0:0]     (f:0.0421,d:0.00137)    -->   [f:0.0162,d:0.000434]   lambda:1     
+ 20 [dump:0,u:0:0]      (f:0.0162,d:0.0024)    -->   [f:0.0108,d:0.000732]   lambda:1     
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] GoddardRocket
+ 21 [dump:0,u:0:0]     (f:0.0108,d:0.00462)    -->  [f:0.00692,d:0.000579]   lambda:1     
+ 22 [dump:0,u:0:0]     (f:0.00692,d:0.00111)   -->  [f:0.000867,d:0.000336]  lambda:1     
+ 23 [dump:0,u:0:0]    (f:0.000867,d:0.000413)  -->  [f:3.48e-05,d:7.18e-06]  lambda:1     
+ 24 [dump:0,u:0:0]    (f:3.48e-05,d:7.48e-06)  -->  [f:7.21e-09,d:3.48e-09]  lambda:1     
+ 25 [dump:0,u:0:0]    (f:7.21e-09,d:3.48e-09)  -->  [f:4.69e-14,d:5.11e-16]  lambda:1     
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:25,phase:1,s:0.2,ds:0.2] |X|=0.07265/0.01304/0.02551, |L|=0.07265/0.01304/0.02551 |B|=0/0/0, |BL|=2.153e-27/2.153e-27/2.153e-27, PARS=3.973e-16/3.973e-16/3.973e-16, U=3.498/1.167/1.409
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] GoddardRocket
+26 (1 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]               (f:0.0125,d:0.0205)    -->  [f:0.00696,d:0.000562]   lambda:1     
+27 (2 ) [phase:1,s:0.2,ds:0.2,dump:1,u:0:0]              (f:0.00696,d:0.00054)   -->  [f:0.000347,d:2.65e-05]  lambda:0.95   #err=  1 angle:1 armijo:1
+28 (3 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:0.000347,d:2.64e-05)  -->  [f:9.45e-09,d:5.22e-09]  lambda:1     
+29 (4 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:9.45e-09,d:5.22e-09)  -->  [f:5.82e-14,d:1.71e-15]  lambda:1     
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:29,phase:1,s:0.5,ds:0.3] |X|=0.1085/0.01999/0.03876, |L|=0.1085/0.01999/0.03876 |B|=0/0/0, |BL|=2.843e-27/2.843e-27/2.843e-27, PARS=2.2e-16/2.2e-16/2.2e-16, U=3.498/1.119/1.373
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] GoddardRocket
+30 (1 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]               (f:0.0193,d:0.0293)    -->   [f:0.0215,d:0.00237]    lambda:1     
+31 (2 ) [phase:1,s:0.5,ds:0.3,dump:1,u:0:0]              (f:0.0215,d:0.00217)    -->  [f:0.00109,d:0.000102]   lambda:0.95   #err=  1 angle:1 armijo:1
+32 (3 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:0.00109,d:0.000101)   -->  [f:4.65e-07,d:1.04e-07]  lambda:1     
+33 (4 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:4.65e-07,d:1.04e-07)  -->  [f:2.34e-12,d:5.74e-13]  lambda:1     
+
+Continuation step N.1 s:0.5->0.95, ds=0.45
+[iter:33,phase:1,s:0.95,ds:0.45] |X|=0.1598/0.0313/0.05967, |L|=0.1598/0.0313/0.05967 |B|=0/0/0, |BL|=7.722e-25/7.722e-25/7.722e-25, PARS=1.297e-14/1.297e-14/1.297e-14, U=3.498/1.048/1.328
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] GoddardRocket
+34 (1 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]             (f:0.0302,d:0.0433)    -->    [f:0.0326,d:0.0242]    lambda:0.4    #err=  1 armijo:1
+35 (2 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]             (f:0.0326,d:0.0203)    -->    [f:0.0229,d:0.0118]    lambda:0.4    #err=  1 armijo:1
+36 (3 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]             (f:0.0229,d:0.0113)    -->   [f:0.0146,d:0.00677]    lambda:0.4    #err=  1 armijo:1
+37 (4 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]            (f:0.0146,d:0.00671)    -->   [f:0.00904,d:0.00402]   lambda:0.4    #err=  1 armijo:1
+38 (5 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]             (f:0.00904,d:0.004)    -->   [f:0.00543,d:0.00236]   lambda:0.409  #err=  1 armijo:1
+39 (6 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]            (f:0.00543,d:0.00233)   -->   [f:0.00335,d:0.00131]   lambda:0.4    #err=  1 armijo:1
+40 (7 ) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]            (f:0.00335,d:0.00114)   -->  [f:0.000459,d:9.56e-05]  lambda:0.902  #err=  2 angle:2 armijo:2
+41 (8 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:0.000459,d:9.28e-05)  -->  [f:4.01e-06,d:2.32e-06]  lambda:1     
+42 (9 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:4.01e-06,d:2.57e-06)  -->  [f:1.01e-08,d:6.97e-09]  lambda:1     
+
+Continuation step N.1 s:0.95->1, ds=0.05
+[iter:42,phase:1,s:1,ds:0.05] |X|=0.01659/0.00381/0.007121, |L|=0.01659/0.00381/0.007121 |B|=0/0/0, |BL|=1.489e-24/1.489e-24/1.489e-24, PARS=7.693e-12/7.693e-12/7.693e-12, U=3.498/0.9652/1.327
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] GoddardRocket
+43 (1 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]               (f:0.00367,d:0.00494)   -->   [f:0.00324,d:0.00173]   lambda:1     
+44 (2 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:0.00324,d:0.000284)   -->  [f:0.000542,d:6.9e-05]   lambda:1     
+45 (3 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:0.000542,d:0.000111)  -->  [f:4.37e-05,d:8.79e-06]  lambda:1     
+46 (4 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:4.37e-05,d:1.04e-05)  -->  [f:3.73e-07,d:8.88e-08]  lambda:1     
+47 (5 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:3.73e-07,d:9.04e-08)  -->  [f:2.79e-11,d:6.75e-12]  lambda:1     
+48 (6 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:2.79e-11,d:6.75e-12)  -->  [f:3.97e-14,d:5.98e-16]  lambda:1     
+Continuation step N.2
+
+Continuation step N.2 s:0->0.2, ds=0.2
+[iter:48,phase:2,s:0.2,ds:0.2] |X|=318.3/0.873/12.47, |L|=318.3/0.8734/12.47 |B|=0/0/0, |BL|=2.336e-30/2.336e-30/2.336e-30, PARS=0.003132/0.003132/0.003132, U=3.5/0.673/1.304
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] GoddardRocket
+49 (1 ) [phase:2,s:0.2,ds:0.2,dump:2,u:0:0]               (f:0.453,d:0.0378)     -->    [f:0.321,d:0.0246]     lambda:0.28   #err=  7 update:1 armijo:1
+50 (2 ) [phase:2,s:0.2,ds:0.2,dump:1,u:0:0]               (f:0.321,d:0.0217)     -->    [f:0.198,d:0.0124]     lambda:0.4    #err=  1 armijo:1
+51 (3 ) [phase:2,s:0.2,ds:0.2,dump:1,u:0:0]               (f:0.198,d:0.0117)     -->   [f:0.0251,d:0.000537]   lambda:0.95   #err=  1 angle:1 armijo:1
+52 (4 ) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]              (f:0.0251,d:0.000651)   -->  [f:0.000695,d:7.89e-05]  lambda:1     
+53 (5 ) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]             (f:0.000695,d:8.94e-05)  -->  [f:3.06e-05,d:1.9e-06]   lambda:1     
+54 (6 ) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]             (f:3.06e-05,d:2.18e-06)  -->  [f:1.87e-07,d:1.29e-08]  lambda:1     
+55 (7 ) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]             (f:1.87e-07,d:1.3e-08)   -->  [f:7.47e-12,d:5.19e-13]  lambda:1     
+
+Continuation step N.2 s:0.2->0.5, ds=0.3
+[iter:55,phase:2,s:0.5,ds:0.3] |X|=949.3/1.334/30.79, |L|=949.3/1.334/30.79 |B|=0/0/0, |BL|=2.333e-26/2.333e-26/2.333e-26, PARS=0.0006902/0.0006902/0.0006902, U=3.5/1.338/2.136
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] GoddardRocket
+56 (1 ) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]                (f:0.67,d:0.0279)     -->    [f:0.124,d:0.0164]     lambda:1     
+57 (2 ) [phase:2,s:0.5,ds:0.3,dump:5,u:0:0]               (f:0.124,d:0.0855)     -->     [f:0.11,d:0.0153]     lambda:0.0102  #err=  5 armijo:5
+58 (3 ) [phase:2,s:0.5,ds:0.3,dump:1,u:0:0]               (f:0.11,d:0.00961)     -->   [f:0.0995,d:0.00847]    lambda:0.0607  #err=  1 armijo:1
+59 (4 ) [phase:2,s:0.5,ds:0.3,dump:4,u:0:0]              (f:0.0995,d:0.00953)    -->   [f:0.0848,d:0.00701]    lambda:0.343  #err=  4 angle:3 armijo:4
+60 (5 ) [phase:2,s:0.5,ds:0.3,dump:3,u:0:0]              (f:0.0848,d:0.00764)    -->    [f:0.078,d:0.00705]    lambda:0.0562  #err=  3 armijo:3
+61 (6 ) [phase:2,s:0.5,ds:0.3,dump:4,u:0:0]               (f:0.078,d:0.00606)    -->   [f:0.0746,d:0.00584]    lambda:0.0357  #err=  4 angle:1 armijo:4
+62 (7 ) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]              (f:0.0746,d:0.00596)    -->   [f:0.0528,d:0.00396]    lambda:0.283 
+63 (8 ) [phase:2,s:0.5,ds:0.3,dump:3,u:0:0]              (f:0.0528,d:0.00368)    -->   [f:0.0456,d:0.00299]    lambda:0.152  #err=  3 angle:1 armijo:3
+64 (9 ) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]              (f:0.0456,d:0.00168)    -->    [f:0.017,d:0.00021]    lambda:1     
+65 (10) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]              (f:0.017,d:0.000614)    -->   [f:0.0173,d:0.000222]   lambda:1     
+66 (11) [phase:2,s:0.5,ds:0.3,dump:13,u:0:0]             (f:0.0173,d:0.000421)   -->  [f:0.00864,d:0.000127]   lambda:0.37   #err= 13 angle:13 armijo:13
+67 (12) [phase:2,s:0.5,ds:0.3,dump:1,u:0:0]             (f:0.00864,d:0.000151)   -->  [f:0.00333,d:9.97e-05]   lambda:0.365  #err=  1 armijo:1
+68 (13) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]             (f:0.00333,d:9.82e-05)   -->  [f:0.000372,d:7.3e-06]   lambda:1     
+69 (14) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]             (f:0.000372,d:9.08e-06)  -->  [f:6.37e-06,d:1.43e-07]  lambda:1     
+70 (15) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]             (f:6.37e-06,d:1.49e-07)  -->  [f:3.36e-09,d:5.16e-11]  lambda:1     
+
+Continuation step N.2 s:0.5->0.95, ds=0.45
+[iter:70,phase:2,s:0.95,ds:0.45] |X|=933/0.8539/26.94, |L|=933/0.8539/26.94 |B|=0/0/0, |BL|=1.873e-26/1.873e-26/1.873e-26, PARS=2.146e-05/2.146e-05/2.146e-05, U=3.5/1.31/2.139
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] GoddardRocket
+71 (1 ) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]             (f:0.426,d:0.0108)     -->   [f:0.0877,d:0.00584]    lambda:1     
+72 (2 ) [phase:2,s:0.95,ds:0.45,dump:25,u:0:0]             (f:0.0877,d:0.22)     -->    [f:0.0663,d:0.0185]    lambda:0.00162  #err=197 update:14 angle:10 armijo:11
+73 (3 ) [phase:2,s:0.95,ds:0.45,dump:1,u:0:0]             (f:0.0663,d:0.0144)    -->     [f:0.062,d:0.014]     lambda:0.0242  #err=  1 armijo:1
+74 (4 ) [phase:2,s:0.95,ds:0.45,dump:5,u:0:0]             (f:0.062,d:0.0135)     -->    [f:0.0616,d:0.0133]    lambda:0.0102  #err=  5 armijo:5
+75 (5 ) [phase:2,s:0.95,ds:0.45,dump:4,u:0:0]              (f:0.0616,d:0.01)     -->   [f:0.0613,d:0.00995]    lambda:0.00389  #err=  4 armijo:4
+76 (6 ) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]             (f:0.0613,d:0.0105)    -->    [f:0.0585,d:0.0082]    lambda:0.0935 
+77 (7 ) [phase:2,s:0.95,ds:0.45,dump:16,u:0:0]            (f:0.0585,d:0.0145)    -->   [f:0.0531,d:0.00368]    lambda:0.078  #err= 16 angle:14 armijo:16
+78 (8 ) [phase:2,s:0.95,ds:0.45,dump:5,u:0:0]             (f:0.0531,d:0.0124)    -->    [f:0.0704,d:0.007]     lambda:0.0242  #err=  5 angle:2 armijo:5
+79 (9 ) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]            (f:0.0704,d:0.00584)    -->    [f:0.0566,d:0.0048]    lambda:0.233 
+80 (10) [phase:2,s:0.95,ds:0.45,dump:3,u:0:0]             (f:0.0566,d:0.0246)    -->   [f:0.0552,d:0.00715]    lambda:0.064  #err=  3 armijo:3
+81 (11) [phase:2,s:0.95,ds:0.45,dump:3,u:0:0]            (f:0.0552,d:0.00539)    -->    [f:0.052,d:0.00557]    lambda:0.064  #err=  3 armijo:3
+82 (12) [phase:2,s:0.95,ds:0.45,dump:2,u:0:0]             (f:0.052,d:0.00996)    -->    [f:0.061,d:0.00783]    lambda:0.16   #err=  2 armijo:2
+83 (13) [phase:2,s:0.95,ds:0.45,dump:31,u:0:0]            (f:0.061,d:0.0137)     -->   [f:0.0483,d:0.00396]    lambda:0.0401  #err= 31 angle:29 armijo:31
+84 (14) [phase:2,s:0.95,ds:0.45,dump:1,u:0:0]            (f:0.0483,d:0.00548)    -->   [f:0.0675,d:0.00484]    lambda:0.12   #err=  1 armijo:1
+85 (15) [phase:2,s:0.95,ds:0.45,dump:2,u:0:0]            (f:0.0675,d:0.00447)    -->    [f:0.046,d:0.00356]    lambda:0.16   #err=  2 armijo:2
+86 (16) [phase:2,s:0.95,ds:0.45,dump:5,u:0:0]             (f:0.046,d:0.0323)     -->    [f:0.0441,d:0.0289]    lambda:0.0102  #err=  5 armijo:5
+87 (17) [phase:2,s:0.95,ds:0.45,dump:4,u:0:0]             (f:0.0441,d:0.0185)    -->   [f:0.0599,d:0.00972]    lambda:0.00389  #err=  4 armijo:4
+88 (18) [phase:2,s:0.95,ds:0.45,dump:3,u:0:0]            (f:0.0599,d:0.00876)    -->   [f:0.0596,d:0.00817]    lambda:0.00598  #err=  3 armijo:3
+89 (19) [phase:2,s:0.95,ds:0.45,dump:4,u:0:0]            (f:0.0596,d:0.00826)    -->    [f:0.062,d:0.0053]     lambda:0.0256  #err=  4 armijo:4
+90 (20) [phase:2,s:0.95,ds:0.45,dump:2,u:0:0]             (f:0.062,d:0.00483)    -->   [f:0.0534,d:0.00469]    lambda:0.0384  #err=  2 armijo:2
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] GoddardRocket
+91 (21) [phase:2,s:0.95,ds:0.45,dump:3,u:0:0]            (f:0.0534,d:0.00564)    -->   [f:0.0525,d:0.00513]    lambda:0.064  #err=  3 armijo:3
+92 (22) [phase:2,s:0.95,ds:0.45,dump:3,u:0:0]             (f:0.0525,d:0.0042)    -->   [f:0.0562,d:0.00406]    lambda:0.064  #err=  3 armijo:3
+93 (23) [phase:2,s:0.95,ds:0.45,dump:5,u:0:0]            (f:0.0562,d:0.00257)    -->    [f:0.054,d:0.00236]    lambda:0.0102  #err=  5 armijo:5
+94 (24) [phase:2,s:0.95,ds:0.45,dump:4,u:0:0]             (f:0.054,d:0.00276)    -->   [f:0.0537,d:0.00275]    lambda:0.00422  #err=  4 armijo:4
+95 (25) [phase:2,s:0.95,ds:0.45,dump:2,u:0:0]            (f:0.0537,d:0.00281)    -->    [f:0.049,d:0.00278]    lambda:0.0156  #err=  2 armijo:2
+96 (26) [phase:2,s:0.95,ds:0.45,dump:1,u:0:0]             (f:0.049,d:0.00287)    -->   [f:0.0584,d:0.00168]    lambda:0.427  #err=  1 armijo:1
+97 (27) [phase:2,s:0.95,ds:0.45,dump:15,u:0:0]           (f:0.0584,d:0.00641)    -->   [f:0.0576,d:0.00163]    lambda:0.0831  #err= 15 angle:13 armijo:15
+98 (28) [phase:2,s:0.95,ds:0.45,dump:3,u:0:0]            (f:0.0576,d:0.00122)    -->   [f:0.0509,d:0.00163]    lambda:0.0277  #err=  3 armijo:3
+99 (29) [phase:2,s:0.95,ds:0.45,dump:3,u:0:0]            (f:0.0509,d:0.00189)    -->    [f:0.051,d:0.00096]    lambda:0.0948  #err=  3 angle:1 armijo:3
+100(30) [phase:2,s:0.95,ds:0.45,dump:2,u:0:0]             (f:0.051,d:0.00114)    -->   [f:0.051,d:0.000905]    lambda:0.16   #err=  2 armijo:2
+101(31) [phase:2,s:0.95,ds:0.45,dump:5,u:0:0]             (f:0.051,d:0.00129)    -->   [f:0.0496,d:0.00113]    lambda:0.0102  #err=  5 armijo:5
+102(32) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]            (f:0.0496,d:0.000818)   -->   [f:0.0382,d:0.000861]   lambda:0.152 
+103(33) [phase:2,s:0.95,ds:0.45,dump:3,u:0:0]            (f:0.0382,d:0.00123)    -->   [f:0.0411,d:0.00104]    lambda:0.064  #err=  3 armijo:3
+104(34) [phase:2,s:0.95,ds:0.45,dump:3,u:0:0]            (f:0.0411,d:0.000836)   -->   [f:0.0355,d:0.000704]   lambda:0.064  #err=  3 armijo:3
+105(35) [phase:2,s:0.95,ds:0.45,dump:1,u:0:0]            (f:0.0355,d:0.000804)   -->   [f:0.0486,d:0.000613]   lambda:0.4    #err=  1 armijo:1
+106(36) [phase:2,s:0.95,ds:0.45,dump:10,u:0:0]           (f:0.0486,d:0.000678)   -->   [f:0.0318,d:0.000483]   lambda:0.152  #err= 10 angle:9 armijo:10
+107(37) [phase:2,s:0.95,ds:0.45,dump:3,u:0:0]            (f:0.0318,d:0.000989)   -->   [f:0.0318,d:0.000736]   lambda:0.0375  #err=  3 armijo:3
+108(38) [phase:2,s:0.95,ds:0.45,dump:3,u:0:0]            (f:0.0318,d:0.000658)   -->   [f:0.0342,d:0.000368]   lambda:0.064  #err=  3 armijo:3
+109(39) [phase:2,s:0.95,ds:0.45,dump:1,u:0:0]            (f:0.0342,d:0.000329)   -->   [f:0.0377,d:0.000245]   lambda:0.4    #err=  1 armijo:1
+110(40) [phase:2,s:0.95,ds:0.45,dump:3,u:0:0]            (f:0.0377,d:0.000277)   -->   [f:0.0284,d:0.000203]   lambda:0.064  #err=  3 armijo:3
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] GoddardRocket
+111(41) [phase:2,s:0.95,ds:0.45,dump:5,u:0:0]            (f:0.0284,d:0.000184)   -->   [f:0.0281,d:0.000182]   lambda:0.0102  #err=  5 armijo:5
+112(42) [phase:2,s:0.95,ds:0.45,dump:3,u:0:0]            (f:0.0281,d:0.000197)   -->   [f:0.0278,d:0.000195]   lambda:0.00971  #err=  3 armijo:3
+113(43) [phase:2,s:0.95,ds:0.45,dump:4,u:0:0]            (f:0.0278,d:0.000221)   -->   [f:0.0261,d:0.000219]   lambda:0.0256  #err=  4 armijo:4
+114(44) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]            (f:0.0261,d:0.000223)   -->   [f:0.0253,d:0.000142]   lambda:0.24  
+115(45) [phase:2,s:0.95,ds:0.45,dump:2,u:0:0]            (f:0.0253,d:0.000122)   -->   [f:0.0174,d:0.000112]   lambda:0.206  #err=  2 armijo:2
+116(46) [phase:2,s:0.95,ds:0.45,dump:2,u:0:0]            (f:0.0174,d:0.000116)   -->    [f:0.0175,d:0.0001]    lambda:0.191  #err=  2 armijo:2
+117(47) [phase:2,s:0.95,ds:0.45,dump:1,u:0:0]            (f:0.0175,d:0.000107)   -->   [f:0.0154,d:8.23e-05]   lambda:0.438  #err=  1 armijo:1
+118(48) [phase:2,s:0.95,ds:0.45,dump:2,u:0:0]            (f:0.0154,d:0.000142)   -->   [f:0.0136,d:8.28e-05]   lambda:0.16   #err=  2 armijo:2
+119(49) [phase:2,s:0.95,ds:0.45,dump:3,u:0:0]            (f:0.0136,d:7.29e-05)   -->   [f:0.013,d:6.29e-05]    lambda:0.064  #err=  3 armijo:3
+120(50) [phase:2,s:0.95,ds:0.45,dump:2,u:0:0]             (f:0.013,d:5.3e-05)    -->   [f:0.0117,d:5.97e-05]   lambda:0.16   #err=  2 armijo:2
+121(51) [phase:2,s:0.95,ds:0.45,dump:2,u:0:0]            (f:0.0117,d:4.15e-05)   -->  [f:0.00778,d:3.05e-05]   lambda:0.16   #err=  2 armijo:2
+122(52) [phase:2,s:0.95,ds:0.45,dump:1,u:0:0]            (f:0.00778,d:2.8e-05)   -->  [f:0.00971,d:2.16e-05]   lambda:0.434  #err=  1 armijo:1
+123(53) [phase:2,s:0.95,ds:0.45,dump:36,u:0:0]           (f:0.00971,d:3.7e-05)   -->  [f:0.00482,d:2.31e-05]   lambda:0.0635  #err= 36 angle:35 armijo:36
+124(54) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:0.00482,d:1.47e-05)   -->  [f:0.00334,d:1.03e-05]   lambda:0.378 
+125(55) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]            (f:0.00334,d:8.1e-06)   -->  [f:0.000951,d:7.65e-07]  lambda:1     
+126(56) [phase:2,s:0.95,ds:0.45,dump:2,u:0:0]           (f:0.000951,d:1.97e-06)  -->  [f:0.000745,d:1.52e-06]  lambda:0.16   #err=  2 angle:1 armijo:2
+127(57) [phase:2,s:0.95,ds:0.45,dump:2,u:0:0]           (f:0.000745,d:7.1e-07)   -->  [f:0.000188,d:1.55e-07]  lambda:0.38   #err=  2 angle:1 armijo:2
+128(58) [phase:2,s:0.95,ds:0.45,dump:2,u:0:0]           (f:0.000188,d:7.51e-08)  -->  [f:1.39e-05,d:4.63e-09]  lambda:0.902  #err=  2 angle:2 armijo:2
+129(59) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:1.39e-05,d:4.59e-09)  -->  [f:1.79e-08,d:2.17e-12]  lambda:1     
+
+Continuation step N.2 s:0.95->1, ds=0.05
+[iter:129,phase:2,s:1,ds:0.05] |X|=0.1312/0.01733/0.04106, |L|=0.1312/0.01733/0.04106 |B|=0/0/0, |BL|=7.491e-26/7.491e-26/7.491e-26, PARS=4.063e-08/4.063e-08/4.063e-08, U=3.5/1.077/1.802
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] GoddardRocket
+130(1 ) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:0.00864,d:7.39e-05)   -->   [f:0.0031,d:1.35e-05]   lambda:1     
+131(2 ) [phase:2,s:1,ds:0.05,dump:0,u:0:0]               (f:0.0031,d:7.69e-06)   -->  [f:0.000346,d:4.1e-07]   lambda:1     
+132(3 ) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:0.000346,d:5.04e-07)  -->  [f:2.42e-05,d:6.04e-09]  lambda:1     
+133(4 ) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:2.42e-05,d:8.16e-09)  -->  [f:5.19e-07,d:3.29e-10]  lambda:1     
+134(5 ) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:5.19e-07,d:3.61e-10)  -->  [f:9.52e-10,d:8.18e-13]  lambda:1     
+135(6 ) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:9.52e-10,d:8.22e-13)  -->  [f:7.74e-12,d:8.77e-16]  lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 1               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 2411            | N. System pars  = 6016            |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 2.12 [sec]      | timeout         = 0 [ms]          |
+| iteration       = 135             | Memory Used     = 750Kb(+75b)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 582             | Jacobian        = 135             |
+| Factorization   = 135             | Inversion       = 582             |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 4.2911e-10      | last ||d||_inf  = 3.2301e-14      |
+| last ||f||_1    = 7.7404e-12      | last ||d||_1    = 8.7697e-16      |
+| last ||f||_2    = 3.2795e-11      | last ||d||_2    = 2.7568e-15      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 1.102ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 81.57ms ]
+Check DuDxxpm (epsi=0.001):
+#ERR 1 DuDxxpm [cell=47 of 400 SEGMENT#0 range:(0,400)] #x=3 #u=1 #p=1 [ (u) * (xxpm) = 1 x 10 ]
+jac[  0,  8] =  -5.8544e+06 : -5.917e+06   [A:FD] ---        62635 : 1.0586       [err:err(%)]
+jac[  0,  9] =   9.7791e+06 : 1.0046e+07   [A:FD] ---   2.6727e+05 : 2.6603       [err:err(%)]
+
+#ERR 2 DuDxxpm [cell=48 of 400 SEGMENT#0 range:(0,400)] #x=3 #u=1 #p=1 [ (u) * (xxpm) = 1 x 10 ]
+jac[  0,  8] =  -2.5355e+07 : -2.4252e+07  [A:FD] ---   1.1027e+06 : 4.3491       [err:err(%)]
+jac[  0,  9] =   4.2238e+07 : 3.8041e+07   [A:FD] ---   4.1972e+06 : 9.937        [err:err(%)]
+
+#ERR 3 DuDxxpm [cell=49 of 400 SEGMENT#0 range:(0,400)] #x=3 #u=1 #p=1 [ (u) * (xxpm) = 1 x 10 ]
+jac[  0,  9] =   2.5611e+07 : 2.5459e+07   [A:FD] ---   1.5147e+05 : 0.59145      [err:err(%)]
+
+#ERR 4 DuDxxpm [cell=50 of 400 SEGMENT#0 range:(0,400)] #x=3 #u=1 #p=1 [ (u) * (xxpm) = 1 x 10 ]
+jac[  0,  8] =  -2.5706e+07 : -2.4547e+07  [A:FD] ---   1.1586e+06 : 4.5073       [err:err(%)]
+jac[  0,  9] =   4.2606e+07 : 3.8275e+07   [A:FD] ---   4.3304e+06 : 10.164       [err:err(%)]
+
+#ERR 5 DuDxxpm [cell=51 of 400 SEGMENT#0 range:(0,400)] #x=3 #u=1 #p=1 [ (u) * (xxpm) = 1 x 10 ]
+jac[  0,  8] =  -1.9856e+07 : -1.9527e+07  [A:FD] ---   3.2863e+05 : 1.6551       [err:err(%)]
+jac[  0,  9] =   3.2827e+07 : 3.1402e+07   [A:FD] ---   1.4253e+06 : 4.3417       [err:err(%)]
+
+#ERR 6 DuDxxpm [cell=52 of 400 SEGMENT#0 range:(0,400)] #x=3 #u=1 #p=1 [ (u) * (xxpm) = 1 x 10 ]
+jac[  0,  8] =  -2.4683e+07 : -2.3711e+07  [A:FD] ---   9.7169e+05 : 3.9367       [err:err(%)]
+jac[  0,  9] =   4.0701e+07 : 3.7033e+07   [A:FD] ---   3.6679e+06 : 9.0118       [err:err(%)]
+
+skipping... [ 6.299ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001): all OK [ 78.92ms ]
+Check DodeDxp (epsi=0.001): all OK [ 1.595ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 80.69ms ]
+target [Lagrange,Mayer]            = [ 0, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 1.162e-07, 9.076e-07 ]
+Optimization parameters:
+TimeSize: 0.198601109080564275
+All Done Folks!

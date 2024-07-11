@@ -1,0 +1,258 @@
++----------------------------- MODEL:Train -----------------------------+
++................................ DIMS .................................+
+| dims                      = u=2, q=1, x=2, p=0, bc=4 of 4             |
+| total                     = nZ=12516, nP=40662, nUC=6254, Q=3128      |
+| index start               = omega=12512, p=12516                      |
+| post processing           = n_post=1                                  |
++................................ MESH .................................+
+| num nodes / segments      = 3128 / 3                                  |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 1                               |
+| mesh class pointer        = 0x7ff7b623f148                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 12516 x 12516                             |
+| nblock/block size         = 3127 / 4                                  |
+| qr/qx/nr/nx               = 4 / 4 / 0 / 0                             |
+| last blok rows x cols     = 12 x 12                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x                                                        |
+| [ 1] initial_v                                                        |
+| [ 2] final_x                                                          |
+| [ 3] final_v                                                          |
++..................... Controls penalties/barriers .....................+
+uaControl = { COSLOG (BARRIER) epsilon=0.01, tolerance=0.01 }            
+ubControl = { COSLOG (BARRIER) epsilon=0.01, tolerance=0.01 }            
++....................... No constraints type LT ........................+
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 3                                                      
+  num. nodes    = 3128                                                   
+  Segment N.0: s0 = 0 length = 0.25 npts = 26 no data set                
+  Segment N.1: s0 = 0.25 length = 0.75 npts = 3001 no data set           
+  Segment N.2: s0 = 1 length = 3.8 npts = 101 no data set                
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|............................ alpha = 0.3 ..............................|
+|............................. beta = 0.14 .............................|
+|............................ epsi0 = 0.01 .............................|
+|............................ epsi1 = 1e-06 ............................|
+|............................... gm = 0.16 .............................|
+|............................. tol0 = 0.01 .............................|
+|............................. tol1 = 1e-06 ............................|
+|............................ uaMax = 10 ...............................|
+|............................ ubMax = 2 ................................|
+|.............................. v_f = 0 ................................|
+|.............................. v_i = 0 ................................|
+|.............................. x_f = 6 ................................|
+|.............................. x_i = 0 ................................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=3.574/0.9544/1.787, |L|=3.574/0.9537/1.787 |B|=0/0/0, |BL|=1/2/1.414, PARS=0/0/0, U=1/0.5012/0.7071
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Train
+  1 [dump:3,u:0:0]       (f:0.934,d:0.188)     -->     [f:1.01,d:0.0596]     lambda:0.857  #err=  3 angle:3 armijo:3
+  2 [dump:1,u:0:0]       (f:1.01,d:0.874)      -->     [f:0.822,d:0.298]     lambda:0.4    #err=  1 armijo:1
+  3 [dump:2,u:0:0]       (f:0.822,d:2.82)      -->     [f:2.52,d:0.868]      lambda:0.16   #err=  2 armijo:2
+  4 [dump:2,u:0:0]        (f:2.52,d:1.3)       -->      [f:1.48,d:1.12]      lambda:0.16   #err=  2 armijo:2
+  5 [dump:1,u:0:0]        (f:1.48,d:1.35)      -->      [f:3.93,d:1.19]      lambda:0.4    #err=  1 armijo:1
+  6 [dump:1,u:0:0]        (f:3.93,d:1.19)      -->      [f:2.53,d:1.29]      lambda:0.411  #err=  1 armijo:1
+  7 [dump:1,u:0:0]        (f:2.53,d:2.41)      -->      [f:2.33,d:1.28]      lambda:0.496  #err=  1 angle:1 armijo:1
+  8 [dump:1,u:0:0]        (f:2.33,d:1.49)      -->     [f:4.34,d:0.789]      lambda:0.4    #err=  1 armijo:1
+  9 [dump:5,u:0:0]        (f:4.34,d:7.16)      -->      [f:4.31,d:5.1]       lambda:0.0102  #err=  5 armijo:5
+ 10 [dump:0,u:0:0]       (f:4.31,d:0.703)      -->     [f:3.21,d:0.603]      lambda:0.152 
+ 11 [dump:0,u:0:0]       (f:3.21,d:0.595)      -->     [f:3.09,d:0.195]      lambda:1     
+ 12 [dump:7,u:0:0]        (f:3.09,d:1.58)      -->      [f:3.6,d:0.382]      lambda:0.0521  #err=  7 angle:4 armijo:7
+ 13 [dump:0,u:0:0]        (f:3.6,d:0.169)      -->     [f:2.09,d:0.0813]     lambda:0.342 
+ 14 [dump:0,u:0:0]       (f:2.09,d:0.0792)     -->     [f:1.3,d:0.0364]      lambda:1     
+ 15 [dump:12,u:0:0]       (f:1.3,d:0.186)      -->    [f:0.906,d:0.0311]     lambda:0.197  #err= 12 angle:11 armijo:12
+ 16 [dump:1,u:0:0]      (f:0.906,d:0.0129)     -->    [f:0.352,d:0.00417]    lambda:0.399  #err=  1 angle:1 armijo:1
+ 17 [dump:0,u:0:0]      (f:0.352,d:0.00327)    -->   [f:0.0289,d:0.000181]   lambda:1     
+ 18 [dump:0,u:0:0]     (f:0.0289,d:0.000137)   -->  [f:0.000724,d:3.31e-06]  lambda:1     
+ 19 [dump:0,u:0:0]    (f:0.000724,d:3.54e-06)  -->  [f:1.05e-06,d:5.09e-09]  lambda:1     
+ 20 [dump:0,u:0:0]    (f:1.05e-06,d:5.1e-09)   -->  [f:3.48e-12,d:1.26e-14]  lambda:1     
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:20,phase:1,s:0.2,ds:0.2] |X|=0.4372/0.07372/0.136, |L|=0.4372/0.07376/0.136 |B|=0/0/0, |BL|=2.048e-26/3.011e-26/2.263e-26, PARS=0/0/0, U=9.999/2.328/4
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Train
+21 (1 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]              (f:0.0906,d:0.00102)    -->  [f:0.00615,d:4.57e-05]   lambda:1     
+22 (2 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:0.00615,d:3.24e-05)   -->  [f:0.000103,d:8.6e-07]   lambda:1     
+23 (3 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:0.000103,d:9.14e-07)  -->  [f:9.47e-08,d:9.06e-10]  lambda:1     
+24 (4 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:9.47e-08,d:9.08e-10)  -->  [f:9.51e-13,d:9.28e-16]  lambda:1     
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:24,phase:1,s:0.5,ds:0.3] |X|=0.8983/0.1661/0.3099, |L|=0.8983/0.1662/0.31 |B|=0/0/0, |BL|=1.241e-26/1.571e-26/1.284e-26, PARS=0/0/0, U=9.999/2.226/3.924
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Train
+25 (1 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]               (f:0.201,d:0.00143)    -->   [f:0.0409,d:0.000277]   lambda:1     
+26 (2 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]              (f:0.0409,d:0.000102)   -->  [f:0.00323,d:1.31e-05]   lambda:1     
+27 (3 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:0.00323,d:1.87e-05)   -->  [f:0.000109,d:6.98e-07]  lambda:1     
+28 (4 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:0.000109,d:7.55e-07)  -->  [f:1.7e-07,d:1.18e-09]   lambda:1     
+29 (5 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:1.7e-07,d:1.19e-09)   -->  [f:1.56e-12,d:2.9e-15]   lambda:1     
+
+Continuation step N.1 s:0.5->0.95, ds=0.45
+[iter:29,phase:1,s:0.95,ds:0.45] |X|=3.377/0.8932/1.711, |L|=3.377/0.8938/1.711 |B|=0/0/0, |BL|=2.434e-26/3.939e-26/2.862e-26, PARS=0/0/0, U=10/1.472/3.546
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Train
+30 (1 ) [phase:1,s:0.95,ds:0.45,dump:3,u:0:0]             (f:0.987,d:0.00329)    -->    [f:0.894,d:0.00292]    lambda:0.064  #err=  3 armijo:3
+31 (2 ) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]             (f:0.894,d:0.00175)    -->    [f:0.629,d:0.0015]     lambda:0.16   #err=  2 armijo:2
+32 (3 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]             (f:0.629,d:0.00158)    -->    [f:0.249,d:0.00089]    lambda:0.4    #err=  1 armijo:1
+33 (4 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]            (f:0.249,d:0.000872)    -->   [f:0.0403,d:3.15e-05]   lambda:1     
+34 (5 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]            (f:0.0403,d:1.38e-05)   -->  [f:0.00134,d:1.52e-06]   lambda:1     
+35 (6 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:0.00134,d:2.18e-06)   -->  [f:4.2e-05,d:8.96e-08]   lambda:1     
+36 (7 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:4.2e-05,d:9.87e-08)   -->  [f:1.12e-07,d:2.48e-10]  lambda:1     
+37 (8 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:1.12e-07,d:2.5e-10)   -->  [f:1.18e-11,d:4.56e-15]  lambda:1     
+
+Continuation step N.1 s:0.95->1, ds=0.05
+[iter:37,phase:1,s:1,ds:0.05] |X|=4.792/1.083/2.106, |L|=4.792/1.084/2.107 |B|=0/0/0, |BL|=8.168e-27/1.553e-26/1.099e-26, PARS=0/0/0, U=10/1.237/3.482
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Train
+38 (1 ) [phase:1,s:1,ds:0.05,dump:7,u:0:0]                 (f:1.18,d:0.0195)     -->     [f:1.18,d:0.0194]     lambda:0.00164  #err=  7 armijo:7
+39 (2 ) [phase:1,s:1,ds:0.05,dump:3,u:0:0]                (f:1.18,d:0.00255)     -->    [f:1.17,d:0.00252]     lambda:0.00389  #err=  3 armijo:3
+40 (3 ) [phase:1,s:1,ds:0.05,dump:5,u:0:0]                (f:1.17,d:0.000437)    -->    [f:1.14,d:0.000345]    lambda:0.0102  #err=  5 armijo:5
+41 (4 ) [phase:1,s:1,ds:0.05,dump:2,u:0:0]                (f:1.14,d:0.000237)    -->    [f:1.08,d:0.000226]    lambda:0.0243  #err=  2 armijo:2
+42 (5 ) [phase:1,s:1,ds:0.05,dump:3,u:0:0]                (f:1.08,d:0.000215)    -->   [f:0.916,d:0.000198]    lambda:0.064  #err=  3 armijo:3
+43 (6 ) [phase:1,s:1,ds:0.05,dump:2,u:0:0]                (f:0.916,d:0.00019)    -->    [f:0.646,d:0.00014]    lambda:0.16   #err=  2 armijo:2
+44 (7 ) [phase:1,s:1,ds:0.05,dump:2,u:0:0]                (f:0.646,d:0.00014)    -->   [f:0.526,d:0.000112]    lambda:0.16   #err=  2 armijo:2
+45 (8 ) [phase:1,s:1,ds:0.05,dump:1,u:0:0]               (f:0.526,d:0.000111)    -->    [f:0.272,d:8.2e-05]    lambda:0.4    #err=  1 armijo:1
+46 (9 ) [phase:1,s:1,ds:0.05,dump:1,u:0:0]               (f:0.272,d:7.48e-05)    -->    [f:0.162,d:3.5e-05]    lambda:0.4    #err=  1 armijo:1
+47 (10) [phase:1,s:1,ds:0.05,dump:13,u:0:0]              (f:0.162,d:3.99e-05)    -->   [f:0.145,d:4.84e-05]    lambda:0.091  #err= 13 angle:11 armijo:13
+48 (11) [phase:1,s:1,ds:0.05,dump:2,u:0:0]               (f:0.145,d:4.12e-05)    -->   [f:0.134,d:3.73e-05]    lambda:0.0724  #err=  2 armijo:2
+49 (12) [phase:1,s:1,ds:0.05,dump:3,u:0:0]               (f:0.134,d:3.44e-05)    -->   [f:0.125,d:3.21e-05]    lambda:0.064  #err=  3 armijo:3
+50 (13) [phase:1,s:1,ds:0.05,dump:2,u:0:0]               (f:0.125,d:3.17e-05)    -->   [f:0.106,d:2.67e-05]    lambda:0.16   #err=  2 armijo:2
+51 (14) [phase:1,s:1,ds:0.05,dump:1,u:0:0]               (f:0.106,d:2.59e-05)    -->   [f:0.0619,d:1.52e-05]   lambda:0.4    #err=  1 armijo:1
+52 (15) [phase:1,s:1,ds:0.05,dump:0,u:0:0]               (f:0.0619,d:1.48e-05)   -->  [f:0.00453,d:9.38e-07]   lambda:1     
+53 (16) [phase:1,s:1,ds:0.05,dump:25,u:0:0]             (f:0.00453,d:4.18e-07)   -->  [f:0.00169,d:5.16e-08]   lambda:0.249  #err= 25 angle:25 armijo:25
+54 (17) [phase:1,s:1,ds:0.05,dump:0,u:0:0]               (f:0.00169,d:5.4e-08)   -->  [f:0.00044,d:1.43e-08]   lambda:0.749 
+55 (18) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:0.00044,d:1.49e-08)   -->  [f:3.49e-06,d:2.12e-10]  lambda:1     
+56 (19) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:3.49e-06,d:2.24e-10)  -->  [f:1.39e-08,d:6.89e-13]  lambda:1     
+57 (20) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:1.39e-08,d:6.89e-13)  -->  [f:9.76e-09,d:4.93e-13]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Train
+58 (21) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.76e-09,d:4.93e-13)  -->  [f:9.57e-09,d:4.87e-13]  lambda:1     
+59 (22) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.57e-09,d:4.87e-13)  -->  [f:9.56e-09,d:4.89e-13]  lambda:1     
+60 (23) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.56e-09,d:4.89e-13)  -->  [f:9.76e-09,d:4.77e-13]  lambda:1     
+61 (24) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.76e-09,d:4.77e-13)  -->  [f:9.67e-09,d:5.02e-13]  lambda:1     
+62 (25) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.67e-09,d:5.02e-13)  -->  [f:9.5e-09,d:4.85e-13]   lambda:1     
+63 (26) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.5e-09,d:4.85e-13)   -->  [f:9.6e-09,d:4.86e-13]   lambda:1     
+64 (27) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.6e-09,d:4.86e-13)   -->  [f:9.61e-09,d:5.14e-13]  lambda:1     
+65 (28) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.61e-09,d:5.14e-13)  -->  [f:9.8e-09,d:4.92e-13]   lambda:1     
+66 (29) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.8e-09,d:4.92e-13)   -->  [f:9.6e-09,d:4.87e-13]   lambda:1     
+67 (30) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.6e-09,d:4.87e-13)   -->  [f:9.84e-09,d:5.04e-13]  lambda:1     
+68 (31) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.84e-09,d:5.04e-13)  -->  [f:9.86e-09,d:5.13e-13]  lambda:1     
+69 (32) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.86e-09,d:5.13e-13)  -->  [f:9.82e-09,d:5.23e-13]  lambda:1     
+70 (33) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.82e-09,d:5.23e-13)  -->  [f:9.28e-09,d:5.07e-13]  lambda:1     
+71 (34) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.28e-09,d:5.07e-13)  -->  [f:9.4e-09,d:4.95e-13]   lambda:1     
+72 (35) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.4e-09,d:4.95e-13)   -->  [f:9.8e-09,d:4.97e-13]   lambda:1     
+73 (36) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.8e-09,d:4.97e-13)   -->  [f:9.51e-09,d:5.06e-13]  lambda:1     
+74 (37) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.51e-09,d:5.06e-13)  -->  [f:9.71e-09,d:4.98e-13]  lambda:1     
+75 (38) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.71e-09,d:4.98e-13)  -->   [f:9.78e-09,d:5e-13]    lambda:1     
+76 (39) [phase:1,s:1,ds:0.05,dump:0,u:0:0]               (f:9.78e-09,d:5e-13)    -->  [f:9.76e-09,d:4.95e-13]  lambda:1     
+77 (40) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.76e-09,d:4.95e-13)  -->  [f:9.96e-09,d:4.82e-13]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] Train
+78 (41) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.96e-09,d:4.82e-13)  -->  [f:9.62e-09,d:5.04e-13]  lambda:1     
+79 (42) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.62e-09,d:5.04e-13)  -->  [f:9.67e-09,d:5.11e-13]  lambda:1     
+80 (43) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.67e-09,d:5.11e-13)  -->  [f:9.54e-09,d:4.78e-13]  lambda:1     
+81 (44) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.54e-09,d:4.78e-13)  -->  [f:9.48e-09,d:4.78e-13]  lambda:1     
+82 (45) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.48e-09,d:4.78e-13)  -->  [f:9.58e-09,d:5.02e-13]  lambda:1     
+83 (46) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.58e-09,d:5.02e-13)  -->  [f:9.76e-09,d:4.87e-13]  lambda:1     
+84 (47) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.76e-09,d:4.87e-13)  -->  [f:9.77e-09,d:5.01e-13]  lambda:1     
+85 (48) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.77e-09,d:5.01e-13)  -->  [f:9.66e-09,d:5.07e-13]  lambda:1     
+86 (49) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.66e-09,d:5.07e-13)  -->  [f:9.79e-09,d:5.02e-13]  lambda:1     
+87 (50) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.79e-09,d:5.02e-13)  -->  [f:9.5e-09,d:4.87e-13]   lambda:1     
+88 (51) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.5e-09,d:4.87e-13)   -->  [f:9.67e-09,d:5.06e-13]  lambda:1     
+89 (52) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.67e-09,d:5.06e-13)  -->  [f:9.58e-09,d:5.13e-13]  lambda:1     
+90 (53) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.58e-09,d:5.13e-13)  -->  [f:9.54e-09,d:5.16e-13]  lambda:1     
+91 (54) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.54e-09,d:5.16e-13)  -->  [f:9.83e-09,d:4.72e-13]  lambda:1     
+92 (55) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.83e-09,d:4.72e-13)  -->  [f:9.64e-09,d:4.99e-13]  lambda:1     
+93 (56) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.64e-09,d:4.99e-13)  -->   [f:9.93e-09,d:5e-13]    lambda:1     
+94 (57) [phase:1,s:1,ds:0.05,dump:0,u:0:0]               (f:9.93e-09,d:5e-13)    -->  [f:9.45e-09,d:5.06e-13]  lambda:1     
+95 (58) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.45e-09,d:5.06e-13)  -->  [f:9.54e-09,d:5.03e-13]  lambda:1     
+96 (59) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.54e-09,d:5.03e-13)  -->  [f:9.53e-09,d:5.17e-13]  lambda:1     
+97 (60) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:9.53e-09,d:5.17e-13)  -->  [f:9.46e-09,d:5.13e-13]  lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 2               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 12516           | N. System pars  = 40662           |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 4.44 [sec]      | timeout         = 0 [ms]          |
+| iteration       = 97              | Memory Used     = 3Mb(+49Kb)      |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 309             | Jacobian        = 97              |
+| Factorization   = 97              | Inversion       = 309             |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 1.1853e-07      | last ||d||_inf  = 9.2e-12         |
+| last ||f||_1    = 9.4553e-09      | last ||d||_1    = 5.1301e-13      |
+| last ||f||_2    = 2.1753e-08      | last ||d||_2    = 1.1709e-12      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 9.851ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 385.1ms ]
+Check DuDxxpm (epsi=0.001):
+#ERR 1 DuDxxpm [cell=745 of 3127 SEGMENT#1 range:(25,3025)] #x=2 #u=2 #p=0 [ (u) * (xxpm) = 2 x 6 ]
+jac[  0,  1] =  -2.6565e+05 : -2.6649e+05  [A:FD] ---       837.82 : 0.31439      [err:err(%)]
+jac[  0,  3] =  -2.6565e+05 : -2.6649e+05  [A:FD] ---       838.42 : 0.31461      [err:err(%)]
+jac[  0,  5] =  -5.3131e+05 : -5.3811e+05  [A:FD] ---       6801.1 : 1.2639       [err:err(%)]
+
+#ERR 2 DuDxxpm [cell=746 of 3127 SEGMENT#1 range:(25,3025)] #x=2 #u=2 #p=0 [ (u) * (xxpm) = 2 x 6 ]
+jac[  0,  1] =   -6.749e+07 : -4.8122e+07  [A:FD] ---   1.9368e+07 : 28.698       [err:err(%)]
+jac[  0,  3] =   -6.749e+07 : -4.812e+07   [A:FD] ---   1.9369e+07 : 28.7         [err:err(%)]
+jac[  0,  5] =  -1.3498e+08 : -6.3699e+07  [A:FD] ---    7.128e+07 : 52.808       [err:err(%)]
+
+#ERR 3 DuDxxpm [cell=747 of 3127 SEGMENT#1 range:(25,3025)] #x=2 #u=2 #p=0 [ (u) * (xxpm) = 2 x 6 ]
+jac[  0,  1] =  -5.6792e+07 : -4.4455e+07  [A:FD] ---   1.2337e+07 : 21.723       [err:err(%)]
+jac[  0,  3] =  -5.6792e+07 : -4.4456e+07  [A:FD] ---   1.2337e+07 : 21.722       [err:err(%)]
+jac[  0,  5] =  -1.1358e+08 : -6.0416e+07  [A:FD] ---   5.3168e+07 : 46.809       [err:err(%)]
+
+#ERR 4 DuDxxpm [cell=748 of 3127 SEGMENT#1 range:(25,3025)] #x=2 #u=2 #p=0 [ (u) * (xxpm) = 2 x 6 ]
+jac[  0,  1] =  -6.4683e+07 : -4.7221e+07  [A:FD] ---   1.7462e+07 : 26.996       [err:err(%)]
+jac[  0,  3] =  -6.4683e+07 : -4.7221e+07  [A:FD] ---   1.7462e+07 : 26.996       [err:err(%)]
+jac[  0,  5] =  -1.2937e+08 : -6.2886e+07  [A:FD] ---    6.648e+07 : 51.389       [err:err(%)]
+
+#ERR 5 DuDxxpm [cell=749 of 3127 SEGMENT#1 range:(25,3025)] #x=2 #u=2 #p=0 [ (u) * (xxpm) = 2 x 6 ]
+jac[  0,  1] =  -6.1865e+07 : -4.6276e+07  [A:FD] ---   1.5589e+07 : 25.199       [err:err(%)]
+jac[  0,  3] =  -6.1865e+07 : -4.6276e+07  [A:FD] ---   1.5589e+07 : 25.198       [err:err(%)]
+jac[  0,  5] =  -1.2373e+08 : -6.2038e+07  [A:FD] ---   6.1692e+07 : 49.86        [err:err(%)]
+
+#ERR 6 DuDxxpm [cell=750 of 3127 SEGMENT#1 range:(25,3025)] #x=2 #u=2 #p=0 [ (u) * (xxpm) = 2 x 6 ]
+jac[  0,  1] =  -6.3175e+07 : -4.6721e+07  [A:FD] ---   1.6454e+07 : 26.045       [err:err(%)]
+jac[  0,  3] =  -6.3175e+07 : -4.6721e+07  [A:FD] ---   1.6454e+07 : 26.045       [err:err(%)]
+jac[  0,  5] =  -1.2635e+08 : -6.2437e+07  [A:FD] ---   6.3913e+07 : 50.584       [err:err(%)]
+
+skipping... [ 49.08ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001): all OK [ 389.2ms ]
+Check DodeDxp (epsi=0.001): all OK [ 8.988ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 398.3ms ]
+target [Lagrange,Mayer]            = [ 12.31, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 1.245e-05, 0 ]
+All Done Folks!

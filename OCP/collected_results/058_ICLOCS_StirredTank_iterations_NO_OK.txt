@@ -1,0 +1,320 @@
++---------------------- MODEL:ICLOCS_StirredTank -----------------------+
++................................ DIMS .................................+
+| dims                      = u=1, q=1, x=2, p=1, bc=4 of 4             |
+| total                     = nZ=1609, nP=4412, nUC=400, Q=401          |
+| index start               = omega=1604, p=1608                        |
+| post processing           = n_post=1                                  |
++................................ MESH .................................+
+| num nodes / segments      = 401 / 1                                   |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 2                               |
+| mesh class pointer        = 0x7ff7b0bfd138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 1609 x 1609                               |
+| nblock/block size         = 400 / 4                                   |
+| qr/qx/nr/nx               = 4 / 4 / 1 / 1                             |
+| last blok rows x cols     = 13 x 13                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x1                                                       |
+| [ 1] initial_x2                                                       |
+| [ 2] final_x1                                                         |
+| [ 3] final_x2                                                         |
++..................... Controls penalties/barriers .....................+
+uControl = { LOG (BARRIER) epsilon=0.1, tolerance=0.1 }                  
++......................... Constraints type LT .........................+
+tfbound = { LT: Barrier0 [tolerance=1, epsilon=0.01] active }            
+x1bound_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active } 
+x1bound_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active } 
+x2bound_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active } 
+x2bound_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active } 
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 401                                                    
+  Segment N.0: s0 = 0 length = 1 npts = 401 no data set                  
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|............................... En = 5 ................................|
+|.......................... T_guess = 90 ...............................|
+|............................ T_min = 10 ...............................|
+|............................... Tc = 0.38158 ..........................|
+|............................... Tf = 0.3947 ...........................|
+|................................ a = 0.117 ............................|
+|................................ k = 300 ..............................|
+|............................ theta = 20 ...............................|
+|.............................. u_f = 0.76 .............................|
+|........................... w_time = 1 ................................|
+|............................. x1_f = 0.2632 ...........................|
+|............................. x1_i = 0.98 .............................|
+|............................. x2_f = 0.6519 ...........................|
+|............................. x2_i = 0.39 .............................|
+|....................... T_epsi_max = 0.01 .............................|
+|....................... T_epsi_min = 0.001 ............................|
+|........................ T_tol_max = 1 ................................|
+|........................ T_tol_min = 0.1 ..............................|
+|....................... u_epsi_max = 0.1 ..............................|
+|....................... u_epsi_min = 0.0001 ...........................|
+|........................ u_tol_max = 0.1 ..............................|
+|........................ u_tol_min = 0.0001 ...........................|
+|....................... w_time_max = 1 ................................|
+|....................... w_time_min = 0.01 .............................|
+|....................... x_epsi_max = 0.01 .............................|
+|....................... x_epsi_min = 0.0001 ...........................|
+|........................ x_tol_max = 0.01 .............................|
+|........................ x_tol_min = 0.0001 ...........................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=0.004857/0.002256/0.002773, |L|=0.004857/0.002256/0.002773 |B|=0/0/0, |BL|=0.7168/0.9787/0.7631, PARS=1/1/1, U=0.7602/0.7602/0.7602
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_StirredTank
+  1 [dump:33,u:3:3]   (f:0.00347,d:8.09e+03)   -->   [f:0.0173,d:8.09e+03]   lambda:7.73e-06  #err= 81 update:33
+  2 [dump:12,u:3:3]      (f:0.0173,d:866)      -->     [f:0.0325,d:866]      lambda:5.77e-05  #err= 28 update:12
+  3 [dump:8,u:3:3]       (f:0.0325,d:80.4)     -->      [f:0.0375,d:71]      lambda:0.000657  #err= 20 update:8
+  4 [dump:0,u:3.8:4]     (f:0.0375,d:41.9)     -->      [f:0.18,d:40.3]      lambda:0.0384 
+  5 [dump:0,u:10:51]      (f:0.18,d:40.5)      -->      [f:81.7,d:15.9]      lambda:1     
+  6 [dump:0,u:37:51]      (f:81.7,d:126)       -->      [f:167,d:55.9]       lambda:1     
+  7 [dump:3,u:40:51]       (f:167,d:395)       -->       [f:210,d:270]       lambda:0.343  #err= 27 update:3
+  8 [dump:4,u:34:51]       (f:210,d:799)       -->       [f:356,d:442]       lambda:0.24   #err= 40 update:4
+  9 [dump:2,u:33:51]       (f:356,d:465)       -->       [f:552,d:114]       lambda:0.36   #err= 27 update:2
+ 10 [dump:8,u:35:51]       (f:552,d:705)       -->       [f:543,d:676]       lambda:0.0329  #err= 73 update:7 armijo:1
+ 11 [dump:0,u:38:51]       (f:543,d:180)       -->       [f:515,d:169]       lambda:0.272 
+ 12 [dump:3,u:44:51]       (f:515,d:233)       -->       [f:460,d:203]       lambda:0.196  #err= 32 update:2 armijo:1
+ 13 [dump:2,u:46:51]       (f:460,d:199)       -->       [f:394,d:162]       lambda:0.28   #err= 17 update:1 armijo:1
+ 14 [dump:1,u:48:51]       (f:394,d:151)       -->       [f:300,d:102]       lambda:0.4    #err=  1 armijo:1
+ 15 [dump:0,u:48:51]      (f:300,d:87.4)       -->      [f:199,d:78.2]       lambda:1     
+ 16 [dump:1,u:48:51]       (f:199,d:111)       -->      [f:118,d:74.5]       lambda:0.4    #err=  1 armijo:1
+ 17 [dump:0,u:45:51]      (f:118,d:73.6)       -->      [f:71.5,d:71.4]      lambda:1     
+U_solver::eval(i_cell=341,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=2.048e-06 f0=-1611, f1=-1611, |g0|_inf=26.96, |g1|_inf=26.96, |F0|_inf=3.079e-13, |F1|_inf=3.079e-13 H00=2203, H0=-1021, H1=-1021, v=34.37
+
+U_solver::eval(i_cell=340,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1.024e-06 f0=-1526, f1=-1526, |g0|_inf=352.2, |g1|_inf=352.2, |F0|_inf=4.336e-14, |F1|_inf=4.336e-14 H00=1961, H0=-922.4, H1=-922.4, v=34.73
+
+U_solver::eval(i_cell=349,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=2.56e-05 f0=-1134, f1=-1134, |g0|_inf=6.713, |g1|_inf=6.713, |F0|_inf=2.815e-13, |F1|_inf=2.815e-13 H00=1926, H0=-1134, H1=-1134, v=0.08011
+
+U_solver::eval(i_cell=351,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.01024 f0=-926.1, f1=-926.1, |g0|_inf=7.484e-05, |g1|_inf=7.484e-05, |F0|_inf=1.457e-13, |F1|_inf=1.457e-13 H00=1569, H0=-926.1, H1=-926.1, v=1.704e-06
+
+U_solver::eval(i_cell=352,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.001024 f0=-825.8, f1=-825.8, |g0|_inf=0.00749, |g1|_inf=0.00749, |F0|_inf=9.108e-14, |F1|_inf=9.108e-14 H00=1394, H0=-825.8, H1=-825.8, v=0.001426
+
+ 18 [dump:2,u:46:51]      (f:71.5,d:57.8)      -->      [f:76.2,d:48.9]      lambda:0.28   #err=  7 controls:1 armijo:1
+U_solver::eval(i_cell=332,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=8.192e-06 f0=-1631, f1=-1631, |g0|_inf=302.9, |g1|_inf=302.9, |F0|_inf=7.306e-13, |F1|_inf=7.306e-13 H00=2235, H0=-1518, H1=-1518, v=15
+
+ 19 [dump:2,u:45:51]      (f:76.2,d:56.5)      -->      [f:81.1,d:23.9]      lambda:0.28   #err=  3 controls:1 armijo:1
+U_solver::eval(i_cell=315,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=8.192e-07 f0=-1780, f1=-1780, |g0|_inf=639.1, |g1|_inf=639.1, |F0|_inf=6.735e-14, |F1|_inf=6.735e-14 H00=1641, H0=-1262, H1=-1262, v=32.17
+
+U_solver::eval(i_cell=314,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1.638e-06 f0=-1673, f1=-1673, |g0|_inf=610.1, |g1|_inf=610.1, |F0|_inf=9.572e-16, |F1|_inf=9.572e-16 H00=1481, H0=-1500, H1=-1500, v=18.62
+
+U_solver::eval(i_cell=309,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=6.554e-05 f0=-1179, f1=-1179, |g0|_inf=0.905, |g1|_inf=0.905, |F0|_inf=4.891e-13, |F1|_inf=4.891e-13 H00=917.4, H0=-1179, H1=-1179, v=0.1397
+
+U_solver::eval(i_cell=317,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=6.554e-06 f0=-2003, f1=-2003, |g0|_inf=268.6, |g1|_inf=268.6, |F0|_inf=1.818e-13, |F1|_inf=1.818e-13 H00=2034, H0=-1986, H1=-1986, v=5.865
+
+U_solver::eval(i_cell=321,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=5.12e-07 f0=-2493, f1=-2493, |g0|_inf=1028, |g1|_inf=1028, |F0|_inf=2.625e-14, |F1|_inf=2.625e-14 H00=3253, H0=-2092, H1=-2092, v=28.34
+
+U_solver::eval(i_cell=320,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1.024e-06 f0=-2365, f1=-2365, |g0|_inf=671, |g1|_inf=671, |F0|_inf=3.961e-13, |F1|_inf=3.961e-13 H00=2877, H0=-2125, H1=-2125, v=21.89
+
+U_solver::eval(i_cell=323,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=4.096e-06 f0=-2764, f1=-2764, |g0|_inf=275.2, |g1|_inf=275.2, |F0|_inf=9.22e-13, |F1|_inf=9.22e-13 H00=4210, H0=-2758, H1=-2758, v=3.664
+
+U_solver::eval(i_cell=329,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001024 f0=-1299, f1=-1299, |g0|_inf=0.4707, |g1|_inf=0.4707, |F0|_inf=3.79e-13, |F1|_inf=3.79e-13 H00=2228, H0=-1299, H1=-1299, v=0.01215
+
+U_solver::eval(i_cell=330,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1.28e-05 f0=-1177, f1=-1177, |g0|_inf=13.45, |g1|_inf=13.45, |F0|_inf=2.44e-12, |F1|_inf=1.398e-12 H00=2077, H0=-1161, H1=-1161, v=5.722
+
+U_solver::eval(i_cell=333,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001024 f0=-810.1, f1=-810.1, |g0|_inf=0.4582, |g1|_inf=0.4582, |F0|_inf=6.673e-14, |F1|_inf=6.673e-14 H00=1559, H0=-810.1, H1=-810.1, v=0.01082
+
+U_solver::eval(i_cell=331,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=2.56e-05 f0=-1054, f1=-1054, |g0|_inf=3.583, |g1|_inf=3.583, |F0|_inf=1.333e-13, |F1|_inf=1.333e-13 H00=1912, H0=-1054, H1=-1054, v=0.3236
+
+U_solver::eval(i_cell=332,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.000512 f0=-931, f1=-931, |g0|_inf=0.1886, |g1|_inf=0.1886, |F0|_inf=8.215e-13, |F1|_inf=8.215e-13 H00=1738, H0=-931, H1=-931, v=0.005468
+
+ 20 [dump:3,u:44:51]      (f:81.1,d:72.6)      -->      [f:86.7,d:44.6]      lambda:0.196  #err= 15 controls:2 armijo:1
+U_solver::eval(i_cell=309,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=8.192e-07 f0=-1811, f1=-1811, |g0|_inf=376.3, |g1|_inf=376.3, |F0|_inf=2.294e-14, |F1|_inf=2.294e-14 H00=1738, H0=-1195, H1=-1195, v=35.11
+
+U_solver::eval(i_cell=311,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=8.192e-07 f0=-2047, f1=-2047, |g0|_inf=632.6, |g1|_inf=632.6, |F0|_inf=9.693e-14, |F1|_inf=9.693e-14 H00=2183, H0=-1591, H1=-1591, v=30.21
+
+U_solver::eval(i_cell=317,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=4.096e-06 f0=-2861, f1=-2861, |g0|_inf=496.2, |g1|_inf=496.2, |F0|_inf=7.324e-13, |F1|_inf=7.324e-13 H00=4764, H0=-2848, H1=-2848, v=5.114
+
+U_solver::eval(i_cell=310,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=8.192e-07 f0=-1927, f1=-1927, |g0|_inf=600.3, |g1|_inf=600.3, |F0|_inf=6.022e-14, |F1|_inf=6.022e-14 H00=1944, H0=-1486, H1=-1486, v=29.7
+
+U_solver::eval(i_cell=314,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=5.12e-07 f0=-2432, f1=-2432, |g0|_inf=832.7, |g1|_inf=832.7, |F0|_inf=1.894e-14, |F1|_inf=1.894e-14 H00=3162, H0=-1910, H1=-1910, v=32.34
+
+U_solver::eval(i_cell=320,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=2.56e-05 f0=-2997, f1=-2997, |g0|_inf=3.455, |g1|_inf=3.455, |F0|_inf=1.329e-13, |F1|_inf=1.329e-13 H00=6343, H0=-2997, H1=-2997, v=0.07878
+
+U_solver::eval(i_cell=313,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1.024e-06 f0=-2299, f1=-2299, |g0|_inf=1015, |g1|_inf=1015, |F0|_inf=2.916e-13, |F1|_inf=2.916e-13 H00=2783, H0=-2199, H1=-2199, v=14.18
+
+U_solver::eval(i_cell=319,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1.024e-05 f0=-1534, f1=-1534, |g0|_inf=2.342, |g1|_inf=2.342, |F0|_inf=9.644e-13, |F1|_inf=9.644e-13 H00=2374, H0=-1522, H1=-1522, v=4.961
+
+U_solver::eval(i_cell=326,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001024 f0=-760.8, f1=-760.8, |g0|_inf=0.4921, |g1|_inf=0.4921, |F0|_inf=5.265e-14, |F1|_inf=5.265e-14 H00=1527, H0=-760.8, H1=-760.8, v=0.0104
+
+U_solver::eval(i_cell=323,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1.28e-05 f0=-1130, f1=-1130, |g0|_inf=11.89, |g1|_inf=11.89, |F0|_inf=1.242e-12, |F1|_inf=1.703e-12 H00=2043, H0=-1109, H1=-1109, v=6.598
+
+U_solver::eval(i_cell=325,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=2.56e-05 f0=-882, f1=-882, |g0|_inf=12.05, |g1|_inf=12.05, |F0|_inf=7.704e-13, |F1|_inf=7.704e-13 H00=1706, H0=-882, H1=-882, v=0.1249
+
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_StirredTank
+ 21 [dump:3,u:43:51]      (f:86.7,d:69.4)      -->      [f:89.9,d:45.3]      lambda:0.196  #err= 14 controls:2 armijo:1
+U_solver::eval(i_cell=303,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.01311 f0=-1209, f1=-1209, |g0|_inf=4.793e-05, |g1|_inf=4.793e-05, |F0|_inf=3.486e-13, |F1|_inf=3.486e-13 H00=1177, H0=-1209, H1=-1209, v=2.372e-06
+
+U_solver::eval(i_cell=307,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.008192 f0=-1636, f1=-1636, |g0|_inf=0.0001257, |g1|_inf=0.0001257, |F0|_inf=3.293e-13, |F1|_inf=3.293e-13 H00=1922, H0=-1636, H1=-1636, v=6.001e-06
+
+U_solver::eval(i_cell=319,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=6.4e-06 f0=-1062, f1=-1062, |g0|_inf=367.5, |g1|_inf=367.5, |F0|_inf=4.009e-13, |F1|_inf=4.009e-13 H00=2334, H0=-872.8, H1=-872.8, v=19.47
+
+U_solver::eval(i_cell=312,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1.024e-05 f0=-2239, f1=-2239, |g0|_inf=388.5, |g1|_inf=388.5, |F0|_inf=9.245e-13, |F1|_inf=9.245e-13 H00=3893, H0=-2188, H1=-2188, v=10.09
+
+U_solver::eval(i_cell=318,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=6.4e-06 f0=-1246, f1=-1246, |g0|_inf=315.7, |g1|_inf=315.7, |F0|_inf=5.704e-13, |F1|_inf=5.704e-13 H00=2674, H0=-1237, H1=-1237, v=4.191
+
+U_solver::eval(i_cell=317,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1.6e-06 f0=-1437, f1=-1437, |g0|_inf=21.95, |g1|_inf=21.95, |F0|_inf=1.234e-13, |F1|_inf=1.234e-13 H00=3009, H0=-955.9, H1=-955.9, v=31.03
+
+ 22 [dump:1,u:42:51]      (f:89.9,d:56.7)      -->      [f:231,d:31.3]       lambda:0.7    #err=  7 controls:1
+ 23 [dump:9,u:41:51]       (f:231,d:89)        -->      [f:230,d:88.8]       lambda:0.0043  #err= 84 update:5 armijo:4
+ 24 [dump:13,u:42:51]    (f:230,d:1.75e+03)     -->    [f:230,d:1.75e+03]     lambda:1.9e-05  #err=101 update:6 armijo:7
+ 25 [dump:10,u:42:51]     (f:230,d:1.2e+04)     -->     [f:230,d:1.2e+04]     lambda:1.2e-06  #err= 25 update:1 armijo:9
+ 26 [dump:6,u:41:51]     (f:230,d:5.2e+03)     -->     [f:230,d:5.2e+03]     lambda:6.73e-06  #err=  6 armijo:6
+ 27 [dump:6,u:41:51]    (f:230,d:2.09e+03)     -->    [f:230,d:2.09e+03]     lambda:1.59e-05  #err=  6 armijo:6
+ 28 [dump:9,u:42:51]    (f:230,d:6.68e+03)     -->    [f:230,d:6.68e+03]     lambda:4.81e-06  #err= 38 update:2 armijo:7
+ 29 [dump:6,u:41:51]    (f:230,d:2.15e+03)     -->    [f:230,d:2.15e+03]     lambda:1.35e-05  #err=  6 armijo:6
+ 30 [dump:11,u:41:51]    (f:230,d:1.26e+04)     -->    [f:230,d:1.26e+04]     lambda:2.17e-06  #err= 55 update:4 armijo:7
+ 31 [dump:5,u:41:51]    (f:230,d:2.26e+03)     -->    [f:230,d:2.26e+03]     lambda:2.26e-05  #err=  5 armijo:5
+ 32 [dump:6,u:41:51]    (f:230,d:1.88e+03)     -->    [f:230,d:1.88e+03]     lambda:2.92e-05  #err=  6 armijo:6
+ 33 [dump:6,u:41:51]    (f:230,d:1.87e+03)     -->    [f:230,d:1.87e+03]     lambda:3.32e-05  #err=  6 armijo:6
+ 34 [dump:6,u:41:51]    (f:230,d:1.53e+03)     -->    [f:230,d:1.53e+03]     lambda:3.54e-05  #err=  6 armijo:6
+ 35 [dump:7,u:41:51]    (f:230,d:2.43e+03)     -->    [f:230,d:2.43e+03]     lambda:1.46e-05  #err=  7 armijo:7
+ 36 [dump:8,u:41:51]     (f:230,d:3.8e+03)     -->     [f:230,d:3.8e+03]     lambda:6.58e-06  #err= 19 update:1 armijo:7
+ 37 [dump:7,u:41:51]    (f:230,d:4.52e+03)     -->    [f:230,d:4.52e+03]     lambda:6.3e-06  #err=  7 armijo:7
+ 38 [dump:7,u:41:51]    (f:230,d:3.07e+03)     -->    [f:230,d:3.07e+03]     lambda:6.17e-06  #err=  7 armijo:7
+ 39 [dump:10,u:41:51]    (f:230,d:2.33e+04)     -->    [f:230,d:2.33e+04]     lambda:1.2e-06  #err= 37 update:2 armijo:8
+ 40 [dump:5,u:41:51]    (f:230,d:2.01e+03)     -->    [f:230,d:2.01e+03]     lambda:1.68e-05  #err=  5 armijo:5
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ICLOCS_StirredTank
+ 41 [dump:8,u:41:51]    (f:230,d:6.17e+03)     -->    [f:230,d:6.17e+03]     lambda:4.03e-06  #err=  8 armijo:8
+ 42 [dump:6,u:41:51]    (f:230,d:3.17e+03)     -->    [f:230,d:3.17e+03]     lambda:1.23e-05  #err=  6 armijo:6
+ 43 [dump:6,u:41:51]    (f:230,d:2.28e+03)     -->    [f:230,d:2.28e+03]     lambda:2.16e-05  #err=  6 armijo:6
+ 44 [dump:6,u:41:51]      (f:230,d:2e+03)      -->      [f:230,d:2e+03]      lambda:2.85e-05  #err=  6 armijo:6
+ 45 [dump:6,u:41:51]    (f:230,d:1.64e+03)     -->    [f:230,d:1.64e+03]     lambda:3.28e-05  #err=  6 armijo:6
+ 46 [dump:8,u:41:51]    (f:230,d:2.46e+03)     -->    [f:230,d:2.46e+03]     lambda:9.86e-06  #err= 16 update:1 armijo:7
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 1               | Hessian type    = Diagonal        |
++-------------------------- MinimizeHeavyBall --------------------------+
+| last f          = -7.9941e-05     | |g|_inf         = 7.1054e-15      |
++-----------------------------------------------------------------------+
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = NO              | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 1609            | N. System pars  = 4412            |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 221 [sec]       | timeout         = 0 [ms]          |
+| iteration       = 47              | Memory Used     = 482Kb(+75b)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 266             | Jacobian        = 47              |
+| Factorization   = 47              | Inversion       = 266             |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 11379           | last ||d||_inf  = 1.0943e+05      |
+| last ||f||_1    = 230.3           | last ||d||_1    = 14922           |
+| last ||f||_2    = 1065.9          | last ||d||_2    = 32854           |
++-----------------------------------------------------------------------+
+|          __  ___     __   __             ___  __   __   ___  __       |
+|    |\ | /  \  |     /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \      |
+|    | \| \__/  |     \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/      |
+|                                                                       |
++-----------------------------------------------------------------------+
+                                                                         
+Solver error list
+BEGIN
+  err #1: NLsolver[ICLOCS_StirredTank]::solve [phase:0,iter:47/300,lambda:8.641440045968987e-07,dump:10] failed linesearch
+  err #2: NLsolver[ICLOCS_StirredTank]::solve [phase:0,iter:47/300,lambda:2.16e-06] failed Armijo
+
+  err #3: NLsolver[ICLOCS_StirredTank]::solve [phase:0,iter:47/300,lambda:5.401e-06] failed Armijo
+
+  err #4: NLsolver[ICLOCS_StirredTank]::solve [phase:0,iter:47/300,lambda:1.35e-05] failed Armijo
+
+  err #5: NLsolver[ICLOCS_StirredTank]::solve [phase:0,iter:47/300,lambda:3.376e-05] failed Armijo
+
+  err #6: NLsolver[ICLOCS_StirredTank]::solve [phase:0,iter:47/300,lambda:8.439e-05] failed Armijo
+
+  err #7: NLsolver[ICLOCS_StirredTank]::solve [phase:0,iter:47/300,lambda:0.000211] failed Armijo
+
+  err #8: NLsolver[ICLOCS_StirredTank]::solve [phase:0,iter:47/300,lambda:0.0005274] failed Armijo
+
+  err #9: NLsolver[ICLOCS_StirredTank]::solve [phase:0,iter:47/300,lambda:0.001319] failed Armijo
+
+  err #10: NLsolver[ICLOCS_StirredTank]::solve [phase:0,iter:47/300,lambda:0.003296] failed Armijo
+
+  err #11: NLsolver[ICLOCS_StirredTank]::solve [phase:0,iter:47/300,lambda:0.004709] failed update_parameters
+  err #12: Indirect_OCP[ICLOCS_StirredTank]::XC_XD_MU_eval_thread(n_thread=2,Z,P). At cell 347 penalties_check failed
+  err #13: Indirect_OCP[ICLOCS_StirredTank]::XC_XD_MU_eval_thread(n_thread=7,Z,P). At cell 346 penalties_check failed
+  err #14: Indirect_OCP[ICLOCS_StirredTank]::XC_XD_MU_eval_thread(n_thread=8,Z,P). At cell 340 penalties_check failed
+  err #15: Indirect_OCP[ICLOCS_StirredTank]::XC_XD_MU_eval_thread(n_thread=6,Z,P). At cell 345 penalties_check failed
+  err #16: Indirect_OCP[ICLOCS_StirredTank]::XC_XD_MU_eval_thread(n_thread=5,Z,P). At cell 343 penalties_check failed
+  err #17: Indirect_OCP[ICLOCS_StirredTank]::XC_XD_MU_eval_thread(n_thread=3,Z,P). At cell 344 penalties_check failed
+  err #18: Indirect_OCP[ICLOCS_StirredTank]::XC_XD_MU_eval_thread(n_thread=9,Z,P). At cell 342 penalties_check failed
+  err #19: Indirect_OCP[ICLOCS_StirredTank]::XC_XD_MU_eval_thread(n_thread=4,Z,P). At cell 341 penalties_check failed
+  err #20: Indirect_OCP[ICLOCS_StirredTank]::XC_XD_MU_eval_thread(n_thread=1,Z,P). At cell 339 penalties_check failed
+  err #21: Indirect_OCP[ICLOCS_StirredTank]::XC_XD_MU_eval_thread(n_thread=0,Z,P). At cell 338 penalties_check failed
+END
+                                                                         
+Check Controls (epsi=0.001): all OK [ 1.223ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 63.71ms ]
+Check DuDxxpm (epsi=0.001): all OK [ 2.185e+05ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001): all OK [ 51.71ms ]
+Check DodeDxp (epsi=0.001): all OK [ 1.278ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 53.13ms ]
+target [Lagrange,Mayer]            = [ 246.5, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 0.4283, 0.004793 ]
+Optimization parameters:
+TimeSize: 124.171044780399967
+All Done Folks!

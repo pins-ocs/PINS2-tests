@@ -1,0 +1,169 @@
++--------------------------- MODEL:RobotArm ----------------------------+
++................................ DIMS .................................+
+| dims                      = u=3, q=1, x=6, p=1, bc=12 of 12           |
+| total                     = nZ=4825, nP=12428, nUC=1200, Q=401        |
+| index start               = omega=4812, p=4824                        |
+| post processing           = n_post=0                                  |
++................................ MESH .................................+
+| num nodes / segments      = 401 / 1                                   |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 1                               |
+| mesh class pointer        = 0x7ff7bb1b9138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 4825 x 4825                               |
+| nblock/block size         = 400 / 12                                  |
+| qr/qx/nr/nx               = 12 / 12 / 1 / 1                           |
+| last blok rows x cols     = 37 x 37                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_rho                                                      |
+| [ 1] initial_theta                                                    |
+| [ 2] initial_phi                                                      |
+| [ 3] initial_rho1                                                     |
+| [ 4] initial_theta1                                                   |
+| [ 5] initial_phi1                                                     |
+| [ 6] final_rho                                                        |
+| [ 7] final_theta                                                      |
+| [ 8] final_phi                                                        |
+| [ 9] final_rho1                                                       |
+| [10] final_theta1                                                     |
+| [11] final_phi1                                                       |
++..................... Controls penalties/barriers .....................+
+u_rhoControl = { COSLOG (BARRIER) epsilon=0.01, tolerance=0.01 }         
+u_thetaControl = { COSLOG (BARRIER) epsilon=0.01, tolerance=0.01 }       
+u_phiControl = { COSLOG (BARRIER) epsilon=0.01, tolerance=0.01 }         
++....................... No constraints type LT ........................+
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 401                                                    
+  Segment N.0: s0 = 0 length = 1 npts = 401 no data set                  
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|................................ L = 5 ................................|
+|........................... Tguess = 1 ................................|
+|................................ W = 0 ................................|
+|....................... u_epsilon0 = 0.01 .............................|
+|....................... u_epsilon1 = 1e-05 ............................|
+|..................... u_tolerance0 = 0.01 .............................|
+|..................... u_tolerance1 = 1e-05 ............................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=2.094/0.1745/0.6046, |L|=2.094/0.1745/0.6046 |B|=0/0/0, |BL|=0/0/0, PARS=2/2/2, U=0/0/0
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] RobotArm
+  1 [dump:4,u:0:0]        (f:0.174,d:3.8)      -->     [f:0.375,d:3.77]      lambda:0.0316  #err=  4 armijo:4
+  2 [dump:5,u:0:0]       (f:0.375,d:46.7)      -->       [f:32.2,d:12]       lambda:0.206  #err=  5 angle:5 armijo:5
+  3 [dump:0,u:0:0]        (f:32.2,d:16.2)      -->      [f:21.4,d:8.89]      lambda:0.681 
+  4 [dump:3,u:0:0]        (f:21.4,d:27.6)      -->      [f:19.6,d:13.3]      lambda:0.064  #err=  3 armijo:3
+  5 [dump:3,u:0:0]        (f:19.6,d:10.9)      -->      [f:18.8,d:8.53]      lambda:0.064  #err=  3 armijo:3
+  6 [dump:2,u:0:0]        (f:18.8,d:7.43)      -->      [f:13.8,d:3.9]       lambda:0.38   #err=  2 angle:1 armijo:2
+  7 [dump:1,u:0:0]        (f:13.8,d:5.32)      -->      [f:13.4,d:3.56]      lambda:0.4    #err=  1 armijo:1
+  8 [dump:0,u:0:0]        (f:13.4,d:5.06)      -->      [f:11.6,d:1.91]      lambda:1     
+  9 [dump:0,u:0:0]        (f:11.6,d:4.07)      -->      [f:6.09,d:1.25]      lambda:1     
+ 10 [dump:0,u:0:0]       (f:6.09,d:0.618)      -->     [f:0.418,d:0.153]     lambda:1     
+ 11 [dump:1,u:0:0]       (f:0.418,d:0.398)     -->    [f:0.259,d:0.0943]     lambda:0.4    #err=  1 armijo:1
+ 12 [dump:1,u:0:0]      (f:0.259,d:0.0917)     -->    [f:0.121,d:0.0408]     lambda:0.534  #err=  1 angle:1 armijo:1
+ 13 [dump:0,u:0:0]       (f:0.121,d:0.035)     -->  [f:0.000579,d:0.00519]   lambda:1     
+ 14 [dump:0,u:0:0]     (f:0.000579,d:0.0019)   -->  [f:3.73e-05,d:0.000213]  lambda:1     
+ 15 [dump:0,u:0:0]    (f:3.73e-05,d:0.000271)  -->  [f:6.64e-07,d:4.87e-06]  lambda:1     
+ 16 [dump:0,u:0:0]    (f:6.64e-07,d:5.05e-06)  -->  [f:2.26e-10,d:1.71e-09]  lambda:1     
+ 17 [dump:0,u:0:0]    (f:2.26e-10,d:1.72e-09)  -->  [f:3.07e-13,d:1.03e-14]  lambda:1     
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:17,phase:1,s:0.2,ds:0.2] |X|=3.949/0.007642/0.0902, |L|=3.949/0.007753/0.09034 |B|=0/0/0, |BL|=3.315e-26/1.371e-25/5.888e-26, PARS=3.498/3.498/3.498, U=0.9999/0.9991/0.9992
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] RobotArm
+18 (1 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]               (f:0.00833,d:2.71)     -->   [f:0.00925,d:0.0442]    lambda:1     
+19 (2 ) [phase:1,s:0.2,ds:0.2,dump:18,u:0:0]              (f:0.00925,d:0.185)    -->   [f:0.00501,d:0.0346]    lambda:0.0704  #err= 18 angle:16 armijo:18
+20 (3 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]              (f:0.00501,d:0.00135)   -->  [f:0.00302,d:0.000818]   lambda:0.398 
+21 (4 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:0.00302,d:0.000834)   -->  [f:4.44e-05,d:2.68e-05]  lambda:1     
+22 (5 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:4.44e-05,d:3.2e-05)   -->  [f:4.41e-07,d:3.18e-07]  lambda:1     
+23 (6 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:4.41e-07,d:3.24e-07)  -->  [f:4.55e-11,d:3.33e-11]  lambda:1     
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:23,phase:1,s:0.5,ds:0.3] |X|=5.205/0.003736/0.1068, |L|=5.205/0.003765/0.1068 |B|=0/0/0, |BL|=1.077e-23/2.375e-23/1.25e-23, PARS=5.195/5.195/5.195, U=1/0.9998/0.9998
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] RobotArm
+24 (1 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]               (f:0.00479,d:4.03)     -->   [f:0.00657,d:0.00942]   lambda:1     
+25 (2 ) [phase:1,s:0.5,ds:0.3,dump:29,u:0:0]              (f:0.00657,d:0.221)    -->    [f:0.00387,d:0.099]    lambda:0.0169  #err= 29 angle:26 armijo:29
+26 (3 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:0.00387,d:0.000495)   -->  [f:0.00308,d:0.000397]   lambda:0.195 
+27 (4 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]              (f:0.00308,d:0.00039)   -->   [f:7.5e-07,d:7.9e-08]   lambda:1     
+28 (5 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:7.5e-07,d:8.63e-08)   -->  [f:1.18e-10,d:7.63e-12]  lambda:1     
+
+Continuation step N.1 s:0.5->0.95, ds=0.45
+[iter:28,phase:1,s:0.95,ds:0.45] |X|=6.03/0.002748/0.1231, |L|=6.03/0.002752/0.1231 |B|=0/0/0, |BL|=2.898e-24/7.902e-24/3.877e-24, PARS=7.778/7.778/7.778, U=1/0.9999/0.9999
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] RobotArm
+29 (1 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]             (f:0.00435,d:6.03)     -->   [f:0.00531,d:0.00199]   lambda:1     
+30 (2 ) [phase:1,s:0.95,ds:0.45,dump:36,u:0:0]            (f:0.00531,d:0.465)    -->     [f:0.005,d:0.435]     lambda:0.00209  #err= 36 angle:31 armijo:36
+31 (3 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]            (f:0.005,d:0.000436)    -->  [f:0.00166,d:0.000173]   lambda:0.0685 
+32 (4 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]            (f:0.00166,d:0.0001)    -->  [f:6.83e-05,d:1.12e-07]  lambda:1     
+33 (5 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:6.83e-05,d:1.36e-07)  -->  [f:9.12e-07,d:1.81e-09]  lambda:1     
+34 (6 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:9.12e-07,d:1.86e-09)  -->  [f:1.74e-10,d:3.52e-13]  lambda:1     
+
+Continuation step N.1 s:0.95->1, ds=0.05
+[iter:34,phase:1,s:1,ds:0.05] |X|=0.9708/0.000417/0.01982, |L|=0.9708/0.0004173/0.01982 |B|=0/0/0, |BL|=4.841e-25/7.124e-25/5.094e-25, PARS=0.8641/0.8641/0.8641, U=1/0.999/0.9993
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] RobotArm
+35 (1 ) [phase:1,s:1,ds:0.05,dump:1,u:0:0]               (f:0.000594,d:0.669)    -->   [f:4.35e-05,d:0.0335]   lambda:0.95   #err=  1 angle:1 armijo:1
+36 (2 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]               (f:4.35e-05,d:0.0335)   -->  [f:3.31e-07,d:2.52e-08]  lambda:1     
+37 (3 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:3.31e-07,d:2.55e-08)  -->  [f:4.68e-12,d:6.51e-15]  lambda:1     
+38 (4 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:4.68e-12,d:6.51e-15)  -->  [f:3.3e-14,d:1.41e-15]   lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 3               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 4825            | N. System pars  = 12428           |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 0.987 [sec]     | timeout         = 0 [ms]          |
+| iteration       = 38              | Memory Used     = 1Mb(+97Kb)      |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 180             | Jacobian        = 38              |
+| Factorization   = 38              | Inversion       = 180             |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 3.097e-13       | last ||d||_inf  = 1.4107e-14      |
+| last ||f||_1    = 3.2984e-14      | last ||d||_1    = 1.4053e-15      |
+| last ||f||_2    = 5.6396e-14      | last ||d||_2    = 2.7564e-15      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 1.374ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 207.6ms ]
+Check DuDxxpm (epsi=0.001): all OK [ 82.74ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001): all OK [ 166.9ms ]
+Check DodeDxp (epsi=0.001): all OK [ 2.782ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 170.1ms ]
+target [Lagrange,Mayer]            = [ 0, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 0.0002773, 0 ]
+Optimization parameters:
+T: 9.14093125215110014
+All Done Folks!

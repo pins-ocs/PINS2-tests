@@ -1,0 +1,621 @@
++-------------------------- MODEL:ROSS_Fuller --------------------------+
++................................ DIMS .................................+
+| dims                      = u=1, q=1, x=2, p=0, bc=4 of 4             |
+| total                     = nZ=4024, nP=11055, nUC=1004, Q=1005       |
+| index start               = omega=4020, p=4024                        |
+| post processing           = n_post=0                                  |
++................................ MESH .................................+
+| num nodes / segments      = 1005 / 5                                  |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 1                               |
+| mesh class pointer        = 0x7ff7b3c89138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 4024 x 4024                               |
+| nblock/block size         = 1004 / 4                                  |
+| qr/qx/nr/nx               = 4 / 4 / 0 / 0                             |
+| last blok rows x cols     = 12 x 12                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x                                                        |
+| [ 1] initial_v                                                        |
+| [ 2] final_x                                                          |
+| [ 3] final_v                                                          |
++..................... Controls penalties/barriers .....................+
+uControl = { COSLOG (BARRIER) epsilon=0.001, tolerance=0.001 }           
++....................... No constraints type LT ........................+
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 5                                                      
+  num. nodes    = 1005                                                   
+  Segment N.0: s0 = 0 length = 2 npts = 201 no data set                  
+  Segment N.1: s0 = 2 length = 0.8 npts = 201 no data set                
+  Segment N.2: s0 = 2.8 length = 0.4 npts = 201 no data set              
+  Segment N.3: s0 = 3.2 length = 0.2 npts = 201 no data set              
+  Segment N.4: s0 = 3.4 length = 0.1 npts = 201 no data set              
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|............................ u_max = 1 ................................|
+|....................... u_epsilon0 = 0.001 ............................|
+|....................... u_epsilon1 = 1e-10 ............................|
+|..................... u_tolerance0 = 0.001 ............................|
+|..................... u_tolerance1 = 1e-10 ............................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=0/0/0, |L|=0/0/0 |B|=0/0/0, |BL|=1/1/1, PARS=0/0/0, U=0/0/0
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ROSS_Fuller
+  1 [dump:0,u:3.4:10]  (f:0.000249,d:0.00344)   -->    [f:0.026,d:0.00137]    lambda:1     
+  2 [dump:0,u:3.9:12]    (f:0.026,d:0.0103)     -->   [f:0.0405,d:0.00296]    lambda:1     
+  3 [dump:0,u:4.1:14]    (f:0.0405,d:0.0143)    -->   [f:0.0463,d:0.00448]    lambda:1     
+  4 [dump:0,u:4.4:14]    (f:0.0463,d:0.0228)    -->   [f:0.0534,d:0.00595]    lambda:1     
+  5 [dump:0,u:4.8:18]    (f:0.0534,d:0.0258)    -->   [f:0.0531,d:0.00762]    lambda:1     
+  6 [dump:0,u:4.9:19]    (f:0.0531,d:0.0305)    -->   [f:0.0492,d:0.00766]    lambda:1     
+  7 [dump:0,u:5.1:18]    (f:0.0492,d:0.026)     -->   [f:0.0397,d:0.00737]    lambda:1     
+  8 [dump:0,u:5.4:19]    (f:0.0397,d:0.022)     -->   [f:0.0401,d:0.00514]    lambda:1     
+  9 [dump:0,u:5.5:18]    (f:0.0401,d:0.0125)    -->   [f:0.0232,d:0.00246]    lambda:1     
+ 10 [dump:0,u:5.6:12]    (f:0.0232,d:0.0057)    -->  [f:0.00866,d:0.000995]   lambda:1     
+ 11 [dump:0,u:5.4:12]   (f:0.00866,d:0.00215)   -->  [f:0.00279,d:0.000371]   lambda:1     
+ 12 [dump:0,u:4.9:10]  (f:0.00279,d:0.000568)   -->  [f:0.000229,d:3.35e-05]  lambda:1     
+ 13 [dump:0,u:4:7]    (f:0.000229,d:3.88e-05)  -->  [f:1.54e-06,d:2.26e-07]  lambda:1     
+ 14 [dump:0,u:2.9:4]  (f:1.54e-06,d:2.29e-07)  -->  [f:6.01e-11,d:8.6e-12]   lambda:1     
+ 15 [dump:0,u:0.41:2]  (f:6.01e-11,d:8.6e-12)   -->  [f:6.88e-16,d:5.31e-18]  lambda:1     
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:15,phase:1,s:0.2,ds:0.2] |X|=0.794/0.06036/0.1964, |L|=0.794/0.06075/0.1972 |B|=0/0/0, |BL|=2.613e-28/2.613e-28/2.613e-28, PARS=0/0/0, U=1/0.7192/0.7752
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ROSS_Fuller
+16 (1 ) [phase:1,s:0.2,ds:0.2,dump:2,u:14:51]            (f:0.0844,d:0.00615)    -->   [f:0.0584,d:0.00378]    lambda:0.16   #err=  2 armijo:2
+17 (2 ) [phase:1,s:0.2,ds:0.2,dump:3,u:12:51]            (f:0.0584,d:0.00313)    -->   [f:0.0538,d:0.00288]    lambda:0.0768  #err=  3 armijo:3
+18 (3 ) [phase:1,s:0.2,ds:0.2,dump:1,u:12:51]            (f:0.0538,d:0.00267)    -->   [f:0.0295,d:0.00159]    lambda:0.4    #err=  1 armijo:1
+19 (4 ) [phase:1,s:0.2,ds:0.2,dump:1,u:11:51]             (f:0.0295,d:0.0015)    -->   [f:0.0142,d:0.000581]   lambda:0.516  #err=  1 angle:1 armijo:1
+20 (5 ) [phase:1,s:0.2,ds:0.2,dump:1,u:9.5:51]           (f:0.0142,d:0.000604)   -->  [f:0.00856,d:0.000414]   lambda:0.4    #err=  1 armijo:1
+21 (6 ) [phase:1,s:0.2,ds:0.2,dump:3,u:10:51]            (f:0.00856,d:0.00107)   -->  [f:0.00801,d:0.000994]   lambda:0.064  #err=  3 armijo:3
+22 (7 ) [phase:1,s:0.2,ds:0.2,dump:3,u:9.8:51]          (f:0.00801,d:0.000772)   -->   [f:0.00749,d:0.0007]    lambda:0.064  #err=  3 armijo:3
+23 (8 ) [phase:1,s:0.2,ds:0.2,dump:3,u:9.6:51]          (f:0.00749,d:0.000351)   -->  [f:0.00701,d:0.000322]   lambda:0.064  #err=  3 armijo:3
+24 (9 ) [phase:1,s:0.2,ds:0.2,dump:2,u:9.7:51]          (f:0.00701,d:0.000246)   -->  [f:0.00586,d:0.000198]   lambda:0.16   #err=  2 armijo:2
+25 (10) [phase:1,s:0.2,ds:0.2,dump:0,u:8.9:51]          (f:0.00586,d:0.000187)   -->  [f:0.000198,d:1.46e-05]  lambda:1     
+26 (11) [phase:1,s:0.2,ds:0.2,dump:0,u:7.5:51]          (f:0.000198,d:4.54e-06)  -->  [f:1.93e-05,d:3.8e-07]   lambda:1     
+27 (12) [phase:1,s:0.2,ds:0.2,dump:0,u:5.9:51]          (f:1.93e-05,d:6.19e-07)  -->  [f:1.76e-06,d:5.67e-08]  lambda:1     
+28 (13) [phase:1,s:0.2,ds:0.2,dump:0,u:5.1:51]          (f:1.76e-06,d:6.9e-08)   -->  [f:1.92e-08,d:7.53e-10]  lambda:1     
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:28,phase:1,s:0.5,ds:0.3] |X|=0.9072/0.04258/0.1774, |L|=0.9072/0.04303/0.1785 |B|=0/0/0, |BL|=2.088e-23/2.088e-23/2.088e-23, PARS=0/0/0, U=1/0.5971/0.7452
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ROSS_Fuller
+29 (1 ) [phase:1,s:0.5,ds:0.3,dump:3,u:15:51]            (f:0.0457,d:0.00161)    -->    [f:0.04,d:0.00164]     lambda:0.064  #err=  3 armijo:3
+30 (2 ) [phase:1,s:0.5,ds:0.3,dump:42,u:19:51]            (f:0.04,d:0.00597)     -->    [f:0.0399,d:0.0059]    lambda:0.00365  #err= 42 angle:38 armijo:42
+31 (3 ) [phase:1,s:0.5,ds:0.3,dump:0,u:12:51]            (f:0.0399,d:0.000734)   -->   [f:0.0353,d:0.000702]   lambda:0.0906 
+32 (4 ) [phase:1,s:0.5,ds:0.3,dump:6,u:14:51]             (f:0.0353,d:0.0012)    -->   [f:0.0351,d:0.00119]    lambda:0.0041  #err=  6 armijo:6
+33 (5 ) [phase:1,s:0.5,ds:0.3,dump:3,u:12:51]            (f:0.0351,d:0.000756)   -->   [f:0.0349,d:0.00075]    lambda:0.00614  #err=  3 armijo:3
+34 (6 ) [phase:1,s:0.5,ds:0.3,dump:2,u:13:51]            (f:0.0349,d:0.000629)   -->   [f:0.0241,d:0.000436]   lambda:0.28   #err=  3 controls:1 armijo:1
+35 (7 ) [phase:1,s:0.5,ds:0.3,dump:66,u:17:51]           (f:0.0241,d:0.00457)    -->   [f:0.0237,d:0.00437]    lambda:0.00253  #err= 66 angle:63 armijo:66
+36 (8 ) [phase:1,s:0.5,ds:0.3,dump:0,u:11:51]            (f:0.0237,d:0.000325)   -->   [f:0.0217,d:0.000302]   lambda:0.0754 
+37 (9 ) [phase:1,s:0.5,ds:0.3,dump:1,u:12:51]             (f:0.0217,d:0.0003)    -->   [f:0.012,d:0.000182]    lambda:0.479  #err=  1 angle:1 armijo:1
+38 (10) [phase:1,s:0.5,ds:0.3,dump:67,u:15:51]            (f:0.012,d:0.00342)    -->   [f:0.0119,d:0.00335]    lambda:0.0024  #err= 67 angle:64 armijo:67
+39 (11) [phase:1,s:0.5,ds:0.3,dump:0,u:11:51]            (f:0.0119,d:0.000135)   -->   [f:0.0108,d:0.000123]   lambda:0.0735 
+40 (12) [phase:1,s:0.5,ds:0.3,dump:0,u:12:51]            (f:0.0108,d:0.000127)   -->  [f:0.00184,d:8.38e-05]   lambda:1     
+41 (13) [phase:1,s:0.5,ds:0.3,dump:56,u:14:51]           (f:0.00184,d:0.00499)   -->   [f:0.00185,d:0.00493]   lambda:0.00422  #err= 56 angle:53 armijo:56
+42 (14) [phase:1,s:0.5,ds:0.3,dump:12,u:9.7:51]         (f:0.00185,d:9.89e-05)   -->   [f:0.0015,d:3.12e-05]   lambda:0.0527  #err= 12 angle:12 armijo:12
+43 (15) [phase:1,s:0.5,ds:0.3,dump:4,u:10:51]            (f:0.0015,d:0.000444)   -->  [f:0.00146,d:0.000317]   lambda:0.00881  #err=  4 armijo:4
+44 (16) [phase:1,s:0.5,ds:0.3,dump:0,u:9.3:51]          (f:0.00146,d:5.94e-06)   -->   [f:0.00125,d:5.1e-06]   lambda:0.141 
+45 (17) [phase:1,s:0.5,ds:0.3,dump:0,u:9.6:51]          (f:0.00125,d:5.07e-06)   -->  [f:0.000327,d:4.63e-07]  lambda:1     
+46 (18) [phase:1,s:0.5,ds:0.3,dump:0,u:8.6:51]           (f:0.000327,d:5e-07)    -->  [f:5.59e-05,d:5.67e-08]  lambda:1     
+47 (19) [phase:1,s:0.5,ds:0.3,dump:1,u:8.6:51]          (f:5.59e-05,d:9.87e-08)  -->  [f:1.8e-05,d:2.08e-08]   lambda:0.623  #err=  1 angle:1 armijo:1
+48 (20) [phase:1,s:0.5,ds:0.3,dump:0,u:8.3:51]          (f:1.8e-05,d:1.91e-08)   -->  [f:1.71e-06,d:3.02e-10]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ROSS_Fuller
+49 (21) [phase:1,s:0.5,ds:0.3,dump:0,u:8:51]            (f:1.71e-06,d:3.7e-10)   -->  [f:2.04e-08,d:4.88e-12]  lambda:1     
+
+Continuation step N.1 s:0.5->0.95, ds=0.45
+U_solver::eval(i_cell=0,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-15 f0=-2.17e-08, f1=inf, |g0|_inf=0.471, |g1|_inf=0.471, |F0|_inf=inf, |F1|_inf=1.531e-09 H00=-1.335, H0=4.884e-06, H1=inf, v=0
+
+U_solver::eval(i_cell=5,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-16 f0=-2.165e-08, f1=inf, |g0|_inf=1.102, |g1|_inf=1.102, |F0|_inf=inf, |F1|_inf=6.308e-09 H00=-1.267, H0=1.055e-05, H1=inf, v=0
+
+U_solver::eval(i_cell=9,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-15 f0=-2.164e-08, f1=inf, |g0|_inf=1.08, |g1|_inf=1.08, |F0|_inf=inf, |F1|_inf=4.83e-09 H00=-1.214, H0=1.718e-05, H1=inf, v=0
+
+U_solver::eval(i_cell=1,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-15 f0=-2.131e-08, f1=inf, |g0|_inf=1.29, |g1|_inf=1.29, |F0|_inf=inf, |F1|_inf=9.668e-09 H00=-1.321, H0=4.805e-06, H1=inf, v=0
+
+U_solver::eval(i_cell=2,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-16 f0=-2.16e-08, f1=inf, |g0|_inf=1.209, |g1|_inf=1.209, |F0|_inf=inf, |F1|_inf=8.332e-09 H00=-1.308, H0=6.587e-06, H1=inf, v=0
+
+U_solver::eval(i_cell=4,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-15 f0=-2.168e-08, f1=inf, |g0|_inf=0.9506, |g1|_inf=0.9506, |F0|_inf=inf, |F1|_inf=5.093e-09 H00=-1.281, H0=9.304e-06, H1=inf, v=0
+
+U_solver::eval(i_cell=3,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-16 f0=-2.148e-08, f1=inf, |g0|_inf=1.243, |g1|_inf=1.243, |F0|_inf=inf, |F1|_inf=8.464e-09 H00=-1.294, H0=7.361e-06, H1=inf, v=0
+
+U_solver::eval(i_cell=6,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-16 f0=-2.163e-08, f1=inf, |g0|_inf=1.127, |g1|_inf=1.127, |F0|_inf=inf, |F1|_inf=6.259e-09 H00=-1.254, H0=1.196e-05, H1=inf, v=0
+
+U_solver::eval(i_cell=11,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-16 f0=-2.153e-08, f1=inf, |g0|_inf=1.128, |g1|_inf=1.128, |F0|_inf=inf, |F1|_inf=4.737e-09 H00=-1.187, H0=2.067e-05, H1=inf, v=0
+
+U_solver::eval(i_cell=10,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-16 f0=-2.158e-08, f1=inf, |g0|_inf=1.123, |g1|_inf=1.123, |F0|_inf=inf, |F1|_inf=4.975e-09 H00=-1.201, H0=1.883e-05, H1=inf, v=0
+
+U_solver::eval(i_cell=8,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-16 f0=-2.157e-08, f1=inf, |g0|_inf=1.153, |g1|_inf=1.153, |F0|_inf=inf, |F1|_inf=5.934e-09 H00=-1.227, H0=1.498e-05, H1=inf, v=0
+
+U_solver::eval(i_cell=7,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-16 f0=-2.153e-08, f1=inf, |g0|_inf=1.178, |g1|_inf=1.178, |F0|_inf=inf, |F1|_inf=6.533e-09 H00=-1.241, H0=1.314e-05, H1=inf, v=0
+
+U_solver::eval(i_cell=14,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-16 f0=-2.161e-08, f1=inf, |g0|_inf=1.052, |g1|_inf=1.052, |F0|_inf=inf, |F1|_inf=2.895e-09 H00=-1.148, H0=2.829e-05, H1=inf, v=0
+
+U_solver::eval(i_cell=13,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-16 f0=-2.168e-08, f1=inf, |g0|_inf=0.9056, |g1|_inf=0.9056, |F0|_inf=inf, |F1|_inf=1.721e-09 H00=-1.161, H0=2.623e-05, H1=inf, v=0
+
+NLsolver[ROSS_Fuller]::solve_with_continuation(phase=1,...) found:
+NLsolver[ROSS_Fuller]::solve()
+#phase=1 #it=0/60 lambda=1 tolerance=1.78e-07 |f|_1=2.04e-08 |f|_inf=8.208e-05 |d|_1=4.883e-12 |d|_inf=7.301e-11
+at phase 1, iter 49: Indirect_OCP[ROSS_Fuller]::UC_eval_thread(n_thread=13,Z,P). At cell 13 u_eval iterative failed: U_solver::eval(i_cell=13,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-16 f0=-2.168e-08, f1=inf, |g0|_inf=0.9056, |g1|_inf=0.9056, |F0|_inf=inf, |F1|_inf=1.721e-09 H00=-1.161, H0=2.623e-05, H1=inf, v=0
+
+
+
+
+Continuation step N.1 s:0.5->0.725, ds=0.225
+U_solver::eval(i_cell=6,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=2e-15 f0=-1.95e-08, f1=inf, |g0|_inf=0.3781, |g1|_inf=0.3781, |F0|_inf=inf, |F1|_inf=3.238e-08 H00=-1.254, H0=3.392e-06, H1=inf, v=0
+
+U_solver::eval(i_cell=8,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=2e-15 f0=-1.933e-08, f1=inf, |g0|_inf=0.6831, |g1|_inf=0.6831, |F0|_inf=inf, |F1|_inf=4.372e-08 H00=-1.227, H0=3.723e-06, H1=inf, v=0
+
+U_solver::eval(i_cell=9,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=2e-15 f0=-1.92e-08, f1=inf, |g0|_inf=0.7693, |g1|_inf=0.7693, |F0|_inf=inf, |F1|_inf=4.68e-08 H00=-1.214, H0=3.867e-06, H1=inf, v=0
+
+U_solver::eval(i_cell=10,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=2e-15 f0=-1.904e-08, f1=inf, |g0|_inf=0.8303, |g1|_inf=0.8303, |F0|_inf=inf, |F1|_inf=4.89e-08 H00=-1.201, H0=3.995e-06, H1=inf, v=0
+
+U_solver::eval(i_cell=7,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=2e-15 f0=-1.943e-08, f1=inf, |g0|_inf=0.5595, |g1|_inf=0.5595, |F0|_inf=inf, |F1|_inf=3.918e-08 H00=-1.241, H0=3.564e-06, H1=inf, v=0
+
+U_solver::eval(i_cell=11,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=2e-15 f0=-1.886e-08, f1=inf, |g0|_inf=0.874, |g1|_inf=0.874, |F0|_inf=inf, |F1|_inf=5.033e-08 H00=-1.187, H0=4.108e-06, H1=inf, v=0
+
+NLsolver[ROSS_Fuller]::solve_with_continuation(phase=1,...) found:
+NLsolver[ROSS_Fuller]::solve()
+#phase=1 #it=0/60 lambda=1 tolerance=1.78e-07 |f|_1=2.04e-08 |f|_inf=8.208e-05 |d|_1=4.883e-12 |d|_inf=7.301e-11
+at phase 1, iter 49: Indirect_OCP[ROSS_Fuller]::UC_eval_thread(n_thread=11,Z,P). At cell 11 u_eval iterative failed: U_solver::eval(i_cell=11,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=2e-15 f0=-1.886e-08, f1=inf, |g0|_inf=0.874, |g1|_inf=0.874, |F0|_inf=inf, |F1|_inf=5.033e-08 H00=-1.187, H0=4.108e-06, H1=inf, v=0
+
+
+
+
+Continuation step N.1 s:0.5->0.6125, ds=0.1125
+[iter:49,phase:1,s:0.6125,ds:0.1125] |X|=0.5366/0.008899/0.0537, |L|=0.5366/0.008907/0.0537 |B|=0/0/0, |BL|=5.175e-27/5.175e-27/5.175e-27, PARS=0/0/0, U=1/0.4627/0.6742
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ROSS_Fuller
+50 (1 ) [phase:1,s:0.6125,ds:0.1125,dump:4,u:11:51]     (f:0.00447,d:3.96e-05)   -->  [f:0.00376,d:3.36e-05]   lambda:0.137  #err=  7 controls:3 armijo:1
+51 (2 ) [phase:1,s:0.6125,ds:0.1125,dump:1,u:10:51]     (f:0.00376,d:2.83e-05)   -->   [f:0.0028,d:2.1e-05]    lambda:0.222  #err=  1 armijo:1
+52 (3 ) [phase:1,s:0.6125,ds:0.1125,dump:1,u:10:51]      (f:0.0028,d:1.79e-05)   -->  [f:0.00093,d:5.81e-06]   lambda:0.592  #err=  1 angle:1 armijo:1
+53 (4 ) [phase:1,s:0.6125,ds:0.1125,dump:0,u:9.9:51]    (f:0.00093,d:5.49e-06)   -->  [f:2.97e-05,d:1.89e-07]  lambda:1     
+54 (5 ) [phase:1,s:0.6125,ds:0.1125,dump:0,u:9.2:51]    (f:2.97e-05,d:1.63e-07)  -->   [f:1.4e-07,d:8.6e-10]   lambda:1     
+55 (6 ) [phase:1,s:0.6125,ds:0.1125,dump:0,u:9.2:51]     (f:1.4e-07,d:8.7e-10)   -->  [f:1.33e-11,d:4.42e-14]  lambda:1     
+
+Continuation step N.1 s:0.6125->0.78125, ds=0.16875
+U_solver::eval(i_cell=108,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-14 f0=-2.459e-09, f1=inf, |g0|_inf=0.05161, |g1|_inf=0.05161, |F0|_inf=inf, |F1|_inf=6.557e-08 H00=-0.1958, H0=6.669e-07, H1=inf, v=0
+
+U_solver::eval(i_cell=109,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-14 f0=-2.435e-09, f1=inf, |g0|_inf=0.08046, |g1|_inf=0.08046, |F0|_inf=inf, |F1|_inf=9.116e-08 H00=-0.19, H0=6.853e-07, H1=inf, v=0
+
+NLsolver[ROSS_Fuller]::solve_with_continuation(phase=1,...) found:
+NLsolver[ROSS_Fuller]::solve()
+#phase=1 #it=0/60 lambda=1 tolerance=1e-09 |f|_1=1.333e-11 |f|_inf=8.372e-09 |d|_1=4.422e-14 |d|_inf=1.134e-11
+at phase 1, iter 55: Indirect_OCP[ROSS_Fuller]::UC_eval_thread(n_thread=13,Z,P). At cell 109 u_eval iterative failed: U_solver::eval(i_cell=109,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-14 f0=-2.435e-09, f1=inf, |g0|_inf=0.08046, |g1|_inf=0.08046, |F0|_inf=inf, |F1|_inf=9.116e-08 H00=-0.19, H0=6.853e-07, H1=inf, v=0
+
+
+
+
+Continuation step N.1 s:0.6125->0.69687, ds=0.084375
+[iter:55,phase:1,s:0.6969,ds:0.084375] |X|=0.4229/0.004382/0.03558, |L|=0.4229/0.004382/0.03558 |B|=0/0/0, |BL|=1.394e-27/1.394e-27/1.394e-27, PARS=0/0/0, U=1/0.4587/0.6734
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ROSS_Fuller
+56 (1 ) [phase:1,s:0.6969,ds:0.084375,dump:2,u:14:51]   (f:0.00219,d:1.01e-05)   -->   [f:0.00181,d:8.4e-06]   lambda:0.16   #err=  2 armijo:2
+57 (2 ) [phase:1,s:0.6969,ds:0.084375,dump:0,u:13:51]   (f:0.00181,d:7.87e-06)   -->  [f:0.00118,d:1.06e-05]   lambda:1     
+58 (3 ) [phase:1,s:0.6969,ds:0.084375,dump:0,u:12:51]   (f:0.00118,d:1.31e-06)   -->  [f:4.33e-05,d:8.94e-08]  lambda:1     
+59 (4 ) [phase:1,s:0.6969,ds:0.084375,dump:2,u:13:51]   (f:4.33e-05,d:5.93e-07)  -->  [f:2.12e-05,d:1.32e-07]  lambda:0.38   #err=  2 angle:1 armijo:2
+60 (5 ) [phase:1,s:0.6969,ds:0.084375,dump:0,u:12:51]   (f:2.12e-05,d:5.27e-08)  -->  [f:4.49e-07,d:1.1e-09]   lambda:1     
+61 (6 ) [phase:1,s:0.6969,ds:0.084375,dump:0,u:12:51]   (f:4.49e-07,d:1.37e-09)  -->  [f:3.76e-09,d:1.78e-11]  lambda:1     
+62 (7 ) [phase:1,s:0.6969,ds:0.084375,dump:0,u:12:51]   (f:3.73e-09,d:1.83e-11)  -->  [f:9.08e-13,d:2.99e-15]  lambda:1     
+
+Continuation step N.1 s:0.69687->0.82344, ds=0.12656
+[iter:62,phase:1,s:0.8234,ds:0.12656] |X|=0.5811/0.004818/0.04437, |L|=0.5811/0.004818/0.04437 |B|=0/0/0, |BL|=1.015e-28/1.015e-28/1.015e-28, PARS=0/0/0, U=1/0.4625/0.6775
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ROSS_Fuller
+63 (1 ) [phase:1,s:0.8234,ds:0.12656,dump:5,u:16:51]      (f:0.0024,d:8e-06)     -->  [f:0.00213,d:7.13e-06]   lambda:0.096  #err=  9 controls:4 armijo:1
+64 (2 ) [phase:1,s:0.8234,ds:0.12656,dump:0,u:15:51]    (f:0.00213,d:6.47e-06)   -->  [f:0.000918,d:2.64e-06]  lambda:0.465 
+65 (3 ) [phase:1,s:0.8234,ds:0.12656,dump:1,u:16:51]    (f:0.000918,d:2.56e-06)  -->  [f:7.48e-05,d:1.05e-07]  lambda:0.95   #err=  1 angle:1 armijo:1
+66 (4 ) [phase:1,s:0.8234,ds:0.12656,dump:0,u:15:51]    (f:7.47e-05,d:1.04e-07)  -->  [f:2.96e-06,d:1.44e-10]  lambda:1     
+67 (5 ) [phase:1,s:0.8234,ds:0.12656,dump:0,u:15:51]    (f:2.93e-06,d:1.44e-10)  -->  [f:5.36e-08,d:3.64e-13]  lambda:1     
+
+Continuation step N.1 s:0.82344->1, ds=0.17656
+U_solver::eval(i_cell=1,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-15 f0=-6.959e-11, f1=inf, |g0|_inf=0.1641, |g1|_inf=0.1641, |F0|_inf=inf, |F1|_inf=2.291e-09 H00=-1.321, H0=1.44e-09, H1=inf, v=0
+
+U_solver::eval(i_cell=3,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-15 f0=-6.959e-11, f1=inf, |g0|_inf=0.1726, |g1|_inf=0.1726, |F0|_inf=inf, |F1|_inf=2.389e-09 H00=-1.294, H0=1.501e-09, H1=inf, v=0
+
+U_solver::eval(i_cell=2,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-15 f0=-6.959e-11, f1=inf, |g0|_inf=0.1662, |g1|_inf=0.1662, |F0|_inf=inf, |F1|_inf=2.316e-09 H00=-1.308, H0=1.471e-09, H1=inf, v=0
+
+U_solver::eval(i_cell=4,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-15 f0=-6.959e-11, f1=inf, |g0|_inf=0.1692, |g1|_inf=0.1692, |F0|_inf=inf, |F1|_inf=2.355e-09 H00=-1.281, H0=1.539e-09, H1=inf, v=0
+
+U_solver::eval(i_cell=12,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-15 f0=-6.955e-11, f1=inf, |g0|_inf=0.1954, |g1|_inf=0.1954, |F0|_inf=inf, |F1|_inf=2.654e-09 H00=-1.174, H0=1.846e-09, H1=inf, v=0
+
+U_solver::eval(i_cell=9,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-15 f0=-6.957e-11, f1=inf, |g0|_inf=0.1803, |g1|_inf=0.1803, |F0|_inf=inf, |F1|_inf=2.483e-09 H00=-1.214, H0=1.727e-09, H1=inf, v=0
+
+U_solver::eval(i_cell=7,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-15 f0=-6.958e-11, f1=inf, |g0|_inf=0.179, |g1|_inf=0.179, |F0|_inf=inf, |F1|_inf=2.468e-09 H00=-1.241, H0=1.644e-09, H1=inf, v=0
+
+U_solver::eval(i_cell=0,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-15 f0=-6.959e-11, f1=inf, |g0|_inf=0.1637, |g1|_inf=0.1637, |F0|_inf=inf, |F1|_inf=2.284e-09 H00=-1.335, H0=1.408e-09, H1=inf, v=0
+
+U_solver::eval(i_cell=8,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-15 f0=-6.957e-11, f1=inf, |g0|_inf=0.1798, |g1|_inf=0.1798, |F0|_inf=inf, |F1|_inf=2.477e-09 H00=-1.227, H0=1.685e-09, H1=inf, v=0
+
+U_solver::eval(i_cell=10,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-15 f0=-6.957e-11, f1=inf, |g0|_inf=0.1816, |g1|_inf=0.1816, |F0|_inf=inf, |F1|_inf=2.496e-09 H00=-1.201, H0=1.77e-09, H1=inf, v=0
+
+U_solver::eval(i_cell=5,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-15 f0=-6.958e-11, f1=inf, |g0|_inf=0.1717, |g1|_inf=0.1717, |F0|_inf=inf, |F1|_inf=2.383e-09 H00=-1.267, H0=1.573e-09, H1=inf, v=0
+
+U_solver::eval(i_cell=11,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-15 f0=-6.957e-11, f1=inf, |g0|_inf=0.1843, |g1|_inf=0.1843, |F0|_inf=inf, |F1|_inf=2.525e-09 H00=-1.187, H0=1.814e-09, H1=inf, v=0
+
+U_solver::eval(i_cell=13,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-15 f0=-6.955e-11, f1=inf, |g0|_inf=0.198, |g1|_inf=0.198, |F0|_inf=inf, |F1|_inf=2.682e-09 H00=-1.161, H0=1.893e-09, H1=inf, v=0
+
+U_solver::eval(i_cell=6,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-15 f0=-6.958e-11, f1=inf, |g0|_inf=0.1699, |g1|_inf=0.1699, |F0|_inf=inf, |F1|_inf=2.365e-09 H00=-1.254, H0=1.613e-09, H1=inf, v=0
+
+U_solver::eval(i_cell=14,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-15 f0=-6.955e-11, f1=inf, |g0|_inf=0.1996, |g1|_inf=0.1996, |F0|_inf=inf, |F1|_inf=2.696e-09 H00=-1.148, H0=1.944e-09, H1=inf, v=0
+
+NLsolver[ROSS_Fuller]::solve_with_continuation(phase=1,...) found:
+NLsolver[ROSS_Fuller]::solve()
+#phase=1 #it=0/60 lambda=1 tolerance=1.78e-07 |f|_1=5.36e-08 |f|_inf=0.000213 |d|_1=3.64e-13 |d|_inf=1.127e-10
+at phase 1, iter 67: Indirect_OCP[ROSS_Fuller]::UC_eval_thread(n_thread=14,Z,P). At cell 14 u_eval iterative failed: U_solver::eval(i_cell=14,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1e-15 f0=-6.955e-11, f1=inf, |g0|_inf=0.1996, |g1|_inf=0.1996, |F0|_inf=inf, |F1|_inf=2.696e-09 H00=-1.148, H0=1.944e-09, H1=inf, v=0
+
+
+
+
+Continuation step N.1 s:0.82344->0.91172, ds=0.088281
+U_solver::eval(i_cell=0,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-3.837e-11, f1=-3.837e-11, |g0|_inf=4.909e-05, |g1|_inf=4.909e-05, |F0|_inf=4.861e-13, |F1|_inf=2.043e-12 H00=-1.335, H0=-3.837e-11, H1=-3.837e-11, v=0
+
+NLsolver[ROSS_Fuller]::solve_with_continuation(phase=1,...) found:
+NLsolver[ROSS_Fuller]::solve()
+#phase=1 #it=0/60 lambda=1 tolerance=1.78e-07 |f|_1=5.36e-08 |f|_inf=0.000213 |d|_1=3.64e-13 |d|_inf=1.127e-10
+at phase 1, iter 67: Indirect_OCP[ROSS_Fuller]::UC_eval_thread(n_thread=0,Z,P). At cell 0 u_eval iterative failed: U_solver::eval(i_cell=0,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-3.837e-11, f1=-3.837e-11, |g0|_inf=4.909e-05, |g1|_inf=4.909e-05, |F0|_inf=4.861e-13, |F1|_inf=2.043e-12 H00=-1.335, H0=-3.837e-11, H1=-3.837e-11, v=0
+
+
+
+
+Continuation step N.1 s:0.82344->0.86758, ds=0.044141
+U_solver::eval(i_cell=10,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-1.503e-11, f1=-1.503e-11, |g0|_inf=3.693e-05, |g1|_inf=3.693e-05, |F0|_inf=3.658e-13, |F1|_inf=2.209e-12 H00=-1.201, H0=-1.503e-11, H1=-1.503e-11, v=0
+
+U_solver::eval(i_cell=15,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-1.503e-11, f1=-1.503e-11, |g0|_inf=4.288e-05, |g1|_inf=4.288e-05, |F0|_inf=4.246e-13, |F1|_inf=2.976e-12 H00=-1.134, H0=-1.503e-11, H1=-1.503e-11, v=0
+
+NLsolver[ROSS_Fuller]::solve_with_continuation(phase=1,...) found:
+NLsolver[ROSS_Fuller]::solve()
+#phase=1 #it=0/60 lambda=1 tolerance=1.78e-07 |f|_1=5.36e-08 |f|_inf=0.000213 |d|_1=3.64e-13 |d|_inf=1.127e-10
+at phase 1, iter 67: Indirect_OCP[ROSS_Fuller]::UC_eval_thread(n_thread=12,Z,P). At cell 15 u_eval iterative failed: U_solver::eval(i_cell=15,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-1.503e-11, f1=-1.503e-11, |g0|_inf=4.288e-05, |g1|_inf=4.288e-05, |F0|_inf=4.246e-13, |F1|_inf=2.976e-12 H00=-1.134, H0=-1.503e-11, H1=-1.503e-11, v=0
+
+
+
+
+Continuation step N.1 s:0.82344->0.84551, ds=0.02207
+[iter:67,phase:1,s:0.8455,ds:0.02207] |X|=0.1156/0.0005689/0.006487, |L|=0.1156/0.0005689/0.006487 |B|=0/0/0, |BL|=1.594e-28/1.594e-28/1.594e-28, PARS=0/0/0, U=1/0.4571/0.6742
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ROSS_Fuller
+68 (1 ) [phase:1,s:0.8455,ds:0.02207,dump:1,u:16:51]    (f:0.000284,d:5.27e-07)  -->  [f:2.57e-05,d:2.62e-08]  lambda:0.95   #err=  1 angle:1 armijo:1
+69 (2 ) [phase:1,s:0.8455,ds:0.02207,dump:0,u:15:51]    (f:2.57e-05,d:2.28e-08)  -->  [f:1.09e-06,d:1.9e-10]   lambda:1     
+70 (3 ) [phase:1,s:0.8455,ds:0.02207,dump:0,u:15:51]    (f:1.06e-06,d:2.7e-10)   -->  [f:1.78e-08,d:6.48e-12]  lambda:1     
+71 (4 ) [phase:1,s:0.8455,ds:0.02207,dump:0,u:15:51]    (f:1.77e-08,d:6.92e-12)  -->  [f:7.04e-12,d:1.79e-15]  lambda:1     
+
+Continuation step N.1 s:0.84551->0.87861, ds=0.033105
+[iter:71,phase:1,s:0.8786,ds:0.033105] |X|=0.1739/0.0007646/0.00899, |L|=0.1739/0.0007646/0.00899 |B|=2.318e-69/2.318e-69/2.318e-69, |BL|=3.331e-28/3.331e-28/3.331e-28, PARS=0/0/0, U=1/0.4579/0.675
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ROSS_Fuller
+72 (1 ) [phase:1,s:0.8786,ds:0.033105,dump:2,u:16:51]   (f:0.000382,d:6.35e-07)  -->  [f:6.92e-05,d:4.98e-08]  lambda:0.902  #err=  2 angle:2 armijo:2
+73 (2 ) [phase:1,s:0.8786,ds:0.033105,dump:0,u:16:51]   (f:6.91e-05,d:4.09e-08)  -->  [f:7.49e-06,d:4.18e-10]  lambda:1     
+74 (3 ) [phase:1,s:0.8786,ds:0.033105,dump:0,u:16:51]   (f:7.42e-06,d:8.46e-10)  -->  [f:7.23e-07,d:1.07e-10]  lambda:1     
+75 (4 ) [phase:1,s:0.8786,ds:0.033105,dump:0,u:15:51]   (f:7.23e-07,d:1.48e-10)  -->  [f:2.07e-08,d:4.5e-12]   lambda:1     
+
+Continuation step N.1 s:0.87861->0.92827, ds=0.049658
+[iter:75,phase:1,s:0.9283,ds:0.049658] |X|=0.2584/0.001019/0.01291, |L|=0.2584/0.001019/0.01291 |B|=5.527e-76/5.527e-76/5.527e-76, |BL|=5.893e-27/5.893e-27/5.893e-27, PARS=0/0/0, U=1/0.4589/0.6759
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ROSS_Fuller
+76 (1 ) [phase:1,s:0.9283,ds:0.049658,dump:4,u:17:51]   (f:0.000508,d:7.1e-07)   -->  [f:0.000522,d:2.39e-07]  lambda:0.815  #err=  4 angle:4 armijo:4
+77 (2 ) [phase:1,s:0.9283,ds:0.049658,dump:0,u:16:51]   (f:0.000522,d:7.72e-08)  -->  [f:3.89e-05,d:1.5e-09]   lambda:1     
+78 (3 ) [phase:1,s:0.9283,ds:0.049658,dump:0,u:16:51]   (f:3.88e-05,d:1.91e-09)  -->  [f:7.98e-06,d:1.85e-10]  lambda:1     
+79 (4 ) [phase:1,s:0.9283,ds:0.049658,dump:0,u:16:51]   (f:7.95e-06,d:3.85e-10)  -->  [f:1.22e-06,d:7.16e-11]  lambda:1     
+80 (5 ) [phase:1,s:0.9283,ds:0.049658,dump:0,u:16:51]   (f:1.22e-06,d:1.09e-10)  -->  [f:6.27e-08,d:5.68e-12]  lambda:1     
+
+Continuation step N.1 s:0.92827->1, ds=0.071729
+U_solver::eval(i_cell=1,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-5.052e-12, f1=-5.052e-12, |g0|_inf=3.39e-05, |g1|_inf=3.39e-05, |F0|_inf=3.357e-13, |F1|_inf=1.981e-11 H00=-1.321, H0=-5.052e-12, H1=-5.052e-12, v=0
+
+U_solver::eval(i_cell=5,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-5.052e-12, f1=-5.052e-12, |g0|_inf=3.542e-05, |g1|_inf=3.542e-05, |F0|_inf=3.507e-13, |F1|_inf=1.441e-11 H00=-1.267, H0=-5.052e-12, H1=-5.052e-12, v=0
+
+U_solver::eval(i_cell=4,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-5.052e-12, f1=-5.052e-12, |g0|_inf=4.149e-05, |g1|_inf=4.149e-05, |F0|_inf=4.108e-13, |F1|_inf=9.876e-12 H00=-1.281, H0=-5.052e-12, H1=-5.052e-12, v=0
+
+U_solver::eval(i_cell=14,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-5.052e-12, f1=-5.052e-12, |g0|_inf=3.904e-05, |g1|_inf=3.904e-05, |F0|_inf=3.865e-13, |F1|_inf=2.721e-12 H00=-1.148, H0=-5.052e-12, H1=-5.052e-12, v=0
+
+U_solver::eval(i_cell=13,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-5.052e-12, f1=-5.052e-12, |g0|_inf=3.314e-05, |g1|_inf=3.314e-05, |F0|_inf=3.281e-13, |F1|_inf=3.013e-11 H00=-1.161, H0=-5.052e-12, H1=-5.052e-12, v=0
+
+U_solver::eval(i_cell=3,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-5.052e-12, f1=-5.052e-12, |g0|_inf=4.857e-05, |g1|_inf=4.857e-05, |F0|_inf=4.809e-13, |F1|_inf=4.416e-11 H00=-1.294, H0=-5.052e-12, H1=-5.052e-12, v=0
+
+NLsolver[ROSS_Fuller]::solve_with_continuation(phase=1,...) found:
+NLsolver[ROSS_Fuller]::solve()
+#phase=1 #it=0/60 lambda=1 tolerance=1.78e-07 |f|_1=6.274e-08 |f|_inf=0.0002515 |d|_1=5.681e-12 |d|_inf=4.294e-10
+at phase 1, iter 80: Indirect_OCP[ROSS_Fuller]::UC_eval_thread(n_thread=3,Z,P). At cell 3 u_eval iterative failed: U_solver::eval(i_cell=3,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-5.052e-12, f1=-5.052e-12, |g0|_inf=4.857e-05, |g1|_inf=4.857e-05, |F0|_inf=4.809e-13, |F1|_inf=4.416e-11 H00=-1.294, H0=-5.052e-12, H1=-5.052e-12, v=0
+
+
+
+
+Continuation step N.1 s:0.92827->0.96414, ds=0.035864
+[iter:80,phase:1,s:0.9641,ds:0.035864] |X|=0.1848/0.0006861/0.009459, |L|=0.1848/0.0006861/0.009459 |B|=6.434e-86/6.837e-86/6.447e-86, |BL|=5.116e-28/5.116e-28/5.116e-28, PARS=0/0/0, U=1/0.4587/0.6759
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ROSS_Fuller
+81 (1 ) [phase:1,s:0.9641,ds:0.035864,dump:2,u:17:51]   (f:0.000342,d:3.6e-07)   -->  [f:8.99e-05,d:5.81e-08]  lambda:0.902  #err=  2 angle:2 armijo:2
+82 (2 ) [phase:1,s:0.9641,ds:0.035864,dump:0,u:16:51]   (f:9.08e-05,d:2.37e-08)  -->  [f:1.37e-05,d:2.95e-09]  lambda:1     
+83 (3 ) [phase:1,s:0.9641,ds:0.035864,dump:0,u:17:51]   (f:1.33e-05,d:4.12e-09)  -->  [f:1.7e-06,d:1.02e-10]   lambda:1     
+84 (4 ) [phase:1,s:0.9641,ds:0.035864,dump:0,u:16:51]   (f:1.7e-06,d:1.38e-10)   -->  [f:1.06e-07,d:6.38e-12]  lambda:1     
+85 (5 ) [phase:1,s:0.9641,ds:0.035864,dump:0,u:17:51]   (f:1.03e-07,d:7.45e-12)  -->  [f:1.94e-10,d:5.79e-14]  lambda:1     
+
+Continuation step N.1 s:0.96414->1, ds=0.035864
+U_solver::eval(i_cell=2,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-9.985e-13, f1=-9.985e-13, |g0|_inf=3.683e-05, |g1|_inf=3.683e-05, |F0|_inf=3.647e-13, |F1|_inf=1.612e-11 H00=-1.308, H0=-9.985e-13, H1=-9.985e-13, v=0
+
+U_solver::eval(i_cell=14,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-9.985e-13, f1=-9.985e-13, |g0|_inf=3.904e-05, |g1|_inf=3.904e-05, |F0|_inf=3.865e-13, |F1|_inf=2.721e-12 H00=-1.148, H0=-9.985e-13, H1=-9.985e-13, v=0
+
+U_solver::eval(i_cell=5,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-9.988e-13, f1=-9.988e-13, |g0|_inf=3.542e-05, |g1|_inf=3.542e-05, |F0|_inf=3.507e-13, |F1|_inf=1.441e-11 H00=-1.267, H0=-9.988e-13, H1=-9.988e-13, v=0
+
+U_solver::eval(i_cell=13,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-9.985e-13, f1=-9.985e-13, |g0|_inf=3.314e-05, |g1|_inf=3.314e-05, |F0|_inf=3.281e-13, |F1|_inf=3.013e-11 H00=-1.161, H0=-9.985e-13, H1=-9.985e-13, v=0
+
+NLsolver[ROSS_Fuller]::solve_with_continuation(phase=1,...) found:
+NLsolver[ROSS_Fuller]::solve()
+#phase=1 #it=0/60 lambda=1 tolerance=1e-09 |f|_1=1.939e-10 |f|_inf=3.402e-07 |d|_1=5.792e-14 |d|_inf=5.17e-11
+at phase 1, iter 85: Indirect_OCP[ROSS_Fuller]::UC_eval_thread(n_thread=13,Z,P). At cell 13 u_eval iterative failed: U_solver::eval(i_cell=13,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-9.985e-13, f1=-9.985e-13, |g0|_inf=3.314e-05, |g1|_inf=3.314e-05, |F0|_inf=3.281e-13, |F1|_inf=3.013e-11 H00=-1.161, H0=-9.985e-13, H1=-9.985e-13, v=0
+
+
+
+
+Continuation step N.1 s:0.96414->0.98207, ds=0.017932
+U_solver::eval(i_cell=4,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-3.033e-13, f1=-3.033e-13, |g0|_inf=3.577e-05, |g1|_inf=3.577e-05, |F0|_inf=3.541e-13, |F1|_inf=2.677e-12 H00=-1.281, H0=-3.033e-13, H1=-3.033e-13, v=0
+
+U_solver::eval(i_cell=20,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-3.031e-13, f1=-3.031e-13, |g0|_inf=4.458e-05, |g1|_inf=4.458e-05, |F0|_inf=4.414e-13, |F1|_inf=8.488e-12 H00=-1.069, H0=-3.031e-13, H1=-3.031e-13, v=0
+
+U_solver::eval(i_cell=23,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-3.029e-13, f1=-3.029e-13, |g0|_inf=5.498e-05, |g1|_inf=5.498e-05, |F0|_inf=5.444e-13, |F1|_inf=1.829e-11 H00=-1.03, H0=-3.029e-13, H1=-3.029e-13, v=0
+
+NLsolver[ROSS_Fuller]::solve_with_continuation(phase=1,...) found:
+NLsolver[ROSS_Fuller]::solve()
+#phase=1 #it=0/60 lambda=1 tolerance=1e-09 |f|_1=1.939e-10 |f|_inf=3.402e-07 |d|_1=5.792e-14 |d|_inf=5.17e-11
+at phase 1, iter 85: Indirect_OCP[ROSS_Fuller]::UC_eval_thread(n_thread=2,Z,P). At cell 23 u_eval iterative failed: U_solver::eval(i_cell=23,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-3.029e-13, f1=-3.029e-13, |g0|_inf=5.498e-05, |g1|_inf=5.498e-05, |F0|_inf=5.444e-13, |F1|_inf=1.829e-11 H00=-1.03, H0=-3.029e-13, H1=-3.029e-13, v=0
+
+
+
+
+Continuation step N.1 s:0.96414->0.9731, ds=0.0089661
+U_solver::eval(i_cell=7,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-8.371e-14, f1=-8.371e-14, |g0|_inf=3.674e-05, |g1|_inf=3.674e-05, |F0|_inf=3.638e-13, |F1|_inf=5.006e-12 H00=-1.241, H0=-8.371e-14, H1=-8.371e-14, v=0
+
+NLsolver[ROSS_Fuller]::solve_with_continuation(phase=1,...) found:
+NLsolver[ROSS_Fuller]::solve()
+#phase=1 #it=0/60 lambda=1 tolerance=1e-09 |f|_1=1.939e-10 |f|_inf=3.402e-07 |d|_1=5.792e-14 |d|_inf=5.17e-11
+at phase 1, iter 85: Indirect_OCP[ROSS_Fuller]::UC_eval_thread(n_thread=7,Z,P). At cell 7 u_eval iterative failed: U_solver::eval(i_cell=7,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-8.371e-14, f1=-8.371e-14, |g0|_inf=3.674e-05, |g1|_inf=3.674e-05, |F0|_inf=3.638e-13, |F1|_inf=5.006e-12 H00=-1.241, H0=-8.371e-14, H1=-8.371e-14, v=0
+
+
+
+
+Continuation step N.1 s:0.96414->0.96862, ds=0.004483
+[iter:85,phase:1,s:0.9686,ds:0.004483] |X|=0.0237/7.788e-05/0.00112, |L|=0.0237/7.788e-05/0.00112 |B|=0/0/0, |BL|=1.903e-28/1.903e-28/1.903e-28, PARS=0/0/0, U=1/0.4577/0.6753
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] ROSS_Fuller
+86 (1 ) [phase:1,s:0.9686,ds:0.004483,dump:0,u:17:51]   (f:3.89e-05,d:3.57e-08)  -->  [f:1.42e-06,d:1.64e-09]  lambda:1     
+87 (2 ) [phase:1,s:0.9686,ds:0.004483,dump:1,u:17:51]   (f:8.29e-07,d:8.46e-10)  -->  [f:1.23e-07,d:5.73e-11]  lambda:0.95   #err=  1 angle:1 armijo:1
+88 (3 ) [phase:1,s:0.9686,ds:0.004483,dump:0,u:17:51]   (f:1.07e-07,d:5.06e-11)  -->  [f:2.68e-09,d:1.38e-12]  lambda:1     
+89 (4 ) [phase:1,s:0.9686,ds:0.004483,dump:0,u:17:51]   (f:5.4e-10,d:4.19e-13)   -->  [f:1.49e-10,d:9.25e-14]  lambda:1     
+
+Continuation step N.1 s:0.96862->0.97534, ds=0.0067245
+U_solver::eval(i_cell=1,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-4.485e-14, f1=-4.485e-14, |g0|_inf=3.35e-05, |g1|_inf=3.35e-05, |F0|_inf=3.317e-13, |F1|_inf=2.969e-12 H00=-1.321, H0=-4.485e-14, H1=-4.485e-14, v=0
+
+U_solver::eval(i_cell=0,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-4.485e-14, f1=-4.485e-14, |g0|_inf=3.482e-05, |g1|_inf=3.482e-05, |F0|_inf=3.448e-13, |F1|_inf=2.455e-12 H00=-1.335, H0=-4.485e-14, H1=-4.485e-14, v=0
+
+U_solver::eval(i_cell=6,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-4.485e-14, f1=-4.485e-14, |g0|_inf=4.239e-05, |g1|_inf=4.239e-05, |F0|_inf=4.197e-13, |F1|_inf=8.41e-12 H00=-1.254, H0=-4.485e-14, H1=-4.485e-14, v=0
+
+NLsolver[ROSS_Fuller]::solve_with_continuation(phase=1,...) found:
+NLsolver[ROSS_Fuller]::solve()
+#phase=1 #it=0/60 lambda=1 tolerance=1e-09 |f|_1=1.494e-10 |f|_inf=1.501e-07 |d|_1=9.249e-14 |d|_inf=8.018e-11
+at phase 1, iter 89: Indirect_OCP[ROSS_Fuller]::UC_eval_thread(n_thread=6,Z,P). At cell 6 u_eval iterative failed: U_solver::eval(i_cell=6,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-4.485e-14, f1=-4.485e-14, |g0|_inf=4.239e-05, |g1|_inf=4.239e-05, |F0|_inf=4.197e-13, |F1|_inf=8.41e-12 H00=-1.254, H0=-4.485e-14, H1=-4.485e-14, v=0
+
+
+
+
+Continuation step N.1 s:0.96862->0.97198, ds=0.0033623
+U_solver::eval(i_cell=1,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-1.155e-14, f1=-1.155e-14, |g0|_inf=4.129e-05, |g1|_inf=4.129e-05, |F0|_inf=4.089e-13, |F1|_inf=5.955e-12 H00=-1.321, H0=-1.155e-14, H1=-1.155e-14, v=0
+
+NLsolver[ROSS_Fuller]::solve_with_continuation(phase=1,...) found:
+NLsolver[ROSS_Fuller]::solve()
+#phase=1 #it=0/60 lambda=1 tolerance=1e-09 |f|_1=1.494e-10 |f|_inf=1.501e-07 |d|_1=9.249e-14 |d|_inf=8.018e-11
+at phase 1, iter 89: Indirect_OCP[ROSS_Fuller]::UC_eval_thread(n_thread=2,Z,P). At cell 1 u_eval iterative failed: U_solver::eval(i_cell=1,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-1.155e-14, f1=-1.155e-14, |g0|_inf=4.129e-05, |g1|_inf=4.129e-05, |F0|_inf=4.089e-13, |F1|_inf=5.955e-12 H00=-1.321, H0=-1.155e-14, H1=-1.155e-14, v=0
+
+
+
+
+Continuation step N.1 s:0.96862->0.9703, ds=0.0016811
+U_solver::eval(i_cell=10,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-2.887e-15, f1=-2.887e-15, |g0|_inf=3.243e-05, |g1|_inf=3.243e-05, |F0|_inf=3.211e-13, |F1|_inf=4.117e-12 H00=-1.201, H0=-2.887e-15, H1=-2.887e-15, v=0
+
+NLsolver[ROSS_Fuller]::solve_with_continuation(phase=1,...) found:
+NLsolver[ROSS_Fuller]::solve()
+#phase=1 #it=0/60 lambda=1 tolerance=1e-09 |f|_1=1.494e-10 |f|_inf=1.501e-07 |d|_1=9.249e-14 |d|_inf=8.018e-11
+at phase 1, iter 89: Indirect_OCP[ROSS_Fuller]::UC_eval_thread(n_thread=10,Z,P). At cell 10 u_eval iterative failed: U_solver::eval(i_cell=10,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-2.887e-15, f1=-2.887e-15, |g0|_inf=3.243e-05, |g1|_inf=3.243e-05, |F0|_inf=3.211e-13, |F1|_inf=4.117e-12 H00=-1.201, H0=-2.887e-15, H1=-2.887e-15, v=0
+
+
+
+
+Continuation step N.1 s:0.96862->0.96946, ds=0.00084057
+U_solver::eval(i_cell=1,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-6.661e-16, f1=-6.661e-16, |g0|_inf=3.502e-05, |g1|_inf=3.502e-05, |F0|_inf=3.467e-13, |F1|_inf=2.871e-11 H00=-1.321, H0=-6.661e-16, H1=-6.661e-16, v=0
+
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 1               | Hessian type    = Diagonal        |
++-------------------------- MinimizeHeavyBall --------------------------+
+| last f          = -8.8818e-16     | |g|_inf         = 5.2155e-06      |
++-----------------------------------------------------------------------+
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = NO              | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 4024            | N. System pars  = 11055           |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 131 [sec]       | timeout         = 0 [ms]          |
+| iteration       = 89              | Memory Used     = 1Mb(+0Kb)       |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 478             | Jacobian        = 89              |
+| Factorization   = 89              | Inversion       = 478             |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 1.5014e-07      | last ||d||_inf  = 8.0179e-11      |
+| last ||f||_1    = 1.4938e-10      | last ||d||_1    = 9.2489e-14      |
+| last ||f||_2    = 3.7652e-09      | last ||d||_2    = 1.9535e-12      |
++-----------------------------------------------------------------------+
+|          __  ___     __   __             ___  __   __   ___  __       |
+|    |\ | /  \  |     /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \      |
+|    | \| \__/  |     \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/      |
+|                                                                       |
++-----------------------------------------------------------------------+
+                                                                         
+Solver error list
+BEGIN
+  err #1: NLsolver[ROSS_Fuller]::solve_with_continuation(phase=1,...) continuation step too short [s=0.96862,ds=0.0008406<ds_min_step=0.001]
+
+  err #2: Indirect_OCP[ROSS_Fuller]::UC_eval_thread(n_thread=1,Z,P). At cell 1 u_eval iterative failed: U_solver::eval(i_cell=1,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-6.661e-16, f1=-6.661e-16, |g0|_inf=3.502e-05, |g1|_inf=3.502e-05, |F0|_inf=3.467e-13, |F1|_inf=2.871e-11 H00=-1.321, H0=-6.661e-16, H1=-6.661e-16, v=0
+
+
+  err #3: Indirect_OCP[ROSS_Fuller]::UC_eval_thread(n_thread=10,Z,P). At cell 10 u_eval iterative failed: U_solver::eval(i_cell=10,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-2.887e-15, f1=-2.887e-15, |g0|_inf=3.243e-05, |g1|_inf=3.243e-05, |F0|_inf=3.211e-13, |F1|_inf=4.117e-12 H00=-1.201, H0=-2.887e-15, H1=-2.887e-15, v=0
+
+
+  err #4: Indirect_OCP[ROSS_Fuller]::UC_eval_thread(n_thread=2,Z,P). At cell 1 u_eval iterative failed: U_solver::eval(i_cell=1,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-1.155e-14, f1=-1.155e-14, |g0|_inf=4.129e-05, |g1|_inf=4.129e-05, |F0|_inf=4.089e-13, |F1|_inf=5.955e-12 H00=-1.321, H0=-1.155e-14, H1=-1.155e-14, v=0
+
+
+  err #5: Indirect_OCP[ROSS_Fuller]::UC_eval_thread(n_thread=6,Z,P). At cell 6 u_eval iterative failed: U_solver::eval(i_cell=6,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-4.485e-14, f1=-4.485e-14, |g0|_inf=4.239e-05, |g1|_inf=4.239e-05, |F0|_inf=4.197e-13, |F1|_inf=8.41e-12 H00=-1.254, H0=-4.485e-14, H1=-4.485e-14, v=0
+
+
+  err #6: Indirect_OCP[ROSS_Fuller]::UC_eval_thread(n_thread=1,Z,P). At cell 0 u_eval iterative failed: U_solver::eval(i_cell=0,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-4.485e-14, f1=-4.485e-14, |g0|_inf=3.482e-05, |g1|_inf=3.482e-05, |F0|_inf=3.448e-13, |F1|_inf=2.455e-12 H00=-1.335, H0=-4.485e-14, H1=-4.485e-14, v=0
+
+
+  err #7: Indirect_OCP[ROSS_Fuller]::UC_eval_thread(n_thread=2,Z,P). At cell 1 u_eval iterative failed: U_solver::eval(i_cell=1,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-4.485e-14, f1=-4.485e-14, |g0|_inf=3.35e-05, |g1|_inf=3.35e-05, |F0|_inf=3.317e-13, |F1|_inf=2.969e-12 H00=-1.321, H0=-4.485e-14, H1=-4.485e-14, v=0
+
+
+END
+                                                                         
+Check Controls (epsi=0.001):
+At Cell 1, |g|_inf=0.0185847 > epsi=0.001, u=[-0.9999999999943121 ] Huu=
+228995297523.76218 
+
+At Cell 27, |g|_inf=0.0137624 > epsi=0.001, u=[-0.9999999999923224 ] Huu=
+125687849487.98448 
+
+At Cell 28, |g|_inf=0.0135781 > epsi=0.001, u=[-0.9999999999922214 ] Huu=
+122447314297.20787 
+
+At Cell 29, |g|_inf=0.0134086 > epsi=0.001, u=[-0.9999999999921182 ] Huu=
+119257751962.50705 
+
+At Cell 30, |g|_inf=0.0132289 > epsi=0.001, u=[-0.9999999999920126 ] Huu=
+116125418427.56743 
+
+At Cell 31, |g|_inf=0.0130484 > epsi=0.001, u=[-0.9999999999919046 ] Huu=
+113047745950.5955 
+
+skipping... [ 0.19ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 120ms ]
+Check DuDxxpm (epsi=0.001):U_solver::eval(i_cell=1,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=-6.661e-16, f1=-6.661e-16, |g0|_inf=3.502e-05, |g1|_inf=3.502e-05, |F0|_inf=3.467e-13, |F1|_inf=2.871e-11 H00=-1.321, H0=-6.661e-16, H1=-6.661e-16, v=0
+
+
+#ERR 1 DuDxxpm [cell=1 of 1004 SEGMENT#0 range:(0,199)] #x=2 #u=1 #p=0 [ (u) * (xxpm) = 1 x 6 ]
+jac[ -1, -1] =            0 : 0            [A:FD] ---            0 : -nan         [err:err(%)]
+
+#ERR 2 DuDxxpm [cell=172 of 1004 SEGMENT#0 range:(0,199)] #x=2 #u=1 #p=0 [ (u) * (xxpm) = 1 x 6 ]
+jac[  0,  5] =   -2.378e+10 : -5.7859e+07  [A:FD] ---   2.3722e+10 : 99.757       [err:err(%)]
+
+#ERR 3 DuDxxpm [cell=357 of 1004 SEGMENT#1 range:(200,400)] #x=2 #u=1 #p=0 [ (u) * (xxpm) = 1 x 6 ]
+jac[  0,  5] =    -0.086884 : -0.084458    [A:FD] ---    0.0024263 : 0.24263      [err:err(%)]
+
+#ERR 4 DuDxxpm [cell=358 of 1004 SEGMENT#1 range:(200,400)] #x=2 #u=1 #p=0 [ (u) * (xxpm) = 1 x 6 ]
+jac[  0,  5] =     -0.38416 : -0.37343     [A:FD] ---     0.010726 : 1.0726       [err:err(%)]
+
+#ERR 5 DuDxxpm [cell=359 of 1004 SEGMENT#1 range:(200,400)] #x=2 #u=1 #p=0 [ (u) * (xxpm) = 1 x 6 ]
+jac[  0,  5] =  -9.1141e+08 : -2.8182e+07  [A:FD] ---   8.8323e+08 : 96.908       [err:err(%)]
+
+#ERR 6 DuDxxpm [cell=360 of 1004 SEGMENT#1 range:(200,400)] #x=2 #u=1 #p=0 [ (u) * (xxpm) = 1 x 6 ]
+jac[  0,  5] =     -0.47185 : -0.45867     [A:FD] ---     0.013174 : 1.3174       [err:err(%)]
+
+skipping... [ 5.512e+04ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001): all OK [ 111.7ms ]
+Check DodeDxp (epsi=0.001): all OK [ 2.526ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 114.4ms ]
+target [Lagrange,Mayer]            = [ 0.2684, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 4.537e-10, 0 ]
+All Done Folks!

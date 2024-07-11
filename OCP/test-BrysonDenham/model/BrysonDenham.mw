@@ -195,16 +195,16 @@
 <Group labelreference="L106073" drawlabel="true">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">with(XOptima):</Text-field>
 </Input>
-<Output><Text-field style="Line Printed Output" layout="Line Printed Output"> ____  ___ _   _  ____  
-<Font encoding="UTF-8">|  _ \134|_ _| \134 | |/ ___| 
-| |_) || ||  \134| |\134___ \134 
+<Output><Text-field style="Line Printed Output" layout="Line Printed Output"> ____  ___ _   _  ____
+<Font encoding="UTF-8">|  _ \134|_ _| \134 | |/ ___|
+| |_) || ||  \134| |\134___ \134
 |  __/ | || |\134  | ___) |
-|_|   |___|_| \134_||____/ 
-</Font>                        
+|_|   |___|_| \134_||____/
+</Font>
 Mechatronix library version: 1.5.1-d032dirty-osx_12.3.1
 commit #a043623a [Mon Apr 11 14:20:22 2022]
 pins library search path:
-  [&quot;.&quot;, &quot;./mrblib&quot;, &quot;/Library/Frameworks/MechatronixInterfaceMruby.framework/Resources/mrblib&quot;]
+  [&quot;.&quot;, &quot;./mrblib&quot;, &quot;/Library/Frameworks/PINS_InterfaceMruby.framework/Resources/mrblib&quot;]
 
 License status:
   Maple XOptima:  available
@@ -495,7 +495,7 @@ Generating DmDuu_mat:            1 x 1
 
 Step 8: generate Mesh (if required)
 -----------------------------------
-Mapped function(s) of class: Mechatronix#MeshStd instance: *pMesh.
+Mapped function(s) of class: PINS#MeshStd instance: *pMesh.
 
 Step 9: setup parameters
 ------------------------

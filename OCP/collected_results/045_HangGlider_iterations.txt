@@ -1,0 +1,300 @@
++-------------------------- MODEL:HangGlider ---------------------------+
++................................ DIMS .................................+
+| dims                      = u=1, q=1, x=4, p=1, bc=7 of 7             |
+| total                     = nZ=3216, nP=7620, nUC=400, Q=401          |
+| index start               = omega=3208, p=3215                        |
+| post processing           = n_post=6                                  |
++................................ MESH .................................+
+| num nodes / segments      = 401 / 1                                   |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 3                               |
+| mesh class pointer        = 0x7ff7bebd4138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 3216 x 3216                               |
+| nblock/block size         = 400 / 8                                   |
+| qr/qx/nr/nx               = 7 / 7 / 1 / 1                             |
+| last blok rows x cols     = 24 x 24                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x                                                        |
+| [ 1] initial_y                                                        |
+| [ 2] initial_vx                                                       |
+| [ 3] initial_vy                                                       |
+| [ 4] final_y                                                          |
+| [ 5] final_vx                                                         |
+| [ 6] final_vy                                                         |
++..................... Controls penalties/barriers .....................+
+cLControl = { COSLOG (BARRIER) epsilon=0.01, tolerance=0.01 }            
++....................... No constraints type LT ........................+
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 401                                                    
+  Segment N.0: s0 = 0 length = 1 npts = 401 no data set                  
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|................................ S = 14 ...............................|
+|........................... Tguess = 105 ..............................|
+|............................... WG = 1 ................................|
+|.............................. WG0 = 1 ................................|
+|............................... WT = 1 ................................|
+|.............................. WT0 = 1 ................................|
+|............................... c0 = 0.034 ............................|
+|............................... c1 = 0.069662 .........................|
+|........................... cL_max = 1.4 ..............................|
+|........................... cL_min = 0 ................................|
+|................................ g = 9.8066 ...........................|
+|................................ m = 100 ..............................|
+|............................... rc = 100 ..............................|
+|.............................. rho = 1.13 .............................|
+|............................... uc = 2.5 ..............................|
+|............................. vx_f = 13.228 ...........................|
+|............................. vx_i = 13.228 ...........................|
+|............................. vy_f = -1.2875 ..........................|
+|............................. vy_i = -1.2875 ..........................|
+|.............................. x_i = 0 ................................|
+|.............................. y_f = 900 ..............................|
+|.............................. y_i = 1000 .............................|
+|...................... cL_epsi_max = 0.01 .............................|
+|...................... cL_epsi_min = 0.0001 ...........................|
+|....................... cL_tol_max = 0.01 .............................|
+|....................... cL_tol_min = 0.0001 ...........................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=199.9/6.007/25.64, |L|=199.9/6.006/25.64 |B|=0/0/0, |BL|=35.19/35.19/35.19, PARS=0/0/0, U=0.7/0.7/0.7
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] HangGlider
+  1 [dump:1,u:3:3]         (f:3.13,d:15)       -->     [f:1.27,d:0.428]      lambda:0.95   #err=  1 angle:1 armijo:1
+  2 [dump:1,u:2.4:3]     (f:1.27,d:0.443)      -->    [f:0.0748,d:0.0123]    lambda:0.95   #err=  1 angle:1 armijo:1
+  3 [dump:0,u:2:3]      (f:0.0748,d:0.0146)    -->  [f:6.07e-05,d:0.000112]  lambda:1     
+  4 [dump:0,u:2:2]    (f:6.07e-05,d:0.000113)  -->  [f:4.54e-10,d:1.7e-10]   lambda:1     
+  5 [dump:0,u:0.99:1]  (f:4.54e-10,d:1.7e-10)   -->  [f:3.55e-12,d:6.71e-15]  lambda:1     
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:5,phase:1,s:0.2,ds:0.2] |X|=0.8217/0.04653/0.1466, |L|=0.8217/0.04654/0.1466 |B|=0.2/0.2/0.2, |BL|=0/0/0, PARS=3.167e-07/3.167e-07/3.167e-07, U=0.7032/0.7013/0.7013
+U_solver::eval(i_cell=56,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=2.56e-05 f0=-596.6, f1=-596.6, |g0|_inf=18.9, |g1|_inf=18.9, |F0|_inf=1.132e-14, |F1|_inf=1.132e-14 H00=781.5, H0=-596.6, H1=-596.6, v=0.004031
+
+U_solver::eval(i_cell=59,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.001024 f0=-664.6, f1=-664.6, |g0|_inf=0.0001225, |g1|_inf=0.0001225, |F0|_inf=3.624e-13, |F1|_inf=3.624e-13 H00=857.7, H0=-664.6, H1=-664.6, v=9.693e-08
+
+U_solver::eval(i_cell=46,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.00512 f0=-356.3, f1=-356.3, |g0|_inf=5.975e-05, |g1|_inf=5.975e-05, |F0|_inf=4.939e-14, |F1|_inf=4.939e-14 H00=579.3, H0=-356.3, H1=-356.3, v=2.911e-06
+
+U_solver::eval(i_cell=68,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=5.12e-05 f0=-209.1, f1=-209.1, |g0|_inf=0.1617, |g1|_inf=0.1617, |F0|_inf=4.267e-15, |F1|_inf=4.267e-15 H00=400.8, H0=-209.1, H1=-209.1, v=0.001847
+
+U_solver::eval(i_cell=70,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.000512 f0=-160.7, f1=-160.7, |g0|_inf=0.01589, |g1|_inf=0.01589, |F0|_inf=9.894e-14, |F1|_inf=9.894e-14 H00=364.2, H0=-160.7, H1=-160.7, v=0.0004972
+
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] HangGlider
+6  (1 ) [phase:1,s:0.2,ds:0.2,dump:4,u:9.4:51]             (f:0.0407,d:14.1)     -->      [f:2.06,d:13.2]      lambda:0.0784  #err=  9 controls:2 armijo:2
+7  (2 ) [phase:1,s:0.2,ds:0.2,dump:2,u:4:51]                (f:2.06,d:8.33)      -->      [f:3.41,d:7.9]       lambda:0.0672  #err=  2 armijo:2
+U_solver::eval(i_cell=19,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.00064 f0=-681.6, f1=-681.6, |g0|_inf=0.003422, |g1|_inf=0.003422, |F0|_inf=3.195e-13, |F1|_inf=3.195e-13 H00=1061, H0=-681.6, H1=-681.6, v=3.41e-05
+
+U_solver::eval(i_cell=18,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.001024 f0=-703.3, f1=-703.3, |g0|_inf=0.0004421, |g1|_inf=0.0004421, |F0|_inf=2.848e-13, |F1|_inf=2.848e-13 H00=1103, H0=-703.3, H1=-703.3, v=3.234e-06
+
+U_solver::eval(i_cell=16,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.00128 f0=-558, f1=-558, |g0|_inf=0.0006265, |g1|_inf=0.0006265, |F0|_inf=2.199e-14, |F1|_inf=2.199e-14 H00=953.5, H0=-558, H1=-558, v=1.219e-05
+
+U_solver::eval(i_cell=32,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=1.6e-07 f0=-1244, f1=-1244, |g0|_inf=972.6, |g1|_inf=972.6, |F0|_inf=5.698e-14, |F1|_inf=5.698e-14 H00=-1886, H0=-1243, H1=-1243, v=1.34
+
+U_solver::eval(i_cell=20,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.00512 f0=-237.6, f1=-237.6, |g0|_inf=5.09e-05, |g1|_inf=5.09e-05, |F0|_inf=3.322e-13, |F1|_inf=3.322e-13 H00=491.8, H0=-237.6, H1=-237.6, v=1.024e-06
+
+U_solver::eval(i_cell=34,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.00512 f0=-353.5, f1=-353.5, |g0|_inf=5.487e-05, |g1|_inf=5.487e-05, |F0|_inf=9.046e-15, |F1|_inf=9.046e-15 H00=-774.9, H0=-353.5, H1=-353.5, v=1.172e-06
+
+U_solver::eval(i_cell=45,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.000512 f0=-207.8, f1=-207.8, |g0|_inf=0.01513, |g1|_inf=0.01513, |F0|_inf=8.645e-14, |F1|_inf=8.645e-14 H00=486.5, H0=-207.8, H1=-207.8, v=0.0004775
+
+U_solver::eval(i_cell=83,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.00512 f0=-107.8, f1=-107.8, |g0|_inf=9.124e-05, |g1|_inf=9.124e-05, |F0|_inf=1.615e-14, |F1|_inf=1.615e-14 H00=-284.5, H0=-107.8, H1=-107.8, v=2.801e-06
+
+8  (3 ) [phase:1,s:0.2,ds:0.2,dump:5,u:7.2:51]              (f:3.41,d:7.45)      -->      [f:4.3,d:7.16]       lambda:0.0549  #err= 13 controls:3 armijo:2
+9  (4 ) [phase:1,s:0.2,ds:0.2,dump:2,u:3.4:51]              (f:4.3,d:6.66)       -->      [f:4.99,d:6.37]      lambda:0.0562  #err=  2 armijo:2
+U_solver::eval(i_cell=18,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=6.4e-05 f0=-397.1, f1=-397.1, |g0|_inf=0.05955, |g1|_inf=0.05955, |F0|_inf=6.966e-14, |F1|_inf=6.966e-14 H00=929.9, H0=-397.1, H1=-397.1, v=0.006275
+
+U_solver::eval(i_cell=28,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.000512 f0=-264.4, f1=-264.4, |g0|_inf=0.00954, |g1|_inf=0.00954, |F0|_inf=5.567e-14, |F1|_inf=5.567e-14 H00=-752.2, H0=-264.4, H1=-264.4, v=0.0003031
+
+U_solver::eval(i_cell=16,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=2.56e-05 f0=-292.7, f1=-292.7, |g0|_inf=2.38, |g1|_inf=2.38, |F0|_inf=5.588e-13, |F1|_inf=5.588e-13 H00=792.4, H0=-292.7, H1=-292.7, v=0.07846
+
+U_solver::eval(i_cell=82,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.00128 f0=-95.47, f1=-95.47, |g0|_inf=0.005342, |g1|_inf=0.005342, |F0|_inf=2.389e-13, |F1|_inf=2.389e-13 H00=-446.4, H0=-95.47, H1=-95.47, v=7.682e-06
+
+10 (5 ) [phase:1,s:0.2,ds:0.2,dump:4,u:7.4:51]              (f:4.99,d:5.36)      -->      [f:5.91,d:5.09]      lambda:0.0784  #err=  8 controls:2 armijo:2
+11 (6 ) [phase:1,s:0.2,ds:0.2,dump:2,u:3:3]                 (f:5.91,d:4.13)      -->      [f:6.2,d:3.85]       lambda:0.0672  #err=  2 armijo:2
+U_solver::eval(i_cell=59,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.000512 f0=-176.2, f1=-176.2, |g0|_inf=0.01479, |g1|_inf=0.01479, |F0|_inf=5.55e-15, |F1|_inf=5.55e-15 H00=-760.3, H0=-176.2, H1=-176.2, v=0.0003654
+
+U_solver::eval(i_cell=58,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.00512 f0=-171.7, f1=-171.7, |g0|_inf=6.685e-05, |g1|_inf=6.685e-05, |F0|_inf=6.727e-13, |F1|_inf=6.727e-13 H00=-734.4, H0=-171.7, H1=-171.7, v=2.33e-06
+
+U_solver::eval(i_cell=60,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=5.12e-05 f0=-163.8, f1=-163.8, |g0|_inf=0.2191, |g1|_inf=0.2191, |F0|_inf=2.179e-13, |F1|_inf=2.179e-13 H00=-720.8, H0=-163.8, H1=-163.8, v=0.01222
+
+12 (7 ) [phase:1,s:0.2,ds:0.2,dump:3,u:5.2:51]              (f:6.2,d:2.34)       -->      [f:6.68,d:2.11]      lambda:0.112  #err=  6 controls:1 armijo:2
+13 (8 ) [phase:1,s:0.2,ds:0.2,dump:2,u:3.7:51]              (f:6.68,d:1.06)      -->     [f:6.71,d:0.887]      lambda:0.16   #err=  2 armijo:2
+14 (9 ) [phase:1,s:0.2,ds:0.2,dump:0,u:3.6:51]              (f:6.71,d:2.13)      -->      [f:7.17,d:1.58]      lambda:1     
+15 (10) [phase:1,s:0.2,ds:0.2,dump:1,u:3.3:24]              (f:7.17,d:1.21)      -->     [f:4.23,d:0.454]      lambda:0.4    #err=  1 armijo:1
+16 (11) [phase:1,s:0.2,ds:0.2,dump:1,u:3:3]                (f:4.23,d:0.663)      -->     [f:2.29,d:0.452]      lambda:0.46   #err=  1 armijo:1
+17 (12) [phase:1,s:0.2,ds:0.2,dump:0,u:3:3]                (f:2.29,d:0.657)      -->     [f:0.25,d:0.109]      lambda:1     
+18 (13) [phase:1,s:0.2,ds:0.2,dump:1,u:2.9:3]              (f:0.25,d:0.109)      -->   [f:0.0126,d:0.00477]    lambda:0.95   #err=  1 angle:1 armijo:1
+19 (14) [phase:1,s:0.2,ds:0.2,dump:1,u:2.2:3]            (f:0.0126,d:0.00471)    -->  [f:0.000629,d:0.000234]  lambda:0.95   #err=  1 angle:1 armijo:1
+20 (15) [phase:1,s:0.2,ds:0.2,dump:0,u:2:2]             (f:0.000629,d:0.000234)  -->  [f:1.18e-08,d:3.87e-09]  lambda:1     
+21 (16) [phase:1,s:0.2,ds:0.2,dump:0,u:1.2:2]           (f:1.18e-08,d:3.87e-09)  -->  [f:3.69e-12,d:7.2e-15]   lambda:1     
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:21,phase:1,s:0.5,ds:0.3] |X|=82.82/3.217/12.35, |L|=82.82/3.216/12.35 |B|=0.3/0.3/0.3, |BL|=0/0/0, PARS=0.01013/0.01013/0.01013, U=1.386/0.7684/0.7909
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] HangGlider
+22 (1 ) [phase:1,s:0.5,ds:0.3,dump:0,u:7.3:51]              (f:1.61,d:2.22)      -->       [f:11,d:0.76]       lambda:1     
+23 (2 ) [phase:1,s:0.5,ds:0.3,dump:2,u:7:51]                (f:11,d:0.889)       -->     [f:1.28,d:0.0719]     lambda:0.902  #err=  2 angle:2 armijo:2
+24 (3 ) [phase:1,s:0.5,ds:0.3,dump:0,u:6.5:51]             (f:1.28,d:0.0729)     -->   [f:0.0212,d:0.00468]    lambda:1     
+25 (4 ) [phase:1,s:0.5,ds:0.3,dump:1,u:5.8:51]           (f:0.0212,d:0.00463)    -->  [f:0.00109,d:0.000224]   lambda:0.95   #err=  1 angle:1 armijo:1
+26 (5 ) [phase:1,s:0.5,ds:0.3,dump:0,u:5.7:51]          (f:0.00109,d:0.000223)   -->  [f:1.92e-07,d:5.84e-08]  lambda:1     
+27 (6 ) [phase:1,s:0.5,ds:0.3,dump:0,u:5.7:51]          (f:1.92e-07,d:5.84e-08)  -->  [f:3.76e-12,d:3.21e-14]  lambda:1     
+
+Continuation step N.1 s:0.5->0.95, ds=0.45
+[iter:27,phase:1,s:0.95,ds:0.45] |X|=75.08/1.984/8.006, |L|=75.08/1.983/8.006 |B|=0.45/0.45/0.45, |BL|=0/0/0, PARS=0.02689/0.02689/0.02689, U=1.4/0.7921/0.8253
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] HangGlider
+28 (1 ) [phase:1,s:0.95,ds:0.45,dump:0,u:8.1:51]           (f:0.998,d:1.53)      -->     [f:3.64,d:0.395]      lambda:1     
+29 (2 ) [phase:1,s:0.95,ds:0.45,dump:2,u:8:51]             (f:3.64,d:0.271)      -->    [f:0.666,d:0.0481]     lambda:0.902  #err=  2 angle:2 armijo:2
+30 (3 ) [phase:1,s:0.95,ds:0.45,dump:0,u:7.7:51]          (f:0.666,d:0.0637)     -->    [f:0.012,d:0.0018]     lambda:1     
+31 (4 ) [phase:1,s:0.95,ds:0.45,dump:1,u:6.9:51]          (f:0.012,d:0.00166)    -->  [f:0.000604,d:8.27e-05]  lambda:0.95   #err=  1 angle:1 armijo:1
+32 (5 ) [phase:1,s:0.95,ds:0.45,dump:0,u:6.9:51]        (f:0.000604,d:8.26e-05)  -->  [f:1.1e-08,d:1.78e-09]   lambda:1     
+33 (6 ) [phase:1,s:0.95,ds:0.45,dump:0,u:6.1:51]        (f:1.1e-08,d:1.78e-09)   -->  [f:3.61e-12,d:8.8e-15]   lambda:1     
+
+Continuation step N.1 s:0.95->1, ds=0.05
+[iter:33,phase:1,s:1,ds:0.05] |X|=5.203/0.1549/0.6394, |L|=5.203/0.1549/0.6394 |B|=0.05/0.05/0.05, |BL|=0/0/0, PARS=0.003225/0.003225/0.003225, U=1.4/0.796/0.8301
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] HangGlider
+34 (1 ) [phase:1,s:1,ds:0.05,dump:0,u:7:51]                (f:0.078,d:0.166)     -->   [f:0.0136,d:0.000916]   lambda:1     
+35 (2 ) [phase:1,s:1,ds:0.05,dump:1,u:7:51]              (f:0.0136,d:0.00074)    -->  [f:0.000698,d:3.1e-05]   lambda:0.95   #err=  1 angle:1 armijo:1
+36 (3 ) [phase:1,s:1,ds:0.05,dump:1,u:6.9:51]           (f:0.000698,d:3.02e-05)  -->  [f:3.5e-05,d:1.49e-06]   lambda:0.95   #err=  1 angle:1 armijo:1
+37 (4 ) [phase:1,s:1,ds:0.05,dump:0,u:6.9:51]           (f:3.5e-05,d:1.49e-06)   -->  [f:1.78e-10,d:6.83e-11]  lambda:1     
+38 (5 ) [phase:1,s:1,ds:0.05,dump:0,u:6:51]             (f:1.78e-10,d:6.83e-11)  -->  [f:3.75e-12,d:7.83e-15]  lambda:1     
+Continuation step N.2
+
+Continuation step N.2 s:0->0.2, ds=0.2
+[iter:38,phase:2,s:0.2,ds:0.2] |X|=4.391e-11/2.833e-12/7.119e-12, |L|=4.391e-11/2.835e-12/7.125e-12 |B|=0/0/0, |BL|=0/0/0, PARS=0.000238/0.000238/0.000238, U=1.4/0.7961/0.8302
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] HangGlider
+39 (1 ) [phase:2,s:0.2,ds:0.2,dump:0,u:6.9:51]           (f:7.4e-08,d:8.7e-05)   -->  [f:4.38e-08,d:2.69e-09]  lambda:1     
+40 (2 ) [phase:2,s:0.2,ds:0.2,dump:0,u:6.2:51]          (f:4.38e-08,d:2.69e-09)  -->  [f:3.5e-12,d:7.91e-15]   lambda:1     
+
+Continuation step N.2 s:0.2->0.5, ds=0.3
+[iter:40,phase:2,s:0.5,ds:0.3] |X|=4.121e-11/2.608e-12/6.65e-12, |L|=4.121e-11/2.628e-12/6.687e-12 |B|=0/0/0, |BL|=0/0/0, PARS=0.0003571/0.0003571/0.0003571, U=1.4/0.7961/0.8302
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] HangGlider
+41 (1 ) [phase:2,s:0.5,ds:0.3,dump:0,u:6.9:51]          (f:1.11e-07,d:0.000131)  -->  [f:9.85e-08,d:6.05e-09]  lambda:1     
+42 (2 ) [phase:2,s:0.5,ds:0.3,dump:0,u:6.7:51]          (f:9.85e-08,d:6.05e-09)  -->  [f:3.6e-12,d:9.03e-15]   lambda:1     
+
+Continuation step N.2 s:0.5->0.95, ds=0.45
+[iter:42,phase:2,s:0.95,ds:0.45] |X|=4.181e-11/2.728e-12/6.951e-12, |L|=4.181e-11/2.751e-12/6.993e-12 |B|=0/0/0, |BL|=0/0/0, PARS=0.0005356/0.0005356/0.0005356, U=1.4/0.7961/0.8302
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] HangGlider
+43 (1 ) [phase:2,s:0.95,ds:0.45,dump:0,u:6.9:51]        (f:1.67e-07,d:0.000196)  -->  [f:2.22e-07,d:1.36e-08]  lambda:1     
+44 (2 ) [phase:2,s:0.95,ds:0.45,dump:0,u:6.9:51]        (f:2.22e-07,d:1.36e-08)  -->   [f:3.8e-12,d:7.8e-15]   lambda:1     
+
+Continuation step N.2 s:0.95->1, ds=0.05
+[iter:44,phase:2,s:1,ds:0.05] |X|=4.158e-11/2.781e-12/7.238e-12, |L|=4.158e-11/2.8e-12/7.273e-12 |B|=0/0/0, |BL|=0/0/0, PARS=5.952e-05/5.952e-05/5.952e-05, U=1.4/0.7961/0.8302
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] HangGlider
+45 (1 ) [phase:2,s:1,ds:0.05,dump:0,u:6.8:51]           (f:1.85e-08,d:2.18e-05)  -->  [f:2.74e-09,d:1.68e-10]  lambda:1     
+46 (2 ) [phase:2,s:1,ds:0.05,dump:0,u:6:51]             (f:2.74e-09,d:1.68e-10)  -->  [f:3.77e-12,d:7.95e-15]  lambda:1     
+Continuation step N.3
+
+Continuation step N.3 s:0->0.2, ds=0.2
+[iter:46,phase:3,s:0.2,ds:0.2] |X|=0.497/0.00129/0.01761, |L|=0.497/0.00129/0.01761 |B|=0/0/0, |BL|=0/0/0, PARS=1.668e-06/1.668e-06/1.668e-06, U=1.4/0.7961/0.8302
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] HangGlider
+47 (1 ) [phase:3,s:0.2,ds:0.2,dump:1,u:6.9:51]          (f:0.000643,d:0.000177)  -->  [f:3.17e-05,d:8.65e-06]  lambda:0.95   #err=  1 angle:1 armijo:1
+48 (2 ) [phase:3,s:0.2,ds:0.2,dump:0,u:6.9:51]          (f:3.17e-05,d:8.63e-06)  -->  [f:1.13e-09,d:5.28e-10]  lambda:1     
+49 (3 ) [phase:3,s:0.2,ds:0.2,dump:0,u:6:51]            (f:1.13e-09,d:5.28e-10)  -->  [f:3.74e-12,d:8.53e-15]  lambda:1     
+
+Continuation step N.3 s:0.2->0.5, ds=0.3
+[iter:49,phase:3,s:0.5,ds:0.3] |X|=0.3606/0.0007297/0.01263, |L|=0.3606/0.0007297/0.01263 |B|=0/0/0, |BL|=0/0/0, PARS=6.461e-07/6.461e-07/6.461e-07, U=1.4/0.7961/0.8302
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] HangGlider
+50 (1 ) [phase:3,s:0.5,ds:0.3,dump:1,u:6.9:51]          (f:0.000363,d:0.000117)  -->  [f:1.77e-05,d:5.63e-06]  lambda:0.95   #err=  1 angle:1 armijo:1
+51 (2 ) [phase:3,s:0.5,ds:0.3,dump:0,u:6.9:51]          (f:1.77e-05,d:5.61e-06)  -->   [f:1.12e-09,d:5e-10]    lambda:1     
+
+Continuation step N.3 s:0.5->0.95, ds=0.45
+[iter:51,phase:3,s:0.95,ds:0.45] |X|=0.1699/0.0002848/0.005926, |L|=0.1699/0.0002848/0.005926 |B|=0/0/0, |BL|=0/0/0, PARS=1.433e-07/1.433e-07/1.433e-07, U=1.4/0.7961/0.8302
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] HangGlider
+52 (1 ) [phase:3,s:0.95,ds:0.45,dump:1,u:6.9:51]        (f:0.000142,d:5.06e-05)  -->   [f:7e-06,d:2.49e-06]    lambda:0.95   #err=  1 angle:1 armijo:1
+53 (2 ) [phase:3,s:0.95,ds:0.45,dump:0,u:6.9:51]         (f:7e-06,d:2.49e-06)    -->  [f:2.19e-10,d:9.48e-11]  lambda:1     
+
+Continuation step N.3 s:0.95->1, ds=0.05
+[iter:53,phase:3,s:1,ds:0.05] |X|=0.00619/9.71e-06/0.0002158, |L|=0.00619/9.71e-06/0.0002158 |B|=0/0/0, |BL|=0/0/0, PARS=3.405e-09/3.405e-09/3.405e-09, U=1.4/0.7961/0.8302
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] HangGlider
+54 (1 ) [phase:3,s:1,ds:0.05,dump:0,u:6.9:51]           (f:4.83e-06,d:1.8e-06)   -->  [f:1.08e-10,d:4.62e-11]  lambda:1     
+55 (2 ) [phase:3,s:1,ds:0.05,dump:0,u:6:51]             (f:1.08e-10,d:4.62e-11)  -->  [f:3.84e-12,d:8.83e-15]  lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 1               | Hessian type    = Diagonal        |
++-------------------------- MinimizeHeavyBall --------------------------+
+| last f          = 0               | |g|_inf         = 2.8216e-07      |
++-----------------------------------------------------------------------+
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 3216            | N. System pars  = 7620            |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 9.58 [sec]      | timeout         = 0 [ms]          |
+| iteration       = 55              | Memory Used     = 1Mb(+3Kb)       |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 143             | Jacobian        = 55              |
+| Factorization   = 55              | Inversion       = 143             |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 8.3901e-11      | last ||d||_inf  = 1.2213e-13      |
+| last ||f||_1    = 3.8404e-12      | last ||d||_1    = 8.8287e-15      |
+| last ||f||_2    = 9.9506e-12      | last ||d||_2    = 1.906e-14       |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 2.043ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 152.4ms ]
+Check DuDxxpm (epsi=0.001):U_solver::eval(i_cell=96,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=0, f1=0, |g0|_inf=3.552e-05, |g1|_inf=3.552e-05, |F0|_inf=3.521e-13, |F1|_inf=1.491e-12 H00=124.6, H0=0, H1=0, v=0
+
+U_solver::eval(i_cell=96,...) failed: MinimizeHeavyBall[Control_solver_3_HeavyBall]::solve, Too many iterations
+tolerance=1e-12, dt=0.0001 f0=0, f1=0, |g0|_inf=3.582e-05, |g1|_inf=3.582e-05, |F0|_inf=3.55e-13, |F1|_inf=1.593e-12 H00=124.6, H0=0, H1=0, v=0
+
+ all OK [ 1.535e+04ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001): all OK [ 108.5ms ]
+Check DodeDxp (epsi=0.001): all OK [ 2.694ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 111.4ms ]
+target [Lagrange,Mayer]            = [ 0, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 1.929e-05, 0 ]
+Optimization parameters:
+T: 98.4376932342307924
+All Done Folks!

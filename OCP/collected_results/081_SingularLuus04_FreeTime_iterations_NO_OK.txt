@@ -1,0 +1,225 @@
++-------------------- MODEL:SingularLuus04_FreeTime --------------------+
++................................ DIMS .................................+
+| dims                      = u=1, q=1, x=4, p=0, bc=6 of 6             |
+| total                     = nZ=40014, nP=95019, nUC=5000, Q=5001      |
+| index start               = omega=40008, p=40014                      |
+| post processing           = n_post=1                                  |
++................................ MESH .................................+
+| num nodes / segments      = 5001 / 1                                  |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 1                               |
+| mesh class pointer        = 0x7ff7beb0f128                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 40014 x 40014                             |
+| nblock/block size         = 5000 / 8                                  |
+| qr/qx/nr/nx               = 6 / 6 / 0 / 0                             |
+| last blok rows x cols     = 22 x 22                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x                                                        |
+| [ 1] initial_y                                                        |
+| [ 2] initial_z                                                        |
+| [ 3] final_x                                                          |
+| [ 4] final_y                                                          |
+| [ 5] final_z                                                          |
++..................... Controls penalties/barriers .....................+
+uControl = { COSLOG (BARRIER) epsilon=0.01, tolerance=0.01 }             
++....................... No constraints type LT ........................+
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 5001                                                   
+  Segment N.0: s0 = 0 length = 1 npts = 5001 no data set                 
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|.......................... T_guess = 50 ...............................|
+|............................ theta = 1 ................................|
+|........................... theta0 = 1 ................................|
+|........................... theta1 = 0.01 .............................|
+|........................... u_epsi = 0.01 .............................|
+|.............................. x_f = 0 ................................|
+|.............................. x_i = 1 ................................|
+|.............................. y_f = 0 ................................|
+|.............................. y_i = 0 ................................|
+|.............................. z_f = 0 ................................|
+|.............................. z_i = 0 ................................|
+|....................... min_u_epsi = 0.001 ............................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=101/25.12/50.25, |L|=101/25.12/50.25 |B|=0/0/0, |BL|=1/1/1, PARS=0/0/0, U=0/0/0
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SingularLuus04_FreeTime
+  1 [dump:0,u:0:0]        (f:25.1,d:6.33)      -->     [f:1.88,d:0.0343]     lambda:1     
+  2 [dump:2,u:0:0]        (f:1.88,d:28.6)      -->      [f:6.85,d:16.6]      lambda:0.16   #err=  2 armijo:2
+  3 [dump:1,u:0:0]        (f:6.85,d:10.5)      -->      [f:4.38,d:2.86]      lambda:0.4    #err=  1 armijo:1
+  4 [dump:1,u:0:0]       (f:4.38,d:0.836)      -->     [f:2.75,d:0.503]      lambda:0.4    #err=  1 armijo:1
+  5 [dump:0,u:0:0]        (f:2.75,d:1.01)      -->     [f:1.68,d:0.798]      lambda:1     
+  6 [dump:4,u:0:0]        (f:1.68,d:25.4)      -->      [f:1.77,d:24.9]      lambda:0.0256  #err=  4 armijo:4
+  7 [dump:2,u:0:0]        (f:1.77,d:34.3)      -->      [f:2.04,d:33.9]      lambda:0.0384  #err=  2 armijo:2
+  8 [dump:5,u:0:0]        (f:2.04,d:167)       -->      [f:2.25,d:167]       lambda:0.0102  #err=  5 armijo:5
+  9 [dump:4,u:0:0]        (f:2.25,d:690)       -->      [f:2.48,d:689]       lambda:0.00389  #err=  4 armijo:4
+ 10 [dump:5,u:0:0]      (f:2.48,d:3.57e+03)    -->    [f:2.63,d:3.57e+03]    lambda:0.000957  #err=  5 armijo:5
+ 11 [dump:5,u:0:0]      (f:2.63,d:1.5e+04)     -->    [f:2.91,d:1.5e+04]     lambda:0.000475  #err=  5 armijo:5
+ 12 [dump:7,u:0:0]      (f:2.91,d:2.5e+05)     -->    [f:3.16,d:2.5e+05]     lambda:5.36e-05  #err=  7 armijo:7
+ 13 [dump:2,u:0:0]      (f:3.16,d:1.3e+06)     -->  [f:1.97e+03,d:5.48e+05]  lambda:0.00176  #err=  2 armijo:2
+ 14 [dump:1,u:0:0]     (f:1.97e+03,d:3e+03)    -->  [f:1.39e+03,d:1.78e+03]  lambda:0.4    #err=  1 armijo:1
+ 15 [dump:3,u:0:0]    (f:1.39e+03,d:2.78e+03)  -->  [f:1.3e+03,d:2.07e+03]   lambda:0.064  #err=  3 armijo:3
+ 16 [dump:6,u:0:0]    (f:1.3e+03,d:1.34e+04)   -->   [f:1.3e+03,d:2.5e+03]   lambda:0.0041  #err=  6 armijo:6
+ 17 [dump:1,u:0:0]    (f:1.3e+03,d:1.24e+03)   -->  [f:1.25e+03,d:1.18e+03]  lambda:0.0384  #err=  1 armijo:1
+ 18 [dump:4,u:0:0]    (f:1.25e+03,d:1.13e+03)  -->  [f:1.21e+03,d:1.09e+03]  lambda:0.0296  #err=  4 armijo:4
+ 19 [dump:4,u:0:0]    (f:1.21e+03,d:1.32e+03)  -->  [f:1.2e+03,d:1.07e+03]   lambda:0.00661  #err=  4 armijo:4
+ 20 [dump:0,u:0:0]    (f:1.2e+03,d:1.07e+03)   -->    [f:1.06e+03,d:991]     lambda:0.122 
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SingularLuus04_FreeTime
+ 21 [dump:5,u:0:0]    (f:1.06e+03,d:1.29e+03)  -->    [f:1.05e+03,d:923]     lambda:0.0102  #err=  5 armijo:5
+ 22 [dump:4,u:0:0]      (f:1.05e+03,d:913)     -->    [f:1.05e+03,d:897]     lambda:0.00389  #err=  4 armijo:4
+ 23 [dump:0,u:0:0]      (f:1.05e+03,d:889)     -->       [f:948,d:804]       lambda:0.0935 
+ 24 [dump:1,u:0:0]         (f:948,d:786)       -->       [f:299,d:164]       lambda:0.733  #err=  1 angle:1 armijo:1
+ 25 [dump:1,u:0:0]         (f:299,d:138)       -->       [f:180,d:108]       lambda:0.4    #err=  1 armijo:1
+ 26 [dump:2,u:0:0]        (f:180,d:81.3)       -->      [f:151,d:72.9]       lambda:0.16   #err=  2 armijo:2
+ 27 [dump:2,u:0:0]        (f:151,d:70.1)       -->      [f:127,d:58.1]       lambda:0.16   #err=  2 armijo:2
+ 28 [dump:3,u:0:0]        (f:127,d:59.3)       -->      [f:119,d:52.6]       lambda:0.0647  #err=  3 armijo:3
+ 29 [dump:1,u:0:0]        (f:119,d:52.6)       -->      [f:71.3,d:35.6]      lambda:0.4    #err=  1 armijo:1
+ 30 [dump:1,u:0:0]        (f:71.3,d:31.1)      -->      [f:42.8,d:18.7]      lambda:0.4    #err=  1 armijo:1
+ 31 [dump:1,u:0:0]        (f:42.8,d:18.6)      -->      [f:2.55,d:3.49]      lambda:0.95   #err=  1 angle:1 armijo:1
+ 32 [dump:8,u:0:0]        (f:2.55,d:6.07)      -->      [f:2.55,d:6.07]      lambda:0.000655  #err=  8 armijo:8
+ 33 [dump:5,u:0:0]        (f:2.55,d:3.66)      -->      [f:2.55,d:3.66]      lambda:0.000399  #err=  5 armijo:5
+ 34 [dump:7,u:0:0]        (f:2.55,d:19.4)      -->      [f:2.55,d:19.4]      lambda:4.91e-05  #err=  7 armijo:7
+ 35 [dump:5,u:0:0]        (f:2.55,d:12.3)      -->      [f:2.54,d:12.3]      lambda:0.000108  #err=  5 armijo:5
+ 36 [dump:6,u:0:0]        (f:2.54,d:12.2)      -->      [f:2.54,d:12.2]      lambda:6.37e-05  #err=  6 armijo:6
+ 37 [dump:6,u:0:0]        (f:2.54,d:35.9)      -->      [f:2.54,d:35.9]      lambda:4.91e-05  #err=  6 armijo:6
+ 38 [dump:4,u:0:0]        (f:2.54,d:5.13)      -->      [f:2.54,d:5.13]      lambda:0.000269  #err=  4 armijo:4
+ 39 [dump:8,u:0:0]        (f:2.54,d:90.1)      -->      [f:2.54,d:90.1]      lambda:1.61e-05  #err=  8 armijo:8
+ 40 [dump:3,u:0:0]        (f:2.54,d:5.72)      -->      [f:2.54,d:5.72]      lambda:0.000385  #err=  3 armijo:3
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SingularLuus04_FreeTime
+ 41 [dump:8,u:0:0]        (f:2.54,d:6.44)      -->      [f:2.54,d:6.44]      lambda:0.000655  #err=  8 armijo:8
+ 42 [dump:4,u:0:0]        (f:2.54,d:3.29)      -->      [f:2.54,d:3.29]      lambda:0.000983  #err=  4 armijo:4
+ 43 [dump:5,u:0:0]        (f:2.54,d:4.91)      -->      [f:2.54,d:4.91]      lambda:0.00054  #err=  5 armijo:5
+ 44 [dump:6,u:0:0]        (f:2.54,d:12.7)      -->      [f:2.54,d:12.7]      lambda:0.000143  #err=  6 armijo:6
+ 45 [dump:4,u:0:0]        (f:2.54,d:5.75)      -->      [f:2.54,d:5.75]      lambda:0.000459  #err=  4 armijo:4
+ 46 [dump:6,u:0:0]        (f:2.54,d:8.72)      -->      [f:2.54,d:8.72]      lambda:0.000132  #err=  6 armijo:6
+ 47 [dump:6,u:0:0]        (f:2.54,d:21.3)      -->      [f:2.54,d:21.3]      lambda:7.05e-05  #err=  6 armijo:6
+ 48 [dump:5,u:0:0]        (f:2.54,d:7.29)      -->      [f:2.54,d:7.29]      lambda:0.000129  #err=  5 armijo:5
+ 49 [dump:9,u:0:0]        (f:2.54,d:214)       -->      [f:2.54,d:214]       lambda:4.47e-06  #err=  9 armijo:9
+ 50 [dump:3,u:0:0]        (f:2.54,d:8.25)      -->      [f:2.53,d:8.25]      lambda:0.000203  #err=  3 armijo:3
+ 51 [dump:10,u:0:0]       (f:2.53,d:13.8)      -->      [f:2.53,d:13.8]      lambda:0.000105  #err= 10 armijo:10
+ 52 [dump:4,u:0:0]        (f:2.53,d:7.87)      -->      [f:2.53,d:7.87]      lambda:0.000393  #err=  4 armijo:4
+ 53 [dump:5,u:0:0]        (f:2.53,d:4.58)      -->      [f:2.53,d:4.58]      lambda:0.000305  #err=  5 armijo:5
+ 54 [dump:8,u:0:0]        (f:2.53,d:59.5)      -->      [f:2.53,d:59.5]      lambda:1.72e-05  #err=  8 armijo:8
+ 55 [dump:4,u:0:0]        (f:2.53,d:8.49)      -->      [f:2.53,d:8.49]      lambda:0.000159  #err=  4 armijo:4
+ 56 [dump:7,u:0:0]         (f:2.53,d:26)       -->       [f:2.53,d:26]       lambda:3.1e-05  #err=  7 armijo:7
+ 57 [dump:5,u:0:0]        (f:2.53,d:14.5)      -->      [f:2.53,d:14.5]      lambda:8.55e-05  #err=  5 armijo:5
+ 58 [dump:5,u:0:0]        (f:2.53,d:12.4)      -->      [f:2.53,d:12.4]      lambda:0.000142  #err=  5 armijo:5
+ 59 [dump:4,u:0:0]        (f:2.53,d:6.15)      -->      [f:2.53,d:6.15]      lambda:0.000458  #err=  4 armijo:4
+ 60 [dump:5,u:0:0]         (f:2.53,d:7)        -->       [f:2.53,d:7]        lambda:0.000329  #err=  5 armijo:5
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] SingularLuus04_FreeTime
+ 61 [dump:4,u:0:0]        (f:2.53,d:5.43)      -->      [f:2.53,d:5.43]      lambda:0.000696  #err=  4 armijo:4
+ 62 [dump:5,u:0:0]        (f:2.53,d:4.8)       -->      [f:2.53,d:4.8]       lambda:0.000405  #err=  5 armijo:5
+ 63 [dump:6,u:0:0]        (f:2.53,d:13.9)      -->      [f:2.53,d:13.9]      lambda:0.000124  #err=  6 armijo:6
+ 64 [dump:5,u:0:0]        (f:2.53,d:7.67)      -->      [f:2.53,d:7.67]      lambda:0.000171  #err=  5 armijo:5
+ 65 [dump:6,u:0:0]        (f:2.53,d:19.7)      -->      [f:2.53,d:19.7]      lambda:8.03e-05  #err=  6 armijo:6
+ 66 [dump:5,u:0:0]        (f:2.53,d:7.29)      -->      [f:2.53,d:7.29]      lambda:0.000138  #err=  5 armijo:5
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 1               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = NO              | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 40014           | N. System pars  = 95019           |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 11.4 [sec]      | timeout         = 0 [ms]          |
+| iteration       = 67              | Memory Used     = 10Mb(+95Kb)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 418             | Jacobian        = 67              |
+| Factorization   = 67              | Inversion       = 418             |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 117.34          | last ||d||_inf  = 16694           |
+| last ||f||_1    = 2.5261          | last ||d||_1    = 2100.7          |
+| last ||f||_2    = 4.2815          | last ||d||_2    = 3537.1          |
++-----------------------------------------------------------------------+
+|          __  ___     __   __             ___  __   __   ___  __       |
+|    |\ | /  \  |     /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \      |
+|    | \| \__/  |     \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/      |
+|                                                                       |
++-----------------------------------------------------------------------+
+                                                                         
+Solver error list
+BEGIN
+  err #1: NLsolver[SingularLuus04_FreeTime]::solve [phase:0,iter:67/300,lambda:7.381376105179229e-07,dump:11] failed linesearch
+  err #2: NLsolver[SingularLuus04_FreeTime]::solve [phase:0,iter:67/300,lambda:1.845e-06] failed Armijo
+
+  err #3: NLsolver[SingularLuus04_FreeTime]::solve [phase:0,iter:67/300,lambda:4.613e-06] failed Armijo
+
+  err #4: NLsolver[SingularLuus04_FreeTime]::solve [phase:0,iter:67/300,lambda:1.153e-05] failed Armijo
+
+  err #5: NLsolver[SingularLuus04_FreeTime]::solve [phase:0,iter:67/300,lambda:2.883e-05] failed Armijo
+
+  err #6: NLsolver[SingularLuus04_FreeTime]::solve [phase:0,iter:67/300,lambda:7.208e-05] failed Armijo
+
+  err #7: NLsolver[SingularLuus04_FreeTime]::solve [phase:0,iter:67/300,lambda:0.0001802] failed Armijo
+
+  err #8: NLsolver[SingularLuus04_FreeTime]::solve [phase:0,iter:67/300,lambda:0.0004505] failed Armijo
+
+  err #9: NLsolver[SingularLuus04_FreeTime]::solve [phase:0,iter:67/300,lambda:0.001126] failed Armijo
+
+  err #10: NLsolver[SingularLuus04_FreeTime]::solve [phase:0,iter:67/300,lambda:0.002816] failed Armijo
+
+  err #11: NLsolver[SingularLuus04_FreeTime]::solve [phase:0,iter:67/300,lambda:0.007039] failed Armijo
+
+  err #12: NLsolver[SingularLuus04_FreeTime]::solve [phase:0,iter:67/300,lambda:0.0176] failed Armijo
+
+END
+                                                                         
+Check Controls (epsi=0.001):
+At cell 0, not a minimum |g|_inf=1.2878587085651816e-14, u=[0.9958848512202099 ]
+-448.85825619675137 
+
+At cell 1, not a minimum |g|_inf=2.731148640577885e-14, u=[0.9958777967763052 ]
+-447.32330426015375 
+
+At cell 2, not a minimum |g|_inf=6.217248937900877e-15, u=[0.9958707255640635 ]
+-445.7925920006161 
+
+At cell 3, not a minimum |g|_inf=1.0880185641326534e-14, u=[0.9958636375318564 ]
+-444.2661103615783 
+
+At cell 4, not a minimum |g|_inf=2.531308496145357e-14, u=[0.995856532627858 ]
+-442.7438503003344 
+
+At cell 5, not a minimum |g|_inf=5.995204332975845e-15, u=[0.9958494108000444 ]
+-441.225802788153 
+
+skipping... [ 0.178ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 1265ms ]
+Check DuDxxpm (epsi=0.001): all OK [ 634.4ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001): all OK [ 1181ms ]
+Check DodeDxp (epsi=0.001): all OK [ 19.34ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 1200ms ]
+target [Lagrange,Mayer]            = [ 8.708, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, -0.02396, 0 ]
+All Done Folks!

@@ -1,0 +1,116 @@
++--------------------- MODEL:identification_acado ----------------------+
++................................ DIMS .................................+
+| dims                      = u=0, q=1, x=2, p=2, bc=2 of 2             |
+| total                     = nZ=2832, nP=6367, nUC=0, Q=707            |
+| index start               = omega=2828, p=2830                        |
+| post processing           = n_post=0                                  |
++................................ MESH .................................+
+| num nodes / segments      = 707 / 7                                   |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 0                               |
+| mesh class pointer        = 0x7ff7b6f75138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 2832 x 2832                               |
+| nblock/block size         = 706 / 4                                   |
+| qr/qx/nr/nx               = 2 / 2 / 2 / 2                             |
+| last blok rows x cols     = 12 x 12                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_phi                                                      |
+| [ 1] initial_phi__dot                                                 |
++.................... No control penalties/barriers ....................+
++......................... Constraints type LT .........................+
+alphaLimits_min__xo = { LT: Barrier0 [tolerance=0.0001, epsilon=0] active }
+alphaLimits_max__xo = { LT: Barrier0 [tolerance=0.0001, epsilon=0] active }
+LLimits_min__xo = { LT: Barrier0 [tolerance=0.0001, epsilon=0] active }  
+LLimits_max__xo = { LT: Barrier0 [tolerance=0.0001, epsilon=0] active }  
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                   User function `pSplineMeasurement`                    
+SplineSet[splineMeasurement] n.points = 8 n.splines = 1                  
+Spline n.0  is NOT monotone                                              
+Spline `eta` of type: SPLINE_LINEAR of order: 2                          
+x_min = 0 x_max = 2 y_min = -0.35434699999999997 y_max = 1               
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 7                                                      
+  num. nodes    = 707                                                    
+  Segment N.0: s0 = 0 length = 0.3728 npts = 101 no data set             
+  Segment N.1: s0 = 0.3728 length = 0.3529 npts = 101 no data set        
+  Segment N.2: s0 = 0.7258 length = 0.1804 npts = 101 no data set        
+  Segment N.3: s0 = 0.9061 length = 0.3304 npts = 101 no data set        
+  Segment N.4: s0 = 1.237 length = 0.3582 npts = 101 no data set         
+  Segment N.5: s0 = 1.595 length = 0.1256 npts = 101 no data set         
+  Segment N.6: s0 = 1.72 length = 0.2797 npts = 101 no data set          
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|............................... Tf = 2 ................................|
+|................................ g = 9.81 .............................|
+|............................ sigma = 0.01 .............................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=180.1/4.083/18.74, |L|=180.1/4.079/18.74 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=0/-nan/-nan
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] identification_acado
+  1 [dump:1,u:0:0]       (f:3.04,d:0.705)      -->     [f:1.34,d:0.205]      lambda:0.634  #err=  1 angle:1 armijo:1
+  2 [dump:2,u:0:0]       (f:1.34,d:0.642)      -->     [f:1.12,d:0.518]      lambda:0.16   #err=  2 armijo:2
+  3 [dump:1,u:0:0]       (f:1.12,d:0.473)      -->     [f:0.707,d:0.203]     lambda:0.4    #err=  1 armijo:1
+  4 [dump:1,u:0:0]       (f:0.707,d:0.131)     -->    [f:0.0403,d:0.0119]    lambda:0.95   #err=  1 angle:1 armijo:1
+  5 [dump:0,u:0:0]      (f:0.0403,d:0.0111)    -->  [f:0.000612,d:0.00027]   lambda:1     
+  6 [dump:0,u:0:0]    (f:0.000612,d:0.000274)  -->  [f:8.34e-08,d:6.37e-08]  lambda:1     
+  7 [dump:0,u:0:0]    (f:8.34e-08,d:6.37e-08)  -->  [f:1.3e-14,d:4.08e-15]   lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 0               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 2832            | N. System pars  = 6367            |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 111 [ms]        | timeout         = 0 [ms]          |
+| iteration       = 7               | Memory Used     = 824Kb(+60b)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 19              | Jacobian        = 7               |
+| Factorization   = 7               | Inversion       = 19              |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 1.2967e-13      | last ||d||_inf  = 2.4408e-14      |
+| last ||f||_1    = 1.3025e-14      | last ||d||_1    = 4.0804e-15      |
+| last ||f||_2    = 2.0781e-14      | last ||d||_2    = 6.2028e-15      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check DmuDxlxlp (epsi=0.001): all OK [ 105.6ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 0.127ms ]
+target [Lagrange,Mayer]            = [ 0.01457, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 0, 0 ]
+Optimization parameters:
+L: 1.08303668566333933
+alpha: 1.88466700904261053
+All Done Folks!

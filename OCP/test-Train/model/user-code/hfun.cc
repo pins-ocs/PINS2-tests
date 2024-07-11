@@ -23,7 +23,7 @@
 namespace Train {
 
   using namespace std;
-  using namespace MechatronixLoad;
+  using namespace PINS_Load;
 
   static real_type epsilon = 0.05;
   static real_type ss[3] = { -2, 0, 2 };

@@ -1,0 +1,269 @@
++---------------------- MODEL:PointMassCarModel_3 ----------------------+
++................................ DIMS .................................+
+| dims                      = u=2, q=4, x=7, p=0, bc=8 of 8             |
+| total                     = nZ=41560, nP=106843, nUC=5934, Q=11872    |
+| index start               = omega=41552, p=41560                      |
+| post processing           = n_post=19                                 |
++................................ MESH .................................+
+| num nodes / segments      = 2968 / 10                                 |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 2                               |
+| mesh class pointer        = 0x7ff7be935110                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 41560 x 41560                             |
+| nblock/block size         = 2967 / 14                                 |
+| qr/qx/nr/nx               = 8 / 8 / 0 / 0                             |
+| last blok rows x cols     = 36 x 36                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_V                                                        |
+| [ 1] initial_s                                                        |
+| [ 2] final_s                                                          |
+| [ 3] cyclic_n                                                         |
+| [ 4] cyclic_alpha                                                     |
+| [ 5] cyclic_V                                                         |
+| [ 6] cyclic_fx                                                        |
+| [ 7] cyclic_Omega                                                     |
++..................... Controls penalties/barriers .....................+
+v__fxControl = { COSLOG (BARRIER) epsilon=0.01, tolerance=0.1 }          
+v__OmegaControl = { COSLOG (BARRIER) epsilon=0.01, tolerance=0.1 }       
++......................... Constraints type LT .........................+
+AdherenceEllipse = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }  
+RoadLeftBorder = { LT: Barrier0 [tolerance=0.01, epsilon=0.1] active }   
+RoadRightBorder = { LT: Barrier0 [tolerance=0.01, epsilon=0.1] active }  
+PowerLimit = { LT: Barrier0 [tolerance=0.1, epsilon=0.1] active }        
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pRoad`                          
+BEGIN Mesh[road]                                                         
+  num. segments = 10                                                     
+  num. nodes    = 2968                                                   
+  Segment N.0: s0 = 0 length = 190 npts = 191 no data set                
+  Segment N.1: s0 = 190 length = 973.9 npts = 974 no data set            
+  Segment N.2: s0 = 1164 length = 180 npts = 181 no data set             
+  Segment N.3: s0 = 1344 length = 235.6 npts = 236 no data set           
+  Segment N.4: s0 = 1580 length = 240 npts = 241 no data set             
+  Segment N.5: s0 = 1820 length = 235.6 npts = 236 no data set           
+  Segment N.6: s0 = 2055 length = 200 npts = 201 no data set             
+  Segment N.7: s0 = 2255 length = 125.7 npts = 126 no data set           
+  Segment N.8: s0 = 2381 length = 480 npts = 481 no data set             
+  Segment N.9: s0 = 2861 length = 10 npts = 101 no data set              
+END Mesh[road]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|............................. Pmax = 2e+05 ............................|
+|............................... V0 = 0 ................................|
+|........................... Vguess = 10 ...............................|
+|................................ g = 9.806 ............................|
+|............................... kD = 0.00035714 .......................|
+|................................ m = 700 ..............................|
+|.......................... p_epsi0 = 0.1 ..............................|
+|.......................... p_epsi1 = 0.001 ............................|
+|............................... wT = 0.01 .............................|
+|.............................. wT0 = 0.01 .............................|
+|.............................. wT1 = 1 ................................|
+|....................... mu__x__max = 1 ................................|
+|....................... mu__y__max = 1.5 ..............................|
+|......................... up_epsi0 = 0.1 ..............................|
+|......................... up_epsi1 = 0.01 .............................|
+|.................... v__Omega__max = 5 ................................|
+|....................... v__fx__max = 30 ...............................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=0.02956/0.002887/0.008171, |L|=0.02956/0.002888/0.008173 |B|=0/0/0, |BL|=10/10/10, PARS=0/0/0, U=0/0/0
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] PointMassCarModel_3
+  1 [dump:2,u:0:0]      (f:0.00326,d:3.41)     -->     [f:0.0159,d:2.58]     lambda:0.28   #err= 15 update:1 armijo:1
+  2 [dump:2,u:0:0]       (f:0.0159,d:4.58)     -->     [f:0.0376,d:4.23]     lambda:0.49   #err=  6 update:2
+  3 [dump:8,u:0:0]       (f:0.0376,d:11.8)     -->     [f:0.0354,d:10.8]     lambda:0.0576  #err= 57 update:8
+  4 [dump:3,u:0:0]       (f:0.0354,d:5.55)     -->     [f:0.0311,d:3.66]     lambda:0.124  #err= 31 update:3
+  5 [dump:5,u:0:0]       (f:0.0311,d:3.18)     -->     [f:0.0281,d:2.86]     lambda:0.096  #err= 65 update:4 armijo:1
+  6 [dump:3,u:0:0]       (f:0.0281,d:2.63)     -->     [f:0.0236,d:2.1]      lambda:0.159  #err= 48 update:3
+  7 [dump:4,u:0:0]       (f:0.0236,d:1.57)     -->     [f:0.0203,d:1.34]     lambda:0.137  #err= 49 update:3 armijo:1
+  8 [dump:0,u:0:0]       (f:0.0203,d:1.23)     -->    [f:0.00868,d:0.622]    lambda:0.556 
+  9 [dump:0,u:0:0]      (f:0.00868,d:0.496)    -->   [f:0.000679,d:0.0861]   lambda:1     
+ 10 [dump:0,u:0:0]     (f:0.000679,d:0.0881)   -->   [f:2.05e-05,d:0.0119]   lambda:1     
+ 11 [dump:0,u:0:0]     (f:2.05e-05,d:0.0237)   -->   [f:2.39e-06,d:0.0038]   lambda:1     
+ 12 [dump:0,u:0:0]    (f:2.39e-06,d:0.00621)   -->  [f:4.23e-07,d:0.000508]  lambda:1     
+ 13 [dump:0,u:0:0]    (f:4.23e-07,d:0.00064)   -->  [f:7.73e-09,d:1.04e-05]  lambda:1     
+ 14 [dump:0,u:0:0]    (f:7.73e-09,d:1.08e-05)  -->  [f:3.63e-12,d:5.04e-09]  lambda:1     
+ 15 [dump:0,u:0:0]    (f:3.63e-12,d:5.04e-09)  -->  [f:9.13e-15,d:5.38e-15]  lambda:1     
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:15,phase:1,s:0.2,ds:0.2] |X|=0.08268/0.004115/0.01563, |L|=0.08268/0.004118/0.01564 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=0.9111/0.01385/0.05067
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] PointMassCarModel_3
+16 (1 ) [phase:1,s:0.2,ds:0.2,dump:3,u:0:0]               (f:0.00458,d:1.99)     -->    [f:0.00496,d:1.01]     lambda:0.343  #err= 24 update:3
+17 (2 ) [phase:1,s:0.2,ds:0.2,dump:3,u:0:0]               (f:0.00496,d:0.297)    -->   [f:0.00147,d:0.0275]    lambda:0.728  #err=  3 angle:3 armijo:3
+18 (3 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]              (f:0.00147,d:0.0239)    -->  [f:4.26e-05,d:0.00447]   lambda:1     
+19 (4 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:4.26e-05,d:0.00942)   -->   [f:2.56e-06,d:0.0017]   lambda:1     
+20 (5 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]              (f:2.56e-06,d:0.0028)   -->  [f:1.3e-07,d:0.000235]   lambda:1     
+21 (6 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:1.3e-07,d:0.000304)   -->  [f:2.59e-09,d:5.88e-06]  lambda:1     
+22 (7 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:2.59e-09,d:6.13e-06)  -->  [f:1.13e-12,d:2.74e-09]  lambda:1     
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:22,phase:1,s:0.5,ds:0.3] |X|=0.1164/0.005699/0.02168, |L|=0.1164/0.005703/0.02169 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=0.9793/0.02082/0.06857
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] PointMassCarModel_3
+23 (1 ) [phase:1,s:0.5,ds:0.3,dump:1,u:0:0]               (f:0.00637,d:0.512)    -->    [f:0.00402,d:0.242]    lambda:0.4    #err=  1 armijo:1
+24 (2 ) [phase:1,s:0.5,ds:0.3,dump:4,u:0:0]               (f:0.00402,d:0.137)    -->  [f:0.000818,d:0.00658]   lambda:0.815  #err=  4 angle:4 armijo:4
+25 (3 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:0.000818,d:0.00624)   -->  [f:3.67e-06,d:5.67e-05]  lambda:1     
+26 (4 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:3.67e-06,d:5.79e-05)  -->  [f:2.92e-08,d:8.24e-08]  lambda:1     
+27 (5 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:2.92e-08,d:8.38e-08)  -->  [f:1.73e-12,d:5.94e-12]  lambda:1     
+
+Continuation step N.1 s:0.5->0.95, ds=0.45
+[iter:27,phase:1,s:0.95,ds:0.45] |X|=0.1715/0.00836/0.03181, |L|=0.1715/0.008365/0.03182 |B|=0/0/0, |BL|=1.388e-17/1.388e-17/1.388e-17, PARS=0/0/0, U=0.9902/0.02395/0.07623
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] PointMassCarModel_3
+28 (1 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]             (f:0.00936,d:0.295)    -->    [f:0.00572,d:0.152]    lambda:0.4    #err=  1 armijo:1
+29 (2 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]             (f:0.00572,d:0.106)    -->   [f:0.000347,d:0.0436]   lambda:1     
+30 (3 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]            (f:0.000347,d:0.014)    -->    [f:6e-05,d:0.00197]    lambda:1     
+31 (4 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]             (f:6e-05,d:0.00671)    -->  [f:3.67e-05,d:0.00244]   lambda:0.426  #err=  1 armijo:1
+32 (5 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:3.67e-05,d:0.00087)   -->  [f:7.89e-06,d:7.53e-05]  lambda:1     
+33 (6 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:7.89e-06,d:0.000132)  -->  [f:1.33e-06,d:1.73e-05]  lambda:1     
+34 (7 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:1.33e-06,d:2.54e-05)  -->  [f:7.57e-08,d:1.32e-06]  lambda:1     
+35 (8 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:7.57e-08,d:1.48e-06)  -->  [f:3.26e-10,d:5.84e-09]  lambda:1     
+
+Continuation step N.1 s:0.95->1, ds=0.05
+[iter:35,phase:1,s:1,ds:0.05] |X|=0.01887/0.0009177/0.003493, |L|=0.01887/0.0009183/0.003494 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=0.9945/0.02605/0.08192
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] PointMassCarModel_3
+36 (1 ) [phase:1,s:1,ds:0.05,dump:1,u:0:0]               (f:0.00103,d:0.0169)    -->  [f:5.65e-05,d:0.000695]  lambda:0.95   #err=  1 angle:1 armijo:1
+37 (2 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:5.65e-05,d:0.00051)   -->  [f:2.6e-07,d:1.49e-05]   lambda:1     
+38 (3 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:2.6e-07,d:2.03e-05)   -->  [f:8.64e-09,d:6.33e-07]  lambda:1     
+39 (4 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:8.64e-09,d:6.82e-07)  -->  [f:1.61e-11,d:1.13e-09]  lambda:1     
+40 (5 ) [phase:1,s:1,ds:0.05,dump:0,u:0:0]              (f:1.61e-11,d:1.14e-09)  -->  [f:9.26e-15,d:8.6e-15]   lambda:1     
+Continuation step N.2
+
+Continuation step N.2 s:0->0.2, ds=0.2
+[iter:40,phase:2,s:0.2,ds:0.2] |X|=0.6226/0.00147/0.006615, |L|=0.6226/0.001469/0.006609 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=0.9574/0.006631/0.0589
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] PointMassCarModel_3
+41 (1 ) [phase:2,s:0.2,ds:0.2,dump:1,u:0:0]              (f:0.00262,d:0.0594)    -->   [f:0.00158,d:0.0366]    lambda:0.4    #err=  1 armijo:1
+42 (2 ) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]              (f:0.00158,d:0.0326)    -->   [f:0.000193,d:0.0163]   lambda:1     
+43 (3 ) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]             (f:0.000193,d:0.00247)   -->  [f:2.69e-05,d:0.000239]  lambda:1     
+44 (4 ) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]             (f:2.69e-05,d:0.000472)  -->  [f:4.96e-06,d:9.86e-05]  lambda:1     
+45 (5 ) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]             (f:4.96e-06,d:0.000179)  -->  [f:6.09e-07,d:2.28e-05]  lambda:1     
+46 (6 ) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]             (f:6.09e-07,d:3.1e-05)   -->  [f:1.77e-08,d:7.39e-07]  lambda:1     
+47 (7 ) [phase:2,s:0.2,ds:0.2,dump:0,u:0:0]             (f:1.77e-08,d:7.83e-07)  -->  [f:2.14e-11,d:7.37e-10]  lambda:1     
+
+Continuation step N.2 s:0.2->0.5, ds=0.3
+[iter:47,phase:2,s:0.5,ds:0.3] |X|=0.1367/0.001658/0.004427, |L|=0.1367/0.001658/0.004428 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=0.9747/0.03706/0.09416
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] PointMassCarModel_3
+48 (1 ) [phase:2,s:0.5,ds:0.3,dump:2,u:0:0]               (f:0.00216,d:0.127)    -->    [f:0.00178,d:0.107]    lambda:0.16   #err=  2 armijo:2
+49 (2 ) [phase:2,s:0.5,ds:0.3,dump:2,u:0:0]                (f:0.00178,d:0.1)     -->   [f:0.00148,d:0.0838]    lambda:0.16   #err=  2 armijo:2
+50 (3 ) [phase:2,s:0.5,ds:0.3,dump:1,u:0:0]              (f:0.00148,d:0.0786)    -->   [f:0.000953,d:0.0542]   lambda:0.4    #err=  1 armijo:1
+51 (4 ) [phase:2,s:0.5,ds:0.3,dump:1,u:0:0]               (f:0.000953,d:0.04)    -->   [f:0.000568,d:0.0235]   lambda:0.4    #err=  1 armijo:1
+52 (5 ) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]              (f:0.000568,d:0.0221)   -->  [f:5.34e-05,d:0.00481]   lambda:1     
+53 (6 ) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]             (f:5.34e-05,d:0.00132)   -->  [f:9.83e-06,d:9.22e-05]  lambda:1     
+54 (7 ) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]             (f:9.83e-06,d:0.00017)   -->  [f:1.68e-06,d:2.93e-05]  lambda:1     
+55 (8 ) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]             (f:1.68e-06,d:4.87e-05)  -->  [f:1.75e-07,d:5.08e-06]  lambda:1     
+56 (9 ) [phase:2,s:0.5,ds:0.3,dump:0,u:0:0]             (f:1.75e-07,d:6.65e-06)  -->  [f:3.9e-09,d:1.62e-07]   lambda:1     
+
+Continuation step N.2 s:0.5->0.95, ds=0.45
+[iter:56,phase:2,s:0.95,ds:0.45] |X|=0.418/0.004473/0.01336, |L|=0.418/0.004475/0.01337 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=0.993/0.08181/0.1598
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] PointMassCarModel_3
+57 (1 ) [phase:2,s:0.95,ds:0.45,dump:8,u:0:0]             (f:0.00637,d:1.06)     -->    [f:0.00622,d:0.995]    lambda:0.0188  #err= 39 update:6 armijo:2
+58 (2 ) [phase:2,s:0.95,ds:0.45,dump:3,u:0:0]             (f:0.00622,d:0.814)    -->    [f:0.00605,d:0.74]     lambda:0.023  #err= 17 update:1 armijo:2
+59 (3 ) [phase:2,s:0.95,ds:0.45,dump:7,u:0:0]             (f:0.00605,d:0.638)    -->    [f:0.00588,d:0.531]    lambda:0.0269  #err= 34 update:5 armijo:2
+60 (4 ) [phase:2,s:0.95,ds:0.45,dump:3,u:0:0]             (f:0.00588,d:0.467)    -->    [f:0.00571,d:0.366]    lambda:0.0275  #err= 14 update:1 armijo:2
+61 (5 ) [phase:2,s:0.95,ds:0.45,dump:6,u:0:0]             (f:0.00571,d:0.331)    -->    [f:0.00549,d:0.319]    lambda:0.0384  #err= 18 update:4 armijo:2
+62 (6 ) [phase:2,s:0.95,ds:0.45,dump:2,u:0:0]             (f:0.00549,d:0.285)    -->    [f:0.00524,d:0.274]    lambda:0.047  #err=  2 armijo:2
+63 (7 ) [phase:2,s:0.95,ds:0.45,dump:5,u:0:0]             (f:0.00524,d:0.245)    -->    [f:0.00496,d:0.231]    lambda:0.0549  #err= 21 update:3 armijo:2
+64 (8 ) [phase:2,s:0.95,ds:0.45,dump:2,u:0:0]             (f:0.00496,d:0.209)    -->    [f:0.00468,d:0.195]    lambda:0.0562  #err=  2 armijo:2
+65 (9 ) [phase:2,s:0.95,ds:0.45,dump:4,u:0:0]             (f:0.00468,d:0.18)     -->    [f:0.00432,d:0.16]     lambda:0.0784  #err= 17 update:2 armijo:2
+66 (10) [phase:2,s:0.95,ds:0.45,dump:2,u:0:0]             (f:0.00432,d:0.149)    -->    [f:0.00402,d:0.137]    lambda:0.0672  #err=  2 armijo:2
+67 (11) [phase:2,s:0.95,ds:0.45,dump:4,u:0:0]             (f:0.00402,d:0.132)    -->    [f:0.0035,d:0.111]     lambda:0.137  #err= 23 update:3 armijo:1
+68 (12) [phase:2,s:0.95,ds:0.45,dump:8,u:0:0]             (f:0.0035,d:0.163)     -->    [f:0.00346,d:0.16]     lambda:0.0105  #err= 55 update:6 armijo:2
+69 (13) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]            (f:0.00346,d:0.0996)    -->   [f:0.00293,d:0.0789]    lambda:0.153 
+70 (14) [phase:2,s:0.95,ds:0.45,dump:5,u:0:0]             (f:0.00293,d:0.08)     -->   [f:0.00277,d:0.0753]    lambda:0.0549  #err= 17 update:3 armijo:2
+71 (15) [phase:2,s:0.95,ds:0.45,dump:2,u:0:0]            (f:0.00277,d:0.0694)    -->   [f:0.00261,d:0.0654]    lambda:0.0562  #err=  2 armijo:2
+72 (16) [phase:2,s:0.95,ds:0.45,dump:4,u:0:0]            (f:0.00261,d:0.0635)    -->   [f:0.00249,d:0.0604]    lambda:0.0448  #err=  5 update:1 armijo:3
+73 (17) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]            (f:0.00249,d:0.0586)    -->   [f:0.00171,d:0.0407]    lambda:0.317 
+74 (18) [phase:2,s:0.95,ds:0.45,dump:1,u:0:0]            (f:0.00171,d:0.0359)    -->    [f:0.00102,d:0.02]     lambda:0.4    #err=  1 armijo:1
+75 (19) [phase:2,s:0.95,ds:0.45,dump:1,u:0:0]            (f:0.00102,d:0.0203)    -->   [f:0.000612,d:0.0118]   lambda:0.4    #err=  1 armijo:1
+76 (20) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]            (f:0.000612,d:0.0118)   -->  [f:1.68e-05,d:0.00369]   lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] PointMassCarModel_3
+77 (21) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:1.68e-05,d:0.000447)  -->  [f:1.4e-06,d:4.67e-05]   lambda:1     
+78 (22) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:1.4e-06,d:8.08e-05)   -->  [f:1.7e-07,d:1.28e-05]   lambda:1     
+79 (23) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:1.7e-07,d:2.41e-05)   -->  [f:1.27e-08,d:4.48e-06]  lambda:1     
+80 (24) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:1.27e-08,d:7.81e-06)  -->  [f:7.52e-10,d:9.5e-07]   lambda:1     
+81 (25) [phase:2,s:0.95,ds:0.45,dump:0,u:0:0]           (f:7.52e-10,d:1.31e-06)  -->  [f:1.86e-11,d:4.58e-08]  lambda:1     
+
+Continuation step N.2 s:0.95->1, ds=0.05
+[iter:81,phase:2,s:1,ds:0.05] |X|=0.04616/0.0007043/0.002234, |L|=0.04616/0.0007046/0.002234 |B|=0/0/0, |BL|=0/0/0, PARS=0/0/0, U=0.9947/0.04064/0.1092
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] PointMassCarModel_3
+82 (1 ) [phase:2,s:1,ds:0.05,dump:7,u:0:0]               (f:0.00106,d:0.0784)    -->   [f:0.00103,d:0.0702]    lambda:0.0269  #err= 29 update:5 armijo:2
+83 (2 ) [phase:2,s:1,ds:0.05,dump:3,u:0:0]               (f:0.00103,d:0.0614)    -->    [f:0.001,d:0.0584]     lambda:0.0275  #err=  6 update:1 armijo:2
+84 (3 ) [phase:2,s:1,ds:0.05,dump:6,u:0:0]                (f:0.001,d:0.0517)     -->   [f:0.000965,d:0.046]    lambda:0.0384  #err= 26 update:4 armijo:2
+85 (4 ) [phase:2,s:1,ds:0.05,dump:2,u:0:0]               (f:0.000965,d:0.0423)   -->   [f:0.000919,d:0.0369]   lambda:0.047  #err=  2 armijo:2
+86 (5 ) [phase:2,s:1,ds:0.05,dump:5,u:0:0]               (f:0.000919,d:0.0353)   -->   [f:0.000868,d:0.0311]   lambda:0.0549  #err= 20 update:3 armijo:2
+87 (6 ) [phase:2,s:1,ds:0.05,dump:2,u:0:0]               (f:0.000868,d:0.0297)   -->   [f:0.000819,d:0.0274]   lambda:0.0562  #err=  2 armijo:2
+88 (7 ) [phase:2,s:1,ds:0.05,dump:5,u:0:0]               (f:0.000819,d:0.0259)   -->   [f:0.000774,d:0.024]    lambda:0.0549  #err= 10 update:3 armijo:2
+89 (8 ) [phase:2,s:1,ds:0.05,dump:2,u:0:0]               (f:0.000774,d:0.022)    -->   [f:0.000731,d:0.0207]   lambda:0.0562  #err=  2 armijo:2
+90 (9 ) [phase:2,s:1,ds:0.05,dump:3,u:0:0]               (f:0.000731,d:0.0201)   -->   [f:0.000649,d:0.0167]   lambda:0.112  #err=  4 update:1 armijo:2
+91 (10) [phase:2,s:1,ds:0.05,dump:3,u:0:0]               (f:0.000649,d:0.017)    -->   [f:0.000607,d:0.0159]   lambda:0.064  #err=  3 armijo:3
+92 (11) [phase:2,s:1,ds:0.05,dump:2,u:0:0]               (f:0.000607,d:0.0155)   -->   [f:0.00051,d:0.0122]    lambda:0.16   #err=  2 armijo:2
+93 (12) [phase:2,s:1,ds:0.05,dump:2,u:0:0]               (f:0.00051,d:0.0125)    -->   [f:0.000428,d:0.0104]   lambda:0.16   #err=  2 armijo:2
+94 (13) [phase:2,s:1,ds:0.05,dump:2,u:0:0]               (f:0.000428,d:0.0101)   -->  [f:0.000359,d:0.00848]   lambda:0.16   #err=  2 armijo:2
+95 (14) [phase:2,s:1,ds:0.05,dump:1,u:0:0]              (f:0.000359,d:0.00832)   -->  [f:0.000215,d:0.00558]   lambda:0.4    #err=  1 armijo:1
+96 (15) [phase:2,s:1,ds:0.05,dump:1,u:0:0]              (f:0.000215,d:0.00476)   -->  [f:0.000129,d:0.00281]   lambda:0.4    #err=  1 armijo:1
+97 (16) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:0.000129,d:0.00274)   -->  [f:1.13e-06,d:0.00027]   lambda:1     
+98 (17) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:1.13e-06,d:4.3e-05)   -->  [f:5.81e-08,d:3.69e-06]  lambda:1     
+99 (18) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:5.81e-08,d:6.78e-06)  -->  [f:1.27e-08,d:1.29e-06]  lambda:1     
+100(19) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:1.27e-08,d:2.51e-06)  -->  [f:2.25e-09,d:4.97e-07]  lambda:1     
+101(20) [phase:2,s:1,ds:0.05,dump:0,u:0:0]               (f:2.25e-09,d:9e-07)    -->  [f:2.16e-10,d:1.26e-07]  lambda:1     
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] PointMassCarModel_3
+102(21) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:2.16e-10,d:1.79e-07)  -->   [f:6.79e-12,d:7e-09]    lambda:1     
+103(22) [phase:2,s:1,ds:0.05,dump:0,u:0:0]              (f:6.79e-12,d:7.59e-09)  -->  [f:2.08e-14,d:1.31e-11]  lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 2               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 41560           | N. System pars  = 106843          |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 12.1 [sec]      | timeout         = 0 [ms]          |
+| iteration       = 103             | Memory Used     = 15Mb(+4Kb)      |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 288             | Jacobian        = 103             |
+| Factorization   = 103             | Inversion       = 288             |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 3.4111e-10      | last ||d||_inf  = 1.0814e-09      |
+| last ||f||_1    = 2.0768e-14      | last ||d||_1    = 1.3087e-11      |
+| last ||f||_2    = 1.7228e-12      | last ||d||_2    = 6.1284e-11      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 9.074ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 1405ms ]
+Check DuDxxpm (epsi=0.001): all OK [ 703.6ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001): all OK [ 1499ms ]
+Check DodeDxp (epsi=0.001): all OK [ 24.19ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 1524ms ]
+target [Lagrange,Mayer]            = [ 55.33, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 0.01852, 0.1107 ]
+All Done Folks!

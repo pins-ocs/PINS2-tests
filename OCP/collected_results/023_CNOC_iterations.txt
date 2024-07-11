@@ -1,0 +1,479 @@
++----------------------------- MODEL:CNOC ------------------------------+
++................................ DIMS .................................+
+| dims                      = u=2, q=1, x=7, p=0, bc=12 of 12           |
+| total                     = nZ=28292, nP=66658, nUC=4038, Q=2020      |
+| index start               = omega=28280, p=28292                      |
+| post processing           = n_post=18                                 |
++................................ MESH .................................+
+| num nodes / segments      = 2020 / 20                                 |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 0                               |
+| mesh class pointer        = 0x7ff7bc096138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 28292 x 28292                             |
+| nblock/block size         = 2019 / 14                                 |
+| qr/qx/nr/nx               = 12 / 12 / 0 / 0                           |
+| last blok rows x cols     = 40 x 40                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_n                                                        |
+| [ 1] initial_vs                                                       |
+| [ 2] initial_vn                                                       |
+| [ 3] initial_as                                                       |
+| [ 4] initial_an                                                       |
+| [ 5] final_n                                                          |
+| [ 6] final_vs                                                         |
+| [ 7] final_vn                                                         |
+| [ 8] final_as                                                         |
+| [ 9] final_an                                                         |
+| [10] initial_s                                                        |
+| [11] final_s                                                          |
++..................... Controls penalties/barriers .....................+
+jsControl = { LOG (BARRIER) epsilon=0.01, tolerance=0.01 }               
+jnControl = { LOG (BARRIER) epsilon=0.01, tolerance=0.01 }               
++......................... Constraints type LT .........................+
+timePositive = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }    
+vLimit = { LT: WallPiecewise [tolerance=0.01, epsilon=0.01] active }     
+PathFollowingTolerance_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+PathFollowingTolerance_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+as_limit_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+as_limit_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+an_limit_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+an_limit_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+ax_limit_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+ax_limit_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+ay_limit_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
+ay_limit_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                       User function `pToolPath2D`                       
+BEGIN Mesh[toolPath2D]                                                   
+  num. segments = 20                                                     
+  num. nodes    = 2020                                                   
+  Segment N.0: s0 = 0 length = 0.03007 npts = 101 no data set            
+  Segment N.1: s0 = 0.03007 length = 0.03007 npts = 101 no data set      
+  Segment N.2: s0 = 0.06013 length = 0.01571 npts = 101 no data set      
+  Segment N.3: s0 = 0.07584 length = 0.03007 npts = 101 no data set      
+  Segment N.4: s0 = 0.1059 length = 0.03007 npts = 101 no data set       
+  Segment N.5: s0 = 0.136 length = 0.01 npts = 101 no data set           
+  Segment N.6: s0 = 0.146 length = 0.03007 npts = 101 no data set        
+  Segment N.7: s0 = 0.176 length = 0.03007 npts = 101 no data set        
+  Segment N.8: s0 = 0.2061 length = 0.01571 npts = 101 no data set       
+  Segment N.9: s0 = 0.2218 length = 0.03007 npts = 101 no data set       
+  Segment N.10: s0 = 0.2519 length = 0.03007 npts = 101 no data set      
+  Segment N.11: s0 = 0.2819 length = 0.01 npts = 101 no data set         
+  Segment N.12: s0 = 0.2919 length = 0.03007 npts = 101 no data set      
+  Segment N.13: s0 = 0.322 length = 0.03007 npts = 101 no data set       
+  Segment N.14: s0 = 0.3521 length = 0.01571 npts = 101 no data set      
+  Segment N.15: s0 = 0.3678 length = 0.03007 npts = 101 no data set      
+  Segment N.16: s0 = 0.3979 length = 0.03007 npts = 101 no data set      
+  Segment N.17: s0 = 0.4279 length = 0.01 npts = 101 no data set         
+  Segment N.18: s0 = 0.4379 length = 0.03007 npts = 101 no data set      
+  Segment N.19: s0 = 0.468 length = 0.03007 npts = 101 no data set       
+END Mesh[toolPath2D]                                                     
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|............................. an_f = 0 ................................|
+|............................. an_i = 0 ................................|
+|........................... an_max = 1.2 ..............................|
+|............................. as_f = 0 ................................|
+|............................. as_i = 0 ................................|
+|........................... as_max = 2.1 ..............................|
+|........................... ax_max = 2.1 ..............................|
+|........................... ay_max = 2.1 ..............................|
+|........................... jn_max = 65 ...............................|
+|........................... js_max = 30 ...............................|
+|........................... js_min = -50 ..............................|
+|.............................. n_f = 0 ................................|
+|.............................. n_i = 0 ................................|
+|............................. vn_f = 0 ................................|
+|............................. vn_i = 0 ................................|
+|............................. vs_f = 0 ................................|
+|............................. vs_i = 0 ................................|
+|........................ deltaFeed = 0.173 ............................|
+|......................... pf_error = 1e-05 ............................|
+|......... path_following_tolerance = 1e-05 ............................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=57.8/6.945/18.23, |L|=57.8/6.941/18.22 |B|=0/0/0, |BL|=0.173/0.346/0.2447, PARS=0/0/0, U=10/5/7.071
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] CNOC
+  1 [dump:12,u:0:0]      (f:6.82,d:0.704)      -->     [f:12.9,d:0.697]      lambda:0.0138  #err= 89 update:12
+  2 [dump:8,u:0:0]        (f:12.9,d:1.14)      -->      [f:15.2,d:1.14]      lambda:0.00581  #err= 62 update:7 armijo:1
+  3 [dump:6,u:0:0]        (f:15.2,d:1.25)      -->      [f:43.7,d:1.24]      lambda:0.0135  #err= 67 update:6
+  4 [dump:6,u:0:0]        (f:43.7,d:1.53)      -->      [f:53.7,d:1.51]      lambda:0.0117  #err= 37 update:5 armijo:1
+  5 [dump:5,u:0:0]        (f:53.7,d:1.55)      -->      [f:157,d:1.53]       lambda:0.0273  #err= 27 update:5
+  6 [dump:7,u:0:0]        (f:157,d:2.12)       -->       [f:235,d:2.1]       lambda:0.0117  #err= 22 update:6 armijo:1
+  7 [dump:6,u:0:0]        (f:235,d:2.23)       -->      [f:328,d:2.22]       lambda:0.0109  #err= 27 update:5 armijo:1
+  8 [dump:5,u:0:0]        (f:328,d:3.53)       -->      [f:511,d:3.48]       lambda:0.015  #err= 25 update:4 armijo:1
+  9 [dump:6,u:0:0]        (f:511,d:3.49)       -->      [f:844,d:3.48]       lambda:0.00706  #err= 23 update:4 armijo:2
+ 10 [dump:3,u:0:0]        (f:844,d:2.63)       -->      [f:920,d:2.53]       lambda:0.0432  #err= 12 update:3
+ 11 [dump:11,u:0:0]       (f:920,d:3.64)       -->      [f:943,d:3.62]       lambda:0.00646  #err= 75 update:9 armijo:2
+ 12 [dump:5,u:0:0]        (f:943,d:7.22)       -->    [f:1.57e+03,d:7.24]    lambda:0.00661  #err= 28 update:3 armijo:2
+ 13 [dump:5,u:0:0]      (f:1.57e+03,d:14.2)    -->     [f:2.25e+03,d:14]     lambda:0.0205  #err= 35 update:5
+ 14 [dump:7,u:0:0]      (f:2.25e+03,d:19.4)    -->    [f:2.71e+03,d:19.1]    lambda:0.0101  #err= 43 update:6 armijo:1
+ 15 [dump:6,u:0:0]      (f:2.71e+03,d:5.04)    -->    [f:2.69e+03,d:4.97]    lambda:0.0177  #err= 34 update:6
+ 16 [dump:8,u:0:0]      (f:2.69e+03,d:6.61)    -->    [f:2.68e+03,d:6.56]    lambda:0.00658  #err= 40 update:7 armijo:1
+ 17 [dump:6,u:0:0]      (f:2.68e+03,d:5.37)    -->    [f:2.65e+03,d:5.3]     lambda:0.0143  #err= 35 update:6
+ 18 [dump:6,u:0:0]      (f:2.65e+03,d:6.57)    -->    [f:2.64e+03,d:6.55]    lambda:0.0211  #err= 29 update:6
+ 19 [dump:5,u:0:0]      (f:2.64e+03,d:5.53)    -->    [f:3.96e+03,d:5.73]    lambda:0.0366  #err= 19 update:5
+ 20 [dump:6,u:0:0]      (f:3.96e+03,d:24.9)    -->    [f:4.85e+04,d:29.8]    lambda:0.0338  #err= 27 update:6
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] CNOC
+ 21 [dump:6,u:0:0]      (f:4.85e+04,d:53.8)    -->    [f:7.23e+04,d:53.1]    lambda:0.0324  #err= 23 update:6
+ 22 [dump:5,u:0:0]      (f:7.23e+04,d:19.8)    -->     [f:7.12e+04,d:19]     lambda:0.0259  #err= 26 update:4 armijo:1
+ 23 [dump:5,u:0:0]       (f:7.12e+04,d:38)     -->    [f:7.34e+04,d:35.9]    lambda:0.0406  #err= 30 update:5
+ 24 [dump:5,u:0:0]      (f:7.34e+04,d:47.5)    -->    [f:1.15e+05,d:46.8]    lambda:0.0508  #err= 24 update:5
+ 25 [dump:8,u:0:0]      (f:1.15e+05,d:86.2)    -->    [f:1.16e+05,d:84.6]    lambda:0.00636  #err= 23 update:6 armijo:2
+ 26 [dump:4,u:0:0]      (f:1.16e+05,d:129)     -->    [f:1.67e+05,d:130]     lambda:0.0287  #err=  9 update:4
+ 27 [dump:5,u:0:0]      (f:1.67e+05,d:162)     -->    [f:2.27e+05,d:157]     lambda:0.0427  #err= 19 update:5
+ 28 [dump:5,u:0:0]      (f:2.27e+05,d:31.5)    -->    [f:2.34e+05,d:29.3]    lambda:0.0521  #err= 54 update:5
+ 29 [dump:6,u:0:0]      (f:2.34e+05,d:40.5)    -->    [f:2.3e+05,d:39.1]     lambda:0.023  #err= 17 update:5 armijo:1
+ 30 [dump:6,u:0:0]      (f:2.3e+05,d:39.6)     -->    [f:2.27e+05,d:38.8]    lambda:0.0153  #err= 15 update:5 armijo:1
+ 31 [dump:5,u:0:0]      (f:2.27e+05,d:36.3)    -->    [f:2.23e+05,d:35.5]    lambda:0.0178  #err= 10 update:4 armijo:1
+ 32 [dump:2,u:0:0]      (f:2.23e+05,d:32.4)    -->    [f:2.34e+05,d:38.6]    lambda:0.0981  #err=  5 update:2
+ 33 [dump:11,u:0:0]     (f:2.34e+05,d:49.4)    -->     [f:2.34e+05,d:49]     lambda:0.0113  #err= 66 update:10 armijo:1
+ 34 [dump:5,u:0:0]      (f:2.34e+05,d:125)     -->    [f:2.36e+05,d:123]     lambda:0.0268  #err= 25 update:5
+ 35 [dump:5,u:0:0]      (f:2.36e+05,d:171)     -->    [f:2.73e+05,d:134]     lambda:0.0413  #err= 17 update:5
+ 36 [dump:4,u:0:0]      (f:2.73e+05,d:53.8)    -->    [f:2.7e+05,d:39.8]     lambda:0.0732  #err= 10 update:4
+ 37 [dump:10,u:0:0]     (f:2.7e+05,d:52.3)     -->    [f:2.69e+05,d:52.3]    lambda:0.00374  #err= 24 update:8 armijo:2
+ 38 [dump:0,u:0:0]      (f:2.69e+05,d:43.2)    -->    [f:2.71e+05,d:36.1]    lambda:0.0918 
+ 39 [dump:7,u:0:0]      (f:2.71e+05,d:24.4)    -->    [f:2.59e+05,d:23.3]    lambda:0.0471  #err= 31 update:6 armijo:1
+ 40 [dump:4,u:0:0]      (f:2.59e+05,d:23.8)    -->    [f:2.49e+05,d:23.4]    lambda:0.0446  #err=  9 update:3 armijo:1
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] CNOC
+ 41 [dump:4,u:0:0]      (f:2.49e+05,d:26.8)    -->    [f:2.42e+05,d:24.1]    lambda:0.0761  #err= 11 update:4
+ 42 [dump:6,u:0:0]      (f:2.42e+05,d:76.8)    -->    [f:2.38e+05,d:65.3]    lambda:0.0278  #err= 19 update:5 armijo:1
+ 43 [dump:4,u:0:0]      (f:2.38e+05,d:79.7)    -->    [f:2.31e+05,d:73.1]    lambda:0.0343  #err=  9 update:3 armijo:1
+ 44 [dump:5,u:0:0]      (f:2.31e+05,d:42.2)    -->    [f:2.22e+05,d:41.8]    lambda:0.0467  #err= 14 update:5
+ 45 [dump:6,u:0:0]      (f:2.22e+05,d:48.2)    -->    [f:2.15e+05,d:45.2]    lambda:0.0381  #err= 19 update:6
+ 46 [dump:6,u:0:0]      (f:2.15e+05,d:65.9)    -->    [f:2.11e+05,d:62.5]    lambda:0.0197  #err= 11 update:5 armijo:1
+ 47 [dump:6,u:0:0]      (f:2.11e+05,d:49.9)    -->     [f:2.09e+05,d:49]     lambda:0.0142  #err= 15 update:5 armijo:1
+ 48 [dump:8,u:0:0]      (f:2.09e+05,d:56.1)    -->    [f:2.08e+05,d:55.9]    lambda:0.00336  #err= 15 update:6 armijo:2
+ 49 [dump:7,u:0:0]      (f:2.08e+05,d:55.8)    -->    [f:2.07e+05,d:55.7]    lambda:0.00234  #err= 12 update:5 armijo:2
+ 50 [dump:7,u:0:0]      (f:2.07e+05,d:79.6)    -->    [f:2.07e+05,d:79.5]    lambda:0.00111  #err= 11 update:4 armijo:3
+ 51 [dump:5,u:0:0]      (f:2.07e+05,d:101)     -->    [f:2.07e+05,d:101]     lambda:0.00275  #err=  8 update:3 armijo:2
+ 52 [dump:2,u:0:0]      (f:2.07e+05,d:109)     -->    [f:2.04e+05,d:110]     lambda:0.0385  #err=  4 update:2
+ 53 [dump:7,u:0:0]      (f:2.04e+05,d:72.7)    -->     [f:2e+05,d:46.9]      lambda:0.0824  #err= 29 update:7
+ 54 [dump:5,u:0:0]       (f:2e+05,d:37.2)      -->    [f:1.9e+05,d:30.1]     lambda:0.0723  #err= 15 update:5
+ 55 [dump:6,u:0:0]      (f:1.9e+05,d:28.9)     -->    [f:1.87e+05,d:27.9]    lambda:0.0155  #err= 14 update:4 armijo:2
+ 56 [dump:5,u:0:0]      (f:1.87e+05,d:26.3)    -->    [f:1.86e+05,d:26.1]    lambda:0.00586  #err=  8 update:2 armijo:3
+ 57 [dump:3,u:0:0]      (f:1.86e+05,d:26.5)    -->    [f:1.84e+05,d:26.3]    lambda:0.00735  #err=  3 armijo:3
+ 58 [dump:7,u:0:0]      (f:1.84e+05,d:27.7)    -->    [f:1.77e+05,d:27.6]    lambda:0.0471  #err= 29 update:6 armijo:1
+ 59 [dump:4,u:0:0]      (f:1.77e+05,d:29.2)    -->    [f:1.71e+05,d:29.4]    lambda:0.0446  #err= 10 update:3 armijo:1
+ 60 [dump:4,u:0:0]      (f:1.71e+05,d:33.2)    -->    [f:1.64e+05,d:32.7]    lambda:0.0435  #err= 10 update:3 armijo:1
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] CNOC
+ 61 [dump:6,u:0:0]      (f:1.64e+05,d:32.3)    -->    [f:1.62e+05,d:31.8]    lambda:0.012  #err= 14 update:4 armijo:2
+ 62 [dump:4,u:0:0]      (f:1.62e+05,d:29.2)    -->    [f:1.6e+05,d:28.8]     lambda:0.0129  #err=  7 update:2 armijo:2
+ 63 [dump:3,u:0:0]      (f:1.6e+05,d:29.7)     -->    [f:1.51e+05,d:29.3]    lambda:0.0584  #err=  7 update:3
+ 64 [dump:12,u:0:0]     (f:1.51e+05,d:27.9)    -->    [f:1.51e+05,d:27.8]    lambda:0.00287  #err= 29 update:9 armijo:3
+ 65 [dump:2,u:0:0]      (f:1.51e+05,d:28.1)    -->     [f:1.45e+05,d:28]     lambda:0.0393  #err=  4 update:2
+ 66 [dump:10,u:0:0]     (f:1.45e+05,d:25.4)    -->    [f:1.44e+05,d:25.3]    lambda:0.00527  #err= 21 update:7 armijo:3
+ 67 [dump:2,u:0:0]      (f:1.44e+05,d:25.9)    -->     [f:1.41e+05,d:26]     lambda:0.0205  #err=  2 armijo:2
+ 68 [dump:7,u:0:0]      (f:1.41e+05,d:24.9)    -->    [f:1.35e+05,d:23.5]    lambda:0.049  #err= 17 update:6 armijo:1
+ 69 [dump:4,u:0:0]      (f:1.35e+05,d:23.4)    -->     [f:1.34e+05,d:24]     lambda:0.0456  #err=  8 update:3 armijo:1
+ 70 [dump:3,u:0:0]      (f:1.34e+05,d:25.7)    -->     [f:1.21e+05,d:19]     lambda:0.11   #err=  9 update:3
+ 71 [dump:11,u:0:0]     (f:1.21e+05,d:18.4)    -->    [f:1.23e+05,d:18.2]    lambda:0.0113  #err= 29 update:10 armijo:1
+ 72 [dump:1,u:0:0]      (f:1.23e+05,d:18.3)    -->    [f:1.12e+05,d:16.4]    lambda:0.112  #err=  2 update:1
+ 73 [dump:7,u:0:0]      (f:1.12e+05,d:17.3)    -->    [f:1.1e+05,d:17.6]     lambda:0.0471  #err= 20 update:6 armijo:1
+ 74 [dump:3,u:0:0]      (f:1.1e+05,d:16.5)     -->    [f:9.86e+04,d:13.9]    lambda:0.112  #err=  7 update:3
+ 75 [dump:7,u:0:0]       (f:9.86e+04,d:14)     -->     [f:9.41e+04,d:13]     lambda:0.0471  #err= 20 update:6 armijo:1
+ 76 [dump:3,u:0:0]      (f:9.41e+04,d:13.9)    -->     [f:8.84e+04,d:13]     lambda:0.0638  #err=  7 update:2 armijo:1
+ 77 [dump:8,u:0:0]      (f:8.84e+04,d:13.7)    -->    [f:8.68e+04,d:12.3]    lambda:0.0188  #err= 18 update:6 armijo:2
+ 78 [dump:3,u:0:0]      (f:8.68e+04,d:13.2)    -->    [f:8.3e+04,d:12.4]     lambda:0.0457  #err=  5 update:2 armijo:1
+ 79 [dump:9,u:0:0]      (f:8.3e+04,d:13.2)     -->    [f:8.2e+04,d:12.5]     lambda:0.0132  #err= 21 update:7 armijo:2
+ 80 [dump:2,u:0:0]      (f:8.2e+04,d:12.7)     -->    [f:7.71e+04,d:13.3]    lambda:0.0844  #err=  4 update:2
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] CNOC
+ 81 [dump:6,u:0:0]      (f:7.71e+04,d:13.4)    -->    [f:6.91e+04,d:13.3]    lambda:0.118  #err= 26 update:6
+ 82 [dump:5,u:0:0]      (f:6.91e+04,d:12.6)    -->    [f:6.74e+04,d:10.6]    lambda:0.0494  #err= 15 update:4 armijo:1
+ 83 [dump:7,u:0:0]      (f:6.74e+04,d:10.5)    -->    [f:6.72e+04,d:10.4]    lambda:0.00363  #err= 10 update:3 armijo:4
+ 84 [dump:2,u:0:0]      (f:6.72e+04,d:10.4)    -->    [f:6.62e+04,d:10.3]    lambda:0.0145  #err=  2 armijo:2
+ 85 [dump:5,u:0:0]      (f:6.62e+04,d:10.1)    -->    [f:6.2e+04,d:9.89]     lambda:0.096  #err= 12 update:4 armijo:1
+ 86 [dump:6,u:0:0]      (f:6.2e+04,d:10.3)     -->    [f:6.02e+04,d:9.56]    lambda:0.0313  #err= 19 update:5 armijo:1
+ 87 [dump:4,u:0:0]      (f:6.02e+04,d:9.59)    -->    [f:5.8e+04,d:9.11]     lambda:0.0364  #err=  7 update:3 armijo:1
+ 88 [dump:5,u:0:0]      (f:5.8e+04,d:9.25)     -->    [f:5.65e+04,d:8.85]    lambda:0.0275  #err= 10 update:4 armijo:1
+ 89 [dump:4,u:0:0]      (f:5.65e+04,d:8.9)     -->    [f:5.51e+04,d:8.55]    lambda:0.0341  #err= 14 update:3 armijo:1
+ 90 [dump:4,u:0:0]      (f:5.51e+04,d:8.84)    -->    [f:5.45e+04,d:8.5]     lambda:0.0665  #err= 21 update:4
+ 91 [dump:4,u:0:0]      (f:5.45e+04,d:8.09)    -->    [f:5.17e+04,d:7.67]    lambda:0.0531  #err=  8 update:3 armijo:1
+ 92 [dump:4,u:0:0]      (f:5.17e+04,d:8.05)    -->    [f:5.04e+04,d:7.7]     lambda:0.0271  #err=  6 update:2 armijo:2
+ 93 [dump:4,u:0:0]      (f:5.04e+04,d:7.18)    -->    [f:4.98e+04,d:7.09]    lambda:0.0111  #err=  5 update:1 armijo:3
+ 94 [dump:0,u:0:0]      (f:4.98e+04,d:7.62)    -->    [f:4.28e+04,d:6.14]    lambda:0.158 
+ 95 [dump:5,u:0:0]      (f:4.28e+04,d:6.67)    -->    [f:3.66e+04,d:5.33]    lambda:0.168  #err= 18 update:5
+ 96 [dump:4,u:0:0]      (f:3.66e+04,d:4.92)    -->    [f:3.37e+04,d:4.68]    lambda:0.0844  #err=  9 update:3 armijo:1
+ 97 [dump:4,u:0:0]      (f:3.37e+04,d:5.02)    -->    [f:3.21e+04,d:4.67]    lambda:0.0598  #err=  8 update:3 armijo:1
+ 98 [dump:2,u:0:0]      (f:3.21e+04,d:4.63)    -->    [f:3.04e+04,d:4.36]    lambda:0.0587  #err=  2 armijo:2
+ 99 [dump:8,u:0:0]      (f:3.04e+04,d:4.66)    -->    [f:3.01e+04,d:4.59]    lambda:0.0108  #err= 14 update:5 armijo:3
+100 [dump:1,u:0:0]      (f:3.01e+04,d:4.55)    -->    [f:2.83e+04,d:4.27]    lambda:0.0666  #err=  1 armijo:1
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] CNOC
+101 [dump:7,u:0:0]      (f:2.83e+04,d:4.46)    -->    [f:2.72e+04,d:4.24]    lambda:0.0471  #err= 29 update:6 armijo:1
+102 [dump:4,u:0:0]      (f:2.72e+04,d:4.39)    -->    [f:2.61e+04,d:4.19]    lambda:0.0446  #err=  7 update:3 armijo:1
+103 [dump:6,u:0:0]      (f:2.61e+04,d:4.45)    -->    [f:2.56e+04,d:4.35]    lambda:0.0213  #err= 18 update:5 armijo:1
+104 [dump:8,u:0:0]      (f:2.56e+04,d:4.64)    -->    [f:2.55e+04,d:4.63]    lambda:0.00236  #err= 18 update:5 armijo:3
+105 [dump:1,u:0:0]      (f:2.55e+04,d:4.98)    -->    [f:2.67e+04,d:4.76]    lambda:0.051  #err=  2 update:1
+106 [dump:9,u:0:0]      (f:2.67e+04,d:4.98)    -->    [f:2.57e+04,d:4.77]    lambda:0.0404  #err= 44 update:9
+107 [dump:5,u:0:0]      (f:2.57e+04,d:5.04)    -->    [f:2.45e+04,d:4.78]    lambda:0.0506  #err= 26 update:5
+108 [dump:6,u:0:0]      (f:2.45e+04,d:4.8)     -->    [f:2.36e+04,d:4.59]    lambda:0.0397  #err= 34 update:6
+109 [dump:5,u:0:0]      (f:2.36e+04,d:4.14)    -->    [f:2.25e+04,d:3.91]    lambda:0.0502  #err= 17 update:5
+110 [dump:2,u:0:0]      (f:2.25e+04,d:3.78)    -->    [f:2.42e+04,d:3.56]    lambda:0.165  #err=  5 update:2
+111 [dump:4,u:0:0]      (f:2.42e+04,d:3.03)    -->    [f:2.14e+04,d:2.61]    lambda:0.137  #err=  7 update:3 armijo:1
+112 [dump:1,u:0:0]      (f:2.14e+04,d:2.62)    -->    [f:1.81e+04,d:2.25]    lambda:0.222  #err=  1 armijo:1
+113 [dump:4,u:0:0]      (f:1.81e+04,d:2.54)    -->    [f:1.64e+04,d:2.19]    lambda:0.137  #err= 11 update:3 armijo:1
+114 [dump:7,u:0:0]      (f:1.64e+04,d:2.66)    -->    [f:1.61e+04,d:2.62]    lambda:0.0149  #err= 12 update:5 armijo:2
+115 [dump:1,u:0:0]      (f:1.61e+04,d:2.7)     -->    [f:1.45e+04,d:2.34]    lambda:0.128  #err=  4 update:1
+116 [dump:7,u:0:0]      (f:1.45e+04,d:2.86)    -->    [f:1.34e+04,d:2.61]    lambda:0.0824  #err= 50 update:7
+117 [dump:4,u:0:0]      (f:1.34e+04,d:2.81)    -->    [f:1.22e+04,d:2.51]    lambda:0.103  #err= 12 update:4
+118 [dump:4,u:0:0]      (f:1.22e+04,d:2.59)    -->    [f:1.09e+04,d:2.32]    lambda:0.116  #err= 14 update:4
+119 [dump:4,u:0:0]      (f:1.09e+04,d:2.33)    -->    [f:1.1e+04,d:2.14]     lambda:0.123  #err= 13 update:4
+120 [dump:3,u:0:0]      (f:1.1e+04,d:2.09)     -->    [f:9.97e+03,d:1.88]    lambda:0.103  #err=  5 update:2 armijo:1
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] CNOC
+121 [dump:5,u:0:0]      (f:9.97e+03,d:1.89)    -->    [f:9.09e+03,d:1.71]    lambda:0.096  #err= 16 update:4 armijo:1
+122 [dump:3,u:0:0]      (f:9.09e+03,d:1.74)    -->    [f:7.87e+03,d:1.47]    lambda:0.159  #err=  6 update:3
+123 [dump:6,u:0:0]      (f:7.87e+03,d:1.53)    -->    [f:7.37e+03,d:1.43]    lambda:0.0672  #err= 13 update:5 armijo:1
+124 [dump:3,u:0:0]      (f:7.37e+03,d:1.45)    -->    [f:6.85e+03,d:1.34]    lambda:0.0762  #err=  5 update:2 armijo:1
+125 [dump:6,u:0:0]      (f:6.85e+03,d:1.37)    -->    [f:8.04e+03,d:1.33]    lambda:0.0672  #err= 13 update:5 armijo:1
+126 [dump:4,u:0:0]      (f:8.04e+03,d:1.31)    -->    [f:7.64e+03,d:1.25]    lambda:0.0534  #err=  7 update:3 armijo:1
+127 [dump:3,u:0:0]      (f:7.64e+03,d:1.26)    -->    [f:7.16e+03,d:1.18]    lambda:0.0679  #err=  5 update:2 armijo:1
+128 [dump:6,u:0:0]      (f:7.16e+03,d:1.2)     -->    [f:6.73e+03,d:1.12]    lambda:0.0672  #err= 19 update:5 armijo:1
+129 [dump:3,u:0:0]      (f:6.73e+03,d:1.14)    -->    [f:6.25e+03,d:1.05]    lambda:0.0762  #err=  5 update:2 armijo:1
+130 [dump:6,u:0:0]      (f:6.25e+03,d:1.09)    -->    [f:5.85e+03,d:1.02]    lambda:0.0672  #err= 16 update:5 armijo:1
+131 [dump:3,u:0:0]      (f:5.85e+03,d:1.04)    -->   [f:5.43e+03,d:0.965]    lambda:0.0762  #err=  6 update:2 armijo:1
+132 [dump:5,u:0:0]     (f:5.43e+03,d:0.978)    -->   [f:4.94e+03,d:0.885]    lambda:0.096  #err= 15 update:4 armijo:1
+133 [dump:4,u:0:0]     (f:4.94e+03,d:0.896)    -->   [f:4.64e+03,d:0.838]    lambda:0.0638  #err= 13 update:3 armijo:1
+134 [dump:4,u:0:0]     (f:4.64e+03,d:0.838)    -->   [f:4.47e+03,d:0.795]    lambda:0.052  #err= 10 update:3 armijo:1
+135 [dump:3,u:0:0]     (f:4.47e+03,d:0.794)    -->    [f:4.19e+03,d:0.74]    lambda:0.067  #err=  8 update:2 armijo:1
+136 [dump:8,u:0:0]     (f:4.19e+03,d:0.802)    -->   [f:4.15e+03,d:0.794]    lambda:0.011  #err= 27 update:5 armijo:3
+137 [dump:0,u:0:0]     (f:4.15e+03,d:0.856)    -->    [f:4.51e+03,d:0.74]    lambda:0.157 
+138 [dump:5,u:0:0]     (f:4.51e+03,d:0.756)    -->    [f:3.9e+03,d:0.625]    lambda:0.168  #err= 22 update:5
+139 [dump:3,u:0:0]      (f:3.9e+03,d:0.58)     -->   [f:3.54e+03,d:0.506]    lambda:0.121  #err=  5 update:2 armijo:1
+140 [dump:5,u:0:0]     (f:3.54e+03,d:0.448)    -->   [f:3.03e+03,d:0.378]    lambda:0.168  #err= 22 update:5
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] CNOC
+141 [dump:4,u:0:0]     (f:3.03e+03,d:0.406)    -->   [f:2.79e+03,d:0.372]    lambda:0.0844  #err= 10 update:3 armijo:1
+142 [dump:3,u:0:0]     (f:2.79e+03,d:0.383)    -->    [f:2.58e+03,d:0.35]    lambda:0.0854  #err=  6 update:2 armijo:1
+143 [dump:4,u:0:0]     (f:2.58e+03,d:0.353)    -->   [f:2.46e+03,d:0.302]    lambda:0.24   #err= 14 update:4
+144 [dump:5,u:0:0]     (f:2.46e+03,d:0.318)    -->    [f:2.3e+03,d:0.297]    lambda:0.0706  #err= 13 update:4 armijo:1
+145 [dump:4,u:0:0]      (f:2.3e+03,d:0.319)    -->   [f:2.18e+03,d:0.302]    lambda:0.0547  #err=  7 update:3 armijo:1
+146 [dump:3,u:0:0]     (f:2.18e+03,d:0.311)    -->    [f:2.04e+03,d:0.29]    lambda:0.0687  #err=  5 update:2 armijo:1
+147 [dump:5,u:0:0]     (f:2.04e+03,d:0.297)    -->   [f:1.86e+03,d:0.269]    lambda:0.096  #err=  9 update:4 armijo:1
+148 [dump:3,u:0:0]     (f:1.86e+03,d:0.277)    -->   [f:1.77e+03,d:0.263]    lambda:0.0521  #err=  4 update:1 armijo:2
+149 [dump:4,u:0:0]     (f:1.77e+03,d:0.265)    -->   [f:1.82e+03,d:0.244]    lambda:0.0784  #err=  6 update:2 armijo:2
+150 [dump:0,u:0:0]     (f:1.82e+03,d:0.246)    -->   [f:1.33e+03,d:0.143]    lambda:0.42  
+151 [dump:1,u:0:0]     (f:1.33e+03,d:0.158)    -->     [f:808,d:0.0502]      lambda:0.7    #err=  3 update:1
+152 [dump:6,u:0:0]        (f:808,d:0.121)      -->      [f:771,d:0.113]      lambda:0.0672  #err= 13 update:5 armijo:1
+153 [dump:3,u:0:0]        (f:771,d:0.113)      -->      [f:804,d:0.104]      lambda:0.0762  #err=  5 update:2 armijo:1
+154 [dump:6,u:0:0]        (f:804,d:0.11)       -->      [f:778,d:0.106]      lambda:0.0384  #err= 13 update:4 armijo:2
+155 [dump:2,u:0:0]        (f:778,d:0.111)      -->      [f:822,d:0.107]      lambda:0.047  #err=  2 armijo:2
+156 [dump:2,u:0:0]        (f:822,d:0.111)      -->     [f:728,d:0.0683]      lambda:0.49   #err=  6 update:2
+157 [dump:6,u:0:0]       (f:728,d:0.0981)      -->     [f:688,d:0.0912]      lambda:0.0672  #err= 13 update:5 armijo:1
+158 [dump:2,u:0:0]       (f:688,d:0.0922)      -->     [f:636,d:0.0825]      lambda:0.109  #err=  3 update:1 armijo:1
+159 [dump:6,u:0:0]        (f:636,d:0.111)      -->      [f:605,d:0.104]      lambda:0.0672  #err= 14 update:5 armijo:1
+160 [dump:5,u:0:0]        (f:605,d:0.137)      -->      [f:588,d:0.132]      lambda:0.0374  #err= 12 update:4 armijo:1
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] CNOC
+161 [dump:4,u:0:0]        (f:588,d:0.137)      -->      [f:571,d:0.132]      lambda:0.0398  #err=  8 update:3 armijo:1
+162 [dump:3,u:0:0]        (f:571,d:0.133)      -->      [f:550,d:0.126]      lambda:0.0586  #err=  5 update:2 armijo:1
+163 [dump:6,u:0:0]        (f:550,d:0.127)      -->      [f:671,d:0.119]      lambda:0.0672  #err= 12 update:5 armijo:1
+164 [dump:0,u:0:0]        (f:671,d:0.12)       -->     [f:610,d:0.0733]      lambda:0.389 
+165 [dump:1,u:0:0]       (f:610,d:0.0776)      -->     [f:546,d:0.0145]      lambda:0.95   #err=  1 angle:1 armijo:1
+166 [dump:6,u:0:0]        (f:546,d:0.125)      -->      [f:514,d:0.112]      lambda:0.118  #err= 25 update:6
+167 [dump:0,u:0:0]        (f:514,d:0.133)      -->   [f:1.18e+03,d:0.0552]   lambda:0.514 
+168 [dump:7,u:0:0]     (f:1.18e+03,d:0.0989)   -->   [f:1.15e+03,d:0.0964]   lambda:0.0269  #err= 13 update:5 armijo:2
+169 [dump:3,u:0:0]     (f:1.15e+03,d:0.103)    -->    [f:1.12e+03,d:0.1]     lambda:0.0275  #err=  4 update:1 armijo:2
+170 [dump:8,u:0:0]     (f:1.12e+03,d:0.0992)   -->   [f:1.11e+03,d:0.0982]   lambda:0.0108  #err= 13 update:5 armijo:3
+171 [dump:3,u:0:0]     (f:1.11e+03,d:0.0989)   -->   [f:1.1e+03,d:0.0979]    lambda:0.00996  #err=  3 armijo:3
+172 [dump:5,u:0:0]     (f:1.1e+03,d:0.0965)    -->   [f:1.13e+03,d:0.094]    lambda:0.0314  #err=  7 update:2 armijo:3
+173 [dump:0,u:0:0]     (f:1.13e+03,d:0.0748)   -->    [f:1e+03,d:0.0444]     lambda:0.266 
+174 [dump:7,u:0:0]       (f:1e+03,d:0.122)     -->      [f:989,d:0.12]       lambda:0.0186  #err= 27 update:4 armijo:3
+175 [dump:2,u:0:0]        (f:989,d:0.198)      -->      [f:978,d:0.194]      lambda:0.0328  #err=  2 armijo:2
+176 [dump:5,u:0:0]        (f:978,d:0.328)      -->   [f:1.46e+03,d:0.326]    lambda:0.168  #err= 35 update:5
+177 [dump:1,u:0:0]     (f:1.46e+03,d:0.371)    -->   [f:1.75e+03,d:0.0475]   lambda:0.584  #err=  1 angle:1 armijo:1
+178 [dump:6,u:0:0]     (f:1.75e+03,d:0.236)    -->   [f:1.64e+03,d:0.221]    lambda:0.0672  #err= 12 update:5 armijo:1
+179 [dump:3,u:0:0]     (f:1.64e+03,d:0.228)    -->   [f:1.57e+03,d:0.218]    lambda:0.0436  #err=  4 update:1 armijo:2
+180 [dump:6,u:0:0]      (f:1.57e+03,d:0.22)    -->   [f:1.54e+03,d:0.212]    lambda:0.0384  #err= 10 update:4 armijo:2
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] CNOC
+181 [dump:0,u:0:0]     (f:1.54e+03,d:0.216)    -->   [f:1.29e+03,d:0.153]    lambda:0.294 
+182 [dump:1,u:0:0]     (f:1.29e+03,d:0.144)    -->     [f:907,d:0.0851]      lambda:0.4    #err=  1 armijo:1
+183 [dump:4,u:0:0]        (f:907,d:0.106)      -->     [f:751,d:0.0851]      lambda:0.24   #err= 15 update:4
+184 [dump:5,u:0:0]         (f:751,d:0.1)       -->     [f:705,d:0.0933]      lambda:0.0706  #err=  9 update:4 armijo:1
+185 [dump:2,u:0:0]       (f:705,d:0.0931)      -->     [f:788,d:0.0853]      lambda:0.112  #err=  3 update:1 armijo:1
+186 [dump:0,u:0:0]        (f:788,d:0.086)      -->  [f:1.18e+03,d:0.00721]   lambda:1     
+187 [dump:2,u:0:0]     (f:1.18e+03,d:0.0219)   -->     [f:525,d:0.00768]     lambda:0.902  #err=  2 angle:2 armijo:2
+188 [dump:7,u:0:0]       (f:525,d:0.0629)      -->     [f:505,d:0.0599]      lambda:0.0471  #err= 28 update:6 armijo:1
+189 [dump:4,u:0:0]        (f:505,d:0.06)       -->     [f:486,d:0.0573]      lambda:0.0446  #err=  8 update:3 armijo:1
+190 [dump:3,u:0:0]       (f:486,d:0.0566)      -->      [f:462,d:0.053]      lambda:0.0621  #err=  5 update:2 armijo:1
+191 [dump:5,u:0:0]       (f:462,d:0.0536)      -->     [f:430,d:0.0485]      lambda:0.096  #err=  9 update:4 armijo:1
+192 [dump:4,u:0:0]       (f:430,d:0.0491)      -->      [f:422,d:0.048]      lambda:0.0235  #err=  5 update:1 armijo:3
+193 [dump:1,u:0:0]       (f:422,d:0.0482)      -->     [f:895,d:0.0457]      lambda:0.0919  #err=  1 armijo:1
+194 [dump:0,u:0:0]       (f:895,d:0.0443)      -->     [f:510,d:0.0016]      lambda:1     
+195 [dump:1,u:0:0]       (f:510,d:0.00705)     -->     [f:415,d:0.00588]     lambda:0.4    #err=  1 armijo:1
+196 [dump:5,u:0:0]       (f:415,d:0.0336)      -->     [f:375,d:0.0295]      lambda:0.168  #err= 24 update:5
+197 [dump:3,u:0:0]       (f:375,d:0.0451)      -->     [f:342,d:0.0402]      lambda:0.121  #err=  5 update:2 armijo:1
+198 [dump:5,u:0:0]       (f:342,d:0.0544)      -->     [f:316,d:0.0497]      lambda:0.096  #err=  9 update:4 armijo:1
+199 [dump:5,u:0:0]       (f:316,d:0.0598)      -->     [f:318,d:0.0581]      lambda:0.0271  #err=  9 update:3 armijo:2
+200 [dump:1,u:0:0]        (f:318,d:0.059)      -->     [f:293,d:0.0478]      lambda:0.173  #err=  2 update:1
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] CNOC
+201 [dump:5,u:0:0]       (f:293,d:0.0439)      -->     [f:279,d:0.0415]      lambda:0.0549  #err=  8 update:3 armijo:2
+202 [dump:2,u:0:0]       (f:279,d:0.0411)      -->     [f:286,d:0.0387]      lambda:0.0562  #err=  2 armijo:2
+203 [dump:0,u:0:0]       (f:286,d:0.0384)      -->     [f:397,d:0.00903]     lambda:1     
+204 [dump:0,u:0:0]       (f:397,d:0.0077)      -->     [f:254,d:0.00629]     lambda:1     
+205 [dump:6,u:0:0]        (f:254,d:0.053)      -->     [f:256,d:0.0464]      lambda:0.118  #err= 33 update:6
+206 [dump:4,u:0:0]       (f:256,d:0.0467)      -->     [f:244,d:0.0434]      lambda:0.0706  #err=  7 update:3 armijo:1
+207 [dump:3,u:0:0]       (f:244,d:0.0436)      -->      [f:346,d:0.042]      lambda:0.0446  #err=  4 update:1 armijo:2
+208 [dump:5,u:0:0]       (f:346,d:0.0419)      -->     [f:330,d:0.0396]      lambda:0.0549  #err=  8 update:3 armijo:2
+209 [dump:2,u:0:0]       (f:330,d:0.0397)      -->     [f:552,d:0.0391]      lambda:0.0562  #err=  2 armijo:2
+210 [dump:0,u:0:0]       (f:552,d:0.0377)      -->    [f:349,d:0.000609]     lambda:1     
+211 [dump:1,u:0:0]       (f:349,d:0.00788)     -->     [f:283,d:0.00688]     lambda:0.4    #err=  1 armijo:1
+212 [dump:5,u:0:0]        (f:283,d:0.037)      -->     [f:262,d:0.0345]      lambda:0.096  #err= 24 update:4 armijo:1
+213 [dump:3,u:0:0]       (f:262,d:0.0573)      -->     [f:249,d:0.0612]      lambda:0.159  #err= 10 update:3
+214 [dump:1,u:0:0]       (f:249,d:0.0848)      -->     [f:218,d:0.0218]      lambda:0.7    #err=  2 update:1
+215 [dump:1,u:0:0]        (f:218,d:0.017)      -->      [f:185,d:0.01]       lambda:0.4    #err=  1 armijo:1
+216 [dump:0,u:0:0]       (f:185,d:0.0133)      -->     [f:102,d:0.00434]     lambda:1     
+217 [dump:0,u:0:0]       (f:102,d:0.0184)      -->    [f:46.5,d:0.00175]     lambda:1     
+218 [dump:0,u:0:0]      (f:46.5,d:0.00646)     -->    [f:27.5,d:0.000895]    lambda:1     
+219 [dump:0,u:0:0]      (f:27.5,d:0.00293)     -->    [f:13.7,d:0.000685]    lambda:1     
+220 [dump:0,u:0:0]      (f:13.7,d:0.00211)     -->    [f:6.71,d:0.00039]     lambda:1     
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] CNOC
+221 [dump:0,u:0:0]      (f:6.71,d:0.00115)     -->    [f:3.05,d:0.00024]     lambda:1     
+222 [dump:0,u:0:0]      (f:3.05,d:0.000639)    -->    [f:1.21,d:0.000131]    lambda:1     
+223 [dump:0,u:0:0]      (f:1.21,d:0.000304)    -->    [f:0.355,d:5.7e-05]    lambda:1     
+224 [dump:0,u:0:0]     (f:0.355,d:0.000106)    -->   [f:0.0515,d:1.21e-05]   lambda:1     
+225 [dump:0,u:0:0]     (f:0.0515,d:1.65e-05)   -->   [f:0.0016,d:4.72e-07]   lambda:1     
+226 [dump:0,u:0:0]     (f:0.0016,d:5.06e-07)   -->  [f:2.08e-06,d:6.5e-10]   lambda:1     
+227 [dump:0,u:0:0]    (f:2.08e-06,d:6.51e-10)  -->  [f:1.33e-09,d:3.19e-15]  lambda:1     
+228 [dump:0,u:0:0]    (f:1.33e-09,d:3.19e-15)  -->  [f:1.39e-09,d:1.6e-15]   lambda:1     
+229 [dump:0,u:0:0]    (f:1.39e-09,d:1.6e-15)   -->  [f:1.42e-09,d:1.56e-15]  lambda:1     
+230 [dump:0,u:0:0]    (f:1.42e-09,d:1.56e-15)  -->  [f:1.43e-09,d:1.48e-15]  lambda:1     
+231 [dump:0,u:0:0]    (f:1.43e-09,d:1.48e-15)  -->  [f:1.33e-09,d:2.45e-15]  lambda:1     
+232 [dump:0,u:0:0]    (f:1.33e-09,d:2.45e-15)  -->  [f:1.17e-09,d:2.53e-15]  lambda:1     
+233 [dump:0,u:0:0]    (f:1.17e-09,d:2.53e-15)  -->  [f:1.39e-09,d:2.34e-15]  lambda:1     
+234 [dump:0,u:0:0]    (f:1.39e-09,d:2.34e-15)  -->  [f:1.13e-09,d:2.12e-15]  lambda:1     
+235 [dump:0,u:0:0]    (f:1.13e-09,d:2.12e-15)  -->  [f:1.23e-09,d:2.24e-15]  lambda:1     
+236 [dump:0,u:0:0]    (f:1.23e-09,d:2.24e-15)  -->  [f:1.38e-09,d:1.82e-15]  lambda:1     
+237 [dump:0,u:0:0]    (f:1.38e-09,d:1.82e-15)  -->  [f:1.3e-09,d:1.65e-15]   lambda:1     
+238 [dump:0,u:0:0]    (f:1.3e-09,d:1.65e-15)   -->  [f:1.06e-09,d:1.87e-15]  lambda:1     
+239 [dump:0,u:0:0]    (f:1.06e-09,d:1.87e-15)  -->  [f:1.25e-09,d:1.72e-15]  lambda:1     
+240 [dump:0,u:0:0]    (f:1.25e-09,d:1.72e-15)  -->  [f:1.39e-09,d:1.48e-15]  lambda:1     
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] CNOC
+241 [dump:0,u:0:0]    (f:1.39e-09,d:1.48e-15)  -->  [f:1.17e-09,d:1.72e-15]  lambda:1     
+242 [dump:0,u:0:0]    (f:1.17e-09,d:1.72e-15)  -->  [f:1.29e-09,d:2.12e-15]  lambda:1     
+243 [dump:0,u:0:0]    (f:1.29e-09,d:2.12e-15)  -->  [f:1.22e-09,d:1.7e-15]   lambda:1     
+244 [dump:0,u:0:0]    (f:1.22e-09,d:1.7e-15)   -->  [f:1.27e-09,d:1.83e-15]  lambda:1     
+245 [dump:0,u:0:0]    (f:1.27e-09,d:1.83e-15)  -->  [f:1.26e-09,d:1.95e-15]  lambda:1     
+246 [dump:0,u:0:0]    (f:1.26e-09,d:1.95e-15)  -->  [f:1.22e-09,d:1.91e-15]  lambda:1     
+247 [dump:0,u:0:0]    (f:1.22e-09,d:1.91e-15)  -->  [f:1.13e-09,d:1.6e-15]   lambda:1     
+248 [dump:0,u:0:0]    (f:1.13e-09,d:1.6e-15)   -->  [f:1.21e-09,d:1.82e-15]  lambda:1     
+249 [dump:0,u:0:0]    (f:1.21e-09,d:1.82e-15)  -->  [f:1.01e-09,d:2.45e-15]  lambda:1     
+250 [dump:0,u:0:0]    (f:1.01e-09,d:2.45e-15)  -->  [f:1.13e-09,d:1.47e-15]  lambda:1     
+251 [dump:0,u:0:0]    (f:1.13e-09,d:1.47e-15)  -->  [f:1.14e-09,d:1.55e-15]  lambda:1     
+252 [dump:0,u:0:0]    (f:1.14e-09,d:1.55e-15)  -->  [f:1.07e-09,d:1.98e-15]  lambda:1     
+253 [dump:0,u:0:0]    (f:1.07e-09,d:1.98e-15)  -->  [f:1.19e-09,d:1.8e-15]   lambda:1     
+254 [dump:0,u:0:0]    (f:1.19e-09,d:1.8e-15)   -->  [f:1.15e-09,d:1.4e-15]   lambda:1     
+255 [dump:0,u:0:0]    (f:1.15e-09,d:1.4e-15)   -->  [f:1.11e-09,d:2.32e-15]  lambda:1     
+256 [dump:0,u:0:0]    (f:1.11e-09,d:2.32e-15)  -->  [f:1.15e-09,d:2.28e-15]  lambda:1     
+257 [dump:0,u:0:0]    (f:1.15e-09,d:2.28e-15)  -->  [f:1.13e-09,d:1.74e-15]  lambda:1     
+258 [dump:0,u:0:0]    (f:1.13e-09,d:1.74e-15)  -->  [f:1.07e-09,d:1.99e-15]  lambda:1     
+259 [dump:0,u:0:0]    (f:1.07e-09,d:1.99e-15)  -->  [f:1.13e-09,d:2.03e-15]  lambda:1     
+260 [dump:0,u:0:0]    (f:1.13e-09,d:2.03e-15)  -->  [f:1.32e-09,d:1.09e-15]  lambda:1     
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] CNOC
+261 [dump:0,u:0:0]    (f:1.32e-09,d:1.09e-15)  -->  [f:1.2e-09,d:1.38e-15]   lambda:1     
+262 [dump:0,u:0:0]    (f:1.2e-09,d:1.38e-15)   -->  [f:1.24e-09,d:2.39e-15]  lambda:1     
+263 [dump:0,u:0:0]    (f:1.24e-09,d:2.39e-15)  -->  [f:1.2e-09,d:2.26e-15]   lambda:1     
+264 [dump:0,u:0:0]    (f:1.2e-09,d:2.26e-15)   -->  [f:1.16e-09,d:1.72e-15]  lambda:1     
+265 [dump:0,u:0:0]    (f:1.16e-09,d:1.72e-15)  -->  [f:1.12e-09,d:2.68e-15]  lambda:1     
+266 [dump:0,u:0:0]    (f:1.12e-09,d:2.68e-15)  -->  [f:1.16e-09,d:2.17e-15]  lambda:1     
+267 [dump:0,u:0:0]    (f:1.16e-09,d:2.17e-15)  -->  [f:1.12e-09,d:1.82e-15]  lambda:1     
+268 [dump:0,u:0:0]    (f:1.12e-09,d:1.82e-15)  -->  [f:1.04e-09,d:2.17e-15]  lambda:1     
+269 [dump:0,u:0:0]    (f:1.04e-09,d:2.17e-15)  -->  [f:1.18e-09,d:1.56e-15]  lambda:1     
+270 [dump:0,u:0:0]    (f:1.18e-09,d:1.56e-15)  -->  [f:1.12e-09,d:1.84e-15]  lambda:1     
+271 [dump:0,u:0:0]    (f:1.12e-09,d:1.84e-15)  -->  [f:1.25e-09,d:2.28e-15]  lambda:1     
+272 [dump:0,u:0:0]    (f:1.25e-09,d:2.28e-15)  -->  [f:1.18e-09,d:2.03e-15]  lambda:1     
+273 [dump:0,u:0:0]    (f:1.18e-09,d:2.03e-15)  -->  [f:1.16e-09,d:1.25e-15]  lambda:1     
+274 [dump:0,u:0:0]    (f:1.16e-09,d:1.25e-15)  -->  [f:1.23e-09,d:1.65e-15]  lambda:1     
+275 [dump:0,u:0:0]    (f:1.23e-09,d:1.65e-15)  -->  [f:1.25e-09,d:1.63e-15]  lambda:1     
+276 [dump:0,u:0:0]    (f:1.25e-09,d:1.63e-15)  -->  [f:1.08e-09,d:1.56e-15]  lambda:1     
+277 [dump:0,u:0:0]    (f:1.08e-09,d:1.56e-15)  -->  [f:1.02e-09,d:1.93e-15]  lambda:1     
+278 [dump:0,u:0:0]    (f:1.02e-09,d:1.93e-15)  -->  [f:1.52e-09,d:1.96e-15]  lambda:1     
+279 [dump:0,u:0:0]    (f:1.52e-09,d:1.96e-15)  -->  [f:1.07e-09,d:1.91e-15]  lambda:1     
+280 [dump:0,u:0:0]    (f:1.07e-09,d:1.91e-15)  -->  [f:1.14e-09,d:2.44e-15]  lambda:1     
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] CNOC
+281 [dump:0,u:0:0]    (f:1.14e-09,d:2.44e-15)  -->  [f:1.06e-09,d:2.06e-15]  lambda:1     
+282 [dump:0,u:0:0]    (f:1.06e-09,d:2.06e-15)  -->  [f:1.16e-09,d:1.83e-15]  lambda:1     
+283 [dump:0,u:0:0]    (f:1.16e-09,d:1.83e-15)  -->  [f:1.04e-09,d:1.5e-15]   lambda:1     
+284 [dump:0,u:0:0]    (f:1.04e-09,d:1.5e-15)   -->  [f:1.22e-09,d:1.37e-15]  lambda:1     
+285 [dump:0,u:0:0]    (f:1.22e-09,d:1.37e-15)  -->  [f:9.92e-10,d:1.9e-15]   lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 2               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 28292           | N. System pars  = 66658           |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 23.3 [sec]      | timeout         = 0 [ms]          |
+| iteration       = 285             | Memory Used     = 10Mb(+3Kb)      |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 777             | Jacobian        = 285             |
+| Factorization   = 285             | Inversion       = 777             |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 2.3264e-06      | last ||d||_inf  = 1.2489e-12      |
+| last ||f||_1    = 9.9178e-10      | last ||d||_1    = 1.8955e-15      |
+| last ||f||_2    = 3.5378e-08      | last ||d||_2    = 2.9001e-14      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 5.611ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 942.5ms ]
+Check DuDxxpm (epsi=0.001): all OK [ 463.8ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001):
+#ERR 1 DabcDxlxlpu [cell=0 of 2019 SEGMENT#0 range:(0,99)] #x=#l=7 #p=0 #u=2 [ (xlp) x (xlxlpu) = 14 x 30 ]
+DbDx_L(0:6,0:6)[ 6, 1] =     0.029375 : 0.025568     [A:FD] ---    0.0038072 : 0.3807       [err:err(%)]
+DbDx_R(0:6,0:6)[ 6, 1] =     0.029375 : 0.025568     [A:FD] ---    0.0038072 : 0.3807       [err:err(%)]
+
+#ERR 2 DabcDxlxlpu [cell=13 of 2019 SEGMENT#0 range:(0,99)] #x=#l=7 #p=0 #u=2 [ (xlp) x (xlxlpu) = 14 x 30 ]
+DbDx_L(0:6,0:6)[ 6, 1] =     0.030726 : 0.027109     [A:FD] ---    0.0036168 : 0.3617       [err:err(%)]
+DbDx_R(0:6,0:6)[ 6, 1] =     0.030726 : 0.027109     [A:FD] ---    0.0036168 : 0.3617       [err:err(%)]
+
+#ERR 3 DabcDxlxlpu [cell=42 of 2019 SEGMENT#0 range:(0,99)] #x=#l=7 #p=0 #u=2 [ (xlp) x (xlxlpu) = 14 x 30 ]
+DbDx_L(0:6,0:6)[ 6, 1] =     0.031047 : 0.027472     [A:FD] ---    0.0035745 : 0.3574       [err:err(%)]
+DbDx_R(0:6,0:6)[ 6, 1] =     0.031047 : 0.027472     [A:FD] ---    0.0035745 : 0.3574       [err:err(%)]
+
+#ERR 4 DabcDxlxlpu [cell=50 of 2019 SEGMENT#0 range:(0,99)] #x=#l=7 #p=0 #u=2 [ (xlp) x (xlxlpu) = 14 x 30 ]
+DbDx_L(0:6,0:6)[ 6, 1] =    -0.071762 : -0.07029     [A:FD] ---    0.0014725 : 0.1473       [err:err(%)]
+DbDx_R(0:6,0:6)[ 6, 1] =    -0.071762 : -0.07029     [A:FD] ---    0.0014725 : 0.1473       [err:err(%)]
+
+#ERR 5 DabcDxlxlpu [cell=51 of 2019 SEGMENT#0 range:(0,99)] #x=#l=7 #p=0 #u=2 [ (xlp) x (xlxlpu) = 14 x 30 ]
+DbDx_L(0:6,0:6)[ 6, 1] =   -0.0026966 : -0.0013364   [A:FD] ---    0.0013602 : 0.136        [err:err(%)]
+DbDx_R(0:6,0:6)[ 6, 1] =   -0.0026966 : -0.0013364   [A:FD] ---    0.0013602 : 0.136        [err:err(%)]
+
+#ERR 6 DabcDxlxlpu [cell=52 of 2019 SEGMENT#0 range:(0,99)] #x=#l=7 #p=0 #u=2 [ (xlp) x (xlxlpu) = 14 x 30 ]
+DbDx_L(0:6,0:6)[ 6, 1] =     0.036989 : 0.034044     [A:FD] ---    0.0029448 : 0.2945       [err:err(%)]
+DbDx_R(0:6,0:6)[ 6, 1] =     0.036989 : 0.034044     [A:FD] ---    0.0029448 : 0.2945       [err:err(%)]
+
+skipping... [ 27.21ms ]
+Check DodeDxp (epsi=0.001): all OK [ 15.12ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 42.65ms ]
+target [Lagrange,Mayer]            = [ 1.074, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 0.02808, 0.02247 ]
+All Done Folks!

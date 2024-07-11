@@ -158,8 +158,8 @@ version: 1.5.2-d151dirty-osx_13.3.1
    path:
   .
   ./mrblib
-  /Library/Frameworks/MechatronixInterfaceMruby.framework/Resources/mrblib
-license: (expiration:2030-12-31) (Maple XOptima:available) (Mechatronix:available) 
+  /Library/Frameworks/PINS_InterfaceMruby.framework/Resources/mrblib
+license: (expiration:2030-12-31) (Maple XOptima:available) (Mechatronix:available)
 
 (C) 2013 Bertolazzi, Biral, Bosetti (University of Trento)
 Module '     XOptima PINS-1.5.2-d151dirty', Copyright (C) B-cube Team -- University of Trento 2006-2015
@@ -443,7 +443,7 @@ Generating D2mayerD2xxp_mat:         4 x 4
 
 Step 8: generate Mesh (if required)
 -----------------------------------
-Mapped function(s) of class: Mechatronix#MeshStd instance: *pMesh.
+Mapped function(s) of class: PINS#MeshStd instance: *pMesh.
 
 Step 9: setup parameters
 ------------------------

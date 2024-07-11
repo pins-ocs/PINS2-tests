@@ -1,0 +1,423 @@
++---------------------- MODEL:EconomicGrowthModel ----------------------+
++................................ DIMS .................................+
+| dims                      = u=1, q=1, x=3, p=0, bc=3 of 3             |
+| total                     = nZ=6009, nP=15015, nUC=1000, Q=1001       |
+| index start               = omega=6006, p=6009                        |
+| post processing           = n_post=5                                  |
++................................ MESH .................................+
+| num nodes / segments      = 1001 / 1                                  |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 1                               |
+| mesh class pointer        = 0x7ff7b0d52138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 6009 x 6009                               |
+| nblock/block size         = 1000 / 6                                  |
+| qr/qx/nr/nx               = 3 / 3 / 0 / 0                             |
+| last blok rows x cols     = 15 x 15                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x1                                                       |
+| [ 1] initial_x2                                                       |
+| [ 2] final                                                            |
++..................... Controls penalties/barriers .....................+
+uControl = { COSLOG (BARRIER) epsilon=0.1, tolerance=0.1 }               
++......................... Constraints type LT .........................+
+Tpositive = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }       
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 1001                                                   
+  Segment N.0: s0 = 0 length = 1 npts = 1001 no data set                 
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|............................... Qc = 10 ...............................|
+|............................. l1_i = -0.5 .............................|
+|............................. l2_i = -0.42329 .........................|
+|............................... t0 = 0.34657 ..........................|
+|.......................... u_epsi0 = 0.1 ..............................|
+|.......................... u_epsi1 = 1e-08 ............................|
+|........................... u_tol0 = 0.1 ..............................|
+|........................... u_tol1 = 0.001 ............................|
+|............................. x1_i = 1 ................................|
+|............................. x2_i = 2 ................................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=1/0.3334/0.5774, |L|=1/0.3334/0.5774 |B|=1/1/1, |BL|=8/8/8, PARS=0/0/0, U=0.5/0.5/0.5
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] EconomicGrowthModel
+  1 [dump:1,u:0:0]       (f:0.334,d:0.927)     -->     [f:0.241,d:0.585]     lambda:0.4    #err=  1 armijo:1
+  2 [dump:1,u:0:0]       (f:0.241,d:0.281)     -->     [f:0.165,d:0.14]      lambda:0.4    #err=  1 armijo:1
+  3 [dump:0,u:0:0]       (f:0.165,d:0.141)     -->     [f:0.105,d:0.014]     lambda:1     
+  4 [dump:0,u:0:0]      (f:0.105,d:0.0123)     -->  [f:0.00114,d:0.000611]   lambda:1     
+  5 [dump:0,u:0:0]    (f:0.00114,d:0.000615)   -->  [f:2.11e-06,d:7.3e-07]   lambda:1     
+  6 [dump:0,u:0:0]    (f:2.11e-06,d:7.29e-07)  -->  [f:2.19e-12,d:2.69e-12]  lambda:1     
+Continuation step N.1
+
+Continuation step N.1 s:0->0.2, ds=0.2
+[iter:6,phase:1,s:0.2,ds:0.2] |X|=0.1411/0.03746/0.06231, |L|=0.1412/0.03751/0.06239 |B|=2.65e-12/4.332e-12/3.138e-12, |BL|=2.914e-11/2.914e-11/2.914e-11, PARS=0/0/0, U=0.8603/0.7129/0.7187
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] EconomicGrowthModel
+7  (1 ) [phase:1,s:0.2,ds:0.2,dump:1,u:0:0]              (f:0.0432,d:0.00886)    -->  [f:0.000639,d:0.000178]  lambda:0.95   #err=  1 angle:1 armijo:1
+8  (2 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:0.000639,d:0.000178)  -->  [f:1.28e-07,d:2.38e-08]  lambda:1     
+9  (3 ) [phase:1,s:0.2,ds:0.2,dump:0,u:0:0]             (f:1.28e-07,d:2.38e-08)  -->  [f:5.39e-14,d:5.41e-15]  lambda:1     
+
+Continuation step N.1 s:0.2->0.5, ds=0.3
+[iter:9,phase:1,s:0.5,ds:0.3] |X|=0.3/0.06836/0.1172, |L|=0.3004/0.0685/0.1174 |B|=2.359e-16/4.441e-16/3.146e-16, |BL|=7.105e-15/7.105e-15/7.105e-15, PARS=0/0/0, U=0.9195/0.7663/0.7741
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] EconomicGrowthModel
+10 (1 ) [phase:1,s:0.5,ds:0.3,dump:2,u:0:0]               (f:0.0866,d:0.0157)    -->  [f:0.00505,d:0.000841]   lambda:0.902  #err=  2 angle:2 armijo:2
+11 (2 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:0.00505,d:0.000744)   -->  [f:1.13e-05,d:1.97e-06]  lambda:1     
+12 (3 ) [phase:1,s:0.5,ds:0.3,dump:0,u:0:0]             (f:1.13e-05,d:1.99e-06)  -->  [f:1.38e-10,d:2.29e-11]  lambda:1     
+
+Continuation step N.1 s:0.5->0.95, ds=0.45
+[iter:12,phase:1,s:0.95,ds:0.45] |X|=0.8045/0.1278/0.2382, |L|=0.8072/0.1283/0.239 |B|=3.021e-13/5.988e-13/4.234e-13, |BL|=1.238e-11/1.238e-11/1.238e-11, PARS=0/0/0, U=0.9949/0.9508/0.9522
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] EconomicGrowthModel
+13 (1 ) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]             (f:0.313,d:0.0522)     -->     [f:0.207,d:0.024]     lambda:0.278  #err=  2 angle:1 armijo:2
+14 (2 ) [phase:1,s:0.95,ds:0.45,dump:2,u:0:0]             (f:0.207,d:0.0167)     -->   [f:0.0818,d:0.00435]    lambda:0.812  #err=  2 angle:2 armijo:2
+15 (3 ) [phase:1,s:0.95,ds:0.45,dump:1,u:0:0]            (f:0.0818,d:0.00283)    -->  [f:0.00843,d:0.000253]   lambda:0.95   #err=  1 angle:1 armijo:1
+16 (4 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:0.00843,d:0.000221)   -->  [f:3.46e-05,d:1.04e-06]  lambda:1     
+17 (5 ) [phase:1,s:0.95,ds:0.45,dump:0,u:0:0]           (f:3.46e-05,d:1.06e-06)  -->  [f:2.23e-09,d:8.81e-11]  lambda:1     
+
+Continuation step N.1 s:0.95->1, ds=0.05
+[iter:17,phase:1,s:1,ds:0.05] |X|=0.791/0.04183/0.124, |L|=0.8007/0.04236/0.1257 |B|=3.608e-16/7.078e-16/5.006e-16, |BL|=0/0/0, PARS=0/0/0, U=1/0.9974/0.9975
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] EconomicGrowthModel
+18 (1 ) [phase:1,s:1,ds:0.05,dump:31,u:0:0]               (f:0.382,d:0.0363)     -->    [f:0.385,d:0.0148]     lambda:0.00641  #err= 31 angle:27 armijo:31
+19 (2 ) [phase:1,s:1,ds:0.05,dump:4,u:0:0]                 (f:0.385,d:0.022)     -->    [f:0.383,d:0.0134]     lambda:0.00493  #err=  4 angle:1 armijo:4
+20 (3 ) [phase:1,s:1,ds:0.05,dump:9,u:0:0]                (f:0.383,d:0.0137)     -->    [f:0.378,d:0.0112]     lambda:0.0664  #err=  9 angle:9 armijo:9
+21 (4 ) [phase:1,s:1,ds:0.05,dump:3,u:0:0]                (f:0.378,d:0.0111)     -->    [f:0.372,d:0.0101]     lambda:0.0247  #err=  3 armijo:3
+22 (5 ) [phase:1,s:1,ds:0.05,dump:5,u:0:0]                (f:0.372,d:0.0112)     -->    [f:0.366,d:0.00964]    lambda:0.0102  #err=  5 armijo:5
+23 (6 ) [phase:1,s:1,ds:0.05,dump:3,u:0:0]                (f:0.366,d:0.00975)    -->    [f:0.362,d:0.00962]    lambda:0.00971  #err=  3 armijo:3
+24 (7 ) [phase:1,s:1,ds:0.05,dump:4,u:0:0]                (f:0.362,d:0.0098)     -->    [f:0.358,d:0.00951]    lambda:0.0256  #err=  4 armijo:4
+25 (8 ) [phase:1,s:1,ds:0.05,dump:4,u:0:0]                (f:0.358,d:0.00948)    -->    [f:0.358,d:0.00905]    lambda:0.00783  #err=  4 angle:1 armijo:4
+26 (9 ) [phase:1,s:1,ds:0.05,dump:13,u:0:0]               (f:0.358,d:0.0088)     -->    [f:0.358,d:0.00863]    lambda:0.0121  #err= 13 angle:11 armijo:13
+27 (10) [phase:1,s:1,ds:0.05,dump:3,u:0:0]                (f:0.358,d:0.00831)    -->    [f:0.353,d:0.00814]    lambda:0.0115  #err=  3 armijo:3
+28 (11) [phase:1,s:1,ds:0.05,dump:6,u:0:0]                (f:0.353,d:0.00937)    -->    [f:0.357,d:0.00648]    lambda:0.00719  #err=  6 angle:1 armijo:6
+29 (12) [phase:1,s:1,ds:0.05,dump:3,u:0:0]                (f:0.357,d:0.00664)    -->    [f:0.354,d:0.00597]    lambda:0.00866  #err=  3 armijo:3
+30 (13) [phase:1,s:1,ds:0.05,dump:18,u:0:0]               (f:0.354,d:0.00957)    -->    [f:0.353,d:0.00643]    lambda:0.00221  #err= 18 angle:12 armijo:18
+31 (14) [phase:1,s:1,ds:0.05,dump:3,u:0:0]                (f:0.353,d:0.00518)    -->    [f:0.35,d:0.00425]     lambda:0.00452  #err=  3 armijo:3
+32 (15) [phase:1,s:1,ds:0.05,dump:2,u:0:0]                (f:0.35,d:0.00387)     -->    [f:0.338,d:0.00316]    lambda:0.16   #err=  2 armijo:2
+33 (16) [phase:1,s:1,ds:0.05,dump:3,u:0:0]                (f:0.338,d:0.00391)    -->    [f:0.328,d:0.00358]    lambda:0.064  #err=  3 armijo:3
+34 (17) [phase:1,s:1,ds:0.05,dump:4,u:0:0]                (f:0.328,d:0.0039)     -->    [f:0.325,d:0.00349]    lambda:0.0256  #err=  4 armijo:4
+35 (18) [phase:1,s:1,ds:0.05,dump:3,u:0:0]                (f:0.325,d:0.00386)    -->    [f:0.323,d:0.00364]    lambda:0.0154  #err=  3 armijo:3
+36 (19) [phase:1,s:1,ds:0.05,dump:5,u:0:0]                (f:0.323,d:0.00441)    -->    [f:0.321,d:0.00374]    lambda:0.0102  #err=  5 armijo:5
+37 (20) [phase:1,s:1,ds:0.05,dump:3,u:0:0]                (f:0.321,d:0.00305)    -->    [f:0.319,d:0.00279]    lambda:0.00971  #err=  3 armijo:3
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] EconomicGrowthModel
+38 (21) [phase:1,s:1,ds:0.05,dump:1,u:0:0]                (f:0.319,d:0.00246)    -->    [f:0.345,d:0.00215]    lambda:0.4    #err=  1 armijo:1
+39 (22) [phase:1,s:1,ds:0.05,dump:4,u:0:0]                (f:0.345,d:0.00357)    -->    [f:0.363,d:0.00261]    lambda:0.0256  #err=  4 armijo:4
+40 (23) [phase:1,s:1,ds:0.05,dump:2,u:0:0]                (f:0.363,d:0.00261)    -->    [f:0.354,d:0.00229]    lambda:0.0384  #err=  2 armijo:2
+41 (24) [phase:1,s:1,ds:0.05,dump:3,u:0:0]                (f:0.354,d:0.00232)    -->    [f:0.329,d:0.00217]    lambda:0.064  #err=  3 armijo:3
+42 (25) [phase:1,s:1,ds:0.05,dump:4,u:0:0]                (f:0.329,d:0.00207)    -->    [f:0.319,d:0.00194]    lambda:0.0256  #err=  4 armijo:4
+43 (26) [phase:1,s:1,ds:0.05,dump:3,u:0:0]                (f:0.319,d:0.00216)    -->    [f:0.32,d:0.00217]     lambda:0.0154  #err=  3 armijo:3
+44 (27) [phase:1,s:1,ds:0.05,dump:5,u:0:0]                (f:0.32,d:0.00202)     -->    [f:0.315,d:0.00174]    lambda:0.0102  #err=  5 armijo:5
+45 (28) [phase:1,s:1,ds:0.05,dump:2,u:0:0]                (f:0.315,d:0.00169)    -->    [f:0.308,d:0.00161]    lambda:0.0243  #err=  2 armijo:2
+46 (29) [phase:1,s:1,ds:0.05,dump:2,u:0:0]                (f:0.308,d:0.00159)    -->    [f:0.303,d:0.00148]    lambda:0.16   #err=  2 armijo:2
+47 (30) [phase:1,s:1,ds:0.05,dump:4,u:0:0]                (f:0.303,d:0.00156)    -->    [f:0.306,d:0.00139]    lambda:0.0256  #err=  4 armijo:4
+48 (31) [phase:1,s:1,ds:0.05,dump:2,u:0:0]                (f:0.306,d:0.0012)     -->    [f:0.294,d:0.00108]    lambda:0.0384  #err=  2 armijo:2
+49 (32) [phase:1,s:1,ds:0.05,dump:4,u:0:0]                (f:0.294,d:0.00102)    -->   [f:0.286,d:0.000948]    lambda:0.0256  #err=  4 armijo:4
+50 (33) [phase:1,s:1,ds:0.05,dump:2,u:0:0]               (f:0.286,d:0.000899)    -->   [f:0.274,d:0.000836]    lambda:0.0384  #err=  2 armijo:2
+51 (34) [phase:1,s:1,ds:0.05,dump:1,u:0:0]               (f:0.274,d:0.000814)    -->   [f:0.274,d:0.000722]    lambda:0.4    #err=  1 armijo:1
+52 (35) [phase:1,s:1,ds:0.05,dump:2,u:0:0]               (f:0.274,d:0.000959)    -->   [f:0.251,d:0.000907]    lambda:0.16   #err=  2 armijo:2
+53 (36) [phase:1,s:1,ds:0.05,dump:5,u:0:0]                (f:0.251,d:0.00153)    -->    [f:0.253,d:0.00114]    lambda:0.0243  #err=  5 angle:1 armijo:5
+54 (37) [phase:1,s:1,ds:0.05,dump:2,u:0:0]               (f:0.253,d:0.000967)    -->   [f:0.243,d:0.000843]    lambda:0.0374  #err=  2 armijo:2
+55 (38) [phase:1,s:1,ds:0.05,dump:4,u:0:0]               (f:0.243,d:0.000762)    -->   [f:0.238,d:0.000705]    lambda:0.0256  #err=  4 armijo:4
+56 (39) [phase:1,s:1,ds:0.05,dump:2,u:0:0]               (f:0.238,d:0.000628)    -->   [f:0.227,d:0.000608]    lambda:0.0384  #err=  2 armijo:2
+57 (40) [phase:1,s:1,ds:0.05,dump:3,u:0:0]               (f:0.227,d:0.000526)    -->   [f:0.216,d:0.000446]    lambda:0.064  #err=  3 armijo:3
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] EconomicGrowthModel
+58 (41) [phase:1,s:1,ds:0.05,dump:6,u:0:0]                (f:0.216,d:0.00052)    -->    [f:0.21,d:0.000397]    lambda:0.0305  #err=  6 angle:3 armijo:6
+59 (42) [phase:1,s:1,ds:0.05,dump:1,u:0:0]                (f:0.21,d:0.000333)    -->    [f:0.185,d:0.0003]     lambda:0.105  #err=  1 armijo:1
+60 (43) [phase:1,s:1,ds:0.05,dump:4,u:0:0]               (f:0.185,d:0.000439)    -->   [f:0.179,d:0.000425]    lambda:0.0264  #err=  4 armijo:4
+61 (44) [phase:1,s:1,ds:0.05,dump:7,u:0:0]               (f:0.179,d:0.000442)    -->   [f:0.177,d:0.000284]    lambda:0.0131  #err=  7 angle:4 armijo:7
+62 (45) [phase:1,s:1,ds:0.05,dump:0,u:0:0]               (f:0.177,d:0.000253)    -->   [f:0.148,d:0.000228]    lambda:0.172 
+63 (46) [phase:1,s:1,ds:0.05,dump:3,u:0:0]               (f:0.148,d:0.000264)    -->    [f:0.138,d:0.00021]    lambda:0.064  #err=  3 armijo:3
+64 (47) [phase:1,s:1,ds:0.05,dump:3,u:0:0]               (f:0.138,d:0.000196)    -->    [f:0.126,d:0.00018]    lambda:0.075  #err=  3 armijo:3
+65 (48) [phase:1,s:1,ds:0.05,dump:8,u:0:0]               (f:0.126,d:0.000194)    -->    [f:0.122,d:0.00017]    lambda:0.0281  #err=  8 angle:5 armijo:8
+66 (49) [phase:1,s:1,ds:0.05,dump:0,u:0:0]               (f:0.122,d:0.000141)    -->   [f:0.0909,d:0.000114]   lambda:0.252 
+67 (50) [phase:1,s:1,ds:0.05,dump:3,u:0:0]               (f:0.0909,d:0.000148)   -->   [f:0.0812,d:0.000121]   lambda:0.0913  #err=  3 angle:1 armijo:3
+68 (51) [phase:1,s:1,ds:0.05,dump:3,u:0:0]               (f:0.0812,d:0.000121)   -->   [f:0.0743,d:0.00011]    lambda:0.0691  #err=  3 armijo:3
+69 (52) [phase:1,s:1,ds:0.05,dump:3,u:0:0]               (f:0.0743,d:9.95e-05)   -->   [f:0.0696,d:9.29e-05]   lambda:0.0857  #err=  3 angle:1 armijo:3
+70 (53) [phase:1,s:1,ds:0.05,dump:4,u:0:0]               (f:0.0696,d:0.000103)   -->   [f:0.0657,d:8.13e-05]   lambda:0.0389  #err=  4 angle:1 armijo:4
+71 (54) [phase:1,s:1,ds:0.05,dump:0,u:0:0]               (f:0.0657,d:7.18e-05)   -->   [f:0.0476,d:5.41e-05]   lambda:0.296 
+72 (55) [phase:1,s:1,ds:0.05,dump:1,u:0:0]               (f:0.0476,d:5.6e-05)    -->   [f:0.034,d:4.09e-05]    lambda:0.4    #err=  1 armijo:1
+73 (56) [phase:1,s:1,ds:0.05,dump:3,u:0:0]               (f:0.034,d:4.47e-05)    -->   [f:0.0318,d:3.99e-05]   lambda:0.0845  #err=  3 armijo:3
+74 (57) [phase:1,s:1,ds:0.05,dump:2,u:0:0]               (f:0.0318,d:3.79e-05)   -->   [f:0.0261,d:3.38e-05]   lambda:0.176  #err=  2 armijo:2
+75 (58) [phase:1,s:1,ds:0.05,dump:5,u:0:0]               (f:0.0261,d:2.78e-05)   -->   [f:0.0241,d:2.55e-05]   lambda:0.0688  #err=  5 angle:2 armijo:5
+76 (59) [phase:1,s:1,ds:0.05,dump:3,u:0:0]               (f:0.0241,d:2.33e-05)   -->   [f:0.0225,d:2.25e-05]   lambda:0.0501  #err=  3 angle:2 armijo:3
+77 (60) [phase:1,s:1,ds:0.05,dump:1,u:0:0]               (f:0.0225,d:1.96e-05)   -->   [f:0.0141,d:1.32e-05]   lambda:0.42   #err=  1 armijo:1
+NLsolver[EconomicGrowthModel]::solve_with_continuation(phase=1,...) found:
+NLsolver[EconomicGrowthModel]::solve()
+#phase=1 #it=0/60 lambda=0.42 tolerance=1e-09 |f|_1=0.02252 |f|_inf=1.914 |d|_1=1.96e-05 |d|_inf=0.001977
+at phase 1, iter 77: NLsolver[EconomicGrowthModel]::solve, Too many iterations
+
+
+Continuation step N.1 s:0.95->0.975, ds=0.025
+[iter:77,phase:1,s:0.975,ds:0.025] |X|=0.3512/0.02162/0.06176, |L|=0.3532/0.02185/0.06243 |B|=3.608e-16/7.078e-16/5.006e-16, |BL|=0/0/0, PARS=0/0/0, U=0.997/0.7628/0.795
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] EconomicGrowthModel
+78 (1 ) [phase:1,s:0.975,ds:0.025,dump:3,u:0:0]          (f:0.0231,d:0.00158)    -->  [f:0.00587,d:0.000264]   lambda:0.857  #err=  3 angle:3 armijo:3
+79 (2 ) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:0.00587,d:0.000185)   -->  [f:0.00018,d:4.25e-06]   lambda:1     
+80 (3 ) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:0.00018,d:4.68e-06)   -->  [f:4.35e-07,d:1.15e-08]  lambda:1     
+81 (4 ) [phase:1,s:0.975,ds:0.025,dump:0,u:0:0]         (f:4.35e-07,d:1.16e-08)  -->  [f:2.72e-12,d:7.29e-14]  lambda:1     
+
+Continuation step N.1 s:0.975->1, ds=0.025
+[iter:81,phase:1,s:1,ds:0.025] |X|=0.8296/0.03085/0.1089, |L|=0.8435/0.03141/0.1111 |B|=1.388e-17/2.776e-17/1.963e-17, |BL|=0/0/0, PARS=0/0/0, U=1/0.9323/0.945
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] EconomicGrowthModel
+82 (1 ) [phase:1,s:1,ds:0.025,dump:27,u:0:0]              (f:0.249,d:0.0154)     -->    [f:0.251,d:0.00637]    lambda:0.00787  #err= 27 angle:23 armijo:27
+83 (2 ) [phase:1,s:1,ds:0.025,dump:3,u:0:0]               (f:0.251,d:0.00927)    -->    [f:0.247,d:0.00866]    lambda:0.00852  #err=  3 armijo:3
+84 (3 ) [phase:1,s:1,ds:0.025,dump:6,u:0:0]               (f:0.247,d:0.00663)    -->    [f:0.241,d:0.00546]    lambda:0.0549  #err=  6 angle:3 armijo:6
+85 (4 ) [phase:1,s:1,ds:0.025,dump:3,u:0:0]               (f:0.241,d:0.00573)    -->    [f:0.238,d:0.0047]     lambda:0.0225  #err=  3 armijo:3
+86 (5 ) [phase:1,s:1,ds:0.025,dump:5,u:0:0]               (f:0.238,d:0.00458)    -->    [f:0.236,d:0.00422]    lambda:0.0102  #err=  5 armijo:5
+87 (6 ) [phase:1,s:1,ds:0.025,dump:3,u:0:0]               (f:0.236,d:0.00413)    -->    [f:0.234,d:0.00396]    lambda:0.00971  #err=  3 armijo:3
+88 (7 ) [phase:1,s:1,ds:0.025,dump:4,u:0:0]               (f:0.234,d:0.00364)    -->    [f:0.23,d:0.00333]     lambda:0.0279  #err=  4 armijo:4
+89 (8 ) [phase:1,s:1,ds:0.025,dump:2,u:0:0]               (f:0.23,d:0.00355)     -->    [f:0.227,d:0.00336]    lambda:0.0401  #err=  2 armijo:2
+90 (9 ) [phase:1,s:1,ds:0.025,dump:5,u:0:0]               (f:0.227,d:0.00347)    -->    [f:0.228,d:0.0033]     lambda:0.0552  #err=  5 angle:2 armijo:5
+91 (10) [phase:1,s:1,ds:0.025,dump:4,u:0:0]               (f:0.228,d:0.00517)    -->    [f:0.223,d:0.00356]    lambda:0.0118  #err=  4 angle:1 armijo:4
+92 (11) [phase:1,s:1,ds:0.025,dump:3,u:0:0]               (f:0.223,d:0.00362)    -->    [f:0.221,d:0.00344]    lambda:0.0104  #err=  3 armijo:3
+93 (12) [phase:1,s:1,ds:0.025,dump:3,u:0:0]               (f:0.221,d:0.00255)    -->    [f:0.221,d:0.00251]    lambda:0.0711  #err=  3 armijo:3
+94 (13) [phase:1,s:1,ds:0.025,dump:5,u:0:0]               (f:0.221,d:0.00329)    -->    [f:0.223,d:0.0031]     lambda:0.0102  #err=  5 armijo:5
+95 (14) [phase:1,s:1,ds:0.025,dump:2,u:0:0]               (f:0.223,d:0.00282)    -->    [f:0.218,d:0.00261]    lambda:0.0243  #err=  2 armijo:2
+96 (15) [phase:1,s:1,ds:0.025,dump:5,u:0:0]               (f:0.218,d:0.00268)    -->    [f:0.218,d:0.00237]    lambda:0.0146  #err=  5 angle:1 armijo:5
+97 (16) [phase:1,s:1,ds:0.025,dump:1,u:0:0]               (f:0.218,d:0.0021)     -->    [f:0.212,d:0.00203]    lambda:0.0726  #err=  1 armijo:1
+98 (17) [phase:1,s:1,ds:0.025,dump:10,u:0:0]              (f:0.212,d:0.00283)    -->    [f:0.215,d:0.00199]    lambda:0.011  #err= 10 angle:6 armijo:10
+99 (18) [phase:1,s:1,ds:0.025,dump:2,u:0:0]               (f:0.215,d:0.00197)    -->    [f:0.21,d:0.00177]     lambda:0.0252  #err=  2 armijo:2
+100(19) [phase:1,s:1,ds:0.025,dump:5,u:0:0]               (f:0.21,d:0.00167)     -->    [f:0.207,d:0.00162]    lambda:0.0128  #err=  5 armijo:5
+101(20) [phase:1,s:1,ds:0.025,dump:1,u:0:0]               (f:0.207,d:0.00149)    -->    [f:0.199,d:0.00145]    lambda:0.0831  #err=  1 armijo:1
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] EconomicGrowthModel
+102(21) [phase:1,s:1,ds:0.025,dump:3,u:0:0]               (f:0.199,d:0.00162)    -->    [f:0.193,d:0.00154]    lambda:0.0754  #err=  3 armijo:3
+103(22) [phase:1,s:1,ds:0.025,dump:5,u:0:0]               (f:0.193,d:0.00161)    -->    [f:0.187,d:0.00144]    lambda:0.0482  #err=  5 angle:2 armijo:5
+104(23) [phase:1,s:1,ds:0.025,dump:3,u:0:0]               (f:0.187,d:0.00141)    -->    [f:0.183,d:0.00143]    lambda:0.0211  #err=  3 armijo:3
+105(24) [phase:1,s:1,ds:0.025,dump:5,u:0:0]               (f:0.183,d:0.00139)    -->    [f:0.177,d:0.00118]    lambda:0.0129  #err=  5 angle:1 armijo:5
+106(25) [phase:1,s:1,ds:0.025,dump:3,u:0:0]               (f:0.177,d:0.00107)    -->    [f:0.177,d:0.00102]    lambda:0.0109  #err=  3 armijo:3
+107(26) [phase:1,s:1,ds:0.025,dump:2,u:0:0]              (f:0.177,d:0.000896)    -->   [f:0.163,d:0.000821]    lambda:0.16   #err=  2 armijo:2
+108(27) [phase:1,s:1,ds:0.025,dump:4,u:0:0]               (f:0.163,d:0.00122)    -->   [f:0.153,d:0.000901]    lambda:0.0372  #err=  4 angle:1 armijo:4
+109(28) [phase:1,s:1,ds:0.025,dump:2,u:0:0]              (f:0.153,d:0.000883)    -->   [f:0.145,d:0.000801]    lambda:0.0463  #err=  2 armijo:2
+110(29) [phase:1,s:1,ds:0.025,dump:4,u:0:0]              (f:0.145,d:0.000751)    -->   [f:0.143,d:0.000638]    lambda:0.0256  #err=  4 armijo:4
+111(30) [phase:1,s:1,ds:0.025,dump:1,u:0:0]              (f:0.143,d:0.000604)    -->   [f:0.131,d:0.000541]    lambda:0.096  #err=  1 armijo:1
+112(31) [phase:1,s:1,ds:0.025,dump:2,u:0:0]              (f:0.131,d:0.000584)    -->   [f:0.114,d:0.000543]    lambda:0.16   #err=  2 armijo:2
+113(32) [phase:1,s:1,ds:0.025,dump:3,u:0:0]              (f:0.114,d:0.000617)    -->   [f:0.108,d:0.000499]    lambda:0.0956  #err=  3 angle:1 armijo:3
+114(33) [phase:1,s:1,ds:0.025,dump:8,u:0:0]              (f:0.108,d:0.000598)    -->   [f:0.108,d:0.000476]    lambda:0.025  #err=  8 angle:4 armijo:8
+115(34) [phase:1,s:1,ds:0.025,dump:1,u:0:0]              (f:0.108,d:0.000431)    -->   [f:0.102,d:0.000393]    lambda:0.107  #err=  1 armijo:1
+116(35) [phase:1,s:1,ds:0.025,dump:8,u:0:0]              (f:0.102,d:0.000675)    -->   [f:0.102,d:0.000444]    lambda:0.0179  #err=  8 angle:4 armijo:8
+117(36) [phase:1,s:1,ds:0.025,dump:2,u:0:0]              (f:0.102,d:0.000395)    -->   [f:0.099,d:0.000328]    lambda:0.0321  #err=  2 armijo:2
+118(37) [phase:1,s:1,ds:0.025,dump:2,u:0:0]              (f:0.099,d:0.000332)    -->   [f:0.0891,d:0.000302]   lambda:0.177  #err=  2 armijo:2
+119(38) [phase:1,s:1,ds:0.025,dump:4,u:0:0]              (f:0.0891,d:0.00037)    -->   [f:0.0889,d:0.000323]   lambda:0.0256  #err=  4 armijo:4
+120(39) [phase:1,s:1,ds:0.025,dump:2,u:0:0]              (f:0.0889,d:0.00032)    -->   [f:0.0852,d:0.000297]   lambda:0.0384  #err=  2 armijo:2
+121(40) [phase:1,s:1,ds:0.025,dump:2,u:0:0]              (f:0.0852,d:0.000283)   -->   [f:0.0764,d:0.000263]   lambda:0.16   #err=  2 armijo:2
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] EconomicGrowthModel
+122(41) [phase:1,s:1,ds:0.025,dump:4,u:0:0]              (f:0.0764,d:0.000275)   -->   [f:0.0761,d:0.000267]   lambda:0.0256  #err=  4 armijo:4
+123(42) [phase:1,s:1,ds:0.025,dump:4,u:0:0]              (f:0.0761,d:0.000267)   -->   [f:0.0723,d:0.000233]   lambda:0.0872  #err=  4 angle:3 armijo:4
+124(43) [phase:1,s:1,ds:0.025,dump:3,u:0:0]              (f:0.0723,d:0.000214)   -->   [f:0.069,d:0.000199]    lambda:0.0283  #err=  3 armijo:3
+125(44) [phase:1,s:1,ds:0.025,dump:2,u:0:0]              (f:0.069,d:0.000177)    -->   [f:0.0606,d:0.000162]   lambda:0.174  #err=  2 armijo:2
+126(45) [phase:1,s:1,ds:0.025,dump:5,u:0:0]              (f:0.0606,d:0.000222)   -->   [f:0.058,d:0.000169]    lambda:0.0722  #err=  5 angle:2 armijo:5
+127(46) [phase:1,s:1,ds:0.025,dump:1,u:0:0]              (f:0.058,d:0.000137)    -->   [f:0.0523,d:0.000121]   lambda:0.195  #err=  1 armijo:1
+128(47) [phase:1,s:1,ds:0.025,dump:4,u:0:0]              (f:0.0523,d:0.000179)   -->   [f:0.0487,d:0.000147]   lambda:0.0608  #err=  4 angle:1 armijo:4
+129(48) [phase:1,s:1,ds:0.025,dump:3,u:0:0]              (f:0.0487,d:0.000114)   -->   [f:0.0458,d:9.47e-05]   lambda:0.0411  #err=  3 angle:1 armijo:3
+130(49) [phase:1,s:1,ds:0.025,dump:1,u:0:0]              (f:0.0458,d:8.62e-05)   -->   [f:0.0368,d:6.6e-05]    lambda:0.4    #err=  1 armijo:1
+131(50) [phase:1,s:1,ds:0.025,dump:2,u:0:0]              (f:0.0368,d:8.33e-05)   -->   [f:0.033,d:6.43e-05]    lambda:0.17   #err=  2 armijo:2
+132(51) [phase:1,s:1,ds:0.025,dump:3,u:0:0]              (f:0.033,d:6.12e-05)    -->   [f:0.0308,d:5.58e-05]   lambda:0.0987  #err=  3 angle:1 armijo:3
+133(52) [phase:1,s:1,ds:0.025,dump:6,u:0:0]              (f:0.0308,d:5.9e-05)    -->   [f:0.0271,d:4.64e-05]   lambda:0.056  #err=  6 angle:3 armijo:6
+134(53) [phase:1,s:1,ds:0.025,dump:0,u:0:0]              (f:0.0271,d:4.15e-05)   -->   [f:0.0205,d:3.2e-05]    lambda:0.355 
+135(54) [phase:1,s:1,ds:0.025,dump:3,u:0:0]              (f:0.0205,d:3.68e-05)   -->   [f:0.0144,d:2.96e-05]   lambda:0.16   #err=  3 angle:1 armijo:3
+136(55) [phase:1,s:1,ds:0.025,dump:2,u:0:0]              (f:0.0144,d:1.9e-05)    -->   [f:0.0109,d:1.54e-05]   lambda:0.174  #err=  2 armijo:2
+137(56) [phase:1,s:1,ds:0.025,dump:2,u:0:0]              (f:0.0109,d:1.61e-05)   -->  [f:0.00936,d:1.47e-05]   lambda:0.16   #err=  2 armijo:2
+138(57) [phase:1,s:1,ds:0.025,dump:2,u:0:0]             (f:0.00936,d:1.45e-05)   -->  [f:0.00757,d:1.18e-05]   lambda:0.236  #err=  2 angle:1 armijo:2
+139(58) [phase:1,s:1,ds:0.025,dump:3,u:0:0]             (f:0.00757,d:1.51e-05)   -->  [f:0.00677,d:1.31e-05]   lambda:0.0743  #err=  3 armijo:3
+140(59) [phase:1,s:1,ds:0.025,dump:0,u:0:0]             (f:0.00677,d:7.98e-06)   -->  [f:0.00221,d:1.21e-06]   lambda:1     
+141(60) [phase:1,s:1,ds:0.025,dump:3,u:0:0]             (f:0.00221,d:5.28e-06)   -->  [f:0.00185,d:4.24e-06]   lambda:0.064  #err=  3 armijo:3
+NLsolver[EconomicGrowthModel]::solve_with_continuation(phase=1,...) found:
+NLsolver[EconomicGrowthModel]::solve()
+#phase=1 #it=0/60 lambda=0.064 tolerance=1e-09 |f|_1=0.002208 |f|_inf=2.369 |d|_1=5.277e-06 |d|_inf=0.001376
+at phase 1, iter 141: NLsolver[EconomicGrowthModel]::solve, Too many iterations
+
+
+Continuation step N.1 s:0.975->0.9875, ds=0.0125
+[iter:141,phase:1,s:0.9875,ds:0.0125] |X|=0.3461/0.01546/0.05214, |L|=0.348/0.01569/0.05291 |B|=1.388e-17/2.776e-17/1.963e-17, |BL|=0/0/0, PARS=0/0/0, U=0.9986/0.7565/0.7915
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] EconomicGrowthModel
+142(1 ) [phase:1,s:0.9875,ds:0.0125,dump:3,u:0:0]         (f:0.015,d:0.00079)    -->  [f:0.00387,d:0.000129]   lambda:0.857  #err=  3 angle:3 armijo:3
+143(2 ) [phase:1,s:0.9875,ds:0.0125,dump:0,u:0:0]        (f:0.00387,d:9.4e-05)   -->  [f:0.000119,d:1.9e-06]   lambda:1     
+144(3 ) [phase:1,s:0.9875,ds:0.0125,dump:0,u:0:0]       (f:0.000119,d:2.09e-06)  -->  [f:2.88e-07,d:5.17e-09]  lambda:1     
+145(4 ) [phase:1,s:0.9875,ds:0.0125,dump:0,u:0:0]       (f:2.88e-07,d:5.2e-09)   -->  [f:1.83e-12,d:3.28e-14]  lambda:1     
+
+Continuation step N.1 s:0.9875->1, ds=0.0125
+[iter:145,phase:1,s:1,ds:0.0125] |X|=0.8995/0.02374/0.1005, |L|=0.9189/0.02435/0.1033 |B|=1.388e-17/1.388e-17/1.388e-17, |BL|=0/0/0, PARS=0/0/0, U=1/0.8704/0.8953
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] EconomicGrowthModel
+146(1 ) [phase:1,s:1,ds:0.0125,dump:23,u:0:0]             (f:0.149,d:0.00663)    -->    [f:0.152,d:0.00282]    lambda:0.00966  #err= 23 angle:19 armijo:23
+147(2 ) [phase:1,s:1,ds:0.0125,dump:3,u:0:0]              (f:0.152,d:0.00402)    -->    [f:0.149,d:0.0031]     lambda:0.00944  #err=  3 armijo:3
+148(3 ) [phase:1,s:1,ds:0.0125,dump:10,u:0:0]             (f:0.149,d:0.00259)    -->    [f:0.149,d:0.00199]    lambda:0.0917  #err= 10 angle:8 armijo:10
+149(4 ) [phase:1,s:1,ds:0.0125,dump:3,u:0:0]              (f:0.149,d:0.00207)    -->    [f:0.147,d:0.00194]    lambda:0.0291  #err=  3 armijo:3
+150(5 ) [phase:1,s:1,ds:0.0125,dump:4,u:0:0]              (f:0.147,d:0.00196)    -->    [f:0.144,d:0.00184]    lambda:0.0256  #err=  4 armijo:4
+151(6 ) [phase:1,s:1,ds:0.0125,dump:2,u:0:0]              (f:0.144,d:0.00179)    -->    [f:0.141,d:0.00169]    lambda:0.0384  #err=  2 armijo:2
+152(7 ) [phase:1,s:1,ds:0.0125,dump:12,u:0:0]             (f:0.141,d:0.00176)    -->    [f:0.14,d:0.00142]     lambda:0.0234  #err= 12 angle:9 armijo:12
+153(8 ) [phase:1,s:1,ds:0.0125,dump:1,u:0:0]              (f:0.14,d:0.00119)     -->    [f:0.135,d:0.0011]     lambda:0.1    #err=  1 armijo:1
+154(9 ) [phase:1,s:1,ds:0.0125,dump:4,u:0:0]              (f:0.135,d:0.00147)    -->    [f:0.135,d:0.00119]    lambda:0.0256  #err=  4 armijo:4
+155(10) [phase:1,s:1,ds:0.0125,dump:2,u:0:0]              (f:0.135,d:0.00117)    -->    [f:0.133,d:0.00104]    lambda:0.0576  #err=  2 angle:1 armijo:2
+156(11) [phase:1,s:1,ds:0.0125,dump:7,u:0:0]              (f:0.133,d:0.00167)    -->    [f:0.131,d:0.00135]    lambda:0.00924  #err=  7 angle:2 armijo:7
+157(12) [phase:1,s:1,ds:0.0125,dump:0,u:0:0]             (f:0.131,d:0.000849)    -->   [f:0.131,d:0.000762]    lambda:0.144 
+158(13) [phase:1,s:1,ds:0.0125,dump:5,u:0:0]              (f:0.131,d:0.00119)    -->    [f:0.131,d:0.00102]    lambda:0.0102  #err=  5 armijo:5
+159(14) [phase:1,s:1,ds:0.0125,dump:3,u:0:0]             (f:0.131,d:0.000997)    -->   [f:0.128,d:0.000934]    lambda:0.00971  #err=  3 armijo:3
+160(15) [phase:1,s:1,ds:0.0125,dump:5,u:0:0]             (f:0.128,d:0.000926)    -->   [f:0.127,d:0.000893]    lambda:0.0102  #err=  5 armijo:5
+161(16) [phase:1,s:1,ds:0.0125,dump:3,u:0:0]             (f:0.127,d:0.000874)    -->   [f:0.127,d:0.000815]    lambda:0.00971  #err=  3 armijo:3
+162(17) [phase:1,s:1,ds:0.0125,dump:3,u:0:0]             (f:0.127,d:0.000789)    -->   [f:0.122,d:0.000769]    lambda:0.067  #err=  3 armijo:3
+163(18) [phase:1,s:1,ds:0.0125,dump:25,u:0:0]             (f:0.122,d:0.00108)    -->   [f:0.124,d:0.000841]    lambda:0.00872  #err= 25 angle:21 armijo:25
+164(19) [phase:1,s:1,ds:0.0125,dump:1,u:0:0]             (f:0.124,d:0.000662)    -->   [f:0.118,d:0.000637]    lambda:0.0659  #err=  1 armijo:1
+165(20) [phase:1,s:1,ds:0.0125,dump:4,u:0:0]             (f:0.118,d:0.000813)    -->   [f:0.117,d:0.000752]    lambda:0.0328  #err=  4 angle:1 armijo:4
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] EconomicGrowthModel
+166(21) [phase:1,s:1,ds:0.0125,dump:16,u:0:0]             (f:0.117,d:0.0008)     -->   [f:0.117,d:0.000632]    lambda:0.00893  #err= 16 angle:13 armijo:16
+167(22) [phase:1,s:1,ds:0.0125,dump:0,u:0:0]             (f:0.117,d:0.000485)    -->    [f:0.109,d:0.00046]    lambda:0.142 
+168(23) [phase:1,s:1,ds:0.0125,dump:8,u:0:0]             (f:0.109,d:0.000602)    -->   [f:0.106,d:0.000496]    lambda:0.0495  #err=  8 angle:5 armijo:8
+169(24) [phase:1,s:1,ds:0.0125,dump:5,u:0:0]             (f:0.106,d:0.000518)    -->   [f:0.105,d:0.000426]    lambda:0.0474  #err=  5 angle:3 armijo:5
+170(25) [phase:1,s:1,ds:0.0125,dump:2,u:0:0]             (f:0.105,d:0.000371)    -->   [f:0.0976,d:0.000339]   lambda:0.0649  #err=  2 armijo:2
+171(26) [phase:1,s:1,ds:0.0125,dump:3,u:0:0]             (f:0.0976,d:0.000367)   -->   [f:0.0902,d:0.000352]   lambda:0.0723  #err=  3 armijo:3
+172(27) [phase:1,s:1,ds:0.0125,dump:6,u:0:0]             (f:0.0902,d:0.000423)   -->    [f:0.0866,d:0.0003]    lambda:0.0367  #err=  6 angle:3 armijo:6
+173(28) [phase:1,s:1,ds:0.0125,dump:0,u:0:0]             (f:0.0866,d:0.000225)   -->   [f:0.073,d:0.000184]    lambda:0.287 
+174(29) [phase:1,s:1,ds:0.0125,dump:3,u:0:0]             (f:0.073,d:0.000264)    -->   [f:0.0702,d:0.000225]   lambda:0.0854  #err=  3 angle:1 armijo:3
+175(30) [phase:1,s:1,ds:0.0125,dump:3,u:0:0]             (f:0.0702,d:0.000204)   -->   [f:0.0662,d:0.00019]    lambda:0.064  #err=  3 armijo:3
+176(31) [phase:1,s:1,ds:0.0125,dump:3,u:0:0]             (f:0.0662,d:0.000195)   -->   [f:0.0635,d:0.000178]   lambda:0.0769  #err=  3 armijo:3
+177(32) [phase:1,s:1,ds:0.0125,dump:7,u:0:0]             (f:0.0635,d:0.000196)   -->   [f:0.0583,d:0.000169]   lambda:0.047  #err=  7 angle:4 armijo:7
+178(33) [phase:1,s:1,ds:0.0125,dump:0,u:0:0]             (f:0.0583,d:0.000115)   -->   [f:0.046,d:8.77e-05]    lambda:0.325 
+179(34) [phase:1,s:1,ds:0.0125,dump:3,u:0:0]             (f:0.046,d:0.000137)    -->   [f:0.0415,d:0.000102]   lambda:0.0939  #err=  3 angle:1 armijo:3
+180(35) [phase:1,s:1,ds:0.0125,dump:3,u:0:0]             (f:0.0415,d:8.47e-05)   -->   [f:0.037,d:7.61e-05]    lambda:0.0666  #err=  3 armijo:3
+181(36) [phase:1,s:1,ds:0.0125,dump:1,u:0:0]             (f:0.037,d:7.25e-05)    -->   [f:0.0323,d:5.61e-05]   lambda:0.4    #err=  1 armijo:1
+182(37) [phase:1,s:1,ds:0.0125,dump:2,u:0:0]             (f:0.0323,d:6.23e-05)   -->   [f:0.026,d:4.52e-05]    lambda:0.214  #err=  2 angle:1 armijo:2
+183(38) [phase:1,s:1,ds:0.0125,dump:8,u:0:0]             (f:0.026,d:4.69e-05)    -->   [f:0.0227,d:3.96e-05]   lambda:0.0841  #err=  8 angle:6 armijo:8
+184(39) [phase:1,s:1,ds:0.0125,dump:3,u:0:0]             (f:0.0227,d:3.89e-05)   -->   [f:0.0216,d:3.38e-05]   lambda:0.0349  #err=  3 armijo:3
+185(40) [phase:1,s:1,ds:0.0125,dump:2,u:0:0]             (f:0.0216,d:2.81e-05)   -->   [f:0.0166,d:2.33e-05]   lambda:0.198  #err=  2 armijo:2
+iter(subiter) [phase:s,dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] EconomicGrowthModel
+186(41) [phase:1,s:1,ds:0.0125,dump:3,u:0:0]             (f:0.0166,d:3.71e-05)   -->   [f:0.0152,d:2.4e-05]    lambda:0.064  #err=  3 armijo:3
+187(42) [phase:1,s:1,ds:0.0125,dump:1,u:0:0]             (f:0.0152,d:2.15e-05)   -->   [f:0.0113,d:1.67e-05]   lambda:0.421  #err=  1 armijo:1
+188(43) [phase:1,s:1,ds:0.0125,dump:2,u:0:0]             (f:0.0113,d:1.71e-05)   -->  [f:0.00691,d:1.23e-05]   lambda:0.167  #err=  2 armijo:2
+189(44) [phase:1,s:1,ds:0.0125,dump:2,u:0:0]            (f:0.00691,d:8.75e-06)   -->  [f:0.00487,d:7.05e-06]   lambda:0.16   #err=  2 armijo:2
+190(45) [phase:1,s:1,ds:0.0125,dump:0,u:0:0]            (f:0.00487,d:6.62e-06)   -->  [f:0.00119,d:9.63e-07]   lambda:1     
+191(46) [phase:1,s:1,ds:0.0125,dump:41,u:0:0]           (f:0.00119,d:1.47e-06)   -->  [f:0.000426,d:7.64e-08]  lambda:0.106  #err= 41 angle:41 armijo:41
+192(47) [phase:1,s:1,ds:0.0125,dump:0,u:0:0]            (f:0.000426,d:9.43e-08)  -->  [f:0.000221,d:4.84e-08]  lambda:0.488 
+193(48) [phase:1,s:1,ds:0.0125,dump:0,u:0:0]            (f:0.000221,d:4.95e-08)  -->  [f:1.11e-05,d:2.04e-09]  lambda:1     
+194(49) [phase:1,s:1,ds:0.0125,dump:0,u:0:0]            (f:1.11e-05,d:2.55e-09)  -->  [f:2.2e-07,d:4.87e-11]   lambda:1     
+195(50) [phase:1,s:1,ds:0.0125,dump:0,u:0:0]            (f:2.2e-07,d:5.09e-11)   -->  [f:3.85e-09,d:4.37e-13]  lambda:1     
+196(51) [phase:1,s:1,ds:0.0125,dump:0,u:0:0]            (f:3.85e-09,d:4.37e-13)  -->  [f:3.13e-09,d:3.75e-13]  lambda:1     
+197(52) [phase:1,s:1,ds:0.0125,dump:0,u:0:0]            (f:3.13e-09,d:3.75e-13)  -->  [f:3.11e-09,d:3.61e-13]  lambda:1     
+198(53) [phase:1,s:1,ds:0.0125,dump:0,u:0:0]            (f:3.11e-09,d:3.61e-13)  -->  [f:3.28e-09,d:4.11e-13]  lambda:1     
+199(54) [phase:1,s:1,ds:0.0125,dump:0,u:0:0]            (f:3.28e-09,d:4.11e-13)  -->  [f:3.3e-09,d:3.39e-13]   lambda:1     
+200(55) [phase:1,s:1,ds:0.0125,dump:0,u:0:0]            (f:3.3e-09,d:3.39e-13)   -->  [f:3.4e-09,d:4.23e-13]   lambda:1     
+201(56) [phase:1,s:1,ds:0.0125,dump:0,u:0:0]            (f:3.4e-09,d:4.23e-13)   -->  [f:3.16e-09,d:4.1e-13]   lambda:1     
+202(57) [phase:1,s:1,ds:0.0125,dump:0,u:0:0]            (f:3.16e-09,d:4.1e-13)   -->  [f:3.47e-09,d:4.46e-13]  lambda:1     
+203(58) [phase:1,s:1,ds:0.0125,dump:0,u:0:0]            (f:3.47e-09,d:4.46e-13)  -->  [f:3.15e-09,d:3.82e-13]  lambda:1     
+204(59) [phase:1,s:1,ds:0.0125,dump:0,u:0:0]            (f:3.15e-09,d:3.82e-13)  -->  [f:3.2e-09,d:4.02e-13]   lambda:1     
+205(60) [phase:1,s:1,ds:0.0125,dump:0,u:0:0]            (f:3.2e-09,d:4.02e-13)   -->  [f:3.03e-09,d:4.43e-13]  lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 1               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 6009            | N. System pars  = 15015           |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 6.04 [sec]      | timeout         = 0 [ms]          |
+| iteration       = 205             | Memory Used     = 1Mb(+57Kb)      |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 1137            | Jacobian        = 205             |
+| Factorization   = 205             | Inversion       = 1137            |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 1.5843e-07      | last ||d||_inf  = 9.6049e-12      |
+| last ||f||_1    = 3.0289e-09      | last ||d||_1    = 4.4258e-13      |
+| last ||f||_2    = 1.2773e-08      | last ||d||_2    = 1.316e-12       |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 2.662ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 181.4ms ]
+Check DuDxxpm (epsi=0.001):
+#ERR 1 DuDxxpm [cell=484 of 1000 SEGMENT#0 range:(0,1000)] #x=3 #u=1 #p=0 [ (u) * (xxpm) = 1 x 9 ]
+jac[  0,  6] =      -7978.6 : -8007.2      [A:FD] ---       28.646 : 0.35775      [err:err(%)]
+jac[  0,  7] =       7978.6 : 8007.2       [A:FD] ---       28.646 : 0.35775      [err:err(%)]
+
+#ERR 2 DuDxxpm [cell=485 of 1000 SEGMENT#0 range:(0,1000)] #x=3 #u=1 #p=0 [ (u) * (xxpm) = 1 x 9 ]
+jac[  0,  0] =     0.038843 : 3.7602e-09   [A:FD] ---     0.038843 : 3.8843       [err:err(%)]
+jac[  0,  1] =     0.038841 : 5.3169e-09   [A:FD] ---     0.038841 : 3.8841       [err:err(%)]
+jac[  0,  3] =     0.038843 : 5.3158e-09   [A:FD] ---     0.038843 : 3.8843       [err:err(%)]
+jac[  0,  4] =     0.038841 : 0.063645     [A:FD] ---     0.024804 : 2.4804       [err:err(%)]
+jac[  0,  6] =  -1.0256e+08 : -2.0757e+07  [A:FD] ---   8.1798e+07 : 79.76        [err:err(%)]
+jac[  0,  7] =   1.0256e+08 : 2.0757e+07   [A:FD] ---   8.1798e+07 : 79.76        [err:err(%)]
+
+#ERR 3 DuDxxpm [cell=486 of 1000 SEGMENT#0 range:(0,1000)] #x=3 #u=1 #p=0 [ (u) * (xxpm) = 1 x 9 ]
+jac[  0,  0] =     -0.03899 : 0            [A:FD] ---      0.03899 : 3.899        [err:err(%)]
+jac[  0,  1] =    -0.038991 : 0            [A:FD] ---     0.038991 : 3.8991       [err:err(%)]
+jac[  0,  3] =     -0.03899 : 0            [A:FD] ---      0.03899 : 3.899        [err:err(%)]
+jac[  0,  4] =    -0.038991 : 0            [A:FD] ---     0.038991 : 3.8991       [err:err(%)]
+jac[  0,  6] =  -1.5663e+08 : -2.2931e+07  [A:FD] ---    1.337e+08 : 85.36        [err:err(%)]
+jac[  0,  7] =   1.5663e+08 : 2.2931e+07   [A:FD] ---    1.337e+08 : 85.36        [err:err(%)]
+
+#ERR 4 DuDxxpm [cell=487 of 1000 SEGMENT#0 range:(0,1000)] #x=3 #u=1 #p=0 [ (u) * (xxpm) = 1 x 9 ]
+jac[  0,  0] =     0.034744 : 5.1734e-09   [A:FD] ---     0.034744 : 3.4744       [err:err(%)]
+jac[  0,  1] =     0.034743 : 0            [A:FD] ---     0.034743 : 3.4743       [err:err(%)]
+jac[  0,  3] =     0.034744 : 0            [A:FD] ---     0.034744 : 3.4744       [err:err(%)]
+jac[  0,  4] =     0.034743 : 5.1721e-09   [A:FD] ---     0.034743 : 3.4743       [err:err(%)]
+jac[  0,  6] =  -1.9488e+08 : -2.4102e+07  [A:FD] ---   1.7078e+08 : 87.633       [err:err(%)]
+jac[  0,  7] =   1.9488e+08 : 2.4102e+07   [A:FD] ---   1.7078e+08 : 87.633       [err:err(%)]
+
+#ERR 5 DuDxxpm [cell=488 of 1000 SEGMENT#0 range:(0,1000)] #x=3 #u=1 #p=0 [ (u) * (xxpm) = 1 x 9 ]
+jac[  0,  0] =    -0.029239 : 0            [A:FD] ---     0.029239 : 2.9239       [err:err(%)]
+jac[  0,  1] =     -0.02924 : 0            [A:FD] ---      0.02924 : 2.924        [err:err(%)]
+jac[  0,  3] =    -0.029239 : 0            [A:FD] ---     0.029239 : 2.9239       [err:err(%)]
+jac[  0,  4] =     -0.02924 : -5.4938e-09  [A:FD] ---      0.02924 : 2.924        [err:err(%)]
+jac[  0,  6] =  -2.2032e+08 : -2.4774e+07  [A:FD] ---   1.9555e+08 : 88.756       [err:err(%)]
+jac[  0,  7] =   2.2032e+08 : 2.4774e+07   [A:FD] ---   1.9555e+08 : 88.756       [err:err(%)]
+
+#ERR 6 DuDxxpm [cell=489 of 1000 SEGMENT#0 range:(0,1000)] #x=3 #u=1 #p=0 [ (u) * (xxpm) = 1 x 9 ]
+jac[  0,  0] =     0.023864 : 0            [A:FD] ---     0.023864 : 2.3864       [err:err(%)]
+jac[  0,  1] =     0.023864 : -5.6909e-09  [A:FD] ---     0.023864 : 2.3864       [err:err(%)]
+jac[  0,  3] =     0.023864 : 0            [A:FD] ---     0.023864 : 2.3864       [err:err(%)]
+jac[  0,  4] =     0.023864 : 0            [A:FD] ---     0.023864 : 2.3864       [err:err(%)]
+jac[  0,  6] =  -2.3675e+08 : -2.5173e+07  [A:FD] ---   2.1158e+08 : 89.367       [err:err(%)]
+jac[  0,  7] =   2.3675e+08 : 2.5173e+07   [A:FD] ---   2.1158e+08 : 89.367       [err:err(%)]
+
+skipping... [ 46.5ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001):
+#ERR 1 DabcDxlxlpu [cell=231 of 1000 SEGMENT#0 range:(0,1000)] #x=#l=3 #p=0 #u=1 [ (xlp) x (xlxlpu) = 6 x 13 ]
+DbDu(0:2,0:0)[ 2, 0] =     0.051773 : 0.10188      [A:FD] ---     0.050112 : 5.011        [err:err(%)]
+
+#ERR 2 DabcDxlxlpu [cell=232 of 1000 SEGMENT#0 range:(0,1000)] #x=#l=3 #p=0 #u=1 [ (xlp) x (xlxlpu) = 6 x 13 ]
+DbDu(0:2,0:0)[ 2, 0] =     0.051413 : 0.091744     [A:FD] ---     0.040331 : 4.033        [err:err(%)]
+
+#ERR 3 DabcDxlxlpu [cell=233 of 1000 SEGMENT#0 range:(0,1000)] #x=#l=3 #p=0 #u=1 [ (xlp) x (xlxlpu) = 6 x 13 ]
+DbDu(0:2,0:0)[ 2, 0] =     0.051054 : 0.086366     [A:FD] ---     0.035312 : 3.531        [err:err(%)]
+
+#ERR 4 DabcDxlxlpu [cell=234 of 1000 SEGMENT#0 range:(0,1000)] #x=#l=3 #p=0 #u=1 [ (xlp) x (xlxlpu) = 6 x 13 ]
+DbDu(0:2,0:0)[ 2, 0] =     0.050696 : 0.082559     [A:FD] ---     0.031863 : 3.186        [err:err(%)]
+
+#ERR 5 DabcDxlxlpu [cell=235 of 1000 SEGMENT#0 range:(0,1000)] #x=#l=3 #p=0 #u=1 [ (xlp) x (xlxlpu) = 6 x 13 ]
+DbDu(0:2,0:0)[ 2, 0] =     0.050339 : 0.079562     [A:FD] ---     0.029223 : 2.922        [err:err(%)]
+
+#ERR 6 DabcDxlxlpu [cell=236 of 1000 SEGMENT#0 range:(0,1000)] #x=#l=3 #p=0 #u=1 [ (xlp) x (xlxlpu) = 6 x 13 ]
+DbDu(0:2,0:0)[ 2, 0] =     0.049983 : 0.077062     [A:FD] ---     0.027079 : 2.708        [err:err(%)]
+
+skipping... [ 43.12ms ]
+Check DodeDxp (epsi=0.001): all OK [ 3.202ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 46.42ms ]
+target [Lagrange,Mayer]            = [ 0, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 8.316e-09, 0.0002762 ]
+All Done Folks!

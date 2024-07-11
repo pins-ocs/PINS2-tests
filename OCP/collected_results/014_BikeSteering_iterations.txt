@@ -1,0 +1,128 @@
++------------------------- MODEL:BikeSteering --------------------------+
++................................ DIMS .................................+
+| dims                      = u=1, q=1, x=3, p=0, bc=4 of 4             |
+| total                     = nZ=628, nP=1560, nUC=103, Q=104           |
+| index start               = omega=624, p=628                          |
+| post processing           = n_post=2                                  |
++................................ MESH .................................+
+| num nodes / segments      = 104 / 4                                   |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 0                               |
+| mesh class pointer        = 0x7ff7bf3b5138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 628 x 628                                 |
+| nblock/block size         = 103 / 6                                   |
+| qr/qx/nr/nx               = 4 / 4 / 0 / 0                             |
+| last blok rows x cols     = 16 x 16                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_omega                                                    |
+| [ 1] initial_phi                                                      |
+| [ 2] final_omega                                                      |
+| [ 3] final_phi                                                        |
++..................... Controls penalties/barriers .....................+
+FyControl = { COSLOG (BARRIER) epsilon=0.001, tolerance=0.001 }          
++......................... Constraints type LT .........................+
+minimumTimeSize = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active } 
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 4                                                      
+  num. nodes    = 104                                                    
+  Segment N.0: s0 = 0 length = 0.1 npts = 11 no data set                 
+  Segment N.1: s0 = 0.1 length = 0.4 npts = 41 no data set               
+  Segment N.2: s0 = 0.5 length = 0.4 npts = 41 no data set               
+  Segment N.3: s0 = 0.9 length = 0.1 npts = 11 no data set               
+END Mesh[mesh]                                                           
+                                                                         
++...................... No user mapped functions .......................+
++.......................... MODEL PARAMETERS ...........................+
+|............................. Fmax = 2452.5 ...........................|
+|............................... Ix = 40 ...............................|
+|................................ g = 9.81 .............................|
+|................................ h = 0.6 ..............................|
+|................................ m = 250 ..............................|
+|.......................... omega_f = 0 ................................|
+|.......................... omega_i = 0 ................................|
+|............................ phi_f = 0.17453 ..........................|
+|............................ phi_i = 0 ................................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=0.0001961/3.172e-05/7.887e-05, |L|=0.0001961/3.172e-05/7.887e-05 |B|=1/1/1, |BL|=0.1745/0.1745/0.1745, PARS=0/0/0, U=0/0/0
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BikeSteering
+  1 [dump:23,u:0:0]      (f:0.0019,d:427)      -->     [f:0.00313,d:426]     lambda:0.000274  #err= 71 update:23
+  2 [dump:6,u:0:0]      (f:0.00313,d:11.9)     -->     [f:0.0282,d:11.7]     lambda:0.00292  #err= 41 update:6
+  3 [dump:3,u:0:0]      (f:0.0282,d:0.811)     -->     [f:0.839,d:0.745]     lambda:0.0278  #err=  8 update:3
+  4 [dump:5,u:0:0]       (f:0.839,d:1.34)      -->       [f:12,d:1.24]       lambda:0.096  #err= 10 update:4 armijo:1
+  5 [dump:6,u:0:0]         (f:12,d:1.62)       -->     [f:83.5,d:0.154]      lambda:0.342  #err=  6 angle:6 armijo:6
+  6 [dump:0,u:0:0]       (f:83.5,d:0.454)      -->     [f:13.4,d:0.0564]     lambda:0.877 
+  7 [dump:3,u:0:0]       (f:13.4,d:0.281)      -->     [f:11.5,d:0.273]      lambda:0.064  #err=  3 armijo:3
+  8 [dump:1,u:0:0]       (f:11.5,d:0.156)      -->     [f:14.1,d:0.126]      lambda:0.4    #err=  1 armijo:1
+  9 [dump:3,u:0:0]       (f:14.1,d:0.249)      -->     [f:7.42,d:0.0707]     lambda:0.064  #err=  3 armijo:3
+ 10 [dump:12,u:0:0]      (f:7.42,d:0.182)      -->     [f:9.55,d:0.0812]     lambda:0.0403  #err= 12 angle:9 armijo:12
+ 11 [dump:1,u:0:0]       (f:9.55,d:0.0909)     -->     [f:7.21,d:0.065]      lambda:0.121  #err=  1 armijo:1
+ 12 [dump:2,u:0:0]       (f:7.21,d:0.052)      -->    [f:1.51,d:0.00303]     lambda:0.902  #err=  2 angle:2 armijo:2
+ 13 [dump:4,u:0:0]       (f:1.51,d:0.0216)     -->    [f:2.12,d:0.00567]     lambda:0.0684  #err=  4 angle:1 armijo:4
+ 14 [dump:0,u:0:0]      (f:2.12,d:0.00315)     -->    [f:1.34,d:0.00191]     lambda:0.392 
+ 15 [dump:0,u:0:0]      (f:1.34,d:0.00191)     -->  [f:0.00574,d:3.48e-06]   lambda:1     
+ 16 [dump:0,u:0:0]    (f:0.00574,d:3.46e-06)   -->  [f:3.49e-06,d:2.11e-10]  lambda:1     
+ 17 [dump:0,u:0:0]    (f:3.49e-06,d:2.11e-10)  -->  [f:4.32e-13,d:4.36e-17]  lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 1               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 628             | N. System pars  = 1560            |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 108 [ms]        | timeout         = 0 [ms]          |
+| iteration       = 17              | Memory Used     = 201Kb(+24b)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 67              | Jacobian        = 17              |
+| Factorization   = 17              | Inversion       = 67              |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 2.418e-10       | last ||d||_inf  = 3.3814e-16      |
+| last ||f||_1    = 4.3161e-13      | last ||d||_1    = 4.3591e-17      |
+| last ||f||_2    = 9.6502e-12      | last ||d||_2    = 7.3387e-17      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 0.288ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 23.35ms ]
+Check DuDxxpm (epsi=0.001):
+#ERR 1 DuDxxpm [cell=46 of 103 SEGMENT#1 range:(10,50)] #x=3 #u=1 #p=0 [ (u) * (xxpm) = 1 x 9 ]
+jac[  0,  7] =   9.4424e+09 : 9.417e+09    [A:FD] ---   2.5436e+07 : 0.26938      [err:err(%)]
+ [ 10.02ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001): all OK [ 18.54ms ]
+Check DodeDxp (epsi=0.001): all OK [ 0.346ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 19.01ms ]
+target [Lagrange,Mayer]            = [ 0, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 0.0001641, 0.001301 ]
+All Done Folks!

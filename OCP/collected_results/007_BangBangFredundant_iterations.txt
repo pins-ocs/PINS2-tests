@@ -1,0 +1,109 @@
++---------------------- MODEL:BangBangFredundant -----------------------+
++................................ DIMS .................................+
+| dims                      = u=2, q=1, x=6, p=0, bc=3 of 3             |
+| total                     = nZ=1215, nP=2927, nUC=200, Q=101          |
+| index start               = omega=1212, p=1215                        |
+| post processing           = n_post=1                                  |
++................................ MESH .................................+
+| num nodes / segments      = 101 / 1                                   |
++............................... THREADS ...............................+
+| n. threads [U/JU/F/JF/LU] = 15 [true/true/true/true/true]             |
++............................... PARAMS ................................+
+| Debug mode                = false                                     |
+| Solver Controls           = HeavyBall                                 |
+| Jacobian/Jacobian BC      = ANALYTIC / ANALYTIC                       |
+| Initializer Controls      = default                                   |
+| Initialize Guess          = zero + default + false                    |
+| Continuation interval     = from 1 to 0                               |
+| mesh class pointer        = 0x7ff7b2594138                            |
+| W-proxi x/u/p             = 0/0/0                                     |
++........................... LINEAR ALGEBRA ............................+
+| rows x cols               = 1215 x 1215                               |
+| nblock/block size         = 100 / 12                                  |
+| qr/qx/nr/nx               = 3 / 3 / 0 / 0                             |
+| last blok rows x cols     = 27 x 27                                   |
+| thread [factorize/solve]  = [ true / true ]                           |
+| solve block [last]        = CyclicReduction+LU [LastBlock LUPQ]       |
++-----------------------------------------------------------------------+
++................ Boundary Conditions activation status ................+
+| [xx] = activated, [  ] = NOT activated                                |
+| [ 0] initial_x                                                        |
+| [ 1] initial_v                                                        |
+| [ 2] final_v                                                          |
++..................... Controls penalties/barriers .....................+
+aF1Control = { COSLOG (BARRIER) epsilon=0.001, tolerance=0.001 }         
+aF2Control = { COSLOG (BARRIER) epsilon=0.001, tolerance=0.001 }         
++......................... Constraints type LT .........................+
+Flim_min__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }    
+Flim_max__xo = { LT: Barrier0 [tolerance=0.01, epsilon=0.01] active }    
++.......................... No constraints 1D ..........................+
++........................ No user class (local) ........................+
++........................ User class (pointer) .........................+
+                          User function `pMesh`                          
+BEGIN Mesh[mesh]                                                         
+  num. segments = 1                                                      
+  num. nodes    = 101                                                    
+  Segment N.0: s0 = 0 length = 1 npts = 101 no data set                  
+END Mesh[mesh]                                                           
+                                                                         
++........................ User mapped functions ........................+
+`clip' mapped with: ClipIntervalWithErf [h=0.01, delta=0, delta2=0, internal kappa=14.105]
++.......................... MODEL PARAMETERS ...........................+
+|............................ maxAF = 100 ..............................|
+|.............................. w_F = 10 ...............................|
++--------------------------------- END ---------------------------------+
+
+0 |X|=0.99/0.05555/0.1748, |L|=0.97/0.05433/0.1704 |B|=0/0/0, |BL|=1/1/1, PARS=0/0/0, U=0/0/0
+iter(subiter) [dump] (|f0|_1,|f1|_1) {|f0|_inf)} [|d0|_1,|d1|_1] lambda [what happened] BangBangFredundant
+  1 [dump:12,u:0:0]      (f:0.0557,d:19.6)     -->     [f:0.417,d:18.6]      lambda:0.0138  #err= 41 update:12
+  2 [dump:4,u:0:0]       (f:0.417,d:5.96)      -->     [f:0.954,d:4.28]      lambda:0.0424  #err= 23 update:4
+  3 [dump:2,u:0:0]       (f:0.954,d:1.15)      -->     [f:2.16,d:0.441]      lambda:0.205  #err=  4 update:1 angle:1 armijo:1
+  4 [dump:1,u:0:0]       (f:2.16,d:0.172)      -->     [f:1.72,d:0.0447]     lambda:0.708  #err=  1 angle:1 armijo:1
+  5 [dump:0,u:0:0]       (f:1.72,d:0.0533)     -->    [f:0.396,d:0.0049]     lambda:1     
+  6 [dump:0,u:0:0]      (f:0.396,d:0.00692)    -->   [f:0.0407,d:0.000479]   lambda:1     
+  7 [dump:0,u:0:0]     (f:0.0407,d:0.000625)   -->  [f:0.00134,d:1.33e-05]   lambda:1     
+  8 [dump:0,u:0:0]     (f:0.00134,d:1.4e-05)   -->  [f:1.23e-06,d:1.06e-08]  lambda:1     
+  9 [dump:0,u:0:0]    (f:1.23e-06,d:1.06e-08)  -->  [f:8.94e-13,d:1.25e-13]  lambda:1     
+
++.................. CONTROLS nonlinear system solver ...................+
+| num controls    = 2               | Hessian type    = Diagonal        |
+|               Analytical solution for control(s) used!                |
++................... TP-BVP nonlinear system solver ....................+
++------------------------------ NLsolver -------------------------------+
+| Converged       = YES             | tolerance       = 1e-09           |
+| tolerance[low1] = 1.778e-07       | tolerance[low2] = 3.162e-05       |
+| N. Equations    = 1215            | N. System pars  = 2927            |
++------------------------------ STATISTIC ------------------------------+
+| Elapsed Time    = 60 [ms]         | timeout         = 0 [ms]          |
+| iteration       = 9               | Memory Used     = 533Kb(+37b)     |
+| max iterations  = 300             | max acc. iter.  = 800             |
++---------------------------- CONTINUATION -----------------------------+
+| max iterations  = 60              | Initial Step    = 0.2             |
+| Minimum Step    = 0.001           | Reduce Factor   = 0.5             |
+| Augment Factor  = 1.5             | Few iterations  = 20              |
++----------------------------- EVALUATIONS -----------------------------+
+| Function        = 20              | Jacobian        = 9               |
+| Factorization   = 9               | Inversion       = 20              |
++--------------------------- SOLVER NLsolver ---------------------------+
+| n_power         = 2               | check_angle     = 120 [degree]    |
+| c1              = 0.01            | lambda_min      = 1e-06           |
+| dump_min        = 0.4             | dump_max        = 0.95            |
++........................... last residuals ............................+
+| last ||f||_inf  = 1.4276e-10      | last ||d||_inf  = 1.6089e-12      |
+| last ||f||_1    = 8.9385e-13      | last ||d||_1    = 1.248e-13       |
+| last ||f||_2    = 9.6609e-12      | last ||d||_2    = 2.8285e-13      |
++-----------------------------------------------------------------------+
+|              __   __             ___  __   __   ___  __               |
+|             /  ` /  \ |\ | \  / |__  |__) / _` |__  |  \              |
+|             \__, \__/ | \|  \/  |___ |  \ \__> |___ |__/              |
+|                                                                       |
++-----------------------------------------------------------------------+
+Check Controls (epsi=0.001): all OK [ 0.308ms ]
+Check DmuDxlxlp (epsi=0.001): all OK [ 39.43ms ]
+Check DuDxxpm (epsi=0.001): all OK [ 19.95ms ]
+Check DabcDxlxlpu (with mu=0, epsi=0.001): all OK [ 36.55ms ]
+Check DodeDxp (epsi=0.001): all OK [ 0.601ms ]
+Check DhcDxlxlop (epsi=0.001): all OK [ 37.35ms ]
+target [Lagrange,Mayer]            = [ 0, 0 ]
+[Penalties/Barriers,Controls,Ineq] = [ 0, 0.0001717, 0.02129 ]
+All Done Folks!
